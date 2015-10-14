@@ -24,4 +24,4 @@ These are connectors created and maintained by the community.  Not endorsed or s
 
 Name of Connector     | Data Source   |  Author   |   Source Code    |  Hosted URL
 -------- |  -------- |  -------- |  --------  | ---------
-Seattle/King County Restaurant Inspections  |  http://kingcounty.gov/healthservices/health/ehs/foodsafety/inspections/system.aspx  | [Ben Lower](https://github.com/benlower)  |  https://github.com/benlower/tableau-wdc-kcfoodinspection  |  http://benlower.github.io/tableau-wdc-kcfoodinspection/foodInspectionWDC.html
+Seattle/King County Restaurant Inspections  | [King County](http://kingcounty.gov/healthservices/health/ehs/foodsafety/inspections/system.aspx) | [Ben Lower](https://github.com/benlower)  |  [tableau-wdc-kcfoodinspection](https://github.com/benlower/tableau-wdc-kcfoodinspection)  |  [foodInspectionWDC.html](http://benlower.github.io/tableau-wdc-kcfoodinspection/foodInspectionWDC.html)
