@@ -16,7 +16,7 @@ These are the samples created and maintained by Tableau
 
 Name     | Data Source   |  Source Code    |  Hosted URL
 -------- |  -------- |  -------- |  -------- 
-Stock Quote Connector  |  Yahoo! Stock Data  | to-do URL  |  to-do URL
+Stock Quote Connector  |  Yahoo! Stock Data  | [Examples](https://github.com/tableau/webdataconnector/tree/gh-pages/Examples)  |  [StockQuoteConnector_final.html](https://tableau.github.io/webdataconnector/Examples/StockQuoteConnector_final.html)
 
 Community Created Connectors
 ---------------
