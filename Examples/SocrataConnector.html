@@ -1,0 +1,130 @@
+<html>
+<head>
+<title>Socrata Connector</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://public.tableau.com/javascripts/api/tableauwdc-1.1.0.js" type="text/javascript"></script>
+<script type="text/javascript">
+ 
+(function() {
+  var myConnector = tableau.makeConnector();
+
+  // the location property has lat/long. Put those properties on the base object to flatten the structure.
+  function expandLocation(obj) {
+    if (obj.location) {
+      obj.location_latitude = obj.location.latitude;
+      obj.location_longitude = obj.location.longitude;
+      delete obj.location;
+    }
+  };
+
+  myConnector.init = function () {
+    myConnector._recordsFetched = 0;
+    tableau.incrementalExtractColumn  = "lineNum";
+    tableau.initCallback();
+  };
+
+  myConnector.getColumnHeaders = function() {
+    var connectionData = JSON.parse(tableau.connectionData);
+    var connectionUrl = connectionData.url + '?%24limit=1';
+
+    $.ajax({
+      url: connectionUrl,
+      dataType: 'json',
+      success: function (res, status, xhr) {
+
+        var fieldNames = xhr.getResponseHeader("X-SODA2-Fields");
+        var fieldTypes = xhr.getResponseHeader("X-SODA2-Types");
+
+        if (!fieldNames) {
+          fieldNames = [];
+          fieldTypes = [];
+          var firstLine = res[0];
+          var ii = 0;
+          expandLocation(firstLine);
+          for (var key in firstLine) {
+            if (firstLine.hasOwnProperty(key)) {
+              fieldNames[ii] = key;
+              var fieldType = 'string';
+              if (parseInt(firstLine[key]).toString() == firstLine[key]) fieldType = 'int';
+              else if (parseFloat(firstLine[key]).toString() == firstLine[key]) fieldType = 'float';
+              else if (key.toLowerCase().indexOf('datetime') != -1) fieldType = 'datetime';
+              else if (key.toLowerCase().indexOf('date') != -1) fieldType = 'date';
+              fieldTypes[ii] = fieldType;
+              ++ii;
+            }
+          }
+        }
+        fieldNames.push("lineNum");
+        fieldTypes.push("int");
+        tableau.headersCallback(fieldNames, fieldTypes);
+      }
+    });
+  };
+
+  myConnector.getTableData = function (lastRecordToken) {
+    var connectionData = JSON.parse(tableau.connectionData);
+    lastRecordNumber = parseInt(lastRecordToken || -1);
+    var connectionUrl = connectionData.url + '?%24limit=100&$offset=' + lastRecordToken;
+
+    var xhr = $.ajax({
+      url: connectionUrl,
+      dataType: 'json',
+      success: function(data) {
+            window.setTimeout(function() {
+              var ii;
+              for (ii = 0; ii < data.length; ++ii)
+              {
+                ++lastRecordNumber;
+                data[ii].lineNum = lastRecordNumber;
+                expandLocation(data[ii]);
+              }
+              myConnector._recordsFetched += data.length;
+              var moreData = data.length > 0 && connectionData.maxRecords > myConnector._recordsFetched;
+              if (!moreData) {
+                tableau.log(myConnector._recordsFetched + " records fetched. Stopping.");
+              }
+              tableau.dataCallback(data, (lastRecordNumber).toString(), moreData); 
+            }, 1000); // add a little delay so we don't get cut off by Socrata's connection throttling
+          }
+    });
+  };
+
+  tableau.registerConnector(myConnector);
+})();
+
+$(document).ready(function () {
+  $("#goButton").click(function() { // This event fires when a button is clicked
+    var checkedBoxes = $('input[name=dataSourceName]:checked');
+    if (!checkedBoxes || checkedBoxes.length == 0) // can be empty if user did not select a data source
+    {
+      return;
+    }
+    var dataSrcUrl = 'http://' + checkedBoxes[0].value;
+
+    var maxRecordsText = $('input[name=maxRecords]');
+    var maxRecords = parseInt(maxRecordsText.val()) || 500;
+
+    tableau.connectionData = JSON.stringify({"url": dataSrcUrl, "maxRecords": maxRecords});    
+    tableau.connectionName = 'Socrata ' + checkedBoxes.parent().text();
+    tableau.submit();
+  });
+});
+
+</script>
+</head>
+<body>
+Select a data source: 
+<br>
+
+<label><input type="radio" name="dataSourceName" value="soda.demo.socrata.com/resource/earthquakes.json" checked>Earthquakes </label>
+<br>
+<label><input type="radio" name="dataSourceName" value="data.seattle.gov/resource/3k2p-39jp.json">Seattle 911 calls</label>
+<br>
+<label><input type="radio" name="dataSourceName" value="data.seattle.gov/resource/mags-97de.json">Seattle Building Permits</label>
+<br>
+Max number of records to fetch: <input type="text" name="maxRecords" style="width: 50px;" />
+<br>
+<button type="button" id="goButton">Go get it!</button>
+
+</body>
+</html>

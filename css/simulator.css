@@ -1,0 +1,99 @@
+
+html,
+body {
+   margin: 0;
+   padding: 0;
+   height: 100%;
+   font-family: Helvetica, Arial, sans-serif;
+   font-size: 12px;
+}
+
+.header {
+   width:100%;
+   min-width: 1300px;
+   overflow: auto;
+   height: 41px;
+   max-height: 41px;
+   background-color: #c0c0c0;
+}
+
+.header form, p {
+  display: inline-block;
+}
+
+.headerButton {
+  margin-left: 20px;
+}
+
+.tools {
+  width:360px;
+  height: 400px;
+}
+
+.tools label {display: inline-block; width: 150px; text-align: right; }
+.tools input {display: inline-block; margin-top:2px; margin-bottom:2px; width: 130px;}
+.tools h4 {margin: 2px;}
+
+
+.main {
+  position: absolute;
+  height: 350px;
+  left:323px; top:44px; right:0; bottom:0;
+}
+
+#fetchedData {
+  /*height:40%;*/
+  overflow: auto;
+  margin-top: 10px;
+}
+
+/*Table Formatting*/
+.tableCell {
+  border-left: solid 1px black;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+tr {
+  border-bottom: solid 1px black;
+}
+
+table {
+  border-collapse: collapse;
+  border: solid 1px black;
+}
+
+
+#host-iframe {
+  border: 1px gray solid;
+}
+
+#footerSpacer {
+  height: 115px;
+}
+
+#footerHolder {
+  position: fixed;
+  bottom: 0;
+  left: 1px;
+  right: 1px;
+  height: 114px;
+  border: 1px solid black;
+}
+
+.footerHead {
+  height: 24px;
+  background: #c0c0c0;
+}
+
+.footerHead form {
+  display:inline-block;
+}
+
+#footer {
+   background:white;
+   overflow: auto;
+   height: 90px;
+   font-family:Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+}
+

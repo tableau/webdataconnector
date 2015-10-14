@@ -1,0 +1,285 @@
+<html>
+<head>
+<title>XML Connector</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://public.tableau.com/javascripts/api/tableauwdc-1.1.0.js" type="text/javascript"></script>
+<script type="text/javascript">
+ 
+(function() {
+
+  var myConnector = tableau.makeConnector();
+
+  myConnector.init = function () {
+    tableau.connectionName = 'XML data';
+    tableau.initCallback();
+  };
+
+  myConnector.getColumnHeaders = function() {
+    _retrieveXmlData(function (tableData) {
+      var headers = tableData.headers;
+      var fieldNames = [];
+      var fieldTypes = [];
+
+      for (var fieldName in headers) {
+        if (headers.hasOwnProperty(fieldName)) {
+          fieldNames.push(fieldName);
+          fieldTypes.push(headers[fieldName]);
+        }
+      }
+      tableau.headersCallback(fieldNames, fieldTypes); // tell tableau about the fields and their types
+    });
+  }
+      
+  myConnector.getTableData = function (lastRecordToken) {
+    _retrieveXmlData(function (tableData) {
+      var rowData = tableData.rowData;
+      tableau.dataCallback(rowData, rowData.length.toString(), false);
+    });
+  };
+
+  tableau.registerConnector(myConnector);
+})();
+
+function _retrieveXmlData(retrieveDataCallback) {
+  if (!window.cachedTableData) {
+    var conData = JSON.parse(tableau.connectionData);
+    var xmlString = conData.xmlString;
+    if (conData.xmlUrl) {
+      var successCallback = function(data) {
+        window.cachedTableData = _xmlToTable(data);
+        retrieveDataCallback(window.cachedTableData);
+      };
+      _basicAjaxRequest1(conData.xmlUrl, successCallback);
+      return;
+    }
+    try {
+      var xmlDoc = $.parseXML(conData.xmlString);
+      window.cachedTableData = _xmlToTable(xmlDoc);
+    }
+    catch (e) {
+      tableau.abortWithError("unable to parse xml data");
+      return;
+    }
+  }
+  retrieveDataCallback(window.cachedTableData);
+}
+
+// There are a lot of ways to handle URLS. Sometimes we'll need workarounds for CORS. These
+// methods chain together a series of attempts to get the data at the given url
+
+function _ajaxRequestHelper(url, successCallback, conUrl, nextFunction, specialSuccessCallback){
+  specialSuccessCallback = specialSuccessCallback || successCallback;
+  var xhr = $.ajax({ 
+    url: conUrl, 
+    dataType: 'xml', 
+    success: specialSuccessCallback,
+    error: function()
+    {
+      nextFunction(url, successCallback);
+    }
+  });
+}
+
+// try the straightforward request
+function _basicAjaxRequest1(url, successCallback){
+  _ajaxRequestHelper(url, successCallback, url, _yqlProxyAjaxRequest2);
+}
+
+// try to use yql as a proxy
+function _yqlProxyAjaxRequest2(url, successCallback){
+  var yqlQueryBase = "http://query.yahooapis.com/v1/public/yql?q=";
+  var query = "select * from html where url='" + url + "'";
+  var restOfQueryString = "&format=xml";
+  var yqlUrl = yqlQueryBase + encodeURIComponent(query) + restOfQueryString;
+  _ajaxRequestHelper(url, successCallback, yqlUrl, _giveUpOnUrl9);
+}
+
+function _giveUpOnUrl9(url, successCallback) {
+  tableau.abortWithError("Could not load url: " + url);
+}
+
+// Takes a hierarchical xml document and tries to turn it into a table
+// Returns an object with headers and the row level data
+function _xmlToTable(xmlDocument) {
+  var rowData = _flattenData(xmlDocument);
+  var headers = _extractHeaders(rowData);
+  return {"headers":headers, "rowData":rowData};
+}
+
+// Given an object:
+//   - finds the longest array in the xml
+//   - flattens each element in that array so it is a single element with many properties
+// If there is no array that is a descendent of the original object, this wraps
+function _flattenData(xmlDocument) {
+  // first find the longest array
+  var longestArray = _findLongestArray(xmlDocument, xmlDocument);
+  if (!longestArray || longestArray.length == 0) {
+    // if no array found, just wrap the entire object blob in an array
+    longestArray = [objectBlob];
+  }
+  toRet = [];
+  for (var ii = 0; ii < longestArray.childNodes.length; ++ii) {
+    toRet[ii] = _flattenObject(longestArray.childNodes[ii]);
+  }
+  return toRet;
+}
+
+// Given an element with hierarchical properties, flattens it so all the properties
+// sit on the base element.
+function _flattenObject(xmlElt) {
+  var toRet = {};
+  if (xmlElt.attributes)
+  {
+    for (var attributeNum = 0; attributeNum < xmlElt.attributes.length; ++attributeNum) {
+      var attribute = xmlElt.attributes[attributeNum];
+      toRet[attribute.nodeName] = attribute.nodeValue;
+    }
+  }
+  
+  var children = xmlElt.childNodes;
+  if (!children || !children.length) {
+    if (xmlElt.textContent) {
+      toRet.text = xmlElt.textContent.trim();
+    }
+  } else {  
+  	for (var childNum = 0; childNum < children.length; ++childNum) {
+  	  var child = xmlElt.childNodes[childNum];
+  	  var childName = child.nodeName;
+
+  	  var subObj = _flattenObject(child);
+  	  for (var k in subObj) {
+  	    if (subObj.hasOwnProperty(k)) {
+  		    toRet[childName + '_' + k] = subObj[k];
+  	    }
+    	}
+  	}
+  }
+  return toRet;
+}
+
+// Finds the longest array that is a descendent of the given object
+function _findLongestArray(xmlElement, bestSoFar) {
+  var children = xmlElement.childNodes;
+  if (children && children.length) {
+    if (children.length > bestSoFar.childNodes.length) {
+      bestSoFar = xmlElement;
+    }
+    for (var childNum in children) {
+      var subBest = _findLongestArray(children[childNum], bestSoFar);
+      if (subBest.childNodes.length > bestSoFar.childNodes.length) {
+        bestSoFar = subBest;
+      }
+    }
+  }
+  return bestSoFar;
+}
+
+// Given an array of js objects, returns a map from data column name to data type
+function _extractHeaders(rowData) {
+  var toRet = {};
+  for (var row = 0; row < rowData.length; ++row) {
+    var rowLine = rowData[row];
+    for (var key in rowLine) {
+      if (rowLine.hasOwnProperty(key)) {
+        if (!(key in toRet)) {
+          toRet[key] = _determineType(rowLine[key]);
+        }
+      }
+    }
+  }
+  return toRet;
+}
+
+// Given a primitive, tries to make a guess at the data type of the input
+function _determineType(primitive) {
+  // possible types: 'float', 'date', 'datetime', 'bool', 'string', 'int'
+  if (parseInt(primitive) == primitive) return 'int';
+  if (parseFloat(primitive) == primitive) return 'float';
+  if (isFinite(new Date(primitive).getTime())) return 'datetime';
+  return 'string';
+}
+
+function _submitXMLToTableau(xmlString, xmlUrl) {
+    var conData = {"xmlString" : xmlString, "xmlUrl": xmlUrl};
+    tableau.connectionData = JSON.stringify(conData);
+    tableau.submit();  
+}
+
+function _buildConnectionUrl(url) {
+  // var yqlQueryBase = "http://query.yahooapis.com/v1/public/yql?q=";
+  // var query = "select * from html where url='" + url + "'";
+  // var restOfQueryString = "&format=xml";
+  // var yqlUrl = yqlQueryBase + encodeURIComponent(query) + restOfQueryString;
+  // return yqlUrl;
+  return url;
+}
+
+$(document).ready(function(){
+  var cancel = function (e) {    
+      e.stopPropagation();
+      e.preventDefault();
+  }
+  $("#inputForm").submit(function(e) { // This event fires when a button is clicked
+    // Since we use a form for input, make sure to stop the default form behavior
+    cancel(e);
+    var xmlString = $('textarea[name=xmlText]')[0].value.trim();
+    var xmlUrl = $('input[name=xmlUrl]')[0].value.trim();
+    _submitXMLToTableau(xmlString, xmlUrl);
+  });
+
+  var ddHandler = $("#dragandrophandler");
+  ddHandler.on('dragenter', function (e) 
+  {
+      cancel(e);
+      $(this).css('border', '2px solid #0B85A1');
+  }).on('dragover', cancel)
+    .on('drop', function (e) 
+  {
+       $(this).css('border', '2px dashed #0B85A1');
+       e.preventDefault();
+       var files = e.originalEvent.dataTransfer.files;
+       var file = files[0];
+       var reader = new FileReader();
+       reader.onload = function(e) { _submitXMLToTableau(reader.result); };
+       reader.readAsText(file);
+  });
+
+  $(document).on('dragenter', cancel)
+             .on('drop', cancel)
+             .on('dragover', function (e) 
+  {
+    cancel(e);
+    ddHandler.css('border', '2px dashed #0B85A1');
+  });
+});
+
+</script>
+
+<style>
+#dragandrophandler {
+  border:1px dashed #999;
+  width:300px;
+  color:#333;
+  text-align:left;vertical-align:middle;
+  padding:10px 10px 10 10px;
+  margin:10px;
+  font-size:150%;
+}
+</style>
+</head>
+<body>
+
+<form id="inputForm" action="">
+  Enter a URL for XML data: 
+  <input type="text" name="xmlUrl" size="50" />  
+  <br>
+  <div id="dragandrophandler">Or Drag & Drop Files Here</div>
+  <br>
+  Or paste XML data below
+  <br>
+  <textarea name="xmlText" rows="10" cols="70"/></textarea>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

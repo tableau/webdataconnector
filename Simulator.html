@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Cache-Control" content="no-store" />
+        <title>Web Data Connector Host</title>
+        <link rel="stylesheet" type="text/css" href="css/simulator.css">
+        <!-- Use the local version of jquery in case we are offline -->
+        <!-- <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script> -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+        <script src="js/simulator.js" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <!-- Header DIV -->
+        <div class="header">
+                <p>Web Connector URL: </p>
+            <input type="text" id="url" size="70"/>
+            <button type="button" id="reload" class="headerButton">Reload</button>
+            <button type="button" id="incrementalRefresh" class="headerButton">Incremental Refresh</button>
+        </div>
+        
+        <!-- Tools Menu -->
+        <div class="tools">
+            <div id="tableauObject">
+                <h4>Fields</h4>
+                <label for="connectionName">Connection Name:</label>
+                <input type="text" id="connectionName"/>
+                <br>
+                <label for="connectionData">Connection Data:</label>
+                <input type="text" id="connectionData" />
+                <br>
+                <label for="incrementalExtractColumn">Incremental Refresh Column:</label>
+                <input type="text" id="incrementalExtractColumn" />
+                <br>
+                <label for="username">Username:</label>
+                <input type="text" id="username" />
+                <br>
+                <label for="password">Password:</label>
+                <input type="text" id="password" />
+                </div>
+                <br>
+                 </div>
+        </div>
+        
+        <!-- Web Data Connector iframe -->
+        <div class="main">
+                <iframe id="host-iframe" onload="iframeLoaded()" frameborder="0" style="width: 98%; height:350px;"></iframe>    
+        </div>
+        
+        <!-- Web Data Connector Results -->
+        <div id="fetchedData"></div>
+        
+        <!-- Console / Log spacer -->
+        <div id="footerSpacer"></div>
+        
+        <!-- Console / Log -->
+        <div id="footerHolder">
+            <div class="footerHead">
+                <button type="button" id="clearLog">Clear Log</button>
+            </div>
+        
+            <div class="log" id="footer">
+                <div id="log"></div>        
+            </div>
+        </div>
+    </body>
+</html>
