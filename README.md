@@ -12,15 +12,19 @@ Getting Started
 
 Official Tableau WDC Samples
 ---------------
-These are the samples created and maintained by Tableau
+These are the samples created and maintained by Tableau.
+
+"Hosted URL" can be used to run the connector in Tableau or in the Simulator.
 
 Name     | Data Source   |  Source Code    |  Hosted URL
 -------- |  -------- |  -------- |  -------- 
 Stock Quote Connector  |  Yahoo! Stock Data  | [Examples](https://github.com/tableau/webdataconnector/tree/gh-pages/Examples)  |  [StockQuoteConnector_final.html](https://tableau.github.io/webdataconnector/Examples/StockQuoteConnector_final.html)
+XML Connector  |  Any XML file  | [Examples](https://github.com/tableau/webdataconnector/tree/gh-pages/Examples)  |  [xmlConnector.html](https://tableau.github.io/webdataconnector/Examples/xmlConnector.html)
+
 
 Community Created Connectors
 ---------------
-These are connectors created and maintained by the community.  Not endorsed or supported by Tableau
+These are connectors created and maintained by the community.  Not endorsed or supported by Tableau.
 
 Name of Connector     | Data Source   |  Author   |   Source Code    |  Hosted URL
 -------- |  -------- |  -------- |  --------  | ---------
