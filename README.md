@@ -28,6 +28,7 @@ These are connectors created and maintained by the community.  Not endorsed or s
 
 Name of Connector     | Data Source   |  Author   |   Source Code    |  Hosted URL
 -------- |  -------- |  -------- |  --------  | ---------
+BoardGameGeek | [BGG XML API](https://boardgamegeek.com/xmlapi2) | [Greg Filpus](https://github.com/gfilpus)  |  [tableau-wdc-boardgamegeek](https://github.com/gfilpus/tableau-wdc-boardgamegeek)  |  N/A
 Flickr | [Flickr](https://www.flickr.com/services/api/) | [Zeki Melek](https://github.com/melekzek)  |  [tableau-wdc-flickr](https://github.com/melekzek/tableau-wdc-flickr)  |  N/A
 Microsoft Health | [Microsoft Health](http://developer.microsoftband.com/cloudAPI) | [Ben Lower](https://github.com/benlower)  |  [tableau-wdc-mshealth](https://github.com/benlower/tableau-wdc-mshealth)  |  N/A
 New Relic Insights | [Insights Query API](https://docs.newrelic.com/docs/insights/new-relic-insights/adding-querying-data/querying-your-data-remotely) | [Eric Peterson](https://github.com/iamEAP) | [insights-data-connector](https://github.com/tableau-mkt/insights-data-connector) | [NR Insights WDC](https://insights-web-data-connector.herokuapp.com/)
