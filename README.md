@@ -8,7 +8,12 @@ Getting Started
 * Try the samples (hosted or locally)
 * Submit a pull request to share any connectors you've created
 * Check out the Tableau Developer Portal at http://developers.tableau.com for WDC docs and forum
- 
+
+Hosted WDC Simulator
+---------------
+You can rum the Simulator locally or use the hosted one here:
+
+[Hosted WDC Simulator](http://tableau.github.io/webdataconnector/Simulator.html)
 
 Official Tableau WDC Samples
 ---------------
