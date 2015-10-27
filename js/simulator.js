@@ -1,40 +1,46 @@
+var tableau = {};
+
 (function() {
     var versionNumber = "1.1.0";
 
-    tableau = {versionNumber: versionNumber};
-
-    tableau.phaseEnum = {
-        interactivePhase: "interactive", 
-        authPhase: "auth",
-        gatherDataPhase: "gatherData"
+    tableau = {
+        versionNumber: versionNumber,
+        phaseEnum: {
+            interactivePhase: "interactive",
+            authPhase: "auth",
+            gatherDataPhase: "gatherData"
+        }
     };
 })();
 
-var tabSimulatorObj = function(innerIframe) {
-    this.targetWindow = innerIframe.contentWindow;
+function WDCSimulator() {
+    this.props = {
+        connectionName: "",
+        connectionData: "",
+        password: "",
+        username: "",
+        incrementalExtractColumn: null,
+        scriptVersion: tableau.versionNumber
+    };
+
+    this.scriptVersion = tableau.versionNumber;
+    this.phase = tableau.phaseEnum.interactivePhase;
+    this._MAX_DATA_REQUEST_CALLS = 5;
+    this._authenticated = true;
+    this._lastRefreshColVal = "";
+    this._wasSubmitCalled = false;
+    this._wasInitCallbackCalled = false;
 }
 
-tabSimulatorObj.prototype = {
-    connectionName: "",
-    connectionData: "",
-    password: "",
-    username: "",
-    phase: tableau.phaseEnum.interactivePhase,
-    incrementalExtractColumn: null,
-    _MAX_DATA_REQUEST_CALLS: 5,
-    _authenticated: true,
-    _lastRefreshColVal: "",
-    _wasSubmitCalled: false,
-    _wasInitCallbackCalled: false,
-
+WDCSimulator.prototype = {
     updateSimulatorUI: function () {
-        $('#connectionName').val(this.connectionName);
-        $('#connectionData').val(this.connectionData);
-        $('#incrementalExtractColumn').val(this.incrementalExtractColumn);
+        $('#connectionName').val(this.props.connectionName);
+        $('#connectionData').val(this.props.connectionData);
+        $('#incrementalExtractColumn').val(this.props.incrementalExtractColumn);
         $('#incrementalRefresh').prop("disabled", true);
         $('#scriptVersion').val(this.scriptVersion);
-        $('#username').val(this.username);
-        $('#password').val(this.password);
+        $('#username').val(this.props.username);
+        $('#password').val(this.props.password);
     },
 
     submit: function () {
@@ -42,10 +48,10 @@ tabSimulatorObj.prototype = {
             // if submit is called in the data gathering phase ignore it
             return;
         }
-        this.connectionData = this._ensureStringData(this.connectionData);
-        this.username = this._ensureStringData(this.username);
-        this.password = this._ensureStringData(this.password);
-        this.connectionName = this._ensureStringData(this.connectionName);
+        this.props.connectionName = this._ensureStringData(this.props.connectionName);
+        this.props.connectionData = this._ensureStringData(this.props.connectionData);
+        this.props.username =       this._ensureStringData(this.props.username);
+        this.props.password =       this._ensureStringData(this.props.password);
         
         this.updateSimulatorUI();
      
@@ -96,8 +102,8 @@ tabSimulatorObj.prototype = {
         {
             var headerTypeRow = $('#headerTypeRow');
             var headerNameRow = $('#headerNameRow');
-            if (this.incrementalExtractColumn && titles.indexOf(this.incrementalExtractColumn) == -1) {
-            	this._warn('Incremental refresh column is set but is not a column returned to Tableau, IncrementalExtractColumn: "' + this.incrementalExtractColumn + '"');
+            if (this.props.incrementalExtractColumn && titles.indexOf(this.props.incrementalExtractColumn) == -1) {
+            	this._warn('Incremental refresh column is set but is not a column returned to Tableau, IncrementalExtractColumn: "' + this.props.incrementalExtractColumn + '"');
             }
             for (var ii = 0; ii < titles.length; ++ii) {
                 var cell = $('<th />');
@@ -125,8 +131,7 @@ tabSimulatorObj.prototype = {
             for (var jj = 0; jj < this._tableTitles.length; ++jj)
             {
                 var colName = this._tableTitles[jj]
-                var cell = $('<td />');
-                $(cell).addClass("tableCell");
+                var cell = $('<td />').addClass("tableCell");
                 var cellVal;
                 if (Array.isArray(dataRow)) {
                     cellVal = dataRow[jj];
@@ -136,7 +141,7 @@ tabSimulatorObj.prototype = {
                 cell.text(cellVal);
                 row.append(cell);
                 
-                if (this.incrementalExtractColumn && this.incrementalExtractColumn == colName) {
+                if (this.props.incrementalExtractColumn && this.props.incrementalExtractColumn == colName) {
                     this._lastRefreshColVal = cellVal;
                 }
             }
@@ -167,13 +172,11 @@ tabSimulatorObj.prototype = {
         color = color || "#444444";
         console.log(message);
 
-        var table = $('#logTable');
-        var rowDef = "<tr style='color:" + color + "'/>";
-        var row = $(rowDef);
-        var cell = $('<td />');
-        cell.text(message);
-        row.append(cell);
-        table.append(row);                                                                                                          
+        $('#logTable').append(
+          $('<tr>').css({ color: color }).append(
+            $('<td />').text(message)
+          )
+        );
     },
 
     reloadConnector: function () {
@@ -246,7 +249,7 @@ tabSimulatorObj.prototype = {
     _sendMessage: function (msgName, msgData) {
         var messagePayload = this._buildMessagePayload(msgName, msgData);
 
-        this.targetWindow.postMessage(messagePayload, "*");
+        this._openWindow.postMessage(messagePayload, "*");
     },
 
     _receiveMessage: function (event) {
@@ -295,21 +298,21 @@ tabSimulatorObj.prototype = {
     },
 
     _packagePropertyValues: function () {
-        var propValues = {"connectionName": this.connectionName, 
-                          "connectionData": this.connectionData, 
-                          "password": this.password, 
-                          "username": this.username, 
-                          "incrementalExtractColumn": this.incrementalExtractColumn};
+        var propValues = {"connectionName": this.props.connectionName,
+                          "connectionData": this.props.connectionData,
+                          "password": this.props.password,
+                          "username": this.props.username,
+                          "incrementalExtractColumn": this.props.incrementalExtractColumn};
         return propValues;
     },
 
     _applyPropertyValues: function (props) {
         if (props) {
-            this.connectionName = props.connectionName;
-            this.connectionData = props.connectionData;
-            this.password = props.password;
-            this.username = props.username;
-            this.incrementalExtractColumn = props.incrementalExtractColumn;
+            this.props.connectionName = props.connectionName;
+            this.props.connectionData = props.connectionData;
+            this.props.password = props.password;
+            this.props.username = props.username;
+            this.props.incrementalExtractColumn = props.incrementalExtractColumn;
         }
     },
 
@@ -317,9 +320,26 @@ tabSimulatorObj.prototype = {
         if (wdcApiVersion !== tableau.versionNumber) {
             throw "Simulator version '" + tableau.versionNumber + "' does not match connector version'" + wdcApiVersion + "'."
         }
+    },
+
+    createSimulatorWindow: function (url) {
+        var windowProps = 'height=500,width=800';
+
+        this.closeSimulatorWindow();
+        this._openWindow = window.open(url, 'simulator', windowProps)
+        return this._openWindow;
+    },
+
+    closeSimulatorWindow: function() {
+        if(!this._openWindow) return;
+
+        this._openWindow.close();
+        this._openWindow = null;
     }
 }
 
+
+/*
 function iframeLoaded(obj) {
     // insert some callback functions in the iframe
     var iFrameID = document.getElementById('host-iframe');
@@ -340,9 +360,10 @@ function iframeLoaded(obj) {
     this.tabSimulator._sendInit(tableau.phaseEnum.interactivePhase);
     return false;
 }
+*/
 
 function _clearLog() {
-    $('#log').html('<table id="logTable"></table>'); // clear out the log table    
+    $('#log').html('<table id="logTable"></table>'); // clear out the log table
 }
 
 function _getConnectorURL() {
@@ -371,26 +392,40 @@ function _getConnectorURL() {
     return "Examples/StockQuoteConnector_final.html"
 }
 
-$(document).ready(function () {
-    var iFrameID = document.getElementById('host-iframe');
-
-    $(window).height();
-    
+$(function () {
     var $win = $(window);
+    var $url = $('#url');
 
+    // Set up the logger
     $win.on('resize',function(){
         $("#col1bottom").height($win.height()- 150);
     });
 
-    $("#reload").click(function () { // full reload of connector into iframe
-      iFrameID.src = $('#url').val();
-      return false;                              
+
+    $url.val(_getConnectorURL());
+
+
+    var tabSimulator = new WDCSimulator();
+
+    $win.on('message', function(e){ tabSimulator._receiveMessage(e.originalEvent); });
+    $win.on('unload',  function() { tabSimulator.closeSimulatorWindow(); });
+
+    $("#reload").click(function () { // full reload of connector into window
+        var url = $url.val();
+        tabSimulator._clearDataTable();
+        tabSimulator.createSimulatorWindow(url);
+
+        setTimeout(function() {
+            tabSimulator._sendInit(tableau.phaseEnum.interactivePhase);
+        }, 1000);
+
+        return false;
     });
 
     $("#incrementalRefresh").click(function () { 
       tabSimulator.log("Performing incremental refresh", "blue");
       tabSimulator._sendInit(tableau.phaseEnum.gatherDataPhase);
-      return false;                              
+      return false;
     });
 
     $("#clearLog").click(function () { // Clear log entries

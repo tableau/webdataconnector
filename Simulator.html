@@ -42,10 +42,11 @@
                  </div>
         </div>
         
-        <!-- Web Data Connector iframe -->
-        <div class="main">
+        <!-- Web Data Connector iframe
+        <div class="main" style="display:none">
                 <iframe id="host-iframe" onload="iframeLoaded()" frameborder="0" style="width: 98%; height:350px;"></iframe>    
         </div>
+        -->
         
         <!-- Web Data Connector Results -->
         <div id="fetchedData"></div>
@@ -60,7 +61,9 @@
             </div>
         
             <div class="log" id="footer">
-                <div id="log"></div>        
+                <div id="log">
+                    <table id="logTable"></table>
+                </div>
             </div>
         </div>
     </body>
