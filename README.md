@@ -23,6 +23,11 @@ These are the samples created and maintained by Tableau.
 
 Name     | Data Source   |  Source Code    |  Hosted URL
 -------- |  -------- |  -------- |  -------- 
+Google Sheets Connector  |  Google Sheets  |  [Examples](https://github.com/tableau/webdataconnector/tree/gh-pages/Examples)  |  [GoogleSheetsConnector.html](http://tableau.github.io/webdataconnector/Examples/GoogleSheetsConnector.html)
+Incremental Update Connector  |  N/A  |  [Examples](https://github.com/tableau/webdataconnector/tree/gh-pages/Examples)  |  [IncrementalUpdateConnector.html](https://tableau.github.io/webdataconnector/Examples/IncrementalUpdateConnector.html)
+JSON Connector  |  N/A  |  [Examples](https://github.com/tableau/webdataconnector/tree/gh-pages/Examples)  |  [jsonConnector.html](https://tableau.github.io/webdataconnector/Examples/jsonConnector.html)
+Mad Money Scraper Connector  |  Mad Money Stock Picks  |  [Examples](https://github.com/tableau/webdataconnector/tree/gh-pages/Examples)  |  [MadMoneyScraper.html](https://tableau.github.io/webdataconnector/Examples/MadMoneyScraper.html)
+Socrata Connector  |  Socrata  |  [Examples](https://github.com/tableau/webdataconnector/tree/gh-pages/Examples)  |  [SocrataConnector.html](https://tableau.github.io/webdataconnector/Examples/SocrataConnector.html)
 Stock Quote Connector  |  Yahoo! Stock Data  | [Examples](https://github.com/tableau/webdataconnector/tree/gh-pages/Examples)  |  [StockQuoteConnector_final.html](https://tableau.github.io/webdataconnector/Examples/StockQuoteConnector_final.html)
 XML Connector  |  Any XML file  | [Examples](https://github.com/tableau/webdataconnector/tree/gh-pages/Examples)  |  [xmlConnector.html](https://tableau.github.io/webdataconnector/Examples/xmlConnector.html)
 
