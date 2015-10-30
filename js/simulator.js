@@ -14,16 +14,7 @@ var tableau = {};
 })();
 
 function WDCSimulator() {
-    this.props = {
-        connectionName: "",
-        connectionData: "",
-        password: "",
-        username: "",
-        incrementalExtractColumn: null,
-        scriptVersion: tableau.versionNumber
-    };
-
-    this.scriptVersion = tableau.versionNumber;
+    this.clearSimulatorUI();
     this.phase = tableau.phaseEnum.interactivePhase;
     this._MAX_DATA_REQUEST_CALLS = 5;
     this._authenticated = true;
@@ -43,6 +34,21 @@ WDCSimulator.prototype = {
         $('#password').val(this.props.password);
     },
 
+    clearSimulatorUI: function() {
+        this.props = {
+            connectionName: "",
+            connectionData: "",
+            password: "",
+            username: "",
+            incrementalExtractColumn: null,
+            scriptVersion: tableau.versionNumber
+        };
+
+        this.scriptVersion = tableau.versionNumber;
+
+        this.updateSimulatorUI();
+    },
+
     submit: function () {
         if (this.phase == tableau.phaseEnum.gatherDataPhase) {
             // if submit is called in the data gathering phase ignore it
@@ -52,8 +58,6 @@ WDCSimulator.prototype = {
         this.props.connectionData = this._ensureStringData(this.props.connectionData);
         this.props.username =       this._ensureStringData(this.props.username);
         this.props.password =       this._ensureStringData(this.props.password);
-        
-        this.updateSimulatorUI();
      
         // reset authentication state and call init because submit triggers the second phase which starts with a new context
         this._authenticated = true;
@@ -71,7 +75,10 @@ WDCSimulator.prototype = {
             // Clear the table so the second phase can re-fill it.
             this._clearDataTable();
             // set the interactive state to false at this point and start the data gathering (second phase)
-            this._sendInit(tableau.phaseEnum.gatherDataPhase);
+            var self = this;
+            this.createSimulatorGatherDataFrame(function() {
+                self._sendInit(tableau.phaseEnum.gatherDataPhase);
+            });
         }
     },
 
@@ -85,6 +92,7 @@ WDCSimulator.prototype = {
     },
 
     shutdownCallback: function () {
+        this.closeSimulatorWindowAndGatherDataFrame();
         console.log("shutdownCallback called. All done.");
     },
 
@@ -179,8 +187,17 @@ WDCSimulator.prototype = {
         );
     },
 
-    reloadConnector: function () {
+    reloadConnector: function (url) {
         this._wasSubmitCalled = false;
+
+        this.clearSimulatorUI();
+        this._clearDataTable();
+        this.createSimulatorWindow(url);
+
+        var self = this;
+        setTimeout(function() { // TODO: replace with an onload posted message from the tableau shim
+            self._sendInit(tableau.phaseEnum.interactivePhase);
+        }, 2000);
     },
     
     _getLastRefreshColumnValue: function () {
@@ -249,7 +266,7 @@ WDCSimulator.prototype = {
     _sendMessage: function (msgName, msgData) {
         var messagePayload = this._buildMessagePayload(msgName, msgData);
 
-        this._openWindow.postMessage(messagePayload, "*");
+        this.getSimulatorWindow().postMessage(messagePayload, "*");
     },
 
     _receiveMessage: function (event) {
@@ -325,16 +342,44 @@ WDCSimulator.prototype = {
     createSimulatorWindow: function (url) {
         var windowProps = 'height=500,width=800';
 
-        this.closeSimulatorWindow();
-        this._openWindow = window.open(url, 'simulator', windowProps)
+        this.closeSimulatorWindowAndGatherDataFrame();
+
+        this._url = url;
+        this._openWindow = window.open(this._url, 'simulator', windowProps);
+
         return this._openWindow;
     },
 
-    closeSimulatorWindow: function() {
-        if(!this._openWindow) return;
+    closeSimulatorWindowAndGatherDataFrame: function() {
+        if(this._openWindow) {
+            this._openWindow.close();
+            this._openWindow = null;
+        }
 
-        this._openWindow.close();
-        this._openWindow = null;
+        if(this._gatherDataFrame) {
+            $(this._gatherDataFrame).remove();
+            this._gatherDataFrame = null;
+        }
+    },
+
+    createSimulatorGatherDataFrame: function(onload) {
+        this.closeSimulatorWindowAndGatherDataFrame();
+        var $iframe = $('<iframe/>')
+          .attr({ id: 'gatherDataFrame', src: this._url })
+          .css({ display: 'none' })
+          .appendTo('body')
+          .on('load', onload);
+
+        this._gatherDataFrame = $iframe[0];
+    },
+
+    getSimulatorWindow: function() {
+        if(this._openWindow) return this._openWindow;
+        if(this._gatherDataFrame && this._gatherDataFrame.contentWindow) return this._gatherDataFrame.contentWindow;
+
+        console.warn('missing a simulator frame');
+
+        return null;
     }
 }
 
@@ -408,16 +453,11 @@ $(function () {
     var tabSimulator = new WDCSimulator();
 
     $win.on('message', function(e){ tabSimulator._receiveMessage(e.originalEvent); });
-    $win.on('unload',  function() { tabSimulator.closeSimulatorWindow(); });
+    $win.on('unload',  function() { tabSimulator.closeSimulatorWindowAndGatherDataFrame(); });
 
     $("#reload").click(function () { // full reload of connector into window
         var url = $url.val();
-        tabSimulator._clearDataTable();
-        tabSimulator.createSimulatorWindow(url);
-
-        setTimeout(function() {
-            tabSimulator._sendInit(tableau.phaseEnum.interactivePhase);
-        }, 1000);
+        tabSimulator.reloadConnector(url);
 
         return false;
     });
