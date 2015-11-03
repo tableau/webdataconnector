@@ -66,8 +66,11 @@ WDCSimulator.prototype = {
         this._checkSubmitAndInitCallback();
     },
 
+    loaded: function() {
+        this._sendInit(this.phase);
+    },
+
     _checkSubmitAndInitCallback: function() {
-        this.updateSimulatorUI();
         if (this._wasSubmitCalled && this._wasInitCallbackCalled) {
             // clear out the data table. It is probably already empty, but you can hit
             // submit multiple times in the simulator (you can't in Tableau), and there
@@ -76,9 +79,7 @@ WDCSimulator.prototype = {
             this._clearDataTable();
             // set the interactive state to false at this point and start the data gathering (second phase)
             var self = this;
-            this.createSimulatorGatherDataFrame(function() {
-                self._sendInit(tableau.phaseEnum.gatherDataPhase);
-            });
+            this.createSimulatorGatherDataFrame();
         }
     },
 
@@ -193,11 +194,6 @@ WDCSimulator.prototype = {
         this.clearSimulatorUI();
         this._clearDataTable();
         this.createSimulatorWindow(url);
-
-        var self = this;
-        setTimeout(function() { // TODO: replace with an onload posted message from the tableau shim
-            self._sendInit(tableau.phaseEnum.interactivePhase);
-        }, 2000);
     },
     
     _getLastRefreshColumnValue: function () {
@@ -276,6 +272,9 @@ WDCSimulator.prototype = {
         this._applyPropertyValues(payloadObj.props);
         
         switch(payloadObj.msgName) {
+            case "loaded":
+                this.loaded();
+            break;
             case "submit":
                 this.submit();
             break;
@@ -331,6 +330,8 @@ WDCSimulator.prototype = {
             this.props.username = props.username;
             this.props.incrementalExtractColumn = props.incrementalExtractColumn;
         }
+
+        this.updateSimulatorUI();
     },
 
     _verifyVersionNumber: function (wdcApiVersion) {
@@ -362,13 +363,14 @@ WDCSimulator.prototype = {
         }
     },
 
-    createSimulatorGatherDataFrame: function(onload) {
+    createSimulatorGatherDataFrame: function() {
         this.closeSimulatorWindowAndGatherDataFrame();
+        this.phase = tableau.phaseEnum.gatherDataPhase;
+
         var $iframe = $('<iframe/>')
           .attr({ id: 'gatherDataFrame', src: this._url })
           .css({ display: 'none' })
-          .appendTo('body')
-          .on('load', onload);
+          .appendTo('body');
 
         this._gatherDataFrame = $iframe[0];
     },
@@ -382,30 +384,6 @@ WDCSimulator.prototype = {
         return null;
     }
 }
-
-
-/*
-function iframeLoaded(obj) {
-    // insert some callback functions in the iframe
-    var iFrameID = document.getElementById('host-iframe');
-    if (!(iFrameID.src && iFrameID.src.length > 0)) {
-        iFrameID.src = _getConnectorURL();
-        return;
-    }
-    $('#url').val(iFrameID.src);
-    if (!this.tabSimulator) {
-        this.tabSimulator = new tabSimulatorObj(iFrameID);
-        var sim = this.tabSimulator;
-        $(window).on('message', function(e){ sim._receiveMessage(e.originalEvent); });
-        _clearLog();
-    } else {
-        this.tabSimulator.reloadConnector();
-    }
-    this.tabSimulator._clearDataTable();
-    this.tabSimulator._sendInit(tableau.phaseEnum.interactivePhase);
-    return false;
-}
-*/
 
 function _clearLog() {
     $('#log').html('<table id="logTable"></table>'); // clear out the log table
@@ -464,7 +442,7 @@ $(function () {
 
     $("#incrementalRefresh").click(function () { 
       tabSimulator.log("Performing incremental refresh", "blue");
-      tabSimulator._sendInit(tableau.phaseEnum.gatherDataPhase);
+      tabSimulator.createSimulatorGatherDataFrame();
       return false;
     });
 
