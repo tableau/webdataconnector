@@ -28,7 +28,7 @@ WDCSimulator.prototype = {
         $('#connectionName').val(this.props.connectionName);
         $('#connectionData').val(this.props.connectionData);
         $('#incrementalExtractColumn').val(this.props.incrementalExtractColumn);
-        $('#incrementalRefresh').prop("disabled", true);
+        $('#incrementalRefresh').prop("disabled", !this.props.incrementalExtractColumn);
         $('#scriptVersion').val(this.scriptVersion);
         $('#username').val(this.props.username);
         $('#password').val(this.props.password);
