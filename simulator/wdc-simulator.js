@@ -408,7 +408,7 @@
 
       return {
         //wdcUrl: '',
-        wdcUrl: 'http://localhost:63343/webdataconnector/Examples/StockQuoteConnector_final.html',
+        wdcUrl: '../Examples/StockQuoteConnector_final.html',
         wdcUrlDisabled: false,
         wdcCommandSimulator: wdcCommandSimulator,
         wdcContinueInteractiveToDataGatherPhase: true,
@@ -462,9 +462,9 @@
               }),
 
               PhaseTitle.element({ title: 'Phase 2: Data Gathering', isInProgress: dataGatheringStateInProgress }),
-              Button.element({ onClick: this.gatherData, disabled: isInProgress }, 'Gather Data'),
+              Button.element({ onClick: this.gatherData, disabled: isInProgress }, 'Run Gather Data'),
               wdcCommandSim.canDoAnIncrementalRefresh()
-                ? Button.element({ onClick: this.incrementalRefresh, disabled: isInProgress }, 'Incremental Refresh')
+                ? Button.element({ onClick: this.incrementalRefresh, disabled: isInProgress }, 'Run Incremental Refresh')
                 : null
 
             ),
