@@ -115,7 +115,7 @@
   }
 
   function _buildMessagePayload(msgName, msgData, props) {
-    var msgObj = {"msgName": msgName, "msgData": msgData, "props": props};
+    var msgObj = {"msgName": msgName, "msgData": msgData, "props": props, "version": tableau.versionNumber };
 
     return JSON.stringify(msgObj);
   }
