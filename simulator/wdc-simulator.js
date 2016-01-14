@@ -202,7 +202,7 @@
         msgData: messageData,
         props:   this.props
       });
-      
+
       this.sendPostMessage(messagePayload);
 
       this.onEvent(WdcCommandSimulator.MessageDirection.SENT, messageName, messageData);
@@ -401,13 +401,11 @@
   var Label = ReactBootstrap.Label;
 
 
-
   var SimulatorApp = React.createClass({
     getInitialState: function () {
       var wdcCommandSimulator = this.initializeWdcCommandSimulator();
 
       return {
-        //wdcUrl: '',
         wdcUrl: '../Examples/StockQuoteConnector_final.html',
         wdcUrlDisabled: false,
         wdcCommandSimulator: wdcCommandSimulator,
@@ -418,7 +416,6 @@
       };
     },
     render: function () {
-
       var wdcCommandSim = this.state.wdcCommandSimulator;
 
       var clearButton = Button.element({ onClick: this.clearAddressBar }, 'Clear');
@@ -432,28 +429,28 @@
       var dataGatheringStateInProgress = isInProgress
                                       && wdcCommandSim.state.currentPhase === WdcCommandSimulator.Phase.GATHER_DATA;
 
+      var isWDCUrlEmpty = (this.state.wdcUrl == '') ? true : false;
+
       return (
         DOM.div({ className: 'simulator-app' },
-          DOM.div({ className: 'header' },
+          DOM.div({ className: 'navbar navbar-default' },
             DOM.img({ className: 'tableau-logo', src: 'tableau_logo.png', style: { height: 40, width: 40, margin: 10 } }),
-            DOM.h1({ style: { display: 'inline', verticalAlign: 'middle' } }, 'Web Data Connector Simulator')
+            DOM.h2({ style: { display: 'inline', verticalAlign: 'middle' } }, 'Web Data Connector Simulator')
           ),
           Grid.element({ fluid: true },
 
             Col.element({ md: 12, className: 'address-bar' },
               Input.element({
-                type: 'text', disabled: this.state.wdcUrlDisabled, label: 'WDC URL',
+                type: 'text', disabled: isInProgress, label: 'WDC URL',
                 value: this.state.wdcUrl, onChange: this.setWdcUrl, buttonAfter: clearButton
               })
             ),
 
             Col.element({ md: 6, className: 'data-gather-phase' },
-
-              Button.element({ onClick: this.cancelCurrentPhase, disabled: !isInProgress }, 'Cancel Running Phase'),
-
               PhaseTitle.element({ title: 'Phase 1: Interactive', isInProgress: interactiveStateInProgress }),
               DOM.div({},
-                Button.element({ onClick: this.startInteractivePhase, disabled: isInProgress }, 'Run Interactive Phase')
+                Button.element({ onClick: this.startInteractivePhase, disabled: isInProgress || isWDCUrlEmpty }, 'Run Interactive Phase'),
+                interactiveStateInProgress ? Button.element({ onClick: this.cancelCurrentPhase }, 'Cancel Interactive Phase') : null
               ),
               Input.element({
                 type: 'checkbox', label: 'Automatically continue To data gather phase (to simulate normal WDC behavior).',
@@ -462,32 +459,40 @@
               }),
 
               PhaseTitle.element({ title: 'Phase 2: Data Gathering', isInProgress: dataGatheringStateInProgress }),
-              Button.element({ onClick: this.gatherData, disabled: isInProgress }, 'Run Gather Data'),
+              Button.element({ onClick: this.gatherData, disabled: isInProgress || isWDCUrlEmpty }, 'Run Gather Data'),
+              dataGatheringStateInProgress ? Button.element({ onClick: this.cancelCurrentPhase }, 'Cancel Gather Data Phase') : null,
+
               wdcCommandSim.canDoAnIncrementalRefresh()
                 ? Button.element({ onClick: this.incrementalRefresh, disabled: isInProgress }, 'Run Incremental Refresh')
                 : null
-
             ),
 
             Col.element({ md: 6, className: 'interactive-phase' },
               DOM.h2({}, 'Web Data Connector Properties'),
-              this.state.wdcUrlDisabled
-                ? Button.element({ onClick: this.unlockWdcProperties }, 'Unlock Properties')
-                : Button.element({ onClick: this.lockWdcProperties }, 'Lock Properties'),
-              Button.element({ onClick: this.clearWdcProperties }, 'Clear Properties'),
+              DOM.div({style: { marginBottom: '8px' }},
+                Button.element({ onClick: this.clearWdcProperties }, 'Clear Properties')
+              ),
 
               SimulatorProperties.element({
                 disabled: this.state.wdcUrlDisabled,
+                phaseInProgress: isInProgress,
                 wdcProps: this.state.wdcCommandSimulator.props,
                 onPropsChange: this.onWdcPropsModelChange
               })
             ),
 
+            Col.element({ md: 12, className: 'hr-col' },
+              DOM.hr({})
+            ),
+
             wdcCommandSim.hasData()
-              ? Col.element({ md: 12, className: 'address-bar' },
+              ? Col.element({ md: 12, className: 'results-table' },
                   TablePreview.element(this.state.wdcCommandSimulator.tableData)
                 )
-              : null
+              : Col.element({ md: 12, className: 'no-results-label' },
+                  dataGatheringStateInProgress ? Label.element({}, 'Data Gather in Progress')
+                    : Label.element({}, ' No Data Gathered')
+                )
           ),
 
           // Add the gather data iframe
@@ -577,7 +582,6 @@
     },
 
     // URL AND SIMULATOR COMMAND STATE METHODS
-
     setWdcUrl: function(e) {
       this.setState({ wdcUrl: e.target.value });
     },
@@ -587,6 +591,7 @@
     },
 
     clearAddressBar: function() {
+      this.state.wdcCommandSimulator.resetProps();
       this.setState({ wdcUrlDisabled: false, wdcUrl: '' });
     },
 
@@ -691,14 +696,14 @@
     },
     render: function () {
       var key = SimulatorProperties.PropertyKey;
-      
+
       return (
         DOM.div({ className: 'data-gather-properties' },
-          Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Connection Name', valueLink: this.linkState(key.CONNECTION_NAME) }),
-          Input.element({ type: 'textarea', disabled: this.props.disabled, label: 'Connection Data', valueLink: this.linkState(key.CONNECTION_DATA) }),
-          Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Username',        valueLink: this.linkState(key.USERNAME) }),
-          Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Password',        valueLink: this.linkState(key.PASSWORD) }),
-          Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Incremental Refresh Column', valueLink: this.linkState(key.INCREMENTAL_EXTRACT_COLUMN) })
+          Input.element({ type: 'text',     disabled: this.props.phaseInProgress, label: 'Connection Name', valueLink: this.linkState(key.CONNECTION_NAME) }),
+          Input.element({ type: 'textarea', disabled: this.props.phaseInProgress, label: 'Connection Data', valueLink: this.linkState(key.CONNECTION_DATA) }),
+          Input.element({ type: 'text',     disabled: this.props.phaseInProgress, label: 'Username',        valueLink: this.linkState(key.USERNAME) }),
+          Input.element({ type: 'text',     disabled: this.props.phaseInProgress, label: 'Password',        valueLink: this.linkState(key.PASSWORD) }),
+          Input.element({ type: 'text',     disabled: this.props.phaseInProgress, label: 'Incremental Refresh Column', valueLink: this.linkState(key.INCREMENTAL_EXTRACT_COLUMN) })
         )
       );
     },
@@ -761,10 +766,6 @@
     INCREMENTAL_EXTRACT_COLUMN: 'incrementalExtractColumn'
   };
 
-
-
-
-
   var tableRowKey = 1;
   var TablePreview = React.createClass({
     render: function () {
@@ -804,6 +805,7 @@
       );
     }
   });
+
   TablePreview.element = React.createFactory(TablePreview);
   TablePreview.MAX_ROWS = Infinity; //5000;
 
