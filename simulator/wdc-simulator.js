@@ -474,8 +474,7 @@
               ),
 
               SimulatorProperties.element({
-                disabled: this.state.wdcUrlDisabled,
-                phaseInProgress: isInProgress,
+                disabled: isInProgress,
                 wdcProps: this.state.wdcCommandSimulator.props,
                 onPropsChange: this.onWdcPropsModelChange
               })
@@ -699,11 +698,11 @@
 
       return (
         DOM.div({ className: 'data-gather-properties' },
-          Input.element({ type: 'text',     disabled: this.props.phaseInProgress, label: 'Connection Name', valueLink: this.linkState(key.CONNECTION_NAME) }),
-          Input.element({ type: 'textarea', disabled: this.props.phaseInProgress, label: 'Connection Data', valueLink: this.linkState(key.CONNECTION_DATA) }),
-          Input.element({ type: 'text',     disabled: this.props.phaseInProgress, label: 'Username',        valueLink: this.linkState(key.USERNAME) }),
-          Input.element({ type: 'text',     disabled: this.props.phaseInProgress, label: 'Password',        valueLink: this.linkState(key.PASSWORD) }),
-          Input.element({ type: 'text',     disabled: this.props.phaseInProgress, label: 'Incremental Refresh Column', valueLink: this.linkState(key.INCREMENTAL_EXTRACT_COLUMN) })
+          Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Connection Name', valueLink: this.linkState(key.CONNECTION_NAME) }),
+          Input.element({ type: 'textarea', disabled: this.props.disabled, label: 'Connection Data', valueLink: this.linkState(key.CONNECTION_DATA) }),
+          Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Username',        valueLink: this.linkState(key.USERNAME) }),
+          Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Password',        valueLink: this.linkState(key.PASSWORD) }),
+          Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Incremental Refresh Column', valueLink: this.linkState(key.INCREMENTAL_EXTRACT_COLUMN) })
         )
       );
     },
