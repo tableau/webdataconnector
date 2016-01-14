@@ -429,7 +429,7 @@
       var dataGatheringStateInProgress = isInProgress
                                       && wdcCommandSim.state.currentPhase === WdcCommandSimulator.Phase.GATHER_DATA;
 
-      var isWDCUrlEmpty = (this.state.wdcUrl == '') ? true : false;
+      var isWDCUrlEmpty = (this.state.wdcUrl === '');
 
       return (
         DOM.div({ className: 'simulator-app' },
