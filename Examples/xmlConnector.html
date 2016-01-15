@@ -2,9 +2,9 @@
 <head>
 <title>XML Connector</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
-<script src="../js/tableauwdc-1.1.1.js" type="text/javascript"></script>
+<script src="../js/tableauwdc-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
- 
+
 (function() {
 
   var myConnector = tableau.makeConnector();
@@ -29,7 +29,7 @@
       tableau.headersCallback(fieldNames, fieldTypes); // tell tableau about the fields and their types
     });
   }
-      
+
   myConnector.getTableData = function (lastRecordToken) {
     _retrieveXmlData(function (tableData) {
       var rowData = tableData.rowData;
@@ -69,9 +69,9 @@ function _retrieveXmlData(retrieveDataCallback) {
 
 function _ajaxRequestHelper(url, successCallback, conUrl, nextFunction, specialSuccessCallback){
   specialSuccessCallback = specialSuccessCallback || successCallback;
-  var xhr = $.ajax({ 
-    url: conUrl, 
-    dataType: 'xml', 
+  var xhr = $.ajax({
+    url: conUrl,
+    dataType: 'xml',
     success: specialSuccessCallback,
     error: function()
     {
@@ -135,13 +135,13 @@ function _flattenObject(xmlElt) {
       toRet[attribute.nodeName] = attribute.nodeValue;
     }
   }
-  
+
   var children = xmlElt.childNodes;
   if (!children || !children.length) {
     if (xmlElt.textContent) {
       toRet.text = xmlElt.textContent.trim();
     }
-  } else {  
+  } else {
   	for (var childNum = 0; childNum < children.length; ++childNum) {
   	  var child = xmlElt.childNodes[childNum];
   	  var childName = child.nodeName;
@@ -202,7 +202,7 @@ function _determineType(primitive) {
 function _submitXMLToTableau(xmlString, xmlUrl) {
     var conData = {"xmlString" : xmlString, "xmlUrl": xmlUrl};
     tableau.connectionData = JSON.stringify(conData);
-    tableau.submit();  
+    tableau.submit();
 }
 
 function _buildConnectionUrl(url) {
@@ -215,7 +215,7 @@ function _buildConnectionUrl(url) {
 }
 
 $(document).ready(function(){
-  var cancel = function (e) {    
+  var cancel = function (e) {
       e.stopPropagation();
       e.preventDefault();
   }
@@ -228,12 +228,12 @@ $(document).ready(function(){
   });
 
   var ddHandler = $("#dragandrophandler");
-  ddHandler.on('dragenter', function (e) 
+  ddHandler.on('dragenter', function (e)
   {
       cancel(e);
       $(this).css('border', '2px solid #0B85A1');
   }).on('dragover', cancel)
-    .on('drop', function (e) 
+    .on('drop', function (e)
   {
        $(this).css('border', '2px dashed #0B85A1');
        e.preventDefault();
@@ -246,7 +246,7 @@ $(document).ready(function(){
 
   $(document).on('dragenter', cancel)
              .on('drop', cancel)
-             .on('dragover', function (e) 
+             .on('dragover', function (e)
   {
     cancel(e);
     ddHandler.css('border', '2px dashed #0B85A1');
@@ -270,8 +270,8 @@ $(document).ready(function(){
 <body>
 
 <form id="inputForm" action="">
-  Enter a URL for XML data: 
-  <input type="text" name="xmlUrl" size="50" />  
+  Enter a URL for XML data:
+  <input type="text" name="xmlUrl" size="50" />
   <br>
   <div id="dragandrophandler">Or Drag & Drop Files Here</div>
   <br>
