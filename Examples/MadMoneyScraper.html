@@ -2,9 +2,9 @@
 <head>
 <title>Mad Money Scraper</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
-<script src="../js/tableauwdc-1.1.1.js" type="text/javascript"></script>
+<script src="../js/tableauwdc-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
- 
+
 (function() {
   var SEGMENT_KEY = {
     "F": "Featured Stock",
@@ -24,7 +24,7 @@
     "2": "Negative Mention",
     "1": "Sell Recommendation"
   };
-  
+
   function getConnectionUrl(url) {
     var yqlQueryBase = "http://query.yahooapis.com/v1/public/yql?q=";
     var query = "select * from html where url='" + url + "'";
@@ -43,9 +43,9 @@
   myConnector.getColumnHeaders = function() {
     var fieldNames = ['Ticker', 'Company', 'Date', 'Segment', 'Call', 'Price'];
     var fieldTypes = ['string', 'string', 'date', 'string', 'string', 'float'];
-    tableau.headersCallback(fieldNames, fieldTypes); 
+    tableau.headersCallback(fieldNames, fieldTypes);
   };
-      
+
   myConnector.getTableData = function () {
     var connectionUrl = "http://madmoney.thestreet.com/screener/index.cfm?airdate=30&showrows=500";
 

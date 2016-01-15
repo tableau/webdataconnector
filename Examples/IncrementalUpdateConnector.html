@@ -3,7 +3,7 @@
 <head>
 <title>Incremental Update Example</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
-<script src="../js/tableauwdc-1.1.1.js" type="text/javascript"></script>
+<script src="../js/tableauwdc-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
 
 (function() {
@@ -25,25 +25,25 @@
 
 
   //With this sample we will generate some sample date for the columns: id, x, day, date_and _time, true_or_false, and color.
-  //The user input for the max iterations determines the number of rows to add. 
-  // 
+  //The user input for the max iterations determines the number of rows to add.
+  //
   myConnector.getTableData = function (lastRecordNumber) {
     var lastId = parseInt(lastRecordNumber || -1);
 
     var connectionData = JSON.parse(tableau.connectionData);
-    var max_iterations = connectionData.max_iterations; 
+    var max_iterations = connectionData.max_iterations;
 
     var colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
     var data = [];
     var now = Date();
-    date_and_time = new Date();                
+    date_and_time = new Date();
 	for (var i = 0; i < max_iterations; i++) {
 		lastId ++;
 		var id = lastId;
 		var millis = date_and_time.getTime();
         millis += 1000 * i;    //add a second
 		date_and_time.setTime(millis);
-		date_only = new Date(date_and_time.getTime());                            
+		date_only = new Date(date_and_time.getTime());
 		date_only.setHours(0, 0, 0, 0);
 		data.push({
 			"id": id,
