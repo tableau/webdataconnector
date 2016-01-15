@@ -17,4 +17,4 @@ This new version of the simulator will only run web data connectors that are wri
 
 Feedback Requested
 ---------------
-Please open tracking issues for any found bugs or improvement requests.
+Please open tracking issues for any found bugs or improvement requests.  Please also view the issues tab for all current known issues.
