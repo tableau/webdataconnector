@@ -469,9 +469,6 @@
 
             Col.element({ md: 6, className: 'interactive-phase' },
               DOM.h2({}, 'Web Data Connector Properties'),
-              DOM.div({style: { marginBottom: '8px' }},
-                Button.element({ onClick: this.clearWdcProperties }, 'Clear Properties')
-              ),
 
               SimulatorProperties.element({
                 disabled: isInProgress,
@@ -533,8 +530,8 @@
       simWindow.postMessage(payload, '*');
     },
 
-    onPostMessage: function(payload) {
-      this.state.wdcCommandSimulator.receivePostMessage(event.data);
+    onPostMessage: function(evt) {
+      this.state.wdcCommandSimulator.receivePostMessage(evt.data);
     },
 
     onSimulatorCommandEvent: function(direction, eventName, eventData) {
@@ -592,11 +589,6 @@
     clearAddressBar: function() {
       this.state.wdcCommandSimulator.resetProps();
       this.setState({ wdcUrlDisabled: false, wdcUrl: '' });
-    },
-
-    clearWdcProperties: function() {
-      this.state.wdcCommandSimulator.resetProps();
-      this.setState({ wdcUrlDisabled: false, wdcCommandSimulator: this.state.wdcCommandSimulator });
     },
 
     unlockWdcProperties: function() {
@@ -698,6 +690,10 @@
 
       return (
         DOM.div({ className: 'data-gather-properties' },
+          DOM.div({style: { marginBottom: '8px' }},
+            Button.element({ onClick: this.clearProperties, disabled: this.props.disabled }, 'Clear Properties')
+          ),
+
           Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Connection Name', valueLink: this.linkState(key.CONNECTION_NAME) }),
           Input.element({ type: 'textarea', disabled: this.props.disabled, label: 'Connection Data', valueLink: this.linkState(key.CONNECTION_DATA) }),
           Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Username',        valueLink: this.linkState(key.USERNAME) }),
@@ -753,6 +749,12 @@
       this.setState(newState, function() {
         this.props.onPropsChange(this.state);
       });
+    },
+
+    clearProperties: function() {
+      var newState = {};
+      _.forEach(SimulatorProperties.PropertyKey, function(propKey) { newState[propKey] = ''; });
+      this.setStateAndNotify(newState);
     }
   });
   SimulatorProperties.element = React.createFactory(SimulatorProperties);
