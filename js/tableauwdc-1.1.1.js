@@ -153,17 +153,17 @@
     return payload;
   }
 
-  function _receiveMessage(evnt) {
+  function _receiveMessage(evt) {
     var wdc = window._wdc;
     if (!wdc) {
       throw "No WDC registered. Did you forget to call tableau.registerConnector?";
     }
 
-    var payloadObj = getPayloadObj(event.data);
+    var payloadObj = getPayloadObj(evt.data);
     if(!payloadObj) return; // Not needed for WDC
 
     if (!_sourceWindow) {
-      _sourceWindow = evnt.source
+      _sourceWindow = evt.source
     }
 
     var msgData = payloadObj.msgData;

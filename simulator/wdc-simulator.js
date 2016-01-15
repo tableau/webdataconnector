@@ -530,8 +530,8 @@
       simWindow.postMessage(payload, '*');
     },
 
-    onPostMessage: function(payload) {
-      this.state.wdcCommandSimulator.receivePostMessage(event.data);
+    onPostMessage: function(evt) {
+      this.state.wdcCommandSimulator.receivePostMessage(evt.data);
     },
 
     onSimulatorCommandEvent: function(direction, eventName, eventData) {
