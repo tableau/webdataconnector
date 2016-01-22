@@ -1,4 +1,4 @@
-# Tableau WDC Seprate Phase Simulator 
+# Tableau WDC Separate Phase Simulator 
 
 This is an experimental new version of the Tableau WDC simulator.  Please see the original webdataconnector repo for more details about WDC.  [Hosted Simulator](http://dbecks.github.io/webdataconnector/simulator)
 
