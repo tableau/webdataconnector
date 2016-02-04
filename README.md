@@ -38,7 +38,6 @@ These are connectors created and maintained by the community.  Not endorsed or s
 
 Name of Connector     | Data Source   |  Author   |   Source Code    |  Hosted URL
 -------- |  -------- |  -------- |  --------  | ---------
-BoardGameGeek | [BGG XML API](https://boardgamegeek.com/xmlapi2) | [Greg Filpus](https://github.com/gfilpus)  |  [tableau-wdc-boardgamegeek](https://github.com/gfilpus/tableau-wdc-boardgamegeek)  |  N/A
 Flickr | [Flickr](https://www.flickr.com/services/api/) | [Zeki Melek](https://github.com/melekzek)  |  [tableau-wdc-flickr](https://github.com/melekzek/tableau-wdc-flickr)  |  N/A
 GitHub | [GitHub API](https://developer.github.com/v3/) | [Martin Keerman](https://github.com/etroid) | [github-data-connector](https://github.com/tableau-mkt/github-data-connector) | [GitHub WDC](https://github-web-data-connector.herokuapp.com)
 Kimono | [Kimono](https://www.kimonolabs.com/) | [Franz Amador](https://github.com/fgamador) | [wdc](https://github.com/fgamador/wdc) | [KimonoConnector.html](https://fgamador.github.io/wdc/KimonoConnector.html)
