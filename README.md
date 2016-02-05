@@ -38,14 +38,24 @@ These are connectors created and maintained by the community.  Not endorsed or s
 
 Name of Connector     | Data Source   |  Author   |   Source Code    |  Hosted URL
 -------- |  -------- |  -------- |  --------  | ---------
+Elastic Search | [Elastic Search](https://www.elastic.co/products/elasticsearch) | Adam Lacey  |  [mradamlacey](https://github.com/mradamlacey/elasticsearch-tableau-connector)  |  N/A
+Fitbit | [Fitbit.com](https://www.fitbit.com/) | Craig Bloodworth  |  N/A  |  [Fitbit WDC](http://data.theinformationlab.co.uk/fitbit.html)
 Flickr | [Flickr](https://www.flickr.com/services/api/) | [Zeki Melek](https://github.com/melekzek)  |  [tableau-wdc-flickr](https://github.com/melekzek/tableau-wdc-flickr)  |  N/A
 GitHub | [GitHub API](https://developer.github.com/v3/) | [Martin Keerman](https://github.com/etroid) | [github-data-connector](https://github.com/tableau-mkt/github-data-connector) | [GitHub WDC](https://github-web-data-connector.herokuapp.com)
+Import.io | [Import.io](https://www.import.io/) | Robert Rouse  |  N/A  |  [Import.io WDC](http://connectors.poc.interworks.com/importio/importio-magic.html)
 Kimono | [Kimono](https://www.kimonolabs.com/) | [Franz Amador](https://github.com/fgamador) | [wdc](https://github.com/fgamador/wdc) | [KimonoConnector.html](https://fgamador.github.io/wdc/KimonoConnector.html)
+Last.fm | [Last.fm](http://www.last.fm/) | Justin Dallal  |  [jdallal/LastFM-Web-Data-Connector](https://github.com/jdallal/LastFM-Web-Data-Connector)  |  N/A
+Mapbox | [Mapbox.com](https://www.mapbox.com/) | Craig Bloodworth  |  N/A  |  [Mapbox WDC](http://data.theinformationlab.co.uk/directions.html)
 Microsoft Health | [Microsoft Health](http://developer.microsoftband.com/cloudAPI) | [Ben Lower](https://github.com/benlower)  |  [tableau-wdc-mshealth](https://github.com/benlower/tableau-wdc-mshealth)  |  N/A
+Moves App | [Moves App](https://www.moves-app.com/) | Craig Bloodworth  |  N/A  |  [Moves App WDC](http://data.theinformationlab.co.uk/moves.html)
 New Relic Insights | [Insights Query API](https://docs.newrelic.com/docs/insights/new-relic-insights/adding-querying-data/querying-your-data-remotely) | [Eric Peterson](https://github.com/iamEAP) | [insights-data-connector](https://github.com/tableau-mkt/insights-data-connector) | [NR Insights WDC](https://insights-web-data-connector.herokuapp.com/)
+Quandl | [Quandl.com](https://www.quandl.com/) | Craig Bloodworth  |  N/A  |  [Quandl WDC](http://data.theinformationlab.co.uk/quandl.html)
+Reddit | [Reddit.com](https://www.reddit.com/) | Justin Dallal  |  [jdallal/Reddit-Web-Data-Connector](https://github.com/jdallal/Reddit-Web-Data-Connector)  |  N/A
+Runkeeper | [Runkeeper.com](https://runkeeper.com/) | Craig Bloodworth  |  N/A  |  [Runkeeper WDC](http://data.theinformationlab.co.uk/runkeeper.html)
 Seattle/King County Restaurant Inspections  | [King County](http://kingcounty.gov/healthservices/health/ehs/foodsafety/inspections/system.aspx) | [Ben Lower](https://github.com/benlower)  |  [tableau-wdc-kcfoodinspection](https://github.com/benlower/tableau-wdc-kcfoodinspection)  |  [foodInspectionWDC.html](http://benlower.github.io/tableau-wdc-kcfoodinspection/foodInspectionWDC.html)
 Stripe | [Stripe API](https://stripe.com/docs/api) | [Benji Schwartz-Gilbert](https://github.com/benjisg) | [stripe-web-data-connector](https://github.com/benjisg/stripe-web-data-connector) | [Stripe WDC](https://benjisg.github.io/stripe-web-data-connector/stripe.html) | 
 Square | [Square API](https://connect.squareup.com/) | [Samm Desmond](https://github.com/sdesmond46)  |  [WDC](https://github.com/sdesmond46/WDC)  |  [Square WDC](http://webdataconnector.azurewebsites.net/Connectors/Square/)
+Tfl BikesPoint | [Tfl.gov](https://tfl.gov.uk/modes/cycling/santander-cycles) | James Dunkerley  |  [jdunkerley](https://github.com/jdunkerley/TableauWebData)  |  [Tfl BikesPoint WDC](http://jdunkerleytableau.azurewebsites.net/Bikes)
 Travis CI | [Travis CI API](http://docs.travis-ci.com/api/) | [Eric Peterson](https://github.com/iamEAP) | [travis-data-connector](https://github.com/tableau-mkt/travis-data-connector) | [Travis CI WDC](https://travis-web-data-connector.herokuapp.com)
 Trello Kanban | [Trello](https://trello.com/) | [Alex Baldini](https://github.com/abaldini/) | [WDC](https://github.com/abaldini/trello_WDC) | NA
 Twitter Users | [Twitter API](https://dev.twitter.com/rest/public) | [Samm Desmond](https://github.com/sdesmond46)  |  [WDC](https://github.com/sdesmond46/WDC)  |  [Twitter WDC](http://webdataconnector.azurewebsites.net/Connectors/Twitter/)
