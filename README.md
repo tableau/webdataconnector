@@ -15,6 +15,13 @@ You can rum the Simulator locally or use the hosted one here:
 
 [Hosted WDC Simulator](http://tableau.github.io/webdataconnector/Simulator.html)
 
+Beta WDC Simulator
+---------------
+We have a beta version of the simulator that we would love some feedback on before we pull it into the main branch (as announced in this [blog post](https://www.tableau.com/about/blog/2016/2/wdc-now-open-source-and-taking-contributions-50142)). Check it out at the following fork.
+
+[Beta WDC Simulator](https://github.com/dbecks/webdataconnector)
+
+
 Official Tableau WDC Samples
 ---------------
 These are the samples created and maintained by Tableau.
@@ -61,3 +68,12 @@ Travis CI | [Travis CI API](http://docs.travis-ci.com/api/) | [Eric Peterson](ht
 Trello Kanban | [Trello](https://trello.com/) | [Alex Baldini](https://github.com/abaldini/) | [WDC](https://github.com/abaldini/trello_WDC) | NA
 Twitter Users | [Twitter API](https://dev.twitter.com/rest/public) | [Samm Desmond](https://github.com/sdesmond46)  |  [WDC](https://github.com/sdesmond46/WDC)  |  [Twitter WDC](http://webdataconnector.azurewebsites.net/Connectors/Twitter/)
 United States Census Data | [Census Data](http://www.census.gov/data/developers/data-sets/decennial-census-data.html) | [Addy  Naik](https://github.com/port80labs)  | [Census WDC](https://github.com/port80labs/census-wdc) |  [Census WDC](https://census-tableau-wdc.herokuapp.com/)
+
+Resources
+---------------
+Here are a few great WDC resources that might be helpful for developement.
+
+Name     | Author   |  Type    |  Link
+-------- |  -------- |  -------- |  -------- 
+Better WDC Performance with Promises  |  [Eric Peterson](https://github.com/iamEAP)  |  Tutorial  |  [Blog Post](https://www.eric.pe/terson/engineers/better-wdc-performance-with-promises?utm_source=Twitter&utm_medium=Social&utm_campaign=Links&utm_source=Hootsuite&utm_medium=Social&utm_campaign=TableauSocial&hootPostID=968bfaeedfa4bcfb2e9087393c8f2c70)
+generator-web-data-connector  |  [Eric Peterson](https://github.com/iamEAP)  |  Development Tools  |  [generator-web-data-connector](https://www.npmjs.com/package/generator-web-data-connector)
