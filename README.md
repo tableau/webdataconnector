@@ -73,7 +73,7 @@ Resources
 ---------------
 Here are a few great WDC resources that might be helpful for developement.
 
-Name     | Author   |  Type    |  Link
--------- |  -------- |  -------- |  -------- 
-Better WDC Performance with Promises  |  [Eric Peterson](https://github.com/iamEAP)  |  Tutorial  |  [Blog Post](https://www.eric.pe/terson/engineers/better-wdc-performance-with-promises?utm_source=Twitter&utm_medium=Social&utm_campaign=Links&utm_source=Hootsuite&utm_medium=Social&utm_campaign=TableauSocial&hootPostID=968bfaeedfa4bcfb2e9087393c8f2c70)
-generator-web-data-connector  |  [Eric Peterson](https://github.com/iamEAP)  |  Development Tools  |  [generator-web-data-connector](https://www.npmjs.com/package/generator-web-data-connector)
+Resource     | Author   |  Type    
+-------- |  -------- |  --------
+[Better WDC Performance with Promises](https://www.eric.pe/terson/engineers/better-wdc-performance-with-promises?utm_source=Twitter&utm_medium=Social&utm_campaign=Links&utm_source=Hootsuite&utm_medium=Social&utm_campaign=TableauSocial&hootPostID=968bfaeedfa4bcfb2e9087393c8f2c70)  |  [Eric Peterson](https://github.com/iamEAP)  |  Tutorial
+[generator-web-data-connector](https://www.npmjs.com/package/generator-web-data-connector)  |  [Eric Peterson](https://github.com/iamEAP)  |  Development Tools
