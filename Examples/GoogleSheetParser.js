@@ -72,11 +72,7 @@ function gscSpreadsheetToNameKeyArray(spreadsheet, columnInfo)
             }
             else
             {
-                if(colType == "string")
-                {
-                    cellText = cellData.cellText;
-                }
-                else if(colType == "float")
+                if(colType == "float")
                 {
                     cellText = gscGenerateFloatTextFromCell(cellData);
                 }
@@ -92,9 +88,9 @@ function gscSpreadsheetToNameKeyArray(spreadsheet, columnInfo)
                         cellText = ""; //March on with NULL
                     }
                 }
-                else
+                else // Fall back to plain text
                 {
-                    localAssert(false, "unknown data type" + colType)
+                    cellText = cellData.cellText;
                 }
             }
 
