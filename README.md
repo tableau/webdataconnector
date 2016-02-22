@@ -11,7 +11,7 @@ Getting Started
 
 Hosted WDC Simulator
 ---------------
-You can rum the Simulator locally or use the hosted one here:
+You can run the Simulator locally or use the hosted one here:
 
 [Hosted WDC Simulator](http://tableau.github.io/webdataconnector/Simulator.html)
 
