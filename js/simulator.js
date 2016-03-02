@@ -1,5 +1,5 @@
 (function() {
-    var versionNumber = "1.1.0";
+    var versionNumber = "1.1.1";
 
     tableau = {versionNumber: versionNumber};
 
