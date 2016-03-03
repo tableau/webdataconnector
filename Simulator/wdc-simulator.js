@@ -1,7 +1,7 @@
 (function(_, React, ReactBootstrap) {
 
   var NOOP = function(){};
-  var ALLOWED_WDC_API_VERSION = "1.2.0";
+  var ALLOWED_WDC_API_VERSION = "1.1.1";
 
   function verifyCanRunWdcVersion(wdcApiVersion) {
     if(wdcApiVersion !== ALLOWED_WDC_API_VERSION) {
