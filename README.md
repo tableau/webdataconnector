@@ -17,13 +17,13 @@ You can run the Simulator locally or use the hosted one here:
 
 On WDC Versioning
 ---------------
-The hosted simulator requires that web data connectors be using version 1.1.1 of the wdc api. If it you need to run a wdc that uses 1.1.0, you can use the [old simulator](http://tableau.github.io/webdataconnector/Simulator/old_simulator.html).
+The hosted simulator requires that web data connectors be using version 1.1.1 of the WDC API. If you need to run a WDC that uses 1.1.0, you can use the [old simulator](http://tableau.github.io/webdataconnector/Simulator/old_simulator.html).
 
 In Tableau Desktop versions 9.1 and 9.2, we had a bug that caused the WDC platform to not respect versioning.  If you are using a Desktop verion before 9.1.6 or before 9.2.4, you will see the following error when connecting to a WDC using 1.1.0.  "The version of Tableau that you are using cannot use the web data connector that you are trying to access. The connector requires at least version '1.1.1' of the web data connector API."  Please upgrade to the latest maintenance patch if you encounter this.
 
 All of the hosted development samples have been upgraded to 1.1.1 so that they can be used in the new simulator.  However, we left the Google Sheets sample at 1.1.0 to minimize the impact for users who are actively using this web data connector and have not yet upgraded to the latest maintenance version.  The Google Sheets example has also been moved into the community section to reflect this.
 
-Soon we will be incrementing the WDC API more frequently, so we will add a lookup table here that shows which WDC API versions work with which Tableau Desktop and Server versions. Movin
+Soon we will be incrementing the WDC API more frequently, so we will add a lookup table here that shows which WDC API versions work with which Tableau Desktop and Server versions. Moving forward, a specific Desktop minor version, i.e. 9.3, will work with any WDC of the corresponding minor version (9.3.* will work with 1.1.*).
 
 
 Official Tableau WDC Samples
