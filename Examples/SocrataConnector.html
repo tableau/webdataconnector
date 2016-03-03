@@ -2,9 +2,9 @@
 <head>
 <title>Socrata Connector</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
-<script src="https://public.tableau.com/javascripts/api/tableauwdc-1.1.0.js" type="text/javascript"></script>
+<script src="https://connectors.tableau.com/libs/tableauwdc-1.1.1.js" type="text/javascript"></script>
 <script type="text/javascript">
- 
+
 (function() {
   var myConnector = tableau.makeConnector();
 
@@ -83,7 +83,7 @@
               if (!moreData) {
                 tableau.log(myConnector._recordsFetched + " records fetched. Stopping.");
               }
-              tableau.dataCallback(data, (lastRecordNumber).toString(), moreData); 
+              tableau.dataCallback(data, (lastRecordNumber).toString(), moreData);
             }, 1000); // add a little delay so we don't get cut off by Socrata's connection throttling
           }
     });
@@ -104,7 +104,7 @@ $(document).ready(function () {
     var maxRecordsText = $('input[name=maxRecords]');
     var maxRecords = parseInt(maxRecordsText.val()) || 500;
 
-    tableau.connectionData = JSON.stringify({"url": dataSrcUrl, "maxRecords": maxRecords});    
+    tableau.connectionData = JSON.stringify({"url": dataSrcUrl, "maxRecords": maxRecords});
     tableau.connectionName = 'Socrata ' + checkedBoxes.parent().text();
     tableau.submit();
   });
@@ -113,7 +113,7 @@ $(document).ready(function () {
 </script>
 </head>
 <body>
-Select a data source: 
+Select a data source:
 <br>
 
 <label><input type="radio" name="dataSourceName" value="soda.demo.socrata.com/resource/earthquakes.json" checked>Earthquakes </label>
