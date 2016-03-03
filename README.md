@@ -13,13 +13,7 @@ Hosted WDC Simulator
 ---------------
 You can run the Simulator locally or use the hosted one here:
 
-[Hosted WDC Simulator](http://tableau.github.io/webdataconnector/Simulator.html)
-
-Beta WDC Simulator
----------------
-We have a beta version of the simulator that we would love some feedback on before we pull it into the main branch (as announced in this [blog post](https://www.tableau.com/about/blog/2016/2/wdc-now-open-source-and-taking-contributions-50142)). Check it out at the following fork.
-
-[Beta WDC Simulator](https://github.com/dbecks/webdataconnector)
+[Hosted WDC Simulator](http://tableau.github.io/webdataconnector/simulator/)
 
 
 Official Tableau WDC Samples
