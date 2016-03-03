@@ -17,6 +17,8 @@ You can run the Simulator locally or use the hosted one here:
 
 The hosted simulator requires that web data connectors be using version 1.1.1 of the wdc api. If it you need to run a wdc that uses 1.1.0, you can use the [old simulator](http://tableau.github.io/webdataconnector/Simulator/old_simulator.html).
 
+Please note: the hosted samples in the gh-pages branch will remain on verson 1.1.0 for the near future so they continue to work in older versions of Tableau Desktkop. The samples in dev and master have been updated. 
+
 
 Official Tableau WDC Samples
 ---------------
