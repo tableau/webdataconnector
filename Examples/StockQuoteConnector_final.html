@@ -3,7 +3,8 @@
 <head>
 <title>Stock Quote Connector</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
-<script src="https://connectors.tableau.com/libs/tableauwdc-1.1.1.js" type="text/javascript"></script>
+<script src="../js/convert-connector.js" type="text/javascript"></script>
+<script src="../js/tableauwdc-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
  (function() {
 
@@ -88,6 +89,7 @@
     tableau.connectionName = 'Stock quote: ' + tickerSymbol; // name the data source. This will be the data source name in Tableau
   };
 
+  _convertConnectorFor12(myConnector);
   tableau.registerConnector(myConnector);
 
   //
