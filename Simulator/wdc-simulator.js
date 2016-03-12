@@ -717,6 +717,7 @@
       
       _.forEach(Object.keys(tables), function(key) {
         tablePreviewElements.push(TablePreview.element( { 
+          key: key,
           tableInfo: tables[key].schema,
           tableData: tables[key].data,
           getTableDataCallback: getTableDataCallback,
@@ -748,56 +749,17 @@
       var tableData = this.props.tableData;
       var hasData = tableData.length > 0;
       var canIncrementalUpdate = hasData && (tableInfo.incrementColumnId)
-
-      // Prep table of columnInfos for this TablePreview  
-      var columnTableRowKey = 1;
-      var key = TablePreview.PropertyKey;
-     
-      var columnTableHeader = [];
-      columnTableHeader.push(key.TITLE_HEADER);
-      columnTableHeader.push(key.TYPE_HEADER);
-      columnTableHeader.push(key.ALIAS_HEADER);
-      columnTableHeader.push(key.DESCRIPTION_HEADER);
-      columnTableHeader.push(key.PK_HEADER);
-      columnTableHeader.push(key.FK_HEADER);
-            
-      var columnElements = tableInfo.columns.map(function(columnInfo) {
-        var row = [];
-        row[0] = columnInfo.id;
-        row[1] = columnInfo.dataType;
-        row[2] = (columnInfo.alias) ? columnInfo.alias : '-';
-        row[3] = (columnInfo.description) ? columnInfo.description : '-';
-        row[4] = (columnInfo.isPrimaryKey) ? columnInfo.isPrimaryKey : '-';
-        row[5] = (columnInfo.foreignKey) ? columnInfo.foreignKey : '-';
-        
-        return DOM.tr({ key: columnTableRowKey++ },
-          row.map(function(cellVal) {
-            return DOM.td({ key: columnTableRowKey++ }, cellVal);
-          })
-        )
-      });
-      
-      // Prep table of actual data for this TableuPreview
-      var dataTableRowKey = 1;
-      
-      var dataTableHeader = [];
-      _.forEach(tableInfo.columns, function(column) {
-          dataTableHeader.push(column.dataType);
-      });
-      
-      var dataElements = [];
-      if (tableData) { // We may not fetched any data yet
-        dataElements = tableData.slice(0, TablePreview.MAX_ROWS).map(function(row) {
-          return DOM.tr({ key: dataTableRowKey++ },
-            Object.keys(row).map(function(key) {
-              return DOM.td({ key: dataTableRowKey++ }, row[key]);
-            })
-          )
-        });
-      }
-      
+   
       var incColumn = (tableInfo.incrementColumnId) ?
         tableInfo.incrementColumnId : 'None';
+
+      // Prep table of columnInfos for this TablePreview       
+      var columnTableHeader = this.getMetadataHeader();
+      var columnElements = this.getMetadataElements(tableInfo);
+      
+      // Prep table of actual data for this TableuPreview      
+      var dataTableHeader = this.getDataHeader(tableInfo);
+      var dataElements = this.getDataElements(tableData);
             
       return ( 
         DOM.div({ className: 'table-preview-' + tableInfo.id},
@@ -809,7 +771,6 @@
               DOM.p({}, 'Incremental Refresh Column: ' + incColumn) 
               : null,
             CollapsibleTable.element({ 
-              rowKey: columnTableRowKey,
               name: "Column Metadata",
               header: columnTableHeader,
               elements: columnElements
@@ -817,7 +778,6 @@
             (hasData)
             ? 
               CollapsibleTable.element({ 
-                rowKey: dataTableRowKey,
                 name: "Table Data",
                 header: dataTableHeader,
                 elements: dataElements
@@ -859,7 +819,67 @@
                                 incrementValue: incrementValue });
 
       this.props.getTableDataCallback(tablesAndIncValues, isIncremental);
-    },  
+    }, 
+    
+    getMetadataHeader() {
+      var key = TablePreview.PropertyKey;
+      var columnTableHeader = [];
+      
+      columnTableHeader.push(key.TITLE_HEADER);
+      columnTableHeader.push(key.TYPE_HEADER);
+      columnTableHeader.push(key.ALIAS_HEADER);
+      columnTableHeader.push(key.DESCRIPTION_HEADER);
+      columnTableHeader.push(key.PK_HEADER);
+      columnTableHeader.push(key.FK_HEADER);
+      
+      return columnTableHeader;
+    },
+    
+    getMetadataElements(tableInfo) {
+      var columnTableRowKey = 1;    
+      var columnElements = tableInfo.columns.map(function(columnInfo) {
+        var row = [];
+        row[0] = columnInfo.id;
+        row[1] = columnInfo.dataType;
+        row[2] = (columnInfo.alias) ? columnInfo.alias : '-';
+        row[3] = (columnInfo.description) ? columnInfo.description : '-';
+        row[4] = (columnInfo.isPrimaryKey) ? columnInfo.isPrimaryKey : '-';
+        row[5] = (columnInfo.foreignKey) ? columnInfo.foreignKey : '-';
+        
+        return DOM.tr({ key: columnTableRowKey++ },
+          row.map(function(cellVal) {
+            return DOM.td({ key: columnTableRowKey++ }, cellVal);
+          })
+        )
+      });
+      
+      return columnElements;
+    },
+    
+    getDataHeader(tableInfo) {
+      var dataTableHeader = [];
+      _.forEach(tableInfo.columns, function(column) {
+          dataTableHeader.push(column.dataType);
+      });
+      
+      return dataTableHeader;  
+    },
+    
+    getDataElements(tableData) {
+      var dataTableRowKey = 1;  
+      var dataElements = [];
+      if (tableData) { // We may not fetched any data yet
+        dataElements = tableData.slice(0, TablePreview.MAX_ROWS).map(function(row) {
+          return DOM.tr({ key: dataTableRowKey++ },
+            Object.keys(row).map(function(key) {
+              return DOM.td({ key: dataTableRowKey++ }, row[key]);
+            })
+          )
+        });
+      }
+      
+      return dataElements;
+    }
   });
   TablePreview.element = React.createFactory(TablePreview);
   TablePreview.MAX_ROWS = Infinity; //5000;
@@ -874,7 +894,6 @@
 
   var CollapsibleTable = React.createClass({ 
     propTypes: {
-      rowKey: React.PropTypes.number.isRequired,
       name: React.PropTypes.string.isRequired,
       header: React.PropTypes.array.isRequired,
       elements: React.PropTypes.array.isRequired
@@ -891,7 +910,7 @@
     },
     
     render: function () {
-      var incRowKey = this.props.rowKey;
+      var incRowKey = 1;
       return (
         DOM.div({ className: 'table-preview-' + this.props.name},
           DOM.h5({}, this.props.name),
