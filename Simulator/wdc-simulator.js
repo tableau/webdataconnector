@@ -334,8 +334,8 @@
       var wdcCommandSimulator = this.initializeWdcCommandSimulator();
 
       return {
-        wdcUrl: '../Examples/IncrementalUpdateConnector.html',
-        //wdcUrl: '../Examples/StockQuoteConnector_multi.html',
+        //wdcUrl: '../Examples/IncrementalUpdateConnector.html',
+        wdcUrl: '../Examples/StockQuoteConnector_multi.html',
         wdcUrlDisabled: false,
         wdcCommandSimulator: wdcCommandSimulator,
         wdcShouldFetchAllTables: false,
@@ -358,15 +358,7 @@
                                       && wdcCommandSim.state.currentPhase === WdcCommandSimulator.Phase.GATHER_DATA;
 
       var isWDCUrlEmpty = (this.state.wdcUrl === '');
-      
-      var inProgressStyle = {
-        display: 'inline-block',
-        verticalAlign: 'middle',
-        marginLeft: 10,
-        marginTop: 20, // Needed to match h2
-        marginBottom: 10 // Needed to match h2
-      };
-
+     
       return (
         DOM.div({ className: 'simulator-app' },
           DOM.div({ className: 'navbar navbar-default' },
@@ -382,7 +374,7 @@
               })
             ),
 
-            Col.element({ md: 6, className: 'data-gather-phase' },
+            Col.element({ md: 6, className: 'run-connector' },
               PhaseTitle.element({ title: 'Run Connector', isInProgress: interactiveStateInProgress }),
               DOM.div({},
                 Button.element({ onClick: this.startInteractivePhase, bsStyle: 'success', disabled: isInProgress || isWDCUrlEmpty }, 'Start Interactive Phase'),
@@ -479,27 +471,13 @@
           break;
         case WdcCommandSimulator.EventName.DATA_GET:
           if (!wdcSim.phaseState.inProgress) { 
-            // TODO: This works based based on an assumption and could be cleaned up
-            // The assumption is that only a single table is being fetched when the
-            // DATA_GET event while the simulatort is NOT in progress.  The fetch all 
-            // functionality happens while the simulator is in progress.  The only time
-            // this code path is currently executed is when manually fetching data 
-            // for a single table. 
-            var tableBeingFetched = eventData.tablesAndIncrementValues[0]
-            var isIncremental = (tableBeingFetched.incrementValue != '');       
-
-            // If we are doing a clean fetch, we need to reset the table
-            if (!isIncremental) {
-                wdcSim.tables[tableBeingFetched.tableInfo.id].data = [];
-            }
-            
             this.state.wdcCommandSimulator.setInProgress();
           } 
           break;
         case WdcCommandSimulator.EventName.SCHEMA_CB:
           if (this.state.wdcShouldFetchAllTables) {
             this.state.wdcCommandSimulator.setInProgress();
-            this.fetchAllData();
+            this.fetchAllData(); 
           }
           break;
       }
@@ -594,10 +572,6 @@
     // GATHER DATA PHASE METHODS
     gatherSchemaData: function() {
       this.state.wdcCommandSimulator.resetTables();
-      this.startGatherDataPhase();
-    },
-   
-    incrementalRefresh: function() {
       this.startGatherDataPhase();
     },
 
@@ -726,16 +700,16 @@
       
       _.forEach(Object.keys(tables), function(key) {
         tablePreviewElements.push(TablePreview.element( { 
-            tableInfo: tables[key].schema,
-            tableData: tables[key].data,
-            getTableDataCallback: getTableDataCallback,
-            fetchInProgress: fetchInProgress
+          tableInfo: tables[key].schema,
+          tableData: tables[key].data,
+          getTableDataCallback: getTableDataCallback,
+          fetchInProgress: fetchInProgress
         }));
       });
 
       return (
         DOM.div({ className: 'table-section' },
-            tablePreviewElements
+          tablePreviewElements
         )
       );
     }      
@@ -775,7 +749,7 @@
       var tableInfo = this.props.tableInfo;
       var tableData = this.props.tableData;
       var hasData = tableData.length > 0;
-      var canIncrementalUpdate = hasData && (tableInfo.incrementColumnId != '')
+      var canIncrementalUpdate = hasData && (tableInfo.incrementColumnId)
 
       // Prep table of columnInfos for this TablePreview  
       var columnTableRowKey = 1;
@@ -817,9 +791,9 @@
       if (tableData) { // We may not fetched any data yet
         dataElements = tableData.slice(0, TablePreview.MAX_ROWS).map(function(row) {
           return DOM.tr({ key: dataTableRowKey++ },
-          Object.keys(row).map(function(key) {
-            return DOM.td({ key: dataTableRowKey++ }, row[key]);
-          })
+            Object.keys(row).map(function(key) {
+              return DOM.td({ key: dataTableRowKey++ }, row[key]);
+            })
           )
         });
       }
@@ -829,27 +803,27 @@
             
       return ( 
         DOM.div({ className: 'table-preview-' + this.props.id},
-            DOM.h4({}, tableInfo.id),
+          DOM.h4({}, tableInfo.id),
             (tableInfo.incrementColumnId) ?
-                DOM.p({}, tableInfo.description)
-                : null,
+              DOM.p({}, tableInfo.description)
+              : null,
             (tableInfo.incrementColumnId) ?
-                DOM.p({}, 'Incremental Refresh Column: ' + incColumn) 
-                : null,
+              DOM.p({}, 'Incremental Refresh Column: ' + incColumn) 
+              : null,
             CollapsibleTable.element({ 
-                rowKey: columnTableRowKey,
-                name: "Column Metadata",
-                header: columnTableHeader,
-                elements: columnElements
+              rowKey: columnTableRowKey,
+              name: "Column Metadata",
+              header: columnTableHeader,
+              elements: columnElements
             }),
             (hasData)
             ? 
-                CollapsibleTable.element({ 
-                    rowKey: dataTableRowKey,
-                    name: "Table Data",
-                    header: dataTableHeader,
-                    elements: dataElements
-                })
+              CollapsibleTable.element({ 
+                rowKey: dataTableRowKey,
+                name: "Table Data",
+                header: dataTableHeader,
+                elements: dataElements
+              })
             : null,
             (!this.props.fetchInProgress) 
                 ? Button.element({ onClick: this.freshFetch, bsStyle: 'success'}, 'Fetch Table Data')
