@@ -357,6 +357,8 @@
       var dataGatheringStateInProgress = isInProgress
                                       && wdcCommandSim.state.currentPhase === WdcCommandSimulator.Phase.GATHER_DATA;
 
+      var inDataGatherPhase = wdcCommandSim.state.currentPhase === WdcCommandSimulator.Phase.GATHER_DATA;
+
       var isWDCUrlEmpty = (this.state.wdcUrl === '');
      
       return (
@@ -369,7 +371,7 @@
 
             Col.element({ md: 12, className: 'address-bar' },
               Input.element({
-                type: 'text', disabled: isInProgress, label: 'WDC URL',
+                type: 'text', disabled: inDataGatherPhase, label: 'WDC URL',
                 value: this.state.wdcUrl, onChange: this.setWdcUrl, buttonAfter: clearButton
               })
             ),
