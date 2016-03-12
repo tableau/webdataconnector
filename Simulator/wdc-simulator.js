@@ -8,6 +8,32 @@
     }
   }
   
+  
+  function getConnectorURL() {
+    try {
+      // build an anchor object out of the url so it is easy to parse
+      var docLink = $('<a>', { href:document.URL } )[0];
+      var q = docLink.search.substring(1);
+      if (q) {
+        // use some regexes to turn the query into json, then parse the json
+        var params = JSON.parse('{"' + decodeURI(q).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+        var src = params['src'];
+        if (src && src.length > 0) {
+          return src;
+        }
+      }
+    } catch (err) {
+      var msg =
+      msg += "Error description: " + err.message + "\n\n";
+      msg += "Please specify the connector on url line: e.g.\n\n"
+      msg += "Simulator.html?src=ExampleConnector.html.\n\n";
+      console.log(msg);
+    }
+
+    // Set the default connector here
+    return "../Examples/StockQuoteConnector_multi.html"
+  }
+  
   function WdcCommandSimulator(/*ISendPostMessage*/ sendPostMessage, /*IPhaseChangeHandler*/ onPhaseChange, /*IEventHandler*/ onEvent, /*ILogger*/ logger) {
 
     // Properties that are exposed to the user on the tableau object in the WDC
@@ -335,7 +361,7 @@
 
       return {
         //wdcUrl: '../Examples/IncrementalUpdateConnector.html',
-        wdcUrl: '../Examples/StockQuoteConnector_multi.html',
+        wdcUrl: getConnectorURL(),
         wdcUrlDisabled: false,
         wdcCommandSimulator: wdcCommandSimulator,
         wdcShouldFetchAllTables: false,
@@ -347,7 +373,7 @@
     render: function () {
       var wdcCommandSim = this.state.wdcCommandSimulator;
 
-      var clearButton = Button.element({ onClick: this.clearAddressBar }, 'Clear');
+      var resetButton = Button.element({ onClick: this.resetSimulator }, 'Reset');
 
       var isInProgress = wdcCommandSim.phaseState.inProgress;
 
@@ -372,7 +398,7 @@
             Col.element({ md: 12, className: 'address-bar' },
               Input.element({
                 type: 'text', disabled: inDataGatherPhase, label: 'WDC URL',
-                value: this.state.wdcUrl, onChange: this.setWdcUrl, buttonAfter: clearButton
+                value: this.state.wdcUrl, onChange: this.setWdcUrl, buttonAfter: resetButton
               })
             ),
 
@@ -519,9 +545,12 @@
       this.setState({ wdcShouldFetchAllTables: e.target.checked });
     },
 
-    clearAddressBar: function() {
+    resetSimulator: function() {
+      this.state.wdcCommandSimulator.resetState();
+      this.state.wdcCommandSimulator.resetTables();
       this.state.wdcCommandSimulator.resetProps();
-      this.setState({ wdcUrlDisabled: false, wdcUrl: '' });
+      
+      this.setState({});
     },
 
     unlockWdcProperties: function() {
@@ -539,7 +568,7 @@
       });
     },
 
-    startInteractivePhase: function() {
+    startInteractivePhase: function() {       
       this.setState({ wdcUrlDisabled: true });
 
       var wdcSim = this.state.wdcCommandSimulator;
@@ -627,10 +656,6 @@
 
       return (
         DOM.div({ className: 'data-gather-properties' },
-          DOM.div({style: { marginBottom: '8px' }},
-            Button.element({ onClick: this.clearProperties, disabled: this.props.disabled }, 'Clear Properties')
-          ),
-
           Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Connection Name', valueLink: this.linkState(key.CONNECTION_NAME) }),
           Input.element({ type: 'textarea', disabled: this.props.disabled, label: 'Connection Data', valueLink: this.linkState(key.CONNECTION_DATA) }),
           Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Username',        valueLink: this.linkState(key.USERNAME) }),
@@ -688,12 +713,6 @@
       this.setState(newState, function() {
         this.props.onPropsChange(this.state);
       });
-    },
-
-    clearProperties: function() {
-      var newState = {};
-      _.forEach(SimulatorProperties.PropertyKey, function(propKey) { newState[propKey] = ''; });
-      this.setStateAndNotify(newState);
     }
   });
   SimulatorProperties.element = React.createFactory(SimulatorProperties);
