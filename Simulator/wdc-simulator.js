@@ -595,6 +595,10 @@
 
 
   var PhaseTitle = React.createClass({
+    propTypes: {
+      title: React.PropTypes.string.isRequired
+    },
+    
     render: function() {
       return (
         DOM.div({},
@@ -606,9 +610,16 @@
   PhaseTitle.element = React.createFactory(PhaseTitle);
 
   var SimulatorProperties = React.createClass({
+    propTypes: {
+      disabled: React.PropTypes.bool.isRequired,
+      wdcProps: React.PropTypes.object.isRequired,
+      onPropsChange: React.PropTypes.func.isRequired,
+    },
+    
     getInitialState: function () {
       return this.propsToState(this.props);
     },
+    
     render: function () {
       var key = SimulatorProperties.PropertyKey;
 
@@ -625,6 +636,7 @@
         )
       );
     },
+    
     componentWillReceiveProps: function(nextProps) {
       var newState = this.propsToState(nextProps);
 
@@ -632,6 +644,7 @@
         this.setStateAndNotify(newState);
       }
     },
+    
     linkState: function(key) {
       var _this = this;
       return {
@@ -668,6 +681,7 @@
 
       return wdcProps;
     },
+    
     setStateAndNotify: function(newState) {
       this.setState(newState, function() {
         this.props.onPropsChange(this.state);
@@ -681,7 +695,6 @@
     }
   });
   SimulatorProperties.element = React.createFactory(SimulatorProperties);
-
   SimulatorProperties.PropertyKey = {
     CONNECTION_NAME: 'connectionName',
     CONNECTION_DATA: 'connectionData',
@@ -690,9 +703,13 @@
   };
 
   var TableSection = React.createClass({
+    propTypes: {
+      tables: React.PropTypes.object.isRequired,
+      getTableDataCallback: React.PropTypes.func.isRequired,
+      fetchInProgress: React.PropTypes.bool.isRequired
+    },
+ 
     render: function () {
-      if(!this.props || !this.props.tables) return null;
-
       var tablePreviewElements = [];
       var tables = this.props.tables
       var fetchInProgress = this.props.fetchInProgress;
@@ -717,32 +734,13 @@
   TableSection.element = React.createFactory(TableSection);
 
   var TablePreview = React.createClass({    
-    incrementalRefresh() {
-      this.fetchData(false);  
+    propTypes: {
+      tableInfo: React.PropTypes.object.isRequired,
+      tableData: React.PropTypes.array.isRequired,
+      getTableDataCallback: React.PropTypes.func.isRequired,
+      fetchInProgress: React.PropTypes.bool.isRequired
     },
-    
-    freshFetch() {
-      this.fetchData(true);
-    },
-    
-    fetchData: function(isIncremental) {            
-      var tableInfo = this.props.tableInfo;
-      var tableData = this.props.tableData;
-      var tablesAndIncValues = [];
-      
-      var lastElement = tableData[tableData.length - 1];
-      
-      var incrementValue;
-      if (!isIncremental && lastElement) {
-        incrementValue = lastElement[tableInfo.incrementColumnId];
-      }
-      
-      tablesAndIncValues.push({ tableInfo: { id: tableInfo.id }, 
-                                incrementValue: incrementValue });
 
-      this.props.getTableDataCallback(tablesAndIncValues, isIncremental);
-    },
-    
     render: function () {
       if(!this.props || !this.props.tableInfo) return null;
       
@@ -802,7 +800,7 @@
         tableInfo.incrementColumnId : 'None';
             
       return ( 
-        DOM.div({ className: 'table-preview-' + this.props.id},
+        DOM.div({ className: 'table-preview-' + tableInfo.id},
           DOM.h4({}, tableInfo.id),
             (tableInfo.incrementColumnId) ?
               DOM.p({}, tableInfo.description)
@@ -826,15 +824,42 @@
               })
             : null,
             (!this.props.fetchInProgress) 
-                ? Button.element({ onClick: this.freshFetch, bsStyle: 'success'}, 'Fetch Table Data')
-                : Button.element({ disabled: true, bsStyle: 'success'}, 'Fetching Table Data...'),
+              ? Button.element({ onClick: this.freshFetch, bsStyle: 'success'}, 'Fetch Table Data')
+              : Button.element({ disabled: true, bsStyle: 'success'}, 'Fetching Table Data...'),
             canIncrementalUpdate ? Button.element({ onClick: this.incrementalRefresh,
                                                     style: { marginLeft: '4px' } }, 'Incremental Update') : null,
 
             DOM.hr({})
         )
       );
-    }
+    },
+    
+    // Non-react methods
+    incrementalRefresh() {
+      this.fetchData(false);  
+    },
+    
+    freshFetch() {
+      this.fetchData(true);
+    },
+    
+    fetchData: function(isIncremental) {            
+      var tableInfo = this.props.tableInfo;
+      var tableData = this.props.tableData;
+      var tablesAndIncValues = [];
+      
+      var lastElement = tableData[tableData.length - 1];
+      
+      var incrementValue;
+      if (!isIncremental && lastElement) {
+        incrementValue = lastElement[tableInfo.incrementColumnId];
+      }
+      
+      tablesAndIncValues.push({ tableInfo: { id: tableInfo.id }, 
+                                incrementValue: incrementValue });
+
+      this.props.getTableDataCallback(tablesAndIncValues, isIncremental);
+    },  
   });
   TablePreview.element = React.createFactory(TablePreview);
   TablePreview.MAX_ROWS = Infinity; //5000;
@@ -847,7 +872,14 @@
     FK_HEADER: 'Foreign Key'
   };
 
-  var CollapsibleTable = React.createClass({  
+  var CollapsibleTable = React.createClass({ 
+    propTypes: {
+      rowKey: React.PropTypes.number.isRequired,
+      name: React.PropTypes.string.isRequired,
+      header: React.PropTypes.array.isRequired,
+      elements: React.PropTypes.array.isRequired
+    },
+       
     getInitialState: function () {
         return {
           collapsed: false,
@@ -859,28 +891,27 @@
     },
     
     render: function () {
-      if(!this.props || !this.props.rowKey || !this.props.name || !this.props.header || !this.props.elements) return null;
       var incRowKey = this.props.rowKey;
       return (
         DOM.div({ className: 'table-preview-' + this.props.name},
-            DOM.h5({}, this.props.name),
-            Button.element({ onClick: this.toggleCollapse }, 
-                (this.state.collapsed) ? 'Show' : 'Hide'),
+          DOM.h5({}, this.props.name),
+          Button.element({ onClick: this.toggleCollapse }, 
+            (this.state.collapsed) ? 'Show' : 'Hide'),
             
-            Collapse.element({ in: !this.state.collapsed }, 
-                DOM.div({},
-                    Table.element({ bordered: true, condensed: true, striped: true },
-                    DOM.thead(null,
-                    DOM.tr(null,
-                        this.props.header.map(function(headerName) {
-                          return DOM.th({ key: incRowKey++ }, headerName);
-                        })
-                    )
-                    ),
-                    DOM.tbody(null, this.props.elements)
-                    )
+          Collapse.element({ in: !this.state.collapsed }, 
+            DOM.div({},
+              Table.element({ bordered: true, condensed: true, striped: true },
+              DOM.thead(null,
+                DOM.tr(null,
+                  this.props.header.map(function(headerName) {
+                    return DOM.th({ key: incRowKey++ }, headerName);
+                  })
                 )
+              ),
+              DOM.tbody(null, this.props.elements)
+              )
             )
+          )
         )
       );
     }
