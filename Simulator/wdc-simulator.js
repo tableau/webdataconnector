@@ -71,8 +71,7 @@
         connectionName: '',
         connectionData: '',
         username: '',
-        password: '',
-        incrementalExtractColumn: ''
+        password: ''
       });
     },
 
@@ -96,6 +95,10 @@
     //      value: tableObject
     resetTables: function() {
       this.tables = {};
+    },
+    
+    resetTableData: function(tableKey) {
+      this.tables[tableKey].data = [];
     },
 
     receivePostMessage: function(payload) {
@@ -188,7 +191,6 @@
       this.props.connectionData = props.connectionData;
       this.props.username = props.username;
       this.props.password = props.password;
-      this.props.incrementalExtractColumn = props.incrementalExtractColumn;
     },
 
     // TODO: Verify props passed in are acceptable
@@ -224,10 +226,11 @@
 
     handleSchemaCallback: function(schema) {      
       var tables = this.tables;
-      _.forEach(schema, function(tableSchema) {
+      _.forEach(schema, function(tableInfo) {
         var table = new TableObject();
-        table.schema = tableSchema;
-        tables[tableSchema.id] = table;
+        table.schema = tableInfo;
+       
+        tables[tableInfo.id] = table;
       });
       
       this.phaseState.inProgress = false
@@ -235,17 +238,6 @@
 
     handleDataCallback: function(tableName, data) {
       this.tables[tableName].data = this.tables[tableName].data.concat(data);
-      
-      // Set the last value from the incrementalExtractColumn as the saved lastRecordToken used the first time
-      // the getTableData method is called during the incremental refresh
-      // TODO
-      /*var lastRow = this.tables.table[this.tables.table.length - 1];
-      var incrementalExtractColumnRowIndex = this.tables.headerTitles.indexOf(this.props.incrementalExtractColumn);
-      if(incrementalExtractColumnRowIndex >= 0) {
-        this.tables.lastIncrementalExtractColumnValue = lastRow[incrementalExtractColumnRowIndex];
-      }*/
-
-      // Once we have a value from the incremental extract column then we can enable incremental refresh
     },
     
     handleDataDoneCallback: function() {
@@ -273,7 +265,12 @@
     },
 
     // Takes an array of tableuInfo/incValue paris
-    sendGetData: function(tablesAndIncrementValues) {
+    sendGetData: function(tablesAndIncrementValues, isFreshFetch) {
+      if (isFreshFetch) {
+        tableKey = tablesAndIncrementValues[0].tableInfo.id;
+        this.resetTableData(tableKey);
+      }
+      
       this.sendMessage(WdcCommandSimulator.EventName.DATA_GET, { tablesAndIncrementValues: tablesAndIncrementValues });
     },
 
@@ -285,20 +282,6 @@
       if(this.phaseState.submitWasCalled && this.phaseState.initCallbackWasCalled) {
         // TODO: Is this correct? Should this.sendShutdown(); be called instead?
         this.phaseState.inProgress = false;
-      }
-    },
-
-    verifyHeaders: function(headerTitles, headerTypes) {
-      if(!headerTitles || !headerTypes) {
-        throw new Error('tableau.headersCallback(titles, types) must be passed the header titles and types');
-      }
-
-      if(headerTitles.length != headerTypes.length) {
-        this.logger.warn('header titles and types must be the same length');
-      }
-
-      if (this.props.incrementalExtractColumn && headerTitles.indexOf(this.props.incrementalExtractColumn) == -1) {
-        this.logger.warn('Incremental refresh column is set but is not a column returned to Tableau, IncrementalExtractColumn: "' + this.props.incrementalExtractColumn + '"');
       }
     },
     
@@ -320,10 +303,6 @@
 
     setGatherDataPhase: function() {
       this.setCurrentPhase(WdcCommandSimulator.Phase.GATHER_DATA);
-    },
-
-    canDoAnIncrementalRefresh: function() {
-      return this.hasData() && !_.isUndefined(this.tables.lastIncrementalExtractColumnValue);
     },
 
     hasData: function() {
@@ -355,7 +334,8 @@
       var wdcCommandSimulator = this.initializeWdcCommandSimulator();
 
       return {
-        wdcUrl: '../Examples/StockQuoteConnector_multi.html',
+        wdcUrl: '../Examples/IncrementalUpdateConnector.html',
+        //wdcUrl: '../Examples/StockQuoteConnector_multi.html',
         wdcUrlDisabled: false,
         wdcCommandSimulator: wdcCommandSimulator,
         wdcShouldFetchAllTables: false,
@@ -498,10 +478,21 @@
           this.gatherSchemaData();
           break;
         case WdcCommandSimulator.EventName.DATA_GET:
-          if (!wdcSim.phaseState.inProgress) { // First data get call
-            // TODO we are assuming table data fetches happening synchronously
-            var tableId = eventData.tablesAndIncrementValues[0].tableInfo.id
-            wdcSim.tables[tableId].data = []; // Clear data on initial fetch
+          if (!wdcSim.phaseState.inProgress) { 
+            // TODO: This works based based on an assumption and could be cleaned up
+            // The assumption is that only a single table is being fetched when the
+            // DATA_GET event while the simulatort is NOT in progress.  The fetch all 
+            // functionality happens while the simulator is in progress.  The only time
+            // this code path is currently executed is when manually fetching data 
+            // for a single table. 
+            var tableBeingFetched = eventData.tablesAndIncrementValues[0]
+            var isIncremental = (tableBeingFetched.incrementValue != '');       
+
+            // If we are doing a clean fetch, we need to reset the table
+            if (!isIncremental) {
+                wdcSim.tables[tableBeingFetched.tableInfo.id].data = [];
+            }
+            
             this.state.wdcCommandSimulator.setInProgress();
           } 
           break;
@@ -721,8 +712,7 @@
     CONNECTION_NAME: 'connectionName',
     CONNECTION_DATA: 'connectionData',
     USERNAME: 'username',
-    PASSWORD: 'password',
-    INCREMENTAL_EXTRACT_COLUMN: 'incrementalExtractColumn'
+    PASSWORD: 'password'
   };
 
   var TableSection = React.createClass({
@@ -736,7 +726,7 @@
       
       _.forEach(Object.keys(tables), function(key) {
         tablePreviewElements.push(TablePreview.element( { 
-            tableSchema: tables[key].schema,
+            tableInfo: tables[key].schema,
             tableData: tables[key].data,
             getTableDataCallback: getTableDataCallback,
             fetchInProgress: fetchInProgress
@@ -753,20 +743,39 @@
   TableSection.element = React.createFactory(TableSection);
 
   var TablePreview = React.createClass({    
-    fetchData: function() {            
-      var tableSchema = this.props.tableSchema;
+    incrementalRefresh() {
+      this.fetchData(false);  
+    },
+    
+    freshFetch() {
+      this.fetchData(true);
+    },
+    
+    fetchData: function(isIncremental) {            
+      var tableInfo = this.props.tableInfo;
+      var tableData = this.props.tableData;
       var tablesAndIncValues = [];
       
-      tablesAndIncValues.push({ tableInfo: { id: tableSchema.id }})
-      this.props.getTableDataCallback(tablesAndIncValues)
+      var lastElement = tableData[tableData.length - 1];
+      
+      var incrementValue;
+      if (!isIncremental && lastElement) {
+        incrementValue = lastElement[tableInfo.incrementColumnId];
+      }
+      
+      tablesAndIncValues.push({ tableInfo: { id: tableInfo.id }, 
+                                incrementValue: incrementValue });
+
+      this.props.getTableDataCallback(tablesAndIncValues, isIncremental);
     },
     
     render: function () {
-      if(!this.props || !this.props.tableSchema) return null;
+      if(!this.props || !this.props.tableInfo) return null;
       
-      var tableSchema = this.props.tableSchema;
+      var tableInfo = this.props.tableInfo;
       var tableData = this.props.tableData;
       var hasData = tableData.length > 0;
+      var canIncrementalUpdate = hasData && (tableInfo.incrementColumnId != '')
 
       // Prep table of columnInfos for this TablePreview  
       var columnTableRowKey = 1;
@@ -780,7 +789,7 @@
       columnTableHeader.push(key.PK_HEADER);
       columnTableHeader.push(key.FK_HEADER);
             
-      var columnElements = tableSchema.columns.map(function(columnInfo) {
+      var columnElements = tableInfo.columns.map(function(columnInfo) {
         var row = [];
         row[0] = columnInfo.id;
         row[1] = columnInfo.dataType;
@@ -800,7 +809,7 @@
       var dataTableRowKey = 1;
       
       var dataTableHeader = [];
-      _.forEach(tableSchema.columns, function(column) {
+      _.forEach(tableInfo.columns, function(column) {
           dataTableHeader.push(column.dataType);
       });
       
@@ -815,16 +824,16 @@
         });
       }
       
-      var incColumn = (tableSchema.incrementColumnId) ?
-        tableSchema.incrementColumnId : 'None';
+      var incColumn = (tableInfo.incrementColumnId) ?
+        tableInfo.incrementColumnId : 'None';
             
       return ( 
         DOM.div({ className: 'table-preview-' + this.props.id},
-            DOM.h4({}, tableSchema.id),
-            (tableSchema.incrementColumnId) ?
-                DOM.p({}, tableSchema.description)
+            DOM.h4({}, tableInfo.id),
+            (tableInfo.incrementColumnId) ?
+                DOM.p({}, tableInfo.description)
                 : null,
-            (tableSchema.incrementColumnId) ?
+            (tableInfo.incrementColumnId) ?
                 DOM.p({}, 'Incremental Refresh Column: ' + incColumn) 
                 : null,
             CollapsibleTable.element({ 
@@ -843,8 +852,11 @@
                 })
             : null,
             (!this.props.fetchInProgress) 
-                ? Button.element({ onClick: this.fetchData, bsStyle: 'success'}, 'Fetch Table Data')
+                ? Button.element({ onClick: this.freshFetch, bsStyle: 'success'}, 'Fetch Table Data')
                 : Button.element({ disabled: true, bsStyle: 'success'}, 'Fetching Table Data...'),
+            canIncrementalUpdate ? Button.element({ onClick: this.incrementalRefresh,
+                                                    style: { marginLeft: '4px' } }, 'Incremental Update') : null,
+
             DOM.hr({})
         )
       );

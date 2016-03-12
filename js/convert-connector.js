@@ -20,7 +20,7 @@ function _convertConnectorFor12(connector) {
 
   	var tableInfo = {
   	  id : "WDC",
-  	  incrementColumnId: tableau.incrementalExtractColumn,
+  	  incrementColumnId: 'id',
   	  columns : cols
   	};
 
