@@ -37,7 +37,7 @@ In version 1, at a high level, a connector followed this flow:
 
 In contrast, at a high level, version 2 of the API follows this flow:
  1. WDC loads and runs its interactive phase.  When finished, it calls tableau.submit().
- 2. In the data gathering phase, Tableau/Simulator calls connector.getSchema, which defines schemas for multiple tables. getSchema is passed a callback that the WDC calls when it has finished defining schemas. 
+ 2. In the data gathering phase, Tableau/Simulator calls connector.getSchema, which defines schemas for one or more tables. getSchema is passed a callback that the WDC calls when it has finished defining schemas. 
  3. Tableau/Simulator calls connector.getData.  getData is passed both a callback and list of tables that Tableau/Simulator has requested data for.  Within getData, the WDC developer can add data to any table at any time using a new method called appendRows. 
  4. Whenever the WDC has finished getting all of its data for the requested tables, it calls the passed in doneCallback.
 
