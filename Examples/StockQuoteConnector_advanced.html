@@ -4,14 +4,13 @@
 <title>Stock Quote Connector - Advanced</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
 <script src="../js/convert-connector.js" type="text/javascript"></script>
-<script src="../js/tableauwdc-1.2.0.js" type="text/javascript"></script>
+<script src="https://connectors.tableau.com/libs/tableauwdc-2.0.0-beta.js" type="text/javascript"></script>
 <script type="text/javascript">
  (function() {
 
   //
   // Helper functions
   //
-
   // Takes a ticker symbol, a start date and an end date, and constructs a URL for the Yahoo! stock quote API
   function buildUrl(tickerSymbol, startDate, endDate) {
     var startDateStr = getDateAsString(startDate);

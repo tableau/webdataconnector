@@ -1,14 +1,12 @@
 (function(_, React, ReactBootstrap) {
   var NOOP = function(){};
-  var ALLOWED_WDC_API_VERSION = "1.2.0";
 
   function verifyCanRunWdcVersion(wdcApiVersion) {
-    if(wdcApiVersion !== ALLOWED_WDC_API_VERSION) {
-      throw new Error('Simulator version "' + ALLOWED_WDC_API_VERSION + '" does not match connector version "' + wdcApiVersion + '".');
+    if(wdcApiVersion === "1.1.0") {
+      throw new Error('The Simulator can only run WDCs using version 1.1.1 or later, your version is: ' + wdcApiVersion);
     }
   }
-  
-  
+   
   function getConnectorURL() {
     try {
       // build an anchor object out of the url so it is easy to parse
@@ -31,7 +29,7 @@
     }
 
     // Set the default connector here
-    return "../Examples/StockQuoteConnector_multi.html"
+    return "../Examples/StockQuoteConnector_final.html"
   }
   
   function WdcCommandSimulator(/*ISendPostMessage*/ sendPostMessage, /*IPhaseChangeHandler*/ onPhaseChange, /*IEventHandler*/ onEvent, /*ILogger*/ logger) {
@@ -360,7 +358,6 @@
       var wdcCommandSimulator = this.initializeWdcCommandSimulator();
 
       return {
-        //wdcUrl: '../Examples/IncrementalUpdateConnector.html',
         wdcUrl: getConnectorURL(),
         wdcUrlDisabled: false,
         wdcCommandSimulator: wdcCommandSimulator,
@@ -817,11 +814,11 @@
     
     // Non-react methods
     incrementalRefresh() {
-      this.fetchData(false);  
+      this.fetchData(true);  
     },
     
     freshFetch() {
-      this.fetchData(true);
+      this.fetchData(false);
     },
     
     fetchData: function(isIncremental) {            
@@ -832,14 +829,15 @@
       var lastElement = tableData[tableData.length - 1];
       
       var incrementValue;
-      if (!isIncremental && lastElement) {
+      if (isIncremental && lastElement) {
         incrementValue = lastElement[tableInfo.incrementColumnId];
       }
       
       tablesAndIncValues.push({ tableInfo: { id: tableInfo.id }, 
                                 incrementValue: incrementValue });
 
-      this.props.getTableDataCallback(tablesAndIncValues, isIncremental);
+      // getTableCallback takes (tablesAndIncValues, isFreshFetch)
+      this.props.getTableDataCallback(tablesAndIncValues, !isIncremental);
     }, 
     
     getMetadataHeader() {
