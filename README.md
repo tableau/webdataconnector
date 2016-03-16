@@ -42,7 +42,7 @@ In contrast, at a high level, version 2 of the API follows this flow:
  4. Whenever the WDC has finished getting all of its data for the requested tables, it calls the passed in doneCallback.
 
 
-Please consult the beta docs for new API definitions: [Beta docs](https://connectors.tableau.com/docs/API-Docs-2.0.html).
+Please consult the beta docs for new API definitions: [Beta docs](https://connectors.tableau.com/docs/index.html).
 
 Please see the StockQuotesConnector_final sample as an example of a WDC built with the new API.
 
