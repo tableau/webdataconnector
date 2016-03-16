@@ -5,23 +5,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
 <script src="https://connectors.tableau.com/libs/tableauwdc-1.1.1.js" type="text/javascript"></script>
 <script src="../js/convert-connector.js" type="text/javascript"></script>
-<script src="../js/tableauwdc-1.2.0.js" type="text/javascript"></script>
+<script src="https://connectors.tableau.com/libs/tableauwdc-2.0.0-beta.js" type="text/javascript"></script>
 <script type="text/javascript">
 
 (function() {
   var myConnector = tableau.makeConnector();
-
-  myConnector.init = function () {
-    // Set the name of the column that should be used for incremental updates
-    tableau.incrementalExtractColumn = "id";
-    tableau.initCallback();
-  }
-
+  
   myConnector.getColumnHeaders = function ()
   {
     var connectionData = tableau.connectionData;
     var fieldNames = ["id", "x", "day", "day_and_time", "true_or_false", "color"];
     var fieldTypes = ['int', 'float', 'date', 'datetime', 'bool', 'string'];
+    tableau.incrementalExtractColumn = "id";
     tableau.headersCallback(fieldNames, fieldTypes);
   }
 
@@ -34,6 +29,7 @@
 
     var connectionData = JSON.parse(tableau.connectionData);
     var max_iterations = connectionData.max_iterations; 
+    
 
     var colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
     var data = [];

@@ -16,26 +16,18 @@ This content is currently in beta and you can learn more here! [http://tableau.g
 
 Hosted WDC Simulator
 ---------------
-You can run the Simulator locally or use the hosted one here:
+Currently in development is the WDC API version 2.0.  The biggest change with this version is the addition of support for multiple tables.  We have also siginficiantly refactored the underlying structure of the web data connector API.  Please consult the beta docs for new API methods: [Beta docs](https://connectors.tableau.com/docs/API-Docs-2.0.html).
 
-[Hosted WDC Simulator](http://tableau.github.io/webdataconnector/Simulator/)
+This document is meant to be very lightweight and is still under heavy iteration.  We are in the process of making official docs.  The APIs in version 2.0 are still under iteration as well, please feel free to give your feedback! 
 
-On WDC Versioning
+Please see the StockQuotesConnector_final sample as an example of how to build a WDC with the new API.
+
+
+Sample Status and ConvertConnector
 ---------------
-The hosted simulator requires that web data connectors be using version 1.1.1 of the WDC API. If you need to run a WDC that uses 1.1.0, you can use the [old simulator](http://tableau.github.io/webdataconnector/Simulator/old_simulator.html).
+The samples have not yet been fully ported over.  Currently, only the StockQuotesConnector_final.html example has been ported to the new API.  This is a work in progress. Additionally, the IncrementalUpdateConnector and StockQuoteConnector_advanced samples have been modified to use a utility script that converts old connectors to the new version of the Library.  The other samples will be udpated soon.
 
-In Tableau Desktop versions 9.1 and 9.2, we had a bug that caused the WDC platform to not respect versioning.  If you are using a Desktop verion before 9.1.6 or before 9.2.4, you will see the following error when connecting to a WDC using 1.1.0.  "The version of Tableau that you are using cannot use the web data connector that you are trying to access. The connector requires at least version '1.1.1' of the web data connector API."  Please upgrade to the latest maintenance patch if you encounter this.
-
-All of the hosted development samples have been upgraded to 1.1.1 so that they can be used in the new simulator.  However, we left the Google Sheets sample at 1.1.0 to minimize the impact for users who are actively using this web data connector and have not yet upgraded to the latest maintenance version.  The Google Sheets example has also been moved into the community section to reflect this.
-
-Soon we will be incrementing the WDC API more frequently, so we will add a lookup table here that shows which WDC API versions work with which Tableau Desktop and Server versions. Moving forward, a specific Desktop minor version, i.e. 9.3, will work with any WDC of the corresponding minor version (9.3.* will work with 1.1.*).
-
-
-Official Tableau WDC Samples
----------------
-These are the samples created and maintained by Tableau.
-
-"Hosted URL" can be used to run the connector in Tableau or in the Simulator.
+We are in the process of making new documentation and step by step tutorials for building WDCs on the new API. 
 
 Name     | Data Source   |  Source Code    |  Hosted URL
 -------- |  -------- |  -------- |  -------- 
@@ -83,7 +75,3 @@ Resources
 ---------------
 Here are a few great WDC resources that might be helpful for developement.
 
-Resource     | Author   |  Type    
--------- |  -------- |  --------
-[Better WDC Performance with Promises](https://www.eric.pe/terson/engineers/better-wdc-performance-with-promises?utm_source=Twitter&utm_medium=Social&utm_campaign=Links&utm_source=Hootsuite&utm_medium=Social&utm_campaign=TableauSocial&hootPostID=968bfaeedfa4bcfb2e9087393c8f2c70)  |  [Eric Peterson](https://github.com/iamEAP)  |  Tutorial
-[generator-web-data-connector](https://www.npmjs.com/package/generator-web-data-connector)  |  [Eric Peterson](https://github.com/iamEAP)  |  Development Tools
