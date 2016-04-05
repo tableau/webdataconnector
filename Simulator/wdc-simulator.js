@@ -29,7 +29,7 @@
     }
 
     // Set the default connector here
-    return "../Examples/StockQuoteConnector_final.html"
+    return "../Examples/StockQuoteConnector_basic.html"
   }
   
   function WdcCommandSimulator(/*ISendPostMessage*/ sendPostMessage, /*IPhaseChangeHandler*/ onPhaseChange, /*IEventHandler*/ onEvent, /*ILogger*/ logger) {
@@ -582,12 +582,9 @@
     
     fetchAllData: function() {
       var wdcSim = this.state.wdcCommandSimulator;
-      var tableAndIncValues = [];
       _.forEach(Object.keys(wdcSim.tables), function(key) {
-        tableAndIncValues.push({ tableInfo: wdcSim.tables[key].schema })
+        wdcSim.sendGetData([{ tableInfo: wdcSim.tables[key].schema }]);
       });
-      
-      wdcSim.sendGetData(tableAndIncValues);
     },
 
     // WDC USER PROPERTIES METHODS
@@ -777,7 +774,7 @@
       
       // Prep table of actual data for this TableuPreview      
       var dataTableHeader = this.getDataHeader(tableInfo);
-      var dataElements = this.getDataElements(tableData);
+      var dataElements = this.getDataElements(tableData, dataTableHeader);
             
       return ( 
         DOM.div({ className: 'table-preview-' + tableInfo.id},
@@ -833,7 +830,7 @@
         incrementValue = lastElement[tableInfo.incrementColumnId];
       }
       
-      tablesAndIncValues.push({ tableInfo: { id: tableInfo.id }, 
+      tablesAndIncValues.push({ tableInfo: tableInfo, 
                                 incrementValue: incrementValue });
 
       // getTableCallback takes (tablesAndIncValues, isFreshFetch)
@@ -878,20 +875,20 @@
     getDataHeader(tableInfo) {
       var dataTableHeader = [];
       _.forEach(tableInfo.columns, function(column) {
-          dataTableHeader.push(column.dataType);
+          dataTableHeader.push(column.alias);
       });
       
       return dataTableHeader;  
     },
     
-    getDataElements(tableData) {
+    getDataElements(tableData, schema) {
       var dataTableRowKey = 1;  
       var dataElements = [];
       if (tableData) { // We may not fetched any data yet
         dataElements = tableData.slice(0, TablePreview.MAX_ROWS).map(function(row) {
           return DOM.tr({ key: dataTableRowKey++ },
-            Object.keys(row).map(function(key) {
-              return DOM.td({ key: dataTableRowKey++ }, row[key]);
+            schema.map(function(header) {
+              return DOM.td({ key: dataTableRowKey++ }, row[header]);
             })
           )
         });
