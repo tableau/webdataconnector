@@ -29,19 +29,11 @@
      var myConnector = tableau.makeConnector();
 
      myConnector.getSchema = function(schemaCallback) {
-         var cols = [{
-             id: "ticker",
-             alias: "Ticker",
-             dataType: "string"
-         }, {
-             id: "day",
-             alias: "Day",
-             dataType: "date"
-         }, {
-             id: "close",
-             alias: "Close",
-             dataType: "float"
-         }]
+         var cols = [
+             { id: "ticker", alias: "Ticker", dataType: "string" },
+             { id: "day", alias: "Day", dataType: "string" },
+             { id: "close", alias: "Close", dataType: "string" }
+         ]
 
          var tableInfo = {
              alias: "Stock Data for " + tableau.connectionData,
@@ -72,12 +64,12 @@
                      // mash the data into an array of objects
                      for (ii = 0; ii < quotes.length; ++ii) {
                          // Each entry can be a list of values in the same order as the columns
-                         //var entry = [quotes[ii].Symbol, quotes[ii].Date, quotes[ii].Close];
-                         // or an object where the column names are the keys of the map
+                         // var entry = [quotes[ii].Symbol, quotes[ii].Date, quotes[ii].Close];
+                         // or an object where the column ids are the keys of the map
                          var entry = {
-                             'Ticker': quotes[ii].Symbol,
-                             'Day': quotes[ii].Date,
-                             'Close': quotes[ii].Close
+                             'ticker': quotes[ii].Symbol,
+                             'day': quotes[ii].Date,
+                             'close': quotes[ii].Close
                          };
                          toRet.push(entry);
                      }
@@ -119,5 +111,4 @@
              setupConnector();
          });
      });
-
  })();
