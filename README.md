@@ -47,11 +47,10 @@ Please consult the beta docs for new API definitions: [Beta docs](https://connec
 Please see the StockQuotesConnector_final sample as an example of a WDC built with the new API.
 
 
-Sample Status and ConvertConnector
+New Samples and ConvertConnector
 ---------------
-The samples have not yet been fully ported over.  Currently, only the StockQuotesConnector_final.html example has been ported to the new API.  This is a work in progress. Additionally, the IncrementalUpdateConnector and StockQuoteConnector_advanced samples have been modified to use a utility script that converts old connectors to the new version of the Library.  To use this convert connector utility in an old WDC, include the js/convert-connector.js script and call _convertConnectorFor12(myConnector) before calling tableau.registerConnector(myConnector).  
-
-We are in the process of making new documentation and step by step tutorials for building WDCs on the new API. 
+We are in the process of building new samples for the WDC v2.  Not all of these have been completed yet.  The ConvertConnector script can be used to transform a v1 connector to v2.  See the MadMoneyScraper connector for an example.
+Soon we will be releasing new documentation and step by step tutorials for building WDCs on the new API. 
 
 Name     | Data Source   |  Source Code    |  Hosted URL
 -------- |  -------- |  -------- |  -------- 

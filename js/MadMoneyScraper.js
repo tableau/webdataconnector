@@ -28,11 +28,6 @@
 
   var myConnector = tableau.makeConnector();
 
-  myConnector.init = function () {
-    tableau.connectionName = 'Mad Money Picks';
-    tableau.initCallback();
-  };
-
   myConnector.getColumnHeaders = function() {
     var fieldNames = ['Ticker', 'Company', 'Date', 'Segment', 'Call', 'Price'];
     var fieldTypes = ['string', 'string', 'date', 'string', 'string', 'float'];
@@ -74,6 +69,7 @@
 
 $(document).ready(function(){
   $("#submitButton").click(function() { // This event fires when a button is clicked
+    tableau.connectionName = 'Mad Money Picks';
     tableau.submit();
   });
 });

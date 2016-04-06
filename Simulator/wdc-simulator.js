@@ -841,7 +841,7 @@
       var key = TablePreview.PropertyKey;
       var columnTableHeader = [];
       
-      columnTableHeader.push(key.TITLE_HEADER);
+      columnTableHeader.push(key.ID_HEADER);
       columnTableHeader.push(key.TYPE_HEADER);
       columnTableHeader.push(key.ALIAS_HEADER);
       columnTableHeader.push(key.DESCRIPTION_HEADER);
@@ -875,7 +875,7 @@
     getDataHeader(tableInfo) {
       var dataTableHeader = [];
       _.forEach(tableInfo.columns, function(column) {
-          dataTableHeader.push(column.alias);
+          dataTableHeader.push(column.id);
       });
       
       return dataTableHeader;  
@@ -900,7 +900,7 @@
   TablePreview.element = React.createFactory(TablePreview);
   TablePreview.MAX_ROWS = Infinity; //5000;
   TablePreview.PropertyKey = {
-    TITLE_HEADER: 'Title',
+    ID_HEADER: 'ID',
     TYPE_HEADER: 'Type',
     ALIAS_HEADER: 'Alias',
     DESCRIPTION_HEADER: 'Description',

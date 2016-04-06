@@ -1,31 +1,27 @@
 <html>
 <meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-store" />
 <head>
 <title>Incremental Update Example</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
-<script src="https://connectors.tableau.com/libs/tableauwdc-1.1.1.js" type="text/javascript"></script>
-<script src="../js/convert-connector.js" type="text/javascript"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script src="https://connectors.tableau.com/libs/tableauwdc-2.0.0-beta.js" type="text/javascript"></script>
 <script src="../js/IncrementalRefreshConnector.js" type="text/javascript"></script>
 
 </head>
 <body>
-  <h2>Incremental Refresh Enabled Example Connector</h2>
-  <br>
-  <form id="inputForm" action="">
-    Ready to generate some data for incremental refreshing?  <br>
-	Enter in the number of rows to be added incrementally in the box below.<br>
-    To add more rows of data you will need to ):<br>
-	<li>Select Tableau's data menu
-	<li>Select your data source name
-	<li>Then select incremental refresh from extract menu.<br>
-	<br>
-    Also we recommend that you also use the Simulator.html to load this sample.  In the simulator you can hit the incremental refresh button.   <br>
-    <br>
-	Number of row to add on every Refresh:  <input type="number" name="max_iterations" value="2" style="width: 50px;" /> <br>
-    <br>
-    <input type="submit" value="Go!">
-	<br>
-  </form>
+  <div class="container container-table">
+    <form role="form" id="inputForm" action="">
+    <h3>Incremental Refresh Enabled Example Connector</h3>
+    <div class="form-group">
+        <p>This is an example of how to to incrementally refresh data with the WDC API.
+           Enter in the number of rows to be added incrementally in the box below.</p>
+        <label for="pwd">Number of rows to add per Incremental Refresh:</label>
+        <input class="form-control" id="max_iterations">
+        <button type = "button" id = "submitButton" class = "btn btn-success" style = "margin-top: 10px;">Get Data</button>
+    </div>
+    </form>
+  </div>
 </body>
 </html>

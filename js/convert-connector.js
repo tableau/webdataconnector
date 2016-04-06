@@ -1,5 +1,6 @@
 function _convertConnectorFor12(connector) {
   var _schemaCallback = null;
+
   // The old connector will have 2 functions, getColumnHeaders and getTableData. Lets convert them
   connector.getSchema = function(schemaCallback) {
   	_schemaCallback = schemaCallback;
@@ -30,11 +31,9 @@ function _convertConnectorFor12(connector) {
   var _dataDoneCallback;
   var _table;
 
-  connector.getData = function(tableCollection, dataDoneCallback) {
+  connector.getData = function(table, dataDoneCallback) {
   	_dataDoneCallback = dataDoneCallback;
-
-  	// There should only be 1 table in our tableCollection
-  	_table = tableCollection.getTables()['WDC'];
+  	_table = table;
   	connector.getTableData(_table.incrementValue);
   }
 

@@ -1,24 +1,34 @@
 (function() {
     var myConnector = tableau.makeConnector();
+    
+    myConnector.getSchema = function(schemaCallback) {
+         var cols = [
+             { id: "id", dataType: "string" },
+             { id: "x", dataType: "string" },
+             { id: "day", dataType: "string" },
+             { id: "day_and_time", dataType: "string" },
+             { id: "true_or_false",  dataType: "string" },
+             { id: "color", dataType: "string" }
+         ]
+         
+         var tableInfo = {
+             alias: "Incremental Refresh Connector",
+             id: "mainTable",
+             columns: cols,
+             incrementColumnId: "id"
+         };
+         
+         schemaCallback([tableInfo]);
+     };
 
-    myConnector.getColumnHeaders = function() {
-        var connectionData = tableau.connectionData;
-        var fieldNames = ["id", "x", "day", "day_and_time", "true_or_false", "color"];
-        var fieldTypes = ['int', 'float', 'date', 'datetime', 'bool', 'string'];
-        tableau.incrementalExtractColumn = "id";
-        tableau.headersCallback(fieldNames, fieldTypes);
-    }
 
-
-    //With this sample we will generate some sample date for the columns: id, x, day, date_and _time, true_or_false, and color.
-    //The user input for the max iterations determines the number of rows to add. 
-    // 
-    myConnector.getTableData = function(lastRecordNumber) {
-        var lastId = parseInt(lastRecordNumber || -1);
+    // With this sample we will generate some sample date for the columns: id, x, day, date_and _time, true_or_false, and color.
+    // The user input for the max iterations determines the number of rows to add. 
+    myConnector.getData = function(table, doneCallback) {
+        var lastId = parseInt(table.incrementValue || -1);
 
         var connectionData = JSON.parse(tableau.connectionData);
         var max_iterations = connectionData.max_iterations;
-
 
         var colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
         var data = [];
@@ -42,21 +52,31 @@
             });
         }
 
-        tableau.dataCallback(data, lastId.toString(), false);
+        table.appendRows(data);
+        doneCallback()   
     };
 
-    _convertConnectorFor12(myConnector);
-    tableau.registerConnector(myConnector);
-})();
+     setupConnector = function() {
+        var max_iterations = $("#max_iterations").val();
+        
+        if (max_iterations) {
+            var connectionData = {
+                "max_iterations": parseInt(max_iterations)
+            };
+            tableau.connectionData = JSON.stringify(connectionData);
+            tableau.submit();
+        }
+     };
 
-$(document).ready(function() {
-    $("#inputForm").submit(function(evt) { // This event fires when a button is clicked
-        evt.preventDefault();
-        var max_iterations = $('input[name=max_iterations]').val();
-        var connectionData = {
-            "max_iterations": parseInt(max_iterations)
-        };
-        tableau.connectionData = JSON.stringify(connectionData);
-        tableau.submit();
+    tableau.registerConnector(myConnector);
+
+    $(document).ready(function() {
+        $("#submitButton").click(function() { // This event fires when a button is clicked
+            setupConnector();
+        });
+        $('#inputForm').submit(function(event) {
+            event.preventDefault();
+            setupConnector();
+        });
     });
-});
+})();
