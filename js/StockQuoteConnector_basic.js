@@ -33,7 +33,7 @@
              { id: "ticker", alias: "Ticker", dataType: "string" },
              { id: "day", alias: "Day", dataType: "string" },
              { id: "close", alias: "Close", dataType: "string" }
-         ]
+         ];
 
          var tableInfo = {
              alias: "Stock Data for " + tableau.connectionData,
@@ -75,9 +75,9 @@
                      }
 
                      table.appendRows(toRet);
-                     doneCallback()
+                     doneCallback();
                  } else {
-                     tableau.abortWithError("No results were returned from the stock data source")
+                     tableau.abortWithError("No results were returned from the stock data source");
                  }
              },
              error: function(xhr, ajaxOptions, thrownError) {

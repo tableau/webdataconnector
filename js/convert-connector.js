@@ -5,7 +5,7 @@ function _convertConnectorFor12(connector) {
   connector.getSchema = function(schemaCallback) {
   	_schemaCallback = schemaCallback;
   	connector.getColumnHeaders();
-  }
+  };
 
   tableau.headersCallback = function(fieldNames, types) {
   	// Convert this into a table info object
@@ -26,7 +26,7 @@ function _convertConnectorFor12(connector) {
   	};
 
   	_schemaCallback([tableInfo]);
-  }
+  };
 
   var _dataDoneCallback;
   var _table;
@@ -35,7 +35,7 @@ function _convertConnectorFor12(connector) {
   	_dataDoneCallback = dataDoneCallback;
   	_table = table;
   	connector.getTableData(_table.incrementValue);
-  }
+  };
 
   tableau.dataCallback = function(data, lastRecordToken, moreData) {
   	// We got some data back from the connector itself. Call back with the data first
@@ -49,5 +49,5 @@ function _convertConnectorFor12(connector) {
   	} else {
   	  _dataDoneCallback();
   	}
-  }
+  };
 }

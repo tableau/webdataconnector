@@ -46,7 +46,7 @@
                 { id: "ticker", alias: "Ticker", dataType: "string" },
                 { id: "day", alias: "Day", dataType: "string" },
                 { id: "close", alias: "Close", dataType: "string" }
-            ]
+            ];
 
              var tableInfo = {
                  id: ticker,
@@ -113,8 +113,8 @@
                      Promise.reject("error connecting to the yahoo stock data source: " + thrownError);
                  }
              });
-         })
-     };
+         });
+     }
 
      setupConnector = function() {
          var tickersString = $('#tickers').val().trim();

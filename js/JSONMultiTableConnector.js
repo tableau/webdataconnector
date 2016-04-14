@@ -8,14 +8,14 @@
              { id: "username", dataType: "string" },
              { id: "phone", dataType: "string" },
              { id: "website",  dataType: "string" },
-         ]
+         ];
          
          var postCols = [
              { id: "id", dataType: "int" },
              { id: "userId", dataType: "int" },
              { id: "title", dataType: "string" },
              { id: "body", dataType: "string" }
-         ]
+         ];
          
          var commentCols = [
              { id: "id", dataType: "int" },
@@ -23,13 +23,13 @@
              { id: "name", dataType: "string" },
              { id: "email", dataType: "string" },
              { id: "body",  dataType: "string" },
-         ]
+         ];
          
          var albumCols = [
              { id: "id", dataType: "int" },
              { id: "userId", dataType: "int" },
              { id: "title", dataType: "string" }
-         ]
+         ];
          
          var photoCols = [
              { id: "id", dataType: "int" },
@@ -37,7 +37,7 @@
              { id: "title", dataType: "string" },
              { id: "url", dataType: "string" },
              { id: "thumbnailUrl",  dataType: "string" },
-         ]
+         ];
          
          var usersTable = {
              alias: "Users",
@@ -78,7 +78,7 @@
             method: 'GET'
         }).then(function(data) {
             table.appendRows(data);
-            doneCallback()  
+            doneCallback();
         });
     };
 
