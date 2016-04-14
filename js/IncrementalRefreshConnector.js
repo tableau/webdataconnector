@@ -9,7 +9,7 @@
              { id: "day_and_time", dataType: "string" },
              { id: "true_or_false",  dataType: "string" },
              { id: "color", dataType: "string" }
-         ]
+         ];
          
          var tableInfo = {
              alias: "Incremental Refresh Connector",
@@ -53,7 +53,7 @@
         }
 
         table.appendRows(data);
-        doneCallback()   
+        doneCallback();   
     };
 
      setupConnector = function() {
