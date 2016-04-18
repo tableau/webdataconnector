@@ -15,6 +15,16 @@ You can run the Simulator locally or use the hosted one here:
 
 [Hosted WDC Simulator](http://tableau.github.io/webdataconnector/Simulator/)
 
+On WDC Versioning
+---------------
+The hosted simulator requires that web data connectors be using version 1.1.1 of the WDC API. If you need to run a WDC that uses 1.1.0, you can use the [old simulator](http://tableau.github.io/webdataconnector/Simulator/old_simulator.html).
+
+In Tableau Desktop versions 9.1 and 9.2, we had a bug that caused the WDC platform to not respect versioning.  If you are using a Desktop verion before 9.1.6 or before 9.2.4, you will see the following error when connecting to a WDC using 1.1.0.  "The version of Tableau that you are using cannot use the web data connector that you are trying to access. The connector requires at least version '1.1.1' of the web data connector API."  Please upgrade to the latest maintenance patch if you encounter this.
+
+All of the hosted development samples have been upgraded to 1.1.1 so that they can be used in the new simulator.  However, we left the Google Sheets sample at 1.1.0 to minimize the impact for users who are actively using this web data connector and have not yet upgraded to the latest maintenance version.  The Google Sheets example has also been moved into the community section to reflect this.
+
+Soon we will be incrementing the WDC API more frequently, so we will add a lookup table here that shows which WDC API versions work with which Tableau Desktop and Server versions. Moving forward, a specific Desktop minor version, i.e. 9.3, will work with any WDC of the corresponding minor version (9.3.* will work with 1.1.*).
+
 
 Official Tableau WDC Samples
 ---------------
@@ -24,7 +34,6 @@ These are the samples created and maintained by Tableau.
 
 Name     | Data Source   |  Source Code    |  Hosted URL
 -------- |  -------- |  -------- |  -------- 
-Google Sheets Connector  |  Google Sheets  |  [Examples](https://github.com/tableau/webdataconnector/tree/gh-pages/Examples)  |  [GoogleSheetsConnector.html](http://tableau.github.io/webdataconnector/Examples/GoogleSheetsConnector.html)
 Incremental Update Connector  |  N/A  |  [Examples](https://github.com/tableau/webdataconnector/tree/gh-pages/Examples)  |  [IncrementalUpdateConnector.html](https://tableau.github.io/webdataconnector/Examples/IncrementalUpdateConnector.html)
 JSON Connector  |  N/A  |  [Examples](https://github.com/tableau/webdataconnector/tree/gh-pages/Examples)  |  [jsonConnector.html](https://tableau.github.io/webdataconnector/Examples/jsonConnector.html)
 Mad Money Scraper Connector  |  Mad Money Stock Picks  |  [Examples](https://github.com/tableau/webdataconnector/tree/gh-pages/Examples)  |  [MadMoneyScraper.html](https://tableau.github.io/webdataconnector/Examples/MadMoneyScraper.html)
@@ -43,7 +52,8 @@ AWS CloudWatch | [CloudWatch](https://aws.amazon.com/cloudwatch/) | David F. Sev
 Elastic Search | [Elastic Search](https://www.elastic.co/products/elasticsearch) | Adam Lacey  |  [mradamlacey](https://github.com/mradamlacey/elasticsearch-tableau-connector)  |  N/A
 Fitbit | [Fitbit.com](https://www.fitbit.com/) | Craig Bloodworth  |  N/A  |  [Fitbit WDC](http://data.theinformationlab.co.uk/fitbit.html)
 Flickr | [Flickr](https://www.flickr.com/services/api/) | [Zeki Melek](https://github.com/melekzek)  |  [tableau-wdc-flickr](https://github.com/melekzek/tableau-wdc-flickr)  |  N/A
-GitHub | [GitHub API](https://developer.github.com/v3/) | [Martin Keerman](https://github.com/etroid) | [github-data-connector](https://github.com/tableau-mkt/github-data-connector) | [GitHub WDC](https://github-web-data-connector.herokuapp.com)
+GitHub | [GitHub API](https://developer.github.com/v3/) | [Martin Keerman](https://github.com/etroid) | [github-data-connector](https://github.com/tableau-mkt/github-data-connector) | [GitHub WDC](https://github-web-data-connector.herokuapp.com) 
+Google Sheets Connector  |  Google Sheets  |  Ivo Salmre  |  [Source](https://github.com/tableau/webdataconnector/tree/gh-pages/Examples)  |  [GoogleSheetsConnector.html](http://tableau.github.io/webdataconnector/Examples/GoogleSheetsConnector.html)
 Import.io | [Import.io](https://www.import.io/) | Robert Rouse  |  N/A  |  [Import.io WDC](http://connectors.poc.interworks.com/importio/importio-magic.html)
 Kimono | [Kimono](https://www.kimonolabs.com/) | [Franz Amador](https://github.com/fgamador) | [wdc](https://github.com/fgamador/wdc) | [KimonoConnector.html](https://fgamador.github.io/wdc/KimonoConnector.html)
 Last.fm | [Last.fm](http://www.last.fm/) | Justin Dallal  |  [jdallal/LastFM-Web-Data-Connector](https://github.com/jdallal/LastFM-Web-Data-Connector)  |  N/A
