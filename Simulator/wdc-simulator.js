@@ -14,8 +14,8 @@
       var q = docLink.search.substring(1);
       if (q) {
         // use some regexes to turn the query into json, then parse the json
-        var params = JSON.parse('{"' + decodeURI(q).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
-        var src = params['src'];
+        var params = JSON.parse('{"' + decodeURI(q).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+        var src = params.src;
         if (src && src.length > 0) {
           return src;
         }
@@ -23,13 +23,13 @@
     } catch (err) {
       var msg =
       msg += "Error description: " + err.message + "\n\n";
-      msg += "Please specify the connector on url line: e.g.\n\n"
+      msg += "Please specify the connector on url line: e.g.\n\n";
       msg += "Simulator.html?src=ExampleConnector.html.\n\n";
       console.log(msg);
     }
 
     // Set the default connector here
-    return "../Examples/StockQuoteConnector_basic.html"
+    return "../Examples/StockQuoteConnector_basic.html";
   }
   
   function WdcCommandSimulator(/*ISendPostMessage*/ sendPostMessage, /*IPhaseChangeHandler*/ onPhaseChange, /*IEventHandler*/ onEvent, /*ILogger*/ logger) {
@@ -84,7 +84,7 @@
   function TableObject() {
     this.schema = [];
     this.data = [];
-  };
+  }
   
   // Instance methods
   _.extend(WdcCommandSimulator.prototype, {
@@ -205,7 +205,7 @@
         props:    messageData.props,
         name:     messageData.msgName,
         version:  messageData.version || (messageData.props && messageData.props.versionNumber)
-      }
+      };
     },
 
     applyProps: function(props) {
@@ -226,7 +226,7 @@
     // POSTED METHOD HANDLERS
 
     handleLog: function(msg) {
-      this.logger.log(msg)
+      this.logger.log(msg);
     },
 
     handleLoaded: function(version) {
@@ -248,16 +248,20 @@
       this.tryToCompleteCurrentPhase();
     },
 
-    handleSchemaCallback: function(schema) {      
-      var tables = this.tables;
-      _.forEach(schema, function(tableInfo) {
-        var table = new TableObject();
-        table.schema = tableInfo;
-       
-        tables[tableInfo.id] = table;
-      });
+    handleSchemaCallback: function(schema) {
+      var schemaValid = this.validateSchema(schema)
       
-      this.phaseState.inProgress = false
+      if (schemaValid) {   
+        var tables = this.tables;
+        _.forEach(schema, function(tableInfo) {
+            var table = new TableObject();
+            table.schema = tableInfo;
+        
+            tables[tableInfo.id] = table;
+      });
+      }
+      
+      this.phaseState.inProgress = false;
     },
 
     handleDataCallback: function(tableName, data) {
@@ -265,7 +269,7 @@
     },
     
     handleDataDoneCallback: function() {
-        this.phaseState.inProgress = false
+        this.phaseState.inProgress = false;
         this.logger.log('No More Data');
         this.sendShutdown();
     },
@@ -319,7 +323,57 @@
 
       this.onPhaseChange(previousPhase, phase);
     },
-
+    
+    validateSchema: function(schema) {
+      var errors;
+      var hasTableErrors = false;
+      var hasColumnErrors = false;
+      
+      var tableConstraints = {
+        id: {
+          presence: true
+        },
+        columns: {
+          presence: true
+        }
+      };
+      
+      var columnConstraints = {
+        id: {
+          presence: true
+        },
+        dataType: {
+          presence: true
+        }
+      };
+      
+      _.forEach(schema, function(table) {
+        errors = validate(table, tableConstraints);
+        hasTableErrors = (errors !== undefined);
+        
+        if (!hasTableErrors) {
+          // table is valid, now check each column
+          _.forEach(table.columns, function(column) {
+            errors = validate(column, columnConstraints);
+          });
+          
+          hasColumnErrors = (errors !== undefined);
+        }
+        
+        if (hasTableErrors || hasColumnErrors) {
+          // If there were errors in either table of column validation, log them all
+          _.forEach(Object.keys(errors), function(key) {
+            _.forEach(errors[key], function(error) {
+              console.error(error); 
+            });
+          });
+        }
+      });  
+      
+      // Errors will be undefined if all validation checks passed
+      return (errors === undefined);
+    },
+    
     //////////// External methods ///////////
     setInteractivePhase: function() {
       this.setCurrentPhase(WdcCommandSimulator.Phase.INTERACTIVE);
@@ -335,7 +389,7 @@
 
     setInProgress: function() {
       this.phaseState.inProgress = true;
-    }
+    },
   });
 
   ////////////////////////// REACT COMPONENTS ////////////////////////////
@@ -374,11 +428,9 @@
 
       var isInProgress = wdcCommandSim.phaseState.inProgress;
 
-      var interactiveStateInProgress = isInProgress
-                                    && wdcCommandSim.state.currentPhase === WdcCommandSimulator.Phase.INTERACTIVE;
+      var interactiveStateInProgress = isInProgress && wdcCommandSim.state.currentPhase === WdcCommandSimulator.Phase.INTERACTIVE;
 
-      var dataGatheringStateInProgress = isInProgress
-                                      && wdcCommandSim.state.currentPhase === WdcCommandSimulator.Phase.GATHER_DATA;
+      var dataGatheringStateInProgress = isInProgress && wdcCommandSim.state.currentPhase === WdcCommandSimulator.Phase.GATHER_DATA;
 
       var inDataGatherPhase = wdcCommandSim.state.currentPhase === WdcCommandSimulator.Phase.GATHER_DATA;
 
@@ -431,21 +483,22 @@
               DOM.h2({}, 'Tables')
             ),
 
-            wdcCommandSim.hasData()
-              ? Col.element({ md: 12, className: 'results-tables' },
-                  TableSection.element({ 
-                      tables: this.state.wdcCommandSimulator.tables, 
-                      getTableDataCallback: this.state.wdcCommandSimulator.sendGetData.bind(this.state.wdcCommandSimulator),
-                      fetchInProgress: dataGatheringStateInProgress })
+            wdcCommandSim.hasData() ?
+                Col.element({ md: 12, className: 'results-tables' },
+                    TableSection.element({ 
+                        tables: this.state.wdcCommandSimulator.tables, 
+                        getTableDataCallback: this.state.wdcCommandSimulator.sendGetData.bind(this.state.wdcCommandSimulator),
+                        fetchInProgress: dataGatheringStateInProgress })
                 )
               : Col.element({ md: 12, className: 'no-results-label' },
                   Label.element({}, ' No Data Gathered')
                 )
              ),
+            
 
           // Add the gather data iframe
-          this.state.shouldHaveGatherDataFrame
-            ? DOM.iframe({ style: {display: 'none'}, src: this.state.wdcUrl, ref: this.gatherDataFrameMounted })
+          this.state.shouldHaveGatherDataFrame ? 
+            DOM.iframe({ style: {display: 'none'}, src: this.state.wdcUrl, ref: this.gatherDataFrameMounted })
             : null
         )
       );
@@ -521,9 +574,7 @@
     },
 
     getSimulatorWindow: function() {
-      return this.state.openWindow
-        || (this.state.simulatorFrame && this.state.simulatorFrame.contentWindow)
-        || null;
+      return this.state.openWindow || (this.state.simulatorFrame && this.state.simulatorFrame.contentWindow) || null;
     },
 
     closeSimulatorWindowAndGatherDataFrame: function(complete) {
@@ -629,7 +680,7 @@
         DOM.div({},
           DOM.h2({ style: { verticalAlign: 'middle', display: 'inline-block' }}, this.props.title)
         )
-      )
+      );
     }
   });
   PhaseTitle.element = React.createFactory(PhaseTitle);
@@ -674,7 +725,7 @@
           var stateChanges = _.object([[key, newValue]]);
           _this.setStateAndNotify(stateChanges);
         }
-      }
+      };
     },
 
     // Non-react methods
@@ -726,7 +777,7 @@
  
     render: function () {
       var tablePreviewElements = [];
-      var tables = this.props.tables
+      var tables = this.props.tables;
       var fetchInProgress = this.props.fetchInProgress;
       var getTableDataCallback = this.props.getTableDataCallback;
       
@@ -763,7 +814,7 @@
       var tableInfo = this.props.tableInfo;
       var tableData = this.props.tableData;
       var hasData = tableData.length > 0;
-      var canIncrementalUpdate = hasData && (tableInfo.incrementColumnId)
+      var canIncrementalUpdate = hasData && (tableInfo.incrementColumnId);
    
       var incColumn = (tableInfo.incrementColumnId) ?
         tableInfo.incrementColumnId : 'None';
@@ -790,17 +841,16 @@
               header: columnTableHeader,
               elements: columnElements
             }),
-            (hasData)
-            ? 
+            (hasData) ?
               CollapsibleTable.element({ 
                 name: "Table Data",
                 header: dataTableHeader,
                 elements: dataElements
               })
             : null,
-            (!this.props.fetchInProgress) 
-              ? Button.element({ onClick: this.freshFetch, bsStyle: 'success'}, 'Fetch Table Data')
-              : Button.element({ disabled: true, bsStyle: 'success'}, 'Fetching Table Data...'),
+            (!this.props.fetchInProgress) ?
+              Button.element({ onClick: this.freshFetch, bsStyle: 'success'}, 'Fetch Table Data') :
+              Button.element({ disabled: true, bsStyle: 'success'}, 'Fetching Table Data...'),
             canIncrementalUpdate ? Button.element({ onClick: this.incrementalRefresh,
                                                     style: { marginLeft: '4px' } }, 'Incremental Update') : null,
 
@@ -866,7 +916,7 @@
           row.map(function(cellVal) {
             return DOM.td({ key: columnTableRowKey++ }, cellVal);
           })
-        )
+        );
       });
       
       return columnElements;
@@ -890,7 +940,7 @@
             schema.map(function(header) {
               return DOM.td({ key: dataTableRowKey++ }, row[header]);
             })
-          )
+          );
         });
       }
       
@@ -918,7 +968,7 @@
     getInitialState: function () {
         return {
           collapsed: false,
-        }
+        };
     },
 
     toggleCollapse: function() {
