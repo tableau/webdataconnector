@@ -48,7 +48,7 @@
             { "id": "url", "dataType": "string" },
             { "id": "thumbnailUrl", "dataType": "string" }
         ],
-        "alias": "Posts",
-        "id": "posts"
+        "alias": "Photos",
+        "id": "photos"
     }
 ]
