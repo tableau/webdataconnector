@@ -6,8 +6,12 @@ Currently in development is the WDC API version 2.0.  The biggest change with th
 
 This is a very early version of this feature, we are still under heavy iteration with the design of this API.  There will be some errors and incomplete functionality in the current version.  Please open an issue for any bug you encounter and also please leave feedback through issues as well!  
 
+New API Reference
+---------------
+We have the new API reference available here: [Beta docs](https://connectors.tableau.com/docs/index.html).
 
-API Overview
+
+New API Overview
 ---------------
 
 There are two major changes in version 2 of the WDC API:
@@ -28,14 +32,7 @@ In contrast, at a high level, version 2 of the API follows this flow:
  4. Whenever the WDC has finished getting all of its data for the requested tables, it calls the passed in doneCallback.
 
 
-Please consult the beta docs for new API definitions: [Beta docs](https://connectors.tableau.com/docs/index.html).
-
-Please see the StockQuotesConnector_final sample as an example of a WDC built with the new API.
-
-
-New Samples and ConvertConnector
+New Samples
 ---------------
-We are in the process of building new samples for the WDC v2.  Not all of these have been completed yet.  The ConvertConnector script can be used to transform a v1 connector to v2.  See the MadMoneyScraper connector for an example.
-Soon we will be releasing new documentation and step by step tutorials for building WDCs on the new API. 
-
+There are several new samples available.  Please consult the StockQuoteConnector_basic example for a sample of how to build a simple single table connector with WDC 2.0.  The JSONMultiTableConnector is the best reference for building an advanced, multi-table connector with the new API. 
 
