@@ -49,6 +49,7 @@ These are connectors created and maintained by the community.  Not endorsed or s
 Name of Connector     | Data Source   |  Author   |   Source Code    |  Hosted URL
 -------- |  -------- |  -------- |  --------  | ---------
 AWS CloudWatch | [CloudWatch](https://aws.amazon.com/cloudwatch/) | David F. Severski|  [Tableau WDC for CloudWatch](https://github.com/davidski/tableau-wdc-cloudwatch)  |  N/A
+DoubleClick Campaign Manager | [DCM by Google](https://www.doubleclickbygoogle.com/solutions/digital-marketing/campaign-manager/) | [Eric Peterson](https://github.com/iamEAP) | [dcm-dfa-wdc](https://github.com/tableau-mkt/dcm-dfa-wdc) | [DCM/DFA WDC](https://dcm-dfa-wdc.herokuapp.com/)
 Elastic Search | [Elastic Search](https://www.elastic.co/products/elasticsearch) | Adam Lacey  |  [mradamlacey](https://github.com/mradamlacey/elasticsearch-tableau-connector)  |  N/A
 Fitbit | [Fitbit.com](https://www.fitbit.com/) | Craig Bloodworth  |  N/A  |  [Fitbit WDC](http://data.theinformationlab.co.uk/fitbit.html)
 Flickr | [Flickr](https://www.flickr.com/services/api/) | [Zeki Melek](https://github.com/melekzek)  |  [tableau-wdc-flickr](https://github.com/melekzek/tableau-wdc-flickr)  |  N/A
