@@ -24,7 +24,7 @@ This is a very early version of this feature, we are still under heavy iteration
 API Overview
 ---------------
 
-There are two major changes in version 2 of thew WDC API:
+There are two major changes in version 2 of the WDC API:
 * The API now allows the web data connector to independently bring back multiple tables
 * The API waits for the developer to tell it when it's finished gathering data, rather than repeatedly calling getData.
 
