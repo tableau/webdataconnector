@@ -1,55 +1,37 @@
 (function(_, React, ReactBootstrap) {
-
   var NOOP = function(){};
-  var ALLOWED_WDC_API_VERSION = "1.1.1";
 
   function verifyCanRunWdcVersion(wdcApiVersion) {
-    if(wdcApiVersion !== ALLOWED_WDC_API_VERSION) {
-      throw new Error('Simulator version "' + ALLOWED_WDC_API_VERSION + '" does not match connector version "' + wdcApiVersion + '".');
+    if(wdcApiVersion === "1.1.0") {
+      throw new Error('The Simulator can only run WDCs using version 1.1.1 or later, your version is: ' + wdcApiVersion);
     }
   }
-
-  // Private static functions
-  function convertTableDataToMatrix(tableData, headerTitles) {
-    return tableData.map(function(tableDataRow) {
-      return headerTitles.map(function(title, index) {
-        var cellVal = tableDataRow[title];
-        if(typeof cellVal === 'undefined') {
-          cellVal = tableDataRow[index];
+   
+  function getConnectorURL() {
+    try {
+      // build an anchor object out of the url so it is easy to parse
+      var docLink = $('<a>', { href:document.URL } )[0];
+      var q = docLink.search.substring(1);
+      if (q) {
+        // use some regexes to turn the query into json, then parse the json
+        var params = JSON.parse('{"' + decodeURI(q).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+        var src = params.src;
+        if (src && src.length > 0) {
+          return src;
         }
-        return cellVal;
-      });
-    });
-  }
+      }
+    } catch (err) {
+      var msg =
+      msg += "Error description: " + err.message + "\n\n";
+      msg += "Please specify the connector on url line: e.g.\n\n";
+      msg += "Simulator.html?src=ExampleConnector.html.\n\n";
+      console.log(msg);
+    }
 
-  /*
-  interface ISendPostMessage {
-   (messagePayload: string): any;
+    // Set the default connector here
+    return "../Examples/StockQuoteConnector_basic.html";
   }
-   */
-
-  /*
-  interface IPhaseChangeHandler {
-    //WdcCommandSimulator.Phase
-    (previousPhase: string, currentPhase: string, data: any): any;
-  }
-   */
-
-  /*
-  interface IEventHandler {
-    //messageDirection: WdcCommandSimulator.MessageDirection, eventType: WdcCommandSimulator.EventName
-    (messageDirection: string, eventType: string, data: any): any;
-  }
-   */
-
-  /*
-  interface ILogger {
-    log(msg: string): void;
-    warn(msg: string): void;
-    error(msg: string): void;
-  }
-   */
-
+  
   function WdcCommandSimulator(/*ISendPostMessage*/ sendPostMessage, /*IPhaseChangeHandler*/ onPhaseChange, /*IEventHandler*/ onEvent, /*ILogger*/ logger) {
 
     // Properties that are exposed to the user on the tableau object in the WDC
@@ -62,7 +44,7 @@
 
     this.resetPhaseState();
 
-    this.resetTableData();
+    this.resetTables();
 
     this.currentPhase = WdcCommandSimulator.Phase.INTERACTIVE;
 
@@ -72,18 +54,17 @@
     this.logger = logger || window.console;
   }
 
-  WdcCommandSimulator.MAX_DATA_REQUEST_CALLS = 100;
-
   WdcCommandSimulator.EventName = {
     LOADED:       "loaded",
     LOG:          "log",
     INIT:         "init",
     INIT_CB:      "initCallback",
     SUBMIT:       "submit",
-    HEADERS_GET:  "getColumnHeaders",
-    HEADERS_CB:   "headersCallback",
-    DATA_GET:     "getTableData",
-    DATA_CB:      "dataCallback",
+    SCHEMA_GET:   "getSchema",
+    SCHEMA_CB:    "_schemaCallback",
+    DATA_GET:     "getData",
+    DATA_CB:      "_tableDataCallback",
+    DATA_DONE_CB: "_dataDoneCallback",
     SHUTDOWN:     "shutdown",
     SHUTDOWN_CB:  "shutdownCallback",
     ABORT:        "abortWithError"
@@ -99,7 +80,12 @@
     SENT: 'sent',
     RECEIVED: 'received'
   };
-
+  
+  function TableObject() {
+    this.schema = [];
+    this.data = [];
+  }
+  
   // Instance methods
   _.extend(WdcCommandSimulator.prototype, {
 
@@ -109,8 +95,7 @@
         connectionName: '',
         connectionData: '',
         username: '',
-        password: '',
-        incrementalExtractColumn: ''
+        password: ''
       });
     },
 
@@ -124,18 +109,20 @@
       this.phaseState = {
         inProgress: false,
         submitWasCalled: false,
-        initCallbackWasCalled: false,
-        numberOfGetDataCallbackCalls: 0
+        initCallbackWasCalled: false
       };
     },
 
-    resetTableData: function() {
-      this.tableData = {
-        headerTitles: null,
-        headerTypes: null,
-        lastIncrementalExtractColumnValue: undefined,
-        table: []
-      };
+    // Tables is the main data structure for the the simulator
+    // Tables is a dictonary with the following structure:
+    //      key: wdc table id
+    //      value: tableObject
+    resetTables: function() {
+      this.tables = {};
+    },
+    
+    resetTableData: function(tableKey) {
+      this.tables[tableKey].data = [];
     },
 
     receivePostMessage: function(payload) {
@@ -170,17 +157,15 @@
           this.handleSubmit();
           break;
 
-        case WdcCommandSimulator.EventName.HEADERS_CB:
-          var fieldNames = msgData.fieldNames;
-          var fieldTypes = msgData.types;
-          this.handleHeadersCallback(fieldNames, fieldTypes);
+        case WdcCommandSimulator.EventName.SCHEMA_CB:
+          var schema = msgData.schema;
+          this.handleSchemaCallback(schema);
           break;
 
         case WdcCommandSimulator.EventName.DATA_CB:
-          var data =            msgData.data;
-          var lastRecordToken = msgData.lastRecordToken;
-          var moreData =        msgData.moreData;
-          this.handleDataCallback(data, lastRecordToken, moreData);
+          var tableName =    msgData.tableName;
+          var data =         msgData.data;
+          this.handleDataCallback(tableName, data);
           break;
 
         case WdcCommandSimulator.EventName.SHUTDOWN_CB:
@@ -190,6 +175,10 @@
         case WdcCommandSimulator.EventName.ABORT:
           var errorMsg = msgData.errorMsg;
           this.handleAbort(errorMsg);
+          break;
+          
+        case WdcCommandSimulator.EventName.DATA_DONE_CB:
+          this.handleDataDoneCallback();
           break;
       }
 
@@ -216,7 +205,7 @@
         props:    messageData.props,
         name:     messageData.msgName,
         version:  messageData.version || (messageData.props && messageData.props.versionNumber)
-      }
+      };
     },
 
     applyProps: function(props) {
@@ -226,7 +215,6 @@
       this.props.connectionData = props.connectionData;
       this.props.username = props.username;
       this.props.password = props.password;
-      this.props.incrementalExtractColumn = props.incrementalExtractColumn;
     },
 
     // TODO: Verify props passed in are acceptable
@@ -238,7 +226,7 @@
     // POSTED METHOD HANDLERS
 
     handleLog: function(msg) {
-      this.logger.log(msg)
+      this.logger.log(msg);
     },
 
     handleLoaded: function(version) {
@@ -260,45 +248,30 @@
       this.tryToCompleteCurrentPhase();
     },
 
-    handleHeadersCallback: function(headerTitles, headerTypes) {
-      this.verifyHeaders(headerTitles, headerTypes);
-
-      this.tableData.headerTitles = headerTitles;
-      this.tableData.headerTypes = headerTypes;
-
-      this.sendGetData(this.tableData.lastIncrementalExtractColumnValue);
+    handleSchemaCallback: function(schema) {
+      var schemaValid = this.validateSchema(schema)
+      
+      if (schemaValid) {   
+        var tables = this.tables;
+        _.forEach(schema, function(tableInfo) {
+            var table = new TableObject();
+            table.schema = tableInfo;
+        
+            tables[tableInfo.id] = table;
+      });
+      }
+      
+      this.phaseState.inProgress = false;
     },
 
-    handleDataCallback: function(tableData, lastRecordToken, moreData) {
-      this.verifyDataTableCallback(tableData, lastRecordToken, moreData);
-
-      // Count the number of times the getDataCallback is called in an interactive phase so it can be limited
-      this.state.numberOfGetDataCallbackCalls++;
-      if(this.state.numberOfGetDataCallbackCalls > WdcCommandSimulator.MAX_DATA_REQUEST_CALLS) {
-        this.logger.warn('Maximum Number of getDataTable() Requests ('+WdcCommandSimulator.MAX_DATA_REQUEST_CALLS+') Reached.');
-        this.sendShutdown();
-        return;
-      }
-
-      var table = convertTableDataToMatrix(tableData, this.tableData.headerTitles);
-      this.tableData.table = this.tableData.table.concat(table);
-
-      // Set the last value from the incrementalExtractColumn as the saved lastRecordToken used the first time
-      // the getTableData method is called during the incremental refresh
-      var lastRow = this.tableData.table[this.tableData.table.length - 1];
-      var incrementalExtractColumnRowIndex = this.tableData.headerTitles.indexOf(this.props.incrementalExtractColumn);
-      if(incrementalExtractColumnRowIndex >= 0) {
-        this.tableData.lastIncrementalExtractColumnValue = lastRow[incrementalExtractColumnRowIndex];
-      }
-
-      // Once we have a value from the incremental extract column then we can enable incremental refresh
-
-      if(moreData) {
-        this.sendGetData(lastRecordToken);
-      } else {
+    handleDataCallback: function(tableName, data) {
+      this.tables[tableName].data = this.tables[tableName].data.concat(data);
+    },
+    
+    handleDataDoneCallback: function() {
+        this.phaseState.inProgress = false;
         this.logger.log('No More Data');
         this.sendShutdown();
-      }
     },
 
     handleShutdownCallback: function() {
@@ -311,17 +284,22 @@
     },
 
     // MESSAGES TO SEND TO CLIENT
-
     sendInit: function() {
       this.sendMessage(WdcCommandSimulator.EventName.INIT, { phase: this.state.currentPhase });
     },
 
     sendGetHeaders: function() {
-      this.sendMessage(WdcCommandSimulator.EventName.HEADERS_GET);
+      this.sendMessage(WdcCommandSimulator.EventName.SCHEMA_GET);
     },
 
-    sendGetData: function(lastRecordToken) {
-      this.sendMessage(WdcCommandSimulator.EventName.DATA_GET, { lastRecordToken: lastRecordToken });
+    // Takes an array of tableuInfo/incValue paris
+    sendGetData: function(tablesAndIncrementValues, isFreshFetch) {
+      if (isFreshFetch) {
+        tableKey = tablesAndIncrementValues[0].tableInfo.id;
+        this.resetTableData(tableKey);
+      }
+      
+      this.sendMessage(WdcCommandSimulator.EventName.DATA_GET, { tablesAndIncrementValues: tablesAndIncrementValues });
     },
 
     sendShutdown: function() {
@@ -334,25 +312,7 @@
         this.phaseState.inProgress = false;
       }
     },
-
-    verifyHeaders: function(headerTitles, headerTypes) {
-      if(!headerTitles || !headerTypes) {
-        throw new Error('tableau.headersCallback(titles, types) must be passed the header titles and types');
-      }
-
-      if(headerTitles.length != headerTypes.length) {
-        this.logger.warn('header titles and types must be the same length');
-      }
-
-      if (this.props.incrementalExtractColumn && headerTitles.indexOf(this.props.incrementalExtractColumn) == -1) {
-        this.logger.warn('Incremental refresh column is set but is not a column returned to Tableau, IncrementalExtractColumn: "' + this.props.incrementalExtractColumn + '"');
-      }
-    },
-
-    verifyDataTableCallback: function(tableData, lastRecordToken, moreData) {
-      // TODO: Add verify logic here
-    },
-
+    
     setCurrentPhase: function(phase) {
       if(!_.contains(WdcCommandSimulator.Phase, phase)) return;
 
@@ -363,7 +323,57 @@
 
       this.onPhaseChange(previousPhase, phase);
     },
-
+    
+    validateSchema: function(schema) {
+      var errors;
+      var hasTableErrors = false;
+      var hasColumnErrors = false;
+      
+      var tableConstraints = {
+        id: {
+          presence: true
+        },
+        columns: {
+          presence: true
+        }
+      };
+      
+      var columnConstraints = {
+        id: {
+          presence: true
+        },
+        dataType: {
+          presence: true
+        }
+      };
+      
+      _.forEach(schema, function(table) {
+        errors = validate(table, tableConstraints);
+        hasTableErrors = (errors !== undefined);
+        
+        if (!hasTableErrors) {
+          // table is valid, now check each column
+          _.forEach(table.columns, function(column) {
+            errors = validate(column, columnConstraints);
+          });
+          
+          hasColumnErrors = (errors !== undefined);
+        }
+        
+        if (hasTableErrors || hasColumnErrors) {
+          // If there were errors in either table of column validation, log them all
+          _.forEach(Object.keys(errors), function(key) {
+            _.forEach(errors[key], function(error) {
+              console.error(error); 
+            });
+          });
+        }
+      });  
+      
+      // Errors will be undefined if all validation checks passed
+      return (errors === undefined);
+    },
+    
     //////////// External methods ///////////
     setInteractivePhase: function() {
       this.setCurrentPhase(WdcCommandSimulator.Phase.INTERACTIVE);
@@ -373,17 +383,13 @@
       this.setCurrentPhase(WdcCommandSimulator.Phase.GATHER_DATA);
     },
 
-    canDoAnIncrementalRefresh: function() {
-      return this.hasData() && !_.isUndefined(this.tableData.lastIncrementalExtractColumnValue);
-    },
-
     hasData: function() {
-      return !!this.tableData.table && this.tableData.table.length > 0;
+      return !!this.tables && Object.keys(this.tables).length > 0;
     },
 
     setInProgress: function() {
       this.phaseState.inProgress = true;
-    }
+    },
   });
 
   ////////////////////////// REACT COMPONENTS ////////////////////////////
@@ -399,17 +405,17 @@
   var Col = ReactBootstrap.Col;
   var Table = ReactBootstrap.Table;
   var Label = ReactBootstrap.Label;
-
+  var Collapse = ReactBootstrap.Collapse;
 
   var SimulatorApp = React.createClass({
     getInitialState: function () {
       var wdcCommandSimulator = this.initializeWdcCommandSimulator();
 
       return {
-        wdcUrl: '../Examples/StockQuoteConnector_final.html',
+        wdcUrl: getConnectorURL(),
         wdcUrlDisabled: false,
         wdcCommandSimulator: wdcCommandSimulator,
-        wdcContinueInteractiveToDataGatherPhase: true,
+        wdcShouldFetchAllTables: false,
         openWindow: null,
         simulatorFrame: null,
         shouldHaveGatherDataFrame: false
@@ -418,19 +424,18 @@
     render: function () {
       var wdcCommandSim = this.state.wdcCommandSimulator;
 
-      var clearButton = Button.element({ onClick: this.clearAddressBar }, 'Clear');
-      var inProgressLabel = Label.element({ bsStyle: 'info' }, 'In Progress');
+      var resetButton = Button.element({ onClick: this.resetSimulator }, 'Reset');
 
       var isInProgress = wdcCommandSim.phaseState.inProgress;
 
-      var interactiveStateInProgress = isInProgress
-                                    && wdcCommandSim.state.currentPhase === WdcCommandSimulator.Phase.INTERACTIVE;
+      var interactiveStateInProgress = isInProgress && wdcCommandSim.state.currentPhase === WdcCommandSimulator.Phase.INTERACTIVE;
 
-      var dataGatheringStateInProgress = isInProgress
-                                      && wdcCommandSim.state.currentPhase === WdcCommandSimulator.Phase.GATHER_DATA;
+      var dataGatheringStateInProgress = isInProgress && wdcCommandSim.state.currentPhase === WdcCommandSimulator.Phase.GATHER_DATA;
+
+      var inDataGatherPhase = wdcCommandSim.state.currentPhase === WdcCommandSimulator.Phase.GATHER_DATA;
 
       var isWDCUrlEmpty = (this.state.wdcUrl === '');
-
+     
       return (
         DOM.div({ className: 'simulator-app' },
           DOM.div({ className: 'navbar navbar-default' },
@@ -441,30 +446,23 @@
 
             Col.element({ md: 12, className: 'address-bar' },
               Input.element({
-                type: 'text', disabled: isInProgress, label: 'WDC URL',
-                value: this.state.wdcUrl, onChange: this.setWdcUrl, buttonAfter: clearButton
+                type: 'text', disabled: inDataGatherPhase, label: 'WDC URL',
+                value: this.state.wdcUrl, onChange: this.setWdcUrl, buttonAfter: resetButton
               })
             ),
 
-            Col.element({ md: 6, className: 'data-gather-phase' },
-              PhaseTitle.element({ title: 'Phase 1: Interactive', isInProgress: interactiveStateInProgress }),
+            Col.element({ md: 6, className: 'run-connector' },
+              PhaseTitle.element({ title: 'Run Connector', isInProgress: interactiveStateInProgress }),
               DOM.div({},
-                Button.element({ onClick: this.startInteractivePhase, disabled: isInProgress || isWDCUrlEmpty }, 'Run Interactive Phase'),
-                interactiveStateInProgress ? Button.element({ onClick: this.cancelCurrentPhase }, 'Cancel Interactive Phase') : null
+                Button.element({ onClick: this.startInteractivePhase, bsStyle: 'success', disabled: isInProgress || isWDCUrlEmpty }, 'Start Interactive Phase'),
+                interactiveStateInProgress ? Button.element({ onClick: this.cancelCurrentPhase,
+                                                              style: { marginLeft: '4px' } }, 'Abort') : null
               ),
               Input.element({
-                type: 'checkbox', label: 'Automatically continue To data gather phase (to simulate normal WDC behavior).',
-                checked: this.state.wdcContinueInteractiveToDataGatherPhase,
-                onChange: this.setWdcContinueToDataGatherPhase
-              }),
-
-              PhaseTitle.element({ title: 'Phase 2: Data Gathering', isInProgress: dataGatheringStateInProgress }),
-              Button.element({ onClick: this.gatherData, disabled: isInProgress || isWDCUrlEmpty }, 'Run Gather Data'),
-              dataGatheringStateInProgress ? Button.element({ onClick: this.cancelCurrentPhase }, 'Cancel Gather Data Phase') : null,
-
-              wdcCommandSim.canDoAnIncrementalRefresh()
-                ? Button.element({ onClick: this.incrementalRefresh, disabled: isInProgress }, 'Run Incremental Refresh')
-                : null
+                type: 'checkbox', label: 'Automatically fetch data for all tables.',
+                checked: this.state.wdcShouldFetchAllTables,
+                onChange: this.setWdcShouldFetchAllTables
+              })
             ),
 
             Col.element({ md: 6, className: 'interactive-phase' },
@@ -481,19 +479,26 @@
               DOM.hr({})
             ),
 
-            wdcCommandSim.hasData()
-              ? Col.element({ md: 12, className: 'results-table' },
-                  TablePreview.element(this.state.wdcCommandSimulator.tableData)
+            Col.element({ md: 12, className: 'table-header' },
+              DOM.h2({}, 'Tables')
+            ),
+
+            wdcCommandSim.hasData() ?
+                Col.element({ md: 12, className: 'results-tables' },
+                    TableSection.element({ 
+                        tables: this.state.wdcCommandSimulator.tables, 
+                        getTableDataCallback: this.state.wdcCommandSimulator.sendGetData.bind(this.state.wdcCommandSimulator),
+                        fetchInProgress: dataGatheringStateInProgress })
                 )
               : Col.element({ md: 12, className: 'no-results-label' },
-                  dataGatheringStateInProgress ? Label.element({}, 'Data Gather in Progress')
-                    : Label.element({}, ' No Data Gathered')
+                  Label.element({}, ' No Data Gathered')
                 )
-          ),
+             ),
+            
 
           // Add the gather data iframe
-          this.state.shouldHaveGatherDataFrame
-            ? DOM.iframe({ style: {display: 'none'}, src: this.state.wdcUrl, ref: this.gatherDataFrameMounted })
+          this.state.shouldHaveGatherDataFrame ? 
+            DOM.iframe({ style: {display: 'none'}, src: this.state.wdcUrl, ref: this.gatherDataFrameMounted })
             : null
         )
       );
@@ -506,7 +511,7 @@
     },
 
     // Non-react methods
-
+    
     // SIMULATOR COMMAND BINDINGS
 
     initializeWdcCommandSimulator: function() {
@@ -535,19 +540,24 @@
     },
 
     onSimulatorCommandEvent: function(direction, eventName, eventData) {
-      //console.log(arguments);
-
       var wdcSim = this.state.wdcCommandSimulator;
-
-      // Close down the simulator windows if wdcCommandSimulator is no longer in progress after this event
-      if(!wdcSim.phaseState.inProgress) {
-        this.closeSimulatorWindowAndGatherDataFrame();
-
-        if(wdcSim.state.currentPhase === WdcCommandSimulator.Phase.INTERACTIVE
-          && this.state.wdcContinueInteractiveToDataGatherPhase)
-        {
-          this.gatherData();
-        }
+      
+      switch(eventName) {
+        case WdcCommandSimulator.EventName.SUBMIT:
+          this.closeSimulatorWindowAndGatherDataFrame();
+          this.gatherSchemaData();
+          break;
+        case WdcCommandSimulator.EventName.DATA_GET:
+          if (!wdcSim.phaseState.inProgress) { 
+            this.state.wdcCommandSimulator.setInProgress();
+          } 
+          break;
+        case WdcCommandSimulator.EventName.SCHEMA_CB:
+          if (this.state.wdcShouldFetchAllTables) {
+            this.state.wdcCommandSimulator.setInProgress();
+            this.fetchAllData(); 
+          }
+          break;
       }
 
       // Reassign wdcCommandSimulator to trigger state updates after events complete
@@ -559,15 +569,12 @@
     },
 
     // SIMULATOR WINDOW METHODS
-
     applyWdcCommandSimulatorChanges: function(cb) {
       this.setState({ wdcCommandSimulator: this.state.wdcCommandSimulator }, cb || NOOP);
     },
 
     getSimulatorWindow: function() {
-      return this.state.openWindow
-        || (this.state.simulatorFrame && this.state.simulatorFrame.contentWindow)
-        || null;
+      return this.state.openWindow || (this.state.simulatorFrame && this.state.simulatorFrame.contentWindow) || null;
     },
 
     closeSimulatorWindowAndGatherDataFrame: function(complete) {
@@ -582,13 +589,16 @@
       this.setState({ wdcUrl: e.target.value });
     },
 
-    setWdcContinueToDataGatherPhase: function(e) {
-      this.setState({ wdcContinueInteractiveToDataGatherPhase: e.target.checked });
+    setWdcShouldFetchAllTables: function(e) {
+      this.setState({ wdcShouldFetchAllTables: e.target.checked });
     },
 
-    clearAddressBar: function() {
+    resetSimulator: function() {
+      this.state.wdcCommandSimulator.resetState();
+      this.state.wdcCommandSimulator.resetTables();
       this.state.wdcCommandSimulator.resetProps();
-      this.setState({ wdcUrlDisabled: false, wdcUrl: '' });
+      
+      this.setState({});
     },
 
     unlockWdcProperties: function() {
@@ -606,19 +616,25 @@
       });
     },
 
-    startInteractivePhase: function() {
+    startInteractivePhase: function() {       
       this.setState({ wdcUrlDisabled: true });
 
       var wdcSim = this.state.wdcCommandSimulator;
 
-      wdcSim.resetTableData();
+      wdcSim.resetTables();
       wdcSim.setInteractivePhase();
       wdcSim.setInProgress();
 
       this.closeSimulatorWindowAndGatherDataFrame(function() {
-        var windowProps = 'height=500,width=800';
         var openWindow = window.open(this.state.wdcUrl, 'simulator', SimulatorApp.WINDOW_PROPS);
         this.setState({ openWindow: openWindow });
+      });
+    },
+    
+    fetchAllData: function() {
+      var wdcSim = this.state.wdcCommandSimulator;
+      _.forEach(Object.keys(wdcSim.tables), function(key) {
+        wdcSim.sendGetData([{ tableInfo: wdcSim.tables[key].schema }]);
       });
     },
 
@@ -630,13 +646,8 @@
     },
 
     // GATHER DATA PHASE METHODS
-
-    gatherData: function() {
-      this.state.wdcCommandSimulator.resetTableData();
-      this.startGatherDataPhase();
-    },
-
-    incrementalRefresh: function() {
+    gatherSchemaData: function() {
+      this.state.wdcCommandSimulator.resetTables();
       this.startGatherDataPhase();
     },
 
@@ -659,49 +670,45 @@
   SimulatorApp.WINDOW_PROPS = 'height=500,width=800';
 
 
-
   var PhaseTitle = React.createClass({
+    propTypes: {
+      title: React.PropTypes.string.isRequired
+    },
+    
     render: function() {
-      var inProgressStyle = {
-        display: 'inline-block',
-        verticalAlign: 'middle',
-        marginLeft: 10,
-        marginTop: 20, // Needed to match h2
-        marginBottom: 10 // Needed to match h2
-      };
-
       return (
         DOM.div({},
-          DOM.h2({ style: { verticalAlign: 'middle', display: 'inline-block' }}, this.props.title),
-          this.props.isInProgress ? Label.element({ bsStyle: 'info', style: inProgressStyle }, 'In Progress') : null
+          DOM.h2({ style: { verticalAlign: 'middle', display: 'inline-block' }}, this.props.title)
         )
-      )
+      );
     }
   });
   PhaseTitle.element = React.createFactory(PhaseTitle);
 
-
   var SimulatorProperties = React.createClass({
+    propTypes: {
+      disabled: React.PropTypes.bool.isRequired,
+      wdcProps: React.PropTypes.object.isRequired,
+      onPropsChange: React.PropTypes.func.isRequired,
+    },
+    
     getInitialState: function () {
       return this.propsToState(this.props);
     },
+    
     render: function () {
       var key = SimulatorProperties.PropertyKey;
 
       return (
         DOM.div({ className: 'data-gather-properties' },
-          DOM.div({style: { marginBottom: '8px' }},
-            Button.element({ onClick: this.clearProperties, disabled: this.props.disabled }, 'Clear Properties')
-          ),
-
           Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Connection Name', valueLink: this.linkState(key.CONNECTION_NAME) }),
           Input.element({ type: 'textarea', disabled: this.props.disabled, label: 'Connection Data', valueLink: this.linkState(key.CONNECTION_DATA) }),
           Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Username',        valueLink: this.linkState(key.USERNAME) }),
-          Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Password',        valueLink: this.linkState(key.PASSWORD) }),
-          Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Incremental Refresh Column', valueLink: this.linkState(key.INCREMENTAL_EXTRACT_COLUMN) })
+          Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Password',        valueLink: this.linkState(key.PASSWORD) })
         )
       );
     },
+    
     componentWillReceiveProps: function(nextProps) {
       var newState = this.propsToState(nextProps);
 
@@ -709,6 +716,7 @@
         this.setStateAndNotify(newState);
       }
     },
+    
     linkState: function(key) {
       var _this = this;
       return {
@@ -717,7 +725,7 @@
           var stateChanges = _.object([[key, newValue]]);
           _this.setStateAndNotify(stateChanges);
         }
-      }
+      };
     },
 
     // Non-react methods
@@ -745,77 +753,261 @@
 
       return wdcProps;
     },
+    
     setStateAndNotify: function(newState) {
       this.setState(newState, function() {
         this.props.onPropsChange(this.state);
       });
-    },
-
-    clearProperties: function() {
-      var newState = {};
-      _.forEach(SimulatorProperties.PropertyKey, function(propKey) { newState[propKey] = ''; });
-      this.setStateAndNotify(newState);
     }
   });
   SimulatorProperties.element = React.createFactory(SimulatorProperties);
-
   SimulatorProperties.PropertyKey = {
     CONNECTION_NAME: 'connectionName',
     CONNECTION_DATA: 'connectionData',
     USERNAME: 'username',
-    PASSWORD: 'password',
-    INCREMENTAL_EXTRACT_COLUMN: 'incrementalExtractColumn'
+    PASSWORD: 'password'
   };
 
-  var tableRowKey = 1;
-  var TablePreview = React.createClass({
+  var TableSection = React.createClass({
+    propTypes: {
+      tables: React.PropTypes.object.isRequired,
+      getTableDataCallback: React.PropTypes.func.isRequired,
+      fetchInProgress: React.PropTypes.bool.isRequired
+    },
+ 
     render: function () {
-      if(!this.props || !this.props.headerTitles || this.props.headerTitles.length === 0) return null;
-
-      var props = this.props;
-      var tableHeader = this.props.headerTitles;
-      var tableMatrix = this.props.table;
-
-      var tableElements = tableMatrix.slice(0, TablePreview.MAX_ROWS).map(function(row) {
-        return DOM.tr({ key: tableRowKey++ },
-          row.map(function(cellVal) {
-            return DOM.td({ key: tableRowKey++ }, cellVal);
-          })
-        )
+      var tablePreviewElements = [];
+      var tables = this.props.tables;
+      var fetchInProgress = this.props.fetchInProgress;
+      var getTableDataCallback = this.props.getTableDataCallback;
+      
+      _.forEach(Object.keys(tables), function(key) {
+        tablePreviewElements.push(TablePreview.element( { 
+          key: key,
+          tableInfo: tables[key].schema,
+          tableData: tables[key].data,
+          getTableDataCallback: getTableDataCallback,
+          fetchInProgress: fetchInProgress
+        }));
       });
 
-      if(tableMatrix.length > tableElements.length) {
-        tableElement.push(
-          DOM.tr({ key: tableRowKey++ },
-            DOM.td({ colSpan: tableHeader.length }, 'Not all data displayed.  Only displaying the first ' + TablePreview.MAX_ROWS + ' rows for performance.')
-          )
-        );
-      }
-
       return (
-        Table.element({ bordered: true, condensed: true },
-          DOM.thead(null,
-            DOM.tr(null,
-              tableHeader.map(function(headerName) {
-                return DOM.th({ key: tableRowKey++ }, headerName);
+        DOM.div({ className: 'table-section' },
+          tablePreviewElements
+        )
+      );
+    }      
+  });
+  TableSection.element = React.createFactory(TableSection);
+
+  var TablePreview = React.createClass({    
+    propTypes: {
+      tableInfo: React.PropTypes.object.isRequired,
+      tableData: React.PropTypes.array.isRequired,
+      getTableDataCallback: React.PropTypes.func.isRequired,
+      fetchInProgress: React.PropTypes.bool.isRequired
+    },
+
+    render: function () {
+      if(!this.props || !this.props.tableInfo) return null;
+      
+      var tableInfo = this.props.tableInfo;
+      var tableData = this.props.tableData;
+      var hasData = tableData.length > 0;
+      var canIncrementalUpdate = hasData && (tableInfo.incrementColumnId);
+   
+      var incColumn = (tableInfo.incrementColumnId) ?
+        tableInfo.incrementColumnId : 'None';
+
+      // Prep table of columnInfos for this TablePreview       
+      var columnTableHeader = this.getMetadataHeader();
+      var columnElements = this.getMetadataElements(tableInfo);
+      
+      // Prep table of actual data for this TableuPreview      
+      var dataTableHeader = this.getDataHeader(tableInfo);
+      var dataElements = this.getDataElements(tableData, dataTableHeader);
+            
+      return ( 
+        DOM.div({ className: 'table-preview-' + tableInfo.id},
+          DOM.h4({}, tableInfo.id),
+            (tableInfo.incrementColumnId) ?
+              DOM.p({}, tableInfo.description)
+              : null,
+            (tableInfo.incrementColumnId) ?
+              DOM.p({}, 'Incremental Refresh Column: ' + incColumn) 
+              : null,
+            CollapsibleTable.element({ 
+              name: "Column Metadata",
+              header: columnTableHeader,
+              elements: columnElements
+            }),
+            (hasData) ?
+              CollapsibleTable.element({ 
+                name: "Table Data",
+                header: dataTableHeader,
+                elements: dataElements
               })
+            : null,
+            (!this.props.fetchInProgress) ?
+              Button.element({ onClick: this.freshFetch, bsStyle: 'success'}, 'Fetch Table Data') :
+              Button.element({ disabled: true, bsStyle: 'success'}, 'Fetching Table Data...'),
+            canIncrementalUpdate ? Button.element({ onClick: this.incrementalRefresh,
+                                                    style: { marginLeft: '4px' } }, 'Incremental Update') : null,
+
+            DOM.hr({})
+        )
+      );
+    },
+    
+    // Non-react methods
+    incrementalRefresh() {
+      this.fetchData(true);  
+    },
+    
+    freshFetch() {
+      this.fetchData(false);
+    },
+    
+    fetchData: function(isIncremental) {            
+      var tableInfo = this.props.tableInfo;
+      var tableData = this.props.tableData;
+      var tablesAndIncValues = [];
+      
+      var lastElement = tableData[tableData.length - 1];
+      
+      var incrementValue;
+      if (isIncremental && lastElement) {
+        incrementValue = lastElement[tableInfo.incrementColumnId];
+      }
+      
+      tablesAndIncValues.push({ tableInfo: tableInfo, 
+                                incrementValue: incrementValue });
+
+      // getTableCallback takes (tablesAndIncValues, isFreshFetch)
+      this.props.getTableDataCallback(tablesAndIncValues, !isIncremental);
+    }, 
+    
+    getMetadataHeader() {
+      var key = TablePreview.PropertyKey;
+      var columnTableHeader = [];
+      
+      columnTableHeader.push(key.ID_HEADER);
+      columnTableHeader.push(key.TYPE_HEADER);
+      columnTableHeader.push(key.ALIAS_HEADER);
+      columnTableHeader.push(key.DESCRIPTION_HEADER);
+      columnTableHeader.push(key.PK_HEADER);
+      columnTableHeader.push(key.FK_HEADER);
+      
+      return columnTableHeader;
+    },
+    
+    getMetadataElements(tableInfo) {
+      var columnTableRowKey = 1;    
+      var columnElements = tableInfo.columns.map(function(columnInfo) {
+        var row = [];
+        row[0] = columnInfo.id;
+        row[1] = columnInfo.dataType;
+        row[2] = (columnInfo.alias) ? columnInfo.alias : '-';
+        row[3] = (columnInfo.description) ? columnInfo.description : '-';
+        row[4] = (columnInfo.isPrimaryKey) ? columnInfo.isPrimaryKey : '-';
+        row[5] = (columnInfo.foreignKey) ? columnInfo.foreignKey : '-';
+        
+        return DOM.tr({ key: columnTableRowKey++ },
+          row.map(function(cellVal) {
+            return DOM.td({ key: columnTableRowKey++ }, cellVal);
+          })
+        );
+      });
+      
+      return columnElements;
+    },
+    
+    getDataHeader(tableInfo) {
+      var dataTableHeader = [];
+      _.forEach(tableInfo.columns, function(column) {
+          dataTableHeader.push(column.id);
+      });
+      
+      return dataTableHeader;  
+    },
+    
+    getDataElements(tableData, schema) {
+      var dataTableRowKey = 1;  
+      var dataElements = [];
+      if (tableData) { // We may not fetched any data yet
+        dataElements = tableData.slice(0, TablePreview.MAX_ROWS).map(function(row) {
+          return DOM.tr({ key: dataTableRowKey++ },
+            schema.map(function(header) {
+              return DOM.td({ key: dataTableRowKey++ }, row[header]);
+            })
+          );
+        });
+      }
+      
+      return dataElements;
+    }
+  });
+  TablePreview.element = React.createFactory(TablePreview);
+  TablePreview.MAX_ROWS = Infinity; //5000;
+  TablePreview.PropertyKey = {
+    ID_HEADER: 'ID',
+    TYPE_HEADER: 'Type',
+    ALIAS_HEADER: 'Alias',
+    DESCRIPTION_HEADER: 'Description',
+    PK_HEADER: 'Is Primary Key',
+    FK_HEADER: 'Foreign Key'
+  };
+
+  var CollapsibleTable = React.createClass({ 
+    propTypes: {
+      name: React.PropTypes.string.isRequired,
+      header: React.PropTypes.array.isRequired,
+      elements: React.PropTypes.array.isRequired
+    },
+       
+    getInitialState: function () {
+        return {
+          collapsed: false,
+        };
+    },
+
+    toggleCollapse: function() {
+       this.setState({ collapsed: !this.state.collapsed });
+    },
+    
+    render: function () {
+      var incRowKey = 1;
+      return (
+        DOM.div({ className: 'table-preview-' + this.props.name},
+          DOM.h5({}, this.props.name),
+          Button.element({ onClick: this.toggleCollapse }, 
+            (this.state.collapsed) ? 'Show' : 'Hide'),
+            
+          Collapse.element({ in: !this.state.collapsed }, 
+            DOM.div({},
+              Table.element({ bordered: true, condensed: true, striped: true },
+              DOM.thead(null,
+                DOM.tr(null,
+                  this.props.header.map(function(headerName) {
+                    return DOM.th({ key: incRowKey++ }, headerName);
+                  })
+                )
+              ),
+              DOM.tbody(null, this.props.elements)
+              )
             )
-          ),
-          DOM.tbody(null, tableElements)
+          )
         )
       );
     }
   });
-
-  TablePreview.element = React.createFactory(TablePreview);
-  TablePreview.MAX_ROWS = Infinity; //5000;
-
+  CollapsibleTable.element = React.createFactory(CollapsibleTable);
 
   window.Tableau = {
     WdcCommandSimulator: WdcCommandSimulator,
+    TableSection: TableSection,
     TablePreview: TablePreview,
     SimulatorProperties: SimulatorProperties,
     SimulatorApp: SimulatorApp
   };
-
 })(_, React, ReactBootstrap);
