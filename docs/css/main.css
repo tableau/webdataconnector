@@ -1,0 +1,126 @@
+.jumbotron {
+    background-color: #fff;
+}
+
+.wrapper
+{
+    padding: 0px 12px;
+    max-width: 1116px;
+    margin: 0 auto;
+}
+
+.disabled-content {
+    color: #555555
+}
+
+.site-header
+{
+    width: 100%;
+    border-bottom: 1px solid #cccccc;
+    padding: 24px 0px;
+}
+
+.page-content
+{
+    width: 100%;
+    min-height: 1000px;
+    background-color: #fff;
+}
+
+.page-wrapper
+{
+    display: inline-block;
+    width: 100%;
+}
+
+.site-footer
+{
+    width: 100%;
+    border-top: 1px solid #cccccc;
+    background: #fafafa;
+    padding: 24px 0px;
+}
+
+.home 
+{
+    max-width: 850px;
+    width: 100%;
+    float: right;
+}
+
+.side-menu
+{
+    float: left;
+    border: 1px solid #cccccc;
+    margin-top: 24px;
+    width: 200px;
+}
+
+.side-menu > ul
+{
+    list-style-type: none;
+    margin: 0px;
+    padding: 10px;
+}
+
+.side-menu > ul > li
+{
+    padding-bottom: 0.7em;
+}
+
+.side-menu > ul > li > a
+{
+    line-height: 150%;
+    text-decoration: none;
+    color: #555555;
+    font-weight: bold;
+}
+
+.side-menu > ul > li > a:hover
+{
+    text-decoration: underline;
+    color: #555555;
+}
+
+.center
+{
+    margin: 0 auto;
+    width: 100%;
+}
+
+.outer-padding
+{
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+img
+{
+    max-width: 90%;
+}
+
+img.logo
+{
+    height: 28px;
+    margin-left: -18px;
+}
+
+.icon > svg
+{
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    float: right;
+}
+
+.icon > svg path 
+{
+    fill: #333333;
+}
+
+.footer-text
+{
+    font-size: 11pt;
+    clear: both;
+    padding: 5px;
+}
