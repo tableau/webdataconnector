@@ -2,37 +2,35 @@
 <html>
   {% include head.html %}
   <body>
-    {% include header.html %}
-        <div class="page-content">
-        <div class="wrapper">
-            <div class="page-wrapper">
-                {% if page.base == "ref" %}
-                    {% include api_ref.html %}
-                {% elsif page.base == "docs" %}
-                    <div class="home">
-                        <h1>{{ page.title }}</h1>
-                        {{ content }}
-                    </div>
-                        <div class="side-menu">
-                        {% capture menu-include %}{% include ref_menu.md %}{% endcapture %}
-                        {{ menu-include | markdownify }}
-                    </div>
-                {% elsif page.base == "news" %}
-                <div class="full">
-                    <h1>{{ page.title }}</h1>
-                    {{ content }}
-                </div>
-                {% elsif page.base == "community" %}
-                <div class="full">
-                    <h1>{{ page.title }}</h1>
-                    {{ content }}
-                </div>
-                {% else %}
-                    {% include front_page.html %}
-                {% endif %}
+    <div class="container">
+        {% include header.html %}
+        {% if page.base == "ref" %}
+            {% include api_ref.html %}
+        {% elsif page.base == "docs" %}
+            <div class="docs">
+                <h1>{{ page.title }}</h1>
+                {{ content }}
             </div>
+                <div class="side-menu">
+                {% capture menu-include %}{% include ref_menu.md %}{% endcapture %}
+                {{ menu-include | markdownify }}
+            </div>
+        {% elsif page.base == "news" %}
+        <div>
+            <h1>{{ page.title }}</h1>
+            {{ content }}
         </div>
-        </div> 
-    {% include footer.html %}
+        {% elsif page.base == "community" %}
+        <div>
+            <h1>{{ page.title }}</h1>
+            {{ content }}
+        </div>
+        {% else %}
+            {% include front_page.html %}
+        {% endif %}
+        {% if page.base != "ref" %} 
+            {% include footer.html %}
+        {% endif %}
+    </div> 
   </body>
 </html>

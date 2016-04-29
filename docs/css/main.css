@@ -1,47 +1,14 @@
-.jumbotron {
-    background-color: #fff;
+/* Custom CSS for home page*/ 
+.hero-spacer {
+    margin-top: 50px;
 }
 
-.wrapper
-{
-    padding: 0px 12px;
-    max-width: 1116px;
-    margin: 0 auto;
-}
+.hero-feature {
+    margin-bottom: 30px;
+} 
 
-.disabled-content {
-    color: #555555
-}
-
-.site-header
-{
-    width: 100%;
-    border-bottom: 1px solid #cccccc;
-    padding: 24px 0px;
-}
-
-.page-content
-{
-    width: 100%;
-    min-height: 1000px;
-    background-color: #fff;
-}
-
-.page-wrapper
-{
-    display: inline-block;
-    width: 100%;
-}
-
-.site-footer
-{
-    width: 100%;
-    border-top: 1px solid #cccccc;
-    background: #fafafa;
-    padding: 24px 0px;
-}
-
-.home 
+/* Custom CSS for docs page*/ 
+.docs
 {
     max-width: 850px;
     width: 100%;
@@ -50,10 +17,9 @@
 
 .side-menu
 {
-    float: left;
     border: 1px solid #cccccc;
     margin-top: 24px;
-    width: 200px;
+    width: 260px;
 }
 
 .side-menu > ul
@@ -82,21 +48,12 @@
     color: #555555;
 }
 
-.center
+/* Custom CSS for header and footer*/ 
+.site-header
 {
-    margin: 0 auto;
     width: 100%;
-}
-
-.outer-padding
-{
-    padding-left: 12px;
-    padding-right: 12px;
-}
-
-img
-{
-    max-width: 90%;
+    border-bottom: 1px solid #cccccc;
+    padding: 24px 0px;
 }
 
 img.logo
@@ -118,9 +75,11 @@ img.logo
     fill: #333333;
 }
 
-.footer-text
-{
-    font-size: 11pt;
-    clear: both;
-    padding: 5px;
+
+footer {
+    margin: 30px 0;
+}
+
+hr {
+    margin-top: 100px;
 }

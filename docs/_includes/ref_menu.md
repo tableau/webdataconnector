@@ -18,4 +18,4 @@
 - [Advanced Tutorials]({{ site.baseurl }}docs/wdc_advanced_tutorials.html)
     - [Multi Table Tutorial]({{ site.baseurl }}docs/wdc_multi_table_tutorial.html)
     - [Node Proxy with OAuth Tutorial]({{ site.baseurl }}docs/wdc_oauth_tutorial.html)
-- [tableau]({{ site.baseurl }}docs/wdc_faq.html)
+- [FAQ]({{ site.baseurl }}docs/wdc_faq.html)
