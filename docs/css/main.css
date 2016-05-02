@@ -1,4 +1,4 @@
-/* Custom CSS for home page*/ 
+/* Custom CSS for home page */ 
 .hero-spacer {
     margin-top: 50px;
 }
@@ -7,7 +7,7 @@
     margin-bottom: 30px;
 } 
 
-/* Custom CSS for docs page*/ 
+/* Custom CSS for docs page */ 
 .docs
 {
     max-width: 850px;
@@ -15,40 +15,11 @@
     float: right;
 }
 
-.side-menu
-{
-    border: 1px solid #cccccc;
-    margin-top: 24px;
-    width: 260px;
+.docs-content-wrap {
+    margin-top: 34px;
 }
 
-.side-menu > ul
-{
-    list-style-type: none;
-    margin: 0px;
-    padding: 10px;
-}
-
-.side-menu > ul > li
-{
-    padding-bottom: 0.7em;
-}
-
-.side-menu > ul > li > a
-{
-    line-height: 150%;
-    text-decoration: none;
-    color: #555555;
-    font-weight: bold;
-}
-
-.side-menu > ul > li > a:hover
-{
-    text-decoration: underline;
-    color: #555555;
-}
-
-/* Custom CSS for header and footer*/ 
+/* Custom CSS for header and footer */ 
 .site-header
 {
     width: 100%;
@@ -67,7 +38,6 @@ img.logo
     display: inline-block;
     width: 28px;
     height: 28px;
-    float: right;
 }
 
 .icon > svg path 
@@ -75,6 +45,14 @@ img.logo
     fill: #333333;
 }
 
+.thumbnail > a > img {
+    max-width: 160px;
+    padding: 10px;
+}
+
+.tableauIcon {
+    margin-left: 18px;
+}
 
 footer {
     margin: 30px 0;
@@ -84,6 +62,7 @@ hr {
     margin-top: 100px;
 }
 
+/* Media queries for responsive design */
 @media screen and (min-width: 1px) and (max-width: 480px){
     #columns[data-columns]::before {
     content: '1 .col-xs-12';
@@ -106,8 +85,7 @@ hr {
     }
 }
 
-.thumbnail > a > img {
-    max-width: 160px;
-    padding: 10px;
+/* So the scroll bar width doesn't cause the page to jump */
+html {
+    overflow-y: scroll;
 }
-

@@ -2,16 +2,6 @@ function append(connector){
     var grid = document.querySelector('#columns');
     var item = document.createElement('div');
     
-    /*
-<div class="thumbnail">
-    <a href="{{ site.baseurl }}community/community_home.html"><img src="{{ site.baseurl }}assets/community.jpg" alt="News Link"></a>
-    <div class="caption">
-        <h3>Community</h3>
-        <p>Browse connectors built by the community that you can use to connect to data from Tableau!</p>
-    </div>
-</div>
-    */
-    
     var h = '<div>';
         h += '<div class="thumbnail">';
         h += '<a href="' + connector.url + '"><img src="' + connector.thumbnail_path + '" alt="Connector Link"></a>'
