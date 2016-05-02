@@ -21,10 +21,7 @@
             {{ content }}
         </div>
         {% elsif page.base == "community" %}
-        <div>
-            <h1>{{ page.title }}</h1>
-            {{ content }}
-        </div>
+            {% include gallery.html %}
         {% else %}
             {% include front_page.html %}
         {% endif %}

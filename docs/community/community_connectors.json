@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Stock Quote Connector Basic Dev Sample",
+        "url": "https://tableau.github.io/webdataconnector/Examples/StockQuoteConnector_basic.html",
+        "author": "Tableau",
+        "thumbnail_path": "./connectorThumbnails/sample_logo.png",
+        "tags": ["V2.0"],
+        "description": ""
+    },
+    {
+        "name": "Stock Quote Connector Promises Dev Sample",
+        "url": "https://tableau.github.io/webdataconnector/Examples/StockQuoteConnector_promises.html",
+        "author": "Tableau",
+        "thumbnail_path": "./connectorThumbnails/sample_logo.png",
+        "tags": ["V2.0"],
+        "description": ""
+    },
+    {
+        "name": "JSON Multi Table Dev Sample",
+        "url": "https://tableau.github.io/webdataconnector/Examples/JSONMultiTableConnector.html",
+        "author": "Tableau",
+        "thumbnail_path": "./connectorThumbnails/sample_logo.png",
+        "tags": ["V2.0"],
+        "description": ""
+    },
+    {
+        "name": "Mad Money Scraper Dev Sample",
+        "url": "https://tableau.github.io/webdataconnector/Examples/MadMoneyScraper.html",
+        "author": "Tableau",
+        "thumbnail_path": "./connectorThumbnails/sample_logo.png",
+        "tags": ["V2.0"],
+        "description": ""
+    },
+    {
+        "name": "Incremental Refresh Dev Sample",
+        "url": "https://tableau.github.io/webdataconnector/Examples/IncrementalRefreshConnector.html",
+        "author": "Tableau",
+        "thumbnail_path": "./connectorThumbnails/sample_logo.png",
+        "tags": ["V2.0"],
+        "description": ""
+    },
+    {
+        "name": "Foursquare Dev Sample",
+        "url": "https://tableau.github.io/webdataconnector/Examples/OAuthProxyExample/index.html",
+        "author": "Tableau",
+        "thumbnail_path": "./connectorThumbnails/sample_logo.png",
+        "tags": ["V2.0"],
+        "description": ""
+    }    
+]
