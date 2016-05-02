@@ -10,4 +10,44 @@ format examples, see [Formatting Dates and
 Times](http://userguide.icu-project.org/formatparse/datetime) on the ICU
 User Guide site.
 
-```dd-MM-yyyydd-MMMdd-MMM-yydd-MMM-yyyydd-MMM-yyyy HH:mm:ssdd/MM/yyyyh:mm aHH.mmhh.mm aHH.mm.sshh.mm.ss ahh:mm aHH:mm:sshh:mmaM/d/yyyy HH:mm:ssMM-dd-yyyyMM-dd-yyyy HH:mmMM/dd/yyMM/dd/yy HH:mm:ssMM/dd/yyyyMM/dd/yyyyMM/dd/yyyy HH:mm:ssMM/dd/yyyy hh:mm:ss aMMM yyyyMMM-yyMMMM dd yyyyMMMM dd yyyy hh:mmaMMMM dd, yyyyMMMM dd, yyyy HH:mm:ssMMMM dd,yyyyMMMM dd,yyyy HH:mm:ssyyyy-MM-ddyyyy-MM-dd HH:mmyyyy-MM-dd HH:mm:ssyyyy-MM-dd HH:mm:ss.SSSyyyy-MM-dd HH:mm:ss.SSSyyyy-MM-dd HH:mm:ss.SSSyyyy/MM/ddyyyy/MM/dd HH:mm:ss```
+```
+dd-MM-yyyy
+dd-MMM
+dd-MMM-yy
+dd-MMM-yyyy
+dd-MMM-yyyy HH:mm:ss
+dd/MM/yyyy
+h:mm a
+HH.mm
+hh.mm a
+HH.mm.ss
+hh.mm.ss a
+hh:mm a
+HH:mm:ss
+hh:mma
+M/d/yyyy HH:mm:ss
+MM-dd-yyyy
+MM-dd-yyyy HH:mm
+MM/dd/yy
+MM/dd/yy HH:mm:ss
+MM/dd/yyyy
+MM/dd/yyyy
+MM/dd/yyyy HH:mm:ss
+MM/dd/yyyy hh:mm:ss a
+MMM yyyy
+MMM-yy
+MMMM dd yyyy
+MMMM dd yyyy hh:mma
+MMMM dd, yyyy
+MMMM dd, yyyy HH:mm:ss
+MMMM dd,yyyy
+MMMM dd,yyyy HH:mm:ss
+yyyy-MM-dd
+yyyy-MM-dd HH:mm
+yyyy-MM-dd HH:mm:ss
+yyyy-MM-dd HH:mm:ss.SSS
+yyyy-MM-dd HH:mm:ss.SSS
+yyyy-MM-dd HH:mm:ss.SSS
+yyyy/MM/dd
+yyyy/MM/dd HH:mm:ss
+```

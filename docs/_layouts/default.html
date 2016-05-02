@@ -7,25 +7,18 @@
         {% if page.base == "ref" %}
             {% include api_ref.html %}
         {% elsif page.base == "docs" %}
-            <div class="docs">
-                <h1>{{ page.title }}</h1>
-                {{ content }}
-            </div>
-                <div class="side-menu">
-                {% capture menu-include %}{% include ref_menu.md %}{% endcapture %}
-                {{ menu-include | markdownify }}
-            </div>
+            {% include docs_home.html %}
         {% elsif page.base == "news" %}
         <div>
             <h1>{{ page.title }}</h1>
             {{ content }}
         </div>
         {% elsif page.base == "community" %}
-            {% include gallery.html %}
+            {% include community_connectors.html %}
         {% else %}
             {% include front_page.html %}
         {% endif %}
-        {% if page.base != "ref" %} 
+        {% if page.base != "ref" and page.base != "docs" %} 
             {% include footer.html %}
         {% endif %}
     </div> 

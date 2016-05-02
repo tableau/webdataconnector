@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Advanced Tutorials
+title: Welcome to the WDC Documentation
 base: docs
 ---
 
