@@ -83,3 +83,31 @@ footer {
 hr {
     margin-top: 100px;
 }
+
+@media screen and (min-width: 1px) and (max-width: 480px){
+    #columns[data-columns]::before {
+    content: '1 .col-xs-12';
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px){
+    #columns[data-columns]::before {
+    content: '2 .col-xs-6';
+    }
+}
+@media screen and (min-width:768px) and (max-width: 991px){
+    #columns[data-columns]::before {
+    content: '3 .col-sm-4';
+    }
+}
+@media screen and (min-width:992px) and (max-width: 9999px){
+    #columns[data-columns]::before {
+    content: '4 .col-md-3';
+    }
+}
+
+.thumbnail > a > img {
+    max-width: 160px;
+    padding: 10px;
+}
+
