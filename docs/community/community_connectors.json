@@ -4,7 +4,7 @@
         "url": "https://tableau.github.io/webdataconnector/Examples/StockQuoteConnector_basic.html",
         "author": "Tableau",
         "thumbnail_path": "./connectorThumbnails/sample_logo.png",
-        "tags": ["V2.0"],
+        "tags": ["v_2.0", "dev_sample"],
         "description": ""
     },
     {
@@ -12,7 +12,7 @@
         "url": "https://tableau.github.io/webdataconnector/Examples/StockQuoteConnector_promises.html",
         "author": "Tableau",
         "thumbnail_path": "./connectorThumbnails/sample_logo.png",
-        "tags": ["V2.0"],
+        "tags": ["v_2.0", "dev_sample"],
         "description": ""
     },
     {
@@ -20,7 +20,7 @@
         "url": "https://tableau.github.io/webdataconnector/Examples/JSONMultiTableConnector.html",
         "author": "Tableau",
         "thumbnail_path": "./connectorThumbnails/sample_logo.png",
-        "tags": ["V2.0"],
+        "tags": ["v_2.0", "dev_sample"],
         "description": ""
     },
     {
@@ -28,7 +28,7 @@
         "url": "https://tableau.github.io/webdataconnector/Examples/MadMoneyScraper.html",
         "author": "Tableau",
         "thumbnail_path": "./connectorThumbnails/sample_logo.png",
-        "tags": ["V2.0"],
+        "tags": ["v_2.0", "dev_sample"],
         "description": ""
     },
     {
@@ -36,7 +36,7 @@
         "url": "https://tableau.github.io/webdataconnector/Examples/IncrementalRefreshConnector.html",
         "author": "Tableau",
         "thumbnail_path": "./connectorThumbnails/sample_logo.png",
-        "tags": ["V2.0"],
+        "tags": ["v_2.0", "dev_sample"],
         "description": ""
     },
     {
@@ -44,7 +44,7 @@
         "url": "https://tableau.github.io/webdataconnector/Examples/OAuthProxyExample/index.html",
         "author": "Tableau",
         "thumbnail_path": "./connectorThumbnails/sample_logo.png",
-        "tags": ["V2.0"],
+        "tags": ["v_2.0", "dev_sample"],
         "description": ""
     }    
 ]
