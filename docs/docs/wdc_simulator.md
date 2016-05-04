@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Web Data Connector Simulator
+title: Simulator and Samples
 base: docs
 ---
 
