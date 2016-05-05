@@ -8,6 +8,8 @@
             {% include api_ref.html %}
         {% elsif page.base == "docs" %}
             {% include docs_home.html %}
+        {% elsif page.base == "whats_new" %}
+            {% include versions.html %}
         {% elsif page.base == "news" %}
             <ul class="blogul">
             {% for post in site.posts %}
