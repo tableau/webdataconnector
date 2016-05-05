@@ -18,13 +18,19 @@ the following error is displayed in the Chrome console:
 `XMLHttpRequest cannot load URL. No 'Access-Control-Allow-Origin' header is present on the requested resource.`
 
 If your connector experiences CORS-related errors when trying to access
-another site, you can try the approaches listed in this topic.
+another site, you can try the approaches listed in this topic:
+
+-   [Request CORS support from API Server](#request-access)
+
+-   [Make requests with JSONP](#jsonp)
+
+-   [Make requests through a proxy server](#proxy-server)
 
 **Note**: For information about how to use the Web Data Connector
 simulator to help debug CORS errors, see [Web Data Connector
 Simulator](wdc_simulator.html).
 
-Request CORS support {#request-access}
+Request CORS support from API Server {#request-access}
 --------------------
 
 To allow CORS requests, the server that hosts the data can set the
@@ -40,7 +46,7 @@ For more information, see [HTTP access
 control](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS)
 on the Mozilla Developer Network site.
 
-Use JSONP
+Make requests with JSONP {#jsonp}
 ---------
 
 If the site that contains the data doesn't support CORS, it's often
@@ -84,7 +90,7 @@ function can extract values as it would from any JSON block.
 For more information, see [JSONP](https://en.wikipedia.org/wiki/JSONP)
 on Wikipedia.
 
-Make requests through a proxy server {#use-proxy}
+Make requests through a proxy server {#proxy-server}
 ------------------------------------
 
 Another option is to make requests from the web data connector's

@@ -5,7 +5,8 @@
         "author": "Tableau",
         "thumbnail_path": "./connectorThumbnails/sample_logo.png",
         "tags": ["v_2.0", "dev_sample"],
-        "description": ""
+        "description": "",
+        "source_code": ""
     },
     {
         "name": "Stock Quote Connector Promises Dev Sample",
@@ -13,7 +14,8 @@
         "author": "Tableau",
         "thumbnail_path": "./connectorThumbnails/sample_logo.png",
         "tags": ["v_2.0", "dev_sample"],
-        "description": ""
+        "description": "",
+        "source_code": ""
     },
     {
         "name": "JSON Multi Table Dev Sample",
@@ -21,7 +23,8 @@
         "author": "Tableau",
         "thumbnail_path": "./connectorThumbnails/sample_logo.png",
         "tags": ["v_2.0", "dev_sample"],
-        "description": ""
+        "description": "",
+        "source_code": ""
     },
     {
         "name": "Mad Money Scraper Dev Sample",
@@ -29,7 +32,8 @@
         "author": "Tableau",
         "thumbnail_path": "./connectorThumbnails/sample_logo.png",
         "tags": ["v_2.0", "dev_sample"],
-        "description": ""
+        "description": "",
+        "source_code": ""
     },
     {
         "name": "Incremental Refresh Dev Sample",
@@ -37,7 +41,8 @@
         "author": "Tableau",
         "thumbnail_path": "./connectorThumbnails/sample_logo.png",
         "tags": ["v_2.0", "dev_sample"],
-        "description": ""
+        "description": "",
+        "source_code": ""
     },
     {
         "name": "Foursquare Dev Sample",
@@ -45,6 +50,7 @@
         "author": "Tableau",
         "thumbnail_path": "./connectorThumbnails/sample_logo.png",
         "tags": ["v_2.0", "dev_sample"],
-        "description": ""
+        "description": "",
+        "source_code": ""
     }    
 ]
