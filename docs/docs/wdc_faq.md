@@ -7,10 +7,6 @@ base: docs
 This is a collection of common questions and resoultions for the web data connector platform.
 
 
-
-
-
-
 #### Are there any known bugs?
 
 Check our [issues page](https://github.com/tableau/webdataconnector/issues) on GitHub! It will contain any known bugs.  Feel free to open new bugs there as well.
@@ -25,6 +21,16 @@ stored in the tableau object.  Please use [tableau.connectionData]({{ site.baseu
 
 The web data connector methods will only be called if your connector is being run from the simulator
 or from Tableau.  If you try and run your web data connector in a regular browser window, nothing of these methods will execute. 
+
+#### Why are my extract refreshes failing on Tableau Server because they are untrusted?
+
+In order for WDC extract refreshes to succeed on Tableau Server, your server admin must configure your 
+server using tadadmin, as explained in the [Server Documentation](http://onlinehelp.tableau.com/v0.0/server/en-us/help.htm#datasource_wdc.htm?). 
+
+#### Can I refresh WDCs on Tableau Online?
+
+Currently, there is no way to directly refresh WDCs published to Online due to security risks.  
+The suggested alternative is to use the [Tableau Online Sync Client](https://onlinehelp.tableau.com/current/online/en-us/to_sync_local_data.htm).
 
 #### I don't see any checkboxes or radio buttons in my connector UI in Tableau!
 
