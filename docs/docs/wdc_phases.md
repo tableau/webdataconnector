@@ -69,13 +69,13 @@ Gather Data phase: fetch data from a web source {#phase-two}
     - The conncetor's init method is called by Tableau, just as it was in the interactive phase. 
       The connector may want to take different action in the init method in the gather data phase than
       it did in the interactive phase.  At any time, the current phase of the connector can be read
-      through the [tableau.phase]({{ site.baseurl }}ref/ref_home.html#webdataconnectorapi.tableau.phase)
+      through the [tableau.phase]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.tableau.phase)
       property.
           
     - The connector calls the passed in initCallback to tell Tableau it has finished initialization.
     
     - Tableau first calls the 
-      [getSchema]({{ site.baseurl }}ref/ref_home.html#webdataconnectorapi.webdataconnector.getschema)
+      [getSchema]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.webdataconnector.getschema)
       method, which you, the WDC Developer, define on your connector object.
       This method will tell Tableau what the schema is for any tables your
       connector returns.
@@ -83,7 +83,7 @@ Gather Data phase: fetch data from a web source {#phase-two}
     - The connector will will call schemaCallback with a schema object, which passes
       the connector's schema back to Tableau.
       
-    - Tableau then calls the [getData]({{ site.baseurl }}ref/ref_home.html#webdataconnectorapi.webdataconnector.getdata) method of the connector to get the actual 
+    - Tableau then calls the [getData]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.webdataconnector.getdata) method of the connector to get the actual 
       data. The getData method will be called by Tableau once for each table that 
       has been selected by the end user. For example, if a user drags out two tables
       from the web data connector into the join canvas in Tableau, getData will be called
@@ -91,7 +91,7 @@ Gather Data phase: fetch data from a web source {#phase-two}
       
     - The getData method receieves a table object as a parameter.  In the getData
       method, the WDC needs to fetch data for that specific table from the web data source,
-      and use the [table.appendRows]({{ site.baseurl }}ref/ref_home.html#webdataconnectorapi.table.appendrows) 
+      and use the [table.appendRows]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.table.appendrows) 
       method to pass data for that table back to Tableau.
       
     - Once all the data has been fetched for the current table, the WDC should call the passed

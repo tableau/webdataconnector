@@ -74,7 +74,7 @@ as described in the [Getting Started]({{ site.baseurl }}docs/wdc_getting_started
 
 5. The simulator will now begin the connector's data gathering phase.
    The simulator will call the connector's
-   [getSchema]({{ site.baseurl }}ref/ref_home.html#webdataconnectorapi.webdataconnector.getschema) method 
+   [getSchema]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.webdataconnector.getschema) method 
    which will return information about all schema of each table that the connector returns.
    
    <img class="img-responsive docs-img" src="{{ site.baseurl }}assets/wdc_simulator_getschema.png" alt="">
@@ -82,7 +82,7 @@ as described in the [Getting Started]({{ site.baseurl }}docs/wdc_getting_started
    
 6. In order to get data from the connector, click on the "Fetch Table Data" button
    below the metadata table.  The simulator will then call the 
-   [getData]({{ site.baseurl }}ref/ref_home.html#webdataconnectorapi.webdataconnector.getdata) method of the
+   [getData]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.webdataconnector.getdata) method of the
    connector.  The results of this call will be displayed in the simulator.
 
    <img class="img-responsive docs-img" src="{{ site.baseurl }}assets/wdc_simulator_getdata.png" alt="">
@@ -108,8 +108,8 @@ include the following:
     Command+Option+I on the Mac to open the tools pane, and then select
     the <span class="uicontrol">Console</span> tab. In this console,
     you can see all the results of various console.log statements.  The console also displays
-    output from the [tableau.log]({{ site.baseurl }}ref/ref_home.html#webdataconnectorapi.tableau.log) and
-    [tableau.abortWithError]({{ site.baseurl }}ref/ref_home.html#webdataconnectorapi.tableau.abortwitherror) functions.
+    output from the [tableau.log]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.tableau.log) and
+    [tableau.abortWithError]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.tableau.abortwitherror) functions.
     
     This is a good place to check for errors in case anything goes wrong.
     The console will display information about run-time errors
