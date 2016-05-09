@@ -4,14 +4,11 @@ title: Hosting and Submitting to Community Portal
 base: docs
 ---
 
-After buildilng a web data connector, why not share it with the community?
+After building a web data connector, why not share it with the community?
 The [Community Connector]({{ site.baseurl }}/community/community_home.html) 
 section is designed to showcase the work that other developers have done with the WDC Platform.
-
 It also provides a place for others to browse and explore what
-connectors have already been built to common data sources.  This can 
-be very helpful to those who really want to get data from certain
-web data sources but are unable to build a web data connector themselves.
+connectors have already been built. 
 
 We have a very lightweight submission process for this community portal.
 One of the requirements for submission to the community section is that 
@@ -85,7 +82,7 @@ seen to be the easiest to use.
 2. Host your node app on Heroku.
 
     If your connector contains a sever component, like the Node Proxy sample, 
-    you can host your connector for free on Heroku.  There are certain usage restritions, for example
+    you can host your connector for free on Heroku.  There are certain usage restrictions; for example
     their free tier requires the connector to be offline for a few hours a day. 
 
     Check out their tutorial for more details: [Heroku Tutorial](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction)

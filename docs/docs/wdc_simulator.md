@@ -9,7 +9,7 @@ simulator that is included with the Web Data Connector SDK. In the simulator, yo
 can load your web data connector page and interact with it the same way
 that Tableau does.
 
-The simulator exists to help you debug web data connectors during developement.
+The simulator exists to help you debug web data connectors during development.
 Since it runs in your favorite web browser, you can use the browser's built-in
 development tools.  While you use the simulator, you can use a JavaScript debugger to set breakpoints,
 view console logs in real time, and view network requests.
@@ -41,7 +41,7 @@ as described in the [Getting Started]({{ site.baseurl }}docs/wdc_getting_started
 
    The simulator opens. By default, the <span
    class="uicontrol">WDC URL</span> box is preloaded with the path to
-   the StockConnector sample that's in the Examples folder. To work
+   the StockQuoteConnector sample that's in the Examples folder. To work
    with a different web data connector, enter the URL of
    that connector.
 
@@ -51,7 +51,7 @@ as described in the [Getting Started]({{ site.baseurl }}docs/wdc_getting_started
    By default this is one of our simple development samples.
    
    **Note**: The simulator requires you to
-   be using the version 1.1.1 of the Tableau WDC
+   be using the version 1.1.1 or later of the Tableau WDC
    JavaScript library. For more information, see [Web Data Connector
    Library Versions]({{ site.baseurl }}docs/wdc_library_versions.html).
 
@@ -83,16 +83,18 @@ as described in the [Getting Started]({{ site.baseurl }}docs/wdc_getting_started
 6. In order to get data from the connector, click on the "Fetch Table Data" button
    below the metadata table.  The simulator will then call the 
    [getData]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.webdataconnector.getdata) method of the
-   connector.  The results of this call will be displayed in the simulator.
+   connector for that table.  The results of this call will be displayed in the simulator.
 
    <img class="img-responsive docs-img" src="{{ site.baseurl }}assets/wdc_simulator_getdata.png" alt="">
 
    The simulator will return the metadata for any table defined by the connector 
-   in getschema.  To mirror Tableau, the simulator supports fetching data
+   in getSchema.  To mirror Tableau, the simulator supports fetching data
    for each of these tables independently.
 
    **Tip**: Fetching data can be done automatically by checking the 
-   "Automatically fetch data for all tables" checkbox. 
+   "Automatically fetch data for all tables" checkbox. This will automatically run
+   the gather data phase after the interactive phase has been submitted and fetch
+   data for every table defined by the connector.
    
 Debugging with the simulator {#debugging}
 ----------------------------
@@ -163,7 +165,7 @@ The samples in the SDK are as follows:
 
 -   [MadMoneyScraper](https://github.com/tableau/webdataconnector/blob/gh-pages/Examples/MadMoneyScraper.html)
 
-    This connnector demonstrates how to scrape data from a table in a web page and bring that data back through
+    This connector demonstrates how to scrape data from a table in a web page and bring that data back through
     the WDC API.
 
 -   [OAuthProxyExample](https://github.com/tableau/webdataconnector/blob/gh-pages/Examples/OAuthProxyExample/index.html)
