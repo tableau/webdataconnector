@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+<header class="jumbotron hero-spacer">
+    <h1>Web Data Connector Beta Docs</h1>
+    <p>The Web Data Connector is a developer extensibilitly platform that allows you, the developer, to bring the data you care about into Tableau.</p>
+    <p>This site is built for developers to get them up and running with the WDC API.  The WDC SDK, including the simulator, developer samples, and documetion are all open source.
+    <p>This documentation is in <b>Beta</b>. Please feel free to leave feedback on <a href="https://github.com/tableau/webdataconnector/issues">GitHub</a>
+       or in our <a href="https://community.tableau.com/community/developers/web-data-connectors">Community Forums</a></p>
+</header>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <a href="{{ site.baseurl }}docs/wdc_how_it_works.html"><img src="{{ site.baseurl }}assets/docs.png" alt="Docs Link"></a>
+=======
 <header class="jumbotron hero-spacer text-center">
     <h1>Web Data Connector</h1>
     <p>Bring the data that you care about into Tableau.</p>
@@ -8,6 +22,7 @@
     <div class="col-md-3 text-center">
         <div class="thumbnail thumb-home">
             <a href="{{ site.baseurl }}docs/"><img src="{{ site.baseurl }}assets/docs.png" class="img-home" alt="Docs Link"></a>
+>>>>>>> ec447f75de9c7646dfbc682aaee8b1bf6df779c4
             <div class="caption">
                 <h3>Documentation</h3>
                 <p>Read the documentation for the Web Data Connector platform, view tutorials and samples, and learn more about underlying concepts.</p>
@@ -36,8 +51,8 @@
         <div class="thumbnail thumb-home">
             <a href="{{ site.baseurl }}news/news_home.html"><img src="{{ site.baseurl }}assets/logo.png" class="img-home" alt="News Link"></a>
             <div class="caption">
-                <h3>What's New?</h3>
-                <p>Keep up to date with the latest news, including upcoming feature announcements, known issues, and release notes.</p>
+                <h3>Latest News</h3>
+                <p>Keep up to date with the latest news, including upcoming feature announcements, developer events, and release notes.</p>
             </div>
         </div>
     </div>

@@ -53,9 +53,14 @@ img.logo
     fill: #333333;
 }
 
-.thumbnail > a > img {
-    max-width: 160px;
-    padding: 10px;
+
+.thumb-home {
+    height: 340px;
+}
+
+.img-home {
+    height: 150px !important;
+    margin: 10px;
 }
 
 .tableauIcon {

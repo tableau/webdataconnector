@@ -13,10 +13,15 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="{{ site.baseurl }}docs/wdc_how_it_works">Docs</a></li>
-            <li><a href="{{ site.baseurl }}ref/api_ref">API Reference</a></li>
-            <li><a href="{{ site.baseurl }}community/community_home">Community Connectors</a></li>
-            <li><a href="{{ site.baseurl }}news/news_home">What's New?</a></li>
+<<<<<<< HEAD
+            <li><a href="{{ site.baseurl }}docs/wdc_how_it_works.html">Docs</a></li>
+            <li><a href="{{ site.baseurl }}ref/ref_home.html">API Reference</a></li>
+=======
+            <li><a href="{{ site.baseurl }}docs">Docs</a></li>
+            <li><a href="{{ site.baseurl }}whats_new">What's New</a></li>
+>>>>>>> ec447f75de9c7646dfbc682aaee8b1bf6df779c4
+            <li><a href="{{ site.baseurl }}community/community_home.html">Community Connectors</a></li>
+            <li><a href="{{ site.baseurl }}news/news_home.html">Blog</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="tableauIcon"><a target="_blank" href="http://tableau.com"><img src="{{ site.baseurl }}assets/logo.png" alt="Tableau Developers" class="logo" /></a></li>
