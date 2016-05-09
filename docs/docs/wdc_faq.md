@@ -4,7 +4,7 @@ title: WDC Frequently Asked Questions
 base: docs
 ---
 
-This is a collection of common questions and resoultions for the web data connector platform.
+This is a collection of common questions and resolutions for the web data connector platform.
 
 
 #### Are there any known bugs?
@@ -34,7 +34,7 @@ The suggested alternative is to use the [Tableau Online Sync Client](https://onl
 
 #### I don't see any checkboxes or radio buttons in my connector UI in Tableau!
 
-This was a bug that was fixed.  Please upgrade to the latest maintence patch to fix this issue.
+This was a bug that was fixed.  Please upgrade to the latest maintenance patch to fix this issue.
 
 #### What browser does Tableau Desktop use? 
 
