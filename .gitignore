@@ -1,2 +1,3 @@
-# Dependency directory
+# Dependency directories
 Examples/OAuthProxyExample/node_modules
+node_modules/

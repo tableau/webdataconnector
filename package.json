@@ -1,0 +1,17 @@
+{
+  "name": "webdataconnector",
+  "version": "2.0.0",
+  "description": "Connect to web data from Tableau.",
+  "scripts": {
+    "start": "node node_modules/http-server/bin/http-server -p 8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tableau/webdataconnector.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^0.9.0"
+  }
+}
