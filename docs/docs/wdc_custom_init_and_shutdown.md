@@ -43,7 +43,7 @@ care of it for you.
 
 The initialization or shutdown code is called once per phase. The code
 is called during the interaction phase and again during the
-data-gathering phase. If your initialization or shutdown code depends on
+gather data phase. If your initialization or shutdown code depends on
 which phase the connector is in, you can test the
 [tableau.phase]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.phaseenum) property. This
 property returns a string value that indicates the phase that the

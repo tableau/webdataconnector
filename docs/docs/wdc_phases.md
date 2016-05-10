@@ -1,10 +1,10 @@
 ---
 layout: page
-title: WDC Lifecyle and Phases
+title: WDC Lifecycle and Phases
 base: docs
 ---
 
-This document explains the overall lifecyle of a Tableau Web Data Connector. Understanding 
+This document explains the overall lifecycle  of a Tableau Web Data Connector. Understanding 
 the material in this page will be extremely helpful in successfully
 developing a web data connector.  It is recommended that you understand the material
 from the Quick Start section before diving into this material.
@@ -13,7 +13,7 @@ A WDC is always run with an associated phase.  Tableau loads
 the connector inside a web browser at different times and in distinct phases. 
 This document will explain each of these phases and when each one runs.
 
--   [Lifecyle Diagram](#diagram)
+-   [Lifecycle Diagram](#diagram)
 
 -   [First phase: Interact with the user (if necessary)](#phase-one)
 
@@ -32,7 +32,7 @@ describe each part of this flow in detail.
 
 **Note**: This is slightly simplified.
 For example, shutdown and shutdownCallback were left out, but both 
-of these events take place at the end of each phase as wel (the mirror to
+of these events take place at the end of each phase as well (the mirror to
 init and initCallback).
 
 Interactive phase: Interact with the user (if necessary) {#phase-one}
@@ -43,9 +43,9 @@ Interactive phase: Interact with the user (if necessary) {#phase-one}
     
     In the interactive phase, the following actions occur:
     
-    - The conncetor's init method is called by Tableau. A connector will have a default 
+    - The connector's init method is called by Tableau. A connector will have a default 
       init method if not provided by the WDC Developer (see [Custom
-      Initilaiztion and Shutdown for more details]({{ site.baseurl }}docs/wdc_custom_init_and_shutdown.html)).
+      Initialization  and Shutdown for more details]({{ site.baseurl }}docs/wdc_custom_init_and_shutdown.html)).
           
     - The connector calls the passed in initCallback to tell Tableau it has finished initialization.
     
@@ -66,7 +66,7 @@ Gather Data phase: fetch data from a web source {#phase-two}
     
     In the gather data phase, the following actions occur:
     
-    - The conncetor's init method is called by Tableau, just as it was in the interactive phase. 
+    - The connector’s init method is called by Tableau, just as it was in the interactive phase. 
       The connector may want to take different action in the init method in the gather data phase than
       it did in the interactive phase.  At any time, the current phase of the connector can be read
       through the [tableau.phase]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.tableau.phase)
@@ -80,7 +80,7 @@ Gather Data phase: fetch data from a web source {#phase-two}
       This method will tell Tableau what the schema is for any tables your
       connector returns.
       
-    - The connector will will call schemaCallback with a schema object, which passes
+    - The connector will call schemaCallback with a schema object, which passes
       the connector's schema back to Tableau.
       
     - Tableau then calls the [getData]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.webdataconnector.getdata) method of the connector to get the actual 
@@ -89,7 +89,7 @@ Gather Data phase: fetch data from a web source {#phase-two}
       from the web data connector into the join canvas in Tableau, getData will be called
       twice.  
       
-    - The getData method receieves a table object as a parameter.  In the getData
+    - The getData method receives a table object as a parameter.  In the getData
       method, the WDC needs to fetch data for that specific table from the web data source,
       and use the [table.appendRows]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.table.appendrows) 
       method to pass data for that table back to Tableau.
@@ -109,14 +109,10 @@ need to make a call to the external data source for authentication.
 (This is not really a third phase, because it does not follow the other
 two; it's an alternative to the first phase.)
 
-If the connection uses basic or digest authentication, Tableau displays
-a dialog box that asks the user for a user name and password. However,
-if the connector is using OAuth for authentication, and if the OAuth
-token has expired when the extract is refreshed, Tableau invokes the web
-data connector in the authentication phase. In this mode, the connector
+In this mode, the connector
 should display only the UI that is required in order to get an updated
 token.  Updates to properties other than tableau.username and tableau.password
 will be ignored during this phase. 
 
 Please see [WDC Authentication]({{ site.baseurl }}docs/wdc_authentication.html)
-for more details on how the auth phase comes into play.
+for more details on when and how the auth phase comes into play.
