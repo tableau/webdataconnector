@@ -67,6 +67,11 @@ img.logo
     margin-left: 18px;
 }
 
+.jumbotron {
+    background-color: #fafafa;
+    border: 1px solid #e8e8e8;
+}
+
 footer {
     margin: 30px 0;
     margin-top: 100px;
