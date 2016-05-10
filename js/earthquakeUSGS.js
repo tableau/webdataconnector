@@ -4,31 +4,12 @@
 
 	// Define the schema
 	myConnector.getSchema = function (schemaCallback) {
-		var cols = [{
-				id : "mag",
-				alias : "magnitude",
-				dataType : "float"
-			},
-            {
-				id : "title",
-				alias : "title",
-				dataType : "string"
-			},
-            {
-				id : "url",
-				alias : "url",
-				dataType : "string"
-			},
-            {
-				id : "lat",
-				alias : "latitude",
-				dataType : "float"
-			},
-            {
-				id : "lon",
-				alias : "longitude",
-				dataType : "float"
-			}
+		var cols = [
+			{ id : "mag", alias : "magnitude", dataType : "float" },
+			{ id : "title", alias : "title", dataType : "string" },
+			{ id : "url", alias : "url", dataType : "string" },
+			{ id : "lat", alias : "latitude", dataType : "float" },
+			{ id : "lon", alias : "longitude", dataType : "float" }
 		];
 
 		var tableInfo = {
