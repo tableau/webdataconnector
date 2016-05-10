@@ -29,7 +29,7 @@ Using the simulator {#using_simulator}
 To use the simulator, follow these steps: 
 
 1. Verify you have the python server up and running
-as described in the [Getting Started]({{ site.baseurl }}docs/wdc_getting_started.html) section.
+as described in the [Get Started]({{ site.baseurl }}docs) section.
 
 2. Open a web browser and navigate to the location of the simulator; by default this is:
 
