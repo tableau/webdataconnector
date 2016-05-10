@@ -1,45 +1,34 @@
 ---
 layout: page
-title: Web Data Connector Basic Tutorial
+title: WDC Tutorial
 base: docs
 ---
 
-The basic tutorial shows you how to create a web data connector that
-gets data from a web service that provides financial information. This
-basic tutorial describes the features that all web data connectors have.
-It also introduces you to how to use the simulator in the Web Data
-Connector SDK to test your connector.
+> This tutorial picks up where the [Get Started]({{ site.baseurl }}docs) topic left off. If you haven't already, go back and set up your development environment.
 
-The tutorial scenario
+What you'll build
 ---------------------
 
-The web data connector you create gets stock price data from the Yahoo!
-site. Yahoo provides a REST API that lets anyone send queries for
-financial data. For this web data connector, you'll prompt the user for
-a stock ticker symbol—a value like `DATA` (the ticker symbol for
-Tableau), `MSFT` (Microsoft), or `GOOG` (Google). The connector then
-gets the closing price for the specified company for one year back from
-today's date.
+By the end of this tutorial, you'll have a working WDC that connects to the [USGS Earthquake feed](http://earthquake.usgs.gov/earthquakes/feed/v1.0/index.php) and downloads data for earthquakes that occurred in the last week.
 
-Prerequisites
--------------
+You'll learn how to:
 
-To work with this tutorial, you need the following:
+* [Create the user interface](#create-ui) for your WDC with HTML.
+* [Create the connector object](#create-connector-obj).
+* [Define a schema](#define-schema), which maps web data to table columns.
+* [Get the data](#get-data) for a single table.
 
--   Access to a web server that can host your web data connector pages.
-    If you're working on a computer that doesn't already have a web
-    server running, you can run a lightweight server such as the Python
-    HTTP server that's built into Python, or the [Mongoose
-    server](https://code.google.com/p/mongoose/).
+If you *really* want to skip all of this and go straight to the source code, look for the `earthquakeUSGS` files in the `Examples` directory and the `js` directory. You'll get a lot more out of this if you build it from scratch though--promise!
 
-    For instructions on how to run the Python server, see [Use the
-    Python Development Server for Web Data
-    Connectors](wdc_sdk_using_python_server.html).
+### Create the user interface {#create-ui}
 
--   The Web Data Connector SDK, which includes the web data connector
-    simulator that you can use to test your connectors. For information
-    about installing the SDK, see [Web Data Connector
-    SDK](wdc_sdk.html).
+### Create the connector object {#create-connector-obj}
+
+### Define a schema {#define-schema}
+
+### Get the data {#get-data}
+
+
 
 Next
 ----
