@@ -27,14 +27,27 @@
   }
 
   var myConnector = tableau.makeConnector();
+  
+  myConnector.getSchema = function(schemaCallback) {
+    var cols = [
+        { id: "ticker", alias: "Ticker", dataType: tableau.dataTypeEnum.string },
+        { id: "company", alias: "Company", dataType: tableau.dataTypeEnum.string },
+        { id: "date", alias: "Date", dataType: tableau.dataTypeEnum.string },
+        { id: "segment", alias: "Segment", dataType: tableau.dataTypeEnum.string },
+        { id: "call", alias: "Call", dataType: tableau.dataTypeEnum.string },
+        { id: "price", alias: "Price", dataType: tableau.dataTypeEnum.float }
+    ];
 
-  myConnector.getColumnHeaders = function() {
-    var fieldNames = ['Ticker', 'Company', 'Date', 'Segment', 'Call', 'Price'];
-    var fieldTypes = ['string', 'string', 'date', 'string', 'string', 'float'];
-    tableau.headersCallback(fieldNames, fieldTypes); 
+    var tableInfo = {
+        alias: "Stock Data for " + tableau.connectionData,
+        id: 'stockData',
+        columns: cols
+    };
+
+    schemaCallback([tableInfo]);
   };
       
-  myConnector.getTableData = function () {
+  myConnector.getData = function(table, doneCallback) {
     var connectionUrl = "http://madmoney.thestreet.com/screener/index.cfm?airdate=30&showrows=500";
 
     var xhr = $.ajax({
@@ -50,20 +63,22 @@
 
           // Build a row from the parsed response
           tableData.push({
-            'Ticker':  $($stockTableColumnsInRow[0]).find('a').text(),
-            'Company': $($stockTableColumnsInRow[0]).text(),
-            'Date':    $($stockTableColumnsInRow[1]).text(),
-            'Segment': SEGMENT_KEY[$($stockTableColumnsInRow[2]).find('img').attr('alt')],
-            'Call':    CALL_ICON[$($stockTableColumnsInRow[3]).find('img').attr('alt')],
-            'Price':   parseFloat($($stockTableColumnsInRow[4]).text().substring(1)) // remove currency, and convert to Float.
+            'ticker':  $($stockTableColumnsInRow[0]).find('a').text(),
+            'company': $($stockTableColumnsInRow[0]).text(),
+            'date':    $($stockTableColumnsInRow[1]).text(),
+            'segment': SEGMENT_KEY[$($stockTableColumnsInRow[2]).find('img').attr('alt')],
+            'call':    CALL_ICON[$($stockTableColumnsInRow[3]).find('img').attr('alt')],
+            'price':   parseFloat($($stockTableColumnsInRow[4]).text().substring(1)) // remove currency, and convert to Float.
           });
         });
-        tableau.dataCallback(tableData, "", false);
+        
+        table.appendRows(tableData);
+        doneCallback();
+        // tableau.dataCallback(tableData, "", false);
       }
     });
   };
   
-  _convertConnectorFor12(myConnector);
   tableau.registerConnector(myConnector);
 })();
 

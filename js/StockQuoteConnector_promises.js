@@ -43,9 +43,9 @@
          var schema = [];
          _.forEach(tickersArray, function(ticker) {
             var cols = [
-                { id: "ticker", alias: "Ticker", dataType: "string" },
-                { id: "day", alias: "Day", dataType: "string" },
-                { id: "close", alias: "Close", dataType: "string" }
+                { id: "ticker", alias: "Ticker", dataType: tableau.dataTypeEnum.string },
+                { id: "day", alias: "Day", dataType: tableau.dataTypeEnum.date },
+                { id: "close", alias: "Close", dataType: tableau.dataTypeEnum.float }
             ];
 
              var tableInfo = {

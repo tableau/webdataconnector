@@ -5,11 +5,11 @@
 	// Define the schema
 	myConnector.getSchema = function (schemaCallback) {
 		var cols = [
-			{ id : "mag", alias : "magnitude", dataType : "float" },
-			{ id : "title", alias : "title", dataType : "string" },
-			{ id : "url", alias : "url", dataType : "string" },
-			{ id : "lat", alias : "latitude", dataType : "float" },
-			{ id : "lon", alias : "longitude", dataType : "float" }
+			{ id : "mag", alias : "magnitude", dataType : tableau.dataTypeEnum.float },
+			{ id : "title", alias : "title", dataType : tableau.dataTypeEnum.string },
+			{ id : "url", alias : "url", dataType : tableau.dataTypeEnum.string },
+			{ id : "lat", alias : "latitude", dataType : tableau.dataTypeEnum.float },
+			{ id : "lon", alias : "longitude", dataType : tableau.dataTypeEnum.float }
 		];
 
 		var tableInfo = {
