@@ -3,12 +3,12 @@
     
     myConnector.getSchema = function(schemaCallback) {
          var cols = [
-             { id: "id", dataType: "string" },
-             { id: "x", dataType: "string" },
-             { id: "day", dataType: "string" },
-             { id: "day_and_time", dataType: "string" },
-             { id: "true_or_false",  dataType: "string" },
-             { id: "color", dataType: "string" }
+             { id: "id", dataType: tableau.dataTypeEnum.string },
+             { id: "x", dataType: tableau.dataTypeEnum.string },
+             { id: "day", dataType: tableau.dataTypeEnum.string },
+             { id: "day_and_time", dataType: tableau.dataTypeEnum.string },
+             { id: "true_or_false",  dataType: tableau.dataTypeEnum.string },
+             { id: "color", dataType: tableau.dataTypeEnum.string }
          ];
          
          var tableInfo = {
