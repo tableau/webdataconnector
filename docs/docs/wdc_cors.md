@@ -15,7 +15,9 @@ For example, if you run your connector in Google Chrome and the code in
 the connector makes requests to a site that doesn't allow CORS requests,
 the following error is displayed in the Chrome console:
 
-`XMLHttpRequest cannot load URL. No 'Access-Control-Allow-Origin' header is present on the requested resource.`
+```
+XMLHttpRequest cannot load URL. No 'Access-Control-Allow-Origin' header is present on the requested resource.
+```
 
 If your connector experiences CORS-related errors when trying to access
 another site, you can try the approaches listed in this topic:
