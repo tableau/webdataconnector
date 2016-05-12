@@ -938,7 +938,7 @@
         dataElements = tableData.slice(0, TablePreview.MAX_ROWS).map(function(row) {
           return DOM.tr({ key: dataTableRowKey++ },
             schema.map(function(header) {
-              return DOM.td({ key: dataTableRowKey++ }, row[header]);
+              return DOM.td({ key: dataTableRowKey++ }, row[header].toString());
             })
           );
         });
