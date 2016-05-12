@@ -938,6 +938,10 @@
         dataElements = tableData.slice(0, TablePreview.MAX_ROWS).map(function(row) {
           return DOM.tr({ key: dataTableRowKey++ },
             schema.map(function(header) {
+              if (!row[header]) {
+                console.error("Mismatch between schema and data returned through appendRows");
+                return;
+              }
               return DOM.td({ key: dataTableRowKey++ }, row[header].toString());
             })
           );
