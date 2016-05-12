@@ -281,6 +281,7 @@
     handleAbort: function(errMsg) {
       this.phaseState.inProgress = false;
       this.logger.error(errMsg);
+      toastr.error(errMsg, 'The WDC reported an error:')
     },
 
     // MESSAGES TO SEND TO CLIENT
@@ -932,17 +933,21 @@
     },
     
     getDataElements(tableData, schema) {
-      var dataTableRowKey = 1;  
+      var dataTableRowKey = 0;
+      var dataTableColKey = 0;
       var dataElements = [];
       if (tableData) { // We may not fetched any data yet
         dataElements = tableData.slice(0, TablePreview.MAX_ROWS).map(function(row) {
+          dataTableColKey = 0;
           return DOM.tr({ key: dataTableRowKey++ },
             schema.map(function(header) {
               if (!row[header]) {
-                console.error("Mismatch between schema and data returned through appendRows");
-                return;
+                if (row[dataTableColKey]) {
+                  return DOM.td({ key: dataTableColKey }, row[dataTableColKey++].toString());
+                }
+              } else {
+                return DOM.td({ key: dataTableColKey++ }, row[header].toString());
               }
-              return DOM.td({ key: dataTableRowKey++ }, row[header].toString());
             })
           );
         });
