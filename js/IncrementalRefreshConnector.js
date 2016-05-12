@@ -3,12 +3,12 @@
     
     myConnector.getSchema = function(schemaCallback) {
          var cols = [
-             { id: "id", dataType: "string" },
-             { id: "x", dataType: "string" },
-             { id: "day", dataType: "string" },
-             { id: "day_and_time", dataType: "string" },
-             { id: "true_or_false",  dataType: "string" },
-             { id: "color", dataType: "string" }
+             { id: "id", dataType: tableau.dataTypeEnum.int },
+             { id: "x", dataType: tableau.dataTypeEnum.string },
+             { id: "day", dataType: tableau.dataTypeEnum.datetime },
+             { id: "day_and_time", dataType: tableau.dataTypeEnum.datetime },
+             { id: "true_or_false",  dataType: tableau.dataTypeEnum.bool  },
+             { id: "color", dataType: tableau.dataTypeEnum.string }
          ];
          
          var tableInfo = {
@@ -47,7 +47,7 @@
                 "x": i,
                 "day": date_only.toISOString(),
                 "day_and_time": date_and_time.toISOString(),
-                "true_or_false": i % 2,
+                "true_or_false": (i % 2 == 0),
                 "color": colors[id % colors.length],
             });
         }
