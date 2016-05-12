@@ -93,3 +93,5 @@ You're going to need a couple of things before we get started. Make sure you hav
 
 1. Click the **Fetch Table Data** button to download the data and display it in a table.
 
+
+*Ready to make your own connector? Jump to the [WDC Tutorial]({{ site.baseurl }}docs/wdc_tutorial).*
