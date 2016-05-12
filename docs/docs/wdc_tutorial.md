@@ -239,7 +239,7 @@ Whew! That's a good-sized chunk of code. Let's see what's happening:
 
 ### See it in action {#see-in-action}
 
-By now, you're a pro at running the simulator, so fire it up, load your connector, and click `Get Earthquake Data!` like before. Now that we have a `getSchema` function properly defined, you should see the schema displayed in the simulator.
+By now, you're a pro at running the simulator, so fire it up, load your connector, and click **Get Earthquake Data!** like before. Now that we have a `getSchema` function properly defined, you should see the schema displayed in the simulator.
 
 The moment you've been waiting for is here! Click **Fetch Table Data** to run your `getData` function and display the results in a table. 
 
