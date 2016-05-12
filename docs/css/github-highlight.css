@@ -1,7 +1,12 @@
 pre { 
     border: none !important;
     background-color: #fff !important;
-    max-width: 762px !important;
+}
+code { 
+  color: inherit !important;
+}
+pre, code {
+  white-space: pre !important;
 }
 .highlight table pre { margin: 0; }
 .highlight .cm {
@@ -210,7 +215,9 @@ pre {
 }
 .highlight {
   background-color: #fff;
+  padding-bottom: 0px;
 }
 .highlighter-rouge {
   border: 1px solid #ccc;
+  margin-bottom: 1em;
 }
