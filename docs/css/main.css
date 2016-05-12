@@ -77,6 +77,29 @@ footer {
     margin-top: 100px;
 }
 
+table {
+    border: 1px solid #c2c2c2;
+    border-collapse: collapse;
+    margin: 1em 0px;
+}
+
+th
+{
+    font-weight: bold;
+    border: 1px solid #c2c2c2;
+    text-align: left;
+    padding: .3em;
+    vertical-align: top;
+    background-color: #fafafa;
+}
+
+td
+{
+    border: 1px solid #c2c2c2;
+    text-align: left;
+    padding: .3em;
+    vertical-align: top;
+}
 /* Media queries for responsive design */
 @media screen and (min-width: 1px) and (max-width: 480px){
     #columns[data-columns]::before {

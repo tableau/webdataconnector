@@ -9,9 +9,6 @@ Authentication comes in many flavors and can often be one of the most difficult
 portions of your connector to get right.  There are a few auth specific components of the
 WDC API that you should be aware of.
 
-There are several concepts covered here.  To see a comprehensive example of some of these
-topics in action, please consult the [Node Proxy with OAuth Tutorial]({{ site.baseurl }}docs/wdc_oauth_tutorial).
-
 -   [Types of authentication](#auth-types)
 
 -   [The WDC Auth Phase](#auth-phase)

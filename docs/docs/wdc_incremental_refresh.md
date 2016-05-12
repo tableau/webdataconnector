@@ -29,7 +29,7 @@ during the last gather data phase.
 
 For example, here is the getSchema method of the IncrementalRefreshConnector dev sample:
 
-```
+```js
 myConnector.getSchema = function(schemaCallback) {
     var cols = [
         { id: "id", dataType: "string" },
@@ -61,7 +61,7 @@ property.  This value will contain the current largest value from the increment 
 For example, this is how this property is utilized in the IncrementalRefreshConnector dev sample:
 
 
-```
+```js
 myConnector.getData = function(table, doneCallback) {
     var lastId = parseInt(table.incrementValue || -1);
     

@@ -4,10 +4,8 @@ title: WDC Lifecycle and Phases
 base: docs
 ---
 
-This document explains the overall lifecycle  of a Tableau Web Data Connector. Understanding 
-the material in this page will be extremely helpful in successfully
-developing a web data connector.  It is recommended that you understand the material
-from the Quick Start section before diving into this material.
+This document explains the overall lifecycle  of a Tableau Web Data Connector. It is recommended that you understand the material
+from the Get Started section before diving into this material.
 
 A WDC is always run with an associated phase.  Tableau loads
 the connector inside a web browser at different times and in distinct phases. 
@@ -25,17 +23,16 @@ This document will explain each of these phases and when each one runs.
 Lifecycle Diagram {#diagram}
 --------------------------------------------------
 
-At a high level, the WDC lifecycle is as follows.  The following sections will 
-describe each part of this flow in detail.
+At a high level, the WDC lifecycle is as follows:
 
 <img class="img-responsive docs-img" src="{{ site.baseurl }}assets/wdc_flow.png" alt="">
 
 **Note**: This is slightly simplified.
-For example, shutdown and shutdownCallback were left out, but both 
-of these events take place at the end of each phase as well (the mirror to
-init and initCallback).
+For example, `shutdown` and `shutdownCallback` were left out, but both 
+of these events take place at the end of each phase as well (they mirror 
+`init` and `initCallback`).
 
-Interactive phase: Interact with the user (if necessary) {#phase-one}
+Interactive phase: Interact with the user {#phase-one}
 --------------------------------------------------
 
 - Tableau launches the web data connector in the interactive phase.  This
@@ -56,12 +53,12 @@ Interactive phase: Interact with the user (if necessary) {#phase-one}
     - The connector calls the function tableau.submit(), which tells Tableau that the connector
       is ready to finish the interactive phase.
 
-Gather Data phase: fetch data from a web source {#phase-two}
+Gather data phase: Fetch data from a web source {#phase-two}
 -------------------------
 
 - After the interactive phase has been completed, Tableau will launch the web data connector
     in a new, headless (meaning without UI) browser session.  The connector will now be in the 
-    gather data phase.  This phase can be launched from Tableau Desktop, Tableau Server/Online,
+    gather data phase.  This phase can be launched from Tableau Desktop, Tableau Server, Tableau Online,
     or the Simulator.
     
     In the gather data phase, the following actions occur:
@@ -76,9 +73,7 @@ Gather Data phase: fetch data from a web source {#phase-two}
     
     - Tableau first calls the 
       [getSchema]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.webdataconnector.getschema)
-      method, which you, the WDC Developer, define on your connector object.
-      This method will tell Tableau what the schema is for any tables your
-      connector returns.
+      method, which you define for your connector to map web data to table columns in Tableau.
       
     - The connector will call schemaCallback with a schema object, which passes
       the connector's schema back to Tableau.
@@ -99,20 +94,18 @@ Gather Data phase: fetch data from a web source {#phase-two}
       table if necessary.  If not, the WDC flow is completed and data can now be 
       analyzed within Tableau.
 
-Auth phase: Display authentication UI when needed {#phase-three}
+Authentication phase: Display authentication UI when needed {#phase-three}
 --------------------------------------------------------------
 
-An alternative phase can occur if the connector is invoked in order to
+The authentication phase is an optional phase which Tableau uses to refresh extracts that require authentication. Rather than reload the connector and get the schema again, Tableau runs the authentication phase to only display the user interface required for authentication. 
 refresh a data extract that the connector created. When an extract must
-be refreshed, Tableau does not need to change the schema, but it might
-need to make a call to the external data source for authentication.
-(This is not really a third phase, because it does not follow the other
-two; it's an alternative to the first phase.)
 
-In this mode, the connector
-should display only the UI that is required in order to get an updated
-token.  Updates to properties other than tableau.username and tableau.password
+**Note**: This is not really a third phase, because it does not follow the other
+two; it's an alternative to the first phase.
+
+In this mode, the connector should display only the UI that is required in order to get an updated
+token.  Updates to properties other than `tableau.username` and `tableau.password`
 will be ignored during this phase. 
 
-Please see [WDC Authentication]({{ site.baseurl }}docs/wdc_authentication.html)
-for more details on when and how the auth phase comes into play.
+For more information, on how to use the authentication phase, see [WDC Authentication]({{ site.baseurl }}docs/wdc_authentication.html).
+
