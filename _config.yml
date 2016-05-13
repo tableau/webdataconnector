@@ -2,7 +2,7 @@
 title: Tableau Web Data Connector
 email: jdominguez@tableau.com
 description: Connect to your web data from Tableau.
-baseurl: "/wdc/"
+baseurl: "/"
 permalinks: pretty
 
 # Build settings

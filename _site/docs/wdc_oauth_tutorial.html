@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Node Proxy with OAuth Tutorial</title>
+  <meta name="description" content="Connect to your web data from Tableau.">
+
+  <link rel="shortcut icon" type="image/png" href="/assets/logo.png">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/api_ref.css">
+  <link rel="stylesheet" href="/css/github-highlight.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+  <body>
+    <div class="container">
+        <header class="site-header">
+  <div class="wrapper">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand navbar-brand-logo" href="/#">Tableau Web Data Connector</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/docs/">Docs</a></li>
+            <li><a href="/ref/api_ref">API Reference</a></li>
+            <li><a href="/community/community_home">Community Connectors</a></li>
+            <li><a href="/news/news_home">What's New?</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="tableauIcon"><a target="_blank" href="http://tableau.com"><img src="/assets/logo.png" alt="Tableau Developers" class="logo" /></a></li>
+            <li><a target="_blank" href="https://github.com/tableau/webdataconnector"><span class="icon icon--github" title="WDC on GitHub" alt="WDC on GitHub"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+  </div>
+</header>
+
+        
+            <html class="minimal">
+<body>
+<nav class="tsd-navigation secondary">
+	<ul>
+		<li>
+			<h5>Overview</h5>
+			<ul>
+				<li class="tsd-kind-property tsd-parent-kind-class">
+					<a href="/docs" class="tsd-kind-icon">Get Started</a>
+				</li>
+				<li class="tsd-kind-property tsd-parent-kind-class">
+					<a href="/docs/wdc_tutorial" class="tsd-kind-icon">Tutorial</a>
+				</li>
+                <li class="tsd-kind-property tsd-parent-kind-class">
+					<a href="/docs/wdc_use_in_tableau" class="tsd-kind-icon">Use a WDC in Tableau</a>
+				</li>
+            </ul>
+        </li>
+        <li>
+			<h5>Basic Concepts</h5>
+			<ul>
+				<li class="tsd-kind-property tsd-parent-kind-class">
+					<a href="/docs/wdc_phases" class="tsd-kind-icon">WDC Lifecycle and Phases</a>
+				</li>
+				<li class="tsd-kind-property tsd-parent-kind-class">
+					<a href="/docs/wdc_simulator" class="tsd-kind-icon">Simulator and Samples</a>
+				</li>
+				<li class="tsd-kind-property tsd-parent-kind-class">
+					<a href="/docs/wdc_library_versions" class="tsd-kind-icon">API Versioning</a>
+				</li>
+                <li class="tsd-kind-property tsd-parent-kind-class">
+					<a href="/docs/wdc_hosting_and_submissions" class="tsd-kind-icon">Hosting and Submitting to Community Portal</a>
+				</li>
+            </ul>
+        </li>
+        <li>
+			<h5>Advanced Concepts</h5>
+			<ul>
+				<li class="tsd-kind-property tsd-parent-kind-class">
+					<a href="/docs/wdc_custom_init_and_shutdown" class="tsd-kind-icon">Custom Initialization and Shutdown</a>
+				</li>
+				<li class="tsd-kind-property tsd-parent-kind-class">
+					<a href="/docs/wdc_incremental_refresh" class="tsd-kind-icon">Incremental Refresh</a>
+				</li>
+				<li class="tsd-kind-property tsd-parent-kind-class">
+					<a href="/docs/wdc_authentication" class="tsd-kind-icon">WDC Authentication</a>
+				</li>
+				<li class="tsd-kind-property tsd-parent-kind-class">
+					<a href="/docs/wdc_cors" class="tsd-kind-icon">Working with CORS</a>
+				</li>
+			</ul>
+        </li>
+        <li>
+			<h5>Advanced Tutorials</h5>
+			<ul>
+				<li class="tsd-kind-property tsd-parent-kind-class">
+					<a href="/docs/wdc_multi_table_tutorial" class="tsd-kind-icon">Multi Table Tutorial</a>
+				</li>
+				<!--<li class="tsd-kind-property tsd-parent-kind-class">
+					<a href="/docs/wdc_oauth_tutorial" class="tsd-kind-icon">Node Proxy with OAuth 2.0 Tutorial</a>
+				</li>-->
+            </ul>
+        </li>
+        <li>
+			<h5>Reference</h5>
+			<ul>
+				<!--<li class="tsd-kind-property tsd-parent-kind-class">
+					<a target="_blank" href="/ref/api_ref" class="tsd-kind-icon">API Reference</a>
+                </li>-->
+                <li class="tsd-kind-property tsd-parent-kind-class">
+					<a href="/docs/wdc_ref_date_formats" class="tsd-kind-icon">Supported Date Formats</a>
+				</li>
+				<!--<li class="tsd-kind-property tsd-parent-kind-class">
+					<a href="/docs/wdc_resources" class="tsd-kind-icon">Resources</a>
+				</li>-->
+				<li class="tsd-kind-property tsd-parent-kind-class">
+					<a href="/docs/wdc_faq" class="tsd-kind-icon">FAQ</a>
+				</li>
+            </ul>
+        </li>
+    <ul>
+</nav>
+<div class="content-wrap docs-content-wrap">
+    <h1>Node Proxy with OAuth Tutorial</h1>
+    <article class="post">
+
+  <div class="post-content">
+    <p><code class="highlighter-rouge">This content isn't finished yet: Coming soon</code></p>
+
+<p>This topic is part of a multi-part tutorial on how to use OAuth with a
+Tableau web data connector. Here is a list of all the parts:</p>
+
+<ol>
+  <li><strong>Introduction and Overview</strong> (you are here)</li>
+  <li><a href="wdc_tutorial_oauth_client_create_app.html">Create a Foursquare App</a></li>
+  <li><a href="wdc_tutorial_oauth_create_ui.html">Create the UI for Signing In</a></li>
+  <li><a href="wdc_tutorial_oauth_client_add_oauth_authentication.html">Add Code for OAuth
+Sign-In</a></li>
+  <li><a href="wdc_tutorial_oauth_client_test_oauth.html">Test OAuth Sign-In</a></li>
+  <li><a href="wdc_tutorial_oauth_client_data_gathering_code.html">Get Columns and
+Data</a></li>
+  <li><a href="wdc_tutorial_oauth_client_add_oauth_manage_creds_during_data_gathering.html">Manage
+Credentials</a></li>
+  <li><a href="wdc_tutorial_oauth_client_test_in_simulator.html">Test the Connector in the
+Simulator</a></li>
+  <li><a href="wdc_tutorial_oauth_client_test_in_tableau.html">Test the Connector in
+Tableau</a></li>
+  <li><a href="/docs/wdc_tutorial_oauth_client_code_listing.html">Complete Code Listing</a></li>
+</ol>
+
+<p>In this part of the tutorial, you’ll learn these things:</p>
+
+<ul>
+  <li>
+    <p><a href="#tutorial-scenario">The tutorial scenario</a>. This section describes
+the web data connector that you’ll build.</p>
+  </li>
+  <li>
+    <p><a href="#prerequisites">Prerequisites</a>. What you’ll need, and what we
+assume you already know about web data connectors.</p>
+  </li>
+  <li>
+    <p><a href="#what-is-oath">What is OAuth?</a> If you’re new to OAuth, this section
+provides a quick overview.</p>
+  </li>
+  <li>
+    <p><a href="#client-and-server-flow">Which OAuth flow should I use: client-based or
+server-based?</a> There are two basic ways to
+work with OAuth authentication: client flow and server flow. This
+section provides a brief overview of each and when to use them.</p>
+  </li>
+</ul>
+
+<p><strong>Note</strong>: A complete code listing for the tutorial is available in <a href="wdc_tutorial_oauth_client_code_listing.html">Web
+Data Connector OAuth Tutorial: Complete Code
+Listing</a>.</p>
+
+<h2 id="tutorial-scenario">The tutorial scenario</h2>
+
+<p>In this tutorial, you’ll build a web data connector that gets data from
+Foursquare (<a href="http://foursquare.com">http://foursquare.com</a>). Foursquare is an app that allows
+users to search for local services, such as restaurants or attractions.
+Foursquare also exposes an API that developers can use to perform many
+of the functions that the app has. Foursquare is one of many sites that
+use OAuth with their APIs. Others are Facebook, Yelp, Tumblr, Twitter,
+Etsy, and many more.</p>
+
+<p>For this tutorial, you’ll create a web data connector that calls the
+Foursquare
+<a href="https://developer.foursquare.com/docs/users/venuelikes"><code class="highlighter-rouge">venuelikes</code></a>
+endpoint, which returns a list of venues that a specific user has
+“Liked” in Foursquare. When you call the <code class="highlighter-rouge">venuelikes</code> endpoint, you must
+include an OAuth access token. The token tells Foursquare that the user
+has allowed your app—namely, the web data connector—to access the user’s
+personal information on Foursquare.</p>
+
+<p><strong>Note</strong>: This tutorial illustrates how to use <a href="http://oauth.net/2/">OAuth
+2.0</a>.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>To run this tutorial, you need the following:</p>
+
+<ol>
+  <li>
+    <p>Basic familiarity with JavaScript.</p>
+  </li>
+  <li>
+    <p>The Web Data Connector SDK installed on your computer.</p>
+  </li>
+  <li>
+    <p>Familiarity with the concepts and web data connector example in <a href="wdc_tutorial_basic.html">Web
+Data Connector Basic Tutorial</a>.</p>
+  </li>
+  <li>
+    <p>A web server running locally on your computer and listening on
+port 8888. As in the basic tutorial, you can use the Python
+development server.</p>
+  </li>
+</ol>
+
+<h2 id="what-is-oath">What is OAuth and how does it work?</h2>
+
+<p>This section provides some basic information about OAuth for those who
+are not familiar with it. OAuth is an authentication protocol that
+allows an <em>application</em> (in our case, a web data connector) to request
+specific resources from a <em>resource provider</em> (Foursquare) on behalf of
+a specific <em>resource owner</em> (the user who signs in to Foursquare). This
+is a more secure and usable alternative to the application asking the
+user directly for their Foursquare username and password.</p>
+
+<p>In order to use OAuth, an application must be registered with the OAuth
+resource provider. For example, in this tutorial, you register your
+application with Foursquare. (If you were using a different OAuth
+provider, you would register your application with that provider.) The
+provider assigns a client ID and a client secret to the application.
+When the application contacts the OAuth provider, the application passes
+the client ID to identify itself. The exact process for registering your
+application differs for each provider, and is typically explained in the
+provider’s documentation for how to use their API.</p>
+
+<p>The following diagram illustrates an example OAuth flow, which is the
+flow you will build. The steps following the diagram describe the
+stepsin the flow.</p>
+
+<p><img src="/assets/wdc_tutorial_oauth_flow-2.png" alt="" /></p>
+
+<ol>
+  <li>
+    <p>The end user loads the web data connector in Tableau in order to
+connect to data.</p>
+  </li>
+  <li>
+    <p>The connector displays a button that prompts the user to go to
+Foursquare to sign in. When the user clicks the button, the
+connector redirects the user to Foursquare to sign in. (The redirect
+URL includes the client ID for your connector.)</p>
+  </li>
+  <li>
+    <p>On the Foursquare site, the user signs in and grants permission to
+the connector to access the user’s personal information.</p>
+  </li>
+  <li>
+    <p>Foursquare redirects the user back to the connector. As part of the
+URL that redirects the user back to the connector, Foursquare
+includes an access token.</p>
+  </li>
+  <li>
+    <p>The connector includes the access token when it makes requests to
+Foursquare endpoints. When Foursquare gets the requests, it
+recognizes that the call is on behalf of the user.</p>
+  </li>
+  <li>
+    <p>Foursquare returns the requested information for the user
+represented by the access token.</p>
+  </li>
+</ol>
+
+<h2 id="client-and-server-flow">Which OAuth flow should I use: client-based or server-based?</h2>
+
+<p>Applications can use OAuth using one of two flows: client flow and
+server flow. In client flow, JavaScript that runs in the browser makes
+the OAuth calls and handles the access token. In server flow, the
+authentication flow goes through a server instead of going back and
+forth only between the client (browser) and the resource provider.</p>
+
+<p>The primary motivation for using server-based flow is to increase
+security. In client flow, all the information required in order to get
+an access token is on the client—that is, in JavaScript code. This makes
+the information visible to anyone who can read that JavaScript code. In
+server flow, the server keeps the client secret that’s assigned to the
+app, and the secret is used to get the access token.</p>
+
+<p>Which should you use? A rule of thumb is that if you’re calling
+endpoints that require your client secret, you should use server flow.
+The client secret should be kept secure, and the client flow potentially
+exposes the secret. In the server flow, the client secret can be kept
+more secure on the server.</p>
+
+<p>However, if you’re not calling endpoints that require the client secret,
+it’s generally easier to implement the client flow.</p>
+
+<h2 id="what-youll-do">What you’ll do</h2>
+
+<p>In this part of the tutorial, you’ll create an account with Foursquare
+(the OAuth provider) and register your app. You’ll get back a client ID
+and client secret that you’ll need for making calls to Foursquare later.</p>
+
+<h2 id="register-your-app-with-foursquare">Register your app with Foursquare</h2>
+
+<p>Before you create the web data connector, you must register your
+Foursquare application (the web data connector) on the Foursquare
+developer site. When you’re done, you’ll have a client ID that you use
+when you communicate with Foursquare and that lets Foursquare know who
+is making requests.</p>
+
+<ol>
+  <li>
+    <p>Go to the <a href="https://foursquare.com/">Foursquare.com</a> site. If you
+have a Foursquare developer account, sign in. Otherwise, sign up for
+a new account.</p>
+  </li>
+  <li>
+    <p>Go to the <a href="https://foursquare.com/developers/apps">My Apps</a>
+page (https://foursquare.com/developers/apps) on the Foursquare
+developer website.</p>
+  </li>
+  <li>
+    <p>Click the <span class="uicontrol">Create a new app</span> button.</p>
+  </li>
+  <li>
+    <p>Fill in the <span class="uicontrol">Your app name</span>, <span class="uicontrol">Download/welcome page url</span>, and <span class="uicontrol">Redirect URI(s)</span> boxes.</p>
+
+    <p>You can use any values you want for the application name and welcome
+page URL. For the <span class="uicontrol">Redirect URI</span> box,
+enter the following:</p>
+
+    <p><code class="highlighter-rouge">http://localhost:8888/Examples/foursquare.html</code></p>
+
+    <p>You will use this value later on when you make a call to the
+Foursquare OAuth service.</p>
+  </li>
+  <li>
+    <p>Click <span class="uicontrol">Save Changes</span>.</p>
+
+    <p>Foursquare displays a client ID and a client secret.</p>
+  </li>
+  <li>
+    <p>Copy the client ID and client secret and keep them in a
+secure location.</p>
+
+    <p><strong>Note</strong>: For this tutorial, you need only the client ID. You don’t
+need the client secret for this tutorial.</p>
+  </li>
+</ol>
+
+<h2 id="like-some-venues">“Like” some venues</h2>
+
+<p>If you’re new to Foursquare, you don’t have any “Liked” venues. To make
+sure you have some data to work with later, do this.</p>
+
+<ol>
+  <li>
+    <p>Go to the <a href="http://www.fourquare.com">Foursquare.com</a> site and
+sign in.</p>
+  </li>
+  <li>
+    <p>Search for venues and display the listing for a venue that you like.</p>
+  </li>
+  <li>
+    <p>Click the “Like” icon at the bottom of the page.</p>
+
+    <p><img src="/assets/wdc_tutorial_oauth_foursquare_likes.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Repeat steps 2 and 3 a few times until you have a selection of
+“Liked” venues to test later.</p>
+  </li>
+</ol>
+
+<h2 id="next">Next</h2>
+
+<p>In the next part of the tutorial, you’ll create the HTML page for the
+connector and the JavaScript code to let the user sign in using
+Foursquare.</p>
+
+<p><a href="wdc_tutorial_oauth_create_ui.html">Web Data Connector OAuth Tutorial Part 3: Create the UI for Signing
+In</a></p>
+
+<h2 id="what-youll-do-1">What you’ll do</h2>
+
+<p>In this part of the tutorial, you create an HTML page that contains
+markup for the UI that lets the user sign in to Foursquare. The HTML
+page renders the following:</p>
+
+<p><img src="/assets/wdc_tutorial_oauth_basic_signin_ui.png" alt="" /></p>
+
+<p>You also add JavaScript code that toggles text in the page (“You are
+signed in” or “You are not signed in”), depending on whether the user is
+signed in.</p>
+
+<p><strong>Note</strong>: A complete code listing for the tutorial is available in <a href="wdc_tutorial_oauth_client_code_listing.html">Web
+Data Connector OAuth Tutorial: Complete Code
+Listing</a>.</p>
+
+<h2 id="get-the-button-graphic">Get the button graphic</h2>
+
+<p>The page uses a graphic for the Connect to Foursquare button. Download
+the graphic from the Foursquare resources page at the following
+location:</p>
+
+<p><code class="highlighter-rouge">https://foursquare.com/about/logos</code></p>
+
+<p>At the bottom of the page, there’s a link to a page where you can
+download assets. This takes you to a shared Dropbox folder. Click that
+link and then follow the links to get the <span class="uicontrol">Connect to Foursquare</span> button. For example,
+click <span class="uicontrol">Logos</span> &gt; <span class="uicontrol">Developer</span>, and then download the
+<code class="highlighter-rouge">Connect-to-Foursquare-300.png</code> file.</p>
+
+<p><strong>Note</strong>: The Foursquare UI for downloading assets might change without
+notice.</p>
+
+<p>Save the graphic as <code class="highlighter-rouge">foursquare_connect.png</code> in the <code class="highlighter-rouge">Examples</code> folder of
+the Web Data Connector SDK location on your computer. (Use the name
+<code class="highlighter-rouge">foursquare_connect.png</code> because that’s the name that the
+<code class="highlighter-rouge">foursquare.html</code> page you’re creating expects.)</p>
+
+<p><img src="/assets/wdc_tutorial_oauth_foursquare_connect_button.png" alt="" /></p>
+
+<h2 id="create-the-html-markup">Create the HTML markup</h2>
+
+<p>Create a new file named <code class="highlighter-rouge">foursquare.html</code> in the <code class="highlighter-rouge">Examples</code> folder. Then
+copy the following markup into the new file.</p>
+
+<pre><code class="language-{space=&quot;preserve&quot;}">&lt;!DOCTYPE.html&gt;
+.html&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Foursquare Connector&lt;/title&gt;
+    &lt;meta http-equiv="Cache-Control" content="no-store" /&gt;
+    &lt;!-- Latest compiled and minified CSS --&gt;
+    &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"&gt;
+
+    &lt;!-- Optional theme --&gt;
+    &lt;link rel="stylesheet"
+       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"&gt;
+    &lt;!-- Latest compiled and minified JavaScript --&gt;
+    &lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+         type="text/javascript"&gt;&lt;/script&gt;
+
+    &lt;!-- Latest WDC Library --&gt;
+    &lt;script src="https://connectors.tableau.com/libs/tableauwdc-1.1.1.js"
+         type="text/javascript"&gt;&lt;/script&gt;
+
+    &lt;!-- This will contain all of your WDC code --&gt;
+    &lt;script src="./foursquare.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div style="margin: auto; text-align: center; margin-top: 50px; max-width: 300px"&gt;
+    &lt;!-- These labels will toggle depending on whether the user is authenticated
+         or not --&gt;
+    &lt;p class="signedin"&gt;You are signed in!&lt;/p&gt;
+    &lt;p class="notsignedin"&gt;You are not signed in, please click below to sign in
+       to your foursquare account.&lt;/p&gt;
+
+    &lt;!-- The connect to foursquare button will have a link added to it in the js--&gt;
+    &lt;a href="#" id="connectbutton"&gt;&lt;img src="./foursquare_connect.png"
+         alt="Login with Foursquagare"/&gt;&lt;/a&gt;
+    &lt;br /&gt;&lt;br /&gt;
+
+    &lt;!-- This button will fetch the user's "Liked" venues once the user is authenticated --&gt;
+    &lt;p&gt;&lt;a href="#" class="btn btn-primary btn-block" id="getvenuesbutton"&gt;
+      &lt;span class="glyphicon glyphicon-arrow-down"&gt;&lt;/span&gt; Get Venues I Like&lt;/a&gt;
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;.html&gt;
+</code></pre>
+
+<p>At the top of the file, there are <code class="highlighter-rouge">&lt;script&gt;</code> elements that link to
+various libraries: to Twitter Bootstrap, to jQuery, to the Tableau WDC
+library, and to the <code class="highlighter-rouge">foursquare.js</code> library. The Bootstrap and jQuery
+libraries are optional for web data connectors, but we use them in this
+tutorial for professional styling (Bootstrap) and to help with some of
+the JavaScript coding (jQuery). The WDC library (currently
+<code class="highlighter-rouge">tableauwdc-1.1.1.js</code>) is required for all WDCs.</p>
+
+<p><strong>Note</strong>: To connect to a web data connector that uses
+<code class="highlighter-rouge">tableauwdc-1.1.1.js</code>, you must be using a recent version of Tableau.
+For more information, see <a href="wdc-library-versions.html">Web Data Connector Library
+Versions</a>.</p>
+
+<p>The <code class="highlighter-rouge">foursquare.js</code> file is a separate .js file that you’ll create
+shortly. It will contain all the code for making calls to Foursquare.</p>
+
+<p>The page UI consists of a <span class="uicontrol">Connect to
+Foursquare</span> button and a <span class="uicontrol">Get Venues I
+Like</span> button. There is also a single label whose text changes
+depending on whether the user is authenticated. If you run the page now,
+both labels are shown.</p>
+
+<h3 id="add-code-to-manage-the-ui">Add code to manage the UI</h3>
+
+<p>The next task is to add JavaScript that controls the UI in the page. The
+connector should display one label if the user is signed in, and the
+other label if not.</p>
+
+<p>You also add code that stores the credentials you need later to make
+calls to Foursquare.</p>
+
+<p>In the <code class="highlighter-rouge">Examples</code> folder where the <code class="highlighter-rouge">foursquare.html</code> file is, create a
+file named <code class="highlighter-rouge">foursquare.js</code> and copy the following code into it.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var config = {
+    clientId: 'YOUR_CLIENT_ID',
+    redirectUri: 'http://localhost:8888/Examples/foursquare.html',
+    authUrl: 'https://foursquare.com/',
+    version: '20150901'
+};
+</code></pre>
+</div>
+
+<p>Replace <code class="highlighter-rouge">YOUR_CLIENT_ID</code> in the code with the client ID that you got
+from Foursquare in <a href="wdc_tutorial_oauth_client_create_app.html">Part 1</a>.</p>
+
+<p>Notice the value of <code class="highlighter-rouge">redirectUri</code>. This is the URL that Foursquare will
+call after the user has signed in. You can see that the URL is
+<code class="highlighter-rouge">foursquare.html</code>, meaning that Foursquare will redirect back to the
+page that you’re building. Notice also that the server name for the URL
+is <code class="highlighter-rouge">localhost:8888</code>, meaning that the redirect will be made to a server
+running on your computer. If the web data connector is hosted on another
+server, this URL would have to be changed to reflect that.</p>
+
+<p><strong>Important</strong>: The values in the <code class="highlighter-rouge">foursquare.js</code> file, including your
+client ID, are visible to anyone who can access your web data connector.
+Don’t use this approach if you need the client <em>secret</em> to call APIs
+(which is an additional client value that you get from the OAuth
+provider). In that case, you should use server-flow OAuth. (Server flow
+is not covered in this tutorial.) In this tutorial, you’re not calling
+an API that requires the client secret, so the client secret is not
+embedded in the <code class="highlighter-rouge">.js</code> file; you don’t use the client secret at all in
+this tutorial.</p>
+
+<p>Finally, note that the <code class="highlighter-rouge">config</code> object contains a version value, which
+is a date. You must include a version value each time you make a call to
+Foursquare. For more information about this value, see <a href="https://developer.foursquare.com/overview/versioning">Versioning
+&amp; Internationalization</a>
+on the Foursquare website.</p>
+
+<p>Now add the code for managing the UI in the page. Copy the following
+code and add in the <code class="highlighter-rouge">foursquare.js</code> file below the <code class="highlighter-rouge">config</code> object
+definition.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$(document).ready(function() {
+    var accessToken = false;
+    var hasAuth = accessToken &amp;&amp; accessToken.length &gt; 0;
+    updateUIWithAuthState(hasAuth);
+
+});
+
+function updateUIWithAuthState(hasAuth) {
+    if (hasAuth) {
+        $(".notsignedin").css('display', 'none');
+        $(".signedin").css('display', 'block');
+    } else {
+        $(".notsignedin").css('display', 'block');
+        $(".signedin").css('display', 'none');
+    }
+}
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">document.ready</code> function is jQuery code that runs whenever the page
+is loaded. For the time being, this code calls the
+<code class="highlighter-rouge">updateUIWithAuthState</code> function, which toggles the visibility of text
+in the page by setting CSS style attributes for different <code class="highlighter-rouge">&lt;p&gt;</code> elements
+in the page.</p>
+
+<p>If you load the page into a browser now, you no longer see all the text
+on the page. Assuming that you’re not logged into Foursquare, you’ll see
+only this:</p>
+
+<p><img src="/assets/wdc_tutorial_oauth_not_signed_in_ui.png" alt="" /></p>
+
+<h2 id="next-1">Next</h2>
+
+<p>In the next part of the tutorial, you’ll add JavaScript code that
+manages the OAuth sign-in process—a handler for the <span class="uicontrol">Connect to Foursquare</span> button that takes the
+user to Foursquare, and code that gets the access token when the user is
+redirected back to your page.</p>
+
+<p><a href="wdc_tutorial_oauth_client_add_oauth_authentication.html">Web Data Connector OAuth Tutorial Part 4: Add Code for OAuth
+Sign-In</a></p>
+
+<h2 id="what-youll-do-2">What you’ll do</h2>
+
+<p>In this part of the tutorial, you add JavaScript code that manages the
+OAuth sign-in process. When a user clicks the <span class="uicontrol">Connect to Foursquare</span> button, your code
+redirects the user to Foursquare, where the user can sign in. After the
+user signs in, Foursquare redirects the user back to your web data
+connector page. You’ll add code to retrieve the OAuth access token that
+Foursquare sends back when it redirects the user to your page.</p>
+
+<p><strong>Note</strong>: A complete code listing for the tutorial is available in <a href="wdc_tutorial_oauth_client_code_listing.html">Web
+Data Connector OAuth Tutorial: Complete Code
+Listing</a>.</p>
+
+<h2 id="add-code-for-sign-in">Add code for sign-in</h2>
+
+<p>Copy the following code and completely overwrite the existing
+<code class="highlighter-rouge">document.ready</code> function.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$(document).ready(function() {
+    var accessToken = parseAccessToken();
+    var hasAuth = accessToken &amp;&amp; accessToken.length &gt; 0;
+    updateUIWithAuthState(hasAuth);
+
+    $("#connectbutton").click(function() {
+        doAuthRedirect();
+    });
+});
+</code></pre>
+</div>
+
+<p>There are two changes here, which are both highlighted. The first is
+that the <code class="highlighter-rouge">accessToken</code> value is now set by calling the
+<code class="highlighter-rouge">parseAccessToken</code> function.</p>
+
+<p>The second change is that the <code class="highlighter-rouge">document.ready</code> function includes a click
+handler for the <span class="uicontrol">Connect to Foursquare</span>
+button (whose ID in the markup is <code class="highlighter-rouge">connectbutton</code>). The click handler
+calls the <code class="highlighter-rouge">doAuthRedirect</code> function.</p>
+
+<h2 id="add-code-to-make-a-sign-in-call-to-foursquare">Add code to make a sign-in call to Foursquare</h2>
+
+<p>At the bottom of the file, add the following code:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>function doAuthRedirect() {
+    var url = config.authUrl + 'oauth2/authenticate?response_type=token&amp;client_id='
+                             + config.clientId
+                             + '&amp;redirect_uri='
+                             + config.redirectUri;
+    window.location.href = url;
+}
+</code></pre>
+</div>
+
+<p>This is the <code class="highlighter-rouge">doAuthRedirect</code> function that’s called when users click the
+<span class="uicontrol">Connect to Foursquare</span> button. The code
+builds the URL for the Foursquare endpoint that you send sign-in
+requests to. Notice that the URI includes the client ID and redirect URI
+that you got when you registered your app with Foursquare. (You added
+this information in the <code class="highlighter-rouge">config</code> object earlier in the tutorial.)</p>
+
+<h2 id="add-code-to-parse-the-access-token-from-the-response">Add code to parse the access token from the response</h2>
+
+<p>After the user signs in using Foursquare, Foursquare redirects the user
+back to your page. The URL that redirects to your page might look like
+this:</p>
+
+<p><code class="highlighter-rouge">http://localhost:8888/Examples/foursquare.html#access_token=X4H5R1BZRDMASHJJUXEUDN7TEYXXD02R3NF7MN2EOMV854R</code></p>
+
+<p>To extract the token from the URL, add the following code to the bottom
+of the <code class="highlighter-rouge">foursquare.js</code> file.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>function parseAccessToken() {
+    var query = window.location.hash.substring(1);
+    var vars = query.split("&amp;");
+    var ii;
+    for (ii = 0; ii &lt; vars.length; ++ii) {
+       var pair = vars[ii].split("=");
+       if (pair[0] == "access_token") { return pair[1]; }
+    }
+    return(false);
+}
+</code></pre>
+</div>
+
+<p>The code simply walks through the page’s URL looking for a parameter
+named <code class="highlighter-rouge">access_token</code> and returns that value.</p>
+
+<h2 id="the-page-so-far">The page so far</h2>
+
+<p>At this point, the <code class="highlighter-rouge">foursquare.js</code> file has the following content.
+(Remember that you must substitute your own client ID in the <code class="highlighter-rouge">config</code>
+object.)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var config = {
+    clientId: 'YOUR_CLIENT_ID',
+    redirectUri: 'http://localhost:8888/Examples/foursquare.html',
+    authUrl: 'https://foursquare.com/',
+    version: '20150901'
+};
+
+$(document).ready(function() {
+    var accessToken = parseAccessToken();
+    var hasAuth = accessToken &amp;&amp; accessToken.length &gt; 0;
+    updateUIWithAuthState(hasAuth);
+
+    $("#connectbutton").click(function() {
+        doAuthRedirect();
+    });
+});
+
+function updateUIWithAuthState(hasAuth) {
+    if (hasAuth) {
+            $(".notsignedin").css('display', 'none');
+        $(".signedin").css('display', 'block');
+    } else {
+        $(".notsignedin").css('display', 'block');
+        $(".signedin").css('display', 'none');
+    }
+}
+
+function doAuthRedirect() {
+    var url = config.authUrl + 'oauth2/authenticate?response_type=token&amp;client_id='
+                             + config.clientId
+                             + '&amp;redirect_uri='
+                             + config.redirectUri;
+    window.location.href = url;
+}
+
+function parseAccessToken() {
+    var query = window.location.hash.substring(1);
+    var vars = query.split("&amp;");
+    var ii;
+    for (ii = 0; ii &lt; vars.length; ++ii) {
+       var pair = vars[ii].split("=");
+       if (pair[0] == "access_token") { return pair[1]; }
+    }
+    return(false);
+}
+</code></pre>
+</div>
+
+<h2 id="next-2">Next</h2>
+
+<p>In the next part of the tutorial, you’ll test the Foursquare sign-in
+process.</p>
+
+<p><a href="wdc_tutorial_oauth_client_test_oauth.html">Web Data Connector OAuth Tutorial Part 5: Test OAuth
+Sign-In</a></p>
+
+<h2 id="what-youll-do-3">What you’ll do</h2>
+
+<p>In this part of the tutorial, you test the sign-in code for Foursquare.
+You can do this test in the browser without using the simulator that’s
+part of the Web Data Connector SDK.</p>
+
+<h2 id="test-oauth-sign-in">Test OAuth sign-in</h2>
+
+<p>You can now test OAuth sign-in.</p>
+
+<ol>
+  <li>
+    <p>Start your web server. If you’re using the Python development
+server, do this:</p>
+
+    <p>a.  Open a command window and go to the folder where you installed
+    the Web Data Connector SDK.</p>
+
+    <p>b.  Run one of these commands:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>(Python 2.x) `python -m SimpleHTTPServer 8888`
+
+(Python 3.x) `python -m http.server 8888`
+</code></pre>
+    </div>
+
+    <p><strong>Note</strong>: We’re assuming throughout this tutorial that the web
+server is listening on port 8888 and that the <code class="highlighter-rouge">foursquare.html</code> page
+is in the <code class="highlighter-rouge">Examples</code> folder of the SDK installation.</p>
+  </li>
+  <li>
+    <p>Open a browser window and enter the following URL:</p>
+
+    <p><code class="highlighter-rouge">http://localhost:8888/Examples/foursquare.html</code></p>
+
+    <p>You see the following in your browser:</p>
+
+    <p><img src="/assets/wdc_tutorial_oauth_not_signed_in_ui.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Click <span class="uicontrol">Connect to Foursquare</span>.</p>
+
+    <p>You see the Foursquare page that prompts you to sign in.</p>
+
+    <p><img src="/assets/wdc_tutorial_oauth_foursquare_signin.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Sign in and click <span class="uicontrol">Log in and allow</span>.
+Foursquare redirects you back to the web data connector page in
+the browser.</p>
+
+    <p>The URL box in the browser now includes the access token.</p>
+
+    <p><code class="highlighter-rouge">http://localhost:8888/Examples/foursquare.html#access_token=######...</code></p>
+
+    <p>When the web data connector has the token like this, it means that
+the connector is authorized to read your Foursquare info.</p>
+  </li>
+</ol>
+
+<h2 id="next-3">Next</h2>
+
+<p>In the next part of the tutorial, you’ll add the code that runs during
+the data-gathering phase of the web data connector to get the schema and
+the data.</p>
+
+<p><a href="wdc_tutorial_oauth_client_data_gathering_code.html">Web Data Connector OAuth Tutorial Part 6: Get Columns and
+Data</a></p>
+
+<h2 id="what-youll-do-4">What you’ll do</h2>
+
+<p>So far, all the code you’ve added was for getting the OAuth token. In
+this part of the tutorial you’ll add the JavaScript code that all web
+data connectors have—code to get the schema (field names and types) for
+the data, and to get the data itself. This code is similar to the
+equivalent code in the basic tutorial.</p>
+
+<p><strong>Note</strong>: A complete code listing for the tutorial is available in <a href="wdc_tutorial_oauth_client_code_listing.html">Web
+Data Connector OAuth Tutorial: Complete Code
+Listing</a>.</p>
+
+<h2 id="add-code-to-get-columns-and-data">Add code to get columns and data</h2>
+
+<p>Copy the following code into the bottom of the <code class="highlighter-rouge">foursquare.js</code> file.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>//------------- Tableau WDC code -------------//
+var myConnector = tableau.makeConnector();
+
+myConnector.getColumnHeaders = function() {
+    var fieldNames = ["Name", "Latitude", "Longitude", "Checkin Count"];
+    var fieldTypes = ["string","float","float","int"];
+    tableau.headersCallback(fieldNames, fieldTypes);
+};
+
+myConnector.getTableData = function(lastRecordToken) {
+    var dataToReturn = [];
+    var hasMoreData = false;
+
+    var accessToken = tableau.password;
+    var connectionUri = getVenueLikesURI(accessToken);
+
+    var xhr = $.ajax({
+        url: connectionUri,
+        dataType: 'json',
+        success: function (data) {
+            if (data.response) {
+                var venues = data.response.venues.items;
+                var ii;
+                for (ii = 0; ii &lt; venues.length; ++ii) {
+                    var venue = {'Name': venues[ii].name,
+                                 'Latitude': venues[ii].location.lat,
+                                 'Longitude': venues[ii].location.lng,
+                                 'Checkin Count': venues[ii].stats.checkinsCount};
+                    dataToReturn.push(venue);
+                }
+
+                tableau.dataCallback(dataToReturn, lastRecordToken, hasMoreData);
+            }
+            else {
+                tableau.abortWithError("No results found");
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            // If the connection fails, log the error and return an empty set.
+            tableau.log("Connection error: " + xhr.responseText + "\n" +
+                         thrownError);
+            tableau.abortWithError("Error while trying to connect to Foursquare.");
+        }
+    });
+};
+
+// Register the tableau connector--call this last
+tableau.registerConnector(myConnector);
+</code></pre>
+</div>
+
+<p>This code follows the same outline as any web data connector. The code
+starts by calling <code class="highlighter-rouge">tableau.makeConnector</code> to create an instance of the
+connector. It then adds functions to define the data schema
+(<code class="highlighter-rouge">getColumnHeaders</code>) and to actually fetch the data (<code class="highlighter-rouge">getTableData</code>).
+When the connector is completely configured, the code calls
+<code class="highlighter-rouge">tableau.registerConnector</code>.</p>
+
+<p>In this tutorial, the <code class="highlighter-rouge">getColumnHeaders</code> function defines four fields
+and corresponding data types. The <code class="highlighter-rouge">getTableData</code> function is very
+similar to the one from the basic tutorial. The code calls a helper
+function to create the request URI, and then uses jQuery to make an AJAX
+call to the data source. When the data is returned, a function in the
+success parameter parses the data, creates JavaScript objects out of
+each returned value, and then calls the <code class="highlighter-rouge">tableau.dataCallback</code> function
+to send the data to Tableau.</p>
+
+<p>One difference this time is that the <code class="highlighter-rouge">getTableData</code> function contains
+these lines:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var accessToken = tableau.password;
+var connectionUri = getVenueLikesURI(accessToken);
+</code></pre>
+</div>
+
+<p>When the <code class="highlighter-rouge">getTableData</code> function sends a request to Foursquare, the URL
+of the request has to include the access token. You might remember from
+the basic tutorial that you can use the <code class="highlighter-rouge">tableau.connectionData</code>
+property to pass values from the interactive (UI) phase of the connector
+to the data-gathering phase. (Because the phases run in separate browser
+sessions, you can’t use other mechanisms to share values between the
+phases.) In the basic tutorial, you used <code class="highlighter-rouge">tableau.connectionData</code> to
+pass a stock ticker symbol between phases.</p>
+
+<p>When you’re using OAuth, you have the same issue with the access
+token—you gather it from the user in the interactive phase, but you need
+to use it in the data-gathering phase. You can use the
+<code class="highlighter-rouge">tableau.password</code> property for this purpose. As with
+<code class="highlighter-rouge">tableau.connectionData</code>, it allows you to pass values between phases of
+the connector. However, it’s designed specifically for sensitive
+information like passwords.</p>
+
+<p>Although the code includes a function to extract the access token, you
+haven’t set the value of the <code class="highlighter-rouge">tableau.password</code> yet. You’ll do that
+shortly.</p>
+
+<h2 id="add-the-helper-function">Add the helper function</h2>
+
+<p>As in the basic tutorial, the work of creating the URL for the web
+request is done using a helper function. Add the following code just
+above the existing <code class="highlighter-rouge">parseAccessToken</code> function.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>function getVenueLikesURI(accessToken) {
+    return "https://api.foursquare.com/v2/users/self/venuelikes?oauth_token=" +
+            accessToken + "&amp;v=" + config.version;
+}
+</code></pre>
+</div>
+
+<p>This code builds the URI for the Foursquare <code class="highlighter-rouge">venuelikes</code> API, including
+adding the access token into the URL.</p>
+
+<h2 id="next-4">Next</h2>
+
+<p>In the next part of the tutorial, you’ll add code that makes sure that
+the web data connector always has credentials available when they’re
+needed.</p>
+
+<p><a href="wdc_tutorial_oauth_client_add_oauth_manage_creds_during_data_gathering.html">Web Data Connector OAuth Tutorial Part 7: Manage
+Credentials</a></p>
+
+<h2 id="what-youll-do-5">What you’ll do</h2>
+
+<p>In this part of the tutorial, you add code to make sure that the
+connector has an OAuth access token before it makes requests to
+Foursquare. If the access token is not available, you display UI in the
+connector to let the user sign in again. You’ll learn about the
+following:</p>
+
+<ul>
+  <li>
+    <p>Persisting credentials in the <code class="highlighter-rouge">tableau.username</code> and
+<code class="highlighter-rouge">tableau.password</code> properties.</p>
+  </li>
+  <li>
+    <p>The authentication (auth) phase of the connector, which occurs if
+Tableau needs credentials in order to refresh an extract.</p>
+  </li>
+  <li>
+    <p>Using the <code class="highlighter-rouge">tableau.alwaysShowAuthUI</code> property if you’re working
+with OAuth.</p>
+  </li>
+</ul>
+
+<p><strong>Note</strong>: A complete code listing for the tutorial is available in <a href="wdc_tutorial_oauth_client_code_listing.html">Web
+Data Connector OAuth Tutorial: Complete Code
+Listing</a>.</p>
+
+<h2 id="sidebar-credentials-in-web-data-connectors">Sidebar: Credentials in web data connectors</h2>
+
+<p>Before you start this part of the tutorial, it’s helpful to review how
+Tableau manages credentials when a user works with a web data connector
+in Tableau. If a connector requires authentication, you add markup and
+code to get credentials from the user. When the user loads the web data
+connector into Tableau, the connector goes through its interactive phase
+(UI phase) and uses your UI to gather information and credentials from
+the user. When you store parameter information in the
+<code class="highlighter-rouge">tableau.connectionData</code> property, you store any user credentials in the
+<code class="highlighter-rouge">tableau.username</code> and <code class="highlighter-rouge">tableau.password</code> properties. For OAuth
+authentication, you store the access token in the <code class="highlighter-rouge">tableau.password</code>
+property.</p>
+
+<p>When the user finishes entering information and credentials, Tableau
+loads the connector again and the connector goes through its
+data-gathering phase. In that phase, Tableau calls the connector’s
+<code class="highlighter-rouge">getColumnHeaders</code> and <code class="highlighter-rouge">getTableData</code> functions. When these functions
+make calls to the data source, they can get the OAuth access token from
+the <code class="highlighter-rouge">tableau.password</code> property and use it when constructing requests to
+fetch data.</p>
+
+<p>While the user is working in Tableau, the value in the
+<code class="highlighter-rouge">tableau.password</code> property is not persisted between sessions.
+Therefore, if the user closes Tableau, re-opens it, and re-loads a
+workbook that uses the web data connector, Tableau doesn’t have the
+access token. Specifically, there’s no value in the <code class="highlighter-rouge">tableau.password</code>
+property.</p>
+
+<p>In that case, Tableau calls the connector just to get the credentials
+again. This is referred to as the <em>authentication phase</em> or <em>auth
+phase</em>. For connectors that simply get the username and password (such
+as a connector that accesses a data source like SQL Server), Tableau can
+display a standard sign-in UI. However, Tableau has no built-in UI for
+OAuth. Therefore, Tableau has to tell your connector to display the UI
+that you’ve created to let the user sign in.</p>
+
+<p>To indicate to Tableau that your connector will provide the sign-in UI,
+you set the <code class="highlighter-rouge">tableau.alwaysShowAuthUI</code> property to true. You always do
+this when the connector uses OAuth, because, as noted, Tableau cannot
+display a sign-in UI for OAuth.</p>
+
+<p>In the auth phase, the connector should display <em>only</em> the UI that’s
+required in order to get the user’s credentials. In this phase, the
+connector doesn’t need to ask the user for any other information, such
+as query parameter values. (In fact, Tableau ignores any changes that
+you make except those to the <code class="highlighter-rouge">tableau.username</code> and <code class="highlighter-rouge">tableau.password</code>
+properties.) To determine whether your connector is being loaded in auth
+phase, you can test the <code class="highlighter-rouge">tableau.phase</code> property. The following example
+shows how you can determine what phase the connector is in.</p>
+
+<pre><code class="language-{space=&quot;preserve&quot;}">if (tableau.phase == tableau.phaseEnum.authPhase) {
+    // Display OAuth authentication UI
+}
+</code></pre>
+
+<h2 id="manage-credentials-during-the-data-gathering-phase">Manage credentials during the data-gathering phase</h2>
+
+<p>Because you’re using OAuth, you have to include custom initialization
+logic—that is, you have to include a <code class="highlighter-rouge">tableau.init</code> function in your web
+data connector code. (For web data connectors that don’t use OAuth, the
+Web Data Connector <code class="highlighter-rouge">.js</code> library provides a default <code class="highlighter-rouge">init</code> function, so
+you only need to create an <code class="highlighter-rouge">init</code> function if you need to add custom
+initialization code.)</p>
+
+<p>After the call to <code class="highlighter-rouge">tableau.makeConnector</code>, add the following code:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>myConnector.init = function() {
+  var accessToken = parseAccessToken();
+  var hasAuth = (accessToken &amp;&amp; accessToken.length &gt; 0) ||
+                    tableau.password.length &gt; 0;
+
+  if (tableau.phase == tableau.phaseEnum.interactivePhase ||
+                       tableau.phase == tableau.phaseEnum.authPhase) {
+      if (hasAuth) {
+          tableau.password = accessToken;
+          if (tableau.phase == tableau.phaseEnum.authPhase) {
+              // Auto-submit here if we are in the auth phase
+              tableau.submit()
+          }
+      }
+  }
+
+  /* Update UI */
+  updateUIWithAuthState(hasAuth);
+
+  if (tableau.phase == tableau.phaseEnum.interactivePhase) {
+     if (!hasAuth) {
+        $("#getvenuesbutton").css('display', 'none');     }
+  }
+
+  if (tableau.phase == tableau.phaseEnum.authPhase) {
+    $("#getvenuesbutton").css('display', 'none');
+  }
+
+  $("#getvenuesbutton").click(function() {
+      tableau.connectionName = "Foursquare Venues Data";
+      tableau.alwaysShowAuthUI = true;
+      tableau.submit();  // This ends the UI phase
+  });
+
+  tableau.initCallback();
+};
+</code></pre>
+</div>
+
+<h2 id="code-explanation">Code explanation</h2>
+
+<p>The connector’s <code class="highlighter-rouge">init</code> function is called each time that the connector
+is loaded. This gives the connector an opportunity to perform any
+initialization that the connector requires in each phase. In the <code class="highlighter-rouge">init</code>
+function, you can determine what phase is active by testing the
+<code class="highlighter-rouge">tableau.phase</code> property.</p>
+
+<p>In this connector, one task for the <code class="highlighter-rouge">init</code> function is to try to get the
+access token from the page URL. As you’ve already seen, during the
+interactive phase, the connector redirects to Foursquare, and Foursquare
+redirects back to the connector using a URL that includes the access
+token. However, when the connector is loaded again for the
+data-gathering phase, the page URL does not have the access token in it.</p>
+
+<p>The first section of the <code class="highlighter-rouge">init</code> code handles this case. Every time the
+page is loaded, the code in the <code class="highlighter-rouge">init</code> function tries to get the access
+token from the URL. This succeeds only if the connector is in its
+interactive or auth phases, since these phases can prompt the user to
+sign in. In those two cases, if the <code class="highlighter-rouge">parseAccessToken</code> function has
+returned an access token, the code sets the <code class="highlighter-rouge">tableau.password</code> property
+to the value of the access token. As you saw earlier, this makes the
+access token available to the <code class="highlighter-rouge">getTableData</code> function for the
+data-gathering phase.</p>
+
+<p>Another task for the <code class="highlighter-rouge">init</code> code is to display the appropriate UI for
+the phase that the connector is in. These are the conditions:</p>
+
+<ul>
+  <li>
+    <p>If the user is not signed in to Foursquare, the text “You are not
+signed in” should be displayed. This is handled with a call to the
+<code class="highlighter-rouge">updateUIWithAuthState</code> helper function.</p>
+  </li>
+  <li>
+    <p>If the connector is in its interactive phase and if the user is not
+yet signed in, the <span class="uicontrol">Get Venues I Like</span>
+button should be hidden—this button is useful only after the user is
+signed in.</p>
+  </li>
+  <li>
+    <p>Similarly, if the connector is in its auth phase, the only UI that
+the page should display is the button that lets the user sign in. In
+this tutorial, this also consists of hiding the <span class="uicontrol">Get Venues I Like</span> button.</p>
+  </li>
+</ul>
+
+<p>You might recognize some of this logic from the <code class="highlighter-rouge">document.ready</code>
+function that you added earlier in the tutorial. This allows you to work
+with the connector in a browser, which is useful for testing in the
+simulator, as we’ll explain in the next part of the tutorial.</p>
+
+<p>Finally, the code in the <code class="highlighter-rouge">init</code> function handles the user’s input in the
+interactive phase. In this tutorial, the only interaction is that the
+user can click the <span class="uicontrol">Get Venues I Like</span>
+button (whose ID is <code class="highlighter-rouge">getvenuesbutton</code>) after signing in. The click is
+handled with a small block of jQuery code.</p>
+
+<p>As in any web data connector, when the user has finished interacting
+with the page, your code sets <code class="highlighter-rouge">tableau</code> object properties like
+<code class="highlighter-rouge">connectionName</code> and <code class="highlighter-rouge">connectionData</code> (if required), and calls
+<code class="highlighter-rouge">tableau.submit</code> to tell Tableau that the interactive phase is done.</p>
+
+<p>There is one important difference in this <code class="highlighter-rouge">init</code> function, which is this
+line:</p>
+
+<p><code class="highlighter-rouge">tableau.alwaysShowAuthUI = true;</code></p>
+
+<p>This tells Tableau that if the <code class="highlighter-rouge">tableau.password</code> is missing during
+data-gathering phase, Tableau should call the connector in auth phase
+and the connector will display the UI that lets the user sign in again.
+You always set the <code class="highlighter-rouge">tableau.alwaysShowAuthUI</code> for a connector that uses
+OAuth, and you must set the property in a custom <code class="highlighter-rouge">init</code> function.</p>
+
+<h2 id="wrap-the-code-in-a-function">Wrap the code in a function</h2>
+
+<p>The last coding task is to wrap the entire contents of the
+<code class="highlighter-rouge">foursquare.js</code> file in an immediately invoked function expression
+(<a href="https://en.wikipedia.org/wiki/Immediately-invoked_function_expression">IIFE</a>).
+This adds a measure of security by preventing other linked scripts from
+accessing secure information inside <code class="highlighter-rouge">foursquare.js</code>.</p>
+
+<p>To do this, add the following to the top of the file, above the line
+that starts with <code class="highlighter-rouge">var config</code>:</p>
+
+<pre><code class="language-{space=&quot;preserve&quot;}">(function() {
+</code></pre>
+
+<p>This is the opening part of the function.</p>
+
+<p>At the very bottom of the file, add the closing elements for the
+function:</p>
+
+<pre><code class="language-{space=&quot;preserve&quot;}">})();
+</code></pre>
+
+<h2 id="the-page-so-far-1">The page so far</h2>
+
+<p>At this stage of the tutorial, this is what the <code class="highlighter-rouge">foursquare.js</code> file
+looks like.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>(function() {
+  var config = {
+      clientId: 'IX34GIPHSFDNRAUWUZXHTKFDTA4Q3YJQPDJ11OU4AS1MS3TP',
+      redirectUri: 'http://localhost:8888/Examples/foursquare.html',
+      authUrl: 'https://foursquare.com/',
+      version: '20150901'
+  };
+
+  $(document).ready(function() {
+      var accessToken = parseAccessToken();
+      var hasAuth = accessToken &amp;&amp; accessToken.length &gt; 0;
+      updateUIWithAuthState(hasAuth);
+
+      $("#connectbutton").click(function() {
+          doAuthRedirect();
+      });
+  });
+
+  function updateUIWithAuthState(hasAuth) {
+      if (hasAuth) {
+            $(".notsignedin").css('display', 'none');
+          $(".signedin").css('display', 'block');
+      } else {
+          $(".notsignedin").css('display', 'block');
+          $(".signedin").css('display', 'none');
+      }
+  }
+
+  function doAuthRedirect() {
+      var url = config.authUrl + 'oauth2/authenticate?response_type=token&amp;client_id='
+                               + config.clientId
+                               + '&amp;redirect_uri='
+                               + config.redirectUri;
+      window.location.href = url;
+  }
+
+  function getVenueLikesURI(accessToken) {
+      return "https://api.foursquare.com/v2/users/self/venuelikes?oauth_token=" +
+              accessToken + "&amp;v=" + config.version;
+  }
+
+  function parseAccessToken() {
+      var query = window.location.hash.substring(1);
+      var vars = query.split("&amp;");
+      var ii;
+      for (ii = 0; ii &lt; vars.length; ++ii) {
+         var pair = vars[ii].split("=");
+         if (pair[0] == "access_token") { return pair[1]; }
+      }
+      return(false);
+  }
+
+  //------------- Tableau WDC code -------------//
+  var myConnector = tableau.makeConnector();
+
+  myConnector.init = function() {
+    var accessToken = parseAccessToken();
+    var hasAuth = (accessToken &amp;&amp; accessToken.length &gt; 0) ||
+                       tableau.password.length &gt; 0;
+
+    if (tableau.phase == tableau.phaseEnum.interactivePhase ||
+                         tableau.phase == tableau.phaseEnum.authPhase) {
+        if (hasAuth) {
+            tableau.password = accessToken;
+            if (tableau.phase == tableau.phaseEnum.authPhase) {
+              // Auto-submit here if we are in the auth phase
+              tableau.submit()
+            }
+        }
+    }
+
+    updateUIWithAuthState(hasAuth);
+
+    if (tableau.phase == tableau.phaseEnum.interactivePhase) {
+       if (!hasAuth) {
+        $("#getvenuesbutton").css('display', 'none');     }
+    }
+
+    if (tableau.phase == tableau.phaseEnum.authPhase) {
+    $("#getvenuesbutton").css('display', 'none');
+    }
+
+    $("#getvenuesbutton").click(function() {
+      tableau.connectionName = "Foursquare Venues Data";
+      tableau.alwaysShowAuthUI = true;
+      tableau.submit();  // This ends the UI phase
+    });
+    tableau.initCallback();
+  };
+
+  myConnector.getColumnHeaders = function() {
+      var fieldNames = ["Name", "Latitude", "Longitude", "Checkin Count"];
+      var fieldTypes = ["string","float","float","int"];
+      tableau.headersCallback(fieldNames, fieldTypes);
+  };
+
+  myConnector.getTableData = function(lastRecordToken) {
+      var dataToReturn = [];
+      var hasMoreData = false;
+
+      var accessToken = tableau.password;
+      var connectionUri = getVenueLikesURI(accessToken);
+
+      var xhr = $.ajax({
+          url: connectionUri,
+          dataType: 'json',
+          success: function (data) {
+              if (data.response) {
+                  var venues = data.response.venues.items;
+                  var ii;
+                  for (ii = 0; ii &lt; venues.length; ++ii) {
+                      var venue = {'Name': venues[ii].name,
+                                   'Latitude': venues[ii].location.lat,
+                                   'Longitude': venues[ii].location.lng,
+                                   'Checkin Count': venues[ii].stats.checkinsCount};
+                      dataToReturn.push(venue);
+                  }
+
+                  tableau.dataCallback(dataToReturn, lastRecordToken, hasMoreData);
+              }
+              else {
+                  tableau.abortWithError("No results found");
+              }
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+              // If the connection fails, log the error and return an empty set.
+              tableau.log("Connection error: " + xhr.responseText + "\n" +
+                           thrownError);
+              tableau.abortWithError("Error while trying to connect to Foursquare.");
+          }
+      });
+  };
+
+  // Register the tableau connector--call this last
+  tableau.registerConnector(myConnector);
+
+  })();
+</code></pre>
+</div>
+
+<h2 id="next-5">Next</h2>
+
+<p>In the next part of the tutorial, you’ll test the web data connector
+using the simulator. You’ll also learn why you cannot use the simulator
+alone when your connector uses OAuth.</p>
+
+<p><a href="wdc_tutorial_oauth_client_test_in_simulator.html">Web Data Connector OAuth Tutorial Part 8: Test the Connector in the
+Simulator</a></p>
+
+<h2 id="what-youll-do-6">What you’ll do</h2>
+
+<p>In this part of the tutorial, you’ll test the finished connector in the
+simulator that’s part of the Web Data Connector SDK.</p>
+
+<h2 id="test-the-finished-connector-in-the-simulator">Test the finished connector in the simulator</h2>
+
+<p>You can now test the web data connector in the simulator.</p>
+
+<ol>
+  <li>
+    <p>Start the simulator by entering the following in your browser:</p>
+
+    <p><code class="highlighter-rouge">localhost:88888/simulator/</code></p>
+
+    <p>(As before, we’re assuming that the server is listening on
+port 8888.)</p>
+  </li>
+  <li>
+    <p>In the <span class="uicontrol">WDC URL</span> box at the top of the
+simulator, enter the path to the foursquare connector:</p>
+
+    <p><code class="highlighter-rouge">../Examples/foursquare.html</code></p>
+  </li>
+  <li>
+    <p>Click the <span class="uicontrol">Run Interactive
+Phase</span> button.</p>
+
+    <p>The simulator opens a window and displays the UI for the Foursquare
+web data connector.</p>
+
+    <p><img src="/assets/wdc_oauth_tutorial_run_interactive_phase_in_simulator.png" alt="" /></p>
+  </li>
+  <li>
+    <p>If the page indicates that you’re not logged in to Foursquare, click
+the <span class="uicontrol">Connect to Foursquare</span> button and
+log in.</p>
+  </li>
+  <li>
+    <p>Click the <span class="uicontrol">Get Venues I Like</span> button.</p>
+
+    <p>The simulator closes the window that displayed the UI phase of the
+connector and returns to the main simulator window. At the bottom of
+the main simulator window, the simulator displays the column names
+and the values for any venues that you’ve “Liked” on Foursquare.</p>
+
+    <p><img src="/assets/wdc_tutorial_oauth_test_in_new_simulator.png" alt="" /></p>
+
+    <p>Notice also that the simulator has filled the <span class="uicontrol">Password</span> box with the authentication token.
+Remember that in your code, when you got the authentication token
+back from Foursquare, you set the <code class="highlighter-rouge">tableau.password</code> property to the
+token value. When you run the simulator, after the UI phase is done,
+the simulator displays the values of <code class="highlighter-rouge">tableau</code> object properties.</p>
+  </li>
+</ol>
+
+<h2 id="html-page">Foursquare.html page</h2>
+
+<p><strong>Note</strong>: This listing includes a reference to the <code class="highlighter-rouge">tableauwdc-1.1.1.js</code>
+To connect to a web data connector that uses that version of the WDC
+library, you must be using a recent version of Tableau. For more
+information, see <a href="wdc-library-versions.html">Web Data Connector Library
+Versions</a>.</p>
+
+<pre><code class="language-&lt;!DOCTYPE.html&gt;">    .html&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;title&gt;Foursquare Connector&lt;/title&gt;
+        &lt;meta http-equiv="Cache-Control" content="no-store" /&gt;
+        &lt;!-- Latest compiled and minified CSS --&gt;
+        &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"&gt;
+
+        &lt;!-- Optional theme --&gt;
+        &lt;link rel="stylesheet"
+           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"&gt;
+        &lt;!-- Latest compiled and minified JavaScript --&gt;
+        &lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+             type="text/javascript"&gt;&lt;/script&gt;
+
+        &lt;!-- Latest WDC Library --&gt;
+        &lt;script src="https://connectors.tableau.com/libs/tableauwdc-1.1.1.js"
+             type="text/javascript"&gt;&lt;/script&gt;
+
+        &lt;!-- This will contain all of your WDC code --&gt;
+        &lt;script src="./foursquare.js" type="text/javascript"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div style="margin: auto; text-align: center; margin-top: 50px; max-width: 300px"&gt;
+        &lt;!-- These labels will toggle depending on whether the user is authenticated
+             or not --&gt;
+        &lt;p class="signedin"&gt;You are signed in!&lt;/p&gt;
+        &lt;p class="notsignedin"&gt;You are not signed in, please click below to sign in
+           to your foursquare account.&lt;/p&gt;
+
+        &lt;!-- The connect to foursquare button will have a link added to it in the js--&gt;
+        &lt;a href="#" id="connectbutton"&gt;&lt;img src="./foursquare_connect.png"
+             alt="Login with Foursquare"/&gt;&lt;/a&gt;
+        &lt;br /&gt;&lt;br /&gt;
+
+        &lt;!-- This button will fetch the user's "Liked" venues once the user is authenticated --&gt;
+        &lt;p&gt;&lt;a href="#" class="btn btn-primary btn-block" id="getvenuesbutton"&gt;
+          &lt;span class="glyphicon glyphicon-arrow-down"&gt;&lt;/span&gt; Get Venues I Like&lt;/a&gt;
+        &lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/body&gt;
+    &lt;.html&gt;```
+
+Foursquare.js page {.html-page}
+------------------
+
+</code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code>(function() {
+  var config = {
+        clientId: 'YOUR_CLIENT_ID',
+        redirectUri: 'http://localhost:8888/Examples/foursquare.html',
+        authUrl: 'https://foursquare.com/',
+        version: '20150901'
+    };
+
+  $(document).ready(function() {
+      var accessToken = parseAccessToken();
+      var hasAuth = accessToken &amp;&amp; accessToken.length &gt; 0;
+      updateUIWithAuthState(hasAuth);
+
+      $("#connectbutton").click(function() {
+          doAuthRedirect();
+      });
+  });
+
+  function updateUIWithAuthState(hasAuth) {
+      if (hasAuth) {
+            $(".notsignedin").css('display', 'none');
+          $(".signedin").css('display', 'block');
+      } else {
+          $(".notsignedin").css('display', 'block');
+          $(".signedin").css('display', 'none');
+      }
+  }
+
+  function doAuthRedirect() {
+      var url = config.authUrl + 'oauth2/authenticate?response_type=token&amp;client_id='
+                               + config.clientId
+                               + '&amp;redirect_uri='
+                               + config.redirectUri;
+      window.location.href = url;
+  }
+
+  function getVenueLikesURI(accessToken) {
+      return "https://api.foursquare.com/v2/users/self/venuelikes?oauth_token=" +
+              accessToken + "&amp;v=" + config.version;
+  }
+
+  function parseAccessToken() {
+      var query = window.location.hash.substring(1);
+      var vars = query.split("&amp;");
+      var ii;
+      for (ii = 0; ii &lt; vars.length; ++ii) {
+         var pair = vars[ii].split("=");
+         if (pair[0] == "access_token") { return pair[1]; }
+      }
+      return(false);
+  }
+
+  //------------- Tableau WDC code -------------//
+  var myConnector = tableau.makeConnector();
+
+  myConnector.init = function() {
+    var accessToken = parseAccessToken();
+    var hasAuth = (accessToken &amp;&amp; accessToken.length &gt; 0) ||
+                       tableau.password.length &gt; 0;
+
+    if (tableau.phase == tableau.phaseEnum.interactivePhase ||
+                         tableau.phase == tableau.phaseEnum.authPhase) {
+      if (hasAuth) {
+          tableau.password = accessToken;
+          if (tableau.phase == tableau.phaseEnum.authPhase) {
+              // Auto-submit here if we are in the auth phase
+              tableau.submit()
+          }
+       }
+    }
+
+    updateUIWithAuthState(hasAuth);
+
+    if (tableau.phase == tableau.phaseEnum.interactivePhase) {
+       if (!hasAuth) {
+        $("#getvenuesbutton").css('display', 'none');     }
+    }
+
+    if (tableau.phase == tableau.phaseEnum.authPhase) {
+    $("#getvenuesbutton").css('display', 'none');
+    }
+
+    $("#getvenuesbutton").click(function() {
+      tableau.connectionName = "Foursquare Venues Data";
+      tableau.alwaysShowAuthUI = true;
+      tableau.submit();  // This ends the UI phase
+    });
+    tableau.initCallback();
+  };
+
+  myConnector.getColumnHeaders = function() {
+      var fieldNames = ["Name", "Latitude", "Longitude", "Checkin Count"];
+      var fieldTypes = ["string","float","float","int"];
+      tableau.headersCallback(fieldNames, fieldTypes);
+  };
+
+  myConnector.getTableData = function(lastRecordToken) {
+      var dataToReturn = [];
+      var hasMoreData = false;
+
+      var accessToken = tableau.password;
+      var connectionUri = getVenueLikesURI(accessToken);
+
+      var xhr = $.ajax({
+          url: connectionUri,
+          dataType: 'json',
+          success: function (data) {
+              if (data.response) {
+                  var venues = data.response.venues.items;
+                  var ii;
+                  for (ii = 0; ii &lt; venues.length; ++ii) {
+                      var venue = {'Name': venues[ii].name,
+                                   'Latitude': venues[ii].location.lat,
+                                   'Longitude': venues[ii].location.lng,
+                                   'Checkin Count': venues[ii].stats.checkinsCount};
+                      dataToReturn.push(venue);
+                  }
+
+                  tableau.dataCallback(dataToReturn, lastRecordToken, hasMoreData);
+              }
+              else {
+                  tableau.abortWithError("No results found");
+              }
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+              // If the connection fails, log the error and return an empty set.
+              tableau.log("Connection error: " + xhr.responseText + "\n" +
+                           thrownError);
+              tableau.abortWithError("Error while trying to connect to Foursquare.");
+          }
+      });
+  };
+
+  // Register the tableau connector--call this last
+  tableau.registerConnector(myConnector);
+
+  })(); ```
+</code></pre>
+</div>
+
+  </div>
+
+</article>
+
+</div>
+<script src="/js/api_ref.min.js"></script>
+<script src="/js/extra.js"></script>
+</body>
+</html> 
+
+        
+        
+    </div> 
+  </body>
+</html>
