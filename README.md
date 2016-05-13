@@ -9,6 +9,11 @@ Getting Started
 * Submit a pull request to share any connectors you've created
 * Check out the Tableau Developer Portal at http://developers.tableau.com for WDC docs and forum
 
+Coming Soon
+---------------
+Want to see what's coming next for the WDC? In a future Tableau, we will be releasing version 2.0 of the web data connector API.
+This content is currently in beta and you can learn more here! [http://tableau.github.io/webdataconnector](http://tableau.github.io/webdataconnector).
+
 Hosted WDC Simulator
 ---------------
 You can run the Simulator locally or use the hosted one here:
