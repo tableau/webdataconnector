@@ -25,7 +25,7 @@ Lifecycle Diagram {#diagram}
 
 At a high level, the WDC lifecycle is as follows:
 
-<img class="img-responsive docs-img" src="{{ site.baseurl }}assets/wdc_flow.png" alt="">
+<img class="img-responsive docs-img" src="{{ site.baseurl }}/assets/wdc_flow.png" alt="">
 
 **Note**: This is slightly simplified.
 For example, `shutdown` and `shutdownCallback` were left out, but both 
@@ -42,7 +42,7 @@ Interactive phase: Interact with the user {#phase-one}
     
     - The connector's init method is called by Tableau. A connector will have a default 
       init method if not provided by the WDC Developer (see [Custom
-      Initialization  and Shutdown for more details]({{ site.baseurl }}docs/wdc_custom_init_and_shutdown.html)).
+      Initialization  and Shutdown for more details]({{ site.baseurl }}/docs/wdc_custom_init_and_shutdown.html)).
           
     - The connector calls the passed in initCallback to tell Tableau it has finished initialization.
     
@@ -66,19 +66,19 @@ Gather data phase: Fetch data from a web source {#phase-two}
     - The connector’s init method is called by Tableau, just as it was in the interactive phase. 
       The connector may want to take different action in the init method in the gather data phase than
       it did in the interactive phase.  At any time, the current phase of the connector can be read
-      through the [tableau.phase]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.tableau.phase)
+      through the [tableau.phase]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.tableau.phase)
       property.
           
     - The connector calls the passed in initCallback to tell Tableau it has finished initialization.
     
     - Tableau first calls the 
-      [getSchema]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.webdataconnector.getschema)
+      [getSchema]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.webdataconnector.getschema)
       method, which you define for your connector to map web data to table columns in Tableau.
       
     - The connector will call schemaCallback with a schema object, which passes
       the connector's schema back to Tableau.
       
-    - Tableau then calls the [getData]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.webdataconnector.getdata) method of the connector to get the actual 
+    - Tableau then calls the [getData]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.webdataconnector.getdata) method of the connector to get the actual 
       data. The getData method will be called by Tableau once for each table that 
       has been selected by the end user. For example, if a user drags out two tables
       from the web data connector into the join canvas in Tableau, getData will be called
@@ -86,7 +86,7 @@ Gather data phase: Fetch data from a web source {#phase-two}
       
     - The getData method receives a table object as a parameter.  In the getData
       method, the WDC needs to fetch data for that specific table from the web data source,
-      and use the [table.appendRows]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.table.appendrows) 
+      and use the [table.appendRows]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.table.appendrows) 
       method to pass data for that table back to Tableau.
       
     - Once all the data has been fetched for the current table, the WDC should call the passed
@@ -107,5 +107,5 @@ In this mode, the connector should display only the UI that is required in order
 token.  Updates to properties other than `tableau.username` and `tableau.password`
 will be ignored during this phase. 
 
-For more information, on how to use the authentication phase, see [WDC Authentication]({{ site.baseurl }}docs/wdc_authentication.html).
+For more information, on how to use the authentication phase, see [WDC Authentication]({{ site.baseurl }}/docs/wdc_authentication.html).
 

@@ -48,7 +48,7 @@ the user tries to refresh the data source, one of three things can happen depend
 
 - If authType is `basic`, Tableau will show a standard username/password dialog.
 
-    <img class="img-responsive docs-img" src="{{ site.baseurl }}assets/wdc_basic_auth.png" alt="">
+    <img class="img-responsive docs-img" src="{{ site.baseurl }}/assets/wdc_basic_auth.png" alt="">
 
 - If authType is `custom`, Tableau will launch the web data connector in a special Auth Phase (see the following section).
 
@@ -60,7 +60,7 @@ can now be refreshed.
 
 The WDC Auth Phase {#auth-phase}
 ------------------------
-The WDC has two primary phases, as described in the [WDC Lifecycle and Phases]({{ site.baseurl }}docs/wdc_phases.html)
+The WDC has two primary phases, as described in the [WDC Lifecycle and Phases]({{ site.baseurl }}/docs/wdc_phases.html)
 section.  But there is a third phase that is only relevant for WDCs that use an auth type of `custom`. 
 The auth phase is more of an alternative to the interactive phase than a separate phase. 
 
@@ -69,18 +69,18 @@ The auth phase will be displayed by Tableau in two scenarios:
 - The WDC uses authType `custom`, the current user is un-authenticated (as described above, 
   when opening an existing workbook), and the user attempts to refresh the extract or edit the connection.
 
-- The WDC developer calls [tableau.abortForAuth]({{ site.baseurl }}webdataconnectorapi.tableau.abortforauth).
+- The WDC developer calls [tableau.abortForAuth]({{ site.baseurl }}/webdataconnectorapi.tableau.abortforauth).
 
     This method is provided so that the developer can explicitly tell Tableau the current user is un-authenticated.
     For example, this can be helpful when working with OAuth.  In some scenarios, the access token used to get resources
     from an API can expire or be revoked.  In that scenario, before fetching data, the WDC would want to call this method
     in order to re-authenticate the user.  This is an advanced technique, for more details, please see the
-    [Node Proxy with OAuth Tutorial]({{ site.baseurl }}docs/wdc_oauth_tutorial).
+    [Node Proxy with OAuth Tutorial]({{ site.baseurl }}/docs/wdc_oauth_tutorial).
     
 In the auth phase of the WDC, any changes to properties other than tableau.password and tableau.username will
 be ignored.  Thus, it is a best practice to only show the UI that is necessary to re-authenticate the user,
 and then auto-submit the connector for the user once they have been authenticated.
-For example, in the [Node Proxy with OAuth Tutorial]({{ site.baseurl }}docs/wdc_oauth_tutorial), this is how this
+For example, in the [Node Proxy with OAuth Tutorial]({{ site.baseurl }}/docs/wdc_oauth_tutorial), this is how this
 is handled in the custom init method:
 
 ```
@@ -127,7 +127,7 @@ is handled in the custom init method:
 
 Advanced: Auth Purpose Mechanism {#auth-purpose}
 ------------------------------------
-Understanding the content in the [Node Proxy with OAuth Tutorial]({{ site.baseurl }}docs/wdc_oauth_tutorial) is
+Understanding the content in the [Node Proxy with OAuth Tutorial]({{ site.baseurl }}/docs/wdc_oauth_tutorial) is
 recommended before proceeding on with this or the following section.  That tutorial contains helpful terminology
 that is used without explanation here.
 
@@ -153,7 +153,7 @@ Given this, the following scenario could occur if the WDC was using a source tha
 
 In order to get around this problem, you can associate all data sources created from Tableau Desktop with
 a given client, and all data sources refreshed on Tableau Server with another client.  To do this, in your WDC
-you can use the [tableau.authPurpose]({{ site.baseurl }}ref/ref_home.html#webdataconnectorapi.tableau.authpurpose)
+you can use the [tableau.authPurpose]({{ site.baseurl }}/ref/ref_home.html#webdataconnectorapi.tableau.authpurpose)
 to read which context your WDC is currently running in.  If that context is `ephemeral` then the WDC is 
 being run from Tableau Desktop.  If the context is `enduring`, then the WDC is being run on Tableau Server during
 an automated refresh.  You can use this property to set the client ID appropriately when performing OAuth flows.

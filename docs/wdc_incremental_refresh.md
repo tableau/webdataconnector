@@ -14,9 +14,9 @@ It is possible to enable incremental refresh functionality for any table
 that is brought back by the web data connector. 
 
 To enable incremental refresh functionality on a table, you must set the 
-[tableInfo.incrementColumnId]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.tableinfo-1.incrementcolumnid)
+[tableInfo.incrementColumnId]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.tableinfo-1.incrementcolumnid)
 property on the tableInfo object for that table as defined in your
-[getSchema]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.webdataconnector.getschema) function.
+[getSchema]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.webdataconnector.getschema) function.
 The incrementColumnId property should be set to the ID of the column that will be used as
 the key for the incremental refresh.
 
@@ -53,9 +53,9 @@ myConnector.getSchema = function(schemaCallback) {
 
 When Tableau calls the getData method of the connector, it passes in a table object.
 If an incremental refresh is being request by the end user in Tableau, and if the 
-[tableInfo.incrementColumnId]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.tableinfo-1.incrementcolumnid)
+[tableInfo.incrementColumnId]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.tableinfo-1.incrementcolumnid)
 was set during the getSchema function for that table, then the table object will contain
-a value in the [table.incrementValue]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.table.incrementvalue)
+a value in the [table.incrementValue]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.table.incrementvalue)
 property.  This value will contain the current largest value from the increment column.  
 
 For example, this is how this property is utilized in the IncrementalRefreshConnector dev sample:

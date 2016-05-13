@@ -5,7 +5,7 @@ base: docs
 ---
 
 After building a web data connector, why not share it with the community?
-The [Community Connector]({{ site.baseurl }}/community/community_home.html) 
+The [Community Connector]({{ site.baseurl }}//community/community_home.html) 
 section is designed to showcase the work that other developers have done with the WDC Platform.
 It also provides a place for others to browse and explore what
 connectors have already been built. 
@@ -25,7 +25,7 @@ Submitting to the Community Portal {#portal}
 ----------------------------------
 
 After building and testing your web data connector, you can submit it to the
-[Community Connector]({{ site.baseurl }}/community/community_home.html) section.
+[Community Connector]({{ site.baseurl }}//community/community_home.html) section.
 
 To do this, all you need to do is submit a pull request to the master branch
 with some relevant information about your connector.  This will require that you have 

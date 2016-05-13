@@ -13,9 +13,9 @@ Check our [issues page](https://github.com/tableau/webdataconnector/issues) on G
 
 #### Why are my global variables losing their values? 
 
-The different [phases of the web data connector]({{ site.baseurl }}docs/wdc_phases.html) run in two seperate 
+The different [phases of the web data connector]({{ site.baseurl }}/docs/wdc_phases.html) run in two seperate 
 instances of a web browser.  Therefore the only data that will be stored between these phases is the data
-stored in the tableau object.  Please use [tableau.connectionData]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.tableau.connectiondata) for this purpose.
+stored in the tableau object.  Please use [tableau.connectionData]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.tableau.connectiondata) for this purpose.
 
 #### Why are none of the WDC methods (init, getSchema, etc.) being called? 
 

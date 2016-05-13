@@ -17,7 +17,7 @@ underlying data source before you pass the data on to Tableau.
 
 Before you can use the simulator, you need to run a test web server.
 (It cannot be opened as a local HTML file.) To run the simulator, 
-complete the steps in the [Get Started]({{ site.baseurl }}docs) section.
+complete the steps in the [Get Started]({{ site.baseurl }}/docs) section.
 
 *   [Debugging with the simulator](#debugging)
 
@@ -25,7 +25,7 @@ complete the steps in the [Get Started]({{ site.baseurl }}docs) section.
 
 *   [Simulator tips](#simulator-tips)
 
-!["The simulator user interface."]({{ site.baseurl }}assets/wdc_simulator_new_first_open.png){:width="650px"}
+!["The simulator user interface."]({{ site.baseurl }}/assets/wdc_simulator_new_first_open.png){:width="650px"}
 
 
  
@@ -43,8 +43,8 @@ include the following:
     Command+Option+I on the Mac to open the tools pane, and then select
     the <span class="uicontrol">Console</span> tab. In this console,
     you can see all the results of various console.log statements.  The console also displays
-    output from the [tableau.log]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.tableau.log) and
-    [tableau.abortWithError]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.tableau.abortwitherror) functions.
+    output from the [tableau.log]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.tableau.log) and
+    [tableau.abortWithError]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.tableau.abortwitherror) functions.
     
     This is a good place to check for errors in case anything goes wrong.
     The console will display information about run-time errors
@@ -76,7 +76,7 @@ The SDK includes the following samples:
 
 -   **earthquakeUSGS**
 
-    This is the connector that you build in the [Tutorial]({{ site.baseurl }}docs/wdc_tutorial.html). It connects to the USGS Earthquake feed and gets data about earthquakes in the last week.
+    This is the connector that you build in the [Tutorial]({{ site.baseurl }}/docs/wdc_tutorial.html). It connects to the USGS Earthquake feed and gets data about earthquakes in the last week.
 
 -   **StockQuoteConnector_basic**
 

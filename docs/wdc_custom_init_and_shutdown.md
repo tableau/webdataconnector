@@ -11,9 +11,9 @@ logic, you don't need to do anything; code in the Tableau JavaScript
 library includes default initialization logic for you.
 
 To implement custom initialization, you create an
-[init]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.webdataconnector.init) function for your connector. In the
+[init]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.webdataconnector.init) function for your connector. In the
 function, run your initialization code. When initialization is complete,
-call [tableau.initCallback]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.initcallback)
+call [tableau.initCallback]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.initcallback)
 to tell Tableau that initialization is finished, as in this example:
 
     myConnector.init = function(){
@@ -23,13 +23,13 @@ to tell Tableau that initialization is finished, as in this example:
 
 One typical scenario for using custom initialization code is to tell tableau about 
 the auth needs of your connector.  Please see
-[WDC Authentication]({{ site.baseurl }}docs/wdc_authentication.html)
+[WDC Authentication]({{ site.baseurl }}/docs/wdc_authentication.html)
 for details on this.
 
 Similarly, if your connector needs to perform custom shutdown logic, you
-create a [shutdown]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.webdataconnector.shutdown) function for the
+create a [shutdown]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.webdataconnector.shutdown) function for the
 connection. When the shutdown process is complete, call the
-[tableau.shutdownCallback]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.shutdowncallback),
+[tableau.shutdownCallback]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.shutdowncallback),
 as in this example:
 
     myConnector.shutdown = function() {
@@ -45,7 +45,7 @@ The initialization or shutdown code is called once per phase. The code
 is called during the interaction phase and again during the
 gather data phase. If your initialization or shutdown code depends on
 which phase the connector is in, you can test the
-[tableau.phase]({{ site.baseurl }}ref/api_ref#webdataconnectorapi.phaseenum) property. This
+[tableau.phase]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.phaseenum) property. This
 property returns a string value that indicates the phase that the
 connector is in: <span
 class="api-command-ref">tableau.phaseEnum.interactivePhase</span>, <span

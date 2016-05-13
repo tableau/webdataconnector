@@ -4,7 +4,7 @@ title: WDC Tutorial
 base: docs
 ---
 
-> This tutorial picks up where the [Get Started]({{ site.baseurl }}docs) topic left off. If you haven't already, go back and set up your development environment.
+> This tutorial picks up where the [Get Started]({{ site.baseurl }}/docs) topic left off. If you haven't already, go back and set up your development environment.
 
 What you'll build
 ---------------------
@@ -110,13 +110,13 @@ Here's what is going on in the code snippet:
 * The `tableau.connectionName` variable defines what we want to call the connector data source when it is displayed in Tableau.
 * The `tableau.submit()` function sends the connector object to Tableau for validation.
 
-**Note**: Not every connector needs a user interface. If you want a connector to run without user input, you can use custom initialization code. For more information, see [Custom Initialization and Shutdown]({{ site.baseurl }}docs/wdc_custom_init_and_shutdown).
+**Note**: Not every connector needs a user interface. If you want a connector to run without user input, you can use custom initialization code. For more information, see [Custom Initialization and Shutdown]({{ site.baseurl }}/docs/wdc_custom_init_and_shutdown).
 
 ### Test the connector so far {#test-so-far}
 
 The connector doesn't *do* very much so far, but it's enough that we can run it in the simulator. 
 
-**Note**: Have you followed the steps in the [Get Started]({{ site.baseurl }}docs) topic to run the simulator? This section assumes that you've installed dependencies already.
+**Note**: Have you followed the steps in the [Get Started]({{ site.baseurl }}/docs) topic to run the simulator? This section assumes that you've installed dependencies already.
 
 1. Open a command prompt or terminal in the top-level directory for the `webdataconnector` repository. 
 1. Run `npm start` to run the test server.
@@ -188,7 +188,7 @@ Here's what's going on in the code:
 * The `tableInfo` variable defines the schema for a single table and contains a JavaScript object. Here, the value of the `columns` property is set to the `cols` array defined earlier. 
 * The `schemaCallback` gets called when the schema is defined. The `schemaCallback` takes an array of table objects. In this case, there is only table object (the `tableInfo` object defined above).
 
-**Note**: The [API Reference]({{ site.baseurl }}ref/api_ref) describes the properties that you can define for the table object and for each object in the table columns in more detail. For now, let's plunge ahead to the exciting part--getting the data!
+**Note**: The [API Reference]({{ site.baseurl }}/ref/api_ref) describes the properties that you can define for the table object and for each object in the table columns in more detail. For now, let's plunge ahead to the exciting part--getting the data!
 
 ### Get the data {#get-data}
 
@@ -243,10 +243,10 @@ By now, you're a pro at running the simulator, so fire it up, load your connecto
 
 The moment you've been waiting for is here! Click **Fetch Table Data** to run your `getData` function and display the results in a table. 
 
-!["The earthquake data is displayed in a table on the simulator page."]({{ site.baseurl }}assets/wdc_sim_earthquake_data.png){:width="700px"}
+!["The earthquake data is displayed in a table on the simulator page."]({{ site.baseurl }}/assets/wdc_sim_earthquake_data.png){:width="700px"}
 
 
-You did it! Nice work. But this is no time to rest on your laurels--[try your connector in Tableau]({{ site.baseurl }}docs/wdc_use_in_tableau), dig into the `Examples` directory to see more connectors, or read through the WDC documentation. You might want to start by learning about [connectors with multiple tables]({{ site.baseurl }}docs/wdc_multi_table_tutorial), [incremental refresh]({{ site.baseurl }}docs/wdc_incremental_refresh), and [authentication]({{ site.baseurl }}docs/wdc_authentication). 
+You did it! Nice work. But this is no time to rest on your laurels--[try your connector in Tableau]({{ site.baseurl }}/docs/wdc_use_in_tableau), dig into the `Examples` directory to see more connectors, or read through the WDC documentation. You might want to start by learning about [connectors with multiple tables]({{ site.baseurl }}/docs/wdc_multi_table_tutorial), [incremental refresh]({{ site.baseurl }}/docs/wdc_incremental_refresh), and [authentication]({{ site.baseurl }}/docs/wdc_authentication). 
 
 Better yet, dive right in and create your own connector!
 

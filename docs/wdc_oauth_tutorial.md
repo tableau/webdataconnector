@@ -23,7 +23,7 @@ Tableau web data connector. Here is a list of all the parts:
    Simulator](wdc_tutorial_oauth_client_test_in_simulator.html)
 9. [Test the Connector in
    Tableau](wdc_tutorial_oauth_client_test_in_tableau.html)
-10. [Complete Code Listing]({{ site.baseurl }}docs/wdc_tutorial_oauth_client_code_listing.html)
+10. [Complete Code Listing]({{ site.baseurl }}/docs/wdc_tutorial_oauth_client_code_listing.html)
 
 In this part of the tutorial, you'll learn these things:
 
@@ -109,7 +109,7 @@ The following diagram illustrates an example OAuth flow, which is the
 flow you will build. The steps following the diagram describe the
 stepsin the flow.
 
-![]({{ site.baseurl }}assets/wdc_tutorial_oauth_flow-2.png)
+![]({{ site.baseurl }}/assets/wdc_tutorial_oauth_flow-2.png)
 
 1.  The end user loads the web data connector in Tableau in order to
     connect to data.
@@ -221,7 +221,7 @@ sure you have some data to work with later, do this.
 
 3.  Click the "Like" icon at the bottom of the page.
 
-    ![]({{ site.baseurl }}assets/wdc_tutorial_oauth_foursquare_likes.png)
+    ![]({{ site.baseurl }}/assets/wdc_tutorial_oauth_foursquare_likes.png)
 
 4.  Repeat steps 2 and 3 a few times until you have a selection of
     "Liked" venues to test later.
@@ -243,7 +243,7 @@ In this part of the tutorial, you create an HTML page that contains
 markup for the UI that lets the user sign in to Foursquare. The HTML
 page renders the following:
 
-![]({{ site.baseurl }}assets/wdc_tutorial_oauth_basic_signin_ui.png)
+![]({{ site.baseurl }}/assets/wdc_tutorial_oauth_basic_signin_ui.png)
 
 You also add JavaScript code that toggles text in the page ("You are
 signed in" or "You are not signed in"), depending on whether the user is
@@ -278,7 +278,7 @@ the Web Data Connector SDK location on your computer. (Use the name
 `foursquare_connect.png` because that's the name that the
 `foursquare.html` page you're creating expects.)
 
-![]({{ site.baseurl }}assets/wdc_tutorial_oauth_foursquare_connect_button.png)
+![]({{ site.baseurl }}/assets/wdc_tutorial_oauth_foursquare_connect_button.png)
 
 Create the HTML markup
 ----------------------
@@ -431,7 +431,7 @@ If you load the page into a browser now, you no longer see all the text
 on the page. Assuming that you're not logged into Foursquare, you'll see
 only this:
 
-![]({{ site.baseurl }}assets/wdc_tutorial_oauth_not_signed_in_ui.png)
+![]({{ site.baseurl }}/assets/wdc_tutorial_oauth_not_signed_in_ui.png)
 
 Next
 ----
@@ -627,13 +627,13 @@ You can now test OAuth sign-in.
 
     You see the following in your browser:
 
-    ![]({{ site.baseurl }}assets/wdc_tutorial_oauth_not_signed_in_ui.png)
+    ![]({{ site.baseurl }}/assets/wdc_tutorial_oauth_not_signed_in_ui.png)
 
 3.  Click <span class="uicontrol">Connect to Foursquare</span>.
 
     You see the Foursquare page that prompts you to sign in.
 
-    ![]({{ site.baseurl }}assets/wdc_tutorial_oauth_foursquare_signin.png)
+    ![]({{ site.baseurl }}/assets/wdc_tutorial_oauth_foursquare_signin.png)
 
 4.  Sign in and click <span class="uicontrol">Log in and allow</span>.
     Foursquare redirects you back to the web data connector page in
@@ -1200,7 +1200,7 @@ You can now test the web data connector in the simulator.
     The simulator opens a window and displays the UI for the Foursquare
     web data connector.
 
-    ![]({{ site.baseurl }}assets/wdc_oauth_tutorial_run_interactive_phase_in_simulator.png)
+    ![]({{ site.baseurl }}/assets/wdc_oauth_tutorial_run_interactive_phase_in_simulator.png)
 
 4.  If the page indicates that you're not logged in to Foursquare, click
     the <span class="uicontrol">Connect to Foursquare</span> button and
@@ -1213,7 +1213,7 @@ You can now test the web data connector in the simulator.
     the main simulator window, the simulator displays the column names
     and the values for any venues that you've "Liked" on Foursquare.
 
-    ![]({{ site.baseurl }}assets/wdc_tutorial_oauth_test_in_new_simulator.png)
+    ![]({{ site.baseurl }}/assets/wdc_tutorial_oauth_test_in_new_simulator.png)
 
     Notice also that the simulator has filled the <span
     class="uicontrol">Password</span> box with the authentication token.

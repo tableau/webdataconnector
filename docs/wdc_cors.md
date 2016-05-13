@@ -118,7 +118,7 @@ Some options for using a proxy are:
     proxies are available as open-source projects or free
     software—search the web for "CORS proxy".
 
--   Create your own proxy - You can start with the [Node Proxy with OAuth Tutorial]({{ site.baseurl }}docs/wdc_oauth_tutorial.html)
+-   Create your own proxy - You can start with the [Node Proxy with OAuth Tutorial]({{ site.baseurl }}/docs/wdc_oauth_tutorial.html)
     to get some starter code for this.  This tutorial will walk through using a node
     proxy for performing authentication.  It could be extended to proxy data requests as well.
 
