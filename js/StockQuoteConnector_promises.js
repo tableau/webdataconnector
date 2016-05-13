@@ -80,7 +80,7 @@
      };
 
      function makeAPIRequest(table, ticker, connectionUrl) {
-         return new Promise(function(resolve, refject) {
+         return new Promise(function(resolve, reject) {
              var xhr = $.ajax({
                  url: connectionUrl,
                  dataType: 'json',
