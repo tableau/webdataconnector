@@ -1,0 +1,54 @@
+[
+    {
+        "alias": "Users",
+        "id": "users",
+        "columns": [
+            { "id": "id", "dataType": "int" },
+            { "id": "name", "dataType": "string" },
+            { "id": "username", "dataType": "string" },
+            { "id": "phone", "dataType": "string" },
+            { "id": "website",  "dataType": "string" }
+        ]
+    },
+    {
+        "alias": "Posts",
+        "id": "posts",
+        "columns": [
+            { "id": "id", "dataType": "int" },
+            { "id": "postId", "dataType": "int" },
+            { "id": "title", "dataType": "string" },
+            { "id": "body", "dataType": "string" }
+        ]
+    },
+    {
+        "alias": "Comments",
+        "id": "comments",
+        "columns": [
+            { "id": "id", "dataType": "int" },
+            { "id": "userId", "dataType": "int" },
+            { "id": "name", "dataType": "string" },
+            { "id": "email", "dataType": "string" },
+            { "id": "body", "dataType": "string" }
+        ]
+    },
+    {
+        "alias": "Albums",
+        "id": "albums",
+        "columns": [
+            { "id": "id", "dataType": "int" },
+            { "id": "userId", "dataType": "int" },
+            { "id": "title", "dataType": "string" }
+        ]        
+    },
+    {
+        "alias": "Photos",
+        "id": "photos",
+        "columns": [
+            { "id": "id", "dataType": "int" },
+            { "id": "albumId", "dataType": "int" },
+            { "id": "title", "dataType": "string" },
+            { "id": "url", "dataType": "string" },
+            { "id": "thumbnailUrl", "dataType": "string" }
+        ]
+    }
+]
