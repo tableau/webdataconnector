@@ -830,7 +830,7 @@
             
       return ( 
         DOM.div({ className: 'table-preview-' + tableInfo.id},
-          DOM.h4({}, tableInfo.id),
+          DOM.h4({}, ['[',tableInfo.id,'].[',tableInfo.alias,']'].join('')),
             (tableInfo.incrementColumnId) ?
               DOM.p({}, tableInfo.description)
               : null,
@@ -933,21 +933,13 @@
     },
     
     getDataElements(tableData, schema) {
-      var dataTableRowKey = 0;
-      var dataTableColKey = 0;
+      var dataTableRowKey = 1;  
       var dataElements = [];
       if (tableData) { // We may not fetched any data yet
         dataElements = tableData.slice(0, TablePreview.MAX_ROWS).map(function(row) {
-          dataTableColKey = 0;
           return DOM.tr({ key: dataTableRowKey++ },
             schema.map(function(header) {
-              if (!row[header]) {
-                if (row[dataTableColKey]) {
-                  return DOM.td({ key: dataTableColKey }, row[dataTableColKey++].toString());
-                }
-              } else {
-                return DOM.td({ key: dataTableColKey++ }, row[header].toString());
-              }
+              return DOM.td({ key: dataTableRowKey++ }, row[header]);
             })
           );
         });
