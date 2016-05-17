@@ -72,6 +72,10 @@ img.logo
     border: 1px solid #e8e8e8;
 }
 
+#community-jumbo {
+    background-color: #F0F8FF;
+}
+
 footer {
     margin: 30px 0;
     margin-top: 100px;
@@ -99,28 +103,6 @@ td
     text-align: left;
     padding: .3em;
     vertical-align: top;
-}
-/* Media queries for responsive design */
-@media screen and (min-width: 1px) and (max-width: 480px){
-    #columns[data-columns]::before {
-    content: '1 .col-xs-12';
-    }
-}
-
-@media screen and (min-width: 481px) and (max-width: 767px){
-    #columns[data-columns]::before {
-    content: '2 .col-xs-6';
-    }
-}
-@media screen and (min-width:768px) and (max-width: 991px){
-    #columns[data-columns]::before {
-    content: '3 .col-sm-4';
-    }
-}
-@media screen and (min-width:992px) and (max-width: 9999px){
-    #columns[data-columns]::before {
-    content: '4 .col-md-3';
-    }
 }
 
 /* So the scroll bar width doesn't cause the page to jump */
@@ -179,3 +161,56 @@ html {
 .blog-content > ol {
     margin-bottom: 20px;
 }
+
+/* Community connectors */
+.thumbnail {
+    background-color: #fafafa;
+    border: 1px solid #e8e8e8;
+    margin: 12px;
+    
+}
+
+.thumbnail h2 {
+    border-left: 2px solid #337ab7;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 6px;
+    margin-left: 10px;
+}
+
+.thumbnail h2 a {
+    text-decoration: none;   
+    color: #333333;
+}
+
+
+/* Media queries for responsive design */
+#grid[data-columns]::before {
+	content: '3 .column.size-1of3';
+}
+
+.column { float: left; }
+.size-1of3 { width: 33.333%; }
+
+@media screen and (max-width: 480px){
+	#grid[data-columns]::before {
+		content: '1 .column.size-1of1';
+	}
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+	#grid[data-columns]::before {
+		content: '2 .column.size-1of2';
+	}
+}
+@media screen and (min-width: 769px) {
+	#grid[data-columns]::before {
+		content: '3 .column.size-1of3';
+	}
+}
+
+/* Again, you’re free to use and define the classes: */
+.column { float: left; }
+.size-1of1 { width: 100%; }
+.size-1of2 { width: 50%; }
+.size-1of3 { width: 33.333%; }
