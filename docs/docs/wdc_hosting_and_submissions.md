@@ -34,7 +34,9 @@ your connector into the Community portal:
 
 1. Fork the [web data connector](https://github.com/tableau/webdataconnector) repository.
 
-2. In your forked version of the master branch, find and open the following file:
+2. Checkout the dev branch.
+
+3.  Find and open the following file:
    `webdataconnector/docs/community/community_connectors.json`
 
 3. In this file, create a new json entry for your connector like the following:
@@ -43,22 +45,18 @@ your connector into the Community portal:
                 "name": "My Cool Connector",
                 "url": "https://xyz.com/connector.html",
                 "author": "Me",
-                "thumbnail_path": "./connectorThumbnails/myCoolConnectorLogo.png",
+                "github_username": "",
                 "tags": ["v_2.0"],
                 "description": "This connector is really cool",
                 "source_code": "github.com/Me/MyConnector"
             }  
    
-   - Name, url, author, and thumbnail_path (see #4) are all required.
+   - Name, url, and author are all required.
    
-   - Tags, description, and source_code are encouraged by not required.
+   - A version number tag, description, github_username, and source_code are encouraged by not required.  Please limit the description to a short sentence or two.
    
-    
-4. Place an image logo for your connector in the 
-   `webdataconnector/docs/community/connectorThumbnails/` folder.
-   
-5. Submit a pull request from your fork to master of the official repo at
-   [github.com/tableau/webdataconnector](github.com/tableau/webdataconnector).
+4. Submit a pull request from your fork to the dev branch of the official repo at
+   [github.com/tableau/webdataconnector](https://github.com/tableau/webdataconnector/tree/dev).
    See the [GitHub documentation](https://help.github.com/articles/using-pull-requests/)
    for details on submitting pull requests. 
 
