@@ -29,7 +29,7 @@
     }
 
     // Set the default connector here
-    return "../Examples/StockQuoteConnector_basic.html";
+    return "../Examples/earthquakeUSGS.html";
   }
   
   function WdcCommandSimulator(/*ISendPostMessage*/ sendPostMessage, /*IPhaseChangeHandler*/ onPhaseChange, /*IEventHandler*/ onEvent, /*ILogger*/ logger) {
