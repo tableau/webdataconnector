@@ -77,19 +77,17 @@ You're going to need a couple of things before we get started. Make sure you hav
 
 ### Try the sample WDCs {#try-samples}
 
-1. In the WDC URL field, confirm that the URL is set to the sample Stock Quote WDC:
+1. In the WDC URL field, confirm that the URL is set to the sample USGS Earthquake Data connector:
    
    ```
-   ../Examples/StockQuoteConnector_basic.html
+   ../Examples/earthquakeUSGS.html
    ```
 
    Alternatively, look in the Examples directory for more sample connectors.
 
-1. Click the **Start Interactive Phase** button to display the user interface for the Stock Quote WDC.
+1. Click the **Start Interactive Phase** button to display the user interface for the earthquake WDC.
 
-1. Enter a stock ticker symbol and click the **Get Stock Data** button. For example, enter `^DJI` to view stock quotes for the Dow Jones Industrial Average.
-
-   The **Tables** section displays the schema that has been configured in the WDC. A schema is a mapping of data to columns in one or more tables. For example, the schema for the Stock Quote WDC displays a ticker column, day column, and close column.
+1. Click the **Get Earthquake Data** button.
 
 1. Click the **Fetch Table Data** button to download the data and display it in a table.
 

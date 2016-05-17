@@ -76,16 +76,16 @@ The SDK includes the following samples:
 
 -   **earthquakeUSGS**
 
-    This is the connector that you build in the [Tutorial]({{ site.baseurl }}/docs/wdc_tutorial.html). It connects to the USGS Earthquake feed and gets data about earthquakes in the last week.
+    This is the default connector when you open the simulator. Instructions for building it are in the [Tutorial]({{ site.baseurl }}/docs/wdc_tutorial.html). It connects to the USGS Earthquake feed and gets data about earthquakes in the last week.
 
--   **StockQuoteConnector_basic**
+-   **earthquakeMultitable**
 
-    This is the default connector when you open the simulator. It is another basic sample that gets stock quote data from Yahoo Finance.
+    This connector builds on the previous one to showcase how to get data into multiple tables from a data source. Use the multitable example to compare earthquake data for two date ranges.
 
 -   **StockQuoteConnector_promises**
 
-    This connector builds on the previous one to showcase how to use JavaScript
-    promises to make several API requests and union the data.
+    This connector gets stock quote data from Yahoo Finance and demonstrates how to use JavaScript
+    promises to make several API requests.
 
 -   **JSONMultiTableConnector**
 
