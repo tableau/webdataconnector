@@ -933,13 +933,21 @@
     },
     
     getDataElements(tableData, schema) {
-      var dataTableRowKey = 1;  
+      var dataTableRowKey = 0;
+      var dataTableColKey = 0;
       var dataElements = [];
       if (tableData) { // We may not fetched any data yet
         dataElements = tableData.slice(0, TablePreview.MAX_ROWS).map(function(row) {
+          dataTableColKey = 0;
           return DOM.tr({ key: dataTableRowKey++ },
             schema.map(function(header) {
-              return DOM.td({ key: dataTableRowKey++ }, row[header]);
+              if (_.isUndefined(row[header])) {
+                if (row[dataTableColKey]) {
+                  return DOM.td({ key: dataTableColKey }, row[dataTableColKey++].toString());
+                }
+              } else {
+                return DOM.td({ key: dataTableColKey++ }, String(row[header]));
+              }
             })
           );
         });
