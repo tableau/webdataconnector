@@ -6,9 +6,6 @@ base: docs
 
 > This tutorial picks up where the [Get Started]({{ site.baseurl }}/docs) topic left off. If you haven't already, go back and set up your development environment.
 
-What you'll build
----------------------
-
 By the end of this tutorial, you'll have a working WDC that connects to the [USGS Earthquake feed](http://earthquake.usgs.gov/earthquakes/feed/v1.0/index.php) and downloads data for earthquakes that occurred in the last week.
 
 You'll learn how to:
@@ -27,7 +24,7 @@ If you *really* want to skip all of this and go straight to the source code, loo
 
 When you open a WDC in Tableau, you display an HTML page that links to your JavaScript code and to the WDC library. Optionally, this page can also display a user interface for your users to select the data that they want to download. 
 
-Create a new file named `earthquakeWDC.html` and save it in the top-level directory of the `webdataconnector` repository. (In the same directory as the README.)
+Create a new file named `earthquakeWDC.html` and save it in the top-level directory of the `webdataconnector` repository. (This is the same directory as the README.)
 
 Then, copy the following code into the file:
 
