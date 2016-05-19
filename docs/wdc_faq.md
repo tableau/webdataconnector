@@ -1,47 +1,50 @@
 ---
 layout: page
-title: WDC Frequently Asked Questions
+title: Frequently Asked Questions
 base: docs
 ---
 
-This is a collection of common questions and resolutions for the web data connector platform.
+#### Where can I find known issues?
 
+You can view open issues, and submit new issues, on our [Github issues page](https://github.com/tableau/webdataconnector/issues).
 
-#### Are there any known bugs?
+#### Can I contact Tableau for help with my connector?
 
-Check our [issues page](https://github.com/tableau/webdataconnector/issues) on GitHub! It will contain any known bugs.  Feel free to open new bugs there as well.
+Tableau does not provide support for connectors or for other programs written to interface with the WDC API. However, you can submit questions and ask for help on the [Tableau developer community forums](https://community.tableau.com/community/developers/content). 
 
-#### Why are my global variables losing their values? 
+Tableau *does* provide support the WDC library and SDK though. If you find an issue with the WDC library, the simulator, or any of the developer samples, [submit an issue on Github](https://github.com/tableau/webdataconnector/issues).
 
-The different [phases of the web data connector]({{ site.baseurl }}/docs/wdc_phases.html) run in two seperate 
-instances of a web browser.  Therefore the only data that will be stored between these phases is the data
-stored in the tableau object.  Please use [tableau.connectionData]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.tableau.connectiondata) for this purpose.
+#### The global variables in my connector display as undefined. What's happening? 
 
-#### Why are none of the WDC methods (init, getSchema, etc.) being called? 
+The WDC API runs connectors in multiple phases, and each phase runs in a separate instances of a web browser. To pass data between phases, use the `tableau.connectionData` variable created by the API for this purpose. For more information, see the documentation for the [phases of the web data connector]({{ site.baseurl }}/docs/wdc_phases.html).
 
-The web data connector methods will only be called if your connector is being run from the simulator
-or from Tableau.  If you try and run your web data connector in a regular browser window, nothing of these methods will execute. 
+#### Why are my extract refreshes failing on Tableau Server?
 
-#### Why are my extract refreshes failing on Tableau Server because they are untrusted?
+To run extract refreshes for connectors, you need to configure Tableau Server and import the connector. Contact your server administrator and see the [Tableau Server documentation on web data connectors](http://onlinehelp.tableau.com/v0.0/server/en-us/help.htm#datasource_wdc.htm).
 
-In order for WDC extract refreshes to succeed on Tableau Server, your server admin must configure your 
-server using tadadmin, as explained in the [Server Documentation](http://onlinehelp.tableau.com/v0.0/server/en-us/help.htm#datasource_wdc.htm?). 
+#### Can I refresh extracts for connectors on Tableau Online?
 
-#### Can I refresh WDCs on Tableau Online?
+Because running custom code for a connector represents a security risk, there is currently no way to refresh extracts for connectors published to Tableau Online. As an alternative, you can use the [Tableau Online Sync Client](https://onlinehelp.tableau.com/current/online/en-us/to_sync_local_data.htm) to schedule extract refreshes on a desktop computer.
 
-Currently, there is no way to directly refresh WDCs published to Online due to security risks.  
-The suggested alternative is to use the [Tableau Online Sync Client](https://onlinehelp.tableau.com/current/online/en-us/to_sync_local_data.htm).
+#### Where are the check boxes and radio buttons that I put in my connector page? I see them in the simulator, but not in Tableau.
 
-#### I don't see any checkboxes or radio buttons in my connector UI in Tableau!
+This was an issue in a previous version of the WDC. You can link to the latest version of the WDC library [here](https://connectors.tableau.com/libs/tableauwdc-2.0.0-beta.js) to fix the issue.
 
-This was a bug that was fixed.  Please upgrade to the latest maintenance patch to fix this issue.
+#### I'm seeing differences between what I see in the simulator and what I see in Tableau. What's going on? 
 
-#### What browser does Tableau Desktop use? 
+Tableau Desktop embeds the Qt Webkit browser into the product to display your connector pages. This browser might lack some of the features of modern browsers, including specific HTML5 and other features. For more information on browser support, see the features in [Qt 5.4](https://wiki.qt.io/New_Features_in_Qt_5.4), which is the version used by Tableau. You may also want to see the Qt Webkit page on [HTML5 support](https://wiki.qt.io/Qt_Webkit_HTML5_Score). 
 
-Tableau Desktop uses the QtWebKit browser from QT version 5.4.  This browser does not have all
-the latest capabilities that many other browsers have so you may experiences some differences between 
-your connector in Tableau and your connector when running in the simulator.
+#### Where can I find the Tableau Desktop logs to troubleshoot my connector? 
 
-#### Where can I find the logs from my web data connector when it runs within Tableau Desktop? 
+By default, the Tableau Desktop log files are stored in the following location:
 
-The default location for Tableau logs is at  /Users/<username>/Documents/My Tableau Repository.  Within that folder, the file log.txt will contain any WDC logs that occur during the Interactive phase.  tabprotosrv.txt will contain any logs that occur during the data gathering phase. 
+```
+Users/<username>/Documents/My Tableau Repository
+```
+
+The `log.txt` file contains information for the interactive phase of your connector. The `tabprotosrv.txt` file contains logs for the data gathering phase. 
+
+#### Why aren't my connector methods being called? 
+
+The methods in your connector code are run by the WDC API. Ensure that you are running the connector in the simulator or Tableau. You might also want to ensure that the `tableau.submit` function is being called either by user input or by a page load event. 
+
