@@ -16,10 +16,12 @@ function, run your initialization code. When initialization is complete,
 call [tableau.initCallback]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.initcallback)
 to tell Tableau that initialization is finished, as in this example:
 
+```js
     myConnector.init = function(){
         // Your init code here
         tableau.initCallback();
     };
+```
 
 One typical scenario for using custom initialization code is to tell tableau about 
 the auth needs of your connector.  Please see
@@ -32,10 +34,12 @@ connection. When the shutdown process is complete, call the
 [tableau.shutdownCallback]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.shutdowncallback),
 as in this example:
 
+```js
     myConnector.shutdown = function() {
         // Your shutdown code here
         tableau.shutdownCallback();
     }
+```
 
 As with initialization, if you don't need custom shutdown logic, you can
 leave this out, because the code in the Tableau JavaScript library takes

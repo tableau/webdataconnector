@@ -27,7 +27,7 @@ There are three types of authentication recognized by the WDC API:
 
 A connector should set its auth type in a custom init method.  For example: 
 
-```
+```javascript
   // Init function for connector, called during every phase
   myConnector.init = function(initCallback) {
       tableau.authType = tableau.authTypeEnum.custom;   
@@ -83,7 +83,7 @@ and then auto-submit the connector for the user once they have been authenticate
 For example, in the [Node Proxy with OAuth Tutorial]({{ site.baseurl }}/docs/wdc_oauth_tutorial), this is how this
 is handled in the custom init method:
 
-```
+```javascript
   // Init function for connector, called during every phase but
   // only called when running inside the simulator or tableau
   myConnector.init = function(initCallback) {

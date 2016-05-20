@@ -74,9 +74,11 @@ service. The URL includes various parameters; one of the parameters is
 the name of a callback function. When the new `<script>` element is
 created, the browser invokes the URL that the `src` attribute is set to.
 
+```js
     var scriptTag = document.createElement('script');
     scriptTag.src = "http://myserver/temperatures?city=Seattle&year=2014&callback=getTemperatures";
     document.getElementsByTagName('head')[0].appendChild(scriptTag);
+```
 
 The connector must also include the following function, which is invoked
 by the "padded" JSON that the temperature site returns. The JSON data is
@@ -84,10 +86,12 @@ passed to the function as the <span
 class="api-placeholder">jsonpData</span> parameter, and the code in the
 function can extract values as it would from any JSON block.
 
+```js
     var getTemperatures = function(jsonpData) {
         alert(jsonpData.someProperty);
         // More code here to extract the JSON data
     }
+```
 
 For more information, see [JSONP](https://en.wikipedia.org/wiki/JSONP)
 on Wikipedia.

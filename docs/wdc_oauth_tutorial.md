@@ -286,9 +286,8 @@ Create the HTML markup
 Create a new file named `foursquare.html` in the `Examples` folder. Then
 copy the following markup into the new file.
 
-``` {space="preserve"}
+```html
 <!DOCTYPE.html>
-.html>
 <head>
     <meta charset="utf-8">
     <title>Foursquare Connector</title>
@@ -329,7 +328,7 @@ copy the following markup into the new file.
     </p>
   </div>
 </body>
-<.html>
+</html>
 ```
 
 At the top of the file, there are `<script>` elements that link to
@@ -366,12 +365,14 @@ calls to Foursquare.
 In the `Examples` folder where the `foursquare.html` file is, create a
 file named `foursquare.js` and copy the following code into it.
 
-    var config = {
-        clientId: 'YOUR_CLIENT_ID',
-        redirectUri: 'http://localhost:8888/Examples/foursquare.html',
-        authUrl: 'https://foursquare.com/',
-        version: '20150901'
-    };
+```js
+   var config = {
+     clientId: 'YOUR_CLIENT_ID',
+     redirectUri: 'http://localhost:8888/Examples/foursquare.html',
+     authUrl: 'https://foursquare.com/',
+     version: '20150901'
+   };
+```
 
 Replace `YOUR_CLIENT_ID` in the code with the client ID that you got
 from Foursquare in [Part 1](wdc_tutorial_oauth_client_create_app.html).
@@ -404,22 +405,24 @@ Now add the code for managing the UI in the page. Copy the following
 code and add in the `foursquare.js` file below the `config` object
 definition.
 
-    $(document).ready(function() {
-        var accessToken = false;
-        var hasAuth = accessToken && accessToken.length > 0;
-        updateUIWithAuthState(hasAuth);
+```js
+ $(document).ready(function() {
+     var accessToken = false;
+     var hasAuth = accessToken && accessToken.length > 0;
+     updateUIWithAuthState(hasAuth);
 
-    });
+ });
 
-    function updateUIWithAuthState(hasAuth) {
-        if (hasAuth) {
-            $(".notsignedin").css('display', 'none');
-            $(".signedin").css('display', 'block');
-        } else {
-            $(".notsignedin").css('display', 'block');
-            $(".signedin").css('display', 'none');
-        }
-    }
+ function updateUIWithAuthState(hasAuth) {
+     if (hasAuth) {
+         $(".notsignedin").css('display', 'none');
+         $(".signedin").css('display', 'block');
+     } else {
+         $(".notsignedin").css('display', 'block');
+         $(".signedin").css('display', 'none');
+     }
+ }
+```
 
 The `document.ready` function is jQuery code that runs whenever the page
 is loaded. For the time being, this code calls the
@@ -466,15 +469,17 @@ Add code for sign-in
 Copy the following code and completely overwrite the existing
 `document.ready` function.
 
-    $(document).ready(function() {
-        var accessToken = parseAccessToken();
-        var hasAuth = accessToken && accessToken.length > 0;
-        updateUIWithAuthState(hasAuth);
+```js
+ $(document).ready(function() {
+     var accessToken = parseAccessToken();
+     var hasAuth = accessToken && accessToken.length > 0;
+     updateUIWithAuthState(hasAuth);
 
-        $("#connectbutton").click(function() {
-            doAuthRedirect();
-        });
-    });
+     $("#connectbutton").click(function() {
+         doAuthRedirect();
+     });
+ });
+```
 
 There are two changes here, which are both highlighted. The first is
 that the `accessToken` value is now set by calling the
@@ -490,13 +495,15 @@ Add code to make a sign-in call to Foursquare
 
 At the bottom of the file, add the following code:
 
-    function doAuthRedirect() {
-        var url = config.authUrl + 'oauth2/authenticate?response_type=token&client_id='
-                                 + config.clientId
-                                 + '&redirect_uri='
-                                 + config.redirectUri;
-        window.location.href = url;
-    }
+```js
+ function doAuthRedirect() {
+     var url = config.authUrl + 'oauth2/authenticate?response_type=token&client_id='
+                              + config.clientId
+                              + '&redirect_uri='
+                              + config.redirectUri;
+     window.location.href = url;
+ }
+```
 
 This is the `doAuthRedirect` function that's called when users click the
 <span class="uicontrol">Connect to Foursquare</span> button. The code
@@ -517,17 +524,18 @@ this:
 To extract the token from the URL, add the following code to the bottom
 of the `foursquare.js` file.
 
-    function parseAccessToken() {
-        var query = window.location.hash.substring(1);
-        var vars = query.split("&");
-        var ii;
-        for (ii = 0; ii < vars.length; ++ii) {
-           var pair = vars[ii].split("=");
-           if (pair[0] == "access_token") { return pair[1]; }
-        }
-        return(false);
-    }
-
+```js
+ function parseAccessToken() {
+     var query = window.location.hash.substring(1);
+     var vars = query.split("&");
+     var ii;
+     for (ii = 0; ii < vars.length; ++ii) {
+        var pair = vars[ii].split("=");
+        if (pair[0] == "access_token") { return pair[1]; }
+     }
+     return(false);
+ }
+```
 The code simply walks through the page's URL looking for a parameter
 named `access_token` and returns that value.
 
@@ -538,51 +546,53 @@ At this point, the `foursquare.js` file has the following content.
 (Remember that you must substitute your own client ID in the `config`
 object.)
 
-    var config = {
-        clientId: 'YOUR_CLIENT_ID',
-        redirectUri: 'http://localhost:8888/Examples/foursquare.html',
-        authUrl: 'https://foursquare.com/',
-        version: '20150901'
-    };
+```js
+ var config = {
+     clientId: 'YOUR_CLIENT_ID',
+     redirectUri: 'http://localhost:8888/Examples/foursquare.html',
+     authUrl: 'https://foursquare.com/',
+     version: '20150901'
+ };
 
-    $(document).ready(function() {
-        var accessToken = parseAccessToken();
-        var hasAuth = accessToken && accessToken.length > 0;
-        updateUIWithAuthState(hasAuth);
+ $(document).ready(function() {
+     var accessToken = parseAccessToken();
+     var hasAuth = accessToken && accessToken.length > 0;
+     updateUIWithAuthState(hasAuth);
 
-        $("#connectbutton").click(function() {
-            doAuthRedirect();
-        });
-    });
+     $("#connectbutton").click(function() {
+         doAuthRedirect();
+     });
+ });
 
-    function updateUIWithAuthState(hasAuth) {
-        if (hasAuth) {
-                $(".notsignedin").css('display', 'none');
-            $(".signedin").css('display', 'block');
-        } else {
-            $(".notsignedin").css('display', 'block');
-            $(".signedin").css('display', 'none');
-        }
-    }
+ function updateUIWithAuthState(hasAuth) {
+     if (hasAuth) {
+             $(".notsignedin").css('display', 'none');
+         $(".signedin").css('display', 'block');
+     } else {
+         $(".notsignedin").css('display', 'block');
+         $(".signedin").css('display', 'none');
+     }
+ }
 
-    function doAuthRedirect() {
-        var url = config.authUrl + 'oauth2/authenticate?response_type=token&client_id='
-                                 + config.clientId
-                                 + '&redirect_uri='
-                                 + config.redirectUri;
-        window.location.href = url;
-    }
+ function doAuthRedirect() {
+     var url = config.authUrl + 'oauth2/authenticate?response_type=token&client_id='
+                              + config.clientId
+                              + '&redirect_uri='
+                              + config.redirectUri;
+     window.location.href = url;
+ }
 
-    function parseAccessToken() {
-        var query = window.location.hash.substring(1);
-        var vars = query.split("&");
-        var ii;
-        for (ii = 0; ii < vars.length; ++ii) {
-           var pair = vars[ii].split("=");
-           if (pair[0] == "access_token") { return pair[1]; }
-        }
-        return(false);
-    }
+ function parseAccessToken() {
+     var query = window.location.hash.substring(1);
+     var vars = query.split("&");
+     var ii;
+     for (ii = 0; ii < vars.length; ++ii) {
+        var pair = vars[ii].split("=");
+        if (pair[0] == "access_token") { return pair[1]; }
+     }
+     return(false);
+ }
+```
 
 Next
 ----
@@ -674,54 +684,56 @@ Add code to get columns and data
 
 Copy the following code into the bottom of the `foursquare.js` file.
 
-    //------------- Tableau WDC code -------------//
-    var myConnector = tableau.makeConnector();
+```js
+ //------------- Tableau WDC code -------------//
+ var myConnector = tableau.makeConnector();
 
-    myConnector.getColumnHeaders = function() {
-        var fieldNames = ["Name", "Latitude", "Longitude", "Checkin Count"];
-        var fieldTypes = ["string","float","float","int"];
-        tableau.headersCallback(fieldNames, fieldTypes);
-    };
+ myConnector.getColumnHeaders = function() {
+     var fieldNames = ["Name", "Latitude", "Longitude", "Checkin Count"];
+     var fieldTypes = ["string","float","float","int"];
+     tableau.headersCallback(fieldNames, fieldTypes);
+ };
 
-    myConnector.getTableData = function(lastRecordToken) {
-        var dataToReturn = [];
-        var hasMoreData = false;
+ myConnector.getTableData = function(lastRecordToken) {
+     var dataToReturn = [];
+     var hasMoreData = false;
 
-        var accessToken = tableau.password;
-        var connectionUri = getVenueLikesURI(accessToken);
+     var accessToken = tableau.password;
+     var connectionUri = getVenueLikesURI(accessToken);
 
-        var xhr = $.ajax({
-            url: connectionUri,
-            dataType: 'json',
-            success: function (data) {
-                if (data.response) {
-                    var venues = data.response.venues.items;
-                    var ii;
-                    for (ii = 0; ii < venues.length; ++ii) {
-                        var venue = {'Name': venues[ii].name,
-                                     'Latitude': venues[ii].location.lat,
-                                     'Longitude': venues[ii].location.lng,
-                                     'Checkin Count': venues[ii].stats.checkinsCount};
-                        dataToReturn.push(venue);
-                    }
+     var xhr = $.ajax({
+         url: connectionUri,
+         dataType: 'json',
+         success: function (data) {
+             if (data.response) {
+                 var venues = data.response.venues.items;
+                 var ii;
+                 for (ii = 0; ii < venues.length; ++ii) {
+                     var venue = {'Name': venues[ii].name,
+                                  'Latitude': venues[ii].location.lat,
+                                  'Longitude': venues[ii].location.lng,
+                                  'Checkin Count': venues[ii].stats.checkinsCount};
+                     dataToReturn.push(venue);
+                 }
 
-                    tableau.dataCallback(dataToReturn, lastRecordToken, hasMoreData);
-                }
-                else {
-                    tableau.abortWithError("No results found");
-                }
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                // If the connection fails, log the error and return an empty set.
-                tableau.log("Connection error: " + xhr.responseText + "\n" +
-                             thrownError);
-                tableau.abortWithError("Error while trying to connect to Foursquare.");
-            }
-        });
-    };
+                 tableau.dataCallback(dataToReturn, lastRecordToken, hasMoreData);
+             }
+             else {
+                 tableau.abortWithError("No results found");
+             }
+         },
+         error: function (xhr, ajaxOptions, thrownError) {
+             // If the connection fails, log the error and return an empty set.
+             tableau.log("Connection error: " + xhr.responseText + "\n" +
+                          thrownError);
+             tableau.abortWithError("Error while trying to connect to Foursquare.");
+         }
+     });
+ };
 
-    // Register the tableau connector--call this last
-    tableau.registerConnector(myConnector);
+ // Register the tableau connector--call this last
+ tableau.registerConnector(myConnector);
+```
 
 This code follows the same outline as any web data connector. The code
 starts by calling `tableau.makeConnector` to create an instance of the
@@ -742,8 +754,10 @@ to send the data to Tableau.
 One difference this time is that the `getTableData` function contains
 these lines:
 
+```js
     var accessToken = tableau.password;
     var connectionUri = getVenueLikesURI(accessToken);
+```
 
 When the `getTableData` function sends a request to Foursquare, the URL
 of the request has to include the access token. You might remember from
@@ -773,10 +787,12 @@ As in the basic tutorial, the work of creating the URL for the web
 request is done using a helper function. Add the following code just
 above the existing `parseAccessToken` function.
 
-    function getVenueLikesURI(accessToken) {
-        return "https://api.foursquare.com/v2/users/self/venuelikes?oauth_token=" +
-                accessToken + "&v=" + config.version;
-    }
+```js
+ function getVenueLikesURI(accessToken) {
+     return "https://api.foursquare.com/v2/users/self/venuelikes?oauth_token=" +
+             accessToken + "&v=" + config.version;
+ }
+```
 
 This code builds the URI for the Foursquare `venuelikes` API, including
 adding the access token into the URL.
@@ -866,7 +882,7 @@ properties.) To determine whether your connector is being loaded in auth
 phase, you can test the `tableau.phase` property. The following example
 shows how you can determine what phase the connector is in.
 
-``` {space="preserve"}
+```js
 if (tableau.phase == tableau.phaseEnum.authPhase) {
     // Display OAuth authentication UI
 }
@@ -884,42 +900,44 @@ initialization code.)
 
 After the call to `tableau.makeConnector`, add the following code:
 
-    myConnector.init = function() {
-      var accessToken = parseAccessToken();
-      var hasAuth = (accessToken && accessToken.length > 0) ||
-                        tableau.password.length > 0;
+```js
+ myConnector.init = function() {
+   var accessToken = parseAccessToken();
+   var hasAuth = (accessToken && accessToken.length > 0) ||
+                     tableau.password.length > 0;
 
-      if (tableau.phase == tableau.phaseEnum.interactivePhase ||
-                           tableau.phase == tableau.phaseEnum.authPhase) {
-          if (hasAuth) {
-              tableau.password = accessToken;
-              if (tableau.phase == tableau.phaseEnum.authPhase) {
-                  // Auto-submit here if we are in the auth phase
-                  tableau.submit()
-              }
-          }
-      }
+   if (tableau.phase == tableau.phaseEnum.interactivePhase ||
+                        tableau.phase == tableau.phaseEnum.authPhase) {
+       if (hasAuth) {
+           tableau.password = accessToken;
+           if (tableau.phase == tableau.phaseEnum.authPhase) {
+               // Auto-submit here if we are in the auth phase
+               tableau.submit()
+           }
+       }
+   }
 
-      /* Update UI */
-      updateUIWithAuthState(hasAuth);
+   /* Update UI */
+   updateUIWithAuthState(hasAuth);
 
-      if (tableau.phase == tableau.phaseEnum.interactivePhase) {
-         if (!hasAuth) {
-            $("#getvenuesbutton").css('display', 'none');     }
-      }
+   if (tableau.phase == tableau.phaseEnum.interactivePhase) {
+      if (!hasAuth) {
+         $("#getvenuesbutton").css('display', 'none');     }
+   }
 
-      if (tableau.phase == tableau.phaseEnum.authPhase) {
-        $("#getvenuesbutton").css('display', 'none');
-      }
+   if (tableau.phase == tableau.phaseEnum.authPhase) {
+     $("#getvenuesbutton").css('display', 'none');
+   }
 
-      $("#getvenuesbutton").click(function() {
-          tableau.connectionName = "Foursquare Venues Data";
-          tableau.alwaysShowAuthUI = true;
-          tableau.submit();  // This ends the UI phase
-      });
+   $("#getvenuesbutton").click(function() {
+       tableau.connectionName = "Foursquare Venues Data";
+       tableau.alwaysShowAuthUI = true;
+       tableau.submit();  // This ends the UI phase
+   });
 
-      tableau.initCallback();
-    };
+   tableau.initCallback();
+ };
+```
 
 Code explanation
 ----------------
@@ -1003,7 +1021,7 @@ accessing secure information inside `foursquare.js`.
 To do this, add the following to the top of the file, above the line
 that starts with `var config`:
 
-``` {space="preserve"}
+```js
 (function() {
 ```
 
@@ -1012,7 +1030,7 @@ This is the opening part of the function.
 At the very bottom of the file, add the closing elements for the
 function:
 
-``` {space="preserve"}
+```js
 })();
 ```
 
@@ -1022,143 +1040,145 @@ The page so far
 At this stage of the tutorial, this is what the `foursquare.js` file
 looks like.
 
-    (function() {
-      var config = {
-          clientId: 'IX34GIPHSFDNRAUWUZXHTKFDTA4Q3YJQPDJ11OU4AS1MS3TP',
-          redirectUri: 'http://localhost:8888/Examples/foursquare.html',
-          authUrl: 'https://foursquare.com/',
-          version: '20150901'
-      };
+```js
+ (function() {
+   var config = {
+       clientId: 'IX34GIPHSFDNRAUWUZXHTKFDTA4Q3YJQPDJ11OU4AS1MS3TP',
+       redirectUri: 'http://localhost:8888/Examples/foursquare.html',
+       authUrl: 'https://foursquare.com/',
+       version: '20150901'
+   };
 
-      $(document).ready(function() {
-          var accessToken = parseAccessToken();
-          var hasAuth = accessToken && accessToken.length > 0;
-          updateUIWithAuthState(hasAuth);
+   $(document).ready(function() {
+       var accessToken = parseAccessToken();
+       var hasAuth = accessToken && accessToken.length > 0;
+       updateUIWithAuthState(hasAuth);
 
-          $("#connectbutton").click(function() {
-              doAuthRedirect();
-          });
-      });
+       $("#connectbutton").click(function() {
+           doAuthRedirect();
+       });
+   });
 
-      function updateUIWithAuthState(hasAuth) {
-          if (hasAuth) {
-                $(".notsignedin").css('display', 'none');
-              $(".signedin").css('display', 'block');
-          } else {
-              $(".notsignedin").css('display', 'block');
-              $(".signedin").css('display', 'none');
-          }
-      }
+   function updateUIWithAuthState(hasAuth) {
+       if (hasAuth) {
+             $(".notsignedin").css('display', 'none');
+           $(".signedin").css('display', 'block');
+       } else {
+           $(".notsignedin").css('display', 'block');
+           $(".signedin").css('display', 'none');
+       }
+   }
 
-      function doAuthRedirect() {
-          var url = config.authUrl + 'oauth2/authenticate?response_type=token&client_id='
-                                   + config.clientId
-                                   + '&redirect_uri='
-                                   + config.redirectUri;
-          window.location.href = url;
-      }
+   function doAuthRedirect() {
+       var url = config.authUrl + 'oauth2/authenticate?response_type=token&client_id='
+                                + config.clientId
+                                + '&redirect_uri='
+                                + config.redirectUri;
+       window.location.href = url;
+   }
 
-      function getVenueLikesURI(accessToken) {
-          return "https://api.foursquare.com/v2/users/self/venuelikes?oauth_token=" +
-                  accessToken + "&v=" + config.version;
-      }
+   function getVenueLikesURI(accessToken) {
+       return "https://api.foursquare.com/v2/users/self/venuelikes?oauth_token=" +
+               accessToken + "&v=" + config.version;
+   }
 
-      function parseAccessToken() {
-          var query = window.location.hash.substring(1);
-          var vars = query.split("&");
-          var ii;
-          for (ii = 0; ii < vars.length; ++ii) {
-             var pair = vars[ii].split("=");
-             if (pair[0] == "access_token") { return pair[1]; }
-          }
-          return(false);
-      }
+   function parseAccessToken() {
+       var query = window.location.hash.substring(1);
+       var vars = query.split("&");
+       var ii;
+       for (ii = 0; ii < vars.length; ++ii) {
+          var pair = vars[ii].split("=");
+          if (pair[0] == "access_token") { return pair[1]; }
+       }
+       return(false);
+   }
 
-      //------------- Tableau WDC code -------------//
-      var myConnector = tableau.makeConnector();
+   //------------- Tableau WDC code -------------//
+   var myConnector = tableau.makeConnector();
 
-      myConnector.init = function() {
-        var accessToken = parseAccessToken();
-        var hasAuth = (accessToken && accessToken.length > 0) ||
-                           tableau.password.length > 0;
+   myConnector.init = function() {
+     var accessToken = parseAccessToken();
+     var hasAuth = (accessToken && accessToken.length > 0) ||
+                        tableau.password.length > 0;
 
-        if (tableau.phase == tableau.phaseEnum.interactivePhase ||
-                             tableau.phase == tableau.phaseEnum.authPhase) {
-            if (hasAuth) {
-                tableau.password = accessToken;
-                if (tableau.phase == tableau.phaseEnum.authPhase) {
-                  // Auto-submit here if we are in the auth phase
-                  tableau.submit()
-                }
-            }
-        }
+     if (tableau.phase == tableau.phaseEnum.interactivePhase ||
+                          tableau.phase == tableau.phaseEnum.authPhase) {
+         if (hasAuth) {
+             tableau.password = accessToken;
+             if (tableau.phase == tableau.phaseEnum.authPhase) {
+               // Auto-submit here if we are in the auth phase
+               tableau.submit()
+             }
+         }
+     }
 
-        updateUIWithAuthState(hasAuth);
+     updateUIWithAuthState(hasAuth);
 
-        if (tableau.phase == tableau.phaseEnum.interactivePhase) {
-           if (!hasAuth) {
-            $("#getvenuesbutton").css('display', 'none');     }
-        }
+     if (tableau.phase == tableau.phaseEnum.interactivePhase) {
+        if (!hasAuth) {
+         $("#getvenuesbutton").css('display', 'none');     }
+     }
 
-        if (tableau.phase == tableau.phaseEnum.authPhase) {
-        $("#getvenuesbutton").css('display', 'none');
-        }
+     if (tableau.phase == tableau.phaseEnum.authPhase) {
+     $("#getvenuesbutton").css('display', 'none');
+     }
 
-        $("#getvenuesbutton").click(function() {
-          tableau.connectionName = "Foursquare Venues Data";
-          tableau.alwaysShowAuthUI = true;
-          tableau.submit();  // This ends the UI phase
-        });
-        tableau.initCallback();
-      };
+     $("#getvenuesbutton").click(function() {
+       tableau.connectionName = "Foursquare Venues Data";
+       tableau.alwaysShowAuthUI = true;
+       tableau.submit();  // This ends the UI phase
+     });
+     tableau.initCallback();
+   };
 
-      myConnector.getColumnHeaders = function() {
-          var fieldNames = ["Name", "Latitude", "Longitude", "Checkin Count"];
-          var fieldTypes = ["string","float","float","int"];
-          tableau.headersCallback(fieldNames, fieldTypes);
-      };
+   myConnector.getColumnHeaders = function() {
+       var fieldNames = ["Name", "Latitude", "Longitude", "Checkin Count"];
+       var fieldTypes = ["string","float","float","int"];
+       tableau.headersCallback(fieldNames, fieldTypes);
+   };
 
-      myConnector.getTableData = function(lastRecordToken) {
-          var dataToReturn = [];
-          var hasMoreData = false;
+   myConnector.getTableData = function(lastRecordToken) {
+       var dataToReturn = [];
+       var hasMoreData = false;
 
-          var accessToken = tableau.password;
-          var connectionUri = getVenueLikesURI(accessToken);
+       var accessToken = tableau.password;
+       var connectionUri = getVenueLikesURI(accessToken);
 
-          var xhr = $.ajax({
-              url: connectionUri,
-              dataType: 'json',
-              success: function (data) {
-                  if (data.response) {
-                      var venues = data.response.venues.items;
-                      var ii;
-                      for (ii = 0; ii < venues.length; ++ii) {
-                          var venue = {'Name': venues[ii].name,
-                                       'Latitude': venues[ii].location.lat,
-                                       'Longitude': venues[ii].location.lng,
-                                       'Checkin Count': venues[ii].stats.checkinsCount};
-                          dataToReturn.push(venue);
-                      }
+       var xhr = $.ajax({
+           url: connectionUri,
+           dataType: 'json',
+           success: function (data) {
+               if (data.response) {
+                   var venues = data.response.venues.items;
+                   var ii;
+                   for (ii = 0; ii < venues.length; ++ii) {
+                       var venue = {'Name': venues[ii].name,
+                                    'Latitude': venues[ii].location.lat,
+                                    'Longitude': venues[ii].location.lng,
+                                    'Checkin Count': venues[ii].stats.checkinsCount};
+                       dataToReturn.push(venue);
+                   }
 
-                      tableau.dataCallback(dataToReturn, lastRecordToken, hasMoreData);
-                  }
-                  else {
-                      tableau.abortWithError("No results found");
-                  }
-              },
-              error: function (xhr, ajaxOptions, thrownError) {
-                  // If the connection fails, log the error and return an empty set.
-                  tableau.log("Connection error: " + xhr.responseText + "\n" +
-                               thrownError);
-                  tableau.abortWithError("Error while trying to connect to Foursquare.");
-              }
-          });
-      };
+                   tableau.dataCallback(dataToReturn, lastRecordToken, hasMoreData);
+               }
+               else {
+                   tableau.abortWithError("No results found");
+               }
+           },
+           error: function (xhr, ajaxOptions, thrownError) {
+               // If the connection fails, log the error and return an empty set.
+               tableau.log("Connection error: " + xhr.responseText + "\n" +
+                            thrownError);
+               tableau.abortWithError("Error while trying to connect to Foursquare.");
+           }
+       });
+   };
 
-      // Register the tableau connector--call this last
-      tableau.registerConnector(myConnector);
+   // Register the tableau connector--call this last
+   tableau.registerConnector(myConnector);
 
-      })();
+   })();
+```
 
 Next
 ----
@@ -1231,189 +1251,191 @@ library, you must be using a recent version of Tableau. For more
 information, see [Web Data Connector Library
 Versions](wdc-library-versions.html).
 
-```<!DOCTYPE.html>
-    .html>
-    <head>
-        <meta charset="utf-8">
-        <title>Foursquare Connector</title>
-        <meta http-equiv="Cache-Control" content="no-store" />
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+```html
+<!DOCTYPE.html>
+ <html>
+ <head>
+     <meta charset="utf-8">
+     <title>Foursquare Connector</title>
+     <meta http-equiv="Cache-Control" content="no-store" />
+     <!-- Latest compiled and minified CSS -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-        <!-- Optional theme -->
-        <link rel="stylesheet"
-           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
-             type="text/javascript"></script>
+     <!-- Optional theme -->
+     <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+     <!-- Latest compiled and minified JavaScript -->
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+          type="text/javascript"></script>
 
-        <!-- Latest WDC Library -->
-        <script src="https://connectors.tableau.com/libs/tableauwdc-1.1.1.js"
-             type="text/javascript"></script>
+     <!-- Latest WDC Library -->
+     <script src="https://connectors.tableau.com/libs/tableauwdc-1.1.1.js"
+          type="text/javascript"></script>
 
-        <!-- This will contain all of your WDC code -->
-        <script src="./foursquare.js" type="text/javascript"></script>
-    </head>
-    <body>
-      <div style="margin: auto; text-align: center; margin-top: 50px; max-width: 300px">
-        <!-- These labels will toggle depending on whether the user is authenticated
-             or not -->
-        <p class="signedin">You are signed in!</p>
-        <p class="notsignedin">You are not signed in, please click below to sign in
-           to your foursquare account.</p>
+     <!-- This will contain all of your WDC code -->
+     <script src="./foursquare.js" type="text/javascript"></script>
+ </head>
+ <body>
+   <div style="margin: auto; text-align: center; margin-top: 50px; max-width: 300px">
+     <!-- These labels will toggle depending on whether the user is authenticated
+          or not -->
+     <p class="signedin">You are signed in!</p>
+     <p class="notsignedin">You are not signed in, please click below to sign in
+        to your foursquare account.</p>
 
-        <!-- The connect to foursquare button will have a link added to it in the js-->
-        <a href="#" id="connectbutton"><img src="./foursquare_connect.png"
-             alt="Login with Foursquare"/></a>
-        <br /><br />
+     <!-- The connect to foursquare button will have a link added to it in the js-->
+     <a href="#" id="connectbutton"><img src="./foursquare_connect.png"
+          alt="Login with Foursquare"/></a>
+     <br /><br />
 
-        <!-- This button will fetch the user's "Liked" venues once the user is authenticated -->
-        <p><a href="#" class="btn btn-primary btn-block" id="getvenuesbutton">
-          <span class="glyphicon glyphicon-arrow-down"></span> Get Venues I Like</a>
-        </p>
-      </div>
-    </body>
-    <.html>```
+     <!-- This button will fetch the user's "Liked" venues once the user is authenticated -->
+     <p><a href="#" class="btn btn-primary btn-block" id="getvenuesbutton">
+       <span class="glyphicon glyphicon-arrow-down"></span> Get Venues I Like</a>
+     </p>
+   </div>
+ </body>
+ </html>
+```
 
 Foursquare.js page {.html-page}
 ------------------
 
-```
-    (function() {
-      var config = {
-            clientId: 'YOUR_CLIENT_ID',
-            redirectUri: 'http://localhost:8888/Examples/foursquare.html',
-            authUrl: 'https://foursquare.com/',
-            version: '20150901'
-        };
+```js
+ (function() {
+   var config = {
+         clientId: 'YOUR_CLIENT_ID',
+         redirectUri: 'http://localhost:8888/Examples/foursquare.html',
+         authUrl: 'https://foursquare.com/',
+         version: '20150901'
+   };
 
-      $(document).ready(function() {
-          var accessToken = parseAccessToken();
-          var hasAuth = accessToken && accessToken.length > 0;
-          updateUIWithAuthState(hasAuth);
+   $(document).ready(function() {
+       var accessToken = parseAccessToken();
+       var hasAuth = accessToken && accessToken.length > 0;
+       updateUIWithAuthState(hasAuth);
 
-          $("#connectbutton").click(function() {
-              doAuthRedirect();
-          });
-      });
+       $("#connectbutton").click(function() {
+           doAuthRedirect();
+       });
+   });
 
-      function updateUIWithAuthState(hasAuth) {
-          if (hasAuth) {
-                $(".notsignedin").css('display', 'none');
-              $(".signedin").css('display', 'block');
-          } else {
-              $(".notsignedin").css('display', 'block');
-              $(".signedin").css('display', 'none');
-          }
-      }
+   function updateUIWithAuthState(hasAuth) {
+       if (hasAuth) {
+             $(".notsignedin").css('display', 'none');
+           $(".signedin").css('display', 'block');
+       } else {
+           $(".notsignedin").css('display', 'block');
+           $(".signedin").css('display', 'none');
+       }
+   }
 
-      function doAuthRedirect() {
-          var url = config.authUrl + 'oauth2/authenticate?response_type=token&client_id='
-                                   + config.clientId
-                                   + '&redirect_uri='
-                                   + config.redirectUri;
-          window.location.href = url;
-      }
+   function doAuthRedirect() {
+       var url = config.authUrl + 'oauth2/authenticate?response_type=token&client_id='
+                                + config.clientId
+                                + '&redirect_uri='
+                                + config.redirectUri;
+       window.location.href = url;
+   }
 
-      function getVenueLikesURI(accessToken) {
-          return "https://api.foursquare.com/v2/users/self/venuelikes?oauth_token=" +
-                  accessToken + "&v=" + config.version;
-      }
+   function getVenueLikesURI(accessToken) {
+       return "https://api.foursquare.com/v2/users/self/venuelikes?oauth_token=" +
+               accessToken + "&v=" + config.version;
+   }
 
-      function parseAccessToken() {
-          var query = window.location.hash.substring(1);
-          var vars = query.split("&");
-          var ii;
-          for (ii = 0; ii < vars.length; ++ii) {
-             var pair = vars[ii].split("=");
-             if (pair[0] == "access_token") { return pair[1]; }
-          }
-          return(false);
-      }
+   function parseAccessToken() {
+       var query = window.location.hash.substring(1);
+       var vars = query.split("&");
+       var ii;
+       for (ii = 0; ii < vars.length; ++ii) {
+          var pair = vars[ii].split("=");
+          if (pair[0] == "access_token") { return pair[1]; }
+       }
+       return(false);
+   }
 
-      //------------- Tableau WDC code -------------//
-      var myConnector = tableau.makeConnector();
+   //------------- Tableau WDC code -------------//
+   var myConnector = tableau.makeConnector();
 
-      myConnector.init = function() {
-        var accessToken = parseAccessToken();
-        var hasAuth = (accessToken && accessToken.length > 0) ||
-                           tableau.password.length > 0;
+   myConnector.init = function() {
+     var accessToken = parseAccessToken();
+     var hasAuth = (accessToken && accessToken.length > 0) ||
+                        tableau.password.length > 0;
 
-        if (tableau.phase == tableau.phaseEnum.interactivePhase ||
-                             tableau.phase == tableau.phaseEnum.authPhase) {
-          if (hasAuth) {
-              tableau.password = accessToken;
-              if (tableau.phase == tableau.phaseEnum.authPhase) {
-                  // Auto-submit here if we are in the auth phase
-                  tableau.submit()
-              }
+     if (tableau.phase == tableau.phaseEnum.interactivePhase ||
+                          tableau.phase == tableau.phaseEnum.authPhase) {
+       if (hasAuth) {
+           tableau.password = accessToken;
+           if (tableau.phase == tableau.phaseEnum.authPhase) {
+               // Auto-submit here if we are in the auth phase
+               tableau.submit()
            }
         }
+     }
 
-        updateUIWithAuthState(hasAuth);
+     updateUIWithAuthState(hasAuth);
 
-        if (tableau.phase == tableau.phaseEnum.interactivePhase) {
-           if (!hasAuth) {
-            $("#getvenuesbutton").css('display', 'none');     }
-        }
+     if (tableau.phase == tableau.phaseEnum.interactivePhase) {
+        if (!hasAuth) {
+         $("#getvenuesbutton").css('display', 'none');     }
+     }
 
-        if (tableau.phase == tableau.phaseEnum.authPhase) {
-        $("#getvenuesbutton").css('display', 'none');
-        }
+     if (tableau.phase == tableau.phaseEnum.authPhase) {
+     $("#getvenuesbutton").css('display', 'none');
+     }
 
-        $("#getvenuesbutton").click(function() {
-          tableau.connectionName = "Foursquare Venues Data";
-          tableau.alwaysShowAuthUI = true;
-          tableau.submit();  // This ends the UI phase
-        });
-        tableau.initCallback();
-      };
+     $("#getvenuesbutton").click(function() {
+       tableau.connectionName = "Foursquare Venues Data";
+       tableau.alwaysShowAuthUI = true;
+       tableau.submit();  // This ends the UI phase
+     });
+     tableau.initCallback();
+   };
 
-      myConnector.getColumnHeaders = function() {
-          var fieldNames = ["Name", "Latitude", "Longitude", "Checkin Count"];
-          var fieldTypes = ["string","float","float","int"];
-          tableau.headersCallback(fieldNames, fieldTypes);
-      };
+   myConnector.getColumnHeaders = function() {
+       var fieldNames = ["Name", "Latitude", "Longitude", "Checkin Count"];
+       var fieldTypes = ["string","float","float","int"];
+       tableau.headersCallback(fieldNames, fieldTypes);
+   };
 
-      myConnector.getTableData = function(lastRecordToken) {
-          var dataToReturn = [];
-          var hasMoreData = false;
+   myConnector.getTableData = function(lastRecordToken) {
+       var dataToReturn = [];
+       var hasMoreData = false;
 
-          var accessToken = tableau.password;
-          var connectionUri = getVenueLikesURI(accessToken);
+       var accessToken = tableau.password;
+       var connectionUri = getVenueLikesURI(accessToken);
 
-          var xhr = $.ajax({
-              url: connectionUri,
-              dataType: 'json',
-              success: function (data) {
-                  if (data.response) {
-                      var venues = data.response.venues.items;
-                      var ii;
-                      for (ii = 0; ii < venues.length; ++ii) {
-                          var venue = {'Name': venues[ii].name,
-                                       'Latitude': venues[ii].location.lat,
-                                       'Longitude': venues[ii].location.lng,
-                                       'Checkin Count': venues[ii].stats.checkinsCount};
-                          dataToReturn.push(venue);
-                      }
+       var xhr = $.ajax({
+           url: connectionUri,
+           dataType: 'json',
+           success: function (data) {
+               if (data.response) {
+                   var venues = data.response.venues.items;
+                   var ii;
+                   for (ii = 0; ii < venues.length; ++ii) {
+                       var venue = {'Name': venues[ii].name,
+                                    'Latitude': venues[ii].location.lat,
+                                    'Longitude': venues[ii].location.lng,
+                                    'Checkin Count': venues[ii].stats.checkinsCount};
+                       dataToReturn.push(venue);
+                   }
 
-                      tableau.dataCallback(dataToReturn, lastRecordToken, hasMoreData);
-                  }
-                  else {
-                      tableau.abortWithError("No results found");
-                  }
-              },
-              error: function (xhr, ajaxOptions, thrownError) {
-                  // If the connection fails, log the error and return an empty set.
-                  tableau.log("Connection error: " + xhr.responseText + "\n" +
-                               thrownError);
-                  tableau.abortWithError("Error while trying to connect to Foursquare.");
-              }
-          });
-      };
+                   tableau.dataCallback(dataToReturn, lastRecordToken, hasMoreData);
+               }
+               else {
+                   tableau.abortWithError("No results found");
+               }
+           },
+           error: function (xhr, ajaxOptions, thrownError) {
+               // If the connection fails, log the error and return an empty set.
+               tableau.log("Connection error: " + xhr.responseText + "\n" +
+                            thrownError);
+               tableau.abortWithError("Error while trying to connect to Foursquare.");
+           }
+       });
+   };
 
-      // Register the tableau connector--call this last
-      tableau.registerConnector(myConnector);
+   // Register the tableau connector--call this last
+   tableau.registerConnector(myConnector);
 
-      })();
+   })();
 ```
