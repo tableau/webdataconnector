@@ -23,8 +23,7 @@
 
 	// Download the data
 	myConnector.getData = function (table, doneCallback) {
-		var tableData = [],
-            mag = 0,
+		var mag = 0,
             title = "",
             url = "",
             lat = 0,
@@ -41,7 +40,7 @@
 				lon = feat[i].geometry.coordinates[0];
 				lat = feat[i].geometry.coordinates[1];
 
-				tableData.push({
+				table.appendRows({
 					"mag" : mag,
 					"title" : title,
 					"url" : url,
@@ -50,7 +49,6 @@
 				});
 			}
 
-			table.appendRows(tableData);
 			doneCallback();
 		});
 	};
