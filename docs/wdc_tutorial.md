@@ -120,7 +120,7 @@ The connector doesn't *do* very much so far, but it's enough that we can run it 
 1. Open a browser and navigate to the following URL:
 
    ```
-   http://localhost:8000/Simulator/index.html 
+   http://localhost:8888/Simulator/index.html 
    ```
 1. In the WDC URL field, enter the path to your WDC relative to the simulator. For example, if you created your WDC in the top-level directory, you might enter:
 

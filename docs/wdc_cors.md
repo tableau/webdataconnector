@@ -11,9 +11,9 @@ represent cross-origin resource sharing (CORS). As a security measure,
 most browsers restrict CORS requests made from JavaScript code.
 
 This restriction can result in errors when the web data connector runs.
-For example, if you run your connector in Google Chrome and the code in
-the connector makes requests to a site that doesn't allow CORS requests,
-the following error is displayed in the Chrome console:
+For example, if the code in your connector makes requests to a server that
+doesn't allow CORS requests, you might see an error like the following in
+your browser console:
 
 ```
 XMLHttpRequest cannot load URL. No 'Access-Control-Allow-Origin' header is present on the requested resource.
@@ -22,15 +22,62 @@ XMLHttpRequest cannot load URL. No 'Access-Control-Allow-Origin' header is prese
 If your connector experiences CORS-related errors when trying to access
 another site, you can try the approaches listed in this topic:
 
+-   [Make requests through a proxy server](#proxy-server)
+
 -   [Request CORS support from API Server](#request-access)
 
 -   [Make requests with JSONP](#jsonp)
 
--   [Make requests through a proxy server](#proxy-server)
-
 **Note**: For information about how to use the Web Data Connector
 simulator to help debug CORS errors, see [Web Data Connector
 Simulator](wdc_simulator.html).
+
+Make requests through a proxy server {#proxy-server}
+------------------------------------
+
+To circumvent browser restrictions on CORS, you can use a proxy server.
+A proxy server acts as a simple go-between for your connector and the server that you 
+want to get data from. Because a proxy server doesn't run in a browser, it isn't 
+limited by the same restrictions on CORS. 
+
+If the proxy server is in the same domain as the web data connector,
+JavaScript in the connector page does not run into CORS restrictions. If
+the proxy server is in another domain, the proxy server can be
+configured to set the `Access-Control-Allow-Origin` header to allow
+requests from the connector's domain.
+
+The WDC SDK comes a test proxy server that you can use out of the box. 
+
+1. From the top-level directory of the repository, open a command prompt or terminal and run the following command:
+
+   ```
+   npm start
+   ```
+
+   The test proxy server and test web server start.
+
+1. In you connector code, prefix your requests with the following URL:
+
+   ```
+   http://localhost:8889
+   ```
+
+   For example, for the `earthquakeUSGS` connector, you would change the `$.getJSON` function from this:
+
+   ```
+   $.getJSON("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson",
+   ...
+   ```
+
+   To this:
+
+   ```
+   $.getJSON("http://localhost:8889/http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson", 
+   ```
+
+If you want to share your connectors with other users in your organization, you can download 
+and configure a production proxy server, or you can use a free, public proxy server like
+[http://cors.io/.](http://cors.io/) or [https://crossorigin.me/](https://crossorigin.me/).
 
 Request CORS support from API Server {#request-access}
 --------------------
@@ -96,36 +143,4 @@ function can extract values as it would from any JSON block.
 For more information, see [JSONP](https://en.wikipedia.org/wiki/JSONP)
 on Wikipedia.
 
-Make requests through a proxy server {#proxy-server}
-------------------------------------
 
-Another option is to make requests from the web data connector's
-JavaScript code to a proxy server. Code that's running on the proxy
-server can make requests directly to the site where the data is—because
-the proxy server is not running code in a browser, the code is not
-limited by CORS restrictions. The JavaScript code in the browser can
-then make requests to the proxy server instead of making requests
-directly to the data site.
-
-If the proxy server is in the same domain as the web data connector,
-JavaScript in the connector page does not run into CORS restrictions. If
-the proxy server is in another domain, the proxy server can be
-configured to set the `Access-Control-Allow-Origin` header to allow
-requests from the connector's domain.
-
-Some options for using a proxy are:
-
--   Use a public proxy that is specifically designed for this purpose,
-    such as [http://cors.io/.](http://cors.io/)
-
--   Download an existing proxy and run it locally on your computer. Many
-    proxies are available as open-source projects or free
-    software—search the web for "CORS proxy".
-
--   Create your own proxy - You can start with the [Node Proxy with OAuth Tutorial]({{ site.baseurl }}/docs/wdc_oauth_tutorial.html)
-    to get some starter code for this.  This tutorial will walk through using a node
-    proxy for performing authentication.  It could be extended to proxy data requests as well.
-
-**Note**: Creating and configuring a proxy server for this scenario
-usually requires some custom programming. If you need assistance, see
-the system administrator for your organization.

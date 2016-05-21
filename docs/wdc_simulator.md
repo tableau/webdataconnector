@@ -103,17 +103,16 @@ The SDK includes the following samples:
 
 -   **OAuthProxyExample**
 
-    This example will show you how to utilize a node proxy server in order to securely implement
-    a web data connector that uses OAuth as an authorization mechanism.
+    This example shows you how to use OAuth as an authentication method.
 
 Simulator tips
 ---------------
 
-* Be default, the test web server runs on port 8000. To change the port number, edit the `start` script in the `package.json` file.
-  For example, you might enter the following to change the port to 8888:
+* Be default, the test web server runs on port 8888. To change the port number, edit the `http-server` script in the `package.json` file.
+  For example, you might enter the following to change the port to 8000:
 
   ```
-  "start": "node node_modules/http-server/bin/http-server -p 8000"
+  "http-server": "node node_modules/http-server/bin/http-server -p 8000"
   ```
 
 * To make it easier to load files into the simulator, keep

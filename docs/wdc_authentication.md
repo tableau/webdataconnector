@@ -74,13 +74,12 @@ The auth phase will be displayed by Tableau in two scenarios:
     This method is provided so that the developer can explicitly tell Tableau the current user is un-authenticated.
     For example, this can be helpful when working with OAuth.  In some scenarios, the access token used to get resources
     from an API can expire or be revoked.  In that scenario, before fetching data, the WDC would want to call this method
-    in order to re-authenticate the user.  This is an advanced technique, for more details, please see the
-    [Node Proxy with OAuth Tutorial]({{ site.baseurl }}/docs/wdc_oauth_tutorial).
+    in order to re-authenticate the user.  For more information, see the **OAuthProxyExample** connector included in the SDK.
     
 In the auth phase of the WDC, any changes to properties other than tableau.password and tableau.username will
 be ignored.  Thus, it is a best practice to only show the UI that is necessary to re-authenticate the user,
 and then auto-submit the connector for the user once they have been authenticated.
-For example, in the [Node Proxy with OAuth Tutorial]({{ site.baseurl }}/docs/wdc_oauth_tutorial), this is how this
+For example, in the **OAuthProxyExample** this is how this
 is handled in the custom init method:
 
 ```javascript
@@ -127,7 +126,7 @@ is handled in the custom init method:
 
 Advanced: Auth Purpose Mechanism {#auth-purpose}
 ------------------------------------
-Understanding the content in the [Node Proxy with OAuth Tutorial]({{ site.baseurl }}/docs/wdc_oauth_tutorial) is
+Understanding the content in the **OAuthProxyExample** included with the SDK is
 recommended before proceeding on with this or the following section.  That tutorial contains helpful terminology
 that is used without explanation here.
 
