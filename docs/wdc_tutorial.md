@@ -36,7 +36,7 @@ Then, copy the following code into the file:
     <meta http-equiv="Cache-Control" content="no-store" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://connectors.tableau.com/libs/tableauwdc-2.0.0-beta.js"></script>
-    <script src="earthquake.js"></script>
+    <script src="earthquakeWDC.js"></script>
 </head>
    
 <body>
@@ -50,7 +50,7 @@ Let's run through what the code is doing. Skipping over the standard markup for 
 * The `meta` tag prevents your browser from caching the page.
 * The `jquery.min.js` file will be used as a helper library by our connector. (For example, the connector uses jquery to get JSON data.)
 * The `tableauwdc-2.0.0-beta.js` file is the main library for the WDC API.
-* The `earthquake.js` file is the (not yet created) JavaScript code for our connector.
+* The `earthquakeWDC.js` file is the (not yet created) JavaScript code for our connector.
 
 
 Between the `body` tags, there is a simple button element that illustrates how users can interact with your connector before getting data. In a later step, you'll attach an event listener to the button in the JavaScript code. 
