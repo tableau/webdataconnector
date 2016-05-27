@@ -211,7 +211,7 @@ myConnector.getData = function (table, doneCallback) {
             lon = feat[i].geometry.coordinates[0];
             lat = feat[i].geometry.coordinates[1];
 
-            table.appendRows({
+            tableData.push({
                 "mag" : mag,
                 "title" : title,
                 "url" : url,
@@ -219,6 +219,8 @@ myConnector.getData = function (table, doneCallback) {
                 "lat" : lat
             });
         }
+
+        table.appendRows(tableData);
 
         doneCallback();
     });
@@ -231,7 +233,7 @@ Whew! That's a good-sized chunk of code. Let's see what's happening:
 * The next few lines declare some local variables.
 * The jquery `$.getJSON` function gets earthquake data from the USGS earthquake feed and stores the data in a `resp`, or response, parameter. (You can open the URL in a browser to see what the JSON data looks like.)
 * The for loop iterates over the features in the JSON object and stores the data that we want in the local variables created earlier. 
-* The `table.appendRows` function appends each row of data to the table as a JavaScript object. 
+* The `table.appendRows` function appends an array of data to the table as a JavaScript object. 
 
 
 ### See it in action {#see-in-action}

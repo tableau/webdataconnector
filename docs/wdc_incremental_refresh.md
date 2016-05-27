@@ -68,7 +68,7 @@ myConnector.getData = function(table, doneCallback) {
     // Gather only the most recent data with an ID greather than 'lastId'
     // ......
 
-    table.appendRows(data);
+    table.appendRows(dataArray);
     doneCallback(); 
 };
 ```
