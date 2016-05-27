@@ -30,7 +30,8 @@
             lon = 0;
 
 		$.getJSON("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson", function (resp) {
-			var feat = resp.features;
+			var feat = resp.features,
+                tableData = [];
 
 			// Iterate over the JSON object
 			for (var i = 0, len = feat.length; i < len; i++) {
@@ -40,13 +41,15 @@
 				lon = feat[i].geometry.coordinates[0];
 				lat = feat[i].geometry.coordinates[1];
 
-				table.appendRows({
+				tableData.push({
 					"mag" : mag,
 					"title" : title,
 					"url" : url,
 					"lon" : lon,
 					"lat" : lat
 				});
+
+                table.appendRows(tableData);
 			}
 
 			doneCallback();

@@ -37,7 +37,8 @@
         var apiCall = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&" + table.tableInfo.id + "&minmagnitude=4.5";
 
 		$.getJSON(apiCall, function (resp) {
-			var feat = resp.features;
+			var feat = resp.features,
+                tableData = [];
 
 			// Iterate over the JSON object
 			for (var i = 0, len = feat.length; i < len; i++) {
@@ -47,7 +48,7 @@
 				lon = feat[i].geometry.coordinates[0];
 				lat = feat[i].geometry.coordinates[1];
 
-				table.appendRows({
+				tableData.push({
 					"mag" : mag,
 					"title" : title,
 					"url" : url,
@@ -55,6 +56,8 @@
 					"lat" : lat
 				});
 			}
+
+            table.appendRows(tableData);
 
 			doneCallback();
 		});
