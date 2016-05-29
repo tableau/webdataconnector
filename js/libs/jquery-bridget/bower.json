@@ -1,0 +1,35 @@
+{
+  "name": "jquery-bridget",
+  "version": "2.0.0",
+  "main": "jquery-bridget.js",
+  "description": "Bridget makes jQuery widgets",
+  "dependencies": {
+    "jquery": ">=1.4.2 <4"
+  },
+  "devDependencies": {
+    "qunit": "~1.10"
+  },
+  "homepage": "https://github.com/desandro/jquery-bridget",
+  "authors": [
+    "David DeSandro <desandrocodes@gmail.com>"
+  ],
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "jquery",
+    "plugin",
+    "widget"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "package.json"
+  ]
+}
