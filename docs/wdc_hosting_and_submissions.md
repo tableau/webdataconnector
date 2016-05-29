@@ -10,11 +10,11 @@ section is designed to showcase the work that other developers have done with th
 It also provides a place for others to browse and explore what
 connectors have already been built. 
 
-We have a very lightweight submission process for this community portal.
-One of the requirements for submission to the community section is that 
-your connector is hosted online somewhere so that others can use it.
-This document will also provide some guidance to how to easily host your connectors
-(and for free!). Please read on for details.
+The process for submitting to the community portal is lightweight. One
+requirement for submission to the community section is that your connector is
+hosted online somewhere so that others can use it. This document will also
+provide some guidance to how to easily host your connectors (and for free!).
+Please read on for details.
 
 -   [Submitting to the Community Portal](#portal)
 
@@ -24,43 +24,71 @@ This document will also provide some guidance to how to easily host your connect
 Submitting to the Community Portal {#portal}
 ----------------------------------
 
-After building and testing your web data connector, you can submit it to the
+After building and testing your web data connector, you can list it in the
 [Community Connector]({{ site.baseurl }}/community/community_home.html) section.
 
-To do this, all you need to do is submit a pull request to the master branch
-with some relevant information about your connector.  This will require that you have 
-a GitHub account. Once you have a GitHub account, just follow these steps to get
-your connector into the Community portal:
+To do this, all you need to do is publish your connector to npmjs.com using
+a few special attributes in your connector's `package.json` file. This will
+require that you have an [npm account](https://www.npmjs.com/signup). Once you
+have an npm account, just follow these steps to get your connector into the
+Community portal:
 
-1. Fork the [web data connector](https://github.com/tableau/webdataconnector) repository.
+1. If your connector doesn't already have one, create a file called [package.json](https://docs.npmjs.com/getting-started/using-a-package.json)
+   in the root of your project.
 
-2. Checkout the dev branch.
+2. At a bare minimum, your `package.json` file should include the following
+   properties.
 
-3.  Find and open the following file:
-   `webdataconnector/docs/community/community_connectors.json`
-
-4. In this file, create a new json entry for your connector like the following:
-   
-   ```js
+   ```json
    {
-       "name": "My Cool Connector",
-       "url": "https://xyz.com/connector.html",
-       "author": "Me",
-       "github_username": "",
-       "tags": ["v_2.0"],
-       "description": "This connector is really cool",
-       "source_code": "github.com/Me/MyConnector"
-   }  
+     "name": "my-unique-connector-name-wdc",
+     "homepage": "https://my-unique-connector-wdc.herokuapp.com",
+     "keywords": [
+       "tableau-wdc"
+     ]
+   }
    ```
 
-   - Name, url, and author are all required.
-      
-   - A version number tag, description, github_username, and source_code are encouraged by not required.  Please limit the description to a short sentence or two.
+   In particular, the following _must_ be satisfied for your connector to appear:
 
-5. Submit a pull request from your fork to the dev branch of the official repo at
-   [github.com/tableau/webdataconnector](https://github.com/tableau/webdataconnector/tree/dev).
-   See the [GitHub documentation](https://help.github.com/articles/using-pull-requests/)
-   for details on submitting pull requests.
+   - The `name` of your connector must end in `-wdc`.
+   - The `homepage` of your connector must point to hosted version of your WDC.
+   - The `keywords` array must contain `tableau-wdc` as one of its elements.
+
+3. If desired, you may provide additional detail about your connector like so:
+
+   ```json
+   {
+      "name": "my-unique-connector-name-wdc",
+      "description": "Short description of the type of data exposed by your connector.",
+      "homepage": "https://my-unique-connector-wdc.herokuapp.com",
+      "version": "1.0.0",
+      "keywords": [
+        "tableau-wdc",
+        "my-unique-connector",
+        "service-connected-to"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/my-handle/my-connector-wdc.git"
+      }
+   }
+   ```
+
+   - The `description` of your connector will be displayed along side your WDC
+     and its contents are used as part of the search feature.
+   - You should follow [semantic versioning](http://semver.org/) in the `version`
+     property of your connector.
+   - Additional `keywords` can be provided to improve your WDC's discoverability.
+   - If your connector is open source, you can provide `repository` details.
+   - Additionally, any information included in your connector's `README.md` file
+     will also be used as part of the Community portal's search feature.
+
+4. Once your `package.json` is ready, publish your connector to npmjs.com using
+   the [following guide](https://docs.npmjs.com/getting-started/publishing-npm-packages).
+
+As an example, you can look at the [Star Wars API WDC](https://www.npmjs.com/package/swapi-wdc)
+and [its corresponding package.json](https://github.com/tableau-mkt/swapi-wdc/blob/master/package.json#L1) file.
 
 
 Suggested methods for connector hosting {#hosting}
