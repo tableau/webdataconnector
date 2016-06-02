@@ -195,7 +195,8 @@ Copy the following code and replace the placeholder `getData` function:
 
 ```js
 myConnector.getData = function (table, doneCallback) {
-    var mag = 0,
+    var tableData = [],
+        mag = 0,
         title = "",
         url = "",
         lat = 0,
