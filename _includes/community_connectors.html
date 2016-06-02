@@ -1,14 +1,51 @@
-<header id="community-jumbo" class="jumbotron hero-spacer">
-    <h2>Community Portal</h2>
-    <p>The following connectors have been written by the Tableau Community and made available to use.  If you write a connector, <a href="{{ site.baseurl }}/docs/wdc_hosting_and_submissions">please contribute!</a></p>
-    <p><b>Important:</b> These connectors are not written by or supported by Tableau (with the exception of the dev samples).  If you encounter an issue with one of the connectors here, please reach out to the developer.</p>
-</header>
-<div class="row">
-    <div id="grid" data-columns>
-        <!-- dynamically loaded from community/community_connectors.json -->
+<div ng-app="wdcHub" ng-controller="WdcSearchCtrl">
+    <header id="community-jumbo" class="jumbotron hero-spacer">
+        <h2>Community Portal</h2>
+        <p>The following connectors have been written by the Tableau Community and made available to use.  If you write a connector, <a href="{{ site.baseurl }}/docs/wdc_hosting_and_submissions">please contribute!</a></p>
+        <p><b>Important:</b> These connectors are not written by or supported by Tableau (with the exception of the dev samples).  If you encounter an issue with one of the connectors here, please reach out to the developer.</p>
+    </header>
+    <header class="jumbotron">
+        <h2 style="margin-top:0;">Search</h2>
+        <input type="search" class="form-control" name="search" placeholder="Search Web Data Connectors" ng-model="query" ng-keyup="searchWdcs()" />
+    </header>
+    <div class="row">
+        <div id="grid" masonry masonry-options="{ transitionDuration: '0.1s' }">
+            <div class="masonry-brick size-1of3" ng-repeat="wdc in wdcs" ng-cloak>
+                {% raw %}
+                <div class="thumbnail">
+                    <div class="connector_title">
+                        <h2><a href="{{wdc.homepage[0]}}" alt="Connector Link">{{wdc.name[0]}}</a></h2>
+                    </div>
+                    <div class="caption">
+                        <p><b>Written by: </b><a href="https://www.npmjs.com/~{{wdc.author[0]}}" alt="NPM Link">{{wdc.author[0]}}</a></p>
+                        <p ng-if="wdc.description[0]">{{wdc.description[0]}}</p>
+                        <p ng-if="wdc.repository[0]"><a href="{{wdc.repository[0]}}" alt="Source code link">Source Code Available</a></p>
+                        <span class="label label-pill label-primary">v_{{wdc.version[0]}}</span>
+                        <span class="label label-pill label-default">Updated {{wdc.modified[0]}}</span>
+                    </div>
+                </div>
+                {% endraw %}
+            </div>
+        </div>
     </div>
 </div>
 
 <!-- These need to stay here after the columns div -->
-<script src="{{ site.baseurl }}/js/salvattore.min.js"></script>
+<script src="{{ site.baseurl }}/js/libs/moment/min/moment.min.js"></script>
+<script src="{{ site.baseurl }}/js/libs/underscore/underscore-min.js"></script>
+<script src="{{ site.baseurl }}/js/libs/angular/angular.min.js"></script>
+<script src="{{ site.baseurl }}/js/libs/angular-route/angular-route.min.js"></script>
+<script src="{{ site.baseurl }}/js/libs/angular-resource/angular-resource.min.js"></script>
+
+<script src="{{ site.baseurl }}/js/libs/jquery-bridget/jquery-bridget.js"></script>
+<script src="{{ site.baseurl }}/js/libs/ev-emitter/ev-emitter.js"></script>
+<script src="{{ site.baseurl }}/js/libs/desandro-matches-selector/matches-selector.js"></script>
+<script src="{{ site.baseurl }}/js/libs/fizzy-ui-utils/utils.js"></script>
+<script src="{{ site.baseurl }}/js/libs/get-size/get-size.js"></script>
+<script src="{{ site.baseurl }}/js/libs/outlayer/item.js"></script>
+<script src="{{ site.baseurl }}/js/libs/outlayer/outlayer.js"></script>
+<script src="{{ site.baseurl }}/js/libs/masonry/masonry.js"></script>
+<script src="{{ site.baseurl }}/js/libs/imagesloaded/imagesloaded.js"></script>
+<script src="{{ site.baseurl }}/js/libs/angular-masonry/angular-masonry.js"></script>
+
 <script src="{{ site.baseurl }}/js/community_connectors.js"></script>
