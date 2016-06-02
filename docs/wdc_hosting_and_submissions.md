@@ -43,6 +43,7 @@ Community portal:
    {
      "name": "my-unique-connector-name-wdc",
      "homepage": "https://my-unique-connector-wdc.herokuapp.com",
+     "version": "2.0.0",
      "keywords": [
        "tableau-wdc"
      ]
@@ -53,6 +54,13 @@ Community portal:
 
    - The `name` of your connector must end in `-wdc`.
    - The `homepage` of your connector must point to hosted version of your WDC.
+   - The `version` of your connector must match the following pattern:
+     - The first digit or "major" version must match the WDC API major version
+       that your connector is compatible with.
+     - The second digit or "minor" version must match the WDC API minor version
+       that your connector is compatible with.
+     - You may increment the third digit or "patch" version as much as you like
+       as you make updates to your connector.
    - The `keywords` array must contain `tableau-wdc` as one of its elements.
 
 3. If desired, you may provide additional detail about your connector like so:
@@ -62,7 +70,7 @@ Community portal:
       "name": "my-unique-connector-name-wdc",
       "description": "Short description of the type of data exposed by your connector.",
       "homepage": "https://my-unique-connector-wdc.herokuapp.com",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "keywords": [
         "tableau-wdc",
         "my-unique-connector",
@@ -77,8 +85,6 @@ Community portal:
 
    - The `description` of your connector will be displayed along side your WDC
      and its contents are used as part of the search feature.
-   - You should follow [semantic versioning](http://semver.org/) in the `version`
-     property of your connector.
    - Additional `keywords` can be provided to improve your WDC's discoverability.
    - If your connector is open source, you can provide `repository` details.
    - Additionally, any information included in your connector's `README.md` file

@@ -11,7 +11,8 @@
             var results = angular.fromJson(data).results;
 
             results.map(function (r, i) {
-              var name = results[i].name[0];
+              var name = results[i].name[0],
+                  versionParts;
 
               // Clean up repository property.
               if (r.repository) {
@@ -29,6 +30,10 @@
               else {
                 results.splice(i + 1, 1);
               }
+
+              // Parse out the version to display Tableau WDC API version.
+              versionParts = r.version[0].split('.');
+              results[i].version[0] = versionParts[0] + '.' + versionParts[1];
             });
 
             return results;
