@@ -942,9 +942,7 @@
           return DOM.tr({ key: dataTableRowKey++ },
             schema.map(function(header) {
               if (_.isUndefined(row[header])) {
-                if (row[dataTableColKey]) {
-                  return DOM.td({ key: dataTableColKey }, row[dataTableColKey++].toString());
-                }
+                return DOM.td({ key: dataTableColKey++ }, String("-"));
               } else {
                 return DOM.td({ key: dataTableColKey++ }, String(row[header]));
               }
