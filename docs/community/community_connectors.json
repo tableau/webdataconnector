@@ -224,5 +224,23 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": "https://github.com/port80labs/census-wdc"
+    },
+    {
+        "name": "U.S. Federal Reserve Economic Data (FRED)",
+        "url": "http://wdc.poc.interworks.com/fred/",
+        "author": "Derrick Austin",
+        "github_username": "austinderrick",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": ""
+    },
+    {
+        "name": "U.S. Federal Reserve Economic Data (FRED)",
+        "url": "http://wdc.poc.interworks.com/fred_20/",
+        "author": "Derrick Austin",
+        "github_username": "austinderrick",
+        "tags": ["v_2.0"],
+        "description": "",
+        "source_code": "https://github.com/austinderrick/fred_wdc_20"
     }
 ]
