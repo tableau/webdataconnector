@@ -1,4 +1,4 @@
-[
+
     {
         "name": "Alteryx",
         "url": "http://data.theinformationlab.co.uk/alteryx.html",
@@ -116,6 +116,15 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": "https://github.com/tableau-mkt/insights-data-connector"
+    },
+    {
+        "name": "OpenStreetMap Features",
+        "url": "http://jdomingu.github.io/osm-features-wdc/",
+        "author": "Jared Dominguez",
+        "github_username": "jdomingu",
+        "tags": ["v_2.0"],
+        "description": "Get data for OSM features in an area that you select.",
+        "source_code": "https://github.com/jdomingu/osm-features-wdc"
     },
     {
         "name": "ParseHub",
