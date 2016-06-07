@@ -442,7 +442,7 @@
         DOM.div({ className: 'simulator-app' },
           DOM.div({ className: 'navbar navbar-default' },
             DOM.img({ className: 'tableau-logo', src: 'tableau_logo.png', style: { height: 40, width: 40, margin: 10 } }),
-            DOM.h2({ style: { display: 'inline', verticalAlign: 'middle' } }, 'Web Data Connector Simulator')
+            DOM.h2({ style: { display: 'inline', verticalAlign: 'middle' } }, 'Web Data Connector Simulator 2.0')
           ),
           Grid.element({ fluid: true },
 
