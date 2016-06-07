@@ -40,7 +40,7 @@ The existing connector interface doesn't do very much--it's just a button that y
 Open the `earthquakeMultitable.html` file, and copy the following code immediately above the `<button>` element:
 
 ```html
-<h2>Compare earthquake data for two date ranges</h3>
+<h2>Compare earthquake data for two date ranges</h2>
 <form>
     <div class="form-inline">
         <label for="start-date-one" class="text-center">Start Date One </label>
