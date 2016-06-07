@@ -2,8 +2,9 @@
   var NOOP = function(){};
 
   function verifyCanRunWdcVersion(wdcApiVersion) {
-    if(wdcApiVersion === "1.1.0") {
-      throw new Error('The Simulator can only run WDCs using version 1.1.1 or later, your version is: ' + wdcApiVersion);
+    if(wdcApiVersion === "1.1.0" || wdcApiVersion === "1.1.1") {
+      var errMsg = 'This simulator only supports WDCs that are using version 2.0 of the API or later, your WDC\'s version is: ' + wdcApiVersion;
+      toastr.error(errMsg, 'Unsupported WDC Version Error:')
     }
   }
    
