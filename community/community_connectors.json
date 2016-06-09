@@ -206,7 +206,16 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": "https://github.com/sdesmond46/WDC"
-    }, 
+    },
+    {
+        "name": "Star Wars API",
+        "url": "http://gtgeek.github.com/SWapiConnector/SWapiConnector.html",
+        "author": "gtgeek - Quy Nguyen",
+        "github_username": "gtgeek",
+        "tags": ["v_2.0"],
+        "description": "Star Wars API for People, Planets, Vehicles, Films, etc.",
+        "source_code": ""
+    },
     {
         "name": "Tfl BikesPoint",
         "url": "http://jdunkerleytableau.azurewebsites.net/Bikes",
