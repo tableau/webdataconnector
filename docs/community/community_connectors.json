@@ -118,6 +118,15 @@
         "source_code": "https://github.com/tableau-mkt/insights-data-connector"
     },
     {
+      "name": "NPM Download Counts",
+      "url": "http://jagreene.github.io/npm-wdc",
+      "author": "Austin Greene",
+      "github_username": "jagreene",
+      "tags": ["v_2.0"],
+      "description": "Multitable connector for Visualizing download stats for npm packages",
+      "source_code": "https://github.com/jagreene/npm-wdc/"
+    },
+    {
         "name": "OpenStreetMap Features",
         "url": "http://jdomingu.github.io/osm-features-wdc/",
         "author": "Jared Dominguez",
