@@ -36,6 +36,15 @@
         "source_code": ""
     },
     {
+        "name": "Flickr with Auth",
+        "url": "https://wdc-flickr-proxy.herokuapp.com/flickr.html",
+        "author": "Steve Meredith",
+        "github_username": "smeredith",
+        "tags": ["v0.1"],
+        "description": "Gets metadata for your personal photos on Flickr.",
+        "source_code": "https://github.com/smeredith/wdc-flickr-proxy"
+    },
+    {
         "name": "GitHub",
         "url": "https://github-web-data-connector.herokuapp.com/",
         "author": "Martin Keerman",
