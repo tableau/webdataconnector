@@ -974,7 +974,7 @@
               // First we check for the object case
               if (_.isUndefined(row[header])) {
                 if (_.isUndefined(row[dataTableColKey])) {	
-                  // If it's not an object, and th1ere is no value in the array for this index, use a placeholder	
+                  // If it's not an object, and there is no value in the array for this index, use a placeholder	
                   cellValue = "-";
                 } else {
                   // This is an array and there is a value
