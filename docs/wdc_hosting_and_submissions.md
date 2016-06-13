@@ -55,7 +55,7 @@ your connector into the Community portal:
 
    - Name, url, and author are all required.
       
-   - A version number tag, description, github_username, and source_code are encouraged by not required.  Please limit the description to a short sentence or two.
+   - A tag for the version of the WDC API used, description, github_username, and source_code are encouraged by not required.  Please limit the description to a short sentence or two.
 
 5. Submit a pull request from your fork to the dev branch of the official repo at
    [github.com/tableau/webdataconnector](https://github.com/tableau/webdataconnector/tree/dev).

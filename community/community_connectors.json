@@ -36,6 +36,15 @@
         "source_code": ""
     },
     {
+        "name": "Flickr with Auth",
+        "url": "https://wdc-flickr-proxy.herokuapp.com/flickr.html",
+        "author": "Steve Meredith",
+        "github_username": "smeredith",
+        "tags": ["v_2.0"],
+        "description": "Gets metadata for your personal photos on Flickr.",
+        "source_code": "https://github.com/smeredith/wdc-flickr-proxy"
+    },
+    {
         "name": "GitHub",
         "url": "https://github-web-data-connector.herokuapp.com/",
         "author": "Martin Keerman",
@@ -154,6 +163,15 @@
         "source_code": ""
     },
     {
+         "name": "Podcast Metadata",
+         "url": "https://podcast-wdc.herokuapp.com/",
+         "author": "Eric Peterson",
+         "github_username": "iamEAP",
+         "tags": ["v_2.0"],
+         "description": "Parses podcast channel and episode metadata from feed URLs.",
+         "source_code": "https://github.com/iamEAP/podcast-wdc"
+     },
+    {
         "name": "Quandl",
         "url": "http://data.theinformationlab.co.uk/quandl.html",
         "author": "Craig Bloodworth",
@@ -215,6 +233,15 @@
         "tags": ["v_2.0"],
         "description": "Star Wars API for People, Planets, Vehicles, Films, etc.",
         "source_code": ""
+    },
+    {
+        "name": "Stock Price History",
+        "url": "http://wdc.poc.interworks.com/google_finance_20/",
+        "author": "Matthew Orr",
+        "github_username": "interworks-morr",
+        "tags": ["v_2.0"],
+        "description": "",
+        "source_code": "https://github.com/interworks-morr/wdc-stock-price-history"
     },
     {
         "name": "Tfl BikesPoint",
