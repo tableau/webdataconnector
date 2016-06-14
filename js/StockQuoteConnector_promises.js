@@ -42,11 +42,11 @@
 
          var schema = [];
          _.forEach(tickersArray, function(ticker) {
-            var cols = [
-                { id: "ticker", alias: "Ticker", dataType: tableau.dataTypeEnum.string },
-                { id: "day", alias: "Day", dataType: tableau.dataTypeEnum.date },
-                { id: "close", alias: "Close", dataType: tableau.dataTypeEnum.float }
-            ];
+             var cols = [
+                 { id: "ticker", alias: "Ticker", dataType: tableau.dataTypeEnum.string },
+                 { id: "day", alias: "Day", dataType: tableau.dataTypeEnum.date },
+                 { id: "close", alias: "Close", dataType: tableau.dataTypeEnum.float }
+             ];
 
              var tableInfo = {
                  id: ticker,

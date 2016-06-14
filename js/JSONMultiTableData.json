@@ -15,7 +15,7 @@
         "id": "posts",
         "columns": [
             { "id": "id", "dataType": "int" },
-            { "id": "postId", "dataType": "int" },
+            { "id": "userId", "dataType": "int" },
             { "id": "title", "dataType": "string" },
             { "id": "body", "dataType": "string" }
         ]
@@ -25,7 +25,7 @@
         "id": "comments",
         "columns": [
             { "id": "id", "dataType": "int" },
-            { "id": "userId", "dataType": "int" },
+            { "id": "postId", "dataType": "int" },
             { "id": "name", "dataType": "string" },
             { "id": "email", "dataType": "string" },
             { "id": "body", "dataType": "string" }

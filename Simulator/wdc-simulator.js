@@ -259,14 +259,22 @@
             table.schema = tableInfo;
         
             tables[tableInfo.id] = table;
-      });
+       });
+      } else {
+        toastr.error("Please see debug console for details.", 'WDC Validation Error')
       }
       
       this.phaseState.inProgress = false;
     },
 
     handleDataCallback: function(tableName, data) {
-      this.tables[tableName].data = this.tables[tableName].data.concat(data);
+      var dataValid = this.validateData(data)
+
+      if (dataValid) {
+        this.tables[tableName].data = this.tables[tableName].data.concat(data);
+      } else {
+        toastr.error("Please see debug console for details.", 'WDC Validation Error')
+      }
     },
     
     handleDataDoneCallback: function() {
@@ -324,6 +332,26 @@
       this.resetPhaseState();
 
       this.onPhaseChange(previousPhase, phase);
+    },
+   
+    validateData: function(data) {
+      var i;
+      var entry;
+      
+      if (validate.isArray(data)) {
+        for (i = 0; i < data.length; i++) {
+          entry = data[i];
+          if ( !(validate.isArray(entry) || validate.isObject(entry)) ) {
+            console.error("Each entry within the array passed through table.appendRows must be an array or object.");
+            return false;
+          }
+        }
+      } else {
+        console.error("table.appendRows must be passed an array.");
+        return false;
+      }
+   
+      return true;
     },
     
     validateSchema: function(schema) {
@@ -897,8 +925,6 @@
       columnTableHeader.push(key.TYPE_HEADER);
       columnTableHeader.push(key.ALIAS_HEADER);
       columnTableHeader.push(key.DESCRIPTION_HEADER);
-      columnTableHeader.push(key.PK_HEADER);
-      columnTableHeader.push(key.FK_HEADER);
       
       return columnTableHeader;
     },
@@ -937,16 +963,29 @@
       var dataTableRowKey = 0;
       var dataTableColKey = 0;
       var dataElements = [];
+      var cellValue;   
+      
       if (tableData) { // We may not fetched any data yet
         dataElements = tableData.slice(0, TablePreview.MAX_ROWS).map(function(row) {
           dataTableColKey = 0;
           return DOM.tr({ key: dataTableRowKey++ },
             schema.map(function(header) {
+              // We can accept either an array of objects or an array of arrays
+              // First we check for the object case
               if (_.isUndefined(row[header])) {
-                return DOM.td({ key: dataTableColKey++ }, String("-"));
+                if (_.isUndefined(row[dataTableColKey])) {	
+                  // If it's not an object, and there is no value in the array for this index, use a placeholder	
+                  cellValue = "-";
+                } else {
+                  // This is an array and there is a value
+                  cellValue = row[dataTableColKey];
+                }
               } else {
-                return DOM.td({ key: dataTableColKey++ }, String(row[header]));
+                // This is the object condition, just grab the value from the map.
+                cellValue = row[header];
               }
+              
+             return DOM.td({ key: dataTableColKey++ }, String(cellValue));
             })
           );
         });
@@ -961,9 +1000,7 @@
     ID_HEADER: 'ID',
     TYPE_HEADER: 'Type',
     ALIAS_HEADER: 'Alias',
-    DESCRIPTION_HEADER: 'Description',
-    PK_HEADER: 'Is Primary Key',
-    FK_HEADER: 'Foreign Key'
+    DESCRIPTION_HEADER: 'Description'
   };
 
   var CollapsibleTable = React.createClass({ 
