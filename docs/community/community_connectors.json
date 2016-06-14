@@ -163,6 +163,15 @@
         "source_code": ""
     },
     {
+        "name": "Podcast Metadata",
+        "url": "https://podcast-wdc.herokuapp.com/",
+        "author": "Eric Peterson",
+        "github_username": "iamEAP",
+        "tags": ["v_2.0"],
+        "description": "Parses podcast channel and episode metadata from feed URLs.",
+        "source_code": "https://github.com/iamEAP/podcast-wdc"
+    },
+    {
         "name": "Quandl",
         "url": "http://data.theinformationlab.co.uk/quandl.html",
         "author": "Craig Bloodworth",
