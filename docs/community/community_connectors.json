@@ -305,5 +305,14 @@
         "tags": ["v_2.0"],
         "description": "",
         "source_code": "https://github.com/interworks-morr/wdc-stock-price-history"
+    },
+    {
+        "name": "BoardGameGeek User Plays",
+        "url": "https://garnet-viper.hyperdev.space/",
+        "author": "Jason Copenhaver",
+        "github_username": "jcopenha",
+        "tags": ["v_2.0"],
+        "description": "",
+        "source_code": "https://github.com/jcopenha/BoardGameGeekWebDataConnector"
     }
 ]
