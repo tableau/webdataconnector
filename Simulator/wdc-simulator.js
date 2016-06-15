@@ -68,7 +68,8 @@
     DATA_DONE_CB: "_dataDoneCallback",
     SHUTDOWN:     "shutdown",
     SHUTDOWN_CB:  "shutdownCallback",
-    ABORT:        "abortWithError"
+    ABORT:        "abortWithError",
+    ABORT_AUTH:   "abortForAuth"
   };
 
   WdcCommandSimulator.Phase = {
@@ -181,6 +182,11 @@
         case WdcCommandSimulator.EventName.DATA_DONE_CB:
           this.handleDataDoneCallback();
           break;
+
+        case WdcCommandSimulator.EventName.ABORT_AUTH:
+          var errorMsg = msgData.errorMsg;
+          this.handleAbortForAuth(errorMsg);
+          break;
       }
 
       this.onEvent(WdcCommandSimulator.MessageDirection.RECEIVED, msgName, msgData);
@@ -259,7 +265,7 @@
             table.schema = tableInfo;
         
             tables[tableInfo.id] = table;
-       });
+        });
       } else {
         toastr.error("Please see debug console for details.", 'WDC Validation Error')
       }
@@ -291,6 +297,11 @@
       this.phaseState.inProgress = false;
       this.logger.error(errMsg);
       toastr.error(errMsg, 'The WDC reported an error:')
+    },
+
+    handleAbortForAuth: function(errMsg) {
+      this.phaseState.submitWasCalled = true;
+      toastr.error(errMsg, 'The WDC has been aborted for auth, use the "Start Auth Phase" to test your WDC Auth Mode:')
     },
 
     // MESSAGES TO SEND TO CLIENT
@@ -333,7 +344,7 @@
 
       this.onPhaseChange(previousPhase, phase);
     },
-   
+
     validateData: function(data) {
       var i;
       var entry;
@@ -413,6 +424,10 @@
       this.setCurrentPhase(WdcCommandSimulator.Phase.GATHER_DATA);
     },
 
+    setAuthPhase: function() {
+      this.setCurrentPhase(WdcCommandSimulator.Phase.AUTH);
+    },
+
     hasData: function() {
       return !!this.tables && Object.keys(this.tables).length > 0;
     },
@@ -465,7 +480,10 @@
       var inDataGatherPhase = wdcCommandSim.state.currentPhase === WdcCommandSimulator.Phase.GATHER_DATA;
 
       var isWDCUrlEmpty = (this.state.wdcUrl === '');
-     
+
+      var startAuthPhase = this.startPhase.bind(this, WdcCommandSimulator.Phase.AUTH);
+
+      var startInteractivePhase = this.startPhase.bind(this, WdcCommandSimulator.Phase.INTERACTIVE);
       return (
         DOM.div({ className: 'simulator-app' },
           DOM.div({ className: 'navbar navbar-default' },
@@ -484,7 +502,8 @@
             Col.element({ md: 6, className: 'run-connector' },
               PhaseTitle.element({ title: 'Run Connector', isInProgress: interactiveStateInProgress }),
               DOM.div({},
-                Button.element({ onClick: this.startInteractivePhase, bsStyle: 'success', disabled: isInProgress || isWDCUrlEmpty }, 'Start Interactive Phase'),
+                Button.element({ onClick: startInteractivePhase, bsStyle: 'success', disabled: isInProgress || isWDCUrlEmpty }, 'Start Interactive Phase'),
+                Button.element({ onClick: startAuthPhase, bsStyle: 'success', style: { marginLeft: '4px' }, disabled: isInProgress || isWDCUrlEmpty }, 'Start Auth Phase'),
                 interactiveStateInProgress ? Button.element({ onClick: this.cancelCurrentPhase,
                                                               style: { marginLeft: '4px' } }, 'Abort') : null
               ),
@@ -588,6 +607,9 @@
             this.fetchAllData(); 
           }
           break;
+        case WdcCommandSimulator.EventName.ABORT_AUTH:
+          this.closeSimulatorWindowAndGatherDataFrame();
+          break;
       }
 
       // Reassign wdcCommandSimulator to trigger state updates after events complete
@@ -646,13 +668,19 @@
       });
     },
 
-    startInteractivePhase: function() {       
-      this.setState({ wdcUrlDisabled: true });
+    startPhase: function(phaseName, e) {
+      this.setState({ wdcUrlDisabled: true});
 
       var wdcSim = this.state.wdcCommandSimulator;
 
       wdcSim.resetTables();
-      wdcSim.setInteractivePhase();
+      console.log(phaseName)
+      if(phaseName === WdcCommandSimulator.Phase.INTERACTIVE) {
+        wdcSim.setInteractivePhase();
+      } 
+      if(phaseName === WdcCommandSimulator.Phase.AUTH) {
+        wdcSim.setAuthPhase();
+      }
       wdcSim.setInProgress();
 
       this.closeSimulatorWindowAndGatherDataFrame(function() {
@@ -963,8 +991,8 @@
       var dataTableRowKey = 0;
       var dataTableColKey = 0;
       var dataElements = [];
-      var cellValue;   
-      
+      var cellValue;
+
       if (tableData) { // We may not fetched any data yet
         dataElements = tableData.slice(0, TablePreview.MAX_ROWS).map(function(row) {
           dataTableColKey = 0;
@@ -973,8 +1001,8 @@
               // We can accept either an array of objects or an array of arrays
               // First we check for the object case
               if (_.isUndefined(row[header])) {
-                if (_.isUndefined(row[dataTableColKey])) {	
-                  // If it's not an object, and there is no value in the array for this index, use a placeholder	
+                if (_.isUndefined(row[dataTableColKey])) {
+                  // If it's not an object, and there is no value in the array for this index, use a placeholder
                   cellValue = "-";
                 } else {
                   // This is an array and there is a value
@@ -984,8 +1012,8 @@
                 // This is the object condition, just grab the value from the map.
                 cellValue = row[header];
               }
-              
-             return DOM.td({ key: dataTableColKey++ }, String(cellValue));
+
+              return DOM.td({ key: dataTableColKey++ }, String(cellValue));
             })
           );
         });
