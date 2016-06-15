@@ -480,7 +480,10 @@
       var inDataGatherPhase = wdcCommandSim.state.currentPhase === WdcCommandSimulator.Phase.GATHER_DATA;
 
       var isWDCUrlEmpty = (this.state.wdcUrl === '');
-     
+
+      var startAuthPhase = this.startPhase.bind(this, WdcCommandSimulator.Phase.AUTH);
+
+      var startInteractivePhase = this.startPhase.bind(this, WdcCommandSimulator.Phase.INTERACTIVE);
       return (
         DOM.div({ className: 'simulator-app' },
           DOM.div({ className: 'navbar navbar-default' },
@@ -499,8 +502,8 @@
             Col.element({ md: 6, className: 'run-connector' },
               PhaseTitle.element({ title: 'Run Connector', isInProgress: interactiveStateInProgress }),
               DOM.div({},
-                Button.element({ onClick: this.startInteractivePhase, bsStyle: 'success', disabled: isInProgress || isWDCUrlEmpty }, 'Start Interactive Phase'),
-                Button.element({ onClick: this.startAuthPhase, bsStyle: 'success', style: { marginLeft: '4px' }, disabled: isInProgress || isWDCUrlEmpty }, 'Start Auth Phase'),
+                Button.element({ onClick: startInteractivePhase, bsStyle: 'success', disabled: isInProgress || isWDCUrlEmpty }, 'Start Interactive Phase'),
+                Button.element({ onClick: startAuthPhase, bsStyle: 'success', style: { marginLeft: '4px' }, disabled: isInProgress || isWDCUrlEmpty }, 'Start Auth Phase'),
                 interactiveStateInProgress ? Button.element({ onClick: this.cancelCurrentPhase,
                                                               style: { marginLeft: '4px' } }, 'Abort') : null
               ),
@@ -665,28 +668,19 @@
       });
     },
 
-    startInteractivePhase: function() {       
-      this.setState({ wdcUrlDisabled: true });
+    startPhase: function(phaseName, e) {
+      this.setState({ wdcUrlDisabled: true});
 
       var wdcSim = this.state.wdcCommandSimulator;
 
       wdcSim.resetTables();
-      wdcSim.setInteractivePhase();
-      wdcSim.setInProgress();
-
-      this.closeSimulatorWindowAndGatherDataFrame(function() {
-        var openWindow = window.open(this.state.wdcUrl, 'simulator', SimulatorApp.WINDOW_PROPS);
-        this.setState({ openWindow: openWindow });
-      });
-    },
-
-    startAuthPhase: function() {
-      this.setState({ wdcUrlDisabled: true });
-
-      var wdcSim = this.state.wdcCommandSimulator;
-
-      wdcSim.resetTables();
-      wdcSim.setAuthPhase();
+      console.log(phaseName)
+      if(phaseName === WdcCommandSimulator.Phase.INTERACTIVE) {
+        wdcSim.setInteractivePhase();
+      } 
+      if(phaseName === WdcCommandSimulator.Phase.AUTH) {
+        wdcSim.setAuthPhase();
+      }
       wdcSim.setInProgress();
 
       this.closeSimulatorWindowAndGatherDataFrame(function() {
