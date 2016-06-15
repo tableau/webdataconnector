@@ -1,4 +1,4 @@
-
+[
     {
         "name": "Alteryx",
         "url": "http://data.theinformationlab.co.uk/alteryx.html",
@@ -7,6 +7,15 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": ""
+    },
+    {
+        "name": "BoardGameGeek User Plays",
+        "url": "https://garnet-viper.hyperdev.space/",
+        "author": "Jason Copenhaver",
+        "github_username": "jcopenha",
+        "tags": ["v_2.0"],
+        "description": "",
+        "source_code": "https://github.com/jcopenha/BoardGameGeekWebDataConnector"
     },
     {
         "name": "DoubleClick Campaign Manager",
@@ -40,7 +49,7 @@
         "url": "https://wdc-flickr-proxy.herokuapp.com/flickr.html",
         "author": "Steve Meredith",
         "github_username": "smeredith",
-        "tags": ["v0.1"],
+        "tags": ["v_2.0"],
         "description": "Gets metadata for your personal photos on Flickr.",
         "source_code": "https://github.com/smeredith/wdc-flickr-proxy"
     },
@@ -172,14 +181,14 @@
         "source_code": ""
     },
     {
-        "name": "Podcast Metadata",
-        "url": "https://podcast-wdc.herokuapp.com/",
-        "author": "Eric Peterson",
-        "github_username": "iamEAP",
-        "tags": ["v_2.0"],
-        "description": "Parses podcast channel and episode metadata from feed URLs.",
-        "source_code": "https://github.com/iamEAP/podcast-wdc"
-    },
+         "name": "Podcast Metadata",
+         "url": "https://podcast-wdc.herokuapp.com/",
+         "author": "Eric Peterson",
+         "github_username": "iamEAP",
+         "tags": ["v_2.0"],
+         "description": "Parses podcast channel and episode metadata from feed URLs.",
+         "source_code": "https://github.com/iamEAP/podcast-wdc"
+     },
     {
         "name": "Quandl",
         "url": "http://data.theinformationlab.co.uk/quandl.html",
@@ -208,6 +217,15 @@
         "source_code": ""
     }, 
     {
+        "name": "Socrata",
+        "url": "http://wdc.poc.interworks.com/socrata_20/",
+        "author": "Matthew Orr",
+        "github_username": "interworks-morr",
+        "tags": ["v_2.0"],
+        "description": "",
+        "source_code": "https://github.com/interworks-morr/wdc-socrata"
+    },
+    {
         "name": "Strava",
         "url": "http://data.theinformationlab.co.uk/strava.html",
         "author": "Craig Bloodworth",
@@ -233,7 +251,25 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": "https://github.com/sdesmond46/WDC"
-    }, 
+    },
+    {
+        "name": "Star Wars API",
+        "url": "http://gtgeek.github.com/SWapiConnector/SWapiConnector.html",
+        "author": "gtgeek - Quy Nguyen",
+        "github_username": "gtgeek",
+        "tags": ["v_2.0"],
+        "description": "Star Wars API for People, Planets, Vehicles, Films, etc.",
+        "source_code": ""
+    },
+    {
+        "name": "Stock Price History",
+        "url": "http://wdc.poc.interworks.com/google_finance_20/",
+        "author": "Matthew Orr",
+        "github_username": "interworks-morr",
+        "tags": ["v_2.0"],
+        "description": "",
+        "source_code": "https://github.com/interworks-morr/wdc-stock-price-history"
+    },
     {
         "name": "Tfl BikesPoint",
         "url": "http://jdunkerleytableau.azurewebsites.net/Bikes",
@@ -305,23 +341,5 @@
         "tags": ["v_2.0"],
         "description": "",
         "source_code": "https://github.com/austinderrick/eia_wdc_20"
-    },
-    {
-        "name": "Stock Price History",
-        "url": "http://wdc.poc.interworks.com/google_finance_20/",
-        "author": "Matthew Orr",
-        "github_username": "interworks-morr",
-        "tags": ["v_2.0"],
-        "description": "",
-        "source_code": "https://github.com/interworks-morr/wdc-stock-price-history"
-    },
-    {
-        "name": "Socrata",
-        "url": "http://wdc.poc.interworks.com/socrata_20/",
-        "author": "Matthew Orr",
-        "github_username": "interworks-morr",
-        "tags": ["v_2.0"],
-        "description": "",
-        "source_code": "https://github.com/interworks-morr/wdc-socrata"
     }
 ]
