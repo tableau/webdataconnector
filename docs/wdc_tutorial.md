@@ -18,7 +18,7 @@ You'll learn how to:
 * [Get the data](#get-data) for a single table
 * [See it in action](#see-in-action)
 
-If you *really* want to skip all of this and go straight to the source code, look for the `earthquakeUSGS` files in the `Examples` directory and the `js` directory. You'll get a lot more out of this if you build it from scratch though--promise!
+If you *really* want to skip all of this and go straight to the source code, look for the `earthquakeUSGS` files in the `Examples` directory. You'll get a lot more out of this if you build it from scratch though--promise!
 
 ### Create the HTML page {#create-page}
 

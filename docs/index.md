@@ -83,7 +83,7 @@ You're going to need a couple of things before we get started. Make sure you hav
 1. In the WDC URL field, confirm that the URL is set to the sample USGS Earthquake Data connector:
    
    ```
-   ../Examples/earthquakeUSGS.html
+   ../Examples/html/earthquakeUSGS.html
    ```
 
    Alternatively, look in the Examples directory for more sample connectors.

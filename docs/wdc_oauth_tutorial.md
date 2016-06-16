@@ -193,7 +193,7 @@ is making requests.
     page URL. For the <span class="uicontrol">Redirect URI</span> box,
     enter the following:
 
-    `http://localhost:8888/Examples/foursquare.html`
+    `http://localhost:8888/Examples/html/foursquare.html`
 
     You will use this value later on when you make a call to the
     Foursquare OAuth service.
