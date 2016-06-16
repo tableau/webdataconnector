@@ -342,22 +342,12 @@
         "description": "",
         "source_code": "https://github.com/austinderrick/eia_wdc_20"
     },
-    {
-        "name": "Stock Price History",
-        "url": "http://wdc.poc.interworks.com/google_finance_20/",
-        "author": "Matthew Orr",
-        "github_username": "interworks-morr",
-        "tags": ["v_2.0"],
-        "description": "",
-        "source_code": "https://github.com/interworks-morr/wdc-stock-price-history"
-    },
-    {
-        "name": "BoardGameGeek User Plays",
-        "url": "https://garnet-viper.hyperdev.space/",
-        "author": "Jason Copenhaver",
-        "github_username": "jcopenha",
-        "tags": ["v_2.0"],
-        "description": "",
-        "source_code": "https://github.com/jcopenha/BoardGameGeekWebDataConnector"
-    }
+	{
+		"name" : "Star Wars API",
+		"url" : "https://filmasher.github.io/starwars/",
+		"author" : "Asher Campbell",
+		"github_username" : "FilmAsher",
+		"tags" : ["v_2.0"],
+		"description" : "https://github.com/FilmAsher/starwars"
+	}
 ]
