@@ -34,12 +34,12 @@ your connector into the Community portal:
 
 1. Fork the [web data connector](https://github.com/tableau/webdataconnector) repository.
 
-2. Checkout the dev branch.
+2. Run the following command to check out the gh-pages branch which hosts the WDC documentation and community connector portal:
+   `git checkout gh-pages`
 
-3.  Find and open the following file:
-   `webdataconnector/docs/community/community_connectors.json`
+3. Navigate to the `community` directory and open the `community_connectors.json` file in a text editor.
 
-4. In this file, create a new json entry for your connector like the following:
+4. Create a new JSON entry for your connector like the following:
    
    ```js
    {
