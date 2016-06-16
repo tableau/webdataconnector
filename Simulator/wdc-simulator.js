@@ -30,7 +30,7 @@
     }
 
     // Set the default connector here
-    return "../Examples/earthquakeUSGS.html";
+    return "../Examples/html/earthquakeUSGS.html";
   }
   
   function WdcCommandSimulator(/*ISendPostMessage*/ sendPostMessage, /*IPhaseChangeHandler*/ onPhaseChange, /*IEventHandler*/ onEvent, /*ILogger*/ logger) {
