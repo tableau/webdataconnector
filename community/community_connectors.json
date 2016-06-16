@@ -341,5 +341,22 @@
         "tags": ["v_2.0"],
         "description": "",
         "source_code": "https://github.com/austinderrick/eia_wdc_20"
+    },
+	{
+		"name" : "Star Wars API",
+		"url" : "https://filmasher.github.io/starwars/",
+		"author" : "Asher Campbell",
+		"github_username" : "FilmAsher",
+		"tags" : ["v_2.0"],
+		"description" : "https://github.com/FilmAsher/starwars"
+	},
+	{
+	    "name": "forecast.io",
+	    "url": "https://benlower.github.io/tableau-wdc-forecastio/forecastioConnector.html",
+	    "author": "Ben Lower",
+	    "github_username": "benlower",
+	    "tags": ["v_2.0"],
+	    "description": "Get weather data from Forecast.io.",
+	    "source_code": "github.com/benlower/tableau-wdc-forecastio"
     }
 ]
