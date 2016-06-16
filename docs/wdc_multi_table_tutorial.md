@@ -164,6 +164,6 @@ $.getJSON(apiCall, function (resp) {
 
 ### See it in action {#see-in-action}
 
-And that's it! You can test your connector in the simulator like you did in the [Get Started]({{ site.baseurl }}/docs/) section, or you can see the source code in the `Examples` and `js` directories to check your work. 
+And that's it! You can test your connector in the simulator like you did in the [Get Started]({{ site.baseurl }}/docs/) section, or you can see the source code in the `Examples` directory to check your work. 
 
 Now you're *definitely* ready to make your own connector!
