@@ -57,7 +57,7 @@ your connector into the Community portal:
       
    - A tag for the version of the WDC API used, description, github_username, and source_code are encouraged by not required.  Please limit the description to a short sentence or two.
 
-5. Submit a pull request from your fork to the dev branch of the official repo at
+5. Submit a pull request from your fork to the `gh-pages` branch of the official repo at
    [github.com/tableau/webdataconnector](https://github.com/tableau/webdataconnector/tree/dev).
    See the [GitHub documentation](https://help.github.com/articles/using-pull-requests/)
    for details on submitting pull requests.
