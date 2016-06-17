@@ -330,5 +330,14 @@
 	    "tags": ["v_2.0"],
 	    "description": "Get weather data from Forecast.io.",
 	    "source_code": "github.com/benlower/tableau-wdc-forecastio"
-    }
+    },
+  	{
+  	    "name": "Hearthstone JSON",
+  	    "url": "https://ausgop.github.io/HearthstoneJSON-WDC/index.html",
+  	    "author": "Wil Harper",
+  	    "github_username": "ausgop",
+  	    "tags": ["v_2.0"],
+  	    "description": "Get Hearthstone card data from HearthstoneJSON.",
+  	    "source_code": "github.com/benlower/tableau-wdc-forecastio"
+      }
 ]
