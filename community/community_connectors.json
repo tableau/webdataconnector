@@ -25,7 +25,7 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": "https://github.com/tableau-mkt/dcm-dfa-wdc"
-    }, 
+    },
     {
         "name": "Fitbit",
         "url": "http://data.theinformationlab.co.uk/fitbit.html",
@@ -52,7 +52,7 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": "https://github.com/tableau-mkt/github-data-connector"
-    }, 
+    },
     {
         "name": "Google Fit",
         "url": "http://data.theinformationlab.co.uk/googlefit.html",
@@ -88,7 +88,7 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": ""
-    }, 
+    },
     {
         "name": "Moves App",
         "url": "http://data.theinformationlab.co.uk/moves.html",
@@ -117,6 +117,15 @@
       "source_code": "https://github.com/jagreene/npm-wdc/"
     },
     {
+        "name": "Office 365 Sharepoint",
+        "url": "http://data.theinformationlab.co.uk/sharepoint.html",
+        "author": "Craig Bloodworth",
+        "github_username": "craigbloodworth",
+        "tags": ["v_2.0"],
+        "description": "Pull your Office 365 SharePoint list data directly into Tableau",
+        "source_code": "https://github.com/TheInformationLab/Tableau-WDC-365Sharepoint"
+    },
+    {
         "name": "OpenStreetMap Features",
         "url": "http://jdomingu.github.io/osm-features-wdc/",
         "author": "Jared Dominguez",
@@ -133,7 +142,7 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": ""
-    }, 
+    },
     {
         "name": "Pingdom",
         "url": "http://data.theinformationlab.co.uk/pingdom.html",
@@ -160,7 +169,7 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": ""
-    }, 
+    },
     {
         "name": "Runkeeper",
         "url": "http://data.theinformationlab.co.uk/runkeeper.html",
@@ -169,7 +178,7 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": ""
-    }, 
+    },
     {
         "name": "Seattle/King County Restaurant Inspections",
         "url": "http://benlower.github.io/tableau-wdc-kcfoodinspection/foodInspectionWDC.html",
@@ -178,7 +187,7 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": ""
-    }, 
+    },
     {
         "name": "Sentiment API",
         "url": "http://gtgeek.github.com/SentimentConnector/Sentiment.html",
@@ -214,7 +223,7 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": "https://github.com/benjisg/stripe-web-data-connector"
-    }, 
+    },
     {
         "name": "Square",
         "url": "http://webdataconnector.azurewebsites.net/Connectors/Square/",
@@ -259,7 +268,7 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": "https://github.com/tableau-mkt/travis-data-connector"
-    }, 
+    },
     {
         "name": "Twitter",
         "url": "http://webdataconnector.azurewebsites.net/Connectors/Twitter/",
@@ -268,7 +277,7 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": "https://github.com/sdesmond46/WDC"
-    }, 
+    },
     {
         "name": "United States Census Data",
         "url": "https://census-tableau-wdc.herokuapp.com/",
