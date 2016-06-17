@@ -338,6 +338,6 @@
   	    "github_username": "ausgop",
   	    "tags": ["v_2.0"],
   	    "description": "Get Hearthstone card data from HearthstoneJSON.",
-  	    "source_code": "github.com/benlower/tableau-wdc-forecastio"
+  	    "source_code": "https://github.com/ausgop/HearthstoneJSON-WDC"
       }
 ]
