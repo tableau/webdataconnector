@@ -180,6 +180,15 @@
         "source_code": ""
     }, 
     {
+        "name": "Sentiment API",
+        "url": "http://gtgeek.github.com/SentimentConnector/Sentiment.html",
+        "author": "gtgeek - Quy Nguyen",
+        "github_username": "gtgeek",
+        "tags": ["v_1.0"],
+        "description": "Analyze Tweet/Text Sentiment provided by YOU. http://www.allmytweet.net can help gather tweets.",
+        "source_code": ""
+    },
+    {
         "name": "Socrata",
         "url": "http://wdc.poc.interworks.com/socrata_20/",
         "author": "Matthew Orr",
