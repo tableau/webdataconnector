@@ -1,45 +1,33 @@
 ---
 layout: page
-title: Hosting and Submitting to Community Portal
+title: Hosting and Submitting to the Community Portal
 base: docs
 ---
 
-After building a web data connector, why not share it with the community?
-The [Community Connector]({{ site.baseurl }}/community/community_home.html) 
-section is designed to showcase the work that other developers have done with the WDC Platform.
-It also provides a place for others to browse and explore what
-connectors have already been built. 
+Submit your connector to the [Community Connector]({{ site.baseurl }}/community/community_home.html)
+portal to share your work with other developers. To make it easier for others to use your connector,
+we ask that you include a link to a hosted version of your connector. 
 
-We have a very lightweight submission process for this community portal.
-One of the requirements for submission to the community section is that 
-your connector is hosted online somewhere so that others can use it.
-This document will also provide some guidance to how to easily host your connectors
-(and for free!). Please read on for details.
-
--   [Submitting to the Community Portal](#portal)
-
--   [Suggested methods for connector hosting](#hosting)
-
+If you don't have a hosted version yet, see our [suggestions for hosting](#hosting).
 
 Submitting to the Community Portal {#portal}
 ----------------------------------
 
-After building and testing your web data connector, you can submit it to the
-[Community Connector]({{ site.baseurl }}/community/community_home.html) section.
+**Note:** Before you submit a connector, you'll need a Github account.
 
-To do this, all you need to do is submit a pull request to the master branch
-with some relevant information about your connector.  This will require that you have 
-a GitHub account. Once you have a GitHub account, just follow these steps to get
-your connector into the Community portal:
+1. Click on the link below to go to our list of connectors:
 
-1. Fork the [web data connector](https://github.com/tableau/webdataconnector) repository.
+   [https://github.com/tableau/webdataconnector/blob/gh-pages/community/community_connectors.json](https://github.com/tableau/webdataconnector/blob/gh-pages/community/community_connectors.json)
 
-2. Run the following command to check out the gh-pages branch which hosts the WDC documentation and community connector portal:
-   `git checkout gh-pages`
+1. Click the **Edit** icon on the right.
 
-3. Navigate to the `community` directory and open the `community_connectors.json` file in a text editor.
+   !["Use the Github web interface to submit a pull request."]({{ site.baseurl }}/assets/submit_connector.gif)
+   
+1. Create a new JSON entry for your connector with a name, author, and URL to a hosted version. 
 
-4. Create a new JSON entry for your connector like the following:
+   Optionally, you can enter a description, Github user name, link to the source code, and tag for the version of the WDC API.
+
+   For example, you might enter the following:
    
    ```js
    {
@@ -53,17 +41,18 @@ your connector into the Community portal:
    }  
    ```
 
-   - Name, url, and author are all required.
-      
-   - A tag for the version of the WDC API used, description, github_username, and source_code are encouraged by not required.  Please limit the description to a short sentence or two.
+1. Scroll to the bottom of the page and enter a description for your change. 
 
-5. Submit a pull request from your fork to the `gh-pages` branch of the official repo at
-   [github.com/tableau/webdataconnector](https://github.com/tableau/webdataconnector/tree/dev).
-   See the [GitHub documentation](https://help.github.com/articles/using-pull-requests/)
-   for details on submitting pull requests.
+1. Click the **Propose file change** button at the bottom of the page.
+
+1. Click the **Create pull request** button.
+
+1. Confirm your changes on the next page, then click **Create pull request** one more time.
+
+   That's it! A member of our web data connector team will review your changes and merge them into the repository.
 
 
-Suggested methods for connector hosting {#hosting}
+Suggestions for hosting your connector {#hosting}
 ---------------------------------------
 
 There are several free hosting services that you can use for connector.  You can host
