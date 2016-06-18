@@ -8,3 +8,6 @@ permalinks: pretty
 # Build settings
 markdown: kramdown
 highlighter: rouge
+
+# Exclude
+exclude: ['node_modules']
