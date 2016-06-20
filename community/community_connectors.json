@@ -357,8 +357,17 @@
   	    "tags": ["v_2.0"],
   	    "description": "Get Hearthstone card data from HearthstoneJSON.",
   	    "source_code": "https://github.com/ausgop/HearthstoneJSON-WDC"
-      },
-      {
+    },
+    {
+        "name": "Neo4J",
+        "url": "https://acbeers.github.io/neo4j-wdc/index.html",
+        "author": "Andrew Beers",
+        "github_username": "acbeers",
+        "tags": ["v_2.0"],
+        "description": "Connector for Neo4J - pull node data, or execute Cypher queries",
+        "source_code": "https://github.com/acbeers/neo4j-wdc"
+    },
+    {
 	    "name": "PubChem 3d compound connector",
 	    "url": "http://www.runonthespot.com/PubChem.html",
 	    "author": "Mike Renwick",
@@ -366,8 +375,8 @@
 	    "tags": ["v_2.0"],
 	    "description": "Visualize chemical compounds in 3d!",
 	    "source_code": "https://github.com/runonthespot/PubChemWDC"
-	  },
-      {
+	},
+    {
     	"name": "SDMX-JSON WDC",
     	"url": "https://saviohenriques.github.io/sdmxjsonwdc",
     	"author": "Savio Henriques",
@@ -375,5 +384,5 @@
     	"tags": ["v_2.0"],
     	"description": "Connects to OECD Air Emissions data http://stats.oecd.org/viewhtml.aspx?datasetcode=AIR_EMISSIONS",
     	"source_code": "github.com/saviohenriques/sdmxjsonwdc"
-      }
+    }  
 ]
