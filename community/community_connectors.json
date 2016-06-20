@@ -348,5 +348,14 @@
   	    "tags": ["v_2.0"],
   	    "description": "Get Hearthstone card data from HearthstoneJSON.",
   	    "source_code": "https://github.com/ausgop/HearthstoneJSON-WDC"
-      }
+      },
+      {
+	    "name": "PubChem 3d compound connector",
+	    "url": "http://www.runonthespot.com/PubChem.html",
+	    "author": "Mike Renwick",
+	    "github_username": "runonthespot",
+	    "tags": ["v_2.0"],
+	    "description": "Visualize chemical compounds in 3d!",
+	    "source_code": "https://github.com/runonthespot/PubChemWDC"
+	}  
 ]
