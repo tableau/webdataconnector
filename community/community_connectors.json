@@ -357,5 +357,14 @@
   	    "tags": ["v_2.0"],
   	    "description": "Get Hearthstone card data from HearthstoneJSON.",
   	    "source_code": "https://github.com/ausgop/HearthstoneJSON-WDC"
-      }
+      },
+      {
+    	"name": "SDMX-JSON WDC",
+    	"url": "https://saviohenriques.github.io/sdmxjsonwdc",
+    	"author": "Savio Henriques",
+    	"github_username": "saviohenriques",
+    	"tags": ["v_2.0"],
+    	"description": "Connects to OECD Air Emissions data http://stats.oecd.org/viewhtml.aspx?datasetcode=AIR_EMISSIONS",
+    	"source_code": "github.com/saviohenriques/sdmxjsonwdc"
+      }  
 ]
