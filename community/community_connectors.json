@@ -323,40 +323,40 @@
         "description": "",
         "source_code": "https://github.com/austinderrick/eia_wdc_20"
     },
-	{
-		"name" : "Star Wars API",
-		"url" : "https://filmasher.github.io/starwars/",
-		"author" : "Asher Campbell",
-		"github_username" : "FilmAsher",
-		"tags" : ["v_2.0"],
-		"description" : "https://github.com/FilmAsher/starwars"
-	},
-	{
-	    "name": "forecast.io",
-	    "url": "https://benlower.github.io/tableau-wdc-forecastio/forecastioConnector.html",
-	    "author": "Ben Lower",
-	    "github_username": "benlower",
-	    "tags": ["v_2.0"],
-	    "description": "Get weather data from Forecast.io.",
-	    "source_code": "github.com/benlower/tableau-wdc-forecastio"
+    {
+        "name" : "Star Wars API",
+        "url" : "https://filmasher.github.io/starwars/",
+        "author" : "Asher Campbell",
+        "github_username" : "FilmAsher",
+        "tags" : ["v_2.0"],
+        "description" : "https://github.com/FilmAsher/starwars"
     },
     {
-  	    "name": "Pedestrian Counts across Melbourne City",
-  	    "url": "https://rthiyagarajan.github.io/melb-pedestrian-WDC/index.html",
-  	    "author": "Ramanan Thiyagarajan",
-  	    "github_username": "rthiyagarajan",
-  	    "tags": ["v_2.0"],
-  	    "description": "Get Melbourne City Pedestrian Counts using the SODA API.",
-  	    "source_code": "https://github.com/rthiyagarajan/melb-pedestrian-WDC"
+        "name": "forecast.io",
+        "url": "https://benlower.github.io/tableau-wdc-forecastio/forecastioConnector.html",
+        "author": "Ben Lower",
+        "github_username": "benlower",
+        "tags": ["v_2.0"],
+        "description": "Get weather data from Forecast.io.",
+        "source_code": "github.com/benlower/tableau-wdc-forecastio"
     },
-  	{
-  	    "name": "Hearthstone JSON",
-  	    "url": "https://ausgop.github.io/HearthstoneJSON-WDC/index.html",
-  	    "author": "Wil Harper",
-  	    "github_username": "ausgop",
-  	    "tags": ["v_2.0"],
-  	    "description": "Get Hearthstone card data from HearthstoneJSON.",
-  	    "source_code": "https://github.com/ausgop/HearthstoneJSON-WDC"
+    {
+        "name": "Pedestrian Counts across Melbourne City",
+        "url": "https://rthiyagarajan.github.io/melb-pedestrian-WDC/index.html",
+        "author": "Ramanan Thiyagarajan",
+        "github_username": "rthiyagarajan",
+        "tags": ["v_2.0"],
+        "description": "Get Melbourne City Pedestrian Counts using the SODA API.",
+        "source_code": "https://github.com/rthiyagarajan/melb-pedestrian-WDC"
+    },
+    {
+        "name": "Hearthstone JSON",
+        "url": "https://ausgop.github.io/HearthstoneJSON-WDC/index.html",
+        "author": "Wil Harper",
+        "github_username": "ausgop",
+        "tags": ["v_2.0"],
+        "description": "Get Hearthstone card data from HearthstoneJSON.",
+        "source_code": "https://github.com/ausgop/HearthstoneJSON-WDC"
     },
     {
         "name": "Neo4J",
@@ -368,21 +368,30 @@
         "source_code": "https://github.com/acbeers/neo4j-wdc"
     },
     {
-	    "name": "PubChem 3d compound connector",
-	    "url": "http://www.runonthespot.com/PubChem.html",
-	    "author": "Mike Renwick",
-	    "github_username": "runonthespot",
-	    "tags": ["v_2.0"],
-	    "description": "Visualize chemical compounds in 3d!",
-	    "source_code": "https://github.com/runonthespot/PubChemWDC"
-	},
+        "name": "PubChem 3d compound connector",
+        "url": "http://www.runonthespot.com/PubChem.html",
+        "author": "Mike Renwick",
+        "github_username": "runonthespot",
+        "tags": ["v_2.0"],
+        "description": "Visualize chemical compounds in 3d!",
+        "source_code": "https://github.com/runonthespot/PubChemWDC"
+    },
     {
-    	"name": "SDMX-JSON WDC",
-    	"url": "https://saviohenriques.github.io/sdmxjsonwdc",
-    	"author": "Savio Henriques",
-    	"github_username": "saviohenriques",
-    	"tags": ["v_2.0"],
-    	"description": "Connects to OECD Air Emissions data http://stats.oecd.org/viewhtml.aspx?datasetcode=AIR_EMISSIONS",
-    	"source_code": "github.com/saviohenriques/sdmxjsonwdc"
-    }  
+        "name": "SDMX-JSON WDC",
+        "url": "https://saviohenriques.github.io/sdmxjsonwdc",
+        "author": "Savio Henriques",
+        "github_username": "saviohenriques",
+        "tags": ["v_2.0"],
+        "description": "Connects to OECD Air Emissions data http://stats.oecd.org/viewhtml.aspx?datasetcode=AIR_EMISSIONS",
+        "source_code": "github.com/saviohenriques/sdmxjsonwdc"
+    },
+    {
+        "name": "Random Data Generator",
+        "url": "http://wdc.poc.interworks.com/datagen/",
+        "author": "Dave Hart",
+        "github_username": "",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": ""
+    }
 ]
