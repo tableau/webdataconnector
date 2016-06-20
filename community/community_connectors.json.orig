@@ -359,15 +359,7 @@
   	    "source_code": "https://github.com/ausgop/HearthstoneJSON-WDC"
       },
       {
-	    "name": "PubChem 3d compound connector",
-	    "url": "http://www.runonthespot.com/PubChem.html",
-	    "author": "Mike Renwick",
-	    "github_username": "runonthespot",
-	    "tags": ["v_2.0"],
-	    "description": "Visualize chemical compounds in 3d!",
-	    "source_code": "https://github.com/runonthespot/PubChemWDC"
-	  },
-      {
+<<<<<<< HEAD
     	"name": "SDMX-JSON WDC",
     	"url": "https://saviohenriques.github.io/sdmxjsonwdc",
     	"author": "Savio Henriques",
@@ -375,5 +367,15 @@
     	"tags": ["v_2.0"],
     	"description": "Connects to OECD Air Emissions data http://stats.oecd.org/viewhtml.aspx?datasetcode=AIR_EMISSIONS",
     	"source_code": "github.com/saviohenriques/sdmxjsonwdc"
-      }
+      }  
+=======
+	    "name": "PubChem 3d compound connector",
+	    "url": "http://www.runonthespot.com/PubChem.html",
+	    "author": "Mike Renwick",
+	    "github_username": "runonthespot",
+	    "tags": ["v_2.0"],
+	    "description": "Visualize chemical compounds in 3d!",
+	    "source_code": "https://github.com/runonthespot/PubChemWDC"
+	}  
+>>>>>>> 73b6ffbc0a86ee3dbe33105bc74c1d7b44047361
 ]
