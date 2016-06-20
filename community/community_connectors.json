@@ -340,6 +340,15 @@
 	    "description": "Get weather data from Forecast.io.",
 	    "source_code": "github.com/benlower/tableau-wdc-forecastio"
     },
+    {
+  	    "name": "Pedestrian Counts across Melbourne City",
+  	    "url": "https://rthiyagarajan.github.io/melb-pedestrian-WDC/index.html",
+  	    "author": "Ramanan Thiyagarajan",
+  	    "github_username": "rthiyagarajan",
+  	    "tags": ["v_2.0"],
+  	    "description": "Get Melbourne City Pedestrian Counts using the SODA API.",
+  	    "source_code": "https://github.com/rthiyagarajan/melb-pedestrian-WDC"
+    },
   	{
   	    "name": "Hearthstone JSON",
   	    "url": "https://ausgop.github.io/HearthstoneJSON-WDC/index.html",
