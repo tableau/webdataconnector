@@ -243,7 +243,7 @@ By now, you're a pro at running the simulator, so fire it up, load your connecto
 
 The moment you've been waiting for is here! Click **Fetch Table Data** to run your `getData` function and display the results in a table. 
 
-!["The earthquake data is displayed in a table on the simulator page."]({{ site.baseurl }}/assets/wdc_sim_earthquake_data.png){:width="700px"}
+!["The earthquake data is displayed in a table on the simulator page."]({{ site.baseurl }}/assets/wdc_sim_earthquake_data.png)
 
 
 You did it! Nice work. But this is no time to rest on your laurels--[try your connector in Tableau]({{ site.baseurl }}/docs/wdc_use_in_tableau), dig into the `Examples` directory to see more connectors, or read through the WDC documentation. You might want to start by learning about [connectors with multiple tables]({{ site.baseurl }}/docs/wdc_multi_table_tutorial), [incremental refresh]({{ site.baseurl }}/docs/wdc_incremental_refresh), and [authentication]({{ site.baseurl }}/docs/wdc_authentication). 

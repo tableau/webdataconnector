@@ -1,3 +1,8 @@
+/* General CSS */
+img {
+    max-width: 90%;
+}
+
 /* Custom CSS for home page */ 
 .hero-spacer {
     margin-top: 50px;

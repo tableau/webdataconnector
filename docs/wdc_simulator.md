@@ -25,7 +25,7 @@ complete the steps in the [Get Started]({{ site.baseurl }}/docs) section.
 
 *   [Simulator tips](#simulator-tips)
 
-!["The simulator user interface."]({{ site.baseurl }}/assets/wdc_simulator_new_first_open.png){:width="650px"}
+!["The simulator user interface."]({{ site.baseurl }}/assets/wdc_simulator_new_first_open.png)
 
 
  
