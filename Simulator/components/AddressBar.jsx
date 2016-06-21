@@ -27,6 +27,7 @@ class AddressBar extends Component {
         <ControlLabel> Connector URL </ControlLabel>
         <InputGroup>
           <FormControl
+            id="address-input"
             type="text"
             disabled={this.props.disabled}
             label="WDC URL"
@@ -34,7 +35,7 @@ class AddressBar extends Component {
             onChange={this.handleWdcUrlChange}
           />
           <InputGroup.Button>
-            <Button onClick={this.props.resetSimulator}> Reset </Button>
+            <Button id="reset-btn" onClick={this.props.resetSimulator}> Reset </Button>
           </InputGroup.Button>
         </InputGroup>
       </FormGroup>

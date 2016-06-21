@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- node
+before_script:
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sleep 3
+script:
+  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && npm run test:travis || npm run unit:coveralls'
+addons:
+  sauce_connect:
+    username: jaustingreene
+    access_key:
+      secure: HJoFcs33myPRMQjYxgYnGG1VbxYdbzxUiNRK713qhmCKoIFfZahy7PpOimQ8+0dRJ2rv33DSK5v20LbH7tiOWVWEfEwVOVln8ItPjLTBHX3dUaO8OuO+JA18MFLVBwIWqdrd+h3lvACCjRTnl5DMYbVT37vMPe81xYgee0VqEFaD/3otHwvqVwkWC6GA3r6siXXA45ZeJod1qFQI4G9pixUuFQ6h5cjyk8PFi9n4XWeREgiRjFx6PUVzyK9MnA9swuRHRkLuICmlrpfGjxT0mt/a2m6vbgxf9prFijXV1ngV7GXaqT4hAsk5vnyAQt6kfnIDUBOywnRXLHOHZpzI2ZTRwV8JJ3DIMhEtJZ9At3u+FzXWvaFG7MMBinujQ39iUipKWYgKPJTEkjwOsfROVhclgMC6VZKG/f7FJw85/vKogssxkYimWfqLeDboHjzVzMhUzUPoky59JcNrt48/95Ko7TLMze46mwkmdFMY/5aeekGZhwS2qUHUEb+VV5LxloXkoV6lxlQCCgmNhMRvzYbh2otozjuDvCNOkUU4k+onE2+UfwkVtRlvisA4TLVAltwAMF6h4iVUEz/OiA37756E9qg3rMarV+HKJbjvOtnXOYEzY047LRL17dUl1Ovcg2yKdmaeJa3By0O6Z0mkIDSsIVtDp/pKpr44i2sKsmY=

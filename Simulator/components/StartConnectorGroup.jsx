@@ -28,6 +28,7 @@ class StartConnectorGroup extends Component {
         </div>
         <div>
           <Button
+            id="interactive-btn"
             onClick={this.props.startInteractivePhase}
             bsStyle="success"
             disabled={this.props.isInProgress || this.props.isWDCUrlEmpty}
@@ -35,6 +36,7 @@ class StartConnectorGroup extends Component {
             Start Interactive Phase
           </Button>
           <Button
+            id="auth-btn"
             onClick={this.props.startAuthPhase}
             bsStyle="success"
             style={{ marginLeft: '4px' }}

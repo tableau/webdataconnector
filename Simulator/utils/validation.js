@@ -61,8 +61,8 @@ export function validateSchema(schema) {
     if (hasTableErrors || hasColumnErrors) {
       // If there were errors in either table of column validation, log them all
       _.forEach(Object.keys(errors), (key) => {
-        _.forEach(errors[key], (error) => {
-          console.error(error);
+        _.forEach(errors[key], (err) => {
+          console.error(err);
         });
       });
     }

@@ -22,10 +22,7 @@ module.exports = {
                   path.resolve(__dirname, "Simulator/reducers"),
                   path.resolve(__dirname, "Simulator/store")
                 ],
-                loader: 'babel-loader',
-                query: {
-                    presets: ['react', 'es2015', 'stage-2'],
-                }
+                loader: 'babel-loader'
             }
         ]
     },
@@ -35,7 +32,6 @@ module.exports = {
         modulesDirectories: [
             'node_modules',
             'Simulator/components',
-            'Simulator/actions',
             'Simulator/reducers',
             'Simulator/store',
             'Simulator/utils'

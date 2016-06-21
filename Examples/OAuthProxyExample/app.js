@@ -22,8 +22,10 @@ app.use(express.static(__dirname + '/public'));
 // -------------------------------------------------- //
 // Variables
 // -------------------------------------------------- //
-var clientID = config.CLIENT_ID
-var clientSecret = config.CLIENT_SECRET
+var clientID = process.env.FOURSQUARE_CLIENT_ID || config.CLIENT_ID;
+var clientSecret = process.env.FOURSQUARE_CLIENT_SECRET || config.CLIENT_SECRET;
+console.log(clientID);
+console.log(clientSecret);
 var redirectURI = config.HOSTPATH + ":" + config.PORT + config.REDIRECT_PATH
 
 // -------------------------------------------------- //
