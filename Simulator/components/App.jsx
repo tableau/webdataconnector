@@ -87,7 +87,6 @@ class App extends Component {
 
     const inDataGatherPhase = this.props.currentPhase === consts.phases.GATHER_DATA;
 
-
     const hasData = !!this.props.tables && Object.keys(this.props.tables).length > 0;
     const isWdcUrlEmpty = (this.props.wdcUrl === '');
 

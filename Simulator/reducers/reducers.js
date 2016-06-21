@@ -1,5 +1,4 @@
 import { handleActions } from 'redux-actions';
-import { defaultState } from '../utils/consts';
 
 // The redux reducers, which create the next state object
 // from the payload of any given action.
@@ -31,10 +30,10 @@ export default handleActions({
     ({ ...state, tables: action.payload }),
   ADD_TABLES: (state, action) =>
     ({ ...state, tables: { ...state.tables, ...action.payload } }),
-  RESET_STATE: () => (defaultState),
+  RESET_STATE: (state, action) => action.payload,
   RESET_PHASE_STATE: (state) => ({
     ...state,
-    phaseInPropgress: false,
+    phaseInProgress: false,
     phaseSubmitCalled: false,
     phaseInitCallbackCalled: false,
   }),

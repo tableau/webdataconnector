@@ -27,11 +27,15 @@ export const setTables = createAction('SET_TABLES');
 export const addTables = createAction('ADD_TABLES');
 
 // Reset Actions
-export const resetState = createAction('RESET_STATE');
+export const resetState = createAction('RESET_STATE', () => {
+  const wdcUrl = Cookie.get('lastUrl') || '../Examples/html/earthquakeUSGS.html';
+  return { ...consts.defaultState, wdcUrl };
+});
+
 export const resetPhaseState = createAction('RESET_PHASE_STATE');
 export const resetWdcAttrs = createAction('RESET_WDC_ATTRS');
 export const resetTables = createAction('RESET_TABLES');
-export const resetTableData = createAction('RESET_TABLE_Data');
+export const resetTableData = createAction('RESET_TABLE_DATA');
 
 
 // Thunks (and Composed Actions)
@@ -71,7 +75,7 @@ export function startGatherDataPhase() {
 export function setWindowAsExternal() {
   return (dispatch, getState) => {
     const { wdcUrl } = getState();
-    const simulatorWindow = window.open(wdcUrl, 'simulator', consts.WINDOW_PROPS);
+    const simulatorWindow = window.open(wdcUrl, 'wdc', consts.WINDOW_PROPS);
     dispatch(setSimulatorWindow(simulatorWindow));
   };
 }
@@ -82,7 +86,10 @@ export function setWindowAsExternal() {
 // in the desktop version of the connector lifecycle
 export function setWindowAsGatherFrame(iframe) {
   return (dispatch) => {
-    dispatch(setSimulatorWindow(iframe.contentWindow));
+    //ref function might be called by react without a valid reference
+    if (!!iframe) {
+      dispatch(setSimulatorWindow(iframe.contentWindow));
+    }
   };
 }
 

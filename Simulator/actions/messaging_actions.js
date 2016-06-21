@@ -8,6 +8,12 @@ export function receiveMessage(payload) {
   return (dispatch) => {
     try {
       const { msgData, msgName, props: attrs, version } = JSON.parse(payload.data);
+
+      if(version=== "1.1.0" || version === "1.1.1") {
+        var errmsg = 'this simulator only supports wdcs that are using version 2.0 of the api or later, your wdc\'s version is: ' + wdcapiversion;
+        toastr.error(errmsg, 'unsupported wdc version error:')
+      }
+
       if (attrs) {
         dispatch(simulatorActions.setWdcAttrs(attrs));
       }
@@ -20,6 +26,7 @@ export function receiveMessage(payload) {
 
         case eventNames.LOADED: {
           dispatch(handleLoaded(version));
+          handleLoaded();
           break;
         }
 
@@ -192,13 +199,13 @@ export function handleAbortForAuth(errMsg) {
                      'use the "Start Auth Phase" to test ' +
                      'your WDC Auth Mode:';
     dispatch(simulatorActions.setPhaseInProgress(false));
-    dispatch(simulatorActions.closeSimulator());
+    dispatch(simulatorActions.closeSimulatorWindow());
     toastr.error(errMsg, toastTitle);
   };
 }
 
 // Send message thunks
-export function sendMessage(messageName, payload) {
+export function sendMessage(messageName, payload = {}) {
   return (dispatch, getState) => {
     // Construct payload and send info to whichever
     // window we are posting too
@@ -209,9 +216,6 @@ export function sendMessage(messageName, payload) {
       props: wdcAttrs,
     });
     simulatorWindow.postMessage(messagePayload, '*');
-
-    // if (simulatorWindow) {
-    // }
   };
 }
 
@@ -228,7 +232,7 @@ export function sendGetHeaders() {
   };
 }
 
-// Takes an array of tableuInfo/incValue paris
+// Takes an array of tableuInfo/incValue pairs
 export function sendGetData(tablesAndIncrementValues, isFreshFetch) {
   return (dispatch) => {
     if (isFreshFetch) {
