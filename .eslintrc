@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "airbnb"
+  ],
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+  },
+  "globals": {
+    "toastr": false,
+  },
+  "rules": {
+    "max-len": "warn",
+    "indent": "warn",
+    "react/jsx-indent": "warn",
+    "no-unused-vars": "warn",
+    "prefer-const": "warn",
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "spaced-comment": "off",
+    "react/prop-types": "off",
+    "react/prefer-stateless-function": "off",
+    "no-use-before-define": "off",
+    "react/sort-comp": "off",
+  },
+}
