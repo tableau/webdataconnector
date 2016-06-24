@@ -965,8 +965,6 @@
         row[1] = columnInfo.dataType;
         row[2] = (columnInfo.alias) ? columnInfo.alias : '-';
         row[3] = (columnInfo.description) ? columnInfo.description : '-';
-        row[4] = (columnInfo.isPrimaryKey) ? columnInfo.isPrimaryKey : '-';
-        row[5] = (columnInfo.foreignKey) ? columnInfo.foreignKey : '-';
         
         return DOM.tr({ key: columnTableRowKey++ },
           row.map(function(cellVal) {
