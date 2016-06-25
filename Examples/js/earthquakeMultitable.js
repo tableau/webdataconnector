@@ -64,51 +64,30 @@
             dateString = "starttime=" + dateObj.startDate + "&endtime=" + dateObj.endDate,
             apiCall = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&" + dateString + "&minmagnitude=4.5";
 
-
-
         $.getJSON(apiCall, function(resp) {
             var feat = resp.features,
-                tableData = [],
-                id = 0,
-                i = 0;
+                tableData = [];
 
+            var i = 0;
 
             if (table.tableInfo.id == "magPlace") {
-                var mag = 0,
-                    title = "",
-                    lat = 0,
-                    lon = 0;
-
                 for (i = 0, len = feat.length; i < len; i++) {
-                    id = feat[i].id;
-                    mag = feat[i].properties.mag;
-                    title = feat[i].properties.title;
-                    lon = feat[i].geometry.coordinates[0];
-                    lat = feat[i].geometry.coordinates[1];
-
                     tableData.push({
-                        "id": id,
-                        "mag": mag,
-                        "title": title,
-                        "lat": lat,
-                        "lon": lon
+                        "id": feat[i].id,
+                        "mag": feat[i].properties.mag,
+                        "title": feat[i].properties.title,
+                        "lon": feat[i].geometry.coordinates[0],
+                        "lat": feat[i].geometry.coordinates[1]
                     });
                 }
             }
 
             if (table.tableInfo.id == "timeUrl") {
-                var url = "",
-                    time;
-
                 for (i = 0, len = feat.length; i < len; i++) {
-                    id = feat[i].id;
-                    url = feat[i].properties.url;
-                    time = new Date(feat[i].properties.time); // Convert to a date format from epoch time
-
                     tableData.push({
-                        "id": id,
-                        "url": url,
-                        "time": time,
+                        "id": feat[i].id,
+                        "url": feat[i].properties.url,
+                        "time": new Date(feat[i].properties.time) // Convert to a date format from epoch time
                     });
                 }
             }
