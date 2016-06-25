@@ -30,24 +30,36 @@ Then, copy the following code into the file:
 
 ```html
 <html>
+
 <head>
     <title>USGS Earthquake Feed</title>
-    
     <meta http-equiv="Cache-Control" content="no-store" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://connectors.tableau.com/libs/tableauwdc-2.0.0-beta.js"></script>
-    <script src="earthquakeWDC.js"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://connectors.tableau.com/libs/tableauwdc-2.0.0-beta.js" type="text/javascript"></script>
+    <script src="../js/earthquakeUSGS.js" type="text/javascript"></script>
 </head>
-   
+
 <body>
-    <button id="submitButton" type="button">Get Earthquake Data!</button>
+    <div class="container container-table">
+        <div class="row vertical-center-row">
+            <div class="text-center col-md-4 col-md-offset-4">
+                <button type="button" id="submitButton" class="btn btn-success" style="margin: 10px;">Get Earthquake Data!</button>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
 ```
 
 Let's run through what the code is doing. Skipping over the standard markup for an HTML page, you'll notice the following between the `head` tags:
 
 * The `meta` tag prevents your browser from caching the page.
+* The `bootstrap.min.css` and `bootstrap.min.js` files are used to simplify styling and formatting.
 * The `jquery.min.js` file will be used as a helper library by our connector. (For example, the connector uses jquery to get JSON data.)
 * The `tableauwdc-2.0.0-beta.js` file is the main library for the WDC API.
 * The `earthquakeWDC.js` file is the (not yet created) JavaScript code for our connector.
@@ -164,8 +176,8 @@ myConnector.getSchema = function (schemaCallback) {
         { id : "mag", alias : "magnitude", dataType : tableau.dataTypeEnum.float },
         { id : "title", alias : "title", dataType : tableau.dataTypeEnum.string },
         { id : "url", alias : "url", dataType : tableau.dataTypeEnum.string },
-        { id : "lat", alias : "latitude", dataType : tableau.dataTypeEnum.float },
-        { id : "lon", alias : "longitude", dataType : tableau.dataTypeEnum.float }
+        { id : "lat", alias : "latitude", columnRole: "dimension", dataType : tableau.dataTypeEnum.float },
+        { id : "lon", alias : "longitude",columnRole: "dimension", dataType : tableau.dataTypeEnum.float }
     ];
 
     var tableInfo = {
@@ -181,7 +193,7 @@ myConnector.getSchema = function (schemaCallback) {
 Here's what's going on in the code:
 
 * The `getSchema` function takes a `schemaCallback` parameter which is defined by the WDC API.
-* The `cols` variable contains an array of JavaScript objects, where each object defines a single column in our table. In this example, there are columns for magnitude, title, latitude, and longitude.
+* The `cols` variable contains an array of JavaScript objects, where each object defines a single column in our table. In this example, there are columns for magnitude, title, latitude, and longitude. Note that for each column you can specify additional options. For example, the alias defines a friendly name that can appear in Tableau and the columnRole determines whether a field is a measure or a dimension. For more options, see [the API reference]({{ site.baseurl }}/ref/api_ref.html#webdataconnectorapi.columninfo).
 * The `tableInfo` variable defines the schema for a single table and contains a JavaScript object. Here, the value of the `columns` property is set to the `cols` array defined earlier. 
 * The `schemaCallback` gets called when the schema is defined. The `schemaCallback` takes an array of table objects. In this case, there is only table object (the `tableInfo` object defined above).
 
@@ -194,35 +206,23 @@ Once the schema is defined, you can begin getting data and passing it to Tableau
 Copy the following code and replace the placeholder `getData` function:
 
 ```js
-myConnector.getData = function (table, doneCallback) {
-    var tableData = [],
-        mag = 0,
-        title = "",
-        url = "",
-        lat = 0,
-        lon = 0;
+myConnector.getData = function(table, doneCallback) {
+    $.getJSON("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson", function(resp) {
+        var feat = resp.features,
+            tableData = [];
 
-    $.getJSON("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson", function (resp) {
-        var feat = resp.features; 
-
+        // Iterate over the JSON object
         for (var i = 0, len = feat.length; i < len; i++) {
-            mag = feat[i].properties.mag;
-            title = feat[i].properties.title;
-            url = feat[i].properties.url;
-            lon = feat[i].geometry.coordinates[0];
-            lat = feat[i].geometry.coordinates[1];
-
             tableData.push({
-                "mag" : mag,
-                "title" : title,
-                "url" : url,
-                "lon" : lon,
-                "lat" : lat
+                "id": feat[i].id,
+                "mag": feat[i].properties.mag,
+                "title": feat[i].properties.title,
+                "lon": feat[i].geometry.coordinates[0],
+                "lat": feat[i].geometry.coordinates[1]
             });
         }
 
         table.appendRows(tableData);
-
         doneCallback();
     });
 };
@@ -231,20 +231,22 @@ myConnector.getData = function (table, doneCallback) {
 Whew! That's a good-sized chunk of code. Let's see what's happening:
 
 * The `getData` function takes two parameters: `table` and `doneCallback`. The `table` parameter is an object defined by the WDC to which you can append data. The `doneCallback` signals to Tableau that you are done getting data. 
-* The next few lines declare some local variables.
 * The jquery `$.getJSON` function gets earthquake data from the USGS earthquake feed and stores the data in a `resp`, or response, parameter. (You can open the URL in a browser to see what the JSON data looks like.)
-* The for loop iterates over the features in the JSON object and stores the data that we want in the local variables created earlier. 
-* The `table.appendRows` function appends an array of data to the table as a JavaScript object. 
+* The for loop iterates over the features in the JSON object and stores the data that we want in the `tableData` array.
+* The `table.appendRows` function appends the `tableData` array to the table as a JavaScript object. 
 
 
 ### See it in action {#see-in-action}
 
-By now, you're a pro at running the simulator, so fire it up, load your connector, and click **Get Earthquake Data!** like before. Now that we have a `getSchema` function properly defined, you should see the schema displayed in the simulator.
+By now, you're a pro at [running the simulator](http://tableau.github.io/webdataconnector/docs/#run-sim), so fire it up, load your connector, and click **Get Earthquake Data!** like before. Now that we have a `getSchema` function properly defined, you should see the schema displayed in the simulator.
 
 The moment you've been waiting for is here! Click **Fetch Table Data** to run your `getData` function and display the results in a table. 
 
 !["The earthquake data is displayed in a table on the simulator page."]({{ site.baseurl }}/assets/wdc_sim_earthquake_data.png)
 
+Better yet, [open it in Tableau](http://tableau.github.io/webdataconnector/docs/wdc_use_in_tableau):
+
+!["The earthquake data is displayed on a map in Tableau."]({{ site.baseurl }}/assets/wdc_tableau_earthquake_map.png)
 
 You did it! Nice work. But this is no time to rest on your laurels--[try your connector in Tableau]({{ site.baseurl }}/docs/wdc_use_in_tableau), dig into the `Examples` directory to see more connectors, or read through the WDC documentation. You might want to start by learning about [connectors with multiple tables]({{ site.baseurl }}/docs/wdc_multi_table_tutorial), [incremental refresh]({{ site.baseurl }}/docs/wdc_incremental_refresh), and [authentication]({{ site.baseurl }}/docs/wdc_authentication). 
 
