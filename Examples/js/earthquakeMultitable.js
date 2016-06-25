@@ -4,7 +4,11 @@
 
     // Define the schema
     myConnector.getSchema = function(schemaCallback) {
-        var cols = [{
+        // Schema for magnitude and place data
+        var mag_place_cols = [{
+            id: "id",
+            dataType: tableau.dataTypeEnum.string
+        }, {
             id: "mag",
             alias: "magnitude",
             dataType: tableau.dataTypeEnum.float
@@ -13,62 +17,100 @@
             alias: "title",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "url",
-            alias: "url",
-            dataType: tableau.dataTypeEnum.string
-        }, {
             id: "lat",
             alias: "latitude",
+            columnRole: "dimension",
+            // Do not aggregate values as measures in Tableau--makes it easier to add to a map 
             dataType: tableau.dataTypeEnum.float
         }, {
             id: "lon",
             alias: "longitude",
+            columnRole: "dimension",
+            // Do not aggregate values as measures in Tableau--makes it easier to add to a map 
             dataType: tableau.dataTypeEnum.float
         }];
 
-        var tableDateRangeOne = {
-            id: tableau.connectionData.split(",")[0], //"starttime=2015-05-01&endtime=2015-05-08",
-            alias: "Earthquake Feed Date Range One",
-            columns: cols
+        var magPlaceTable = {
+            id: "magPlace",
+            alias: "Magnitude and Place Data",
+            columns: mag_place_cols
         };
 
-        var tableDateRangeTwo = {
-            id: tableau.connectionData.split(",")[1], //"starttime=2016-05-01&endtime=2016-05-08",
-            alias: "Earthquake Feed Date Range Two",
-            columns: cols
+        // Schema for time and URL data
+        var time_url_cols = [{
+            id: "id",
+            dataType: tableau.dataTypeEnum.string
+        }, {
+            id: "time",
+            alias: "time",
+            dataType: tableau.dataTypeEnum.date
+        }, {
+            id: "url",
+            alias: "url",
+            dataType: tableau.dataTypeEnum.string
+        }];
+
+        var timeUrlTable = {
+            id: "timeUrl",
+            alias: "Time and URL Data",
+            columns: time_url_cols
         };
-        schemaCallback([tableDateRangeOne, tableDateRangeTwo]);
+        schemaCallback([magPlaceTable, timeUrlTable]);
     };
 
     // Download the data
     myConnector.getData = function(table, doneCallback) {
-        var mag = 0,
-            title = "",
-            url = "",
-            lat = 0,
-            lon = 0;
+        var dateObj = JSON.parse(tableau.connectionData),
+            dateString = "starttime=" + dateObj.startDate + "&endtime=" + dateObj.endDate,
+            apiCall = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&" + dateString + "&minmagnitude=4.5";
 
-        var apiCall = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&" + table.tableInfo.id + "&minmagnitude=4.5";
+
 
         $.getJSON(apiCall, function(resp) {
             var feat = resp.features,
-                tableData = [];
+                tableData = [],
+                id = 0,
+                i = 0;
 
-            // Iterate over the JSON object
-            for (var i = 0, len = feat.length; i < len; i++) {
-                mag = feat[i].properties.mag;
-                title = feat[i].properties.title;
-                url = feat[i].properties.url;
-                lon = feat[i].geometry.coordinates[0];
-                lat = feat[i].geometry.coordinates[1];
 
-                tableData.push({
-                    "mag": mag,
-                    "title": title,
-                    "url": url,
-                    "lon": lon,
-                    "lat": lat
-                });
+            if (table.tableInfo.id == "magPlace") {
+                var mag = 0,
+                    title = "",
+                    lat = 0,
+                    lon = 0;
+
+                for (i = 0, len = feat.length; i < len; i++) {
+                    id = feat[i].id;
+                    mag = feat[i].properties.mag;
+                    title = feat[i].properties.title;
+                    lon = feat[i].geometry.coordinates[0];
+                    lat = feat[i].geometry.coordinates[1];
+
+                    tableData.push({
+                        "id": id,
+                        "mag": mag,
+                        "title": title,
+                        "lat": lat,
+                        "lon": lon
+                    });
+                }
+            }
+
+            if (table.tableInfo.id == "timeUrl") {
+                var url = "",
+                    time;
+
+                for (i = 0, len = feat.length; i < len; i++) {
+                    id = feat[i].id;
+                    url = feat[i].properties.url;
+                    time = new Date(feat[i].properties.time); // Convert to a date format from epoch time
+
+                    tableData.push({
+                        "id": id,
+                        "url": url,
+                        "time": time,
+                    });
+                }
             }
 
             table.appendRows(tableData);
@@ -81,21 +123,23 @@
     // Create event listeners for when the user submits the form
     $(document).ready(function() {
         $("#submitButton").click(function() {
-            var startDateOne = $('#start-date-one').val().trim(),
-                endDateOne = $('#end-date-one').val().trim(),
-                startDateTwo = $('#start-date-two').val().trim(),
-                endDateTwo = $('#end-date-two').val().trim(),
-                dateRangeOne = "",
-                dateRangeTwo = "";
+            var dateObj = {
+                startDate: $('#start-date-one').val().trim(),
+                endDate: $('#end-date-one').val().trim(),
+            };
 
-            if (startDateOne && endDateOne && startDateTwo && endDateTwo) {
-                dateRangeOne = "starttime=" + startDateOne + "&endtime=" + endDateOne;
-                dateRangeTwo = "starttime=" + startDateTwo + "&endtime=" + endDateTwo;
-                tableau.connectionData = dateRangeOne + "," + dateRangeTwo; // Use this variable to pass data to your getSchema and getData functions
+            // Simple date validation: Call the getDate function on the date object created
+            function isValidDate(dateStr) {
+                var d = new Date(dateStr);
+                return !isNaN(d.getDate());
+            }
+
+            if (isValidDate(dateObj.startDate) && isValidDate(dateObj.endDate)) {
+                tableau.connectionData = JSON.stringify(dateObj); // Use this variable to pass data to your getSchema and getData functions
                 tableau.connectionName = "USGS Earthquake Feed"; // This will be the data source name in Tableau
                 tableau.submit(); // This sends the connector object to Tableau
             } else {
-                alert("Enter a valid date for each date range.");
+                $('#errorMsg').html("Enter valid dates. For example, 2016-05-08.");
             }
         });
     });
