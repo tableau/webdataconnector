@@ -40,33 +40,19 @@
 
     // Download the data
     myConnector.getData = function(table, doneCallback) {
-        var id = "",
-            mag = 0,
-            title = "",
-            lat = 0,
-            lon = 0;
-
-
         $.getJSON("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson", function(resp) {
             var feat = resp.features,
                 tableData = [];
 
             // Iterate over the JSON object
             for (var i = 0, len = feat.length; i < len; i++) {
-                id = feat[i].id;
-                mag = feat[i].properties.mag;
-                title = feat[i].properties.title;
-                lon = feat[i].geometry.coordinates[0];
-                lat = feat[i].geometry.coordinates[1];
-
                 tableData.push({
-                    "id": id,
-                    "mag": mag,
-                    "title": title,
-                    "lon": lon,
-                    "lat": lat
+                    "id": feat[i].id,
+                    "mag": feat[i].properties.mag,
+                    "title": feat[i].properties.title,
+                    "lon": feat[i].geometry.coordinates[0],
+                    "lat": feat[i].geometry.coordinates[1]
                 });
-
             }
 
             table.appendRows(tableData);
