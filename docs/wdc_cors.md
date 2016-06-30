@@ -46,7 +46,7 @@ the proxy server is in another domain, the proxy server can be
 configured to set the `Access-Control-Allow-Origin` header to allow
 requests from the connector's domain.
 
-The WDC SDK comes a test proxy server that you can use out of the box. 
+The WDC SDK comes with a test proxy server that you can use out of the box.
 
 1. From the top-level directory of the repository, open a command prompt or terminal and run the following command:
 
@@ -72,8 +72,10 @@ The WDC SDK comes a test proxy server that you can use out of the box.
    To this:
 
    ```
-   $.getJSON("http://localhost:8889/http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson", 
+   $.getJSON("http://localhost:8889/earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson", 
    ```
+
+**Important:** The test proxy server supports HTTP API calls only. 
 
 If you want to share your connectors with other users in your organization, you can download 
 and configure a production proxy server, or you can use a free, public proxy server like
