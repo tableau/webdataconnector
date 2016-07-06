@@ -94,6 +94,9 @@ Gather data phase: Fetch data from a web source {#phase-two}
       table if necessary.  If not, the WDC flow is completed and data can now be 
       analyzed within Tableau.
 
+    **Note**: There is no deterministic order in which the getData methods will be called. 
+    However, the base table in a join (the top and leftmost) will always have its getData method called first.
+
 Authentication phase: Display authentication UI when needed {#phase-three}
 --------------------------------------------------------------
 
