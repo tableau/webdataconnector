@@ -97,7 +97,8 @@
         connectionName: '',
         connectionData: '',
         username: '',
-        password: ''
+        password: '',
+        locale: 'en-us'
       });
     },
 
@@ -193,6 +194,7 @@
     },
 
     sendMessage: function(messageName, messageData) {
+      console.log(this.props);
       var messagePayload = JSON.stringify({
         msgName: messageName,
         msgData: messageData,
@@ -222,6 +224,7 @@
       this.props.connectionData = props.connectionData;
       this.props.username = props.username;
       this.props.password = props.password;
+      this.props.locale = props.locale;
     },
 
     // TODO: Verify props passed in are acceptable
@@ -762,7 +765,17 @@
           Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Connection Name', valueLink: this.linkState(key.CONNECTION_NAME) }),
           Input.element({ type: 'textarea', disabled: this.props.disabled, label: 'Connection Data', valueLink: this.linkState(key.CONNECTION_DATA) }),
           Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Username',        valueLink: this.linkState(key.USERNAME) }),
-          Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Password',        valueLink: this.linkState(key.PASSWORD) })
+          Input.element({ type: 'text',     disabled: this.props.disabled, label: 'Password',        valueLink: this.linkState(key.PASSWORD) }),
+          Input.element({ type: 'select',   disabled: this.props.disabled, label: 'Locale',          valueLink: this.linkState(key.LOCALE) },
+            DOM.option({ value: "en-us" }, "English"),
+            DOM.option({ value: "zh-cn" }, "中文"),
+            DOM.option({ value: "de-de" }, "Deutsche"),
+            DOM.option({ value: "es-es" }, "Español"),
+            DOM.option({ value: "fr-fr" }, "Français"),
+            DOM.option({ value: "ja-jp" }, "日本語"),
+            DOM.option({ value: "ko-kr" }, "한국어"),
+            DOM.option({ value: "pt-br" }, "Português")
+          )
         )
       );
     },
@@ -823,7 +836,8 @@
     CONNECTION_NAME: 'connectionName',
     CONNECTION_DATA: 'connectionData',
     USERNAME: 'username',
-    PASSWORD: 'password'
+    PASSWORD: 'password',
+    LOCALE: 'locale'
   };
 
   var TableSection = React.createClass({
