@@ -87,10 +87,9 @@ The SDK includes the following samples:
     This connector gets stock quote data from Yahoo Finance and demonstrates how to use JavaScript
     promises to make several API requests.
 
--   **JSONMultiTableConnector**
+-   **earthquakeMultilingual**
 
-    This connector describes how to create a schema with multiple tables and then get the data. The tables can be joined 
-    by users in Tableau. 
+    This connector demonstrates how to use the locale property of the tableau object to localize content. 
 
 -   **IncrementalRefreshConnector**
 
