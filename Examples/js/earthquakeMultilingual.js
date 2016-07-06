@@ -31,7 +31,7 @@
             alias: "Earthquakes with magnitude greater than 4.5 in the last seven days",
             columns: cols
         };
-
+ 
         schemaCallback([tableInfo]);
     };
 
@@ -89,25 +89,25 @@ var translateButton = function(){
     var pollLocale = setInterval(function(){
         if (tableau.locale){
             switch (tableau.locale) {
-                case tableau.localeEnum.chinese:
+                case tableau.localeEnum.china:
                     $("#submitButton").text("获取地震数据");
                     break;
-              case tableau.localeEnum.german:
+              case tableau.localeEnum.germany:
                     $("#submitButton").text("Erhalten Erdbebendaten!");
                     break;
-              case tableau.localeEnum.spanish:
+              case tableau.localeEnum.brazil:
                     $("#submitButton").text("Obtener Datos de Terremotos!");
                     break;
-              case tableau.localeEnum.french:
+              case tableau.localeEnum.france:
                     $("#submitButton").text("Obtenir les données Earthquake!");
                     break;
-              case tableau.localeEnum.japanese:
+              case tableau.localeEnum.japan:
                     $("#submitButton").text("地震データの取得");
                     break;
-              case tableau.localeEnum.korean:
+              case tableau.localeEnum.korea:
                     $("#submitButton").text("지진 데이터 가져 오기");
                     break;
-              case tableau.localeEnum.portuguese:
+              case tableau.localeEnum.spain:
                     $("#submitButton").text("Obter Terremoto de dados!");
                     break;
               default:
