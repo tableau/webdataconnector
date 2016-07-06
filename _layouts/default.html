@@ -13,7 +13,6 @@
         {% elsif page.base == "news" %}
             <ul class="blogul">
             {% for post in site.posts %}
-                <li>
                     <div class="row">
                         <h1>{{ post.title }}</h1>
                         <hr>  
@@ -26,9 +25,8 @@
                         <hr>
                         <div class="blog-content">
                             {{ post.content }}
-                        </div>
+                        </div>                       
                     </div>
-                </li>
                 {% endfor %}
             </ul>
         {% elsif page.base == "community" %}
