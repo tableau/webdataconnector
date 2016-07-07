@@ -1,44 +1,51 @@
 ---
 layout: page
-title: Web Data Connector Library Versions
+title: Web Data Connector Versions
 base: docs
 ---
 
 Every web data connector must include a reference to the Tableau WDC
-JavaScript library. For example, the HTML page for a connector typically
-includes an element like the following:
+library. You can get the latest version of the WDC here:
 
-```html
-<script src="https://connectors.tableau.com/libs/tableauwdc-2.0.0-beta.js" type="text/javascript"></script>
+```
+https://connectors.tableau.com/libs/tableauwdc-2.0.latest.js
 ```
 
-Occasionally a new version of the WDC JavaScript library is released.
-You can always get the most current version of the library from the
-[connectors.tableau.com](connectors.tableau.com) site, using the URL in the preceding example.
+There is also a minified version available:
+
+```
+https://connectors.tableau.com/libs/tableauwdc-2.0.latest.min.js
+```
+
+The above URLs are the recommended ways of linking to the Tableau WDC and guarantee that
+you receive patch versions for the current minor version as we release them.
+If you prefer to opt out of receiving automatic patch versions, you can link directly
+to the current patch version, 2.0.5:
+
+```
+https://connectors.tableau.com/libs/tableauwdc-2.0.5.js
+https://connectors.tableau.com/libs/tableauwdc-2.0.5.min.js
+```
 
 
 Compatibility with versions of Tableau
 --------------------------------------
 
-You can use connectors in Tableau Desktop, starting with
-version 9.1. Later versions of the WDC library are compatible with later
-versions of Tableau, as shown in the following table:
+The following table displays which versions of the WDC are compatible with Tableau Desktop:
 
-|WDC library version   |Tableau version   |
+|WDC version           |Tableau version   |
 |----------------------|-----------------|
 |`tableauwdc-2.0.0`    |10.0 or later|
 |`tableauwdc-1.1.1`    |9.3 <br />9.2.4 or later <br />9.1.6 or later|
-|`tableauwdc-1.1.0`    |9.2.3 or earlier <br />9.1.5 or earlier |
+|`tableauwdc-1.1.0`    |9.2.0 through 9.2.3 <br />9.1.0 through 9.1.5|
 
-If you try to use an earlier version of Tableau to connect to a web data
-connector that uses an incompatible version of the library, the
-connection will not succeed and you will see this error:
+In Tableau Desktop, if you try to open a connector that uses an incompatible version of the WDC,
+you might see an error like the following:
 
 ```
-The version of Tableau that you are using cannot use the web data connector that you are trying to access. 
-The connector requires at least version '1.1.1' of the web data connector API.
+The version of Tableau that you are using cannot use the web data connector that you are trying to access.
+The connector requires at least version 'x.x' of the web data connector API.
 ```
 
-**Note**: Newer versions of the [web data connector
-simulator](wdc_simulator.html) that's part of the SDK require later
-versions of the JavaScript library.
+**Note**: Newer versions of the [web data connector simulator](wdc_simulator.html) require later versions
+of the WDC library as well.
