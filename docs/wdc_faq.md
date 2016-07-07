@@ -48,7 +48,6 @@ The `log.txt` file contains information for the interactive phase of your connec
 
 The methods in your connector code are run by the WDC API. Ensure that you are running the connector in the simulator or Tableau. You might also want to ensure that the `tableau.submit` function is being called either by user input or by a page load event.
 
-<<<<<<< HEAD
 #### What parts of the WDC SDK can I contribute to? 
 We will happily take contributions to anything in the WDC SDK aside from the core library (i.e. tableauwdc-2.0.0.js).  This includes the simulator, documentation, and samples.  We cannot take contributions to the library file because that file represents a bridge between a WDC and proprietary Tableau platform code.  For more info on open source at Tableau, visit [http://tableau.github.io/](http://tableau.github.io/).
 
