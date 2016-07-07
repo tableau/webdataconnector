@@ -58,8 +58,8 @@ class="api-command-ref">tableau.phaseEnum.gatherDataPhase</span>, or
 following example shows how to use this property.
 
 ```js
-myConnector.init = function() {
-   tableau.initCallback();
+myConnector.init = function(initCallback) {
+   initCallback();
    if(tableau.phase == tableau.phaseEnum.interactivePhase || tableau.phase == tableau.phaseEnum.authPhase) {
         tableau.submit();
     }
@@ -71,8 +71,8 @@ myConnector.init = function() {
 If your connector doesn't require user input, you don't need to create a user interface for your connector. You just need to call `tableau.submit` when the connector has finished initializing. Include the following code to run a connector without user interaction:
 
 ```js
-myConnector.init = function() {
-    tableau.initCallback();
+myConnector.init = function(initCallback) {
+    initCallback();
     tableau.submit();
 };
 ```
