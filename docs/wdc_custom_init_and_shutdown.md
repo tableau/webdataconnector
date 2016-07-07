@@ -13,13 +13,13 @@ library includes default initialization logic for you.
 To implement custom initialization, you create an
 [init]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.webdataconnector.init) function for your connector. In the
 function, run your initialization code. When initialization is complete,
-call [tableau.initCallback]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.initcallback)
+call the passed in [initCallback]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.initcallback)
 to tell Tableau that initialization is finished, as in this example:
 
 ```js
-    myConnector.init = function(){
+    myConnector.init = function(initCallback){
         // Your init code here
-        tableau.initCallback();
+        initCallback();
     };
 ```
 
@@ -30,14 +30,14 @@ for details on this.
 
 Similarly, if your connector needs to perform custom shutdown logic, you
 create a [shutdown]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.webdataconnector.shutdown) function for the
-connection. When the shutdown process is complete, call the
-[tableau.shutdownCallback]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.shutdowncallback),
+connection. When the shutdown process is complete, call the passed in 
+[shutdownCallback]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.shutdowncallback),
 as in this example:
 
 ```js
-    myConnector.shutdown = function() {
+    myConnector.shutdown = function(shutdownCallback) {
         // Your shutdown code here
-        tableau.shutdownCallback();
+        shutdownCallback();
     }
 ```
 
@@ -58,8 +58,8 @@ class="api-command-ref">tableau.phaseEnum.gatherDataPhase</span>, or
 following example shows how to use this property.
 
 ```js
-myConnector.init = function() {
-   tableau.initCallback();
+myConnector.init = function(initCallback) {
+   initCallback();
    if(tableau.phase == tableau.phaseEnum.interactivePhase || tableau.phase == tableau.phaseEnum.authPhase) {
         tableau.submit();
     }
@@ -71,8 +71,8 @@ myConnector.init = function() {
 If your connector doesn't require user input, you don't need to create a user interface for your connector. You just need to call `tableau.submit` when the connector has finished initializing. Include the following code to run a connector without user interaction:
 
 ```js
-myConnector.init = function() {
-    tableau.initCallback();
+myConnector.init = function(initCallback) {
+    initCallback();
     tableau.submit();
 };
 ```
