@@ -1,30 +1,37 @@
 ---
-title: "First Official 2.0 API Published"
-abstract: "In preparation for the upcoming release of Tableau 10.0, we have published the first official 2.0 WDC Library."
-photoname: "blog_version2.png"
+title: "Tableau WDC 2.0 Released"
+abstract: "Version 2.0 of the Tableau WDC is out of beta! This version is compatible with the upcoming release of Tableau 10.0."
 ---
 
-### Beta version is now deprecated
-The version of the WDC API that was used in beta - [https://connectors.tableau.com/libs/tableauwdc-2.0.0-beta.js](https://connectors.tableau.com/libs/tableauwdc-2.0.0-beta.js)
-- is now deprecated as we move towards the launch of Tableau 10.0.
+### Get the latest version
+You can get the latest version of the WDC here:
 
-We will not take down that version any time soon, but please transition your connectors to use the first official supported 2.0 release, tableauwdc-2.0.5. 
-This version contains a number of critical bug fixes.
+```
+https://connectors.tableau.com/libs/tableauwdc-2.0.latest.js
+```
+
+There is also a minified version available:
+
+```
+https://connectors.tableau.com/libs/tableauwdc-2.0.latest.min.js
+```
+
+The above URLs are the recommended ways of linking to the Tableau WDC and guarantee that you receive patch versions for the current minor version as we release them. 
+If you prefer to opt out of receiving automatic patch versions, you can link directly to the current patch version, 2.0.5:
+
+```
+https://connectors.tableau.com/libs/tableauwdc-2.0.5.js
+https://connectors.tableau.com/libs/tableauwdc-2.0.5.min.js
+```
+
+### Update beta connectors
+If you were one of our wonderful beta adopters, the [tableauwdc-2.0.0-beta.js](https://connectors.tableau.com/libs/tableauwdc-2.0.0-beta.js)
+release will remain available to give you time to update your beta connectors. However, the beta version is now officially deprecated. Note that the latest release includes several critical bug fixes and adds locale support. 
 
 
-### Please upgrade to a new version
+### New feature: Locale support
+The latest version of the WDC also includes a new locale API that was not part of the beta. 
+You can use the locale API to get the language currently set by the user in Tableau Desktop from the **Help > Choose Language** menu. 
+This language is accessed through the `tableau.locale` property and can be used to conditionally display translated text in your connector. 
 
-We have four files that have been published.  Please use whichever version you prefer.  The .latest files will always point to the latest patch version of a given minor release of the API.  
-
-- [https://connectors.tableau.com/libs/tableauwdc-2.0.5.js](https://connectors.tableau.com/libs/tableauwdc-2.0.5.js)
-- [https://connectors.tableau.com/libs/tableauwdc-2.0.5.min.js](https://connectors.tableau.com/libs/tableauwdc-2.0.5.min.js)
-- [https://connectors.tableau.com/libs/tableauwdc-2.0.latest.js](https://connectors.tableau.com/libs/tableauwdc-2.0.latest.js)
-- [https://connectors.tableau.com/libs/tableauwdc-2.0.latest.min.js](https://connectors.tableau.com/libs/tableauwdc-2.0.latest.min.js)
-
-
-### Added feature: Locale support
-One new 2.0 feature that was missing from the 2.0.beta file was the new locale API.  In WDC version 2, you can read the locale 
-property from the API through tableau.locale.  This property is based on the Language that the user has set within Tableau through "Help -> Choose Language".
-For example, if a Tableau user has selected "English" from the help dropdown, the tableau.locale property will be "en-us".
-
-You can use the locale property to localize your WDC content for your users.
+To see the locale API in action, see the new `eathquakeMultilingual` sample in the `Examples` directory of the `webdataconnector` repository.
