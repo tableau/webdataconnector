@@ -159,6 +159,14 @@ html {
 
 
 /* Custom css for news section */
+.blog-content {
+    margin-bottom: 70px;
+}
+
+.blogul h1 {
+    margin-top: 40px;
+}
+
 .blog-content > h4 {
     margin-top: 20px;
 }
