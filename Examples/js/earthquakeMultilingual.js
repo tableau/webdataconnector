@@ -31,7 +31,7 @@
             alias: "Earthquakes with magnitude greater than 4.5 in the last seven days",
             columns: cols
         };
- 
+
         schemaCallback([tableInfo]);
     };
 
@@ -82,38 +82,38 @@
     });
 })();
 
-// Value attached to tableau object are loaded asyncronously,
-// here we poll the value of locale until it is properly loaded
-// and defined, then we turn off the polling and translate the text
-var translateButton = function(){
-    var pollLocale = setInterval(function(){
-        if (tableau.locale){
+// Values attached to the tableau object are loaded asyncronously.
+// Here we poll the value of locale until it is properly loaded
+// and defined, then we turn off the polling and translate the text.
+var translateButton = function() {
+    var pollLocale = setInterval(function() {
+        if (tableau.locale) {
             switch (tableau.locale) {
                 case tableau.localeEnum.china:
                     $("#submitButton").text("获取地震数据");
                     break;
-              case tableau.localeEnum.germany:
+                case tableau.localeEnum.germany:
                     $("#submitButton").text("Erhalten Erdbebendaten!");
                     break;
-              case tableau.localeEnum.brazil:
-                    $("#submitButton").text("Obtener Datos de Terremotos!");
+                case tableau.localeEnum.brazil:
+                    $("#submitButton").text("Obter Dados de Terremoto!");
                     break;
-              case tableau.localeEnum.france:
-                    $("#submitButton").text("Obtenir les données Earthquake!");
+                case tableau.localeEnum.france:
+                    $("#submitButton").text("Obtenir les Données de Séismes!");
                     break;
-              case tableau.localeEnum.japan:
+                case tableau.localeEnum.japan:
                     $("#submitButton").text("地震データの取得");
                     break;
-              case tableau.localeEnum.korea:
+                case tableau.localeEnum.korea:
                     $("#submitButton").text("지진 데이터 가져 오기");
                     break;
-              case tableau.localeEnum.spain:
-                    $("#submitButton").text("Obter Terremoto de dados!");
+                case tableau.localeEnum.spain:
+                    $("#submitButton").text("Obtener Datos de Terremotos!");
                     break;
-              default:
+                default:
                     $("#submitButton").text("Get Earthquake Data!");
             }
             clearInterval(pollLocale);
         }
     }, 10);
-}
+};
