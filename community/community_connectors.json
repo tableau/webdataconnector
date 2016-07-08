@@ -207,6 +207,15 @@
         "source_code": "https://github.com/interworks-morr/wdc-socrata"
     },
     {
+        "name": "Splitwise",
+        "url": "https://tableau-wdc-splitwise.herokuapp.com",
+        "author": "Amelie Dagenais",
+        "github_username": "ameliedagenais",
+        "tags": ["v_2.0"],
+        "description": "Splitwise is a cool app for tracking shared expenses. Get your data out to analyze it in Tableau",
+        "source_code": "https://github.com/ameliedagenais/SplitwiseWebDataConnector"
+    },
+    {
         "name": "Strava",
         "url": "http://data.theinformationlab.co.uk/strava.html",
         "author": "Craig Bloodworth",
