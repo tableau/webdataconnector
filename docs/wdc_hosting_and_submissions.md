@@ -3,7 +3,7 @@ title: Hosting and Submitting to the Community Portal
 layout: docs
 ---
 
-Submit your connector to the [Community Connector]({{ site.baseurl }}/community/community_home.html)
+Submit your connector to the [Community Connector]({{ site.baseurl }}/community/)
 portal to share your work with other developers. To make it easier for others to use your connector,
 we ask that you include a link to a hosted version of your connector. 
 
