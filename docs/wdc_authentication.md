@@ -1,7 +1,6 @@
 ---
-layout: page
 title: WDC Authentication
-base: docs
+layout: docs
 ---
 
 Authentication is one of the more complicated topics related to web data connectors.

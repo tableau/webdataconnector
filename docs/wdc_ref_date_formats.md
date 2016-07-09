@@ -1,7 +1,6 @@
 ---
-layout: page
 title: Formats for Date and DateTime Values in Web Data Connectors
-base: docs
+layout: docs
 ---
 
 Web data connectors can work with Date and DateTime values that use the

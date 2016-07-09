@@ -1,7 +1,6 @@
 ---
-layout: page
 title: Incremental Refresh
-base: docs  
+layout: docs  
 ---
 
 Tableau uses web data connectors to fetch data and store that data in an

@@ -1,7 +1,6 @@
 ---
-layout: page
 title: Node Proxy with OAuth Tutorial
-base: docs
+layout: docs
 ---
 
 `This content isn't finished yet: Coming soon`

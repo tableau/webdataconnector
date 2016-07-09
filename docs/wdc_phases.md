@@ -1,7 +1,6 @@
 ---
-layout: page
 title: WDC Lifecycle and Phases
-base: docs
+layout: docs
 ---
 
 This document explains the overall lifecycle  of a Tableau Web Data Connector. It is recommended that you understand the material

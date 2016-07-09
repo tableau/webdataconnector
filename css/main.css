@@ -12,22 +12,6 @@ img {
     margin-bottom: 30px;
 } 
 
-/* Custom CSS for docs page */ 
-.docs
-{
-    max-width: 850px;
-    width: 100%;
-    float: right;
-}
-
-.docs-content-wrap > h1 {
-    margin-top: 32px;
-}
-
-.docs-content-wrap h4 {
-    margin-top: 32px;
-}
-
 .blog-content-wrap {
     margin-top: 20px;
     padding-top: 40px;
@@ -84,6 +68,11 @@ img.logo
 footer {
     margin: 30px 0;
     margin-top: 100px;
+}
+
+.footer-hr {
+    width: 100%;
+    position: relative;
 }
 
 table {
@@ -175,12 +164,12 @@ html {
     margin-bottom: 20px;
 }
 
+
 /* Community connectors */
 .thumbnail {
     background-color: #fff;
     border: 1px solid #ccc;
     margin: 12px;
-    
 }
 
 .thumbnail h2 {
@@ -192,10 +181,17 @@ html {
 }
 
 .thumbnail h2 a {
-    text-decoration: none;   
+    text-decoration: none;
     color: #333333;
 }
 
+.well {
+    background-color: #ffffff;
+}
+
+.tsd-navigation {
+    padding: 10px !important;
+}
 
 /* Media queries for responsive design */
 #grid[data-columns]::before {
@@ -205,25 +201,50 @@ html {
 .column { float: left; }
 .size-1of3 { width: 33.333%; }
 
-@media screen and (max-width: 480px){
+
+@media screen and (max-width: 767px) {
 	#grid[data-columns]::before {
 		content: '1 .column.size-1of1';
 	}
-}
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
-	#grid[data-columns]::before {
-		content: '2 .column.size-1of2';
-	}
+    /* Docs Menu*/
+    .docs-menu, .tsd-navigation {
+        top: 20px;
+        position: relative;
+    }
+
 }
 @media screen and (min-width: 769px) {
 	#grid[data-columns]::before {
 		content: '3 .column.size-1of3';
 	}
+
+    /* Docs Menu*/
+    .docs-menu, .tsd-navigation {
+        position: fixed;
+        overflow: auto;
+        top: 90px;
+        max-height: 90%;
+        max-width: 250px;
+    }
+
+    .content {
+        position: relative;
+        margin: 40px 0px 0px 275px;
+        max-width: 1000px;
+    }
+
+    /* API Reference */
+
+    .ref-content {
+        margin: 40px 0px 0px 275px;
+        max-width: 1000px;
+    }
 }
 
-/* Again, you’re free to use and define the classes: */
 .column { float: left; }
 .size-1of1 { width: 100%; }
 .size-1of2 { width: 50%; }
 .size-1of3 { width: 33.333%; }
+
+

@@ -1,7 +1,6 @@
 ---
-layout: page
 title: Simulator and Samples
-base: docs
+layout: docs
 ---
 
 To help you develop and test your connectors, you can use the

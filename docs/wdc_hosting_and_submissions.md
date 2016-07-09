@@ -1,7 +1,6 @@
 ---
-layout: page
 title: Hosting and Submitting to the Community Portal
-base: docs
+layout: docs
 ---
 
 Submit your connector to the [Community Connector]({{ site.baseurl }}/community/community_home.html)

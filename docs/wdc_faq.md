@@ -1,7 +1,6 @@
 ---
-layout: page
 title: Frequently Asked Questions
-base: docs
+layout: docs
 ---
 
 #### Where can I find known issues?

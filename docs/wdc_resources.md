@@ -1,7 +1,6 @@
 ---
-layout: page
 title: Web Data Connector Resources
-base: docs
+layout: docs
 ---
 
 For more information about creating and using web data connectors, see

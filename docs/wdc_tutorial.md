@@ -1,7 +1,6 @@
 ---
-layout: page
 title: WDC Tutorial
-base: docs
+layout: docs
 ---
 
 > This tutorial picks up where the [Get Started]({{ site.baseurl }}/docs) topic left off. If you haven't already, go back and set up your development environment.

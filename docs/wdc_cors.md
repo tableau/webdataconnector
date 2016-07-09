@@ -1,7 +1,6 @@
 ---
-layout: page
 title: Managing Cross-Origin Resource Sharing (CORS) in Web Data Connectors
-base: docs
+layout: docs
 ---
 
 The JavaScript code in a web data connector typically makes requests to
