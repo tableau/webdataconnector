@@ -51,7 +51,7 @@ myConnector.getSchema = function(schemaCallback) {
 ```
 
 When Tableau calls the getData method of the connector, it passes in a table object.
-If an incremental refresh is being request by the end user in Tableau, and if the 
+If an incremental refresh is being requested by the end user in Tableau, and if the 
 [tableInfo.incrementColumnId]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.tableinfo-1.incrementcolumnid)
 was set during the getSchema function for that table, then the table object will contain
 a value in the [table.incrementValue]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.table.incrementvalue)

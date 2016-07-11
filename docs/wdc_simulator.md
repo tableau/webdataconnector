@@ -106,7 +106,7 @@ The SDK includes the following samples:
 Simulator tips
 ---------------
 
-* Be default, the test web server runs on port 8888. To change the port number, edit the `http-server` script in the `package.json` file.
+* By default, the test web server runs on port 8888. To change the port number, edit the `http-server` script in the `package.json` file.
   For example, you might enter the following to change the port to 8000:
 
   ```
