@@ -19,6 +19,8 @@ You'll learn how to:
 
 If you *really* want to skip all of this and go straight to the source code, look for the `earthquakeUSGS` files in the `Examples` directory. You'll get a lot more out of this if you build it from scratch though--promise!
 
+**Important**: The connector that we'll create in this tutorial (`earthquakeWDC`) has a different name than the same connector in the `Examples` directory (`earthquakeUSGS`). This is to minimize the chances of accidentally overwriting the existing sample. However, if you copy the existing sample, you'll have to change file paths.
+
 ### Create the HTML page {#create-page}
 
 When you open a WDC in Tableau, you display an HTML page that links to your JavaScript code and to the WDC library. Optionally, this page can also display a user interface for your users to select the data that they want to download. 
@@ -39,7 +41,7 @@ Then, copy the following code into the file:
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
     <script src="https://connectors.tableau.com/libs/tableauwdc-2.0.latest.js" type="text/javascript"></script>
-    <script src="earthquakeUSGS.js" type="text/javascript"></script>
+    <script src="earthquakeWDC.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -75,15 +77,15 @@ Copy the following code into the file to create the basic structure of the conne
 ```js
 (function () {
     var myConnector = tableau.makeConnector();
- 
+
     myConnector.getSchema = function (schemaCallback) {
- 
+
     };
- 
+
     myConnector.getData = function (table, doneCallback) {
-        
+
     };
- 
+
     tableau.registerConnector(myConnector);
 })();
 ```
@@ -200,7 +202,7 @@ Here's what's going on in the code:
 
 ### Get the data {#get-data}
 
-Once the schema is defined, you can begin getting data and passing it to Tableau. 
+Once the schema is defined, you can begin getting data and passing it to Tableau.
 
 Copy the following code and replace the placeholder `getData` function:
 
