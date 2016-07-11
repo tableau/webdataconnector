@@ -23,6 +23,12 @@ img {
     padding-top: 40px;
 }
 
+/* Custom CSS for the docs */
+
+.edit-links {
+    color: #cccccc;
+}
+
 /* Custom CSS for header and footer */ 
 .site-header
 {
@@ -193,6 +199,7 @@ html {
 
 .well {
     background-color: #ffffff;
+    margin-bottom: 40px;
 }
 
 .tsd-navigation {
