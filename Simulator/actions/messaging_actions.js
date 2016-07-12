@@ -9,9 +9,11 @@ export function receiveMessage(payload) {
     try {
       const { msgData, msgName, props: attrs, version } = JSON.parse(payload.data);
 
-      if(version=== "1.1.0" || version === "1.1.1") {
-        var errmsg = 'this simulator only supports wdcs that are using version 2.0 of the api or later, your wdc\'s version is: ' + wdcapiversion;
-        toastr.error(errmsg, 'unsupported wdc version error:')
+      if (version === '1.1.0' || version === '1.1.1') {
+        const errmsg = 'this simulator only supports wdcs that are ' +
+                       'using version 2.0 of the api or later, your ' +
+                       `wdc\'s version is: ${version}`;
+        toastr.error(errmsg, 'unsupported wdc version error:');
       }
 
       if (attrs) {
