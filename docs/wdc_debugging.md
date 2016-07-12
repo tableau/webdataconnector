@@ -16,9 +16,9 @@ This page includes information about developing and debugging your connectors bo
 
 * [Debugging in the simulator](#debugging-simulator)
 
-* [General browser debugging tips](#simulator-tips)
-
 * [Simulator debugging tips](#simulator-tips)
+
+* [General browser debugging tips](#simulator-tips)
 
 * [Debugging in Tableau Desktop](#debugging-tableau)
 
@@ -40,6 +40,25 @@ tableau.log("My console message goes here!");
 
 !["The simulator user interface."]({{ site.baseurl }}/assets/wdc_simulator_new_first_open.png)
 
+
+### Simulator tips {#simulator-tips}
+
+* You can preset the connector that you want to load in the simulator with the `?src=` query parameter. For example, to
+  load the `earthquakeMultitable` sample, you might enter the following URL:
+
+  ```
+  http://localhost:8888/Simulator/?src=../Examples/html/earthquakeMultitable.html
+  ```
+
+* By default, the test web server runs on port 8888. To change the port number, edit the `http-server` script in the
+  `package.json` file.  For example, you might enter the following to change the port to 8000:
+
+  ```
+  "http-server": "node node_modules/http-server/bin/http-server -p 8000"
+  ```
+
+* To make it easier to load files into the simulator, keep the simulator and web data connector .html files that you are
+  testing in the same folder.
 
 ### General browser debugging tips {#browser-tips}
 
@@ -63,25 +82,6 @@ tableau.log("My console message goes here!");
     overview of debugging tools, see [JavaScript Debugging](http://www.w3schools.com/js/js_debugging.asp) on the
     W3CSchools.com site.
 
-### Simulator tips {#simulator-tips}
-
-* You can preset the connector that you want to load in the simulator with the `?src=` query parameter. For example, to
-  load the `earthquakeMultitable` sample, you might enter the following URL:
-
-  ```
-  http://localhost:8888/Simulator/?src=../Examples/html/earthquakeMultitable.html
-  ```
-
-* By default, the test web server runs on port 8888. To change the port number, edit the `http-server` script in the
-  `package.json` file.  For example, you might enter the following to change the port to 8000:
-
-  ```
-  "http-server": "node node_modules/http-server/bin/http-server -p 8000"
-  ```
-
-* To make it easier to load files into the simulator, keep the simulator and web data connector .html files that you are
-  testing in the same folder.
-
 ## Debugging in Tableau Desktop {#debugging-tableau}
 
 Tableau Desktop includes a built-in debugger that you can use to test your connectors. Use the built-in debugger when
@@ -95,7 +95,7 @@ you encounter differences that you cannot debug in the simulator.
 
 To run the built-in debugger, complete the following steps:
 
-1. Open a command prompt or terminal.
+1. Open a command prompt.
 
 1. Navigate to the Tableau Desktop directory.
 
