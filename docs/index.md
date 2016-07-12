@@ -3,11 +3,14 @@ title: WDC Overview
 layout: docs
 ---
 
-Create a Web Data Connector (WDC) when you want to connect to a web data source from Tableau. A WDC is just an HTML page with JavaScript code that connects to web data (for example by means of a REST API), converts the data to a JSON format, and passes the data to Tableau. 
+Create a Web Data Connector (WDC) when you want to connect to a web data source from Tableau. A WDC is just an HTML page
+with JavaScript code that connects to web data (for example by means of a REST API), converts the data to a JSON format,
+and passes the data to Tableau.
 
-Get Started
------------
-This section will guide you through the process of setting up your development environment and running the sample WDCs in the simulator.
+## Get Started
+
+This section will guide you through the process of setting up your development environment and running the sample WDCs
+in the simulator.
 
 * [Confirm prerequisites](#confirm-prereqs)
 * [Get the WDC SDK](#get-wdc)
@@ -23,7 +26,8 @@ You're going to need a couple of things before we get started. Make sure you hav
 
 ### Get the WDC SDK {#get-wdc}
 
-1. Open a terminal in the directory where you want to download the WDC SDK. Then, run the following command to clone the WDC git repository:
+1. Open a terminal in the directory where you want to download the WDC SDK.  Then, run the following command to clone
+   the WDC git repository:
 
    ```
    git clone https://github.com/tableau/webdataconnector.git
@@ -43,7 +47,7 @@ You're going to need a couple of things before we get started. Make sure you hav
 
    You should see the following message:
 
-   ``` 
+   ```
    $ git checkout dev
    Branch dev set up to track remote branch dev from origin.
    Switched to a new branch 'dev'
@@ -65,22 +69,25 @@ You're going to need a couple of things before we get started. Make sure you hav
 
 3. Open a browser and navigate to the following URL:
 
-   
+
    ```
-   http://localhost:8888/Simulator/index.html 
+   http://localhost:8888/Simulator/index.html
    ```
 
    The WDC simulator appears!
 
    ![]({{ site.baseurl }}/assets/wdc_simulator_new_first_open.png)
 
-
-**Note**: The `npm start` command also starts a test proxy server on port 8889 that you can route requests through to circumvent Cross Origin Resource Sharing (CORS) restrictions. For more information, see [Managing CORS in WDCs]({{ site.baseurl }}/docs/wdc_cors).
+**Note**: The npm start command also starts a test proxy server on port 8889 that you can route requests through to
+circumvent Cross Origin Resource Sharing (CORS) restrictions. For more information, see
+[Working with CORS]({{ site.baseurl }}/docs/wdc_cors).
+</div>
 
 ### Try the sample WDCs {#try-samples}
 
-1. In the WDC URL field, confirm that the URL is set to the sample USGS Earthquake Data connector:
-   
+1. In the WDC URL field, confirm that the URL is set to the sample USGS
+   Earthquake Data connector:
+
    ```
    ../Examples/html/earthquakeUSGS.html
    ```

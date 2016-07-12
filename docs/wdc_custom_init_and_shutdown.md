@@ -22,14 +22,14 @@ to tell Tableau that initialization is finished, as in this example:
     };
 ```
 
-One typical scenario for using custom initialization code is to tell tableau about 
+One typical scenario for using custom initialization code is to tell tableau about
 the auth needs of your connector.  Please see
 [WDC Authentication]({{ site.baseurl }}/docs/wdc_authentication.html)
 for details on this.
 
 Similarly, if your connector needs to perform custom shutdown logic, you
 create a [shutdown]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.webdataconnector.shutdown) function for the
-connection. When the shutdown process is complete, call the passed in 
+connection. When the shutdown process is complete, call the passed in
 [shutdownCallback]({{ site.baseurl }}/ref/api_ref#webdataconnectorapi.shutdowncallback),
 as in this example:
 
@@ -67,7 +67,9 @@ myConnector.init = function(initCallback) {
 
 ### Running the connector without user interaction {#run-without-interaction}
 
-If your connector doesn't require user input, you don't need to create a user interface for your connector. You just need to call `tableau.submit` when the connector has finished initializing. Include the following code to run a connector without user interaction:
+If your connector doesn't require user input, you don't need to create a user interface for your connector. You just
+need to call `tableau.submit` when the connector has finished initializing. Include the following code to run a
+connector without user interaction:
 
 ```js
 myConnector.init = function(initCallback) {

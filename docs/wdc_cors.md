@@ -28,16 +28,16 @@ another site, you can try the approaches listed in this topic:
 -   [Make requests with JSONP](#jsonp)
 
 **Note**: For information about how to use the Web Data Connector
-simulator to help debug CORS errors, see [Web Data Connector
-Simulator](wdc_simulator.html).
+simulator to help debug errors, including CORS errors, see [Debugging in the Simulator and Tableau]({{ site.baseurl
+}}/docs/wdc_debugging).
 
 Make requests through a proxy server {#proxy-server}
 ------------------------------------
 
 To circumvent browser restrictions on CORS, you can use a proxy server.
-A proxy server acts as a simple go-between for your connector and the server that you 
-want to get data from. Because a proxy server doesn't run in a browser, it isn't 
-limited by the same restrictions on CORS. 
+A proxy server acts as a simple go-between for your connector and the server that you
+want to get data from. Because a proxy server doesn't run in a browser, it isn't
+limited by the same restrictions on CORS.
 
 If the proxy server is in the same domain as the web data connector,
 JavaScript in the connector page does not run into CORS restrictions. If
@@ -71,12 +71,12 @@ The WDC SDK comes with a test proxy server that you can use out of the box.
    To this:
 
    ```
-   $.getJSON("http://localhost:8889/earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson", 
+   $.getJSON("http://localhost:8889/earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson",
    ```
 
-**Important:** The test proxy server supports HTTP API calls only. 
+**Important:** The test proxy server supports HTTP API calls only.
 
-If you want to share your connectors with other users in your organization, you can download 
+If you want to share your connectors with other users in your organization, you can download
 and configure a production proxy server, or you can use a free, public proxy server like
 [http://cors.io/.](http://cors.io/) or [https://crossorigin.me/](https://crossorigin.me/).
 
@@ -143,5 +143,4 @@ function can extract values as it would from any JSON block.
 
 For more information, see [JSONP](https://en.wikipedia.org/wiki/JSONP)
 on Wikipedia.
-
 

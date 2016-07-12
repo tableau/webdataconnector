@@ -1,13 +1,10 @@
 ---
-title: Formats for Date and DateTime Values in Web Data Connectors
+title: Supported Date Formats
 layout: docs
 ---
 
 Web data connectors can work with Date and DateTime values that use the
-following formats. For information about the symbols used in these
-format examples, see [Formatting Dates and
-Times](http://userguide.icu-project.org/formatparse/datetime) on the ICU
-User Guide site.
+following formats:
 
 ```
 dd-MM-yyyy
@@ -50,3 +47,9 @@ yyyy-MM-dd HH:mm:ss.SSS
 yyyy/MM/dd
 yyyy/MM/dd HH:mm:ss
 ```
+
+For information about the symbols used in these
+format examples, see [Formatting Dates and
+Times](http://userguide.icu-project.org/formatparse/datetime) on the ICU
+User Guide site.
+

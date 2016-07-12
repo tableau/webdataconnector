@@ -3,9 +3,10 @@ title: Multiple Tables Tutorial
 layout: docs
 ---
 
-> This tutorial builds on the connector created in the basic [tutorial]({{ site.baseurl }}/docs/wdc_tutorial). Ensure that you understand the concepts in the basic tutorial before you continue.
+> This tutorial builds on the connector created in the basic [tutorial]({{ site.baseurl }}/docs/wdc_tutorial). Ensure
+> that you understand the concepts in the basic tutorial before you continue.
 
-By the end of this tutorial, you will know how to store data in multiple tables and pass user input to your connector. 
+By the end of this tutorial, you will know how to store data in multiple tables and pass user input to your connector.
 
 You'll learn how to:
 
@@ -19,9 +20,11 @@ To see the source code for the completed connector, look for the `earthquakeMult
 
 ### Before you get started {#before-you-get-started}
 
-This tutorial builds on the USGS Earthquake feed connector created in the [tutorial]({{ site.baseurl }}/docs/wdc_tutorial). Before you get started, you'll need to make a copy of the connector that you can edit.
+This tutorial builds on the USGS Earthquake feed connector created in the [tutorial]({{ site.baseurl
+}}/docs/wdc_tutorial). Before you get started, you'll need to make a copy of the connector that you can edit.
 
-1. Copy the `earthquakeUSGS` files from the `Examples` directory and the `js` directory to the top-level directory for the repository. (This is the same directory as the README.)
+1. Copy the `earthquakeUSGS` files from the `Examples` directory and the `js` directory to the top-level directory for
+   the repository. (This is the same directory as the README.)
 
 1. Rename the files to `earthquakeMultitable.html` and `earthquakeMultitable.js`.
 
@@ -33,7 +36,9 @@ This tutorial builds on the USGS Earthquake feed connector created in the [tutor
 
 ### Create the user interface {#create-ui}
 
-The existing connector interface doesn't do very much--it's just a button that you can click to run the connector. To illustrate how to pass user input data to your connector, let's add a form so that you can specify the date range for which you want to get earthquake data.
+The existing connector interface doesn't do very much--it's just a button that you can click to run the connector. To
+illustrate how to pass user input data to your connector, let's add a form so that you can specify the date range for
+which you want to get earthquake data.
 
 Open the `earthquakeMultitable.html` file, and copy the following code immediately above the `<button>` element:
 
@@ -52,13 +57,16 @@ Open the `earthquakeMultitable.html` file, and copy the following code immediate
 </form>
 ```
 
-This is a simple form with a label and text fields where you can enter date values. Additionally, there are some `<div>` elements and classes on each element to use Bootstrap styling. If you load the page in a browser, the result looks like this:
+This is a simple form with a label and text fields where you can enter date values. Additionally, there are some `<div>`
+elements and classes on each element to use Bootstrap styling. If you load the page in a browser, the result looks like
+this:
 
 !["The connector interface displays four input fields with labels for date ranges."]({{ site.baseurl }}/assets/earthquake_multitable_ui.png)
 
 ### Store connection data {#store-connection-data}
 
-Now that you've updated the user interface, it's time to consume the user input data in the JavaScript code. We're going to get the values from the input fields and store them in a `tableau.connectionData` variable for use later.
+Now that you've updated the user interface, it's time to consume the user input data in the JavaScript code. We're going
+to get the values from the input fields and store them in a `tableau.connectionData` variable for use later.
 
 Open the `earthquakeMultitable.js` file, and replace the `$(document).ready` function with the following code :
 
@@ -76,8 +84,8 @@ $(document).ready(function() {
         }
 
         if (isValidDate(dateObj.startDate) && isValidDate(dateObj.endDate)) {
-            tableau.connectionData = JSON.stringify(dateObj); 
-            tableau.connectionName = "USGS Earthquake Feed"; 
+            tableau.connectionData = JSON.stringify(dateObj);
+            tableau.connectionName = "USGS Earthquake Feed";
             tableau.submit();
         } else {
             $('#errorMsg').html("Enter valid dates. For example, 2016-05-08.");
@@ -88,18 +96,23 @@ $(document).ready(function() {
 
 Some things to note about the code:
 
-* As with the connector in the basic tutorial, the connector uses jquery to run code when the page loads and creates an event listener for the submit button.
-* The values of the date input fields are stored in a date object. (The jquery `val()` function gets the value of a field, and the `trim()` function removes spaces.)
+* As with the connector in the basic tutorial, the connector uses jquery to run code when the page loads and creates an
+  event listener for the submit button.
+* The values of the date input fields are stored in a date object. (The jquery `val()` function gets the value of a
+  field, and the `trim()` function removes spaces.)
 * The `isValidDate` function takes a string value and determines whether the string is a valid date.
 * The `if` statement does some simple form validation using the `isValidDate` function.
-	* If the dates are valid, the date object is converted to a string. 
-	* If the dates are not valid, an error message is displayed in the `div` with the `errorMsg` id.
+    * If the dates are valid, the date object is converted to a string.
+    * If the dates are not valid, an error message is displayed in the `div` with the `errorMsg` id.
 
-The `tableau.connectionData` variable is the important piece here. It is created by the WDC so that you can pass data to the `getSchema` and `getData` functions. It is important to note that the `tableau.connectionData` variable only accepts string values.
+The `tableau.connectionData` variable is the important piece here. It is created by the WDC so that you can pass data to
+the `getSchema` and `getData` functions. It is important to note that the `tableau.connectionData` variable only accepts
+string values.
 
 ### Get Multiple Table Schemas {#get-multiple-schemas}
 
-In this part of the tutorial, you modify the `getSchema` code to create two table schemas and pass them to the `schemaCallback` in an array parameter. 
+In this part of the tutorial, you modify the `getSchema` code to create two table schemas and pass them to the
+`schemaCallback` in an array parameter.
 
 Replace the `myConnector.getSchema` function with the following code:
 
@@ -161,12 +174,14 @@ myConnector.getSchema = function(schemaCallback) {
 Here's what's happening in the code:
 
 * The `mag_place_cols` and `time_url_cols` arrays contain objects for the columns in our tables.
-* The `magPlaceTable` and `timeUrlTable` variables each define a table schema object. 
+* The `magPlaceTable` and `timeUrlTable` variables each define a table schema object.
 * The table schemas are passed to `schemaCallback` as objects in an array.
 
 ### Get data for each table {#get-data-for-tables}
 
-When you create multiple table schemas, the WDC API calls the `getData` function once for each schema. As a result, you need a way to change the call to the USGS Earthquake API for each table. The easiest way to do this is to use the `table.tableInfo.id` value that we set in the table schemas.
+When you create multiple table schemas, the WDC API calls the `getData` function once for each schema. As a result, you
+need a way to change the call to the USGS Earthquake API for each table. The easiest way to do this is to use the
+`table.tableInfo.id` value that we set in the table schemas.
 
 Replace the `myConnector.getData` function with the following code:
 
@@ -212,21 +227,30 @@ myConnector.getData = function(table, doneCallback) {
 
 Let's take a look at what's going on here:
 
-* The `JSON.parse` function converts the string value that we stored in the `tableau.connectionData` variable back to an object. The `dateObj` object can then be used to access the data that we stored.
-* The `dateString` variable inserts the start and end dates into a query parameter format expected by the API. 
-* The `apiCall` variable is the URL for our API call. Note that this is a different URL than we used in the basic tutorial. For more information on the query parameters that you can use with this URL, see the [Earthquake Catalog API Documentation](http://earthquake.usgs.gov/fdsnws/event/1/).
+* The `JSON.parse` function converts the string value that we stored in the `tableau.connectionData` variable back to an
+  object. The `dateObj` object can then be used to access the data that we stored.
+* The `dateString` variable inserts the start and end dates into a query parameter format expected by the API.
+* The `apiCall` variable is the URL for our API call. Note that this is a different URL than we used in the basic
+  tutorial. For more information on the query parameters that you can use with this URL, see the [Earthquake Catalog API
+  Documentation](http://earthquake.usgs.gov/fdsnws/event/1/).
 * We declare the `for` loop iterator variable `i` at the top of the function to avoid declaring it twice.
-* We use the `table.tableInfo.id` to determine which table schema we should use as we push data to the `tableData` array. Remember that the WDC API makes one call to `getData` for each table schema. 
+* We use the `table.tableInfo.id` to determine which table schema we should use as we push data to the `tableData`
+  array. Remember that the WDC API makes one call to `getData` for each table schema.
 * The `table.appendRows` function adds the array of table data to the table object.
 
 ### See it in action {#see-in-action}
 
-That's it for the coding part of this tutorial. Time to test your connector in the simulator like you did in the [Get Started]({{ site.baseurl }}/docs/) section and the basic tutorial. 
+That's it for the coding part of this tutorial. Time to test your connector in the simulator like you did in the [Get
+Started]({{ site.baseurl }}/docs/) section and the basic tutorial.
 
-When you're done, try to [open your connector in Tableau](http://tableau.github.io/webdataconnector/docs/wdc_use_in_tableau). Once you open your connector in Tableau, you can drag the **Magnitude and Place Data** table and the **Time and URL Data** table to the pane where it says **Drag tables here**. You can ensure that the tables are joined properly on the `id` field by clicking the overlapping circles to display the join information. 
+When you're done, try to [open your connector in
+Tableau](http://tableau.github.io/webdataconnector/docs/wdc_use_in_tableau). Once you open your connector in Tableau,
+you can drag the **Magnitude and Place Data** table and the **Time and URL Data** table to the pane where it says **Drag
+tables here**. You can ensure that the tables are joined properly on the `id` field by clicking the overlapping circles
+to display the join information.
 
 !["Join multiple connector tables in Tableau."]({{ site.baseurl }}/assets/wdc_tableau_multitable_join.png)
 
-Want to check your work? See the source code in the `Examples` directory. 
+Want to check your work? See the source code in the `Examples` directory.
 
 Now you're *definitely* ready to make your own connector!
