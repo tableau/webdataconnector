@@ -4,7 +4,7 @@
   "description": "Connect to web data from Tableau.",
   "scripts": {
     "corsproxy": "export CORSPROXY_PORT=8889 || set CORSPROXY_PORT=8889 && node node_modules/corsproxy/bin/corsproxy",
-    "http-server": "node node_modules/http-server/bin/http-server -p 8888",
+    "http-server": "node node_modules/http-server/bin/http-server -p 8888 -c-1",
     "bundle": "npm run lint && webpack --watch --config ./webpack.config.js",
     "lint": "eslint ./Simulator --ext .js --ext .jsx --cache",
     "lint:fix": "eslint ./Simulator --ext .js --ext .jsx --fix --cache",
