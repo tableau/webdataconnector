@@ -1,5 +1,5 @@
 ---
-title: Incremental Refresh
+title: WDC Incremental Refresh
 layout: docs
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Managing Cross-Origin Resource Sharing (CORS) in Web Data Connectors
+title: WDC Working with CORS
 layout: docs
 ---
 

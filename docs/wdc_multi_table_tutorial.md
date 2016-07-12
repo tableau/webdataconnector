@@ -1,5 +1,5 @@
 ---
-title: Multiple Tables Tutorial
+title: WDC Multiple Tables Tutorial
 layout: docs
 ---
 

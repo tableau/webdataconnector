@@ -1,5 +1,5 @@
 ---
-title: Custom Initialization and Shutdown Code
+title: WDC Custom Initialization and Shutdown
 layout: docs
 ---
 
