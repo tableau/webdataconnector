@@ -11,6 +11,7 @@ import * as consts from '../utils/consts';
 export const setWdcShouldFetchAllTables = createAction('SET_WDC_SHOULD_FETCH_ALL_TABLES');
 export const setWdcAttrs = createAction('SET_WDC_ATTRS');
 export const setWdcUrl = createAction('SET_WDC_URL');
+export const setMostRecentUrls = createAction('SET_MOST_RECENT_URLS');
 
 // Phase Actions
 export const setCurrentPhase = createAction('SET_CURRENT_PHASE');
@@ -28,8 +29,10 @@ export const addTables = createAction('ADD_TABLES');
 
 // Reset Actions
 export const resetState = createAction('RESET_STATE', () => {
-  const wdcUrl = Cookie.get('lastUrl') || '../Examples/html/earthquakeUSGS.html';
-  return { ...consts.defaultState, wdcUrl };
+  const mostRecentUrls = Cookie.getJSON('mostRecentUrls') || consts.samples;
+  // copy mostRecentUrls to sever references
+  const wdcUrl = [...mostRecentUrls][0];
+  return { ...consts.defaultState, wdcUrl, mostRecentUrls };
 });
 
 export const resetPhaseState = createAction('RESET_PHASE_STATE');
@@ -46,8 +49,19 @@ export const resetTableData = createAction('RESET_TABLE_DATA');
 export function startConnector(phase) {
   return (dispatch, getState) => {
     // Commit url changes once we are sure the user is done
-    const { wdcUrl } = getState();
-    Cookie.set('lastUrl', wdcUrl);
+    let updatedUrls;
+    const { wdcUrl, mostRecentUrls } = getState();
+    const urlIndex = mostRecentUrls.indexOf(wdcUrl);
+
+    if (urlIndex === -1) {
+      updatedUrls = [wdcUrl, ...mostRecentUrls].slice(0, -1);
+    } else {
+      mostRecentUrls.splice(urlIndex, 1);
+      updatedUrls = [wdcUrl, ...mostRecentUrls];
+    }
+
+    Cookie.set('mostRecentUrls', updatedUrls);
+    dispatch(setMostRecentUrls(updatedUrls));
 
     // Clean up simulator and get ready for starting connector
     dispatch(resetTables());

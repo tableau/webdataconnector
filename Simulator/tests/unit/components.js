@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import sinon from 'sinon';
 import should from 'should';
 
-import Navbar from '../../components/Navbar.jsx';
+import SimulatorNavbar from '../../components/SimulatorNavbar.jsx';
 import AddressBar from '../../components/AddressBar.jsx';
 import StartConnectorGroup from '../../components/StartConnectorGroup.jsx';
 import SimulatorAttributes from '../../components/SimulatorAttributes.jsx';
@@ -17,12 +17,12 @@ import * as consts from '../../utils/consts.js';
 
 // Component Tests
 describe("Components", function() {
-  describe("Navbar", function() {
+  describe("SimulatorNavbar", function() {
     let spy = sinon.spy();
     let navbar;
 
     it("Should Render", function () {
-      navbar = shallow(<Navbar />);
+      navbar = shallow(<SimulatorNavbar />);
       navbar.should.be.ok();
     });
   });
@@ -36,6 +36,7 @@ describe("Components", function() {
       addressBar = shallow(
         <AddressBar
           wdcUrl=""
+          mostRecentUrls={["url", "otherUrl"]}
           disabled={ false }
           setWdcUrl={ spy }
           resetSimulator={ ()=>{} }
@@ -47,10 +48,13 @@ describe("Components", function() {
     });
 
     it("Should Handle Clicks Correctly", function () {
-      const event = {target: {value: 'url'}};
-      instance.handleWdcUrlChange(event);
-      spy.calledOnce.should.be.true();
+      const inputEvent = { target: { value: 'url' } };
+      const selectEvent = "newUrl";
+      instance.handleWdcUrlInput(inputEvent);
+      instance.handleWdcUrlSelect(selectEvent);
+      spy.calledTwice.should.be.true();
       spy.calledWith("url").should.be.true();
+      spy.calledWith("newUrl").should.be.true();
     });
   });
 
