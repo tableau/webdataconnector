@@ -38,6 +38,19 @@ describe("Reducer", function() {
     });
   });
 
+  describe("SET_MOST_RECENT_URLS", function() {
+    it("Should Set mostRecentUrls", function () {
+      const newUrls = ['urls', 'otherUrls'];
+      const action = {
+        type: "SET_MOST_RECENT_URLS",
+        payload: newUrls
+      };
+
+      const output = reducer(state, action);
+      output.mostRecentUrls.should.deepEqual(newUrls);
+    });
+  });
+
   describe("SET_FETCH_ALL_TABLES", function() {
     it("Should Set wdcShouldFetchAllTables", function () {
       const newValue = true;

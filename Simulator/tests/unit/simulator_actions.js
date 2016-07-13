@@ -49,6 +49,19 @@ describe("Simulator Action Creators", function() {
     });
   });
 
+  describe("setMostRecentUrls", function() {
+    it("Should Create Right Action", function () {
+      let input = ["../Examples/html/earthquakeUSGS.html", "otherUrls"];
+      let correctAction = {
+        type: 'SET_MOST_RECENT_URLS',
+        payload: input
+      };
+
+      let action = simulatorActions.setMostRecentUrls(input);
+      action.should.deepEqual(correctAction);
+    });
+  });
+
   describe("setCurrentPhase", function() {
     it("Should Create Right Action", function () {
       let input = consts.phases.INTERACTIVE;

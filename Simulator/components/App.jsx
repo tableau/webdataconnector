@@ -15,7 +15,7 @@ import * as messagingActions from '../actions/messaging_actions';
 import store from '../store/store';
 
 // Components
-import Navbar from './Navbar';
+import SimulatorNavbar from './SimulatorNavbar';
 import AddressBar from './AddressBar';
 import StartConnectorGroup from './StartConnectorGroup';
 import SimulatorAttributes from './SimulatorAttributes';
@@ -93,13 +93,15 @@ class App extends Component {
     return (
       <div className="simulator-app">
         <Grid fluid>
-          <Navbar />
+          <SimulatorNavbar
+            resetSimulator={this.resetSimulator}
+          />
           <Col md={12} className="address-bar">
             <AddressBar
               disabled={inDataGatherPhase}
               wdcUrl={this.props.wdcUrl}
+              mostRecentUrls={this.props.mostRecentUrls}
               setWdcUrl={this.setWdcUrl}
-              resetSimulator={this.resetSimulator}
             />
           </Col>
           <Col md={6} className="run-connector">

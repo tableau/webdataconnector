@@ -12,6 +12,8 @@ export default handleActions({
     ({ ...state, wdcAttrs: action.payload }),
   SET_WDC_URL: (state, action) =>
     ({ ...state, wdcUrl: action.payload }),
+  SET_MOST_RECENT_URLS: (state, action) =>
+    ({ ...state, mostRecentUrls: action.payload }),
   SET_WDC_SHOULD_FETCH_ALL_TABLES: (state, action) =>
     ({ ...state, wdcShouldFetchAllTables: action.payload }),
   SET_CURRENT_PHASE: (state, action) =>

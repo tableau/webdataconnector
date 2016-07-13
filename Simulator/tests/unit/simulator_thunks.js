@@ -29,6 +29,7 @@ describe('Thunks', () => {
 
       const setWindowAsExternalActions = [{ type: "SET_SIMULATOR_WINDOW" }];
       const expectedActions = [
+        { type: "SET_MOST_RECENT_URLS", payload: consts.samples},
         { type: "RESET_TABLES" },
         { type: "SET_CURRENT_PHASE", payload: input },
         { type: "SET_PHASE_IN_PROGRESS", payload: true },

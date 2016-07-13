@@ -3,8 +3,9 @@ import {
   FormGroup,
   FormControl,
   InputGroup,
-  ControlLabel,
-  Button } from 'react-bootstrap';
+  MenuItem,
+  DropdownButton,
+  ControlLabel } from 'react-bootstrap';
 
 //----------------------Address Bar---------------------//
 // Component with the UI elements necessary to update the
@@ -14,14 +15,28 @@ import {
 class AddressBar extends Component {
   constructor(props) {
     super(props);
-    this.handleWdcUrlChange = this.handleWdcUrlChange.bind(this);
+    this.handleWdcUrlInput = this.handleWdcUrlInput.bind(this);
+    this.handleWdcUrlSelect = this.handleWdcUrlSelect.bind(this);
   }
 
-  handleWdcUrlChange(e) {
+  handleWdcUrlInput(e) {
     this.props.setWdcUrl(e.target.value);
   }
 
+  handleWdcUrlSelect(eventKey) {
+    this.props.setWdcUrl(eventKey);
+  }
+
   render() {
+    const menuItems = this.props.mostRecentUrls.map((url, idx) =>
+      <MenuItem
+        eventKey={url}
+        key={idx}
+      >
+        {url}
+      </MenuItem>
+    );
+
     return (
       <FormGroup>
         <ControlLabel> Connector URL </ControlLabel>
@@ -32,11 +47,18 @@ class AddressBar extends Component {
             disabled={this.props.disabled}
             label="WDC URL"
             value={this.props.wdcUrl}
-            onChange={this.handleWdcUrlChange}
+            onChange={this.handleWdcUrlInput}
           />
-          <InputGroup.Button>
-            <Button id="reset-btn" onClick={this.props.resetSimulator}> Reset </Button>
-          </InputGroup.Button>
+          <DropdownButton
+            id="most-recent-urls"
+            title="Recent"
+            disabled={this.props.disabled}
+            componentClass={InputGroup.Button}
+            onSelect={this.handleWdcUrlSelect}
+            pullRight
+          >
+            {menuItems}
+          </DropdownButton>
         </InputGroup>
       </FormGroup>
     );
@@ -45,9 +67,9 @@ class AddressBar extends Component {
 
 AddressBar.prototypes = {
   wdcUrl: PropTypes.string.isRequired,
+  mostRecentUrl: PropTypes.arrayOf(PropTypes.string).isRequired,
   disabled: PropTypes.bool.isRequired,
   setWdcUrl: PropTypes.func.isRequired,
-  resetSimulator: PropTypes.func.isRequired,
 };
 
 export default AddressBar;
