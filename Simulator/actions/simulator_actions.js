@@ -1,5 +1,6 @@
 import Cookie from 'js-cookie';
 import { createAction } from 'redux-actions';
+import { cleanUrl } from '../utils/misc';
 import * as consts from '../utils/consts';
 
 // Redux action creator functions
@@ -47,28 +48,12 @@ export const resetTableData = createAction('RESET_TABLE_DATA');
 
 // Phase Control Thunks
 export function startConnector(phase) {
-  return (dispatch, getState) => {
-    // Commit url changes once we are sure the user is done
-    let updatedUrls;
-    const { wdcUrl, mostRecentUrls } = getState();
-    const urlIndex = mostRecentUrls.indexOf(wdcUrl);
-
-    if (urlIndex === -1) {
-      updatedUrls = [wdcUrl, ...mostRecentUrls].slice(0, -1);
-    } else {
-      // copy mostRecentUrls to sever references
-      updatedUrls = [...mostRecentUrls];
-      updatedUrls.splice(urlIndex, 1);
-      updatedUrls = [wdcUrl, ...updatedUrls];
-    }
-
-    Cookie.set('mostRecentUrls', updatedUrls);
-    dispatch(setMostRecentUrls(updatedUrls));
-
+  return (dispatch) => {
     // Clean up simulator and get ready for starting connector
     dispatch(resetTables());
     dispatch(setCurrentPhase(phase));
     dispatch(setPhaseInProgress(true));
+    dispatch(commitUrl());
     dispatch(closeSimulatorWindow());
     dispatch(setWindowAsExternal());
   };
@@ -121,5 +106,30 @@ export function closeSimulatorWindow() {
 
     dispatch(setShouldHaveGatherDataFrame(false));
     dispatch(setSimulatorWindow(null));
+  };
+}
+
+
+//Address Bar Thunks
+export function commitUrl() {
+  return (dispatch, getState) => {
+    // Commit url changes once we are sure the user is done
+    let updatedUrls;
+    const { wdcUrl, mostRecentUrls } = getState();
+    const urlIndex = mostRecentUrls.indexOf(wdcUrl);
+    const cleanedUrl = cleanUrl(wdcUrl);
+
+    if (urlIndex === -1) {
+      updatedUrls = [cleanedUrl, ...mostRecentUrls].slice(0, -1);
+    } else {
+      // copy mostRecentUrls to sever references
+      updatedUrls = [...mostRecentUrls];
+      updatedUrls.splice(urlIndex, 1);
+      updatedUrls = [cleanedUrl, ...updatedUrls];
+    }
+
+    Cookie.set('mostRecentUrls', updatedUrls);
+    dispatch(setWdcUrl(cleanedUrl));
+    dispatch(setMostRecentUrls(updatedUrls));
   };
 }

@@ -96,6 +96,17 @@ describe('Messaging Thunks', function() {
       store.dispatch(messagingActions.handleSubmit());
       store.getActions().should.deepEqual(expectedActions);
     });
+
+    it('Should Do Nothing in Data Gather Phase', function () {
+      const expectedActions = [];
+      const store = mockStore({
+        ...consts.defaultState,
+        currentPhase: consts.phases.GATHER_DATA
+      })
+
+      store.dispatch(messagingActions.handleSubmit());
+      store.getActions().should.deepEqual(expectedActions);
+    });
   });
 
   describe('handleSchemaCallback Thunk', function() {
