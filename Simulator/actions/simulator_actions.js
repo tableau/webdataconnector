@@ -56,8 +56,10 @@ export function startConnector(phase) {
     if (urlIndex === -1) {
       updatedUrls = [wdcUrl, ...mostRecentUrls].slice(0, -1);
     } else {
-      mostRecentUrls.splice(urlIndex, 1);
-      updatedUrls = [wdcUrl, ...mostRecentUrls];
+      // copy mostRecentUrls to sever references
+      updatedUrls = [...mostRecentUrls];
+      updatedUrls.splice(urlIndex, 1);
+      updatedUrls = [wdcUrl, ...updatedUrls];
     }
 
     Cookie.set('mostRecentUrls', updatedUrls);
