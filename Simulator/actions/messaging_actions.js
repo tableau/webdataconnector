@@ -115,13 +115,17 @@ export function handleInit() {
 }
 
 export function handleSubmit() {
-  return (dispatch) => {
-    // Clean up simulator and start Data Gather Phase
-    dispatch(simulatorActions.setPhaseSubmitCalled(true));
-    dispatch(simulatorActions.setPhaseInProgress(false));
-    dispatch(simulatorActions.closeSimulatorWindow());
-    dispatch(simulatorActions.resetTables());
-    dispatch(simulatorActions.startGatherDataPhase());
+  return (dispatch, getState) => {
+    const { currentPhase } = getState();
+    // Clean up simulator and start Data Gather Phase unless we are
+    // already in it
+    if (currentPhase !== phases.GATHER_DATA) {
+      dispatch(simulatorActions.setPhaseSubmitCalled(true));
+      dispatch(simulatorActions.setPhaseInProgress(false));
+      dispatch(simulatorActions.closeSimulatorWindow());
+      dispatch(simulatorActions.resetTables());
+      dispatch(simulatorActions.startGatherDataPhase());
+    }
   };
 }
 
