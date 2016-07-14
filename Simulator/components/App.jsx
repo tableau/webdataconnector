@@ -92,10 +92,10 @@ class App extends Component {
 
     return (
       <div className="simulator-app">
+        <SimulatorNavbar
+          resetSimulator={this.resetSimulator}
+        />
         <Grid fluid>
-          <SimulatorNavbar
-            resetSimulator={this.resetSimulator}
-          />
           <Col md={12} className="address-bar">
             <AddressBar
               disabled={inDataGatherPhase}
