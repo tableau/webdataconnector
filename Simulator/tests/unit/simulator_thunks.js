@@ -22,6 +22,11 @@ describe('Thunks', () => {
   describe('startConnector Thunk', sinon.test(function() {
     it('startConnector Creates the Right Actions', function () {
       const input = consts.phases.INTERACTIVE;
+      const commitUrlActions= [
+        { type: "SET_WDC_URL", payload: consts.defaultUrl },
+        { type: "SET_MOST_RECENT_URLS", payload: consts.samples},
+      ];
+
       const closeSimulatorActions = [
         { type: "SET_SHOULD_HAVE_GATHER_DATA_FRAME", payload: false },
         { type: "SET_SIMULATOR_WINDOW" },
@@ -29,10 +34,10 @@ describe('Thunks', () => {
 
       const setWindowAsExternalActions = [{ type: "SET_SIMULATOR_WINDOW" }];
       const expectedActions = [
-        { type: "SET_MOST_RECENT_URLS", payload: consts.samples},
         { type: "RESET_TABLES" },
         { type: "SET_CURRENT_PHASE", payload: input },
         { type: "SET_PHASE_IN_PROGRESS", payload: true },
+        ...commitUrlActions,
         ...closeSimulatorActions,
         ...setWindowAsExternalActions,
       ];
@@ -93,6 +98,39 @@ describe('Thunks', () => {
       const store = mockStore(consts.defaultState);
 
       store.dispatch(simulatorActions.setWindowAsGatherFrame(input))
+      store.getActions().should.deepEqual(expectedActions);
+    });
+  }));
+
+  describe('commitUrl', sinon.test(function() {
+    it('commitUrl Creates the Right Actions', function () {
+      const expectedActions  = [
+        { type: "SET_WDC_URL", payload: consts.defaultUrl },
+        { type: "SET_MOST_RECENT_URLS", payload: consts.samples},
+      ];
+
+      const store = mockStore(consts.defaultState);
+
+      store.dispatch(simulatorActions.commitUrl())
+      store.getActions().should.deepEqual(expectedActions);
+    });
+
+    it('commitUrl Creates the Right Actions with New Url', function () {
+      const newUrl = "newUrl.com";
+      const cleanedUrl = "http://newUrl.com";
+      const newMRUs = [cleanedUrl, ...consts.samples].slice(0, -1);
+
+      const expectedActions  = [
+        { type: "SET_WDC_URL", payload: cleanedUrl},
+        { type: "SET_MOST_RECENT_URLS", payload: newMRUs},
+      ];
+
+      const store = mockStore({
+        ...consts.defaultState,
+        wdcUrl: newUrl,
+      });
+
+      store.dispatch(simulatorActions.commitUrl())
       store.getActions().should.deepEqual(expectedActions);
     });
   }));

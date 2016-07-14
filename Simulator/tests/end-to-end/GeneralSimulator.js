@@ -185,23 +185,4 @@ describe('General Simulator Tests', function(){
         done();
       });
   });
-
-  it("Should Reset", function(done){
-    const correctName = '';
-    driver.findElement({ id: 'reset-btn' })
-      .then(function (btn) {
-        return btn.click();
-      })
-      .then(function () {
-        driver.sleep(500);
-        return driver.findElement({id:'connectionName'})
-      })
-      .then(function(field) {
-        return field.getAttribute("value");
-      })
-      .then(function(connectionName) {
-        connectionName.should.be.equal(correctName);
-        done();
-      });
-  });
 });
