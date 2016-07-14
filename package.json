@@ -45,7 +45,7 @@
     "mocha": "^2.5.3",
     "npm-run-all": "^2.1.1",
     "nyc": "^6.6.1",
-    "react-addons-test-utils": "^15.2.0",
+    "react-addons-test-utils": "15.1.0",
     "redux-mock-store": "^1.1.2",
     "selenium-webdriver": "^2.53.3",
     "should": "^9.0.2",

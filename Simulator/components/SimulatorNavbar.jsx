@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { Navbar } from 'react-bootstrap';
 
 //----------------------Navbar---------------------//
 // Component for the top navbar, purely presentational
 //-------------------------------------------------//
 
-class Navbar extends Component {
+class SimulatorNavbar extends Component {
   render() {
     return (
-      <div className="navbar navbar-default">
+      <Navbar fluid>
         <img
           className="tableau-logo"
           src="tableau_logo.png"
@@ -17,9 +18,13 @@ class Navbar extends Component {
         <h2 style={{ display: 'inline', verticalAlign: 'middle' }}>
           Web Data Connector Simulator 2.0
         </h2>
-      </div>
+      </Navbar>
     );
   }
 }
 
-export default Navbar;
+SimulatorNavbar.prototypes = {
+  resetSimulator: PropTypes.func.isRequired,
+};
+
+export default SimulatorNavbar;
