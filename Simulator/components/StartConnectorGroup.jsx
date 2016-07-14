@@ -31,7 +31,7 @@ class StartConnectorGroup extends Component {
             id="interactive-btn"
             onClick={this.props.startInteractivePhase}
             bsStyle="success"
-            disabled={this.props.isInProgress || this.props.isWDCUrlEmpty}
+            disabled={this.props.isInProgress || this.props.isAddressBarEmpty}
           >
             Start Interactive Phase
           </Button>
@@ -40,7 +40,7 @@ class StartConnectorGroup extends Component {
             onClick={this.props.startAuthPhase}
             bsStyle="success"
             style={{ marginLeft: '4px' }}
-            disabled={this.props.isInProgress || this.props.isWDCUrlEmpty}
+            disabled={this.props.isInProgress || this.props.isAddressBarEmpty}
           >
             Start Auth Phase
           </Button>
@@ -68,7 +68,7 @@ class StartConnectorGroup extends Component {
 StartConnectorGroup.proptypes = {
   isInProgress: PropTypes.bool.isRequired,
   interactivePhaseInProgress: PropTypes.bool.isRequired,
-  isWDCUrlEmpty: PropTypes.bool.isRequired,
+  isAddressBarEmpty: PropTypes.bool.isRequired,
   wdcShouldFetchAll: PropTypes.bool.isRequired,
   startAuthPhase: PropTypes.func.isRequired,
   startInteractivePhase: PropTypes.func.isRequired,

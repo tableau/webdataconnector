@@ -9,22 +9,22 @@ import {
 
 //----------------------Address Bar---------------------//
 // Component with the UI elements necessary to update the
-// state of wdcUrl and reset the state of the simulator
+// state of addressBarUrl
 //------------------------------------------------------//
 
 class AddressBar extends Component {
   constructor(props) {
     super(props);
-    this.handleWdcUrlInput = this.handleWdcUrlInput.bind(this);
-    this.handleWdcUrlSelect = this.handleWdcUrlSelect.bind(this);
+    this.handleAddressBarUrlInput = this.handleAddressBarUrlInput.bind(this);
+    this.handleAddressBarUrlSelect = this.handleAddressBarUrlSelect.bind(this);
   }
 
-  handleWdcUrlInput(e) {
-    this.props.setWdcUrl(e.target.value);
+  handleAddressBarUrlInput(e) {
+    this.props.setAddressBarUrl(e.target.value);
   }
 
-  handleWdcUrlSelect(eventKey) {
-    this.props.setWdcUrl(eventKey);
+  handleAddressBarUrlSelect(eventKey) {
+    this.props.setAddressBarUrl(eventKey);
   }
 
   render() {
@@ -44,17 +44,15 @@ class AddressBar extends Component {
           <FormControl
             id="address-input"
             type="text"
-            disabled={this.props.disabled}
             label="WDC URL"
-            value={this.props.wdcUrl}
-            onChange={this.handleWdcUrlInput}
+            value={this.props.addressBarUrl}
+            onChange={this.handleAddressBarUrlInput}
           />
           <DropdownButton
             id="most-recent-urls"
             title="Recent"
-            disabled={this.props.disabled}
             componentClass={InputGroup.Button}
-            onSelect={this.handleWdcUrlSelect}
+            onSelect={this.handleAddressBarUrlSelect}
             pullRight
           >
             {menuItems}
@@ -66,10 +64,9 @@ class AddressBar extends Component {
 }
 
 AddressBar.prototypes = {
-  wdcUrl: PropTypes.string.isRequired,
+  addressBarUrl: PropTypes.string.isRequired,
   mostRecentUrl: PropTypes.arrayOf(PropTypes.string).isRequired,
-  disabled: PropTypes.bool.isRequired,
-  setWdcUrl: PropTypes.func.isRequired,
+  setAddressBarUrl: PropTypes.func.isRequired,
 };
 
 export default AddressBar;

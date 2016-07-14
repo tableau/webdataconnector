@@ -11,6 +11,7 @@ import * as consts from '../utils/consts';
 // Wdc Actions
 export const setWdcShouldFetchAllTables = createAction('SET_WDC_SHOULD_FETCH_ALL_TABLES');
 export const setWdcAttrs = createAction('SET_WDC_ATTRS');
+export const setAddressBarUrl = createAction('SET_ADDRESS_BAR_URL');
 export const setWdcUrl = createAction('SET_WDC_URL');
 export const setMostRecentUrls = createAction('SET_MOST_RECENT_URLS');
 
@@ -32,8 +33,8 @@ export const addTables = createAction('ADD_TABLES');
 export const resetState = createAction('RESET_STATE', () => {
   const mostRecentUrls = Cookie.getJSON('mostRecentUrls') || consts.samples;
   // copy mostRecentUrls to sever references
-  const wdcUrl = [...mostRecentUrls][0];
-  return { ...consts.defaultState, wdcUrl, mostRecentUrls };
+  const addressBarUrl = [...mostRecentUrls][0];
+  return { ...consts.defaultState, addressBarUrl, mostRecentUrls };
 });
 
 export const resetPhaseState = createAction('RESET_PHASE_STATE');
@@ -115,9 +116,9 @@ export function commitUrl() {
   return (dispatch, getState) => {
     // Commit url changes once we are sure the user is done
     let updatedUrls;
-    const { wdcUrl, mostRecentUrls } = getState();
-    const urlIndex = mostRecentUrls.indexOf(wdcUrl);
-    const cleanedUrl = cleanUrl(wdcUrl);
+    const { addressBarUrl, mostRecentUrls } = getState();
+    const urlIndex = mostRecentUrls.indexOf(addressBarUrl);
+    const cleanedUrl = cleanUrl(addressBarUrl);
 
     if (urlIndex === -1) {
       updatedUrls = [cleanedUrl, ...mostRecentUrls].slice(0, -1);
@@ -130,6 +131,7 @@ export function commitUrl() {
 
     Cookie.set('mostRecentUrls', updatedUrls);
     dispatch(setWdcUrl(cleanedUrl));
+    dispatch(setAddressBarUrl(cleanedUrl));
     dispatch(setMostRecentUrls(updatedUrls));
   };
 }
