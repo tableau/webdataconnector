@@ -52,8 +52,8 @@ class App extends Component {
     // to minimize unnecessary rerenders)
 
     //Bind WDC Actions
-    this.setWdcUrl = (url) =>
-      dispatch(simulatorActions.setWdcUrl(url));
+    this.setAddressBarUrl = (url) =>
+      dispatch(simulatorActions.setAddressBarUrl(url));
     this.setWdcShouldFetchAllTables = (should) =>
       dispatch(simulatorActions.setWdcShouldFetchAllTables(should));
     this.setWdcAttrs = (attrs) =>
@@ -85,10 +85,8 @@ class App extends Component {
     const dataGatheringPhaseInProgress = this.props.phaseInProgress &&
                                          this.props.currentPhase === consts.phases.GATHER_DATA;
 
-    const inDataGatherPhase = this.props.currentPhase === consts.phases.GATHER_DATA;
-
     const hasData = !!this.props.tables && Object.keys(this.props.tables).length > 0;
-    const isWdcUrlEmpty = (this.props.wdcUrl === '');
+    const isAddressBarEmpty = (this.props.addressBarUrll === '');
 
     return (
       <div className="simulator-app">
@@ -98,17 +96,16 @@ class App extends Component {
         <Grid fluid>
           <Col md={12} className="address-bar">
             <AddressBar
-              disabled={inDataGatherPhase}
-              wdcUrl={this.props.wdcUrl}
+              addressBarUrl={this.props.addressBarUrl}
               mostRecentUrls={this.props.mostRecentUrls}
-              setWdcUrl={this.setWdcUrl}
+              setAddressBarUrl={this.setAddressBarUrl}
             />
           </Col>
           <Col md={6} className="run-connector">
             <StartConnectorGroup
               isInProgress={this.props.phaseInProgress}
               interactivePhaseInProgress={interactivePhaseInProgress}
-              isWdcUrlEmpty={isWdcUrlEmpty}
+              isAddressBarEmpty={isAddressBarEmpty}
               startInteractivePhase={this.startInteractivePhase}
               startAuthPhase={this.startAuthPhase}
               cancelCurrentPhase={this.cancelCurrentPhase}

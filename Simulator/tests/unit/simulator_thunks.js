@@ -24,6 +24,7 @@ describe('Thunks', () => {
       const input = consts.phases.INTERACTIVE;
       const commitUrlActions= [
         { type: "SET_WDC_URL", payload: consts.defaultUrl },
+        { type: "SET_ADDRESS_BAR_URL", payload: consts.defaultUrl },
         { type: "SET_MOST_RECENT_URLS", payload: consts.samples},
       ];
 
@@ -106,6 +107,7 @@ describe('Thunks', () => {
     it('commitUrl Creates the Right Actions', function () {
       const expectedActions  = [
         { type: "SET_WDC_URL", payload: consts.defaultUrl },
+        { type: "SET_ADDRESS_BAR_URL", payload: consts.defaultUrl },
         { type: "SET_MOST_RECENT_URLS", payload: consts.samples},
       ];
 
@@ -122,12 +124,13 @@ describe('Thunks', () => {
 
       const expectedActions  = [
         { type: "SET_WDC_URL", payload: cleanedUrl},
+        { type: "SET_ADDRESS_BAR_URL", payload: cleanedUrl},
         { type: "SET_MOST_RECENT_URLS", payload: newMRUs},
       ];
 
       const store = mockStore({
         ...consts.defaultState,
-        wdcUrl: newUrl,
+        addressBarUrl: newUrl,
       });
 
       store.dispatch(simulatorActions.commitUrl())

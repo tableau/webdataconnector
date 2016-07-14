@@ -46,6 +46,7 @@ export const defaultState = {
     password: '',
     locale: 'en-us',
   },
+  addressBarUrl: defaultUrl,
   wdcUrl: defaultUrl,
   mostRecentUrls: defaultMostRecentUrls,
   wdcShouldFetchAllTables: false,
