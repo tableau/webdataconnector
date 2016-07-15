@@ -9,14 +9,14 @@ img {
     max-width: 90%;
 }
 
-/* Custom CSS for home page */ 
+/* Custom CSS for home page */
 .hero-spacer {
     margin-top: 50px;
 }
 
 .hero-feature {
     margin-bottom: 30px;
-} 
+}
 
 .blog-content-wrap {
     margin-top: 20px;
@@ -29,7 +29,16 @@ img {
     color: #cccccc;
 }
 
-/* Custom CSS for header and footer */ 
+/* Prevent in-page links from scrolling under top nav */
+h2::before, h3::before {
+  display: block;
+  content: " ";
+  margin-top: -80px;
+  height: 80px;
+  visibility: hidden;
+}
+
+/* Custom CSS for header and footer */
 .site-header
 {
     width: 100%;
@@ -49,7 +58,7 @@ img.logo
     height: 28px;
 }
 
-.icon > svg path 
+.icon > svg path
 {
     fill: #333333;
 }
