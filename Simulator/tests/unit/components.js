@@ -35,10 +35,10 @@ describe("Components", function() {
     it("Should Render", function () {
       addressBar = shallow(
         <AddressBar
-          wdcUrl=""
+          addressBarUrl=""
           mostRecentUrls={["url", "otherUrl"]}
           disabled={ false }
-          setWdcUrl={ spy }
+          setAddressBarUrl={ spy }
           resetSimulator={ ()=>{} }
         />
       );
@@ -50,8 +50,8 @@ describe("Components", function() {
     it("Should Handle Clicks Correctly", function () {
       const inputEvent = { target: { value: 'url' } };
       const selectEvent = "newUrl";
-      instance.handleWdcUrlInput(inputEvent);
-      instance.handleWdcUrlSelect(selectEvent);
+      instance.handleAddressBarUrlInput(inputEvent);
+      instance.handleAddressBarUrlSelect(selectEvent);
       spy.calledTwice.should.be.true();
       spy.calledWith("url").should.be.true();
       spy.calledWith("newUrl").should.be.true();
