@@ -43,13 +43,6 @@ tableau.log("My console message goes here!");
 
 ### Simulator tips {#simulator-tips}
 
-* You can preset the connector that you want to load in the simulator with the `?src=` query parameter. For example, to
-  load the `earthquakeMultitable` sample, you might enter the following URL:
-
-  ```
-  http://localhost:8888/Simulator/?src=../Examples/html/earthquakeMultitable.html
-  ```
-
 * By default, the test web server runs on port 8888. To change the port number, edit the `http-server` script in the
   `package.json` file.  For example, you might enter the following to change the port to 8000:
 
