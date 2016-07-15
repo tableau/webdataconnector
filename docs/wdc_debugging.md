@@ -18,6 +18,8 @@ This page includes information about developing and debugging your connectors bo
 
 * [Simulator debugging tips](#simulator-tips)
 
+* [Caching in the simulator](#simulator-caching)
+
 * [General browser debugging tips](#simulator-tips)
 
 * [Debugging in Tableau Desktop](#debugging-tableau)
@@ -52,6 +54,26 @@ tableau.log("My console message goes here!");
 
 * To make it easier to load files into the simulator, keep the simulator and web data connector .html files that you are
   testing in the same folder.
+
+
+### Caching in the simulator {#simulator-caching}
+
+If changes to your connector do not appear to take effect in the simulator, the browser might be caching a previous version of your
+connector. Here are some ways to work around caching issues:
+
+* In some browsers, you can press **Ctrl+Shift+R** or **Cmd+Shift+R** to clear the cache for the current page and reload
+  it.
+
+* Open the simulator in an incognito window which does not store cookies or cache pages. Note that the list of recent
+  connectors will not be stored if cookies are disabled.
+
+* In Google Chrome, you can disable caching while the developer tools are open.
+
+  1. Open Chrome Developer Tools.
+
+  1. Press **F1** to view the settings.
+
+  1. On the **Preferences** tab, under **Network**, select the **Disable caching** option.
 
 ### General browser debugging tips {#browser-tips}
 
