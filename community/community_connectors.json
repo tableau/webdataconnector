@@ -347,7 +347,7 @@
         "github_username": "benlower",
         "tags": ["v_2.0"],
         "description": "Get weather data from Forecast.io.",
-        "source_code": "github.com/benlower/tableau-wdc-forecastio"
+        "source_code": "https://github.com/benlower/tableau-wdc-forecastio"
     },
     {
         "name": "Pedestrian Counts across Melbourne City",
@@ -392,7 +392,7 @@
         "github_username": "saviohenriques",
         "tags": ["v_2.0"],
         "description": "Connects to OECD Air Emissions data http://stats.oecd.org/viewhtml.aspx?datasetcode=AIR_EMISSIONS",
-        "source_code": "github.com/saviohenriques/sdmxjsonwdc"
+        "source_code": "https://github.com/saviohenriques/sdmxjsonwdc"
     },
     {
         "name": "Random Data Generator",
@@ -410,6 +410,6 @@
         "github_username": "stephdietzel",
         "tags": ["v_2.0"],
         "description": "A Tableau Web Data Connector for http://www.anapioficeandfire.com/",
-        "source_code": "github.com/stephdietzel/ConnectorOfIceAndFire"
+        "source_code": "https://github.com/stephdietzel/ConnectorOfIceAndFire"
     }
 ]
