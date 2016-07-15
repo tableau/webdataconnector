@@ -402,5 +402,14 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": ""
+    },
+    {
+        "name": "Connector of Ice and Fire",
+        "url": "https://stephdietzel.github.io/ConnectorOfIceAndFire/connect.html",
+        "author": "Steph Dietzel",
+        "github_username": "stephdietzel",
+        "tags": ["v_2.0"],
+        "description": "A Tableau Web Data Connector for http://www.anapioficeandfire.com/",
+        "source_code": "github.com/stephdietzel/ConnectorOfIceAndFire"
     }
 ]
