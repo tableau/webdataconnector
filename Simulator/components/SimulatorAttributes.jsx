@@ -87,6 +87,38 @@ class SimulatorAttributes extends Component {
                   </small>
                 </OverlayTrigger>
               </PageHeader>
+              <ControlLabel> Platform OS </ControlLabel>
+              <FormControl
+                type="text"
+                disabled={this.props.disabled}
+                id="platformOS"
+                value={this.props.wdcAttrs.platformOS}
+                onChange={this.handleAttrChange}
+              />
+              <ControlLabel> Platform Version </ControlLabel>
+              <FormControl
+                type="text"
+                disabled={this.props.disabled}
+                id="platformVersion"
+                value={this.props.wdcAttrs.platformVersion}
+                onChange={this.handleAttrChange}
+              />
+              <ControlLabel> Platform Edition </ControlLabel>
+              <FormControl
+                type="text"
+                disabled={this.props.disabled}
+                id="platformEdition"
+                value={this.props.wdcAttrs.platformEdition}
+                onChange={this.handleAttrChange}
+              />
+              <ControlLabel> Platform Build Number </ControlLabel>
+              <FormControl
+                type="text"
+                disabled={this.props.disabled}
+                id="platformBuildNumber"
+                value={this.props.wdcAttrs.platformBuildNumber}
+                onChange={this.handleAttrChange}
+              />
               <ControlLabel> Auth Purpose</ControlLabel>
               <FormControl
                 componentClass="select"
