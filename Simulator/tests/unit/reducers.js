@@ -12,7 +12,11 @@ describe("Reducer", function() {
         connectionData: 'connectionData',
         username: 'username',
         password: 'password',
-        locale: 'en-us',
+        platformOS: "platformOs",
+        platformVersion: "platformVersion",
+        platformBuildNumber: "platformBuildNumber",
+        authPurpose: "authPurpose",
+        locale: "en-us",
       };
 
       const action = {
@@ -229,6 +233,7 @@ describe("Reducer", function() {
           connectionData: 'data',
           username: 'name',
           password: 'pw',
+          authPurpose: "ap",
           locale: 'en-us',
         },
       };

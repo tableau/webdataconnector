@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Button, Checkbox } from 'react-bootstrap';
+import { Button, Checkbox, PageHeader } from 'react-bootstrap';
 
 //----------------------Start Connector Group---------------------//
 // Component which Buttons to Start Both the Interactive
@@ -20,11 +20,9 @@ class StartConnectorGroup extends Component {
     return (
       <div>
         <div>
-          <h2
-            style={{ verticalAlign: 'middle', display: 'inline-block' }}
-          >
+          <PageHeader>
             Run Connector
-          </h2>
+          </PageHeader>
         </div>
         <div>
           <Button
@@ -35,15 +33,18 @@ class StartConnectorGroup extends Component {
           >
             Start Interactive Phase
           </Button>
-          <Button
-            id="auth-btn"
-            onClick={this.props.startAuthPhase}
-            bsStyle="success"
-            style={{ marginLeft: '4px' }}
-            disabled={this.props.isInProgress || this.props.isAddressBarEmpty}
-          >
-            Start Auth Phase
-          </Button>
+          {this.props.showAdvanced ?
+            <Button
+              id="auth-btn"
+              onClick={this.props.startAuthPhase}
+              bsStyle="success"
+              style={{ marginLeft: '4px' }}
+              disabled={this.props.isInProgress || this.props.isAddressBarEmpty}
+            >
+              Start Auth Phase
+            </Button>
+            : null
+          }
           {this.props.interactivePhaseInProgress ?
             <Button
               onClick={this.props.cancelCurrentPhase}
@@ -67,6 +68,7 @@ class StartConnectorGroup extends Component {
 
 StartConnectorGroup.proptypes = {
   isInProgress: PropTypes.bool.isRequired,
+  showAdvanced: PropTypes.bool.isRequired,
   interactivePhaseInProgress: PropTypes.bool.isRequired,
   isAddressBarEmpty: PropTypes.bool.isRequired,
   wdcShouldFetchAll: PropTypes.bool.isRequired,

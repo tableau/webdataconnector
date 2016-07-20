@@ -5,7 +5,7 @@ import * as simulatorActions from './simulator_actions';
 // Receiving Message Thunks
 export function receiveMessage(payload) {
   // Routes received messages to other thunks as necessary
-  return (dispatch) => {
+  return (dispatch, getState) => {
     try {
       const { msgData, msgName, props: attrs, version } = JSON.parse(payload.data);
 
@@ -16,8 +16,11 @@ export function receiveMessage(payload) {
         toastr.error(errmsg, 'unsupported wdc version error:');
       }
 
+      const { wdcAttrs } = getState();
       if (attrs) {
-        dispatch(simulatorActions.setWdcAttrs(attrs));
+        // Merge new attributes into old to deal with various versions of the shim and simulator
+        // exposing different attributes
+        dispatch(simulatorActions.setWdcAttrs({ ...wdcAttrs, ...attrs }));
       }
 
       switch (msgName) {
