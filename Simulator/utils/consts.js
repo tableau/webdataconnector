@@ -29,6 +29,10 @@ export const defaultWdcAttrs = {
   connectionData: '',
   username: '',
   password: '',
+  platformOS: '',
+  platformEdition: '',
+  platformVersion: '',
+  platformBuildNumber: '',
   authPurpose: 'ephemeral',
   locale: 'en-us',
 };

@@ -116,6 +116,10 @@ describe("Components", function() {
             connectionData: "",
             username: "",
             password: "",
+            platformOS: "",
+            platformVersion: "",
+            platformEdition: "",
+            platformBuildNumber: "",
             authPurpose: "",
             locale: "en-us",
           }}
@@ -133,6 +137,10 @@ describe("Components", function() {
         connectionData: "",
         username: "",
         password: "",
+        platformOS: "",
+        platformVersion: "",
+        platformEdition: "",
+        platformBuildNumber: "",
         authPurpose: "",
         locale: "en-us",
       };

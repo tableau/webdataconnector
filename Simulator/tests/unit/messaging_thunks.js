@@ -33,11 +33,15 @@ describe('Messaging Thunks', function() {
         msgData: "",
         msgName: consts.eventNames.SHUTDOWN,
         props: {
-          authPurpose: "ephemeral",
           connectionName: "name",
           connectionData: "data",
           username: "username",
           password: "password",
+          platformOS: "platformOs",
+          platformVersion: "platformVersion",
+          platformEdition: "platformEdition",
+          platformBuildNumber: "platformBuildNumber",
+          authPurpose: "ephemeral",
           locale: "en-us"
         },
         version: "2.0.1"
