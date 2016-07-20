@@ -13,7 +13,7 @@ layout: news
         {% include header.html %}
         <ul class="blogul">
             {% for post in site.posts %}
-            <div class="row">
+            <div>
                 <h1>{{ post.title }}</h1>
                 <hr>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on {{ post.date | date: "%-d %B %Y" }}</p>

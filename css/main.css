@@ -88,7 +88,7 @@ img.logo
 
 footer {
     margin: 30px 0;
-    margin-top: 100px;
+    text-align: center;
 }
 
 .footer-hr {
@@ -171,6 +171,10 @@ html {
 /* Custom css for news section */
 .blog-content {
     margin-bottom: 70px;
+}
+
+.blogul {
+    padding: 0px;
 }
 
 .blogul h1 {
