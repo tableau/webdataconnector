@@ -29,6 +29,12 @@ export const setShouldHaveGatherDataFrame = createAction('SET_SHOULD_HAVE_GATHER
 export const setTables = createAction('SET_TABLES');
 export const addTables = createAction('ADD_TABLES');
 
+// Advanced UI Actions
+export const setShowAdvanced = createAction('SET_SHOW_ADVANCED', (show) => {
+  Cookie.set('showAdvanced', show);
+  return show;
+});
+
 // Reset Actions
 export const resetState = createAction('RESET_STATE', () => {
   const mostRecentUrls = Cookie.getJSON('mostRecentUrls') || consts.samples;

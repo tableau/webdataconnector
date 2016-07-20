@@ -1,4 +1,5 @@
 import { handleActions } from 'redux-actions';
+import { defaultWdcAttrs } from '../utils/consts';
 
 // The redux reducers, which create the next state object
 // from the payload of any given action.
@@ -26,6 +27,8 @@ export default handleActions({
     ({ ...state, phaseInitCallbackCalled: action.payload }),
   SET_PHASE_SUBMIT_CALLED: (state, action) =>
     ({ ...state, phaseSubmitCalled: action.payload }),
+  SET_SHOW_ADVANCED: (state, action) =>
+    ({ ...state, showAdvanced: action.payload }),
   SET_SHOULD_HAVE_GATHER_DATA_FRAME: (state, action) =>
     ({ ...state, shouldHaveGatherDataFrame: action.payload }),
   SET_SIMULATOR_WINDOW: (state, action) =>
@@ -41,16 +44,7 @@ export default handleActions({
     phaseSubmitCalled: false,
     phaseInitCallbackCalled: false,
   }),
-  RESET_WDC_ATTRS: (state) => ({
-    ...state,
-    wdcAttrs: {
-      connectionName: '',
-      connectionData: '',
-      username: '',
-      password: '',
-      locale: 'en-us',
-    },
-  }),
+  RESET_WDC_ATTRS: (state) => ({ ...state, wdcAttrs: defaultWdcAttrs }),
   RESET_TABLES: (state) => ({ ...state, tables: {} }),
   RESET_TABLE_DATA: (state, action) => {
     const { tables } = state;

@@ -24,6 +24,16 @@ export const phases = {
   GATHER_DATA: 'gatherData',
 };
 
+export const defaultWdcAttrs = {
+  connectionName: '',
+  connectionData: '',
+  username: '',
+  password: '',
+  authPurpose: 'ephemeral',
+  locale: 'en-us',
+};
+
+export const defaultShowAdvanced = Cookie.getJSON('showAdvanced') || false;
 
 export const samples = [
   '../Examples/html/earthquakeUSGS.html',
@@ -35,20 +45,16 @@ export const samples = [
 
 export const defaultMostRecentUrls = Cookie.getJSON('mostRecentUrls') || [...samples];
 export const defaultUrl = [...defaultMostRecentUrls][0];
+
 export const WINDOW_PROPS = 'height=500,width=800';
 
 export const defaultState = {
   // Originally wdcProps, renamed to avoid confusion with component props
-  wdcAttrs: {
-    connectionName: '',
-    connectionData: '',
-    username: '',
-    password: '',
-    locale: 'en-us',
-  },
+  wdcAttrs: defaultWdcAttrs,
   addressBarUrl: defaultUrl,
   wdcUrl: defaultUrl,
   mostRecentUrls: defaultMostRecentUrls,
+  showAdvanced: defaultShowAdvanced,
   wdcShouldFetchAllTables: false,
   shouldHaveGatherDataFrame: false,
   currentPhase: phases.INTERACTIVE,

@@ -5,6 +5,7 @@ import { Provider, connect } from 'react-redux';
 
 import { Grid,
          Col,
+         PageHeader,
          Label } from 'react-bootstrap';
 
 // Actions
@@ -69,6 +70,9 @@ class App extends Component {
     this.sendGetData = (tablesAndIncValues, isFreshFetch) =>
       dispatch(messagingActions.sendGetData(tablesAndIncValues, isFreshFetch));
 
+    // Show Advanced Actions
+    this.setShowAdvanced = (show) =>
+      dispatch(simulatorActions.setShowAdvanced(show));
     // Bind Window Actions
     this.setWindowAsGatherFrame = (frame) =>
       dispatch(simulatorActions.setWindowAsGatherFrame(frame));
@@ -91,7 +95,8 @@ class App extends Component {
     return (
       <div className="simulator-app">
         <SimulatorNavbar
-          resetSimulator={this.resetSimulator}
+          showAdvanced={this.props.showAdvanced}
+          setShowAdvanced={this.setShowAdvanced}
         />
         <Grid fluid>
           <Col md={12} className="address-bar">
@@ -104,6 +109,7 @@ class App extends Component {
           <Col md={6} className="run-connector">
             <StartConnectorGroup
               isInProgress={this.props.phaseInProgress}
+              showAdvanced={this.props.showAdvanced}
               interactivePhaseInProgress={interactivePhaseInProgress}
               isAddressBarEmpty={isAddressBarEmpty}
               startInteractivePhase={this.startInteractivePhase}
@@ -116,16 +122,13 @@ class App extends Component {
           <Col md={6} className="interactive-phase">
             <SimulatorAttributes
               disabled={this.props.phaseInProgress}
+              showAdvanced={this.props.showAdvanced}
               wdcAttrs={this.props.wdcAttrs}
               setWdcAttrs={this.setWdcAttrs}
             />
           </Col>
-          <Col md={12} className="hr-col" >
-            <hr />
-          </Col>
-
           <Col md={12} className="table-header" >
-            <h2> Tables </h2>
+            <PageHeader> Tables </PageHeader>
           </Col>
           {hasData ?
             <Col md={12} className="results-tables">
@@ -136,7 +139,11 @@ class App extends Component {
               />
             </Col>
             :
-            <Col md={12} className="no-results-label" >
+            <Col
+              md={12}
+              className="no-results-label"
+              style={{ paddingBottom: 10 }}
+            >
               <Label> No Data Gathered </Label>
             </Col>
           }
