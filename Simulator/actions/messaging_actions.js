@@ -202,14 +202,17 @@ export function handleAbort(errMsg) {
 }
 
 export function handleAbortForAuth(errMsg) {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     // Need auth, close the simulator, tell the user
     const toastTitle = 'The WDC has been aborted for auth, ' +
                      'use the "Start Auth Phase" to test ' +
                      'your WDC Auth Mode:';
-    dispatch(simulatorActions.setPhaseInProgress(false));
-    dispatch(simulatorActions.closeSimulatorWindow());
-    toastr.error(errMsg, toastTitle);
+    const { currentPhase } = getState();
+    if (currentPhase === phases.GATHER_DATA) {
+      dispatch(simulatorActions.setPhaseInProgress(false));
+      dispatch(simulatorActions.closeSimulatorWindow());
+      toastr.error(errMsg, toastTitle);
+    }
   };
 }
 

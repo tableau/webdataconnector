@@ -191,7 +191,7 @@ describe('Messaging Thunks', function() {
   });
 
   describe('handleAbortForAuth Thunk', function() {
-    it('Should Create the Right Actions', function () {
+    it('Should Create the Right Actions in Gather Data Phase', function () {
       const closeSimulatorActions = [
         { type: "SET_SHOULD_HAVE_GATHER_DATA_FRAME", payload: false },
         { type: "SET_SIMULATOR_WINDOW" },
@@ -200,6 +200,16 @@ describe('Messaging Thunks', function() {
         { type: "SET_PHASE_IN_PROGRESS", payload: false },
         ...closeSimulatorActions,
       ];
+
+      const state = {...consts.defaultState, currentPhase: consts.phases.GATHER_DATA};
+      const store = mockStore(state);
+
+      store.dispatch(messagingActions.handleAbortForAuth());
+      store.getActions().should.deepEqual(expectedActions);
+    });
+
+    it('Should Create the No Actions in Other Phases', function () {
+      const expectedActions = [];
 
       const store = mockStore(consts.defaultState);
 
