@@ -212,6 +212,10 @@ export function handleAbortForAuth(errMsg) {
       dispatch(simulatorActions.setPhaseInProgress(false));
       dispatch(simulatorActions.closeSimulatorWindow());
       toastr.error(errMsg, toastTitle);
+    } else {
+      /* eslint-disable no-console */
+      console.log(`abortForAuth isn't supported in the ${currentPhase} phase`);
+      /* eslint-enable no-console */
     }
   };
 }
