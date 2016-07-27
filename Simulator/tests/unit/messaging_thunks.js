@@ -33,6 +33,7 @@ describe('Messaging Thunks', function() {
         msgData: "",
         msgName: consts.eventNames.SHUTDOWN,
         props: {
+          authPurpose: "ephemeral",
           connectionName: "name",
           connectionData: "data",
           username: "username",

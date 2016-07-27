@@ -20,10 +20,23 @@ describe("Components", function() {
   describe("SimulatorNavbar", function() {
     let spy = sinon.spy();
     let navbar;
+    let instance;
 
     it("Should Render", function () {
-      navbar = shallow(<SimulatorNavbar />);
+      navbar = shallow(
+        <SimulatorNavbar
+          showAdvanced={false}
+          setShowAdvanced={spy}
+        />);
       navbar.should.be.ok();
+      instance = navbar.instance();
+    });
+
+    it("Should Handle Clicks Correctly", function () {
+      const event = { target: { value: 'click' } };
+      instance.handleAdvancedClick(event);
+      spy.calledOnce.should.be.true();
+      spy.calledWith(true).should.be.true();
     });
   });
 
@@ -103,7 +116,8 @@ describe("Components", function() {
             connectionData: "",
             username: "",
             password: "",
-            locale: "en-us"
+            authPurpose: "",
+            locale: "en-us",
           }}
         />
       );
@@ -112,14 +126,15 @@ describe("Components", function() {
       simulatorAttributes.should.be.ok();
     });
 
-    it("Should Handle Clicks Correctly", function () {
+    it("Should Handle Input Correctly", function () {
       const event = { target: { id: "connectionName", value: "name"} };
       const newAttrs = {
         connectionName: "name",
         connectionData: "",
         username: "",
         password: "",
-        locale: "en-us"
+        authPurpose: "",
+        locale: "en-us",
       };
 
       instance.handleAttrChange(event);

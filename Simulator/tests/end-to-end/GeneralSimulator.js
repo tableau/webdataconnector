@@ -118,6 +118,20 @@ describe('General Simulator Tests', function(){
       });
   });
 
+  it("Should Be Able to Open Advanced Settings", function(done) {
+    driver.findElement({className:'advanced-btn'})
+      .then(function(btn) {
+        return btn.click();
+      })
+      .then(function() {
+        return driver.wait(until.elementsLocated({ className: 'advanced' }), timeout);
+      })
+      .then(function (elements) {
+        elements.length.should.be.above(0);
+        done();
+      });
+  })
+
   it("Should be Able to Enter Interactive Mode", function(done){
     driver.findElement({ id: 'interactive-btn' })
       .then(function (btn) {
