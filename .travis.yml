@@ -7,9 +7,9 @@ before_script:
 - sleep 3
 script:
 - 'if [[ "${TRAVIS_PULL_REQUEST}" = "false" ]]; then
-    npm run test:travis
+    npm run test:travis;
   else
-    npm run unit:coveralls
+    npm run unit:coveralls;
   fi'
 addons:
   sauce_connect:
