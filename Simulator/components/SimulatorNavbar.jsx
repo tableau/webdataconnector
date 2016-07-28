@@ -34,7 +34,7 @@ class SimulatorNavbar extends Component {
           <Button
             className="advanced-btn"
             onClick={this.handleAdvancedClick}
-            style={{ width: 125 }}
+            style={{ width: 125, marginTop: 5 }}
             pullRight
           >
             {this.props.showAdvanced ? 'Hide Advanced' : 'Show Advanced'}
