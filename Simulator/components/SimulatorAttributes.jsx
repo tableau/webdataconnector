@@ -32,7 +32,12 @@ class SimulatorAttributes extends Component {
       >
         These are properties normally given to a web data connector by the Tableau platform itself.
         They can be helpful for advanced users who need to test authentication, localization, or
-        across versions of the Tableau platform
+        across versions of the Tableau platform. You can set values through these inputs and then
+        access the values in your WDC through the tableau object. See the WDC&nbsp;
+        <a href="http://tableau.github.io/webdataconnector/ref/api_ref.html#webdataconnectorapi.tableau" target="_blank">
+          documentation
+        </a>
+        &nbsp;for more details
       </Popover>
     );
 
@@ -76,7 +81,7 @@ class SimulatorAttributes extends Component {
             <div className="advanced">
               <PageHeader>
                 Tableau Platform Properties
-                <OverlayTrigger trigger="hover" placement="top" overlay={tooltip}>
+                <OverlayTrigger trigger="click" rootClose placement="top" overlay={tooltip}>
                   <small style={{ marginLeft: 10 }}>
                     <Glyphicon glyph="glyphicon glyphicon-info-sign" />
                   </small>
