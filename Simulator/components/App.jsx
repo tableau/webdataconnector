@@ -22,6 +22,7 @@ import StartConnectorGroup from './StartConnectorGroup';
 import SimulatorAttributes from './SimulatorAttributes';
 import DataTables from './DataTables';
 import GatherDataFrame from './GatherDataFrame';
+import StandardConnections from './StandardConnections'
 
 // Utilities
 import * as consts from '../utils/consts';
