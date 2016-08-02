@@ -201,17 +201,18 @@ export function handleAbort(errMsg) {
   };
 }
 
-export function handleAbortForAuth(errMsg) {
+export function handleAbortForAuth(msg) {
   return (dispatch, getState) => {
     // Need auth, close the simulator, tell the user
-    const toastTitle = 'The WDC has been aborted for auth, ' +
-                     'use the "Start Auth Phase" to test ' +
-                     'your WDC Auth Mode:';
+    const toastTitle = 'The WDC has been aborted for auth ' +
+                       'and will now be launched in Auth Mode:';
     const { currentPhase } = getState();
     if (currentPhase === phases.GATHER_DATA) {
-      dispatch(simulatorActions.setPhaseInProgress(false));
-      dispatch(simulatorActions.closeSimulatorWindow());
-      toastr.error(errMsg, toastTitle);
+      toastr.info(msg, toastTitle);
+      setTimeout(()=>{
+        dispatch(simulatorActions.setPhaseInProgress(false));
+        dispatch(simulatorActions.startConnector(phases.AUTH));
+      }, 750);
     } else {
       /* eslint-disable no-console */
       console.log(`abortForAuth isn't supported in the ${currentPhase} phase`);
