@@ -6,7 +6,8 @@ import { Provider, connect } from 'react-redux';
 import { Grid,
          Col,
          PageHeader,
-         Label } from 'react-bootstrap';
+         Label,
+         Navigation } from 'react-bootstrap';
 
 // Actions
 import * as simulatorActions from '../actions/simulator_actions';
@@ -131,6 +132,26 @@ class App extends Component {
           <Col md={12} className="table-header" >
             <PageHeader> Tables </PageHeader>
           </Col>
+          {if (this.props.standardConnections) {
+            return (
+              <div className="standard-connections-wrapper">
+                <Nav bsStyle="tabs" activeKey="1" onSelect={this.handleStandardSelect}>
+                  this.props.standardConnections.map( (standardConnection, idx) =>
+                    return (
+                      <NavItem eventKey={idx}>{standardConnection.alias}</NavItem>
+                    );
+                  );
+                </Nav>
+                this.props.standardConnections.map( (standardConnection, idx) =>
+                  return (
+                    <StandardConnections data={standardConnection} index={idx}/>
+                  );
+                );
+              </div>
+            );
+          }
+
+          }
           {hasData ?
             <Col md={12} className="results-tables">
               <DataTables

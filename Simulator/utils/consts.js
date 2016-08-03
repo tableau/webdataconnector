@@ -67,4 +67,5 @@ export const defaultState = {
   phaseInitCallbackCalled: false,
   simulatorWindow: null,
   tables: {},
+  standardConnections: {},
 };

@@ -63,7 +63,8 @@
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
     "underscore": "^1.8.3",
-    "validate.js": "^0.10.0"
+    "validate.js": "^0.10.0",
+    "vis": "^4.16.1"
   },
   "nyc": {
     "include": [
