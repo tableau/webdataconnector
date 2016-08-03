@@ -111,6 +111,7 @@ describe("Components", function() {
         <SimulatorAttributes
           disabled={false}
           setWdcAttrs={spy}
+          showAdvanced={true}
           wdcAttrs={{
             connectionName: "",
             connectionData: "",

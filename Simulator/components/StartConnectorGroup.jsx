@@ -45,7 +45,7 @@ class StartConnectorGroup extends Component {
             </Button>
             : null
           }
-          {this.props.interactivePhaseInProgress ?
+          {this.props.interactiveOrAuthPhaseInProgress ?
             <Button
               onClick={this.props.cancelCurrentPhase}
               style={{ marginLeft: '4px' }}
@@ -69,7 +69,7 @@ class StartConnectorGroup extends Component {
 StartConnectorGroup.proptypes = {
   isInProgress: PropTypes.bool.isRequired,
   showAdvanced: PropTypes.bool.isRequired,
-  interactivePhaseInProgress: PropTypes.bool.isRequired,
+  interactiveOrAuthPhaseInProgress: PropTypes.bool.isRequired,
   isAddressBarEmpty: PropTypes.bool.isRequired,
   wdcShouldFetchAll: PropTypes.bool.isRequired,
   startAuthPhase: PropTypes.func.isRequired,
