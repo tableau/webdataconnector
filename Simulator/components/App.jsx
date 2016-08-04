@@ -84,11 +84,6 @@ class App extends Component {
     this.resetSimulator = () =>
       dispatch(simulatorActions.resetState());
 
-    this.viewKey = 1;
-  }
-
-  handleConnectionSelect(key) {
-    this.viewKey = key;
   }
 
   render() {
