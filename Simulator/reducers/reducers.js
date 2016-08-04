@@ -40,7 +40,7 @@ export default handleActions({
   ADD_TABLES: (state, action) =>
     ({ ...state, tables: { ...state.tables, ...action.payload } }),
   ADD_STANDARD_CONNECTIONS: (state, action) =>
-    ({ ...state, tables: { ...state.standardConnections, ...action.payload } }),
+    ({ ...state, standardConnections: { ...state.standardConnections, ...action.payload } }),
   RESET_STATE: (state, action) => action.payload,
   RESET_PHASE_STATE: (state) => ({
     ...state,
@@ -50,7 +50,7 @@ export default handleActions({
   }),
   RESET_WDC_ATTRS: (state) => ({ ...state, wdcAttrs: defaultWdcAttrs }),
   RESET_TABLES: (state) => ({ ...state, tables: {} }),
-  RESET_STANDARD_CONNECTIONS: (state) => ({ ...state, standardConnections: {} }),
+  RESET_STANDARD_CONNECTIONS: (state) => ({ ...state, standardConnections: [] }),
   RESET_TABLE_DATA: (state, action) => {
     const { tables } = state;
     tables[action.payload].data = [];

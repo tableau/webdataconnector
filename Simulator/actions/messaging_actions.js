@@ -47,6 +47,7 @@ export function receiveMessage(payload) {
 
         case eventNames.SCHEMA_CB: {
           const schema = msgData.schema;
+          const standardConnections = msgData.standardConnections;
           dispatch(handleSchemaCallback(schema, standardConnections));
           break;
         }
@@ -161,7 +162,7 @@ export function handleSchemaCallback(schema, standardConnections) {
     } else {
       toastr.error('Please see debug console for details.', 'WDC Validation Error');
     }
-    dispatch(simulatorActions.addStandardConnections(standardConnections));
+    dispatch(simulatorActions.setStandardConnections(standardConnections));
   };
 }
 

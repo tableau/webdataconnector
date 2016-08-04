@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import { Navigation } from 'react-bootstrap';
+import { Tabs,
+         Tab } from 'react-bootstrap';
 
 import Validator from './StandardConnectionValidator.jsx';
 import JoinViz from './JoinViz.jsx';
@@ -9,7 +10,7 @@ import JoinViz from './JoinViz.jsx';
 // for standard connections
 //-------------------------------------------------------//
 
-class StandardConnection extends components {
+class StandardConnections extends Component {
   constructor(props) {
     super(props);
     this.alias = props.data.alias;
@@ -17,103 +18,87 @@ class StandardConnection extends components {
     this.joins = props.data.joins;
     this.tableVisitMap = {};
     this.joinsVisitMap = {};
+    this.nsAlias = props.data.alias.replace(/\s+/g, '-');
     this.errors = [];
-    this.viewSwitch = true;
     this.validate();
   }
 
   render() {
-    if (!this.tables && !this.joins) return null;
-
+    const joinViz = (<JoinViz alias={this.alias} joins={this.joins} tables={this.tables} />);
     return (  //outer class defines children div css
-      <div className = {`standard-connections-${this.alias}`}>
-        <h4>{this.alias}</h4>
-        <Nav bsStyle="tabs" activeKey="1" onSelect = {this.handleSelect}>
-          <NavItem eventKey="1">Validation</NavItem>
-          <NavItem eventKey="2">Joins</NavItem>
-        </Nav>
-        {this.props.viewSwitch ? <JoinViz joins={this.joins} tables={this.tables}/> : <Validator errors={this.errors}/>}
-      </div>
-
+      <Tabs defaultActiveKeyactiveKey={1} id={`${this.nsAlias}-tabs`} animation={false}>
+        <Tab eventKey={1} title="Validation"><Validator errors={this.errors} /></Tab>
+        <Tab eventKey={2} title="Joins">{joinViz}</Tab>
+      </Tabs>
     );
   }
-  handleSelect(eventKey) {
-    event.preventDefault();
-    switch(eventKey) {
-    case 1: this.viewSwitch = false;
-            break;
-    case 2: this.viewSwitch = true;
-            break;
-    }
-  }
+
   validate() {
     if (!this.alias) {
-      this.errors.push("No Alias");
+      this.errors.push('No Alias');
     }
-    for (let i in this.tables) {
-      if (!this.tables[i].id) {
-        this.errors.push("Missing ID for Table");
+    for (const i of this.tables) {
+      if (!i.id) {
+        this.errors.push('Missing ID for Table');
       }
-      if (!this.tables[i].alias) {
-        this.errors.push("Missing Alias for Table");
-      }
-    }
-    for (let i in this.joins) {
-      if (!this.joins[i].left) {
-        this.errors.push("Missing Left Member for Table");
-      }
-      else {
-        if (!this.joins[i].left.tableAlias) {
-          this.errors.push("Missing Left Table Alias");
-        }
-        if (!this.joins[i].left.columnId) {
-          this.errors.push("Missing Left Column Id");
-        }
-      }
-      if (!this.joins[i].left) {
-        this.errors.push("Missing Right Member for Table");
-      }
-      else {
-        if (!this.joins[i].right.tableAlias) {
-          this.errors.push("Missing Right Table Alias");
-        }
-        if (!this.joins[i].right.columnId) {
-          this.errors.push("Missing Right Column Id");
-        }
-      }
-      if (!this.joins[i].joinType) {
-        this.errors.push("Missing Join Type for Table");
+      if (!i.alias) {
+        this.errors.push('Missing Alias for Table');
       }
     }
-    checkJoins();
+    for (const i of this.joins) {
+      if (!i.left) {
+        this.errors.push('Missing Left Member for Table');
+      } else {
+        if (!i.left.tableAlias) {
+          this.errors.push('Missing Left Table Alias');
+        }
+        if (!i.left.columnId) {
+          this.errors.push('Missing Left Column Id');
+        }
+      }
+      if (!i.left) {
+        this.errors.push('Missing Right Member for Table');
+      } else {
+        if (!i.right.tableAlias) {
+          this.errors.push('Missing Right Table Alias');
+        }
+        if (!i.right.columnId) {
+          this.errors.push('Missing Right Column Id');
+        }
+      }
+      if (!i.joinType) {
+        this.errors.push('Missing Join Type for Table');
+      }
+    }
+    this.checkJoins();
   } // end validate()
 
   checkJoins() {
-    for (let i in this.tables) {
-      this.tableVisitMap[this.tables[i].alias] = false;
+    for (const i of this.tables) {
+      this.tableVisitMap[i.alias] = false;
     }
-    this.recurseTree(alias);
-    for (let [table, visited] of this.tableVisitMap.entries()){
-      if (visited) { this.errors.push(`[${table}] table is unvisited`) }
-    }
-    if (Object.keys(joinsVisitMap).length != this.joins.length) {
-      this.errors.push("Not all joins visited!");
+    this.recurseTree(this.tables[0].alias);
+    Object.keys(this.tableVisitMap).map((key) => {
+      if (!this.tableVisitMap[key]) { this.errors.push(`[${key}] table is unvisited`); }
+      return true;
+    });
+    if (Object.keys(this.joinsVisitMap).length !== this.joins.length) {
+      this.errors.push('Not all joins visited!');
     }
   }
 
   recurseTree(alias) {
     this.tableVisitMap[alias] = true;
-    for (let i in this.joins)
-    {
-      if (this.joins[i].left.tableAlias == alias) {
+    for (const i of this.joins) {
+      if (i.left.tableAlias === alias) {
         // Mark the join as visited by using the serialized object as the key
-        this.joinsVisitMap[JSON.stringify(this.joins[i])] = true;
+        this.joinsVisitMap[JSON.stringify(i)] = true;
 
-        if (this.joins[i].left.tableAlias == this.joins[i].right.tableAlias) {
-          this.errors.push(`Joining ${this.joins[i].left.tableAlias} on itself!`);
+        if (i.left.tableAlias === i.right.tableAlias) {
+          this.errors.push(`Joining ${i.left.tableAlias} on itself!`);
         }
-        if (!tableVisitMap[this.joins[i].right.tableAlias]) {
-          recurseTree(this.joins[i].right.tableAlias);
+        if (!this.tableVisitMap[i.right.tableAlias]) {
+          this.recurseTree(i.right.tableAlias);
         }
       }
     }
@@ -121,8 +106,8 @@ class StandardConnection extends components {
 }
 
 StandardConnections.propTypes = {
-  data: PropTypes.object.isRequired;
-}
+  data: PropTypes.object.isRequired,
+};
 
 
 export default StandardConnections;

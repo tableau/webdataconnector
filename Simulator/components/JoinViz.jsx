@@ -1,93 +1,112 @@
 import React, { Component, PropTypes } from 'react';
-import '../vis.js';
+import * as vis from 'vis';
 
-
-class JoinViz extend Component {
+class JoinViz extends Component {
   constructor(props) {
     super(props);
+    this.alias = props.alias;
     this.tables = props.tables;
     this.joins = props.joins;
+    this.nsAlias = props.alias.replace(/\s+/g, '-');
+    this.joinStrings = [];
   }
 
   render() {
     return (
-      <div id="join"/>
-      <div className="joins" ref={ (input) =>
-        draw(input);
-      }/>
+      <div className="standard-connection-viz">
+        <div
+          className="standard-connection-joins"
+          id={`viz-${this.nsAlias}`}
+          ref={(input) => { this.draw(input); }}
+        />
+        <div className="standard-connection-errors">
+          <h4>Selected Joins</h4>
+          <div id={`validation-${this.nsAlias}`}>
+          </div>
+        </div>
+      </div>
     );
   }
 
   draw(input) {
-    var tables = objs.tables;
-    var joins = objs.joins;
-    var network = null;
+    const tables = this.tables;
+    const joins = this.joins;
+    let network = null;
 
-    var container = input;
-    var data = {  nodes: [],
-                  edges: []  };
-    var tableMap = {};
-    for(var i = 0; i < tables.length; i++) {
+    const container = input !== null ? input : document.getElementById(`viz-${this.nsAlias}`);
+    const data = { nodes: [],
+                   edges: [] };
+    const tableMap = {};
+    tables.forEach((table, i) => {
       data.nodes.push({
         id: i,
-        label: tables[i].alias
+        label: table.alias,
       });
-      tableMap[tables[i].alias] = i;
-    }
-    for(var i = 0; i < joins.length; i++) {
+      tableMap[table.alias] = i;
+    });
+    joins.forEach(join => {
+      const l = `[${join.left.tableAlias}].[${join.left.columnId}]`;
+      const r = `[${join.right.tableAlias}].[${join.right.columnId}]`;
       data.edges.push({
-        from: tableMap[joins[i].left.tableAlias],
-        to: tableMap[joins[i].right.tableAlias],
-        title: "[" + joins[i].left.tableAlias + "].[" + joins[i].left.columnId + "] " + joins[i].joinType + " joined with " + "[" + joins[i].right.tableAlias + "].[" + joins[i].right.columnId + "]"
-      })
-    }
-    var options = {
+        from: tableMap[join.left.tableAlias],
+        to: tableMap[join.right.tableAlias],
+        joinValue: `[${l} ${join.joinType} joined with [${r}]]`,
+      });
+    });
+    const options = {
       layout: {
-        hierarchical: { direction: "LR" }
+        hierarchical: { direction: 'LR' },
       },
       nodes: {
         borderWidth: 8,
         borderWidthSelected: 12,
         color: {
-          border: "#e1e1e1",
-          background: "#e1e1e1",
-          highlight: "#2dcc97",
-          hover: "#cbcbcb"
+          border: '#e1e1e1',
+          background: '#e1e1e1',
+          highlight: '#2dcc97',
+          hover: '#cbcbcb',
         },
-        font: { color: "#000000" },
-        shape: "box",
-        shapeProperties: { borderRadius: 0 }
+        font: { color: '#000000' },
+        shape: 'box',
+        shapeProperties: { borderRadius: 0 },
       },
       edges: {
         color: {
-          color: "#355c80",
-          highlight: "#2dcc97",
-          hover: "#00b180"
+          color: '#355c80',
+          highlight: '#2dcc97',
+          hover: '#00b180',
         },
         smooth: {
           enabled: true,
-          type: "cubicBezier",
-          roundness: .6
-        }
+          type: 'cubicBezier',
+          roundness: 0.6,
+        },
       },
-      interaction: { hover: true }
+      interaction: {
+        hover: true,
+        zoomView: false,
+        navigationButtons: true,
+      },
     };
     network = new vis.Network(container, data, options);
-    network.on('selectNode', function(params) {
-      document.getElementById("join").innerHTML = "";
-      for(let j = 0; j < params.edges.length; j++) {
-        for(let i = 0; i < data.edges.length; i++) {
-          if(data.edges[i].id == params.edges[j]) {
-            document.getElementById("join").innerHTML += data.edges[i].title + "<br>";
+    network.on('selectNode', (params) => {
+      // Traditional DOM manipulation is used here as a
+      // hacky way to not have to force partial redraws
+      const elementId = `validation-${this.nsAlias}`;
+      document.getElementById(elementId).innerHTML = '';
+      for (const j of params.edges) {
+        for (const i of data.edges) {
+          if (i.id === j) {
+            document.getElementById(elementId).innerHTML += `${i.joinValue} <br>`;
           }
         }
       }
     });
-    network.on('selectEdge', function(params) {
-      if(params.nodes.length == 0){
-        for(let i = 0; i < data.edges.length; i++) {
-          if(data.edges[i].id == params.edges[0]) {
-            document.getElementById("join").innerHTML = data.edges[i].title;
+    network.on('selectEdge', (params) => {
+      if (params.nodes.length === 0) {
+        for (const i of data.edges) {
+          if (i.id === params.edges[0]) {
+            document.getElementById(`validation-${this.nsAlias}`).innerHTML = i.joinValue;
           }
         }
       }
@@ -96,8 +115,8 @@ class JoinViz extend Component {
 }
 
 JoinViz.propTypes = {
-  tables = PropTypes.array.isRequired,
-  joins = PropTypes.array.isRequired
-}
+  tables: PropTypes.array.isRequired,
+  joins: PropTypes.array.isRequired,
+};
 
 export default JoinViz;

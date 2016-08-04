@@ -8,14 +8,15 @@ class Validator extends Component {
 
   render() {
     return (
-      <div className={`validation`}>
-        <h4>Errors</h4>
-        {
-          this.errors.map( error =>
-            return (
-              <span>{error}</span>
-            )
+
+      <div className={'validation-errors'}>
+        <h3>Errors</h3>
+        {(this.errors.length > 0) ?
+          this.errors.map(error =>
+            (<span>{error}</span>)
           )
+          :
+          (<span className={'no-errors'}>No Errors Found!</span>)
         }
       </div>
     );
@@ -23,7 +24,7 @@ class Validator extends Component {
 }
 
 Validator.propTypes = {
-  errors: PropTypes.array.isRequired
-}
+  errors: PropTypes.array.isRequired,
+};
 
 export default Validator;
