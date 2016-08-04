@@ -83,12 +83,11 @@ class App extends Component {
     // Bind Reset Action
     this.resetSimulator = () =>
       dispatch(simulatorActions.resetState());
-
   }
 
   render() {
-    //let standardConnectionsNavigation = null;
     let standardConnectionsWindow = null;
+
     // compute variables needed for render
     const interactivePhaseInProgress = this.props.phaseInProgress &&
                                        this.props.currentPhase === consts.phases.INTERACTIVE;
@@ -162,7 +161,6 @@ class App extends Component {
           <Col md={12} className="table-header">
             <PageHeader> Tables </PageHeader>
           </Col>
-
           {hasData ?
             <Col md={12} className="results-tables">
               <DataTables
