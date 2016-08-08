@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import * as vis from 'vis';
+import * as consts from '../utils/consts';
 
 class JoinViz extends Component {
   constructor(props) {
@@ -8,7 +9,6 @@ class JoinViz extends Component {
     this.tables = props.tables;
     this.joins = props.joins;
     this.nsAlias = props.alias.replace(/\s+/g, '-');
-    this.joinStrings = [];
   }
 
   render() {
@@ -53,42 +53,9 @@ class JoinViz extends Component {
         joinValue: `[${l} ${join.joinType} joined with [${r}]]`,
       });
     });
-    const options = {
-      layout: {
-        hierarchical: { direction: 'LR' },
-      },
-      nodes: {
-        borderWidth: 8,
-        borderWidthSelected: 12,
-        color: {
-          border: '#e1e1e1',
-          background: '#e1e1e1',
-          highlight: '#2dcc97',
-          hover: '#cbcbcb',
-        },
-        font: { color: '#000000' },
-        shape: 'box',
-        shapeProperties: { borderRadius: 0 },
-      },
-      edges: {
-        color: {
-          color: '#355c80',
-          highlight: '#2dcc97',
-          hover: '#00b180',
-        },
-        smooth: {
-          enabled: true,
-          type: 'cubicBezier',
-          roundness: 0.6,
-        },
-      },
-      interaction: {
-        hover: true,
-        zoomView: false,
-        navigationButtons: true,
-      },
-    };
-    network = new vis.Network(container, data, options);
+
+    // visOptions located in the consts.js file
+    network = new vis.Network(container, data, consts.visOptions);
     network.on('selectNode', (params) => {
       // Traditional DOM manipulation is used here as a
       // hacky way to not have to force partial redraws
@@ -115,6 +82,7 @@ class JoinViz extends Component {
 }
 
 JoinViz.propTypes = {
+  alias: PropTypes.string.isRequired,
   tables: PropTypes.array.isRequired,
   joins: PropTypes.array.isRequired,
 };
