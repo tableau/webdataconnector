@@ -63,12 +63,12 @@ export function startConnector(phase) {
   return (dispatch) => {
     // Clean up simulator and get ready for starting connector
     dispatch(resetTables());
+    dispatch(resetStandardConnections());
     dispatch(setCurrentPhase(phase));
     dispatch(setPhaseInProgress(true));
     dispatch(commitUrl());
     dispatch(closeSimulatorWindow());
     dispatch(setWindowAsExternal());
-    dispatch(resetStandardConnections());
   };
 }
 

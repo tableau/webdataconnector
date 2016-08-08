@@ -8,7 +8,6 @@ class Validator extends Component {
 
   render() {
     return (
-
       <div className={'validation-errors'}>
         <h3>Errors</h3>
         {(this.errors.length > 0) ?

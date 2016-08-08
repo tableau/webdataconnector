@@ -86,7 +86,7 @@ class App extends Component {
   }
 
   render() {
-    let standardConnectionsWindow = null;
+    let standardConnectionsTabList = null;
 
     // compute variables needed for render
     const interactivePhaseInProgress = this.props.phaseInProgress &&
@@ -100,7 +100,7 @@ class App extends Component {
     const hasStandardConnections = this.props.standardConnections.length > 0;
     if (hasStandardConnections) {
       const connectionList = this.props.standardConnections;
-      standardConnectionsWindow = connectionList.map((standardConnection, idx) =>
+      standardConnectionsTabList = connectionList.map((standardConnection, idx) =>
         <Tab eventKey={idx} title={standardConnection.alias} key={`connection-tab-${idx}`}>
           <StandardConnections data={standardConnection} key={`connection-window-${idx}`} />
         </Tab>
@@ -149,7 +149,7 @@ class App extends Component {
               </Col>
               {hasStandardConnections ?
                 <Tabs md={12} defaultActiveKey={0} id="connection-window" animation={false}>
-                  {standardConnectionsWindow}
+                  {standardConnectionsTabList}
                 </Tabs>
                 :
                 <Col className="no-results-label">

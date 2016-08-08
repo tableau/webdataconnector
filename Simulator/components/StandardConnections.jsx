@@ -37,36 +37,36 @@ class StandardConnections extends Component {
     if (!this.alias) {
       this.errors.push('No Alias');
     }
-    for (const i of this.tables) {
-      if (!i.id) {
+    for (const table of this.tables) {
+      if (!table.id) {
         this.errors.push('Missing ID for Table');
       }
-      if (!i.alias) {
+      if (!table.alias) {
         this.errors.push('Missing Alias for Table');
       }
     }
-    for (const i of this.joins) {
-      if (!i.left) {
+    for (const join of this.joins) {
+      if (!join.left) {
         this.errors.push('Missing Left Member for Table');
       } else {
-        if (!i.left.tableAlias) {
+        if (!join.left.tableAlias) {
           this.errors.push('Missing Left Table Alias');
         }
-        if (!i.left.columnId) {
+        if (!join.left.columnId) {
           this.errors.push('Missing Left Column Id');
         }
       }
-      if (!i.left) {
+      if (!join.left) {
         this.errors.push('Missing Right Member for Table');
       } else {
-        if (!i.right.tableAlias) {
+        if (!join.right.tableAlias) {
           this.errors.push('Missing Right Table Alias');
         }
-        if (!i.right.columnId) {
+        if (!join.right.columnId) {
           this.errors.push('Missing Right Column Id');
         }
       }
-      if (!i.joinType) {
+      if (!join.joinType) {
         this.errors.push('Missing Join Type for Table');
       }
     }
@@ -74,8 +74,8 @@ class StandardConnections extends Component {
   } // end validate()
 
   checkJoins() {
-    for (const i of this.tables) {
-      this.tableVisitMap[i.alias] = false;
+    for (const table of this.tables) {
+      this.tableVisitMap[table.alias] = false;
     }
     this.recurseTree(this.tables[0].alias);
     Object.keys(this.tableVisitMap).map((key) => {
@@ -89,16 +89,16 @@ class StandardConnections extends Component {
 
   recurseTree(alias) {
     this.tableVisitMap[alias] = true;
-    for (const i of this.joins) {
-      if (i.left.tableAlias === alias) {
+    for (const join of this.joins) {
+      if (join.left.tableAlias === alias) {
         // Mark the join as visited by using the serialized object as the key
-        this.joinsVisitMap[JSON.stringify(i)] = true;
+        this.joinsVisitMap[JSON.stringify(join)] = true;
 
-        if (i.left.tableAlias === i.right.tableAlias) {
-          this.errors.push(`Joining ${i.left.tableAlias} on itself!`);
+        if (join.left.tableAlias === join.right.tableAlias) {
+          this.errors.push(`Joining ${join.left.tableAlias} on itself!`);
         }
-        if (!this.tableVisitMap[i.right.tableAlias]) {
-          this.recurseTree(i.right.tableAlias);
+        if (!this.tableVisitMap[join.right.tableAlias]) {
+          this.recurseTree(join.right.tableAlias);
         }
       }
     }
