@@ -6,11 +6,12 @@ before_script:
 - sh -e /etc/init.d/xvfb start
 - sleep 3
 script:
-- 'if [[ "${TRAVIS_PULL_REQUEST}" = "false" ]]; then
-    npm run test:travis;
-  else
-    npm run unit:coveralls;
-  fi'
+- 'set -e;
+   if [[ "${TRAVIS_PULL_REQUEST}" = "false" ]]; then
+     npm run test:travis;
+   else
+     npm run unit:coveralls;
+   fi'
 addons:
   sauce_connect:
     username: tableauwdc
