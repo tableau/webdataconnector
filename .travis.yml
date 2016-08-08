@@ -6,7 +6,7 @@ before_script:
 - sh -e /etc/init.d/xvfb start
 - sleep 3
 script:
-- 'set -e;
+- 'set -eo pipefail;
    if [[ "${TRAVIS_PULL_REQUEST}" = "false" ]]; then
      npm run test:travis;
    else
