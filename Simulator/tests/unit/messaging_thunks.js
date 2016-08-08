@@ -27,6 +27,7 @@ describe('Messaging Thunks', function() {
   // mock toastr object which is normally in the documents global scope
   global.toastr = sinon.spy();
   toastr.error = sinon.spy();
+  toastr.info = sinon.spy();
   describe('Receive Message', function() {
     it('Should merge WDC Attrs', function () {
       const data = {
@@ -191,21 +192,44 @@ describe('Messaging Thunks', function() {
   });
 
   describe('handleAbortForAuth Thunk', function() {
-    it('Should Create the Right Actions in Gather Data Phase', function () {
+    it('Should Create the Right Actions in Gather Data Phase', function (done) {
+      const input = consts.phases.AUTH;
+      const commitUrlActions= [
+        { type: "SET_WDC_URL", payload: consts.defaultUrl },
+        { type: "SET_ADDRESS_BAR_URL", payload: consts.defaultUrl },
+        { type: "SET_MOST_RECENT_URLS", payload: consts.samples},
+      ];
+
       const closeSimulatorActions = [
         { type: "SET_SHOULD_HAVE_GATHER_DATA_FRAME", payload: false },
         { type: "SET_SIMULATOR_WINDOW" },
       ];
+
+      const setWindowAsExternalActions = [{ type: "SET_SIMULATOR_WINDOW" }];
+
+      const startConnectorActions = [
+        { type: "RESET_TABLES" },
+        { type: "SET_CURRENT_PHASE", payload: input },
+        { type: "SET_PHASE_IN_PROGRESS", payload: true },
+        ...commitUrlActions,
+        ...closeSimulatorActions,
+        ...setWindowAsExternalActions,
+      ]
+
       const expectedActions = [
         { type: "SET_PHASE_IN_PROGRESS", payload: false },
-        ...closeSimulatorActions,
+        ...startConnectorActions
       ];
 
       const state = {...consts.defaultState, currentPhase: consts.phases.GATHER_DATA};
       const store = mockStore(state);
 
       store.dispatch(messagingActions.handleAbortForAuth());
-      store.getActions().should.deepEqual(expectedActions);
+      // it takes time for toastr, to disappear
+      setTimeout(()=>{
+        store.getActions().should.deepEqual(expectedActions);
+        done();
+      }, 800);
     });
 
     it('Should Create the No Actions in Other Phases', function () {
