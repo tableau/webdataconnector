@@ -19,14 +19,10 @@
         }, {
             id: "lat",
             alias: "latitude",
-            columnRole: "dimension",
-            // Do not aggregate values as measures in Tableau--makes it easier to add to a map 
             dataType: tableau.dataTypeEnum.float
         }, {
             id: "lon",
             alias: "longitude",
-            columnRole: "dimension",
-            // Do not aggregate values as measures in Tableau--makes it easier to add to a map 
             dataType: tableau.dataTypeEnum.float
         }];
 
