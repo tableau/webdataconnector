@@ -166,6 +166,25 @@ describe("Reducer", function() {
     });
   });
 
+  describe("SET_STANDARD_CONNECTIONS", function() {
+    it("Should Set Standard Connections", function() {
+      const newValue = {
+        "id": {
+          standardConnections: [{ alias: "aliaa", tables: [], joins: [] }],
+          data: [],
+        }
+      };
+
+      const action = {
+        type: "SET_STANDARD_CONNECTIONS",
+        payload: newValue
+      };
+
+      const output = reducer(state, action);
+      output.standardConnections.should.deepEqual(newValue);
+    })
+  })
+
   describe("ADD_TABLES", function() {
     it("Should Add Tables", function () {
       const tables = {

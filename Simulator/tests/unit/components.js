@@ -12,6 +12,9 @@ import DataTables from '../../components/DataTables.jsx';
 import TablePreview from '../../components/TablePreview.jsx';
 import CollapsibleTable from '../../components/CollapsibleTable.jsx';
 import GatherDataFrame from '../../components/GatherDataFrame.jsx';
+import StandardConnections from '../../components/StandardConnections.jsx';
+import JoinViz from '../../components/JoinViz.jsx';
+import Validator from '../../components/StandardConnectionValidator.jsx';
 
 import * as consts from '../../utils/consts.js';
 
@@ -337,5 +340,48 @@ describe("Components", function() {
       );
       gatherDataFrame.should.be.ok();
     });
+  });
+
+  describe("StandardConnections", function() {
+    it("Should Render", function () {
+      standardConnections = shallow(
+        <StandardConnections
+          alias="alias"
+          tables=[{id: "id1", alias: "alias1"},
+                  {id: "id2", alias: "alias2"}]
+          joins=[{left: {tableAlias: "alias1", columnId: "c1"},
+                  right: {tableAlias: "alias2", columnId: "c2"},
+                  joinType: "inner"}]
+        />
+      );
+      standardConnections.should.be.ok();
+    });
+  });
+
+  describe("StandardConnectionValidator", function() {
+    it("Should Render", function() {
+      validator = shallow(
+        <Validator
+          errors=["error1", "error2"]
+        />
+      );
+      validator.should.be.ok();
+    });
+  });
+
+  describe("JoinViz", function() {
+    it("Should Renger", function() {
+      joinViz = shallow(
+        <JoinViz
+          alias="alias"
+          tables=[{id: "id1", alias: "alias1"},
+                  {id: "id2", alias: "alias2"}]
+          joins=[{left: {tableAlias: "alias1", columnId: "c1"},
+                  right: {tableAlias: "alias2", columnId: "c2"},
+                  joinType: "inner"}]
+        />
+      );
+      joinViz.should.be.ok();
+    })
   });
 });

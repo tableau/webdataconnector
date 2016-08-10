@@ -31,7 +31,6 @@ export const addTables = createAction('ADD_TABLES');
 
 // Standard Connection Actions
 export const setStandardConnections = createAction('SET_STANDARD_CONNECTIONS');
-export const addStandardConnections = createAction('ADD_STANDARD_CONNECTIONS');
 
 // Advanced UI Actions
 export const setShowAdvanced = createAction('SET_SHOW_ADVANCED', (show) => {
