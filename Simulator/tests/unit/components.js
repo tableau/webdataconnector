@@ -346,12 +346,13 @@ describe("Components", function() {
     it("Should Render", function () {
       standardConnections = shallow(
         <StandardConnections
-          alias="alias"
-          tables=[{id: "id1", alias: "alias1"},
-                  {id: "id2", alias: "alias2"}]
-          joins=[{left: {tableAlias: "alias1", columnId: "c1"},
-                  right: {tableAlias: "alias2", columnId: "c2"},
-                  joinType: "inner"}]
+          data={alias :"alias",
+                tables:[{id: "id1", alias: "alias1"},
+                        {id: "id2", alias: "alias2"}],
+                joins: [{left: {tableAlias: "alias1", columnId: "c1"},
+                        right: {tableAlias: "alias2", columnId: "c2"},
+                        joinType: "inner"}]
+                }
         />
       );
       standardConnections.should.be.ok();
