@@ -343,46 +343,87 @@ describe("Components", function() {
   });
 
   describe("StandardConnections", function() {
+    let standardConnections;
+
     it("Should Render", function () {
       standardConnections = shallow(
         <StandardConnections
-          data={alias :"alias",
+          data={{alias :"alias",
                 tables:[{id: "id1", alias: "alias1"},
                         {id: "id2", alias: "alias2"}],
                 joins: [{left: {tableAlias: "alias1", columnId: "c1"},
                         right: {tableAlias: "alias2", columnId: "c2"},
                         joinType: "inner"}]
-                }
+                }}
         />
       );
       standardConnections.should.be.ok();
     });
+
+    it("Should Create Validator", function() {
+      let validator = standardConnections.find('#alias-tabs-pane-1');
+      validator.containsAllMatchingElements([
+        <div className="validation-errors"> </div>
+      ]);
+    });
+
+    it("Should Create JoinViz", function() {
+      let joinViz = standardConnections.find('#alias-tabs-pane-2');
+      joinViz.containsAllMatchingElements([
+        <div className="standard-connection-viz"> </div>
+      ]);
+    });
   });
 
   describe("StandardConnectionValidator", function() {
+    let validator;
+
     it("Should Render", function() {
       validator = shallow(
         <Validator
-          errors=["error1", "error2"]
+          errors={["error1", "error2"]}
         />
       );
       validator.should.be.ok();
     });
+
+    it("Should Display Errors", function() {
+      let errorList = validator.find('.validation-errors');
+      errorList.containsAllMatchingElements([
+        <span> error1 </span>,
+        <span> error2 </span>
+      ]);
+    });
+
+    it("Should Show Success", function() {
+      validator = shallow(
+        <Validator
+          errors = {[]}
+        />
+      );
+      validator.should.be.ok();
+      let errorList = validator.find('.validation-errors');
+      errorList.containsAllMatchingElements([
+        <span className="no-errors"> No Errors Found! </span>
+      ]);
+    });
   });
 
   describe("JoinViz", function() {
+    let joinViz;
+
     it("Should Renger", function() {
       joinViz = shallow(
         <JoinViz
           alias="alias"
-          tables=[{id: "id1", alias: "alias1"},
-                  {id: "id2", alias: "alias2"}]
-          joins=[{left: {tableAlias: "alias1", columnId: "c1"},
+          tables={[{id: "id1", alias: "alias1"},
+                  {id: "id2", alias: "alias2"}]}
+          joins={[{left: {tableAlias: "alias1", columnId: "c1"},
                   right: {tableAlias: "alias2", columnId: "c2"},
-                  joinType: "inner"}]
+                  joinType: "inner"}]}
         />
       );
       joinViz.should.be.ok();
-    })
+    });
   });
 });

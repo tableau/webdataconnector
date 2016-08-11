@@ -156,7 +156,7 @@ describe("Simulator Action Creators", function() {
 
       let action = simulatorActions.setStandardConnections(input);
       action.should.deepEqual(correctAction);
-    }
+    });
   });
 
   describe("setTables", function() {

@@ -170,7 +170,7 @@ describe("Reducer", function() {
     it("Should Set Standard Connections", function() {
       const newValue = {
         "id": {
-          standardConnections: [{ alias: "aliaa", tables: [], joins: [] }],
+          standardConnections: [{ alias: "alias", tables: [], joins: [] }],
           data: [],
         }
       };

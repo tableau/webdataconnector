@@ -131,15 +131,25 @@ describe('Messaging Thunks', function() {
         }
       };
 
+      const standardConnection = {
+        alias: "alias",
+        tables: [{id: "id1", alias: "alias1"},
+                {id: "id2", alias: "alias2"}],
+        joins:  [{left: {tableAlias: "alias1", columnId: "c1"},
+                 right: {tableAlias: "alias2", columnId: "c2"},
+                 joinType: "inner"}]
+      }
+
       const expectedActions = [
         { type: "ADD_TABLES", payload: table },
         { type: "SET_PHASE_IN_PROGRESS", payload: false },
+        { type: "SET_STANDARD_CONNECTIONS", payload: [standardConnection] }
       ];
 
       const store = mockStore(consts.defaultState);
 
       //schema callback expects an array of schemas
-      store.dispatch(messagingActions.handleSchemaCallback([schema]));
+      store.dispatch(messagingActions.handleSchemaCallback([schema], [standardConnection]));
       store.getActions().should.deepEqual(expectedActions);
     });
   });
