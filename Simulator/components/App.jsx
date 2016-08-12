@@ -89,8 +89,9 @@ class App extends Component {
     let standardConnectionsTabList = null;
 
     // compute variables needed for render
-    const interactivePhaseInProgress = this.props.phaseInProgress &&
-                                       this.props.currentPhase === consts.phases.INTERACTIVE;
+    const interactiveOrAuthPhaseInProgress = this.props.phaseInProgress &&
+      (this.props.currentPhase === consts.phases.INTERACTIVE ||
+       this.props.currentPhase === consts.phases.AUTH);
     const dataGatheringPhaseInProgress = this.props.phaseInProgress &&
                                          this.props.currentPhase === consts.phases.GATHER_DATA;
 
@@ -125,7 +126,7 @@ class App extends Component {
             <StartConnectorGroup
               isInProgress={this.props.phaseInProgress}
               showAdvanced={this.props.showAdvanced}
-              interactivePhaseInProgress={interactivePhaseInProgress}
+              interactiveOrAuthPhaseInProgress={interactiveOrAuthPhaseInProgress}
               isAddressBarEmpty={isAddressBarEmpty}
               startInteractivePhase={this.startInteractivePhase}
               startAuthPhase={this.startAuthPhase}
