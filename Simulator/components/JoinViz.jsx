@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import * as vis from 'vis';
 import * as consts from '../utils/consts';
+import * as clickedOn from '../utils/canvas_helper';
 
 class JoinViz extends Component {
   constructor(props) {
@@ -53,30 +54,15 @@ class JoinViz extends Component {
         joinValue: `[${l} ${join.joinType} joined with [${r}]]`,
       });
     });
+    const displayDiv = document.getElementById(`validation-${this.nsAlias}`);
 
     // visOptions located in the consts.js file
     network = new vis.Network(container, data, consts.visOptions);
     network.on('selectNode', (params) => {
-      // Traditional DOM manipulation is used here as a
-      // hacky way to not have to force partial redraws
-      const elementId = `validation-${this.nsAlias}`;
-      document.getElementById(elementId).innerHTML = '';
-      for (const j of params.edges) {
-        for (const i of data.edges) {
-          if (i.id === j) {
-            document.getElementById(elementId).innerHTML += `${i.joinValue} <br>`;
-          }
-        }
-      }
+      clickedOn.node(params, this.nsAlias, data, displayDiv);
     });
     network.on('selectEdge', (params) => {
-      if (params.nodes.length === 0) {
-        for (const i of data.edges) {
-          if (i.id === params.edges[0]) {
-            document.getElementById(`validation-${this.nsAlias}`).innerHTML = i.joinValue;
-          }
-        }
-      }
+      clickedOn.edge(params, this.nsAlias, data, displayDiv);
     });
   }
 }
