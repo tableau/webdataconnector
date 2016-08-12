@@ -219,6 +219,7 @@ describe('Messaging Thunks', function() {
 
       const startConnectorActions = [
         { type: "RESET_TABLES" },
+        { type: "RESET_STANDARD_CONNECTIONS"},
         { type: "SET_CURRENT_PHASE", payload: input },
         { type: "SET_PHASE_IN_PROGRESS", payload: true },
         ...commitUrlActions,
