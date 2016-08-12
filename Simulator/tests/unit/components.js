@@ -17,6 +17,7 @@ import JoinViz from '../../components/JoinViz.jsx';
 import Validator from '../../components/StandardConnectionValidator.jsx';
 
 import * as consts from '../../utils/consts.js';
+import * as clickedOn from '../../utils/canvas_helper.js'
 
 // Component Tests
 describe("Components", function() {
@@ -411,8 +412,9 @@ describe("Components", function() {
 
   describe("JoinViz", function() {
     let joinViz;
+    let joinDiv;
 
-    it("Should Renger", function() {
+    it("Should Render", function() {
       joinViz = shallow(
         <JoinViz
           alias="alias"
@@ -424,6 +426,40 @@ describe("Components", function() {
         />
       );
       joinViz.should.be.ok();
+    });
+
+    it("Should Show Correct Joins for Node", function() {
+      let joinDiv = shallow(
+        <div id="validation-testconnection"></div>
+      );
+      clickedOn.node({
+        edges: [1, 2],
+        nodes: [1]
+      }, "testconnection", {
+        edges: [{from: 0, to: 1, id: 1, joinValue: "test1"},
+                {from: 1, to: 2, id: 2, joinValue: "test2"}],
+        nodes: [{id: 0, label: "n0"},
+                {id: 1, label: "n1"},
+                {id: 1, label: "n2"}]
+      }, joinDiv.find('.validation-testconnection'));
+      joinDiv.equals(<div id="validation-testconnection">{`test1 <br>test2 <br>`}</div>);
+    });
+
+    it("Should Show Correct Join for Edge", function() {
+      let joinDiv = shallow(
+        <div id="validation-testconnection"></div>
+      );
+      clickedOn.edge({
+        edges: [1],
+        nodes: []
+      }, "testconnection", {
+        edges: [{from: 0, to: 1, id: 1, joinValue: "test1"},
+                {from: 1, to: 2, id: 2, joinValue: "test2"}],
+        nodes: [{id: 0, label: "n0"},
+                {id: 1, label: "n1"},
+                {id: 1, label: "n2"}]
+      }, joinDiv.find('.validation-testconnection'));
+      joinDiv.equals(<div id="validation-testconnection">{`test1`}</div>);
     });
   });
 });
