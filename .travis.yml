@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+- node
+before_script:
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sleep 3
+script:
+- 'set -eo pipefail;
+   if [[ "${TRAVIS_PULL_REQUEST}" = "false" ]]; then
+     npm run test:travis;
+   else
+     npm run unit:coveralls;
+   fi'
+addons:
+  sauce_connect:
+    username: tableauwdc
+    access_key:
+      secure: aRwjANob+Gb6h65NuOamQKoPVxZphGRLGp6qUKG6VToKe+uzNTVH98rJoifmgsMAJsbNmBs+f6Vpkqvztho74q2IOp0rgHk83pvB0NkC3KNmejD7Ph7RQnTgOxdSlwb+9KTSOy4r/NhM+28pRnbPSMk3q3PpydWBDCef1IUh7vqbvdtYlGTTGt8pE++YiREQKSdIE91J3wF0DUnc4iQs9jMlsCabYmwdmtP2DgjzmnzBGJn/8f7t0Ej3dH+BCsEoM7NJQcn/9poctitgdxcwpn+IEkAMzpas92RFBMWQT/BPPjfwDV54t9yjRGionrzG4hpHZmVW4pi8up+xmtI6ZCKU7L94WzB0Oaih4rYUH6ZGyaklrwgYlv4uaKyaF7XmxwEcVYv9AukbRH9UDRqHdSUvJpLi66y0TG+VqkRPzt4wD1X4Z9ED23KNVdd8FpxXgZDYxz2ywPpRdEpIekzoXZt8O/Y58Qooa1GfWmGrVvNYomH05cHK67UwY4Bqj8Xn7p/IfZGJc3n8bauQxX0U3HQHo+W3WUFT+qVd1xNujaa8o2Mk9EJ840e/djUlIA7LtXhuLjLtCB7msvr5BdQXoSC5mEejsU6vuvvpy47KoPzVrJc8tYSwZWX8fEM+WqwzhTwu173/hZWRcZf4Vugv+K5/YY4/SuHnYszesWmvUhc=

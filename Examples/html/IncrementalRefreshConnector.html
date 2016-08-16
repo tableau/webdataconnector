@@ -1,0 +1,27 @@
+<html>
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-store" />
+<head>
+<title>Incremental Update Example</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="https://connectors.tableau.com/libs/tableauwdc-2.0.latest.js" type="text/javascript"></script>
+<script src="../js/IncrementalRefreshConnector.js" type="text/javascript"></script>
+
+</head>
+<body>
+  <div class="container container-table">
+    <form role="form" id="inputForm" action="">
+    <h3>Incremental Refresh Enabled Example Connector</h3>
+    <div class="form-group">
+        <p>This is an example of how to to incrementally refresh data with the WDC API.
+           Enter in the number of rows to be added incrementally in the box below.</p>
+        <label for="max_iterations">Number of rows to add per Incremental Refresh:</label>
+        <input class="form-control" id="max_iterations" value="2">
+        <button type="button" id="submitButton" class="btn btn-success" style="margin-top: 10px;">Get Data</button>
+    </div>
+    </form>
+  </div>
+</body>
+</html>

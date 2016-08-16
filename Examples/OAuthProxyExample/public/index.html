@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Foursquare Connector</title>
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+
+    <!-- Latest WDC Library -->
+    <script src="https://connectors.tableau.com/libs/tableauwdc-2.0.latest.js" type="text/javascript"></script>
+
+    <!-- Use to access cookie storage to grab access token -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.2/js.cookie.min.js" type="text/javascript"></script>
+
+    <!-- This will contain all of your OAuth code -->
+    <script src="./foursquare.js" type="text/javascript"></script>
+</head>
+<body>
+  <div style="margin: auto; text-align: center; margin-top: 50px; max-width: 300px">
+      <!-- These labels will toggle depending on whether the user is authenticated or not -->
+      <p class="signedin">You are signed in!</p>
+      <p class="notsignedin">You are not signed in, please click below to sign in to your foursquare account.</p>
+
+      <!-- The connect to foursquare button will have a link added to it in the js-->
+      <a href="#" id="connectbutton"><img src="./foursquare_connect.png" alt="Login with Foursquare"/></a>
+      <br /><br />
+
+      <!-- This button will pull the user's liked venues once the user is authenticated -->
+      <p><a href="#" class="btn btn-primary btn-block" id="getvenuesbutton"><span class="glyphicon glyphicon-arrow-down"></span> Get Venues I Like</a></p>
+  </div>
+</body>
+</html>
