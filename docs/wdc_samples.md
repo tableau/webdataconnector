@@ -5,7 +5,7 @@ layout: docs
 
 The Web Data Connector comes with sample connectors that you can use to learn about specific features of the WDC API.
 The samples are in the `Examples` folder of the `webdataconnector` repository. You can see the repository
-online [here](https://github.com/tableau/webdataconnector/tree/dev/).
+online [here](https://github.com/tableau/webdataconnector/tree/master).
 
 -   **earthquakeUSGS**
 

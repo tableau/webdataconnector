@@ -46,5 +46,8 @@ The version of Tableau that you are using cannot use the web data connector that
 The connector requires at least version 'x.x' of the web data connector API.
 ```
 
-**Note**: Newer versions of the WDC simulator require later versions
-of the WDC library as well.
+<div class="alert alert-info">
+    <b>Note:</b> This site is for version 2.0 of the WDC, and will only be compatible with Tableau 10.0 and later. For
+    information about version 1.0 of the WDC, see the archived <a href="http://onlinehelp.tableau.com/v9.3/api/wdc/en-us/help.htm" style="text-decoration:underline;">documentation</a>
+    and <a href="https://github.com/tableau/webdataconnector/releases/tag/v1.1.0" style="text-decoration:underline;">simulator</a>.
+</div>
