@@ -209,7 +209,7 @@ export function handleAbortForAuth(msg) {
     const { currentPhase } = getState();
     if (currentPhase === phases.GATHER_DATA) {
       toastr.info(msg, toastTitle);
-      setTimeout(()=>{
+      setTimeout(() => {
         dispatch(simulatorActions.setPhaseInProgress(false));
         dispatch(simulatorActions.startConnector(phases.AUTH));
       }, 750);
