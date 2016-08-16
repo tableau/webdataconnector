@@ -1,5 +1,5 @@
 # Tableau Web Data Connector SDK
-[![Coverage Status](https://coveralls.io/repos/github/jagreene/webdataconnector/badge.svg?branch=tests)](https://coveralls.io/github/jagreene/webdataconnector?branch=tests) [![Build Status](https://travis-ci.org/jagreene/webdataconnector.svg?branch=tests)](https://travis-ci.org/jagreene/webdataconnector)
+[![Coverage Status](https://coveralls.io/repos/github/tableau/webdataconnector/badge.svg?branch=master)](https://coveralls.io/github/tableau/webdataconnector?branch=master) [![Build Status](https://travis-ci.org/tableau/webdataconnector.svg?branch=master)](https://travis-ci.org/jagreene/webdataconnector)
 
 Use the Tableau Web Data Connector (WDC) to connect to web data sources from Tableau. This is the repository for the Tableau WDC SDK, which includes developer samples and a simulator to help you create your connectors.
 
