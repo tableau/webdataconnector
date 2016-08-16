@@ -265,6 +265,18 @@ describe("Components", function() {
       tablePreview.should.be.ok();
     });
 
+    it("Should Render Correctly With Empty Data", function() {
+      tablePreview = shallow(
+        <TablePreview
+          tableInfo={tableInfo}
+          tableData={[{}]}
+          getTableDataCallback={spy}
+          fetchInProgress={false}
+        />
+      );
+      tablePreview.should.be.ok();
+    });
+
     it("Should Render Correctly Without Incremental Data", function(){
       let tableInfo = {
         id: 1,
