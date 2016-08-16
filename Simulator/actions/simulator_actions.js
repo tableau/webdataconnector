@@ -25,9 +25,12 @@ export const setPhaseSubmitCalled = createAction('SET_PHASE_SUBMIT_CALLED');
 export const setSimulatorWindow = createAction('SET_SIMULATOR_WINDOW');
 export const setShouldHaveGatherDataFrame = createAction('SET_SHOULD_HAVE_GATHER_DATA_FRAME');
 
-// Table actions
+// Table Actions
 export const setTables = createAction('SET_TABLES');
 export const addTables = createAction('ADD_TABLES');
+
+// Standard Connection Actions
+export const setStandardConnections = createAction('SET_STANDARD_CONNECTIONS');
 
 // Advanced UI Actions
 export const setShowAdvanced = createAction('SET_SHOW_ADVANCED', (show) => {
@@ -47,6 +50,7 @@ export const resetPhaseState = createAction('RESET_PHASE_STATE');
 export const resetWdcAttrs = createAction('RESET_WDC_ATTRS');
 export const resetTables = createAction('RESET_TABLES');
 export const resetTableData = createAction('RESET_TABLE_DATA');
+export const resetStandardConnections = createAction('RESET_STANDARD_CONNECTIONS');
 
 
 // Thunks (and Composed Actions)
@@ -58,6 +62,7 @@ export function startConnector(phase) {
   return (dispatch) => {
     // Clean up simulator and get ready for starting connector
     dispatch(resetTables());
+    dispatch(resetStandardConnections());
     dispatch(setCurrentPhase(phase));
     dispatch(setPhaseInProgress(true));
     dispatch(commitUrl());

@@ -67,4 +67,40 @@ export const defaultState = {
   phaseInitCallbackCalled: false,
   simulatorWindow: null,
   tables: {},
+  standardConnections: [],
+};
+
+export const visOptions = {
+  layout: {
+    hierarchical: { direction: 'LR' },
+  },
+  nodes: {
+    borderWidth: 8,
+    borderWidthSelected: 12,
+    color: {
+      border: '#e1e1e1',
+      background: '#e1e1e1',
+      highlight: '#2dcc97',
+      hover: '#cbcbcb',
+    },
+    font: { color: '#000000' },
+    shape: 'box',
+    shapeProperties: { borderRadius: 0 },
+  },
+  edges: {
+    color: {
+      color: '#355c80',
+      highlight: '#2dcc97',
+      hover: '#00b180',
+    },
+    smooth: {
+      enabled: true,
+      type: 'cubicBezier',
+      roundness: 0.6,
+    },
+  },
+  interaction: {
+    hover: true,
+    zoomView: false,
+  },
 };
