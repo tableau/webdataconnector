@@ -22,8 +22,8 @@ If you prefer to opt out of receiving automatic patch versions, you can link dir
 to the current patch version, 2.0.5:
 
 ```
-https://connectors.tableau.com/libs/tableauwdc-2.0.5.js
-https://connectors.tableau.com/libs/tableauwdc-2.0.5.min.js
+https://connectors.tableau.com/libs/tableauwdc-2.0.8.js
+https://connectors.tableau.com/libs/tableauwdc-2.0.8.min.js
 ```
 
 
