@@ -18,6 +18,15 @@
         "source_code": "https://github.com/jcopenha/BoardGameGeekWebDataConnector"
     },
     {
+        "name": "CSV",
+        "url": "https://github.com/starschema/tableau-web-table-connector#csv-connector",
+        "author": "Gyula Laszlo",
+        "github_username": "gyulalaszlo",
+        "tags": ["v_1.1"],
+        "description": "Loads generic CSV data from a http(s) URL",
+        "source_code": "github.com/starschema/tableau-web-table-connector"
+    },
+    {
         "name": "DoubleClick Campaign Manager",
         "url": "https://dcm-dfa-wdc.herokuapp.com/",
         "author": "Eric Peterson",
@@ -88,6 +97,15 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": ""
+    },
+    {
+        "name": "MongoDB / Raw JSON",
+        "url": "https://github.com/starschema/tableau-web-table-connector#mongodb--raw-json-client",
+        "author": "Gyula Laszlo",
+        "github_username": "gyulalaszlo",
+        "tags": ["v_1.1"],
+        "description": "Loads hierarchical JSON as flat table",
+        "source_code": "github.com/starschema/tableau-web-table-connector"
     },
     {
         "name": "Moves App",
@@ -178,6 +196,15 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": ""
+    },
+    {
+        "name": "SAP Business Objects WEBI & QaaWS",
+        "url": "https://github.com/starschema/tableau-web-table-connector#business-objects-connector",
+        "author": "Tamas Foldi",
+        "github_username": "tfoldi",
+        "tags": ["v_1.1"],
+        "description": "Connects Tableau to SAP BO WebI & QaaWS published reports.",
+        "source_code": "github.com/starschema/tableau-web-table-connector"
     },
     {
         "name": "Seattle/King County Restaurant Inspections",
