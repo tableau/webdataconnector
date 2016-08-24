@@ -68,7 +68,7 @@ The auth phase will be displayed by Tableau in two scenarios:
 - The WDC uses authType `custom`, the current user is un-authenticated (as described above, 
   when opening an existing workbook), and the user attempts to refresh the extract or edit the connection.
 
-- The WDC developer calls [tableau.abortForAuth]({{ site.baseurl }}/webdataconnectorapi.tableau.abortforauth).
+- The WDC developer calls [tableau.abortForAuth]({{ site.baseurl }}/ref/api_ref.html#webdataconnectorapi.tableau.abortforauth).
 
     This method is provided so that the developer can explicitly tell Tableau the current user is un-authenticated.
     For example, this can be helpful when working with OAuth.  In some scenarios, the access token used to get resources
