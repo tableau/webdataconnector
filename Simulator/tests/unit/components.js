@@ -279,7 +279,8 @@ describe("Components", function() {
         />
       );
       tablePreview.should.be.ok();
-    })
+    });
+    
     it("Should Render Correctly Without Incremental Data", function(){
       let tableInfo = {
         id: 1,
