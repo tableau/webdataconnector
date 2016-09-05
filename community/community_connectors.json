@@ -438,5 +438,14 @@
         "tags": ["v_2.0"],
         "description": "A Tableau Web Data Connector for http://www.anapioficeandfire.com/",
         "source_code": "https://github.com/stephdietzel/ConnectorOfIceAndFire"
-    }
+    },
+    {
+    "name": "Instagram Connector",
+    "url": "https://illonage.github.io/",
+    "author": "Geraldine Zanolli",
+    "github_username": "illonage",
+    "tags": ["v_2.0"],
+    "description": "A Tableau Web Data Connector for Instagram",
+    "source_code": ""
+}
 ]
