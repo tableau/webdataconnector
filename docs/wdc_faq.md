@@ -45,8 +45,7 @@ for connectors published to Tableau Online. As an alternative, you can use the [
 Client](https://onlinehelp.tableau.com/current/online/en-us/to_sync_local_data.htm) to schedule extract refreshes on a
 desktop computer.
 
-### Where are the check boxes and radio buttons that I put in my connector page? I see them in the simulator, but not in
-Tableau.
+### Where are the check boxes and radio buttons that I put in my connector page? I see them in the simulator, but not in Tableau.
 
 This was an issue in a previous version of the WDC. To fix the issue, get the latest version of the WDC from the [WDC
 Versions]({{ site.baseurl }}/docs/wdc_library_versions) page.
