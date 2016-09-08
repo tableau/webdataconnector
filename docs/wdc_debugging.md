@@ -14,16 +14,8 @@ simulator, and then to perform your final testing.
 
 This page includes information about developing and debugging your connectors both in the simulator and in Tableau.
 
-* [Debugging in the simulator](#debugging-simulator)
-
-* [Simulator debugging tips](#simulator-tips)
-
-* [Caching in the simulator](#simulator-caching)
-
-* [General browser debugging tips](#simulator-tips)
-
-* [Debugging in Tableau Desktop](#debugging-tableau)
-
+* TOC
+{:toc}
 
 ## Debugging in the simulator {#debugging-simulator}
 

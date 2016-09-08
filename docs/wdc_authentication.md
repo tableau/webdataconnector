@@ -8,13 +8,8 @@ Authentication comes in many flavors and can often be one of the most difficult
 portions of your connector to get right.  There are a few auth specific components of the
 WDC API that you should be aware of.
 
--   [Types of authentication](#auth-types)
-
--   [The WDC Auth Phase](#auth-phase)
-
--   [Advanced: Auth Purpose Mechanism](#auth-purpose)
-
--   [Advanced: Authentication on Server](#server-auth)
+* TOC
+{:toc}
 
 Types of authentication {#auth-types}
 -------------------------------------

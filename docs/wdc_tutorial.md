@@ -12,13 +12,8 @@ the last week.
 
 You'll learn how to:
 
-* [Create the HTML page](#create-page)
-* [Create the connector object](#create-connector-obj)
-* [Add an event listener](#event-listener) to respond to user interaction
-* [Test the connector](#test-so-far)
-* [Define a schema](#define-schema) which maps web data to table columns
-* [Get the data](#get-data) for a single table
-* [See it in action](#see-in-action)
+* TOC
+{:toc}
 
 If you *really* want to skip all of this and go straight to the source code, look for the `earthquakeUSGS` files in the
 `Examples` directory. You'll get a lot more out of this if you build it from scratch though--promise!
@@ -27,7 +22,7 @@ If you *really* want to skip all of this and go straight to the source code, loo
 connector in the `Examples` directory (`earthquakeUSGS`). This is to minimize the chances of accidentally overwriting
 the existing sample. However, if you copy the existing sample, you'll have to change file paths.
 
-### Create the HTML page {#create-page}
+### Create the HTML page
 
 When you open a WDC in Tableau, you display an HTML page that links to your JavaScript code and to the WDC library.
 Optionally, this page can also display a user interface for your users to select the data that they want to download.
@@ -78,7 +73,7 @@ following between the `head` tags:
 Between the `body` tags, there is a simple button element that illustrates how users can interact with your connector
 before getting data. In a later step, you'll attach an event listener to the button in the JavaScript code.
 
-### Create the connector object {#create-connector-obj}
+### Create the connector object
 
 Now that you've created a user interface, it's time to write the JavaScript code for the connector. Create a new file
 named `earthquakeWDC.js` and save it in the same directory as the `earthquakeWDC.html` file.
@@ -110,7 +105,7 @@ Some things to note about the code:
   schema of the data and downloading the data.
 * The `registerConnector` function validates the connector object before initialization.
 
-### Add an event listener {#event-listener}
+### Add an event listener
 
 Remember how we added a button to the HTML page? It's time to create an event listener that responds to clicking on the
 button.
@@ -139,7 +134,7 @@ Here's what is going on in the code snippet:
 custom initialization code. For more information, see [Custom Initialization and Shutdown]({{ site.baseurl
 }}/docs/wdc_custom_init_and_shutdown)
 
-### Test the connector so far {#test-so-far}
+### Test the connector so far
 
 The connector doesn't *do* very much so far, but it's enough that we can run it in the simulator.
 
@@ -187,7 +182,7 @@ the connector.
 
 If all goes well, you should see `Hello WDC!` in your browser's console.
 
-### Define a schema {#define-schema}
+### Define a schema
 
 So the connector is working now--sort of. Before you can download data and pass it to Tableau, you need to define how
 you want to map the data to one or more or tables. This mapping of data is done in the schema.
@@ -236,7 +231,7 @@ Here's what's going on in the code:
 object and for each object in the table columns in more detail. For now, let's plunge ahead to the exciting
 part--getting the data!
 
-### Get the data {#get-data}
+### Get the data
 
 Once the schema is defined, you can begin getting data and passing it to Tableau.
 
@@ -275,7 +270,7 @@ Whew! That's a good-sized chunk of code. Let's see what's happening:
 * The `table.appendRows` function appends the `tableData` array to the table as a JavaScript object.
 
 
-### See it in action {#see-in-action}
+### See it in action
 
 By now, you're a pro at [running the simulator](http://tableau.github.io/webdataconnector/docs/#run-sim), so fire it up,
 load your connector, and click **Get Earthquake Data!** like before. Now that we have a `getSchema` function properly

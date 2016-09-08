@@ -3,6 +3,9 @@ title: Frequently Asked Questions
 layout: docs
 ---
 
+* TOC
+{:toc}
+
 ### Where can I find known issues?
 
 You can view open issues, and submit new issues, on our [Github issues

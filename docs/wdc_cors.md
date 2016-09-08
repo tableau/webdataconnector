@@ -21,11 +21,8 @@ XMLHttpRequest cannot load URL. No 'Access-Control-Allow-Origin' header is prese
 If your connector experiences CORS-related errors when trying to access
 another site, you can try the approaches listed in this topic:
 
--   [Make requests through a proxy server](#proxy-server)
-
--   [Request CORS support from API Server](#request-access)
-
--   [Make requests with JSONP](#jsonp)
+* TOC
+{:toc}
 
 **Note**: For information about how to use the Web Data Connector
 simulator to help debug errors, including CORS errors, see [Debugging in the Simulator and Tableau]({{ site.baseurl

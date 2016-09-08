@@ -10,15 +10,12 @@ By the end of this tutorial, you will know how to store data in multiple tables 
 
 You'll learn how to:
 
-* [Create the user interface](#create-ui)
-* [Store connection data](#store-connection-data)
-* [Get multiple table schemas](#get-multiple-schemas)
-* [Get data for each table](#get-data-for-tables)
-* [See it in action](#see-in-action)
+* TOC
+{:toc}
 
 To see the source code for the completed connector, look for the `earthquakeMultitable` files in the `Examples` directory.
 
-### Before you get started {#before-you-get-started}
+### Before you get started
 
 This tutorial builds on the USGS Earthquake feed connector created in the [tutorial]({{ site.baseurl
 }}/docs/wdc_tutorial). Before you get started, you'll need to make a copy of the connector that you can edit.
@@ -34,7 +31,7 @@ This tutorial builds on the USGS Earthquake feed connector created in the [tutor
    <script src="earthquakeMultitable.js" type="text/javascript"></script>
    ```
 
-### Create the user interface {#create-ui}
+### Create the user interface
 
 The existing connector interface doesn't do very much--it's just a button that you can click to run the connector. To
 illustrate how to pass user input data to your connector, let's add a form so that you can specify the date range for
@@ -63,7 +60,7 @@ this:
 
 !["The connector interface displays four input fields with labels for date ranges."]({{ site.baseurl }}/assets/earthquake_multitable_ui.png)
 
-### Store connection data {#store-connection-data}
+### Store connection data
 
 Now that you've updated the user interface, it's time to consume the user input data in the JavaScript code. We're going
 to get the values from the input fields and store them in a `tableau.connectionData` variable for use later.
@@ -109,7 +106,7 @@ The `tableau.connectionData` variable is the important piece here. It is created
 the `getSchema` and `getData` functions. It is important to note that the `tableau.connectionData` variable only accepts
 string values.
 
-### Get Multiple Table Schemas {#get-multiple-schemas}
+### Get Multiple Table Schemas
 
 In this part of the tutorial, you modify the `getSchema` code to create two table schemas and pass them to the
 `schemaCallback` in an array parameter.
@@ -177,7 +174,7 @@ Here's what's happening in the code:
 * The `magPlaceTable` and `timeUrlTable` variables each define a table schema object.
 * The table schemas are passed to `schemaCallback` as objects in an array.
 
-### Get data for each table {#get-data-for-tables}
+### Get data for each table
 
 When you create multiple table schemas, the WDC API calls the `getData` function once for each schema. As a result, you
 need a way to change the call to the USGS Earthquake API for each table. The easiest way to do this is to use the
