@@ -324,6 +324,24 @@
         "source_code": "https://github.com/port80labs/census-wdc"
     },
     {
+        "name": "US Census American Community Survey Profile",
+        "url": "http://bigbytes.mobyus.com/tableau/censuswdc11.aspx",
+        "author": "Mark Evans",
+        "github_username": "MobyusMark",
+        "tags": ["v_1.1"],
+        "description": "Loads selected data from the US Census ACS (American Community Survey)",
+        "source_code": ""
+    },
+    {
+        "name": "US Census Tract Shapefiles",
+        "url": "http://bigbytes.mobyus.com/tableau/censustractshapeswdc11.aspx",
+        "author": "Mark Evans",
+        "github_username": "MobyusMark",
+        "tags": ["v_1.1"],
+        "description": "Loads shapefile data for selected census tracts to support mapping.",
+        "source_code": ""
+    },
+    {
         "name": "U.S. Federal Reserve Economic Data (FRED)",
         "url": "http://wdc.poc.interworks.com/fred/",
         "author": "Derrick Austin",
