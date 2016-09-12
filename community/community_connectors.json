@@ -465,5 +465,14 @@
     "tags": ["v_2.0"],
     "description": "A Tableau Web Data Connector for Instagram",
     "source_code": ""
-}
+    },
+    {
+        "name": "Spotify Connector",
+        "url": "http://maddyloo.github.io/Connectors/index.html",
+        "author": "Madeleine Corneli",
+        "github_username": "maddyloo",
+        "tags": ["v_2.0"],
+        "description": "Tableau WDC that pulls playlist and song info from Spotify",
+        "source_code": "https://github.com/maddyloo/Spotify_WDC"
+    }
 ]
