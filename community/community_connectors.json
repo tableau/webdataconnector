@@ -35,6 +35,15 @@
         "description": "",
         "source_code": "https://github.com/tableau-mkt/dcm-dfa-wdc"
     },
+     {
+        "name": "Elasticsearch",
+        "url": "http://mradamlacey.github.io/elasticsearch-tableau-connector/elasticsearch-connector.html",
+        "author": "Adam Lacey",
+        "github_username": "mradamlacey",
+        "tags": ["v_1.0"],
+        "description": "",
+        "source_code": "https://github.com/mradamlacey/elasticsearch-tableau-connector"
+    },
     {
         "name": "Fitbit",
         "url": "http://data.theinformationlab.co.uk/fitbit.html",
