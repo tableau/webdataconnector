@@ -8,7 +8,7 @@ This is the development branch of the web data connector platform. For informati
 
 The following features are currently under development in version 2.1 of the WDC:
 
-### Standard connections (ready for beta)
+### Standard connections (available now in dev branch simulator)
 
 When you create a web data connector that gets data from multiple tables, you can now pre-specify how you want to join
 the tables in Tableau Desktop. The standard connections feature supports left and inner joins for tables.
@@ -28,6 +28,10 @@ To pre-specify these joins (or standard connections), complete the following ste
 
 Note that the `schemaCallback` function takes the connections object as a second, optional parameter.
 
-### Progress reporting (coming soon)
+### Progress reporting (coming in future Tableau release)
 
 When you load a connector and get data, you can view progress information that indicates how many rows of data have been downloaded.
+
+This feature is not included in the simulator, but will be available in Tableau.
+
+During the data gathering phase, you can use tableau.reportProgress(String) to inform your users about the progress of their WDC connection.  The API accepts a string (which may be truncated if too long) and displays that string in the Tableau progress dialog.
