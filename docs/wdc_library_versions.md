@@ -19,7 +19,7 @@ https://connectors.tableau.com/libs/tableauwdc-2.0.latest.min.js
 The above URLs are the recommended ways of linking to the Tableau WDC and guarantee that
 you receive patch versions for the current minor version as we release them.
 If you prefer to opt out of receiving automatic patch versions, you can link directly
-to the current patch version, 2.0.8:
+to a specific patch version, for example:
 
 ```
 https://connectors.tableau.com/libs/tableauwdc-2.0.8.js
