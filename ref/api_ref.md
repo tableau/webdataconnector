@@ -29,7 +29,7 @@ title: WDC API Reference
                             <a href="api_ref.html#webdataconnectorapi.columninfo.description" class="tsd-kind-icon">description</a>
                         </li>
                         <li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-                            <a href="api_ref.html#webdataconnectorapi.columninfo.geographicrole" class="tsd-kind-icon">geo<wbr>Role</a>
+                            <a href="api_ref.html#webdataconnectorapi.columninfo.georole" class="tsd-kind-icon">geo<wbr>Role</a>
                         </li>
                         <li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
                             <a href="api_ref.html#webdataconnectorapi.columninfo.id" class="tsd-kind-icon">id</a>
