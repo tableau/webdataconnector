@@ -29,7 +29,7 @@ title: WDC API Reference
                             <a href="api_ref.html#webdataconnectorapi.columninfo.description" class="tsd-kind-icon">description</a>
                         </li>
                         <li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-                            <a href="api_ref.html#webdataconnectorapi.columninfo.geographicrole" class="tsd-kind-icon">geographic<wbr>Role</a>
+                            <a href="api_ref.html#webdataconnectorapi.columninfo.geographicrole" class="tsd-kind-icon">geo<wbr>Role</a>
                         </li>
                         <li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
                             <a href="api_ref.html#webdataconnectorapi.columninfo.id" class="tsd-kind-icon">id</a>
@@ -455,8 +455,8 @@ title: WDC API Reference
                     </section>
                     <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
                         <a name="webdataconnectorapi.columninfo.geographicrole" class="tsd-anchor"></a>
-                        <h3>geographic<wbr>Role</h3>
-                        <div class="tsd-signature tsd-kind-icon">geographic<wbr>Role<span class="tsd-signature-symbol">:</span> <a href="api_ref.html#webdataconnectorapi.geographicroleenum" class="tsd-signature-type">geographicRoleEnum</a></div>
+                        <h3>geo<wbr>Role</h3>
+                        <div class="tsd-signature tsd-kind-icon">geo<wbr>Role<span class="tsd-signature-symbol">:</span> <a href="api_ref.html#webdataconnectorapi.geographicroleenum" class="tsd-signature-type">geographicRoleEnum</a></div>
                         <div class="tsd-comment tsd-typography">
                             <div class="lead">
                                 <p>(Optional) The default geographic role of this column.</p>
