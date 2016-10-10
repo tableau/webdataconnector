@@ -13,7 +13,7 @@ page](https://github.com/tableau/webdataconnector/issues).
 
 ### Can I still use version 1.0 of the WDC API? Where can I find information about version 1.0 of the WDC?
 
-If you are creating a new connector for Tableau 10.0 or later, you should use version 2.0 of the WDC API. However,
+If you are creating a new connector for Tableau 10.0 or later, you should use version 2 of the WDC API. However,
 version 1.0 of the WDC API will continue to work in Tableau 10.0. Additionally, Tableau 9.3 and earlier only support
 version 1.0 of the WDC API.
 

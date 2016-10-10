@@ -13,11 +13,15 @@ online [here](https://github.com/tableau/webdataconnector/tree/master).
 
 -   **earthquakeMultitable**
 
-    This connector builds on the previous one to showcase how to get data into multiple tables from a data source. Use the multitable example to compare earthquake data for two date ranges.
+    This connector builds on the previous one to showcase how to get data into multiple tables from a data source.
 
 -   **earthquakeMultilingual**
 
     This connector demonstrates how to use the locale property of the tableau object to localize content.
+
+-   **StandardConnections**
+
+    This connector gets data from multiple tables in a local JSON file and specifies how the tables should be joined in Tableau Desktop.
 
 -   **StockQuoteConnector_promises**
 

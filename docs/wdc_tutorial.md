@@ -43,7 +43,7 @@ Then, copy the following code into the file:
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
-    <script src="https://connectors.tableau.com/libs/tableauwdc-2.0.latest.js" type="text/javascript"></script>
+    <script src="https://connectors.tableau.com/libs/tableauwdc-2.1.latest.js" type="text/javascript"></script>
     <script src="earthquakeWDC.js" type="text/javascript"></script>
 </head>
 
@@ -67,7 +67,7 @@ following between the `head` tags:
 * The `bootstrap.min.css` and `bootstrap.min.js` files are used to simplify styling and formatting.
 * The `jquery.min.js` file will be used as a helper library by our connector. (For example, the connector uses jquery to
   get JSON data.)
-* The `tableauwdc-2.0.latest.js` file is the main library for the WDC API.
+* The `tableauwdc-2.1.latest.js` file is the main library for the WDC API.
 * The `earthquakeWDC.js` file is the (not yet created) JavaScript code for our connector.
 
 Between the `body` tags, there is a simple button element that illustrates how users can interact with your connector

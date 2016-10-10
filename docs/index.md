@@ -8,8 +8,8 @@ with JavaScript code that connects to web data (for example, by means of a REST 
 and passes the data to Tableau.
 
 <div class="alert alert-info">
-    <b>Note:</b> This site is for version 2.0 of the WDC, which is compatible only with Tableau 10.0 and later. For
-    information about version 1.0 of the WDC for use with earlier versions of Tableau, see the archived <a href="http://onlinehelp.tableau.com/v9.3/api/wdc/en-us/help.htm" style="text-decoration:underline;">documentation</a>
+    <b>Note:</b> This site is for version 2 of the WDC, which is compatible only with Tableau 10.0 and later. For
+    information about version 1 of the WDC for use with earlier versions of Tableau, see the archived <a href="http://onlinehelp.tableau.com/v9.3/api/wdc/en-us/help.htm" style="text-decoration:underline;">documentation</a>
     and <a href="https://github.com/tableau/webdataconnector/releases/tag/v1.1.0" style="text-decoration:underline;">simulator</a>.
 </div>
 
@@ -49,13 +49,15 @@ You're going to need a couple of things before we get started. Make sure you hav
    npm install
    ```
 
-2. Start the test web server:
+   **Note**: You must run the command with administrator or sudo privileges.
+
+1. Start the test web server:
 
    ```
    npm start
    ```
 
-3. Open a browser and navigate to the following URL:
+1. Open a browser and navigate to the following URL:
 
 
    ```
