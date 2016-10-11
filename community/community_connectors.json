@@ -306,6 +306,15 @@
         "source_code": "https://github.com/jdunkerley/TableauWebData"
     },
     {
+        "name": "Toggl",
+        "url": "https://keshiarose.github.io/Toggl-Web-Data-Connector/togglwdc.html",
+        "author": "Keshia Rose",
+        "github_username": "KeshiaRose",
+        "tags": ["v_2.0"],
+        "description": "A Tableau Web Data Connector that pulls in your task tracking data from the Detailed Report view on toggl.com",
+        "source_code": "https://keshiarose.github.io/Toggl-Web-Data-Connector/"
+    },
+    {
         "name": "Travis CI",
         "url": "https://travis-web-data-connector.herokuapp.com/",
         "author": "Eric Peterson",
