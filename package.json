@@ -31,7 +31,6 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-2": "^6.11.0",
     "chromedriver": "^2.21.2",
-    "corsproxy": "^1.4.0",
     "coveralls": "^2.11.9",
     "enzyme": "^2.3.0",
     "eslint": "^2.13.1",
@@ -40,19 +39,15 @@
     "eslint-plugin-jsx-a11y": "^1.5.3",
     "eslint-plugin-react": "^5.2.2",
     "express": "^4.14.0",
-    "http-server": "^0.9.0",
     "jsdom": "^9.3.0",
     "mocha": "^2.5.3",
-    "npm-run-all": "^2.1.1",
     "nyc": "^6.6.1",
     "react-addons-test-utils": "15.1.0",
     "redux-mock-store": "^1.1.2",
     "selenium-webdriver": "^2.53.3",
     "should": "^9.0.2",
     "sinon": "^1.17.4",
-    "webpack": "^1.13.1"
-  },
-  "dependencies": {
+    "webpack": "^1.13.1",
     "js-cookie": "^2.1.2",
     "react": "15.1.0",
     "react-bootstrap": "^0.29.5",
@@ -64,6 +59,11 @@
     "redux-thunk": "^2.1.0",
     "underscore": "^1.8.3",
     "validate.js": "^0.10.0"
+  },
+  "dependencies": {
+    "corsproxy": "^1.4.0",
+    "http-server": "^0.9.0",
+    "npm-run-all": "^2.1.1"
   },
   "nyc": {
     "include": [
