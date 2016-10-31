@@ -1,4 +1,5 @@
 import Cookie from 'js-cookie';
+import queryString from 'querystring';
 
 // Set Class Constants
 export const eventNames = {
@@ -49,7 +50,13 @@ export const samples = [
 ];
 
 export const defaultMostRecentUrls = Cookie.getJSON('mostRecentUrls') || [...samples];
-export const defaultUrl = [...defaultMostRecentUrls][0];
+
+// if a src query was specified, use it, else use the first MRU
+// use a src query if one exists
+const srcQuery = typeof location !== 'undefined' ?
+  queryString.parse(location.search.slice(1)).src : null;
+
+export const defaultUrl = srcQuery || [...defaultMostRecentUrls][0];
 
 export const WINDOW_PROPS = 'height=500,width=800';
 

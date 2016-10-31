@@ -38,7 +38,7 @@ describe('General Simulator Tests', function(){
     }
 
     // open simulator page
-    driver.get('http://localhost:8888/Simulator').then(function() {
+    driver.get('http://localhost:8888/Simulator?src=srcQuery').then(function() {
       simulatorWindow = driver.getWindowHandle();
       done();
     });
@@ -66,6 +66,18 @@ describe('General Simulator Tests', function(){
     driver.isElementPresent({className:'interactive-phase'})
       .then(function (present) {
         present.should.be.true();
+        done();
+      });
+  })
+
+  it("Should Have Set Src Query Url", function(done){
+    const wdcUrl = 'srcQuery';
+    driver.findElement({id:'address-input'})
+      .then(function (addressBar) {
+        return addressBar.getAttribute("value");
+      })
+      .then(function(url) {
+        url.should.be.equal(wdcUrl);
         done();
       });
   })
