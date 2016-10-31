@@ -29,6 +29,7 @@ export const defaultWdcAttrs = {
   connectionData: '',
   username: '',
   password: '',
+  usernameAlias: '',
   platformOS: '',
   platformEdition: '',
   platformVersion: '',

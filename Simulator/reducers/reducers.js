@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import { defaultWdcAttrs } from '../utils/consts';
+import { defaultWdcAttrs, phases } from '../utils/consts';
 
 // The redux reducers, which create the next state object
 // from the payload of any given action.
@@ -9,8 +9,20 @@ import { defaultWdcAttrs } from '../utils/consts';
 // http://redux.js.org/docs/recipes/UsingObjectSpreadOperator.html
 
 export default handleActions({
-  SET_WDC_ATTRS: (state, action) =>
-    ({ ...state, wdcAttrs: action.payload }),
+  SET_WDC_ATTRS: (state, action) => {
+    const { currentPhase } = state;
+    let newAttrs = action.payload;
+    if (currentPhase === phases.AUTH) {
+      // If we are in the auth phase, we are only allowed to update the username/password attributes
+      newAttrs = {
+        username: newAttrs.username,
+        usernameAlias: newAttrs.usernameAlias,
+        password: newAttrs.password,
+      };
+    }
+
+    return { ...state, wdcAttrs: newAttrs };
+  },
   SET_WDC_URL: (state, action) =>
     ({ ...state, wdcUrl: action.payload }),
   SET_ADDRESS_BAR_URL: (state, action) =>
