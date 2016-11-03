@@ -1,0 +1,140 @@
+{
+  "connections" : [
+    {
+      "alias" : "User and Their Photos",
+      "tables" : [
+        { "id"    : "users",
+          "alias" : "Users"     },
+        { "id"    : "albums",
+          "alias" : "Albums"    },
+        { "id"    : "photos",
+          "alias" : "Photos"    }
+      ],
+      "joins" : [
+        {
+          "left" : {
+            "tableAlias" : "Users",
+            "columnId"   : "id"
+          },
+          "right" : {
+            "tableAlias" : "Albums",
+            "columnId"   : "userId"
+          },
+          "joinType" : "inner"
+        },{
+          "left" : {
+            "tableAlias" : "Albums",
+            "columnId"   : "id"
+          },
+          "right" : {
+            "tableAlias" : "Photos",
+            "columnId"   : "albumId"
+          },
+          "joinType" : "inner"
+        }
+      ]
+    },{
+      "alias" : "Comments on User's Posts",
+      "tables" : [
+        { "id"    : "users",
+          "alias" : "Users"     },
+        { "id"    : "posts",
+          "alias" : "Posts"     },
+        { "id"    : "comments",
+          "alias" : "Comments"  }
+      ],
+      "joins" : [
+        {
+          "left" : {
+            "tableAlias" : "Users",
+            "columnId"   : "id"
+          },
+          "right" : {
+            "tableAlias" : "Posts",
+            "columnId"   : "userId"
+          },
+          "joinType" : "inner"
+        },{
+          "left" : {
+            "tableAlias" : "Posts",
+            "columnId"   : "id"
+          },
+          "right" : {
+            "tableAlias" : "Comments",
+            "columnId"   : "postId"
+          },
+          "joinType" : "inner"
+        }
+      ]
+    },{
+      "alias" : "Complete Data Joins",
+      "tables" : [
+        { "id"    : "users",
+          "alias" : "Users"     },
+        { "id"    : "albums",
+          "alias" : "Albums"    },
+        { "id"    : "photos",
+          "alias" : "Photos"    },
+        { "id"    : "posts",
+          "alias" : "Posts"     },
+        { "id"    : "comments",
+          "alias" : "Comments"  },
+        { "id"    : "todos",
+          "alias" : "Todos"     }
+      ],
+      "joins" : [
+        {
+          "left" : {
+            "tableAlias" : "Users",
+            "columnId"   : "id"
+          },
+          "right" : {
+            "tableAlias" : "Albums",
+            "columnId"   : "userId"
+          },
+          "joinType" : "inner"
+        },{
+          "left" : {
+            "tableAlias" : "Albums",
+            "columnId"   : "id"
+          },
+          "right" : {
+            "tableAlias" : "Photos",
+            "columnId"   : "albumId"
+          },
+          "joinType" : "inner"
+        },{
+          "left" : {
+            "tableAlias" : "Users",
+            "columnId"   : "id"
+          },
+          "right" : {
+            "tableAlias" : "Posts",
+            "columnId"   : "userId"
+          },
+          "joinType" : "inner"
+        },{
+          "left" : {
+            "tableAlias" : "Posts",
+            "columnId"   : "id"
+          },
+          "right" : {
+            "tableAlias" : "Comments",
+            "columnId"   : "postId"
+          },
+          "joinType" : "inner"
+        },{
+          "left" : {
+            "tableAlias" : "Users",
+            "columnId"   : "id"
+          },
+          "right" : {
+            "tableAlias" : "Todos",
+            "columnId"   : "userId"
+          },
+          "joinType" : "inner"
+        }
+      ]
+    }
+  ]
+}

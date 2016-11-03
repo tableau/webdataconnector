@@ -1,4 +1,5 @@
 import Cookie from 'js-cookie';
+import queryString from 'querystring';
 
 // Set Class Constants
 export const eventNames = {
@@ -29,6 +30,7 @@ export const defaultWdcAttrs = {
   connectionData: '',
   username: '',
   password: '',
+  usernameAlias: '',
   platformOS: '',
   platformEdition: '',
   platformVersion: '',
@@ -48,7 +50,13 @@ export const samples = [
 ];
 
 export const defaultMostRecentUrls = Cookie.getJSON('mostRecentUrls') || [...samples];
-export const defaultUrl = [...defaultMostRecentUrls][0];
+
+// if a src query was specified, use it, else use the first MRU
+// use a src query if one exists
+const srcQuery = typeof location !== 'undefined' ?
+  queryString.parse(location.search.slice(1)).src : null;
+
+export const defaultUrl = srcQuery || [...defaultMostRecentUrls][0];
 
 export const WINDOW_PROPS = 'height=500,width=800';
 
@@ -67,4 +75,40 @@ export const defaultState = {
   phaseInitCallbackCalled: false,
   simulatorWindow: null,
   tables: {},
+  standardConnections: [],
+};
+
+export const visOptions = {
+  layout: {
+    hierarchical: { direction: 'LR' },
+  },
+  nodes: {
+    borderWidth: 8,
+    borderWidthSelected: 12,
+    color: {
+      border: '#e1e1e1',
+      background: '#e1e1e1',
+      highlight: '#2dcc97',
+      hover: '#cbcbcb',
+    },
+    font: { color: '#000000' },
+    shape: 'box',
+    shapeProperties: { borderRadius: 0 },
+  },
+  edges: {
+    color: {
+      color: '#355c80',
+      highlight: '#2dcc97',
+      hover: '#00b180',
+    },
+    smooth: {
+      enabled: true,
+      type: 'cubicBezier',
+      roundness: 0.6,
+    },
+  },
+  interaction: {
+    hover: true,
+    zoomView: false,
+  },
 };

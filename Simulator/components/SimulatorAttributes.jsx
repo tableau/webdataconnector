@@ -77,6 +77,14 @@ class SimulatorAttributes extends Component {
             value={this.props.wdcAttrs.password}
             onChange={this.handleAttrChange}
           />
+          <ControlLabel> Username Alias </ControlLabel>
+          <FormControl
+            type="text"
+            disabled={this.props.disabled}
+            id="usernameAlias"
+            value={this.props.wdcAttrs.usernameAlias}
+            onChange={this.handleAttrChange}
+          />
           {this.props.showAdvanced ?
             <div className="advanced">
               <PageHeader>
@@ -165,6 +173,7 @@ SimulatorAttributes.propTypes = {
     connectionData: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
+    usernameAlias: PropTypes.string.isRequired,
     authPurpose: PropTypes.string.isRequired,
     locale: PropTypes.string.isRequired,
   }).isRequired,

@@ -47,7 +47,8 @@ export function receiveMessage(payload) {
 
         case eventNames.SCHEMA_CB: {
           const schema = msgData.schema;
-          dispatch(handleSchemaCallback(schema));
+          const standardConnections = msgData.standardConnections;
+          dispatch(handleSchemaCallback(schema, standardConnections));
           break;
         }
 
@@ -132,7 +133,7 @@ export function handleSubmit() {
   };
 }
 
-export function handleSchemaCallback(schema) {
+export function handleSchemaCallback(schema, standardConnections) {
   return (dispatch, getState) => {
     // Validate schema, and populate store with new table objects
     // using the schema info
@@ -161,6 +162,7 @@ export function handleSchemaCallback(schema) {
     } else {
       toastr.error('Please see debug console for details.', 'WDC Validation Error');
     }
+    dispatch(simulatorActions.setStandardConnections(standardConnections));
   };
 }
 

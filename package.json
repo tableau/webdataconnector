@@ -42,6 +42,7 @@
     "jsdom": "^9.3.0",
     "mocha": "^2.5.3",
     "nyc": "^6.6.1",
+    "querystring": "^0.2.0",
     "react-addons-test-utils": "15.1.0",
     "redux-mock-store": "^1.1.2",
     "selenium-webdriver": "^2.53.3",
@@ -58,7 +59,8 @@
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
     "underscore": "^1.8.3",
-    "validate.js": "^0.10.0"
+    "validate.js": "^0.10.0",
+    "vis": "^4.16.1"
   },
   "dependencies": {
     "corsproxy": "^1.4.0",
