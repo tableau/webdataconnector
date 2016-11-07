@@ -43,7 +43,8 @@ describe('Messaging Thunks', function() {
           platformEdition: "platformEdition",
           platformBuildNumber: "platformBuildNumber",
           authPurpose: "ephemeral",
-          locale: "en-us"
+          locale: "en-us",
+          usernameAlias: ""
         },
         version: "2.0.1"
       };
