@@ -17,6 +17,7 @@ export const eventNames = {
   SHUTDOWN_CB: 'shutdownCallback',
   ABORT: 'abortWithError',
   ABORT_AUTH: 'abortForAuth',
+  REPORT_PROGRESS: 'reportProgress',
 };
 
 export const phases = {
