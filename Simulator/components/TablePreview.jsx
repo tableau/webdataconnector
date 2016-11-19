@@ -1,5 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { Button, FormControl } from 'react-bootstrap';
+import { Button,
+         FormControl,
+         OverlayTrigger,
+         Popover,
+         Glyphicon } from 'react-bootstrap';
 import _ from 'underscore';
 
 import CollapsibleTable from './CollapsibleTable.jsx';
@@ -28,6 +32,21 @@ class TablePreview extends Component {
 
   render() {
     if (!this.props || !this.props.tableInfo) return null;
+
+    const joinFilterTooltip = (
+        <Popover
+          id="joinFilterTooltip"
+          title="Join Filtering"
+        >
+          Join Filtering is a new WDC feature that a WDC to optimize getting data for connections with two or more joined tables.
+          This feature allows a table to receive a list of primary keys that were collected in another table to which this table is joined.
+          See the WDC &nbsp;
+          <a href="http://tableau.github.io/webdataconnector/ref/api_ref.html#webdataconnectorapi.tableau" target="_blank">
+            documentation
+          </a>
+          &nbsp;for more details
+        </Popover>
+    );
 
     const tableInfo = this.props.tableInfo;
     const tableData = this.props.tableData;
@@ -162,6 +181,11 @@ class TablePreview extends Component {
               >
                 Filtered Fetch
               </Button>
+              <OverlayTrigger trigger="click" rootClose placement="top" overlay={joinFilterTooltip}>
+                <small style={{ marginLeft: 10 }}>
+                  <Glyphicon glyph="glyphicon glyphicon-info-sign" />
+                </small>
+              </OverlayTrigger>
             </div>
             : null
         }
