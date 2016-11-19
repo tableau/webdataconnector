@@ -23,6 +23,8 @@ export default handleActions({
 
     return { ...state, wdcAttrs: newAttrs };
   },
+  SET_JOIN_FILTERS: (state, action) =>
+    ({ ...state, joinFilters: action.payload }),
   SET_WDC_URL: (state, action) =>
     ({ ...state, wdcUrl: action.payload }),
   SET_ADDRESS_BAR_URL: (state, action) =>

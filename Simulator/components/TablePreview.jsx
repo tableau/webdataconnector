@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, FormControl } from 'react-bootstrap';
 import _ from 'underscore';
 
 import CollapsibleTable from './CollapsibleTable.jsx';
@@ -22,6 +22,8 @@ class TablePreview extends Component {
 
     this.freshFetch = this.freshFetch.bind(this);
     this.incrementalRefresh = this.incrementalRefresh.bind(this);
+    this.filteredFetch = this.filteredFetch.bind(this);
+    this.handleJoinFilterChange = this.handleJoinFilterChange.bind(this);
   }
 
   render() {
@@ -29,6 +31,31 @@ class TablePreview extends Component {
 
     const tableInfo = this.props.tableInfo;
     const tableData = this.props.tableData;
+    const tableNames = this.props.tableNames;
+    const columnMap = this.props.columnMap;
+    const joinFilters = this.props.joinFilters;
+    const hasFilterData = this.props.hasFilterData;
+    
+    // Build up dropdown options for Join Filter dropdowns
+    let tableNameOptions, columnMapOptions;
+    if (hasFilterData) {
+      tableNameOptions = tableNames.map(function(option) {
+          return (
+              <option value={option}>
+                  {option}
+              </option>
+          )
+      });
+      
+      var selectedTable = joinFilters.selectedTable;
+      columnMapOptions = columnMap[selectedTable].map(function(option) {
+          return (
+              <option value={option}>
+                  {option}
+              </option>
+          )
+      });
+    }
 
     const hasData = tableData.length > 0;
     const canIncrementalUpdate = hasData && (tableInfo.incrementColumnId);
@@ -43,6 +70,8 @@ class TablePreview extends Component {
     // Prep table of actual data for this TablePreview
     let dataTableHeader = this.getDataHeader(tableInfo);
     let dataElements = this.getDataElements(tableData, dataTableHeader);
+
+    let canFilter = this.props.showAdvanced && !this.props.fetchInProgress && hasFilterData
 
     return (
       <div className={`table-preview-${tableInfo.id}`}>
@@ -103,20 +132,62 @@ class TablePreview extends Component {
             </Button>
             : null
         }
+        {
+          canFilter ?
+            <div
+              style={{ display: 'inline'}}
+            >
+              <FormControl
+                  componentClass="select"
+                  id="selectedTable"
+                  value={this.props.joinFilters.selectedTable}
+                  onChange={this.handleJoinFilterChange}
+                  style={{ marginLeft: '4px', width: "100px", display: 'inline' }}
+                >
+                {tableNameOptions}
+              </FormControl>
+              <FormControl
+                  componentClass="select"
+                  id="selectedColumn"
+                  value={this.props.joinFilters.selectedColumn}
+                  onChange={this.handleJoinFilterChange}
+                  style={{ marginLeft: '4px', width: "100px", display: 'inline' }}
+                >
+                {columnMapOptions}
+              </FormControl>
+              <Button
+                className="filtered-fetch-btn"
+                onClick={this.filteredFetch}
+                style={{ marginLeft: '4px' }}
+              >
+                Filtered Fetch
+              </Button>
+            </div>
+            : null
+        }
         <hr />
       </div>
     );
   }
 
   incrementalRefresh() {
-    this.fetchData(true);
+    this.fetchData(true, false);
   }
 
   freshFetch() {
-    this.fetchData(false);
+    this.fetchData(false, false);
   }
 
-  fetchData(isIncremental) {
+  filteredFetch() {
+    this.fetchData(false, true);
+  }
+
+  handleJoinFilterChange(e) {
+    const newFilters = { ...this.props.joinFilters, [e.target.id]: e.target.value };
+    this.props.setJoinFilters(newFilters);
+  }
+
+  fetchData(isIncremental, isFiltered) {
     const tableInfo = this.props.tableInfo;
     const tableData = this.props.tableData;
     const tablesAndIncValues = [];
@@ -130,8 +201,8 @@ class TablePreview extends Component {
 
     tablesAndIncValues.push({ tableInfo, incrementValue });
 
-    // getTableCallback takes (tablesAndIncValues, isFreshFetch)
-    this.props.getTableDataCallback(tablesAndIncValues, !isIncremental);
+    // getTableCallback takes (tablesAndIncValues, isFreshFetch, isFiltered)
+    this.props.getTableDataCallback(tablesAndIncValues, !isIncremental, isFiltered);
   }
 
   getMetadataElements(tableInfo) {
@@ -211,6 +282,15 @@ TablePreview.proptypes = {
   tableData: PropTypes.array.isRequired,
   getTableDataCallback: PropTypes.func.isRequired,
   fetchInProgress: PropTypes.bool.isRequired,
+  showAdvanced: PropTypes.bool.isRequired,
+  tableNames: PropTypes.array.isRequired,
+  columnMap: PropTypes.object.isRequired,
+  joinFilters: PropTypes.shape({
+    selectedTable: PropTypes.string.isRequired,
+    selectedColumn: PropTypes.string.isRequired,
+  }).isRequired,
+  setJoinFilters: PropTypes.func.isRequired,
+  hasFilterData: PropTypes.bool.isRequired,
 };
 
 export default TablePreview;

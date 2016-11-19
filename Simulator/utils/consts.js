@@ -39,6 +39,12 @@ export const defaultWdcAttrs = {
   locale: 'en-us',
 };
 
+// Used for Join Filtering advanced feature
+export const defaultJoinFilters = {
+  selectedTable: '',
+  selectedColumn: '',
+};
+
 export const defaultShowAdvanced = Cookie.getJSON('showAdvanced') || false;
 
 export const samples = [
@@ -63,6 +69,7 @@ export const WINDOW_PROPS = 'height=500,width=800';
 export const defaultState = {
   // Originally wdcProps, renamed to avoid confusion with component props
   wdcAttrs: defaultWdcAttrs,
+  joinFilters: defaultJoinFilters, 
   addressBarUrl: defaultUrl,
   wdcUrl: defaultUrl,
   mostRecentUrls: defaultMostRecentUrls,

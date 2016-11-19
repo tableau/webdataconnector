@@ -70,8 +70,8 @@ class App extends Component {
       dispatch(simulatorActions.startConnector(consts.phases.AUTH));
     this.startInteractivePhase = () =>
       dispatch(simulatorActions.startConnector(consts.phases.INTERACTIVE));
-    this.sendGetData = (tablesAndIncValues, isFreshFetch) =>
-      dispatch(messagingActions.sendGetData(tablesAndIncValues, isFreshFetch));
+    this.sendGetData = (tablesAndIncValues, isFreshFetch, filterInfo) =>
+      dispatch(messagingActions.sendGetData(tablesAndIncValues, isFreshFetch, filterInfo));
 
     // Show Advanced Actions
     this.setShowAdvanced = (show) =>
@@ -168,6 +168,9 @@ class App extends Component {
                 tables={this.props.tables}
                 getTableDataCallback={this.sendGetData}
                 fetchInProgress={dataGatheringPhaseInProgress}
+                showAdvanced={this.props.showAdvanced}
+                joinFilters={this.props.joinFilters}
+                dispatch={this.props.dispatch}
               />
             </Col>
             :
