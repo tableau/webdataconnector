@@ -25,6 +25,8 @@ export default handleActions({
   },
   SET_JOIN_FILTERS: (state, action) =>
     ({ ...state, joinFilters: action.payload }),
+  SET_ACTIVE_JOIN_FILTER: (state, action) =>
+    ({ ...state, activeJoinFilter: action.payload }),
   SET_WDC_URL: (state, action) =>
     ({ ...state, wdcUrl: action.payload }),
   SET_ADDRESS_BAR_URL: (state, action) =>

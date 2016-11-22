@@ -1,9 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import TablePreview from './TablePreview.jsx';
 
-// Actions
-import * as simulatorActions from '../actions/simulator_actions';
-
 //----------------------Data Tables---------------------//
 // Component which contains the tablePreviews for each
 // table
@@ -12,14 +9,9 @@ import * as simulatorActions from '../actions/simulator_actions';
 class DataTables extends Component {
   constructor(props) {
     super(props);
-    const dispatch = this.props.dispatch;
-
-    this.setJoinFilters = (attrs) =>
-      dispatch(simulatorActions.setJoinFilters(attrs));
-
     this.getTableDataWithFilters = this.getTableDataWithFilters.bind(this);
   }
-  
+
   render() {
     const tables = this.props.tables;
 
@@ -27,31 +19,20 @@ class DataTables extends Component {
     let tableNames = [];
     let columnMap = {};
 
-    let hasFilterData = false;
-
     // Set up data about table and column filters for Join Filtering
-    Object.keys(tables).map(key => {
+    Object.keys(tables).forEach(key => {
       // We can only filter on a table if it has data already
       if (tables[key].data.length > 0) {
-        hasFilterData = true;
         tableNames.push(key);
-            
+
         columnMap[key] = [];
-        tables[key].schema.columns.map(column => {
+        tables[key].schema.columns.forEach(column => {
           columnMap[key].push(column.id);
         });
       }
     });
 
-    // Couldn't find a supported way to pass default prop values
-    // that depended on other prop data.  Below sets default joinFilters. 
-    let joinFilterDefaults = this.props.joinFilters;
-    if (joinFilterDefaults.selectedTable === "") {
-      if (hasFilterData) {
-        joinFilterDefaults.selectedTable = tableNames[0];
-        joinFilterDefaults.selectedColumn = columnMap[tableNames[0]][0];
-      }
-    }
+    // Give a default selected table filter
 
     // map each table to a preview element
     tablePreviewElements = Object.keys(tables).map(key =>
@@ -62,11 +43,12 @@ class DataTables extends Component {
         getTableDataCallback={this.getTableDataWithFilters}
         fetchInProgress={this.props.fetchInProgress}
         showAdvanced={this.props.showAdvanced}
-        columnMap={columnMap}
         tableNames={tableNames}
-        joinFilters = {joinFilterDefaults}
-        setJoinFilters={this.setJoinFilters}
-        hasFilterData={hasFilterData}
+        columnMap={columnMap}
+        joinFilters={this.props.joinFilters}
+        hasActiveJoinFilter={(this.props.activeJoinFilter === key)}
+        setJoinFilters={this.props.setJoinFilters}
+        setActiveJoinFilter={this.props.setActiveJoinFilter}
       />
     );
 
@@ -81,17 +63,18 @@ class DataTables extends Component {
     const filterTable = this.props.tables[this.props.joinFilters.selectedTable];
     const columnFilter = this.props.joinFilters.selectedColumn;
 
-    let filteredData, filterInfo;
+    let filteredData;
+    let filterInfo;
 
     if (isFiltered) {
-      filteredData = filterTable.data.map(function(row) {
-        return row[columnFilter];
+      filterTable.data.forEach(row => {
+        filteredData.push(row[columnFilter]);
       });
-      
+
       filterInfo = {
         column: columnFilter,
-        values: filteredData
-      }
+        values: filteredData,
+      };
     }
 
     // getTableCallback takes (tablesAndIncValues, isFreshFetch, filteredData)
@@ -104,8 +87,12 @@ DataTables.propTypes = {
   getTableDataCallback: PropTypes.func.isRequired,
   fetchInProgress: PropTypes.bool.isRequired,
   showAdvanced: PropTypes.bool.isRequired,
+
+  // Join filtering props
   joinFilters: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired,
+  activeJoinFilter: PropTypes.string,
+  setActiveJoinFilter: PropTypes.func.isRequired,
+  setJoinFilters: PropTypes.func.isRequired,
 };
 
 export default DataTables;

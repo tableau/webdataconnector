@@ -12,6 +12,7 @@ import * as consts from '../utils/consts';
 export const setWdcShouldFetchAllTables = createAction('SET_WDC_SHOULD_FETCH_ALL_TABLES');
 export const setWdcAttrs = createAction('SET_WDC_ATTRS');
 export const setJoinFilters = createAction('SET_JOIN_FILTERS');
+export const setActiveJoinFilter = createAction('SET_ACTIVE_JOIN_FILTERS');
 export const setAddressBarUrl = createAction('SET_ADDRESS_BAR_URL');
 export const setWdcUrl = createAction('SET_WDC_URL');
 export const setMostRecentUrls = createAction('SET_MOST_RECENT_URLS');

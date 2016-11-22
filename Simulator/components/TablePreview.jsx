@@ -1,12 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { Button,
-         FormControl,
-         OverlayTrigger,
-         Popover,
-         Glyphicon } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import _ from 'underscore';
 
 import CollapsibleTable from './CollapsibleTable.jsx';
+import JoinFilter from './JoinFilter.jsx';
 
 //----------------------Table Preview---------------------//
 // Component which contains a preview of both the metadata
@@ -27,54 +24,14 @@ class TablePreview extends Component {
     this.freshFetch = this.freshFetch.bind(this);
     this.incrementalRefresh = this.incrementalRefresh.bind(this);
     this.filteredFetch = this.filteredFetch.bind(this);
-    this.handleJoinFilterChange = this.handleJoinFilterChange.bind(this);
+    this.setIsActive = this.setIsActive.bind(this);
   }
 
   render() {
     if (!this.props || !this.props.tableInfo) return null;
 
-    const joinFilterTooltip = (
-        <Popover
-          id="joinFilterTooltip"
-          title="Join Filtering"
-        >
-          Join Filtering is a new WDC feature that a WDC to optimize getting data for connections with two or more joined tables.
-          This feature allows a table to receive a list of primary keys that were collected in another table to which this table is joined.
-          See the WDC &nbsp;
-          <a href="http://tableau.github.io/webdataconnector/ref/api_ref.html#webdataconnectorapi.tableau" target="_blank">
-            documentation
-          </a>
-          &nbsp;for more details
-        </Popover>
-    );
-
     const tableInfo = this.props.tableInfo;
     const tableData = this.props.tableData;
-    const tableNames = this.props.tableNames;
-    const columnMap = this.props.columnMap;
-    const joinFilters = this.props.joinFilters;
-    const hasFilterData = this.props.hasFilterData;
-    
-    // Build up dropdown options for Join Filter dropdowns
-    let tableNameOptions, columnMapOptions;
-    if (hasFilterData) {
-      tableNameOptions = tableNames.map(function(option) {
-          return (
-              <option value={option}>
-                  {option}
-              </option>
-          )
-      });
-      
-      var selectedTable = joinFilters.selectedTable;
-      columnMapOptions = columnMap[selectedTable].map(function(option) {
-          return (
-              <option value={option}>
-                  {option}
-              </option>
-          )
-      });
-    }
 
     const hasData = tableData.length > 0;
     const canIncrementalUpdate = hasData && (tableInfo.incrementColumnId);
@@ -89,8 +46,6 @@ class TablePreview extends Component {
     // Prep table of actual data for this TablePreview
     let dataTableHeader = this.getDataHeader(tableInfo);
     let dataElements = this.getDataElements(tableData, dataTableHeader);
-
-    let canFilter = this.props.showAdvanced && !this.props.fetchInProgress && hasFilterData
 
     return (
       <div className={`table-preview-${tableInfo.id}`}>
@@ -152,41 +107,15 @@ class TablePreview extends Component {
             : null
         }
         {
-          canFilter ?
-            <div
-              style={{ display: 'inline'}}
-            >
-              <FormControl
-                  componentClass="select"
-                  id="selectedTable"
-                  value={this.props.joinFilters.selectedTable}
-                  onChange={this.handleJoinFilterChange}
-                  style={{ marginLeft: '4px', width: "100px", display: 'inline' }}
-                >
-                {tableNameOptions}
-              </FormControl>
-              <FormControl
-                  componentClass="select"
-                  id="selectedColumn"
-                  value={this.props.joinFilters.selectedColumn}
-                  onChange={this.handleJoinFilterChange}
-                  style={{ marginLeft: '4px', width: "100px", display: 'inline' }}
-                >
-                {columnMapOptions}
-              </FormControl>
-              <Button
-                className="filtered-fetch-btn"
-                onClick={this.filteredFetch}
-                style={{ marginLeft: '4px' }}
-              >
-                Filtered Fetch
-              </Button>
-              <OverlayTrigger trigger="click" rootClose placement="top" overlay={joinFilterTooltip}>
-                <small style={{ marginLeft: 10 }}>
-                  <Glyphicon glyph="glyphicon glyphicon-info-sign" />
-                </small>
-              </OverlayTrigger>
-            </div>
+          this.props.showAdvanced ?
+            <JoinFilter
+              tableNames={this.props.tableNames}
+              columnMap={this.props.columnMap}
+              joinFilters={this.props.joinFilters}
+              isActive={this.props.hasActiveJoinFilter}
+              setJoinFilters={this.props.setJoinFilters}
+              setIsActive={this.setIsActive}
+            />
             : null
         }
         <hr />
@@ -204,11 +133,6 @@ class TablePreview extends Component {
 
   filteredFetch() {
     this.fetchData(false, true);
-  }
-
-  handleJoinFilterChange(e) {
-    const newFilters = { ...this.props.joinFilters, [e.target.id]: e.target.value };
-    this.props.setJoinFilters(newFilters);
   }
 
   fetchData(isIncremental, isFiltered) {
@@ -299,6 +223,11 @@ class TablePreview extends Component {
     }
     return dataElements;
   }
+
+  setIsActive(tableId, isActive) {
+    const id = isActive ? tableId : null;
+    this.props.setActiveJoinFilter(id);
+  }
 }
 
 TablePreview.proptypes = {
@@ -307,14 +236,14 @@ TablePreview.proptypes = {
   getTableDataCallback: PropTypes.func.isRequired,
   fetchInProgress: PropTypes.bool.isRequired,
   showAdvanced: PropTypes.bool.isRequired,
+
+  // Join filtering props
   tableNames: PropTypes.array.isRequired,
   columnMap: PropTypes.object.isRequired,
-  joinFilters: PropTypes.shape({
-    selectedTable: PropTypes.string.isRequired,
-    selectedColumn: PropTypes.string.isRequired,
-  }).isRequired,
+  joinFilters: PropTypes.object.isRequired,
+  hasActiveJoinFilter: PropTypes.bool.isRequired,
   setJoinFilters: PropTypes.func.isRequired,
-  hasFilterData: PropTypes.bool.isRequired,
+  setActiveJoinFilter: PropTypes.func.isRequired,
 };
 
 export default TablePreview;

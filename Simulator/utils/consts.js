@@ -43,6 +43,7 @@ export const defaultWdcAttrs = {
 export const defaultJoinFilters = {
   selectedTable: '',
   selectedColumn: '',
+  selectedFK: '',
 };
 
 export const defaultShowAdvanced = Cookie.getJSON('showAdvanced') || false;
@@ -69,7 +70,8 @@ export const WINDOW_PROPS = 'height=500,width=800';
 export const defaultState = {
   // Originally wdcProps, renamed to avoid confusion with component props
   wdcAttrs: defaultWdcAttrs,
-  joinFilters: defaultJoinFilters, 
+  joinFilters: defaultJoinFilters,
+  activeJoinFilter: null,
   addressBarUrl: defaultUrl,
   wdcUrl: defaultUrl,
   mostRecentUrls: defaultMostRecentUrls,

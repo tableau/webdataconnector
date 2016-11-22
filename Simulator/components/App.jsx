@@ -83,6 +83,12 @@ class App extends Component {
     // Bind Reset Action
     this.resetSimulator = () =>
       dispatch(simulatorActions.resetState());
+
+    // Bind Join Filter Actions
+    this.setJoinFilters = (attrs) =>
+      dispatch(simulatorActions.setJoinFilters(attrs));
+    this.setActiveJoinFilter = (attrs) =>
+      dispatch(simulatorActions.setActiveJoinFilter(attrs));
   }
 
   render() {
@@ -170,7 +176,9 @@ class App extends Component {
                 fetchInProgress={dataGatheringPhaseInProgress}
                 showAdvanced={this.props.showAdvanced}
                 joinFilters={this.props.joinFilters}
-                dispatch={this.props.dispatch}
+                activeJoinFilter={this.props.activeJoinFilter}
+                setActiveJoinFilter={this.setActiveJoinFilter}
+                setJoinFilters={this.setJoinFilters}
               />
             </Col>
             :
