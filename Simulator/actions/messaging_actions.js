@@ -252,14 +252,14 @@ export function sendGetHeaders() {
 }
 
 // Takes an array of tableuInfo/incValue pairs
-export function sendGetData(tablesAndIncrementValues, isFreshFetch, filterInfo) {
+export function sendGetData(tablesAndIncrementValues, isFreshFetch) {
   return (dispatch) => {
     if (isFreshFetch) {
       const tableKey = tablesAndIncrementValues[0].tableInfo.id;
       dispatch(simulatorActions.resetTableData(tableKey));
     }
 
-    dispatch(sendMessage(eventNames.DATA_GET, { tablesAndIncrementValues, filterInfo }));
+    dispatch(sendMessage(eventNames.DATA_GET, { tablesAndIncrementValues }));
     dispatch(simulatorActions.setPhaseInProgress(true));
   };
 }

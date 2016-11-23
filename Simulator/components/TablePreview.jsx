@@ -109,12 +109,14 @@ class TablePreview extends Component {
         {
           this.props.showAdvanced ?
             <JoinFilter
-              tableNames={this.props.tableNames}
-              columnMap={this.props.columnMap}
+              tableColumns={tableInfo.columns}
+              filtertableTableNames={this.props.filtertableTableNames}
+              filterableColumnMap={this.props.filterableColumnMap}
               joinFilters={this.props.joinFilters}
               isActive={this.props.hasActiveJoinFilter}
               setJoinFilters={this.props.setJoinFilters}
               setIsActive={this.setIsActive}
+              filteredFetch={this.filteredFetch}
             />
             : null
         }
@@ -139,7 +141,6 @@ class TablePreview extends Component {
     const tableInfo = this.props.tableInfo;
     const tableData = this.props.tableData;
     const tablesAndIncValues = [];
-
     const lastElement = tableData[tableData.length - 1];
 
     let incrementValue;
@@ -147,10 +148,16 @@ class TablePreview extends Component {
       incrementValue = lastElement[tableInfo.incrementColumnId];
     }
 
-    tablesAndIncValues.push({ tableInfo, incrementValue });
+     // Set up filter info if applicable
+    const filterInfo = {
+      column: this.props.joinFilters.selectedFK,
+      values: this.props.activeFilterData,
+    };
+
+    tablesAndIncValues.push({ tableInfo, incrementValue, isFiltered, filterInfo });
 
     // getTableCallback takes (tablesAndIncValues, isFreshFetch, isFiltered)
-    this.props.getTableDataCallback(tablesAndIncValues, !isIncremental, isFiltered);
+    this.props.getTableDataCallback(tablesAndIncValues, !isIncremental);
   }
 
   getMetadataElements(tableInfo) {
@@ -224,8 +231,8 @@ class TablePreview extends Component {
     return dataElements;
   }
 
-  setIsActive(tableId, isActive) {
-    const id = isActive ? tableId : null;
+  setIsActive(isActive) {
+    const id = isActive ? this.props.tableInfo.id : null;
     this.props.setActiveJoinFilter(id);
   }
 }
@@ -238,8 +245,9 @@ TablePreview.proptypes = {
   showAdvanced: PropTypes.bool.isRequired,
 
   // Join filtering props
-  tableNames: PropTypes.array.isRequired,
-  columnMap: PropTypes.object.isRequired,
+  filtertableTableNames: PropTypes.array.isRequired,
+  filterableColumnMap: PropTypes.object.isRequired,
+  activeFilterData: PropTypes.array.isRequired,
   joinFilters: PropTypes.object.isRequired,
   hasActiveJoinFilter: PropTypes.bool.isRequired,
   setJoinFilters: PropTypes.func.isRequired,

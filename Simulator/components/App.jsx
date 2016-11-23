@@ -70,8 +70,8 @@ class App extends Component {
       dispatch(simulatorActions.startConnector(consts.phases.AUTH));
     this.startInteractivePhase = () =>
       dispatch(simulatorActions.startConnector(consts.phases.INTERACTIVE));
-    this.sendGetData = (tablesAndIncValues, isFreshFetch, filterInfo) =>
-      dispatch(messagingActions.sendGetData(tablesAndIncValues, isFreshFetch, filterInfo));
+    this.sendGetData = (tablesAndIncValues, isFreshFetch) =>
+      dispatch(messagingActions.sendGetData(tablesAndIncValues, isFreshFetch));
 
     // Show Advanced Actions
     this.setShowAdvanced = (show) =>
@@ -85,10 +85,10 @@ class App extends Component {
       dispatch(simulatorActions.resetState());
 
     // Bind Join Filter Actions
-    this.setJoinFilters = (attrs) =>
-      dispatch(simulatorActions.setJoinFilters(attrs));
-    this.setActiveJoinFilter = (attrs) =>
-      dispatch(simulatorActions.setActiveJoinFilter(attrs));
+    this.setJoinFilters = (joinFilters) =>
+      dispatch(simulatorActions.setJoinFilters(joinFilters));
+    this.setActiveJoinFilter = (activeFilter) =>
+      dispatch(simulatorActions.setActiveJoinFilter(activeFilter));
   }
 
   render() {

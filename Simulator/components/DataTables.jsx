@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import TablePreview from './TablePreview.jsx';
+import _ from 'underscore';
 
 //----------------------Data Tables---------------------//
 // Component which contains the tablePreviews for each
@@ -7,32 +8,45 @@ import TablePreview from './TablePreview.jsx';
 //------------------------------------------------------//
 
 class DataTables extends Component {
-  constructor(props) {
-    super(props);
-    this.getTableDataWithFilters = this.getTableDataWithFilters.bind(this);
-  }
-
   render() {
     const tables = this.props.tables;
 
     let tablePreviewElements = [];
-    let tableNames = [];
-    let columnMap = {};
+    let filtertableTableNames = [];
+    let filterableColumnMap = {};
 
     // Set up data about table and column filters for Join Filtering
     Object.keys(tables).forEach(key => {
       // We can only filter on a table if it has data already
       if (tables[key].data.length > 0) {
-        tableNames.push(key);
+        filtertableTableNames.push(key);
 
-        columnMap[key] = [];
+        filterableColumnMap[key] = [];
         tables[key].schema.columns.forEach(column => {
-          columnMap[key].push(column.id);
+          filterableColumnMap[key].push(column.id);
         });
       }
     });
 
-    // Give a default selected table filter
+    const defaultTable = Object.keys(tables)[0];
+    const defaultColumn = tables[defaultTable].schema.columns[0].id;
+    const defaultJoinFilters = {
+      selectedTable: defaultTable,
+      selectedColumn: defaultColumn,
+      selectedFK: defaultColumn,
+    };
+
+    const needsDefaultFilters = (_.isEmpty(this.props.joinFilters.selectedTable));
+
+    let currentJoinFilters = needsDefaultFilters ? defaultJoinFilters : this.props.joinFilters;
+    let activeFilterData = [];
+    const selectedTableData = tables[currentJoinFilters.selectedTable].data;
+
+    if (!_.isEmpty(selectedTableData)) {
+      selectedTableData.forEach(row => {
+        activeFilterData.push(row[currentJoinFilters.selectedColumn]);
+      });
+    }
 
     // map each table to a preview element
     tablePreviewElements = Object.keys(tables).map(key =>
@@ -40,15 +54,16 @@ class DataTables extends Component {
         key={key}
         tableInfo={tables[key].schema}
         tableData={tables[key].data}
-        getTableDataCallback={this.getTableDataWithFilters}
+        getTableDataCallback={this.props.getTableDataCallback}
         fetchInProgress={this.props.fetchInProgress}
         showAdvanced={this.props.showAdvanced}
-        tableNames={tableNames}
-        columnMap={columnMap}
-        joinFilters={this.props.joinFilters}
+        filtertableTableNames={filtertableTableNames}
+        filterableColumnMap={filterableColumnMap}
+        joinFilters={currentJoinFilters}
         hasActiveJoinFilter={(this.props.activeJoinFilter === key)}
         setJoinFilters={this.props.setJoinFilters}
         setActiveJoinFilter={this.props.setActiveJoinFilter}
+        activeFilterData={activeFilterData}
       />
     );
 
@@ -57,28 +72,6 @@ class DataTables extends Component {
         {tablePreviewElements}
       </div>
     );
-  }
-
-  getTableDataWithFilters(tablesAndIncValues, isIncremental, isFiltered) {
-    const filterTable = this.props.tables[this.props.joinFilters.selectedTable];
-    const columnFilter = this.props.joinFilters.selectedColumn;
-
-    let filteredData;
-    let filterInfo;
-
-    if (isFiltered) {
-      filterTable.data.forEach(row => {
-        filteredData.push(row[columnFilter]);
-      });
-
-      filterInfo = {
-        column: columnFilter,
-        values: filteredData,
-      };
-    }
-
-    // getTableCallback takes (tablesAndIncValues, isFreshFetch, filteredData)
-    this.props.getTableDataCallback(tablesAndIncValues, !isIncremental, filterInfo);
   }
 }
 

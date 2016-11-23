@@ -437,13 +437,16 @@
 	}
 
 	// Starts the data gathering process
-	Shared.prototype._triggerDataGathering = function(tablesAndIncrementValues, filterInfo) {
+	Shared.prototype._triggerDataGathering = function(tablesAndIncrementValues) {
 	  if (tablesAndIncrementValues.length != 1) {
 	    throw ("Unexpected number of tables specified. Expected 1, actual " + tablesAndIncrementValues.length.toString());
 	  }
-
-	  var tableAndIncremntValue = tablesAndIncrementValues[0];
-	  var table = new Table(tableAndIncremntValue.tableInfo, filterInfo, tableAndIncremntValue.incrementValue, this.privateApiObj._tableDataCallback);
+	  var tableAndIncrementValue = tablesAndIncrementValues[0];
+	  var table = new Table(tableAndIncrementValue.tableInfo,
+													tableAndIncrementValue.incrementValue, 
+   												tableAndIncrementValue.isFiltered,
+													tableAndIncrementValue.filterInfo,
+													this.privateApiObj._tableDataCallback);
 	  this._wdc.getData(table, this.privateApiObj._dataDoneCallback);
 	}
 
@@ -707,7 +710,7 @@
 	      this.globalObj._tableau.triggerSchemaGathering();
 	      break;
 	    case "getData":
-	      this.globalObj._tableau.triggerDataGathering(msgData.tablesAndIncrementValues, msgData.filterInfo);
+	      this.globalObj._tableau.triggerDataGathering(msgData.tablesAndIncrementValues);
 	      break;
 	  }
 	};
@@ -805,14 +808,14 @@
 	* @param tableInfo {Object} - Information about the table
 	* @param incrementValue {string=} - Incremental update value
 	*/
-	function Table(tableInfo, filterInfo, incrementValue, dataCallbackFn) {
+	function Table(tableInfo, incrementValue, isFiltered, filterInfo, dataCallbackFn) {
 	  /** @member {Object} Information about the table which has been requested. This is
 	  guaranteed to be one of the tables the connector returned in the call to getSchema. */
 	  this.tableInfo = tableInfo;
 		
-		this.isFiltered = (filterInfo) ? true : false;
-
 		this.filterInfo = filterInfo;
+
+		this.isFiltered = isFiltered;
 
 	  /** @member {string} Defines the incremental update value for this table. Empty string if
 	  there is not an incremental update requested. */
