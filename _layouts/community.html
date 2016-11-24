@@ -1,0 +1,30 @@
+---
+layout: community
+---
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include head.html %}
+</head>
+
+<body>
+    <div class="container">
+        {% include header.html %}
+        <header id="community-jumbo" class="jumbotron hero-spacer">
+            <h2>{{ page.title }}</h2>
+            {{ content }}
+        </header>
+        <div class="row">
+            <div id="grid" data-columns>
+                <!-- dynamically loaded from community/community_connectors.json -->
+            </div>
+        </div>
+
+        <script src="{{ site.baseurl }}/assets/js/salvattore.min.js"></script>
+        <script src="{{ site.baseurl }}/assets/js/community_connectors.js"></script>
+        {% include footer.html %}
+    </div>
+</body>
+
+</html>

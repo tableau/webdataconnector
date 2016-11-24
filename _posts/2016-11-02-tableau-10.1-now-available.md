@@ -1,0 +1,24 @@
+---
+title: "Tableau 10.1 is now available"
+abstract: "And so is version 2.1 of the WDC!"
+photoname: "standard_connection_in_simulator.png"
+---
+
+The latest version of the WDC is here and it comes with a host of new features:
+
+### Standard connections
+
+Have you ever wanted to predefine joins in Tableau? Now you can! When you create a web data connector that gets data from multiple tables, you can pre-specify how you want to join
+the tables in Tableau Desktop. The standard connections feature supports left and inner joins for tables. See the image above for a preview of standard connections in the simulator.
+
+For more information on how to create standard connections, read the [documentation]({{ site.url }}/docs/wdc_standard_connections) or view the sample connector [on Github](https://github.com/tableau/webdataconnector/tree/master/Examples).
+
+### Progress reporting
+
+We've seen Tableau users create some incredibly sophisticated connectors for Tableau--but the more complex the connector and the more data you download, the more likely are to have to wait while Tableau downloads data from your connector. Now, you can do yourself (and your users!) a favor by adding progress reporting to your connectors. Send a progress message from your connector to Tableau Desktop with the `tableau.reportProgress` function. For more information, see the [API reference](http://tableau.github.io/webdataconnector/ref/api_ref.html#webdataconnectorapi.tableau.reportProgress).
+
+
+### Upgrade to Tableau 10.1
+
+Learn more about how to upgrade to Tableau 10.1 and about the new features available here: [Get Tableau 10.1](http://www.tableau.com/new-features/10.1).
+

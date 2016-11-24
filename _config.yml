@@ -1,0 +1,20 @@
+# Site settings
+title: Tableau Web Data Connector
+email: jdominguez@tableau.com
+description: Connect to your web data from Tableau.
+baseurl: "/webdataconnector"
+permalinks: pretty
+defaults:
+  -
+    scope:
+      path: "" # Apply to all files
+    values:
+      layout: "default"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Exclude
+exclude: ['node_modules']
+
