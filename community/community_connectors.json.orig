@@ -1,0 +1,390 @@
+[
+    {
+        "name": "Alteryx",
+        "url": "http://data.theinformationlab.co.uk/alteryx.html",
+        "author": "Craig Bloodworth",
+        "github_username": "",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": ""
+    },
+    {
+        "name": "BoardGameGeek User Plays",
+        "url": "https://garnet-viper.hyperdev.space/",
+        "author": "Jason Copenhaver",
+        "github_username": "jcopenha",
+        "tags": ["v_2.0"],
+        "description": "",
+        "source_code": "https://github.com/jcopenha/BoardGameGeekWebDataConnector"
+    },
+    {
+        "name": "DoubleClick Campaign Manager",
+        "url": "https://dcm-dfa-wdc.herokuapp.com/",
+        "author": "Eric Peterson",
+        "github_username": "iamEAP",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": "https://github.com/tableau-mkt/dcm-dfa-wdc"
+    },
+    {
+        "name": "Fitbit",
+        "url": "http://data.theinformationlab.co.uk/fitbit.html",
+        "author": "Craig Bloodworth",
+        "github_username": "",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": ""
+    },
+    {
+        "name": "Flickr with Auth",
+        "url": "https://wdc-flickr-proxy.herokuapp.com/flickr.html",
+        "author": "Steve Meredith",
+        "github_username": "smeredith",
+        "tags": ["v_2.0"],
+        "description": "Gets metadata for your personal photos on Flickr.",
+        "source_code": "https://github.com/smeredith/wdc-flickr-proxy"
+    },
+    {
+        "name": "GitHub",
+        "url": "https://github-web-data-connector.herokuapp.com/",
+        "author": "Martin Keerman",
+        "github_username": "etroid",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": "https://github.com/tableau-mkt/github-data-connector"
+    },
+    {
+        "name": "Google Fit",
+        "url": "http://data.theinformationlab.co.uk/googlefit.html",
+        "author": "Craig Bloodworth",
+        "github_username": "",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": ""
+    },
+    {
+        "name": "Import.io",
+        "url": "http://connectors.poc.interworks.com/importio/importio-magic.html",
+        "author": "Robert Rouse",
+        "github_username": "",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": ""
+    },
+    {
+        "name": "League of Legends Match Data",
+        "url": "https://jimmy-jia.github.io/LoL-Match-Data-WDC/",
+        "author": "Jimmy Jia",
+        "github_username": "jimmy-jia",
+        "tags": ["v_2.0"],
+        "description": "LoL Match Data Connector that retrieves recent matches for up to 5 players",
+        "source_code": "https://github.com/jimmy-jia/LoL-Match-Data-WDC"
+    },
+    {
+        "name": "Mapbox",
+        "url": "http://data.theinformationlab.co.uk/directions.html",
+        "author": "Craig Bloodworth",
+        "github_username": "",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": ""
+    },
+    {
+        "name": "Moves App",
+        "url": "http://data.theinformationlab.co.uk/moves.html",
+        "author": "Craig Bloodworth",
+        "github_username": "",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": ""
+    },
+    {
+        "name": "New Relic Insights",
+        "url": "https://insights-web-data-connector.herokuapp.com/",
+        "author": "Eric Peterson",
+        "github_username": "iamEAP",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": "https://github.com/tableau-mkt/insights-data-connector"
+    },
+    {
+      "name": "NPM Download Counts",
+      "url": "http://jagreene.github.io/npm-wdc",
+      "author": "Austin Greene",
+      "github_username": "jagreene",
+      "tags": ["v_2.0"],
+      "description": "Multitable connector for Visualizing download stats for npm packages",
+      "source_code": "https://github.com/jagreene/npm-wdc/"
+    },
+    {
+        "name": "Office 365 Sharepoint",
+        "url": "http://data.theinformationlab.co.uk/sharepoint.html",
+        "author": "Craig Bloodworth",
+        "github_username": "craigbloodworth",
+        "tags": ["v_2.0"],
+        "description": "Pull your Office 365 SharePoint list data directly into Tableau",
+        "source_code": "https://github.com/TheInformationLab/Tableau-WDC-365Sharepoint"
+    },
+    {
+        "name": "OpenStreetMap Features",
+        "url": "http://jdomingu.github.io/osm-features-wdc/",
+        "author": "Jared Dominguez",
+        "github_username": "jdomingu",
+        "tags": ["v_2.0"],
+        "description": "Get data for OSM features in an area that you select.",
+        "source_code": "https://github.com/jdomingu/osm-features-wdc"
+    },
+    {
+        "name": "ParseHub",
+        "url": "http://data.theinformationlab.co.uk/parsehub.html",
+        "author": "Craig Bloodworth",
+        "github_username": "",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": ""
+    },
+    {
+        "name": "Pingdom",
+        "url": "http://data.theinformationlab.co.uk/pingdom.html",
+        "author": "Craig Bloodworth",
+        "github_username": "",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": ""
+    },
+    {
+         "name": "Podcast Metadata",
+         "url": "https://podcast-wdc.herokuapp.com/",
+         "author": "Eric Peterson",
+         "github_username": "iamEAP",
+         "tags": ["v_2.0"],
+         "description": "Parses podcast channel and episode metadata from feed URLs.",
+         "source_code": "https://github.com/iamEAP/podcast-wdc"
+     },
+    {
+        "name": "Quandl",
+        "url": "http://data.theinformationlab.co.uk/quandl.html",
+        "author": "Craig Bloodworth",
+        "github_username": "",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": ""
+    },
+    {
+        "name": "Runkeeper",
+        "url": "http://data.theinformationlab.co.uk/runkeeper.html",
+        "author": "Craig Bloodworth",
+        "github_username": "",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": ""
+    },
+    {
+        "name": "Seattle/King County Restaurant Inspections",
+        "url": "http://benlower.github.io/tableau-wdc-kcfoodinspection/foodInspectionWDC.html",
+        "author": "Ben Lower",
+        "github_username": "benlower",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": ""
+    },
+    {
+        "name": "Sentiment API",
+        "url": "http://gtgeek.github.com/SentimentConnector/Sentiment.html",
+        "author": "gtgeek - Quy Nguyen",
+        "github_username": "gtgeek",
+        "tags": ["v_2.0"],
+        "description": "Analyze Tweet/Text Sentiment provided by YOU. http://www.allmytweet.net can help gather tweets.",
+        "source_code": ""
+    },
+    {
+        "name": "Socrata",
+        "url": "http://wdc.poc.interworks.com/socrata_20/",
+        "author": "Matthew Orr",
+        "github_username": "interworks-morr",
+        "tags": ["v_2.0"],
+        "description": "",
+        "source_code": "https://github.com/interworks-morr/wdc-socrata"
+    },
+    {
+        "name": "Strava",
+        "url": "http://data.theinformationlab.co.uk/strava.html",
+        "author": "Craig Bloodworth",
+        "github_username": "",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": ""
+    },
+    {
+        "name": "Stripe",
+        "url": "https://benjisg.github.io/stripe-web-data-connector/stripe.html",
+        "author": "Benji Schwartz-Gilbert",
+        "github_username": "benjisg",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": "https://github.com/benjisg/stripe-web-data-connector"
+    },
+    {
+        "name": "Square",
+        "url": "http://webdataconnector.azurewebsites.net/Connectors/Square/",
+        "author": "Samm Desmond",
+        "github_username": "sdesmond46",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": "https://github.com/sdesmond46/WDC"
+    },
+    {
+        "name": "Star Wars API",
+        "url": "http://gtgeek.github.com/SWapiConnector/SWapiConnector.html",
+        "author": "gtgeek - Quy Nguyen",
+        "github_username": "gtgeek",
+        "tags": ["v_2.0"],
+        "description": "Star Wars API for People, Planets, Vehicles, Films, etc.",
+        "source_code": ""
+    },
+    {
+        "name": "Stock Price History",
+        "url": "http://wdc.poc.interworks.com/google_finance_20/",
+        "author": "Matthew Orr",
+        "github_username": "interworks-morr",
+        "tags": ["v_2.0"],
+        "description": "",
+        "source_code": "https://github.com/interworks-morr/wdc-stock-price-history"
+    },
+    {
+        "name": "Tfl BikesPoint",
+        "url": "http://jdunkerleytableau.azurewebsites.net/Bikes",
+        "author": "James Dunkerley",
+        "github_username": "jdunkerley",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": "https://github.com/jdunkerley/TableauWebData"
+    },
+    {
+        "name": "Travis CI",
+        "url": "https://travis-web-data-connector.herokuapp.com/",
+        "author": "Eric Peterson",
+        "github_username": "iamEAP",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": "https://github.com/tableau-mkt/travis-data-connector"
+    },
+    {
+        "name": "Twitter",
+        "url": "http://webdataconnector.azurewebsites.net/Connectors/Twitter/",
+        "author": "Samm Desmond",
+        "github_username": "sdesmond46",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": "https://github.com/sdesmond46/WDC"
+    },
+    {
+        "name": "United States Census Data",
+        "url": "https://census-tableau-wdc.herokuapp.com/",
+        "author": "Addy Naik",
+        "github_username": "port80labs",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": "https://github.com/port80labs/census-wdc"
+    },
+    {
+        "name": "U.S. Federal Reserve Economic Data (FRED)",
+        "url": "http://wdc.poc.interworks.com/fred/",
+        "author": "Derrick Austin",
+        "github_username": "austinderrick",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": ""
+    },
+    {
+        "name": "U.S. Federal Reserve Economic Data (FRED)",
+        "url": "http://wdc.poc.interworks.com/fred_20/",
+        "author": "Derrick Austin",
+        "github_username": "austinderrick",
+        "tags": ["v_2.0"],
+        "description": "",
+        "source_code": "https://github.com/austinderrick/fred_wdc_20"
+    },
+    {
+        "name": "U.S. Energy Information Administration Data",
+        "url": "http://wdc.poc.interworks.com/eia/",
+        "author": "Derrick Austin",
+        "github_username": "austinderrick",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": ""
+    },
+    {
+        "name": "U.S. Energy Information Administration Data",
+        "url": "http://wdc.poc.interworks.com/eia_20/",
+        "author": "Derrick Austin",
+        "github_username": "austinderrick",
+        "tags": ["v_2.0"],
+        "description": "",
+        "source_code": "https://github.com/austinderrick/eia_wdc_20"
+    },
+	{
+		"name" : "Star Wars API",
+		"url" : "https://filmasher.github.io/starwars/",
+		"author" : "Asher Campbell",
+		"github_username" : "FilmAsher",
+		"tags" : ["v_2.0"],
+		"description" : "https://github.com/FilmAsher/starwars"
+	},
+	{
+	    "name": "forecast.io",
+	    "url": "https://benlower.github.io/tableau-wdc-forecastio/forecastioConnector.html",
+	    "author": "Ben Lower",
+	    "github_username": "benlower",
+	    "tags": ["v_2.0"],
+	    "description": "Get weather data from Forecast.io.",
+	    "source_code": "github.com/benlower/tableau-wdc-forecastio"
+    },
+    {
+  	    "name": "Pedestrian Counts across Melbourne City",
+  	    "url": "https://rthiyagarajan.github.io/melb-pedestrian-WDC/index.html",
+  	    "author": "Ramanan Thiyagarajan",
+  	    "github_username": "rthiyagarajan",
+  	    "tags": ["v_2.0"],
+  	    "description": "Get Melbourne City Pedestrian Counts using the SODA API.",
+  	    "source_code": "https://github.com/rthiyagarajan/melb-pedestrian-WDC"
+    },
+  	{
+  	    "name": "Hearthstone JSON",
+  	    "url": "https://ausgop.github.io/HearthstoneJSON-WDC/index.html",
+  	    "author": "Wil Harper",
+  	    "github_username": "ausgop",
+  	    "tags": ["v_2.0"],
+  	    "description": "Get Hearthstone card data from HearthstoneJSON.",
+  	    "source_code": "https://github.com/ausgop/HearthstoneJSON-WDC"
+      },
+      {
+<<<<<<< HEAD
+	    "name": "PubChem 3d compound connector",
+	    "url": "http://www.runonthespot.com/PubChem.html",
+	    "author": "Mike Renwick",
+	    "github_username": "runonthespot",
+	    "tags": ["v_2.0"],
+	    "description": "Visualize chemical compounds in 3d!",
+	    "source_code": "https://github.com/runonthespot/PubChemWDC"
+	  },
+      {
+    	"name": "SDMX-JSON WDC",
+    	"url": "https://saviohenriques.github.io/sdmxjsonwdc",
+    	"author": "Savio Henriques",
+    	"github_username": "saviohenriques",
+    	"tags": ["v_2.0"],
+    	"description": "Connects to OECD Air Emissions data http://stats.oecd.org/viewhtml.aspx?datasetcode=AIR_EMISSIONS",
+    	"source_code": "github.com/saviohenriques/sdmxjsonwdc"
+      }
+=======
+    "name": "Neo4J",
+    "url": "https://acbeers.github.io/neo4j-wdc/index.html",
+    "author": "Andrew Beers",
+    "github_username": "acbeers",
+    "tags": ["v_2.0"],
+    "description": "Connector for Neo4J - pull node data, or execute Cypher queries",
+    "source_code": "https://github.com/acbeers/neo4j-wdc"
+}  
+>>>>>>> 16597e0c302ed136159b3420eac0d25414f9b5f2
+]
