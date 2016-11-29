@@ -105,7 +105,7 @@ class JoinFilter extends Component {
                 <a href="http://tableau.github.io/webdataconnector/ref/api_ref.html#webdataconnectorapi.tableau" target="_blank">
                   documentation
                 </a>
-                &nbsp;for more details
+                &nbsp;for more details.
               </p>
               <h5>
                 Why are certain tables missing?
