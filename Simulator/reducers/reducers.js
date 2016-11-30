@@ -11,14 +11,16 @@ import { defaultWdcAttrs, phases } from '../utils/consts';
 export default handleActions({
   SET_WDC_ATTRS: (state, action) => {
     const { currentPhase } = state;
-    let newAttrs = action.payload;
+    let newAttrs;
+
     if (currentPhase === phases.AUTH) {
       // If we are in the auth phase, we are only allowed to update the username/password attributes
-      newAttrs = {
-        username: newAttrs.username,
-        usernameAlias: newAttrs.usernameAlias,
-        password: newAttrs.password,
-      };
+      newAttrs = state.wdcAttrs;
+      newAttrs.username = action.payload.username;
+      newAttrs.usernameAlias = action.payload.usernameAlias;
+      newAttrs.password = action.payload.password;
+    } else {
+      newAttrs = action.payload;
     }
 
     return { ...state, wdcAttrs: newAttrs };
