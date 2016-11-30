@@ -56,7 +56,7 @@ describe("Simulator Action Creators", function() {
 
   describe("setActiveJoinFilter", function() {
     it("Should Create Right Action", function () {
-      let input = null;
+      let input = "tableId";
 
       let correctAction = {
         type: 'SET_ACTIVE_JOIN_FILTER',
