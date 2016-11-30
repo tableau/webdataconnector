@@ -221,13 +221,13 @@ Here's what's going on in the code:
   In this example, there are columns for magnitude, title, latitude, and longitude. Note that for each column you can
   specify additional options. For example, the alias defines a friendly name that can appear in Tableau and the
   columnRole determines whether a field is a measure or a dimension. For more options, see [the API reference]({{
-      site.baseurl }}/ref/api_ref.html#webdataconnectorapi.columninfo).
+      site.baseurl }}/docs/api_ref.html#webdataconnectorapi.columninfo).
 * The `tableInfo` variable defines the schema for a single table and contains a JavaScript object. Here, the value of
   the `columns` property is set to the `cols` array defined earlier.
 * The `schemaCallback` gets called when the schema is defined. The `schemaCallback` takes an array of table objects. In
   this case, there is only table object (the `tableInfo` object defined above).
 
-**Note**: The [API Reference]({{ site.baseurl }}/ref/api_ref) describes the properties that you can define for the table
+**Note**: The [API Reference]({{ site.baseurl }}/docs/api_ref) describes the properties that you can define for the table
 object and for each object in the table columns in more detail. For now, let's plunge ahead to the exciting
 part--getting the data!
 

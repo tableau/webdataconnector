@@ -80,6 +80,13 @@ export function receiveMessage(payload) {
           dispatch(handleAbortForAuth(errorMsg));
           break;
         }
+
+        case eventNames.REPORT_PROGRESS: {
+          const progressMsg = msgData.progressMsg;
+          dispatch(handleReportProgress(progressMsg));
+          break;
+        }
+
         default: {
           // The message was not for the simulator, ignore it.
           break;
@@ -220,6 +227,16 @@ export function handleAbortForAuth(msg) {
       console.log(`abortForAuth isn't supported in the ${currentPhase} phase`);
       /* eslint-enable no-console */
     }
+  };
+}
+
+export function handleReportProgress(progressMsg) {
+  return () => {
+    // The WDC has reported a progress message, display in toast
+    /* eslint-disable no-console */
+    console.log(progressMsg);
+    /* eslint-enable no-console */
+    toastr.info(progressMsg, 'The WDC reported a progress message:');
   };
 }
 

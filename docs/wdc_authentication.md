@@ -63,7 +63,7 @@ The auth phase will be displayed by Tableau in two scenarios:
 - The WDC uses authType `custom`, the current user is un-authenticated (as described above, 
   when opening an existing workbook), and the user attempts to refresh the extract or edit the connection.
 
-- The WDC developer calls [tableau.abortForAuth]({{ site.baseurl }}/ref/api_ref.html#webdataconnectorapi.tableau.abortforauth).
+- The WDC developer calls [tableau.abortForAuth]({{ site.baseurl }}/docs/api_ref.html#webdataconnectorapi.tableau.abortforauth).
 
     This method is provided so that the developer can explicitly tell Tableau the current user is un-authenticated.
     For example, this can be helpful when working with OAuth.  In some scenarios, the access token used to get resources
@@ -146,7 +146,7 @@ Given this, the following scenario could occur if the WDC was using a source tha
 
 In order to get around this problem, you can associate all data sources created from Tableau Desktop with
 a given client, and all data sources refreshed on Tableau Server with another client.  To do this, in your WDC
-you can use the [tableau.authPurpose]({{ site.baseurl }}/ref/ref_home.html#webdataconnectorapi.tableau.authpurpose)
+you can use the [tableau.authPurpose]({{ site.baseurl }}/docs/ref_home.html#webdataconnectorapi.tableau.authpurpose)
 to read which context your WDC is currently running in.  If that context is `ephemeral` then the WDC is 
 being run from Tableau Desktop.  If the context is `enduring`, then the WDC is being run on Tableau Server during
 an automated refresh.  You can use this property to set the client ID appropriately when performing OAuth flows.

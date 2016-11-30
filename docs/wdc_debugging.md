@@ -74,8 +74,8 @@ connector. Here are some ways to work around caching issues:
     For example, in Google Chrome press Ctrl+Shift+I on Windows or Command+Option+I on the Mac to open the tools pane,
     and then select the <span class="uicontrol">Console</span> tab. In this console, you can see all the results of
     various console.log statements.  The console also displays output from the [tableau.log]({{ site.baseurl
-    }}/ref/api_ref#webdataconnectorapi.tableau.log) and [tableau.abortWithError]({{ site.baseurl
-    }}/ref/api_ref#webdataconnectorapi.tableau.abortwitherror) functions.
+    }}/docs/api_ref#webdataconnectorapi.tableau.log) and [tableau.abortWithError]({{ site.baseurl
+    }}/docs/api_ref#webdataconnectorapi.tableau.abortwitherror) functions.
 
     This is a good place to check for errors in case anything goes wrong.  The console will display information about
     run-time errors (unhandled exceptions) that occur while your code is running. If an error occurs, the JavaScript
