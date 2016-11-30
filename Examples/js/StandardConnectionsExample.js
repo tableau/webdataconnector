@@ -82,7 +82,7 @@ function loadJSON(path, cb, isLocal) {
     obj.open("GET", "../json/" + path + ".json", true);
   }
   else {
-    obj.open("GET", "https://crossorigin.me/http://jsonplaceholder.typicode.com/" + path, true);
+    obj.open("GET", "http://jsonplaceholder.typicode.com/" + path, true);
   }
   obj.onreadystatechange = function() {
     if (obj.readyState == 4 && obj.status == "200"){
