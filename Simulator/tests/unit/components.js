@@ -189,6 +189,7 @@ describe("Components", function() {
           fetchInProgress={false}
           getTableDataCallback={()=>{}}
           tables={tables}
+          joinFilters={{}}
         />
       );
       dataTables.should.be.ok();
@@ -221,6 +222,7 @@ describe("Components", function() {
           tableData={tableData}
           getTableDataCallback={spy}
           fetchInProgress={false}
+          joinFilters={{}}
         />
       );
 
@@ -233,9 +235,14 @@ describe("Components", function() {
     it("Should Fetch The Right Data", function () {
       instance.freshFetch();
       instance.incrementalRefresh();
-      spy.calledTwice.should.be.true();
-      spy.calledWith([{ tableInfo, incrementValue: undefined }], true).should.be.true();
-      spy.calledWith([{ tableInfo, incrementValue: 0 }], false).should.be.true();
+      instance.filteredFetch();
+      spy.calledThrice.should.be.true();
+      spy.calledWith([{ tableInfo, incrementValue: undefined,
+                        isFiltered: false, filterInfo: {}}], true).should.be.true();
+      spy.calledWith([{ tableInfo, incrementValue: 0,
+                        isFiltered: false, filterInfo: {} }], false).should.be.true();
+      spy.calledWith([{ tableInfo, incrementValue: 0,
+                        isFiltered: true, filterInfo: {} }], true).should.be.true();
     });
 
     it("Should Have the Right Column Info", function () {

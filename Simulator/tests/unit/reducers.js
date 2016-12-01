@@ -30,6 +30,37 @@ describe("Reducer", function() {
     });
   });
 
+  describe("SET_JOIN_FILTERS", function() {
+    it("Should Set joinFilters", function () {
+      const newFilters = {
+        selectedTable: 'selectedTable',
+        selectedColumn: 'selectedColumn',
+        selectedFK: 'selectedFK',
+      };
+
+      const action = {
+        type: "SET_JOIN_FILTERS",
+        payload: newFilters
+      };
+
+      const output = reducer(state, action);
+      output.joinFilters.should.deepEqual(newFilters);
+    });
+  });
+
+  describe("SET_ACTIVE_JOIN_FILTER", function() {
+    it("Should Set activeJoinFilter", function () {
+      const newFilter = 'tableId';
+      const action = {
+        type: "SET_ACTIVE_JOIN_FILTER",
+        payload: newFilter
+      };
+
+      const output = reducer(state, action);
+      output.activeJoinFilter.should.deepEqual(newFilter);
+    });
+  });
+
   describe("SET_WDC_URL", function() {
     it("Should Set wdcUrl", function () {
       const newUrl = 'url';
