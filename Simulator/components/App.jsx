@@ -114,8 +114,6 @@ class App extends Component {
       );
     }
 
-    debugger;
-
     return (
       <div className="simulator-app">
         <SimulatorNavbar

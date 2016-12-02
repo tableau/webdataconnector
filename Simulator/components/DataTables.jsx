@@ -47,6 +47,9 @@ class DataTables extends Component {
       selectedTableData.forEach(row => {
         activeFilterData.push(row[currentFilterInfo.selectedColumn]);
       });
+
+      // We only want unique keys
+      activeFilterData = _.uniq(activeFilterData);
     }
 
     // map each table to a preview element

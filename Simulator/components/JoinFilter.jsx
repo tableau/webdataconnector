@@ -99,24 +99,26 @@ class JoinFilter extends Component {
                 What's this?
               </h5>
               <p>
-                Join Filtering is a v2.2+ WDC feature that allows a WDC to optimize fetching data for
-                connections with two or more joined tables. In Tableau, if a WDC table A is filterable
-                (as defined in WDC metadata), then when table B is joined to table A, the
+                Join Filtering is a v2.2+ WDC feature that allows a WDC to optimize fetching data
+                for connections with two or more joined tables. In Tableau, if a WDC table A is
+                filterable (as defined in WDC metadata), then when table B is joined to table A, the
                 getData method for table B will be passed additional data when called.
-                This additional data is a list of all distinct primary keys that were fetched in the getData
-                method of table A.  Using these keys, table B's getData method is able to only fetch
-                records having foreign keys matching one of the input primary keys.
+                This additional data is a list of all distinct primary keys that were fetched in the
+                getData method of table A.  Using these keys, table B's getData method is able to
+                only fetch records having foreign keys matching one of the input primary keys.
                 <br /><br />
                 This is simulated by allowing you to selected filters in this menu and then run a
-                "Filtered Fetch". For example, if you click "Filtered Fetch" with the above parameters,
-                the getData method of the&nbsp;<strong>{this.props.tableId}</strong>&nbsp;table will be called.
-                In the table parameter of getData, table.isJoinFiltered will be true. The list of
-                primary keys passed will be available in table.filterValues, and will be an array the
-                unique values the&nbsp;<strong>{this.props.filterInfo.selectedColumn}</strong>&nbsp;column of
+                "Filtered Fetch". Example: if you click "Filtered Fetch" with the above parameters,
+                the getData method of the&nbsp;<strong>{this.props.tableId}</strong>&nbsp;
+                table will be called. In the table parameter of getData, table.isJoinFiltered
+                will be true. The list of primary keys passed will be available in
+                table.filterValues, and will be an array the unique values
+                the&nbsp;<strong>{this.props.filterInfo.selectedColumn}</strong>&nbsp;column of
                 the&nbsp;<strong>{this.props.filterInfo.selectedTable}</strong>&nbsp;table.
-                The&nbsp;<strong>{this.props.filterInfo.selectedFK}</strong>&nbsp;represents the key on which
-                the&nbsp;<strong>{this.props.tableId}</strong>&nbsp;table is being joined to
-                the&nbsp;<strong>{this.props.filterInfo.selectedTable}</strong>&nbsp;table.
+                The&nbsp;<strong>{this.props.filterInfo.selectedFK}</strong>&nbsp;represents
+                the key on which the&nbsp;<strong>{this.props.tableId}</strong>&nbsp;table is being
+                joined to the&nbsp;<strong>{this.props.filterInfo.selectedTable}</strong>&nbsp;
+                table.
               </p>
               <br />
               <h5>
