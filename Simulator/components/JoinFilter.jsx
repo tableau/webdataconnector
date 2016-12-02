@@ -6,7 +6,8 @@ import { Button,
 import _ from 'underscore';
 
 //----------------------Join Filter----------------------//
-//
+// Component which allows user to configure a join filter
+// and then run a filtered fetch
 //-------------------------------------------------------//
 
 class JoinFilter extends Component {
