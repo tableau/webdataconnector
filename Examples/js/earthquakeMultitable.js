@@ -56,7 +56,6 @@
 
     // Download the data
     myConnector.getData = function(table, doneCallback) {
-        console.log(table);
         var dateObj = JSON.parse(tableau.connectionData),
             dateString = "starttime=" + dateObj.startDate + "&endtime=" + dateObj.endDate,
             apiCall = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&" + dateString + "&minmagnitude=4.5";
