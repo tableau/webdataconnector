@@ -26,7 +26,7 @@ class JoinFilter extends Component {
 
     const canFilter = filtertableTableNames.length > 0;
 
-    // Build up dropdown options for Join Filter dropdowns
+    // Build up dropdown options for Filter dropdowns
     let tableNameOptions;
     let filterableColumnMapOptions;
     let fkMapOptions;
@@ -61,7 +61,7 @@ class JoinFilter extends Component {
       this.props.isActive ?
         <Modal show={this.props.isActive} onHide={this.setIsActive}>
           <Modal.Header closeButton>
-            <Modal.Title>Configure Join Filter - {this.props.tableId}</Modal.Title>
+            <Modal.Title>Configure Cascading Join - {this.props.tableId}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div>
@@ -99,7 +99,7 @@ class JoinFilter extends Component {
                 What's this?
               </h5>
               <p>
-                Join Filtering is a v2.2+ WDC feature that allows a WDC to optimize fetching data
+                Join Cascading is a v2.2+ WDC feature that allows a WDC to optimize fetching data
                 for connections with two or more joined tables. In Tableau, if a WDC table A is
                 filterable (as defined in WDC metadata), then when table B is joined to table A, the
                 getData method for table B will be passed additional data when called.
@@ -146,7 +146,7 @@ class JoinFilter extends Component {
           style={{ marginLeft: 4 }}
           disabled={!canFilter}
         >
-          Configure Filtered Fetch
+          Configure Cascading Join
         </Button>
     );
   }
