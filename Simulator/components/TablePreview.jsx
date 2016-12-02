@@ -148,16 +148,15 @@ class TablePreview extends Component {
       incrementValue = lastElement[tableInfo.incrementColumnId];
     }
 
-     // Set up filter info if applicable
+    // Set up filter info if applicable
     const filterInfo = {
-      column: this.props.joinFilters.selectedFK,
-      values: this.props.activeFilterData,
+      column: this.props.joinFilters.selectedFK || "",
+      values: this.props.activeFilterData || [],
     };
 
     tablesAndIncValues.push({ tableInfo, incrementValue, isFiltered, filterInfo });
-
-    // getTableCallback takes (tablesAndIncValues, isFreshFetch)
     console.log(JSON.stringify(tablesAndIncValues) + " asdf " + !isIncremental);
+    // getTableCallback takes (tablesAndIncValues, isFreshFetch)
     this.props.getTableDataCallback(tablesAndIncValues, !isIncremental);
   }
 
@@ -249,7 +248,11 @@ TablePreview.proptypes = {
   filtertableTableNames: PropTypes.array.isRequired,
   filterableColumnMap: PropTypes.object.isRequired,
   activeFilterData: PropTypes.array.isRequired,
-  joinFilters: PropTypes.object.isRequired,
+  joinFilters: PropTypes.shape({
+    selectedTable: PropTypes.string.isRequired,
+    selectedColumn: PropTypes.string.isRequired,
+    selectedFK: PropTypes.string.isRequired,
+  }).isRequired,
   hasActiveJoinFilter: PropTypes.bool.isRequired,
   setJoinFilters: PropTypes.func.isRequired,
   setActiveJoinFilter: PropTypes.func.isRequired,

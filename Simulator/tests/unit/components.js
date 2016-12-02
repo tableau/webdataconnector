@@ -246,6 +246,10 @@ describe("Components", function() {
         dataType: "int",
       }]
     };
+    const filterInfo = {
+      column: "",
+      values: [],
+    }
     let tableData = [{ "idx": 0 }];
 
     it("Should Render", function () {
@@ -268,14 +272,14 @@ describe("Components", function() {
     it("Should Fetch The Right Data", function () {
       instance.freshFetch();
       instance.incrementalRefresh();
-      //instance.filteredFetch();
-      spy.calledTwice.should.be.true();
+      instance.filteredFetch();
+      spy.calledThrice.should.be.true();
       spy.calledWith([{ tableInfo, incrementValue: undefined,
-                        isFiltered: false, filterInfo: {}}], true).should.be.true();
+                        isFiltered: false, filterInfo}], true).should.be.true();
       spy.calledWith([{ tableInfo, incrementValue: 0,
-                        isFiltered: false, filterInfo: {}}], false).should.be.true();
-      //spy.calledWith([{ tableInfo, incrementValue: 0,
-                        //isFiltered: true, filterInfo: {} }], true).should.be.true();
+                        isFiltered: false, filterInfo}], false).should.be.true();
+      spy.calledWith([{ tableInfo, incrementValue: undefined,
+                        isFiltered: true, filterInfo}], true).should.be.true();
     });
 
     it("Should Have the Right Column Info", function () {
