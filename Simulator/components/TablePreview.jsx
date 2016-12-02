@@ -150,12 +150,11 @@ class TablePreview extends Component {
 
     // Set up filter info if applicable
     const filterInfo = {
-      column: this.props.joinFilters.selectedFK || "",
+      column: this.props.joinFilters.selectedFK || '',
       values: this.props.activeFilterData || [],
     };
 
     tablesAndIncValues.push({ tableInfo, incrementValue, isFiltered, filterInfo });
-    console.log(JSON.stringify(tablesAndIncValues) + " asdf " + !isIncremental);
     // getTableCallback takes (tablesAndIncValues, isFreshFetch)
     this.props.getTableDataCallback(tablesAndIncValues, !isIncremental);
   }
