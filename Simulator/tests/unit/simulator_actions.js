@@ -36,7 +36,7 @@ describe("Simulator Action Creators", function() {
     });
   });
 
-  describe("setJoinFilters", function() {
+  describe("setFilterInfo", function() {
     it("Should Create Right Action", function () {
       let input = {
         selectedTable: '',
@@ -45,11 +45,11 @@ describe("Simulator Action Creators", function() {
       };
 
       let correctAction = {
-        type: 'SET_JOIN_FILTERS',
+        type: 'SET_FILTER_INFO',
         payload: input
       };
 
-      let action = simulatorActions.setJoinFilters(input);
+      let action = simulatorActions.setFilterInfo(input);
       action.should.deepEqual(correctAction);
     });
   });

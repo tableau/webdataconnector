@@ -40,7 +40,7 @@ export const defaultWdcAttrs = {
 };
 
 // Used for Join Filtering advanced feature
-export const defaultJoinFilters = {
+export const defaultFilterInfo = {
   selectedTable: '',
   selectedColumn: '',
   selectedFK: '',
@@ -70,7 +70,7 @@ export const WINDOW_PROPS = 'height=500,width=800';
 export const defaultState = {
   // Originally wdcProps, renamed to avoid confusion with component props
   wdcAttrs: defaultWdcAttrs,
-  joinFilters: defaultJoinFilters,
+  filterInfo: defaultFilterInfo,
   activeJoinFilter: null,
   addressBarUrl: defaultUrl,
   wdcUrl: defaultUrl,

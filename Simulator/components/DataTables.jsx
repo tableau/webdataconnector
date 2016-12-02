@@ -15,7 +15,8 @@ class DataTables extends Component {
     let filtertableTableNames = [];
     let filterableColumnMap = {};
 
-    // Set up data about table and column filters for Join Filtering
+    // This sets up the data about what tables/columns are
+    // available for use in a join filter.
     Object.keys(tables).forEach(key => {
       // We can only filter on a table if it has data already
       if (tables[key].data.length > 0) {
@@ -30,21 +31,21 @@ class DataTables extends Component {
 
     const defaultTable = Object.keys(tables)[0];
     const defaultColumn = tables[defaultTable].schema.columns[0].id;
-    const defaultJoinFilters = {
+    const defaultFilterInfo = {
       selectedTable: defaultTable,
       selectedColumn: defaultColumn,
       selectedFK: defaultColumn,
     };
 
-    const needsDefaultFilters = (_.isEmpty(this.props.joinFilters.selectedTable));
+    const needsDefaultFilters = (_.isEmpty(this.props.filterInfo.selectedTable));
 
-    let currentJoinFilters = needsDefaultFilters ? defaultJoinFilters : this.props.joinFilters;
+    let currentFilterInfo = needsDefaultFilters ? defaultFilterInfo : this.props.filterInfo;
     let activeFilterData = [];
-    const selectedTableData = tables[currentJoinFilters.selectedTable].data;
+    const selectedTableData = tables[currentFilterInfo.selectedTable].data;
 
     if (!_.isEmpty(selectedTableData)) {
       selectedTableData.forEach(row => {
-        activeFilterData.push(row[currentJoinFilters.selectedColumn]);
+        activeFilterData.push(row[currentFilterInfo.selectedColumn]);
       });
     }
 
@@ -59,9 +60,9 @@ class DataTables extends Component {
         showAdvanced={this.props.showAdvanced}
         filtertableTableNames={filtertableTableNames}
         filterableColumnMap={filterableColumnMap}
-        joinFilters={currentJoinFilters}
+        filterInfo={currentFilterInfo}
         hasActiveJoinFilter={(this.props.activeJoinFilter === key)}
-        setJoinFilters={this.props.setJoinFilters}
+        setFilterInfo={this.props.setFilterInfo}
         setActiveJoinFilter={this.props.setActiveJoinFilter}
         activeFilterData={activeFilterData}
       />
@@ -82,10 +83,10 @@ DataTables.propTypes = {
   showAdvanced: PropTypes.bool.isRequired,
 
   // Join filtering props
-  joinFilters: PropTypes.object.isRequired,
+  filterInfo: PropTypes.object.isRequired,
   activeJoinFilter: PropTypes.string,
   setActiveJoinFilter: PropTypes.func.isRequired,
-  setJoinFilters: PropTypes.func.isRequired,
+  setFilterInfo: PropTypes.func.isRequired,
 };
 
 export default DataTables;

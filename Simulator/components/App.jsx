@@ -85,8 +85,8 @@ class App extends Component {
       dispatch(simulatorActions.resetState());
 
     // Bind Join Filter Actions
-    this.setJoinFilters = (joinFilters) =>
-      dispatch(simulatorActions.setJoinFilters(joinFilters));
+    this.setFilterInfo = (filterInfo) =>
+      dispatch(simulatorActions.setFilterInfo(filterInfo));
     this.setActiveJoinFilter = (activeFilter) =>
       dispatch(simulatorActions.setActiveJoinFilter(activeFilter));
   }
@@ -113,6 +113,8 @@ class App extends Component {
         </Tab>
       );
     }
+
+    debugger;
 
     return (
       <div className="simulator-app">
@@ -175,10 +177,10 @@ class App extends Component {
                 getTableDataCallback={this.sendGetData}
                 fetchInProgress={dataGatheringPhaseInProgress}
                 showAdvanced={this.props.showAdvanced}
-                joinFilters={this.props.joinFilters}
+                filterInfo={this.props.filterInfo}
                 activeJoinFilter={this.props.activeJoinFilter}
                 setActiveJoinFilter={this.setActiveJoinFilter}
-                setJoinFilters={this.setJoinFilters}
+                setFilterInfo={this.setFilterInfo}
               />
             </Col>
             :

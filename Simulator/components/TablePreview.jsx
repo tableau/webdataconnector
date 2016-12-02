@@ -112,11 +112,12 @@ class TablePreview extends Component {
               tableColumns={tableInfo.columns}
               filtertableTableNames={this.props.filtertableTableNames}
               filterableColumnMap={this.props.filterableColumnMap}
-              joinFilters={this.props.joinFilters}
+              filterInfo={this.props.filterInfo}
               isActive={this.props.hasActiveJoinFilter}
-              setJoinFilters={this.props.setJoinFilters}
+              setFilterInfo={this.props.setFilterInfo}
               setIsActive={this.setIsActive}
               filteredFetch={this.filteredFetch}
+              tableId={tableInfo.id}
             />
             : null
         }
@@ -150,7 +151,7 @@ class TablePreview extends Component {
 
     // Set up filter info if applicable
     const filterInfo = {
-      column: this.props.joinFilters.selectedFK || '',
+      column: this.props.filterInfo.selectedFK || '',
       values: this.props.activeFilterData || [],
     };
 
@@ -247,13 +248,13 @@ TablePreview.proptypes = {
   filtertableTableNames: PropTypes.array.isRequired,
   filterableColumnMap: PropTypes.object.isRequired,
   activeFilterData: PropTypes.array.isRequired,
-  joinFilters: PropTypes.shape({
+  filterInfo: PropTypes.shape({
     selectedTable: PropTypes.string.isRequired,
     selectedColumn: PropTypes.string.isRequired,
     selectedFK: PropTypes.string.isRequired,
   }).isRequired,
   hasActiveJoinFilter: PropTypes.bool.isRequired,
-  setJoinFilters: PropTypes.func.isRequired,
+  setFilterInfo: PropTypes.func.isRequired,
   setActiveJoinFilter: PropTypes.func.isRequired,
 };
 

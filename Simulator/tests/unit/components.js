@@ -169,7 +169,7 @@ describe("Components", function() {
           tableColumns={[]}
           filtertableTableNames={[]}
           filtertableColumnMap={{}}
-          joinFilters={{
+          filterInfo={{
             selectedTable: "",
             selectedColumn: "",
             selectedFK: "",
@@ -219,10 +219,10 @@ describe("Components", function() {
           fetchInProgress={false}
           getTableDataCallback={()=>{}}
           tables={tables}
-          joinFilters={{}}
+          filterInfo={{}}
           showAdvanced={false}
           setActiveJoinFilter={() => {}}
-          setJoinFilters={() => {}}
+          setFilterInfo={() => {}}
         />
       );
       dataTables.should.be.ok();
@@ -259,7 +259,7 @@ describe("Components", function() {
           tableData={tableData}
           getTableDataCallback={spy}
           fetchInProgress={false}
-          joinFilters={{}}
+          filterInfo={{}}
         />
       );
 

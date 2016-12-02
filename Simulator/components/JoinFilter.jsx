@@ -22,7 +22,7 @@ class JoinFilter extends Component {
   render() {
     const filtertableTableNames = this.props.filtertableTableNames;
     const filterableColumnMap = this.props.filterableColumnMap;
-    const joinFilters = this.props.joinFilters;
+    const filterInfo = this.props.filterInfo;
 
     const canFilter = filtertableTableNames.length > 0;
 
@@ -38,7 +38,7 @@ class JoinFilter extends Component {
         </option>
       );
 
-      let selectedTable = joinFilters.selectedTable;
+      let selectedTable = filterInfo.selectedTable;
       if (_.isEmpty(selectedTable)) {
         // Set a default if user has never selected a table filter for this table
         selectedTable = filtertableTableNames[0];
@@ -61,7 +61,7 @@ class JoinFilter extends Component {
       this.props.isActive ?
         <Modal show={this.props.isActive} onHide={this.setIsActive}>
           <Modal.Header closeButton>
-            <Modal.Title>Configure Join Filter</Modal.Title>
+            <Modal.Title>Configure Join Filter - {this.props.tableId}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div>
@@ -69,7 +69,7 @@ class JoinFilter extends Component {
               <FormControl
                 componentClass="select"
                 id="selectedTable"
-                value={this.props.joinFilters.selectedTable}
+                value={this.props.filterInfo.selectedTable}
                 onChange={this.handleJoinFilterChange}
                 style={{ marginBottom: '4px' }}
               >
@@ -79,7 +79,7 @@ class JoinFilter extends Component {
               <FormControl
                 componentClass="select"
                 id="selectedColumn"
-                value={this.props.joinFilters.selectedColumn}
+                value={this.props.filterInfo.selectedColumn}
                 onChange={this.handleJoinFilterChange}
                 style={{ marginBottom: '4px' }}
               >
@@ -89,7 +89,7 @@ class JoinFilter extends Component {
               <FormControl
                 componentClass="select"
                 id="selectedFK"
-                value={this.props.joinFilters.selectedFK}
+                value={this.props.filterInfo.selectedFK}
                 onChange={this.handleJoinFilterChange}
                 style={{ marginBottom: '4px' }}
               >
@@ -99,21 +99,31 @@ class JoinFilter extends Component {
                 What's this?
               </h5>
               <p>
-                Join Filtering is a new WDC feature that a WDC to optimize getting data for
-                connections with two or more joined tables. This feature allows a table to
-                receive a list of primary keys that were collected in another table to which
-                this table is joined. See the WDC&nbsp;
-                <a href="http://tableau.github.io/webdataconnector/ref/api_ref.html#webdataconnectorapi.tableau" target="_blank">
-                  documentation
-                </a>
-                &nbsp;for more details.
+                Join Filtering is a v2.2+ WDC feature that allows a WDC to optimize fetching data for
+                connections with two or more joined tables. In Tableau, if a WDC table A is filterable
+                (as defined in WDC metadata), then when table B is joined to table A, the
+                getData method for table B will be passed additional data when called.
+                This additional data is a list of all distinct primary keys that were fetched in the getData
+                method of table A.  Using these keys, table B's getData method is able to only fetch
+                records having foreign keys matching one of the input primary keys.
+                <br /><br />
+                This is simulated by allowing you to selected filters in this menu and then run a
+                "Filtered Fetch". For example, if you click "Filtered Fetch" with the above parameters,
+                the getData method of the&nbsp;<strong>{this.props.tableId}</strong>&nbsp;table will be called.
+                In the table parameter of getData, table.isJoinFiltered will be true. The list of
+                primary keys passed will be available in table.filterValues, and will be an array the
+                unique values the&nbsp;<strong>{this.props.filterInfo.selectedColumn}</strong>&nbsp;column of
+                the&nbsp;<strong>{this.props.filterInfo.selectedTable}</strong>&nbsp;table.
+                The&nbsp;<strong>{this.props.filterInfo.selectedFK}</strong>&nbsp;represents the key on which
+                the&nbsp;<strong>{this.props.tableId}</strong>&nbsp;table is being joined to
+                the&nbsp;<strong>{this.props.filterInfo.selectedTable}</strong>&nbsp;table.
               </p>
+              <br />
               <h5>
                 Why are certain tables missing?
               </h5>
               <p>
-                You can only filter on tables that you have fetched
-                data for already in the simulator.
+                You can only filter on tables which have data already fetched in the simulator.
               </p>
             </div>
           </Modal.Body>
@@ -140,8 +150,8 @@ class JoinFilter extends Component {
   }
 
   handleJoinFilterChange(e) {
-    const newFilters = { ...this.props.joinFilters, [e.target.id]: e.target.value };
-    this.props.setJoinFilters(newFilters);
+    const newFilters = { ...this.props.filterInfo, [e.target.id]: e.target.value };
+    this.props.setFilterInfo(newFilters);
   }
 
   fetchAndClose() {
@@ -158,15 +168,16 @@ JoinFilter.proptypes = {
   tableColumns: PropTypes.array.isRequired,
   filtertableTableNames: PropTypes.array.isRequired,
   filterableColumnMap: PropTypes.object.isRequired,
-  joinFilters: PropTypes.shape({
+  filterInfo: PropTypes.shape({
     selectedTable: PropTypes.string.isRequired,
     selectedColumn: PropTypes.string.isRequired,
     selectedFK: PropTypes.string.isRequired,
   }).isRequired,
   isActive: PropTypes.bool.isRequired,
-  setJoinFilters: PropTypes.func.isRequired,
+  setFilterInfo: PropTypes.func.isRequired,
   setIsActive: PropTypes.func.isRequired,
   filteredFetch: PropTypes.func.isRequired,
+  tableId: PropTypes.func.isRequired,
 };
 
 export default JoinFilter;

@@ -30,8 +30,8 @@ describe("Reducer", function() {
     });
   });
 
-  describe("SET_JOIN_FILTERS", function() {
-    it("Should Set joinFilters", function () {
+  describe("SET_FILTER_INFO", function() {
+    it("Should Set filterInfo", function () {
       const newFilters = {
         selectedTable: 'selectedTable',
         selectedColumn: 'selectedColumn',
@@ -39,12 +39,12 @@ describe("Reducer", function() {
       };
 
       const action = {
-        type: "SET_JOIN_FILTERS",
+        type: "SET_FILTER_INFO",
         payload: newFilters
       };
 
       const output = reducer(state, action);
-      output.joinFilters.should.deepEqual(newFilters);
+      output.filterInfo.should.deepEqual(newFilters);
     });
   });
 
