@@ -247,8 +247,9 @@ describe("Components", function() {
       }]
     };
     const filterInfo = {
-      column: "",
-      values: [],
+      selectedTable: "",
+      selectedColumn: "",
+      selectedFK: "",
     }
     let tableData = [{ "idx": 0 }];
 
@@ -259,7 +260,8 @@ describe("Components", function() {
           tableData={tableData}
           getTableDataCallback={spy}
           fetchInProgress={false}
-          filterInfo={{}}
+          filterInfo={filterInfo}
+          activeFilterData={[]}
         />
       );
 
@@ -275,11 +277,11 @@ describe("Components", function() {
       instance.filteredFetch();
       spy.calledThrice.should.be.true();
       spy.calledWith([{ tableInfo, incrementValue: undefined,
-                        isFiltered: false, filterInfo}], true).should.be.true();
+                        filterColumnId: undefined, filterValues: undefined}], true).should.be.true();
       spy.calledWith([{ tableInfo, incrementValue: 0,
-                        isFiltered: false, filterInfo}], false).should.be.true();
+                        filterColumnId: undefined, filterValues: undefined}], false).should.be.true();
       spy.calledWith([{ tableInfo, incrementValue: undefined,
-                        isFiltered: true, filterInfo}], true).should.be.true();
+                        filterColumnId: "", filterValues: []}], true).should.be.true();
     });
 
     it("Should Have the Right Column Info", function () {
