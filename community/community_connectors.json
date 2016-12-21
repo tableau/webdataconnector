@@ -510,5 +510,14 @@
         "tags": ["v_2.0"],
         "description": "Tableau WDC that pulls playlist and song info from Spotify",
         "source_code": "https://github.com/maddyloo/Spotify_WDC"
+    },
+    {
+        "name": "Italian Startup Companies Connector",
+        "url": "http://www.myitalialogin.it/services/startupWDC.html",
+        "author": "Luigi Marangon",
+        "github_username": "luis0076",
+        "tags": ["v_1.0"],
+        "description": "Tableau WDC about italian startup companies - source http://startup.registroimprese.it/report/startup.zip",
+        "source_code": ""
     }
 ]
