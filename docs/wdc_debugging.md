@@ -113,7 +113,7 @@ To run the built-in debugger, complete the following steps:
 1. Run Tableau Desktop with the debugging flag:
 
    ```
-   tableau -DDebugWDC
+   tableau.exe -DDebugWDC
    ```
 
 1. Connect to a web data connector.
