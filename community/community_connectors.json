@@ -63,6 +63,15 @@
         "source_code": "https://github.com/smeredith/wdc-flickr-proxy"
     },
     {
+        "name": "Fulcrum",
+        "url": "https://fulcrumapp.github.io/tableau-webdataconnector/",
+        "author": "Bryan McBride",
+        "github_username": "bmcbride",
+        "tags": ["v_1.0"],
+        "description": "Load data from Fulcrum apps into Tableau.",
+        "source_code": "https://github.com/fulcrumapp/tableau-webdataconnector"
+    },
+    {
         "name": "GitHub",
         "url": "https://github-web-data-connector.herokuapp.com/",
         "author": "Martin Keerman",
