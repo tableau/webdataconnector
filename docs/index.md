@@ -71,7 +71,6 @@ You're going to need a couple of things before we get started. Make sure you hav
 **Note**: The `npm start` command also starts a test proxy server on port 8889 that you can route requests through in order to
 circumvent Cross Origin Resource Sharing (CORS) restrictions. For more information, see
 [Working with CORS]({{ site.baseurl }}/docs/wdc_cors).
-</div>
 
 ### Try the sample WDCs
 
