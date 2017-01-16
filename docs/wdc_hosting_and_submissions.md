@@ -16,7 +16,7 @@ Submitting to the Community Portal {#portal}
 
 1. Click on the link below to go to our list of connectors:
 
-   <https://github.com/tableau/webdataconnector/blob/gh-pages/community/community_connectors.json>
+   <https://github.com/tableau/webdataconnector/blob/master/community/community_connectors.json>
 
 1. Click the **Edit** icon on the right.
 
