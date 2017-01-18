@@ -528,5 +528,14 @@
         "tags": ["v_1.0"],
         "description": "Tableau WDC about italian startup companies - source http://startup.registroimprese.it/report/startup.zip",
         "source_code": ""
+    },
+    {
+        "name": "Morph.io Connector",
+        "url": "https://drzax.github.io/morphio-wdc/",
+        "author": "Simon Elvery",
+        "github_username": "drzax",
+        "tags": ["v_1.0"],
+        "description": "Tableau WDC for the scraping service Morph.io",
+        "source_code": "https://github.com/drzax/morphio-wdc/"
     }
 ]
