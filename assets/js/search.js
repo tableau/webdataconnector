@@ -28,7 +28,6 @@
 
     // Get the raw search results
     function getRawSearchResults(query) {
-        // TO DO: Validate query, empty strings, etc.
         return lunrIndex.search(query);
     }
 
@@ -44,12 +43,15 @@
         var container = document.getElementById("searchResultsContainer"),
             ref, title;
 
+        // Clear the loading text before inserting the results
+        container.innerHTML = "";
+
         if (results.length) {
             for (var result in results) {
                 ref = results[result].ref;
 
                 if (ref !== "") {
-                    // Some pages might not have a title set--the index page for example
+                    // Some pages might not have a title set
                     title = search_blob[ref].title || '(No title)';
                     container.innerHTML += "<a href='" + ref + "'>" + title + "</a>";
                     container.innerHTML += "<p>" + getResultBlurb(search_blob[ref].content) + "...</p><br />";
