@@ -438,7 +438,7 @@
         "tags": ["v_2.0"],
         "description": "Get Hearthstone card data from HearthstoneJSON.",
         "source_code": "https://github.com/ausgop/HearthstoneJSON-WDC"
-    },
+   },
     {
         "name": "Neo4J",
         "url": "https://acbeers.github.io/neo4j-wdc/index.html",
@@ -488,8 +488,9 @@
         "name": "Random Data Generator",
         "url": "http://wdc.poc.interworks.com/datagen/",
         "author": "Dave Hart",
-,        "github_username": "",
-        "tags": ["v_1.1"],        "description": "",
+        "github_username": "",
+        "tags": ["v_1.1"],
+        "description": "",
         "source_code": ""
     },
     {
