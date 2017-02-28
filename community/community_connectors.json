@@ -438,7 +438,7 @@
         "tags": ["v_2.0"],
         "description": "Get Hearthstone card data from HearthstoneJSON.",
         "source_code": "https://github.com/ausgop/HearthstoneJSON-WDC"
-    },
+   },
     {
         "name": "Neo4J",
         "url": "https://acbeers.github.io/neo4j-wdc/index.html",
@@ -537,5 +537,14 @@
         "tags": ["v_1.0"],
         "description": "Tableau WDC for the scraping service Morph.io",
         "source_code": "https://github.com/drzax/morphio-wdc/"
+    },
+    {
+        "name": "USPTO PatentsWeb Connector",
+        "url": "https://dduubb.github.io/uspto-wdc/wdc/uspto-wdc.html",
+        "author": "dw",
+        "github_username": "dduubb",
+        "tags": ["v_0.1"],
+        "description": "Connector to allow connections to the USPTO PatentsWeb API",
+        "source_code": "github.com/dduubb/uspto-wdc"
     }
 ]
