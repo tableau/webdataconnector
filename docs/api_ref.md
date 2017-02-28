@@ -29,6 +29,12 @@ title: WDC API Reference
                             <a href="api_ref.html#webdataconnectorapi.columninfo.description" class="tsd-kind-icon">description</a>
                         </li>
                         <li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+                            <a href="api_ref.html#webdataconnectorapi.columninfo.filterable" class="tsd-kind-icon">filterable</a>
+                        </li>
+                        <li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+                            <a href="api_ref.html#webdataconnectorapi.columninfo.foreignKey" class="tsd-kind-icon">foreignKey</a>
+                        </li>
+                        <li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
                             <a href="api_ref.html#webdataconnectorapi.columninfo.georole" class="tsd-kind-icon">geoRole</a>
                         </li>
                         <li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
@@ -98,7 +104,7 @@ title: WDC API Reference
                             <a href="api_ref.html#webdataconnectorapi.tableinfo-1.id-1" class="tsd-kind-icon">id</a>
                         </li>
                         <li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-                            <a href="api_ref.html#webdataconnectorapi.tableinfo-1.incrementcolumnid" class="tsd-kind-icon">incrementColumnId</a>
+                            <a href="api_ref.html#webdataconnectorapi.tableinfo-1.joinOnly" class="tsd-kind-icon">joinOnly</a>
                         </li>
                     </ul>
                 </li>
@@ -469,6 +475,30 @@ title: WDC API Reference
                         </div>
                     </section>
                     <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+                        <a name="webdataconnectorapi.columninfo.filterable" class="tsd-anchor"></a>
+                        <h3>filterable</h3>
+                        <div class="tsd-signature tsd-kind-icon">filterable: bool</div>
+                        <div class="tsd-comment tsd-typography">
+                            <div class="lead">
+                                <p>(Optional) Whether the column should be used as the join filtering column in the dependent table. For more information, see <a href="wdc_join_filtering.html">Join Filtering</a>.</p>
+                            </div>
+                            <p><b>Note</b>: This feature is only supported in version 2.2 and later of the WDC.</p>
+                        </div>
+                    </section>
+                    <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+                        <a name="webdataconnectorapi.columninfo.foreignKey" class="tsd-anchor"></a>
+                        <h3>foreignKey</h3>
+                        <div class="tsd-signature tsd-kind-icon">foreignKey: Object</div>
+                        <div class="tsd-comment tsd-typography">
+                            <div class="lead">
+                                <p>(Optional) An object that specifies the table ID and column ID to use in join filtering to create the primary to foreign key relationship. For more information, see <a href="wdc_join_filtering.html">Join Filtering</a>.</p>
+                            </div>
+                            <p><b>Note</b>: This feature is only supported in version 2.2 and later of the WDC.</p>
+                            <p>For example, you might enter a foreign key object like this:</p>
+                            <pre>foreignKey: { "tableId": "posts", "columnId": "userId" }</pre>
+                        </div>
+                    </section>
+                    <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
                         <a name="webdataconnectorapi.columninfo.georole" class="tsd-anchor"></a>
                         <h3>geoRole</h3>
                         <div class="tsd-signature tsd-kind-icon">geoRole: <a href="api_ref.html#webdataconnectorapi.geographicroleenum" class="tsd-signature-type">geographicRoleEnum</a></div>
@@ -594,7 +624,7 @@ title: WDC API Reference
                         <div class="lead">
                             <p>The metadata for standard connections, or predefined joins.</p>
                         </div>
-                        <p><b>Note</b>: This feature is only supported in version 2.1 of the WDC.</p>
+                        <p><b>Note</b>: This feature is only supported in version 2.1 and later of the WDC.</p>
                     </div>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
                         <a name="webdataconnectorapi.standardconnection.alias" class="tsd-anchor"></a>
@@ -799,6 +829,16 @@ var standardConnection = {
                             </div>
                         </div>
                     </section>
+                    <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+                        <a name="webdataconnectorapi.tableinfo-1.joinOnly" class="tsd-anchor"></a>
+                        <h3>joinOnly</h3>
+                        <div class="tsd-signature tsd-kind-icon">joinOnly: bool</div>
+                        <div class="tsd-comment tsd-typography">
+                            <div class="lead">
+                                <p>(Optional) Whether you want to make join filtering required for this table. If you set this value to true, you cannot connect to the table without first connecting to the other table. <a href="{{ site.baseurl }}/docs/wdc_join_filtering">Join Filtering</a> for details.</p>
+                            </div>
+                        </div>
+                    </section>
                 </section>
                 <section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
                     <a name="webdataconnectorapi.webdataconnector" class="tsd-anchor"></a>
@@ -998,7 +1038,7 @@ var standardConnection = {
                             <div class="lead">
                                 <p>The build number for Tableau Desktop.</p>
                             </div>
-                            <p><b>Note</b>: This feature is only supported in version 2.1 of the WDC.</p>
+                            <p><b>Note</b>: This feature is only supported in version 2.1 and later of the WDC.</p>
                             <div>
                                 <p>For example, you might see a build number like this:</p>
                                 <code>10100.16.1005.2001</code>
@@ -1013,7 +1053,7 @@ var standardConnection = {
                             <div class="lead">
                                 <p>The edition of Tableau Desktop.</p>
                             </div>
-                            <p><b>Note</b>: This feature is only supported in version 2.1 of the WDC.</p>
+                            <p><b>Note</b>: This feature is only supported in version 2.1 and later of the WDC.</p>
                             <div>
                                 <p>Either <code>pro</code>, <code>standard</code>, or
                                 <code>public</code>.</p>
@@ -1028,7 +1068,7 @@ var standardConnection = {
                             <div class="lead">
                                 <p>The operating system on which Tableau Destkop is installed.</p>
                             </div>
-                            <p><b>Note</b>: This feature is only supported in version 2.1 of the WDC.</p>
+                            <p><b>Note</b>: This feature is only supported in version 2.1 and later of the WDC.</p>
                             <div>
                                 <p>Either <code>win</code> for Windows or <code>mac</code> for MacOS.</p>
                             </div>
@@ -1042,7 +1082,7 @@ var standardConnection = {
                             <div class="lead">
                                 <p>The version of Tableau Desktop.</p>
                             </div>
-                            <p><b>Note</b>: This feature is only supported in version 2.1 of the WDC.</p>
+                            <p><b>Note</b>: This feature is only supported in version 2.1 and later of the WDC.</p>
                             <div>
                                 <p>Tableau uses semantic versioning, which means that
                                 the version matches the following syntax:</p>
@@ -1203,7 +1243,7 @@ var standardConnection = {
                                         appears that displays the progress message.</p>
                                     </div>
                                 </div>
-                                <p><b>Note</b>: This feature is only supported in version 2.1 of the WDC.</p>
+                                <p><b>Note</b>: This feature is only supported in version 2.1 and later of the WDC.</p>
                                 <h4 class="tsd-parameters-title">Parameters</h4>
                                 <ul class="tsd-parameters">
                                     <li>
