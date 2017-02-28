@@ -99,8 +99,8 @@ class SimulatorAttributes extends Component {
               <FormControl
                 type="text"
                 disabled={this.props.disabled}
-                id="platformOS"
-                value={this.props.wdcAttrs.platformOS}
+                id="platformOs"
+                value={this.props.wdcAttrs.platformOs}
                 onChange={this.handleAttrChange}
               />
               <ControlLabel> Platform Version </ControlLabel>
