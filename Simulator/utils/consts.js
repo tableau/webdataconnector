@@ -32,7 +32,7 @@ export const defaultWdcAttrs = {
   username: '',
   password: '',
   usernameAlias: '',
-  platformOS: '',
+  platformOs: '',
   platformEdition: '',
   platformVersion: '',
   platformBuildNumber: '',

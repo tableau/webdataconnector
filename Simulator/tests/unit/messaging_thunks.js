@@ -38,7 +38,7 @@ describe('Messaging Thunks', function() {
           connectionData: "data",
           username: "username",
           password: "password",
-          platformOS: "platformOs",
+          platformOs: "platformOs",
           platformVersion: "platformVersion",
           platformEdition: "platformEdition",
           platformBuildNumber: "platformBuildNumber",
