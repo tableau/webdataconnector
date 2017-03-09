@@ -36,6 +36,38 @@ describe("Simulator Action Creators", function() {
     });
   });
 
+  describe("setFilterInfo", function() {
+    it("Should Create Right Action", function () {
+      let input = {
+        selectedTable: '',
+        selectedColumn: '',
+        selectedFK: '',
+      };
+
+      let correctAction = {
+        type: 'SET_FILTER_INFO',
+        payload: input
+      };
+
+      let action = simulatorActions.setFilterInfo(input);
+      action.should.deepEqual(correctAction);
+    });
+  });
+
+  describe("setActiveJoinFilter", function() {
+    it("Should Create Right Action", function () {
+      let input = "tableId";
+
+      let correctAction = {
+        type: 'SET_ACTIVE_JOIN_FILTER',
+        payload: input
+      };
+
+      let action = simulatorActions.setActiveJoinFilter(input);
+      action.should.deepEqual(correctAction);
+    });
+  });
+
   describe("setWdcUrl", function() {
     it("Should Create Right Action", function () {
       let input = "../Examples/html/earthquakeUSGS.html";
