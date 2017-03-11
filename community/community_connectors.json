@@ -553,7 +553,7 @@
         "author": "kaizenplatform",
         "github_username": "kaizenplatform",
         "tags": ["v0.1.1"],
-        "description": "Connector to allow connections to the USPTO PatentsWeb API",
+        "description": "Tableau WDC for Insights of Facebook Marketing API",
         "source_code": "https://github.com/kaizenplatform/FacebookInsightsConnector"
     }
 ]
