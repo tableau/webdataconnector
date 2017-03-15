@@ -27,6 +27,15 @@
         "source_code": "github.com/starschema/tableau-web-table-connector"
     },
     {
+        "name": "DHIS2",
+        "url": "https://dtreskunov.github.io/dhis2-wdc/",
+        "author": "Denis Treskunov",
+        "github_username": "dtreskunov",
+        "tags": ["v_2.2"],
+        "description": "DHIS2 is the preferred health management information system in 47 countries and 23 organizations across four continents.",
+        "source_code": "https://github.com/dtreskunov/dhis2-wdc"
+    },
+    {
         "name": "DoubleClick Campaign Manager",
         "url": "https://dcm-dfa-wdc.herokuapp.com/",
         "author": "Eric Peterson",
