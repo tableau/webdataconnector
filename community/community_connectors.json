@@ -569,5 +569,14 @@
         "tags": ["v0.1.1"],
         "description": "Tableau WDC for Insights of Facebook Marketing API",
         "source_code": "https://github.com/kaizenplatform/FacebookInsightsConnector"
+    },
+    {
+        "name": "Reviewboard changelist Connector",
+        "url": "https://hza47.github.io/WDC-reviewboard/",
+        "author": "Hao Zhuang",
+        "github_username": "hza47",
+        "tags": ["v0.1.1"],
+        "description": "WDC to get all pengind changelist from reviewboard",
+        "source_code": "https://github.com/hza47/WDC-reviewboard"
     }
 ]
