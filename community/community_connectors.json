@@ -180,6 +180,11 @@
         "source_code": "https://github.com/jdomingu/osm-features-wdc"
     },
     {
+        "name": "parkrun",
+        "url": "https://parkrun-webdataconnector.now.sh",
+        "author": "Mark Woodbridge"
+    },
+    {
         "name": "ParseHub",
         "url": "http://data.theinformationlab.co.uk/parsehub.html",
         "author": "Craig Bloodworth",
