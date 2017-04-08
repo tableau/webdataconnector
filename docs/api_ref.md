@@ -983,10 +983,11 @@ var standardConnection = {
                     <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
                         <a name="webdataconnectorapi.tableau.connectiondata" class="tsd-anchor"></a>
                         <h3>connectionData</h3>
-                        <div class="tsd-signature tsd-kind-icon">connectionData: Object</div>
+                        <div class="tsd-signature tsd-kind-icon">connectionData: String</div>
                         <div class="tsd-comment tsd-typography">
                             <div class="lead">
-                                <p>Object used to pass non-secret connector state between phases.</p>
+                                <p>A string that you can use to store data between phases. For example, you might store user input that you want to use in the <code>getData</code> phase.</p>
+                                <p>To store and retrieve JavaScript objects with the connectionData property, that is to serialize and deserialize objects, use <code>JSON.stringify</code> and <code>JSON.parse</code>.</p>
                             </div>
                         </div>
                     </section>

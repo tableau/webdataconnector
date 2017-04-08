@@ -10,16 +10,11 @@ A WDC is always run with an associated phase.  Tableau loads
 the connector inside a web browser at different times and in distinct phases.
 This document will explain each of these phases and when each one runs.
 
--   [Lifecycle Diagram](#diagram)
+* TOC
+{:toc}
 
--   [First phase: Interact with the user (if necessary)](#phase-one)
 
--   [Second phase: Gather data](#phase-two)
-
--   [Alternative phase: Display authentication UI
-    (refresh extract)](#phase-three)
-
-Lifecycle Diagram {#diagram}
+Lifecycle diagram {#diagram}
 --------------------------------------------------
 
 At a high level, the WDC lifecycle is as follows:
@@ -101,7 +96,7 @@ Authentication phase: Display authentication UI when needed {#phase-three}
 
 The authentication phase is an optional phase which Tableau uses to refresh extracts that require authentication. Rather
 than reload the connector and get the schema again, Tableau runs the authentication phase to only display the user
-interface required for authentication.  refresh a data extract that the connector created. When an extract must
+interface required for authentication.
 
 **Note**: This is not really a third phase, because it does not follow the other
 two; it's an alternative to the first phase.
@@ -113,3 +108,26 @@ will be ignored during this phase.
 For more information, on how to use the authentication phase, see
 [WDC Authentication]({{ site.baseurl }}/docs/wdc_authentication.html).
 
+
+Pass data between phases
+------------------------
+
+Often it is necessary to pass data from one phase to another.
+For example, you might want to store user input from the interaction phase and use the input in the get data phase to build personalized requests to an API.
+
+You can store data that you want to pass between phases using the `tableau.connectionData` property.
+The property can only store data as a string, so if you want to store JavaScript objects, you must serialize and deserialize the data.
+
+For example, to store a JavaScript object as a string, you might run the following code:
+
+```
+tableau.connectionData = JSON.stringify(example_data);
+```
+
+Then, to convert the string back into a JavaScript object, you might run the following code:
+
+```
+JSON.parse(tableau.connectionData);
+```
+
+For an example of how you might use this in a web data connector, see the [Multiple Tables Tutorial]({{ site.baseurl }}/docs/wdc_multi_table_tutorial).
