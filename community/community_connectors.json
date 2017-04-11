@@ -182,7 +182,10 @@
     {
         "name": "parkrun",
         "url": "https://parkrun-webdataconnector.now.sh",
-        "author": "Mark Woodbridge"
+        "author": "Mark Woodbridge",
+        "tags": ["v_2.0"],
+        "description": "",
+        "source_code": ""
     },
     {
         "name": "ParseHub",
