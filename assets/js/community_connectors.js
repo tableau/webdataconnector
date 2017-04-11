@@ -36,8 +36,17 @@ function append(connector) {
     item.outerHTML = h;
 }
 
+function connectorSort(a , b) {
+    if (a.name.toLowerCase() < b.name.toLowerCase()) {
+        return -1;
+    }
+
+    return 1;
+}
+
 $.getJSON("./community_connectors.json", function(data) {
-    $(data).each(function(i, connector) {
+    var sorted = data.sort(connectorSort);
+    $(sorted).each(function(i, connector) {
         append(connector);
     });
 });
