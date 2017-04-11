@@ -15,9 +15,9 @@ Types of authentication {#auth-types}
 -------------------------------------
 There are three types of authentication recognized by the WDC API:
 
-- `None` - for connectors that do not have any authentication needs
-- `Basic` - for connectors that need username/password authentication.
-- `Custom` - for any other type of authentication or authorization (OAuth, as an example).
+- `none` - for connectors that do not have any authentication needs
+- `basic` - for connectors that need username/password authentication.
+- `custom` - for any other type of authentication or authorization (OAuth, as an example).
 
 A connector should set its auth type in a custom init method.  For example: 
 
