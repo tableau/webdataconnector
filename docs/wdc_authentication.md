@@ -3,33 +3,35 @@ title: WDC Authentication
 layout: docs
 ---
 
-Authentication is one of the more complicated topics related to web data connectors.
-Authentication comes in many flavors and can often be one of the most difficult
-portions of your connector to get right.  There are a few auth specific components of the
-WDC API that you should be aware of.
+Many connectors require authentication to connect to a data source.
+For these connectors, you must handle authentication in your connector code and create a form interface to prompt users for authentication information.
+Separately, the WDC also includes logic that you can use for re-authentication as a convenience.
+This topic describes how to re-authenticate users for connectors that have already run.
 
 * TOC
 {:toc}
 
 Types of authentication {#auth-types}
 -------------------------------------
-There are three types of authentication recognized by the WDC API:
 
-- `none` - for connectors that do not have any authentication needs
-- `basic` - for connectors that need username/password authentication.
-- `custom` - for any other type of authentication or authorization (OAuth, as an example).
+Authentication types are used to help users re-authenticate.
+The WDC API supports the following authentication types:
 
-A connector should set its auth type in a custom init method.  For example: 
+- `basic`. User name and password authentication.
+- `custom`. Other authentication methods, including OAuth for example.
+- `none`. No authentication is required. If you do not specify an authentication type, `none` is assumed.
+
+A connector should set its auth type in a custom init method.
+For example:
 
 ```javascript
   // Init function for connector, called during every phase
   myConnector.init = function(initCallback) {
-      tableau.authType = tableau.authTypeEnum.custom;   
+      tableau.authType = tableau.authTypeEnum.custom;
   }
 ```
 
-If a connector does not set its auth type, Tableau will assume that the 
-auth type should be `none`. For connectors that require authentication, the auth type must be set.  Otherwise,
+For connectors that require authentication, the auth type must be set.  Otherwise,
 Tableau will not know how to re-authenticate the user when the user is un-authenticated, which is a common scenario.
 For example, passwords (or tokens) should be stored in the tableau.password property.  The contents of this property
 are not ever written to disk.  So when a user opens a saved workbook that is attached to a WDC data source,
