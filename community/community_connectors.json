@@ -224,6 +224,15 @@
         "source_code": ""
     },
     {
+        "name": "Rally CA Agile",
+        "url": "https://k504866430.github.io/rally-tableau/wdc",
+        "author": "Harsh Agrawal",
+        "github_username": "",
+        "tags": ["v_1.0"],
+        "description": "Load project, stories, tasks, time-entries and much more from CA Agile Rally Tool",
+        "source_code": ""
+    },
+    {
         "name": "Runkeeper",
         "url": "http://data.theinformationlab.co.uk/runkeeper.html",
         "author": "Craig Bloodworth",
