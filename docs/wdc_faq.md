@@ -26,7 +26,7 @@ Tableau does not provide support for connectors or for other programs written to
 you can submit questions and ask for help on the [Tableau developer community
 forums](https://community.tableau.com/community/developers/content).
 
-Tableau *does* provide support the WDC library and SDK though. If you find an issue with the WDC library, the simulator,
+Tableau *does* provide support for the WDC library and SDK though. If you find an issue with the WDC library, the simulator,
 or any of the developer samples, [submit an issue on Github](https://github.com/tableau/webdataconnector/issues).
 
 ### The global variables in my connector display as undefined. What's happening?
