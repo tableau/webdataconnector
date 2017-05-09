@@ -3,6 +3,7 @@ var until = webdriver.until;
 var should = require('should');
 var express = require("express");
 var path = require("path");
+var config = require('./config.js');
 
 var app = express();
 
@@ -17,7 +18,7 @@ describe.skip('Standard Connections Example Connector', function(){
   before(function(done) {
     // Spin up file server
     app.use(express.static(path.join(__dirname, "../../../")));
-    server = app.listen(8888);
+    server = app.listen(config.port);
 
     // create driver
     if (process.env.SAUCE_USERNAME != undefined) {
@@ -38,7 +39,7 @@ describe.skip('Standard Connections Example Connector', function(){
     }
 
     // open simulator page
-    driver.get('http://localhost:8888/Simulator').then(function() {
+    driver.get('http://localhost:' + config.port + '/Simulator').then(function() {
       done();
     });
   });
