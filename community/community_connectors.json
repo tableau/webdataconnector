@@ -27,6 +27,15 @@
         "source_code": "github.com/starschema/tableau-web-table-connector"
     },
     {
+        "name": "data.world",
+        "url": "https://tableau.data.world",
+        "author": "Alan Levicki & Rebecca Clay",
+        "github_username": "",
+        "tags": ["v_2.0"],
+        "description": "Connect to datasets from data.world, where data people collaborate.",
+        "source_code": ""
+    },
+    {
         "name": "DHIS2",
         "url": "https://dtreskunov.github.io/dhis2-wdc/",
         "author": "Denis Treskunov",
