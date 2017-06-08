@@ -599,5 +599,14 @@
         "tags": ["v0.1.1"],
         "description": "WDC to get all pengind changelist from reviewboard",
         "source_code": "https://github.com/hza47/WDC-reviewboard"
-    }
+    },
+    {
+       "name": "InfluxDB (time series database) connector",
+       "url": "https://tagyoureit.github.io/InfluxDB_WDC/InfluxDB.html",
+       "author": "Russ Goldin",
+       "github_username": "tagyoureit",
+       "tags": ["v_1.0"],
+       "description": "Connector to pull data from InfluxDB.  Can be used with/without authentication and server-side aggregation.",
+       "source_code": "https://github.com/tagyoureit/InfluxDB_WDC"
+   }
 ]
