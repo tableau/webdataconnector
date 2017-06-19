@@ -298,7 +298,7 @@
     {
         "name": "Stardog Data Connector",
         "url": "http://tableau.stardog.com",
-        "author": "",
+        "author": "Adam Bretz",
         "github_username": "stardog-union",
         "tags": ["v_2.2"],
         "description": "Stardog is the Enterprise Knowledge Graph. http://stardog.com",
