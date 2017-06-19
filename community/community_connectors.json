@@ -296,6 +296,15 @@
         "source_code": "https://github.com/ameliedagenais/SplitwiseWebDataConnector"
     },
     {
+        "name": "Stardog Data Connector",
+        "url": "http://tableau.stardog.com",
+        "author": "",
+        "github_username": "stardog-union",
+        "tags": ["v_2.2"],
+        "description": "Stardog is the Enterprise Knowledge Graph. http://stardog.com",
+        "source_code": ""
+    },
+    {
         "name": "Strava",
         "url": "http://data.theinformationlab.co.uk/strava.html",
         "author": "Craig Bloodworth",
