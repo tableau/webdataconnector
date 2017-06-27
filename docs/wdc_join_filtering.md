@@ -75,49 +75,53 @@ To filter posts by user, set the following schema properties:
   For example, if you set this to true for the posts table, the posts table is disabled in Tableau unless you select the users table first.
 
 * `filterable`. Set to true for the column that you want to use for filtering.
-  For example, you might set this to true for the `userId` column of the `posts` table.
+  Since we want the posts tables to be filtered on its 'userId' column, you want to set this to true for the `userId` column of the `posts` table.
 
 * `foreignKey`. Specify the tableId and columnId of the foreign key to use.
-  For example, you might enter `{ "tableId": "posts", "columnId": "userId" }`.
+  Since the posts table 'userId' column represents a foreign key to the users table 'id' primary key, you would enter `{ "tableId": "users", "columnId": "id" }` on the posts table.  You can have many foreignKey attributes point to the same primary key.
 
 The schema below has these properties already set:
 
 ```js
 var users_cols = [{
-	id: "id",
-	dataType: tableau.dataTypeEnum.string,
-	foreignKey: { "tableId": "posts", "columnId": "userId" }
+    id: "id",
+    dataType: tableau.dataTypeEnum.string,
 }, {
-	id: "name",
-	alias: "name",
-	dataType: tableau.dataTypeEnum.string
+    id: "name",
+    alias: "name",
+    dataType: tableau.dataTypeEnum.string
 }];
 
 var usersTable = {
-	id: "users",
-	alias: "User Data",
-	columns: users_cols
+    id: "users",
+    alias: "User Data",
+    columns: users_cols
 };
 
+// Schema for posts
 var posts_cols = [{
-	id: "id",
-	dataType: tableau.dataTypeEnum.string
+    id: "id",
+    dataType: tableau.dataTypeEnum.string
 }, {
-	id: "userId",
-	alias: "userId",
-	dataType: tableau.dataTypeEnum.string,
-	filterable: true
+    id: "userId",
+    alias: "userId",
+    dataType: tableau.dataTypeEnum.string,
+    filterable: true
 }, {
-	id: "title",
-	alias: "title",
-	dataType: tableau.dataTypeEnum.string
+    id: "title",
+    alias: "title",
+    dataType: tableau.dataTypeEnum.string
 }];
 
 var postsTable = {
-	joinOnly: true,
-	id: "posts",
-	alias: "Post Data",
-	columns: posts_cols
+    joinOnly: true,
+    id: "posts",
+    alias: "Post Data",
+    columns: posts_cols,
+    foreignKey: {
+	"tableId": "users",
+	"columnId": "id"
+    }
 };
 ```
 
@@ -136,47 +140,61 @@ For example, you might iterate through the user ID filter values with the follow
 
 ```js
 myConnector.getData = function(table, doneCallback) {
-	var tableData = [];
-
-	if (table.tableInfo.id === "users") {
-		$.getJSON("http://jsonplaceholder.typicode.com/users", function(resp) {
-			for (var i = 0; i < resp.length; i++) {
-				if (resp[i].id <= 5) {
-					tableData.push({
-						"id": resp[i].id,
-						"name": resp[i].name
-					});
-				}
-			}
-
-			table.appendRows(tableData);
-			doneCallback();
+var tableData = [];
+if (table.tableInfo.id === "users") {
+    $.getJSON("http://jsonplaceholder.typicode.com/users", function(resp) {
+	for (var i = 0; i < resp.length; i++) {
+				// Only return the first 5 users to demonstrate filtering
+	    if (resp[i].id <= 5) {
+		tableData.push({
+		    "id": resp[i].id,
+		    "name": resp[i].name
 		});
-	} else if (table.tableInfo.id === "posts") {
-		var filterValues = table.filterValues;
-
-		if (!table.isJoinFiltered) {
-			tableau.abortWithError("The table must be filtered first.");
-			return;
-		}
-
-		if (filterValues.length === 0) {
-			doneCallback();
-			return;
-		}
-
-		$.getJSON("http://jsonplaceholder.typicode.com/posts?userId=" + filterValues.pop(), function(resp) {
-			for (var i = 0; i < resp.length; i++) {
-				tableData.push({
-					"id": resp[i].id,
-					"userId": resp[i].userId,
-					"title": resp[i].title
-				});
-			}
-			table.appendRows(tableData);
-			doneCallback();
-		});
+	    }
 	}
+
+	table.appendRows(tableData);
+	doneCallback();
+    });
+} else if (table.tableInfo.id === "posts") {
+    var filterValues = table.filterValues;
+
+    if (!table.isJoinFiltered) {
+	tableau.abortWithError("The table must be filtered first.");
+	return;
+    }
+
+    if (filterValues.length === 0) {
+	doneCallback();
+	return;
+    }
+
+    var postFetches = [];
+
+    // Now that we have the ids of the filtered users,
+    // get the posts for only those users.
+    for (var userId in filterValues) {
+      var postFetch = new Promise(function(resolve, reject) {
+	$.getJSON("http://jsonplaceholder.typicode.com/posts?userId=" + userId, function(resp) {
+	  for (var i = 0; i < resp.length; i++) {
+	      tableData.push({
+		  "id": resp[i].id,
+		  "userId": resp[i].userId,
+		  "title": resp[i].title
+	      });
+	  }
+	  table.appendRows(tableData);
+	  resolve();
+	});
+      });
+
+      postFetches.push(postFetch);
+    }
+
+    Promise.all(postFetches).then(function(values) {
+      doneCallback();
+    })
+}
 };
 
 ```
@@ -197,10 +215,6 @@ The full code for the example above is displayed below:
         var users_cols = [{
             id: "id",
             dataType: tableau.dataTypeEnum.string,
-            foreignKey: {
-                "tableId": "posts",
-                "columnId": "userId"
-            }
         }, {
             id: "name",
             alias: "name",
@@ -232,7 +246,11 @@ The full code for the example above is displayed below:
             joinOnly: true,
             id: "posts",
             alias: "Post Data",
-            columns: posts_cols
+            columns: posts_cols,
+            foreignKey: {
+                "tableId": "users",
+                "columnId": "id"
+            }
         };
 
         schemaCallback([usersTable, postsTable]);
@@ -241,7 +259,6 @@ The full code for the example above is displayed below:
     // Download the data
     myConnector.getData = function(table, doneCallback) {
         var tableData = [];
-
         if (table.tableInfo.id === "users") {
             $.getJSON("http://jsonplaceholder.typicode.com/users", function(resp) {
                 for (var i = 0; i < resp.length; i++) {
@@ -270,17 +287,31 @@ The full code for the example above is displayed below:
                 return;
             }
 
-            $.getJSON("http://jsonplaceholder.typicode.com/posts?userId=" + filterValues.pop(), function(resp) {
-                for (var i = 0; i < resp.length; i++) {
-                    tableData.push({
-                        "id": resp[i].id,
-                        "userId": resp[i].userId,
-                        "title": resp[i].title
-                    });
-                }
-                table.appendRows(tableData);
-                doneCallback();
-            });
+            var postFetches = [];
+
+            // Now that we have the ids of the filtered users,
+            // get the posts for only those users.
+            for (var userId in filterValues) {
+              var postFetch = new Promise(function(resolve, reject) {
+                $.getJSON("http://jsonplaceholder.typicode.com/posts?userId=" + userId, function(resp) {
+                  for (var i = 0; i < resp.length; i++) {
+                      tableData.push({
+                          "id": resp[i].id,
+                          "userId": resp[i].userId,
+                          "title": resp[i].title
+                      });
+                  }
+                  table.appendRows(tableData);
+                  resolve();
+                });
+              });
+
+              postFetches.push(postFetch);
+            }
+
+            Promise.all(postFetches).then(function(values) {
+              doneCallback();
+            })
         }
     };
 
