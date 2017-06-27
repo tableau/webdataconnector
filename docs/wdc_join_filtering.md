@@ -75,10 +75,10 @@ To filter posts by user, set the following schema properties:
   For example, if you set this to true for the posts table, the posts table is disabled in Tableau unless you select the users table first.
 
 * `filterable`. Set to true for the column that you want to use for filtering.
-  Since we want the posts tables to be filtered on its 'userId' column, you want to set this to true for the `userId` column of the `posts` table.
+  Since we want the posts tables to be filtered on its `userId` column, you want to set this to true for the `userId` column of the `posts` table.
 
 * `foreignKey`. Specify the tableId and columnId of the foreign key to use.
-  Since the posts table 'userId' column represents a foreign key to the users table 'id' primary key, you would enter `{ "tableId": "users", "columnId": "id" }` on the posts table.  You can have many foreignKey attributes point to the same primary key.
+  Since the posts table `userId` column represents a foreign key to the users table `id` primary key, you would enter `{ "tableId": "users", "columnId": "id" }` on the posts table.  You can have many foreignKey attributes point to the same primary key.
 
 The schema below has these properties already set:
 
