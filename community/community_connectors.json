@@ -41,7 +41,7 @@
         "author": "Denis Treskunov",
         "github_username": "dtreskunov",
         "tags": ["v_2.2"],
-        "description": "DHIS2 is the preferred health management information system in 47 countries and 23 organizations across four continents.",
+        "description": "DHIS2 is the preferred health management information system in 47 countries and 23 organizations across four continents. This connector is written in ClojureScript.",
         "source_code": "https://github.com/dtreskunov/dhis2-wdc"
     },
     {
@@ -447,6 +447,15 @@
         "tags": ["v_2.0"],
         "description": "",
         "source_code": "https://github.com/austinderrick/eia_wdc_20"
+    },
+    {
+        "name": "Washington Trails Association",
+        "url": "https://dtreskunov.github.io/wta-wdc/",
+        "author": "Denis Treskunov",
+        "github_username": "dtreskunov",
+        "tags": ["v_2.2"],
+        "description": "WTA is a non-profit community protecting hiking trails in Washington state. This connector is written in ClojureScript.",
+        "source_code": "https://github.com/dtreskunov/wta-wdc"
     },
     {
         "name" : "Star Wars API",
