@@ -635,6 +635,15 @@
        "tags": ["v_1.0"],
        "description": "Very simple connector to pull 7 day forecast for 5 cities around US.",
        "source_code": "https://github.com/collinsteele/collinsteele.github.io"
-   }
+   },
+    {
+       "name": "WaniKani Connector",
+       "url": "https://rarandall.github.io/wdc/html/wanikani.html",
+       "author": "Ray Randall",
+       "github_username": "rarandall",
+       "tags": ["v_1.0"],
+       "description": "See and understand your WaniKani data with this WDC connector for Tableau.",
+       "source_code": "https://github.com/rarandall/rarandall.github.io/tree/master/wdc"
+    }
     
 ]
