@@ -242,6 +242,15 @@
         "source_code": ""
     },
     {
+        "name": "REDCap",
+        "url": "https://github.com/xHeliotrope/redcap-wdc",
+        "author": "Ryan Moore",
+        "github_username": "xHeliotrope",
+        "tags": ["v_1.0"],
+        "description": "Load REDCap data into Tableau via the REDCap API",
+        "source_code": "https://github.com/xHeliotrope/redcap-wdc"
+    },
+    {
         "name": "Runkeeper",
         "url": "http://data.theinformationlab.co.uk/runkeeper.html",
         "author": "Craig Bloodworth",
