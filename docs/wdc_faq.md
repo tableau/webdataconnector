@@ -69,7 +69,7 @@ Users/<username>/Documents/My Tableau Repository
 ```
 
 The `log.txt` file contains information for the interactive phase of your connector. The `tabprotosrv.txt` file contains
-logs for the data gathering phase.
+logs for the data gathering phase.  The Tableau Log Viewer is an open source tool that makes it easier to read Tableau logs: [https://github.com/tableau/tableau-log-viewer](https://github.com/tableau/tableau-log-viewer).
 
 ### Why aren't my connector methods being called?
 
