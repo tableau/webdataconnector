@@ -646,6 +646,15 @@
        "source_code": "https://github.com/collinsteele/collinsteele.github.io"
    },
    {
+        "name": "Zabbix",
+        "url": "https://parflesh.github.io/zabbix-wdc/index.html",
+        "author": "ParFlesh",
+        "github_username": "ParFlesh",
+        "tags": ["v_2.0"],
+        "description": "Connector to get data from Zabbix API",
+        "source_code": "https://github.com/parflesh/zabbix-wdc"
+   },
+   {
        "name": "Medicaid.gov - NADAC",
        "url": "https://rarandall.github.io/wdc/html/NADAC.html",
        "author": "Ray Randall",
