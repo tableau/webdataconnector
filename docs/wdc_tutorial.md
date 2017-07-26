@@ -22,6 +22,8 @@ If you *really* want to skip all of this and go straight to the source code, loo
 connector in the `Examples` directory (`earthquakeUSGS`). This is to minimize the chances of accidentally overwriting
 the existing sample. However, if you copy the existing sample, you'll have to change file paths.
 
+**Note**: The browser used inside Tableau is QT WebKit, which does not natively support new ES6 features.  If you wish to take advantage of newer features (such as promises) when building WDCs you will need to use a polyfill.
+
 ### Create the HTML page
 
 When you open a WDC in Tableau, you display an HTML page that links to your JavaScript code and to the WDC library.
