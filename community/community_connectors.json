@@ -458,6 +458,15 @@
         "source_code": "https://github.com/austinderrick/eia_wdc_20"
     },
     {
+        "name": "WebPlotDigitizer",
+        "url": "https://dtreskunov.github.io/webplotdigitizer-wdc/",
+        "author": "Denis Treskunov",
+        "github_username": "dtreskunov",
+        "tags": ["v_2.2"],
+        "description": "Extract features from image files (charts, graphs, photos). This connector is written in ClojureScript.",
+        "source_code": "https://github.com/dtreskunov/webplotdigitizer-wdc"
+    },
+    {
         "name": "Washington Trails Association",
         "url": "https://dtreskunov.github.io/wta-wdc/",
         "author": "Denis Treskunov",
