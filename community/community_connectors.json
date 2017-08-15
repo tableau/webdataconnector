@@ -1,5 +1,14 @@
 [
     {
+        "name": "AdStage",
+        "url": "http://tech.adstage.io/tableau_connector/AdstageConnector.html",
+        "author": "David Haslem",
+        "github_username": "therabidbanana",
+        "tags": ["v_1.0"],
+        "description": "A basic adapter to pull last month of campaign data from AdStage API",
+        "source_code": "https://github.com/AdStage/tableau_connector"
+    },
+    {
         "name": "Alteryx",
         "url": "http://data.theinformationlab.co.uk/alteryx.html",
         "author": "Craig Bloodworth",
