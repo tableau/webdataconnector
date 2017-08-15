@@ -158,7 +158,6 @@ class TablePreview extends Component {
                               filterColumnId,
                               filterValues,
                             });
-    console.log(JSON.stringify(tablesAndIncValues));
     // getTableCallback takes (tablesAndIncValues, isFreshFetch)
     this.props.getTableDataCallback(tablesAndIncValues, !isIncremental);
   }

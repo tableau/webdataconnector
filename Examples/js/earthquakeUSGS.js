@@ -2,12 +2,6 @@
     // Create the connector object
     var myConnector = tableau.makeConnector();
     
-    myConnector.init = function(initCallback) {
-            tableau.authType = tableau.authTypeEnum.custom;
-            tableau.password = 'asdf';
-            initCallback();
-        }
-
     // Define the schema
     myConnector.getSchema = function(schemaCallback) {
         var cols = [{
