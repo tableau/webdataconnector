@@ -273,6 +273,9 @@ title: WDC API Reference
                             <a href="api_ref.html#webdataconnectorapi.datatypeenum.float" class="tsd-kind-icon">float</a>
                         </li>
                         <li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
+                            <a href="api_ref.html#webdataconnectorapi.datatypeenum.float" class="tsd-kind-icon">geometry</a>
+                        </li>
+                        <li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
                             <a href="api_ref.html#webdataconnectorapi.datatypeenum.int" class="tsd-kind-icon">int</a>
                         </li>
                         <li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
@@ -1431,6 +1434,11 @@ if (row_index % 100 === 0) {
                         <a name="webdataconnectorapi.datatypeenum.float" class="tsd-anchor"></a>
                         <h3>float</h3>
                         <div class="tsd-signature tsd-kind-icon">float: </div>
+                    </section>
+                    <section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
+                        <a name="webdataconnectorapi.datatypeenum.geometry" class="tsd-anchor"></a>
+                        <h3>geometry</h3>
+                        <div class="tsd-signature tsd-kind-icon">geometry: </div>
                     </section>
                     <section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
                         <a name="webdataconnectorapi.datatypeenum.int" class="tsd-anchor"></a>
