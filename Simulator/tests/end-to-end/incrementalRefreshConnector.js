@@ -16,7 +16,7 @@ describe('Incremental Refresh Connector', function(){
   before(function(done) {
     // Spin up file server
     app.use(express.static(path.join(__dirname, "../../../")));
-    server = app.listen(8888);
+    server = app.listen(8383);
 
     // create driver
     if (process.env.SAUCE_USERNAME != undefined) {
@@ -37,7 +37,7 @@ describe('Incremental Refresh Connector', function(){
     }
 
     // open simulator page
-    driver.get('http://localhost:8888/Simulator').then(function() {
+    driver.get('http://localhost:8383/Simulator').then(function() {
       done();
     });
   });
