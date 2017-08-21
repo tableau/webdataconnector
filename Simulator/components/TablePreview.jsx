@@ -158,7 +158,6 @@ class TablePreview extends Component {
                               filterColumnId,
                               filterValues,
                             });
-    console.log("asdf" + JSON.stringify(tablesAndIncValues));
     // getTableCallback takes (tablesAndIncValues, isFreshFetch)
     this.props.getTableDataCallback(tablesAndIncValues, !isIncremental);
   }

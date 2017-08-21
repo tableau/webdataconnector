@@ -54,7 +54,7 @@ export const samples = [
   '../Examples/html/earthquakeMultitable.html',
   '../Examples/html/earthquakeMultilingual.html',
   '../Examples/html/IncrementalRefreshConnector.html',
-  '../Examples/html/MadMoneyScraper.html',
+  '../Examples/html/JoinFilteringExample.html',
 ];
 
 export const defaultMostRecentUrls = Cookie.getJSON('mostRecentUrls') || [...samples];
