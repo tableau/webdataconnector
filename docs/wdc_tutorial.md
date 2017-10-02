@@ -251,6 +251,7 @@ myConnector.getData = function(table, doneCallback) {
                 "id": feat[i].id,
                 "mag": feat[i].properties.mag,
                 "title": feat[i].properties.title,
+                "url" : feat[i].properties.url,
                 "lon": feat[i].geometry.coordinates[0],
                 "lat": feat[i].geometry.coordinates[1]
             });
