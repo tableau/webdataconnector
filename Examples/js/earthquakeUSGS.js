@@ -16,13 +16,8 @@
             alias: "title",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "lat",
-            alias: "latitude",
-            dataType: tableau.dataTypeEnum.float
-        }, {
-            id: "lon",
-            alias: "longitude",
-            dataType: tableau.dataTypeEnum.float
+            id: "location",
+            dataType: tableau.dataTypeEnum.geometry
         }];
 
         var tableSchema = {
@@ -46,8 +41,7 @@
                     "id": feat[i].id,
                     "mag": feat[i].properties.mag,
                     "title": feat[i].properties.title,
-                    "lon": feat[i].geometry.coordinates[0],
-                    "lat": feat[i].geometry.coordinates[1]
+                    "location": feat[i].geometry
                 });
             }
 

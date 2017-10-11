@@ -45,7 +45,7 @@ Then, copy the following code into the file:
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
-    <script src="https://connectors.tableau.com/libs/tableauwdc-2.2.latest.js" type="text/javascript"></script>
+    <script src="https://connectors.tableau.com/libs/tableauwdc-2.3.latest.js" type="text/javascript"></script>
     <script src="earthquakeWDC.js" type="text/javascript"></script>
 </head>
 
@@ -69,7 +69,7 @@ following between the `head` tags:
 * The `bootstrap.min.css` and `bootstrap.min.js` files are used to simplify styling and formatting.
 * The `jquery.min.js` file will be used as a helper library by our connector. (For example, the connector uses jquery to
   get JSON data.)
-* The `tableauwdc-2.2.latest.js` file is the main library for the WDC API.
+* The `tableauwdc-2.3.latest.js` file is the main library for the WDC API.
 * The `earthquakeWDC.js` file is the (not yet created) JavaScript code for our connector.
 
 Between the `body` tags, there is a simple button element that illustrates how users can interact with your connector
@@ -125,7 +125,7 @@ $(document).ready(function () {
 
 Here's what is going on in the code snippet:
 
-* The jquery `$(document).ready` function runs some code when the page loads.
+* The jQuery `$(document).ready` function runs some code when the page loads.
 * An click event listener is added to the button element created earlier. The button is identified by the `submitButton`
   id.
 * The `tableau.connectionName` variable defines what we want to call the connector data source when it is displayed in
@@ -167,6 +167,8 @@ section assumes that you've installed dependencies already.
 At this point, you might be thinking "Well...did it work?" Let's add a log message so that you can practice debugging
 the connector.
 
+#### Add a log message to confirm it is working (sort of)
+
 1. In the `earthquakeWDC.js` file, copy the following code and replace the empty `myConnector.getSchema` function:
 
    ```js
@@ -198,21 +200,29 @@ file and replace the placeholder `getSchema` function:
 
 ```js
 myConnector.getSchema = function (schemaCallback) {
-    var cols = [
-        { id : "mag", alias : "magnitude", dataType : tableau.dataTypeEnum.float },
-        { id : "title", alias : "title", dataType : tableau.dataTypeEnum.string },
-        { id : "url", alias : "url", dataType : tableau.dataTypeEnum.string },
-        { id : "lat", alias : "latitude", columnRole: "dimension", dataType : tableau.dataTypeEnum.float },
-        { id : "lon", alias : "longitude",columnRole: "dimension", dataType : tableau.dataTypeEnum.float }
-    ];
+    var cols = [{
+        id: "id",
+        dataType: tableau.dataTypeEnum.string
+    }, {
+        id: "mag",
+        alias: "magnitude",
+        dataType: tableau.dataTypeEnum.float
+    }, {
+        id: "title",
+        alias: "title",
+        dataType: tableau.dataTypeEnum.string
+    }, {
+        id: "location",
+        dataType: tableau.dataTypeEnum.geometry
+    }];
 
-    var tableInfo = {
-        id : "earthquakeFeed",
-        alias : "Earthquakes with magnitude greater than 4.5 in the last seven days",
-        columns : cols
+    var tableSchema = {
+        id: "earthquakeFeed",
+        alias: "Earthquakes with magnitude greater than 4.5 in the last seven days",
+        columns: cols
     };
 
-    schemaCallback([tableInfo]);
+    schemaCallback([tableSchema]);
 };
 ```
 
@@ -220,14 +230,14 @@ Here's what's going on in the code:
 
 * The `getSchema` function takes a `schemaCallback` parameter which is defined by the WDC API.
 * The `cols` variable contains an array of JavaScript objects, where each object defines a single column in our table.
-  In this example, there are columns for magnitude, title, latitude, and longitude. Note that for each column you can
+  In this example, there are columns for magnitude, title, and location. Note that for each column you can
   specify additional options. For example, the alias defines a friendly name that can appear in Tableau and the
   columnRole determines whether a field is a measure or a dimension. For more options, see [the API reference]({{
       site.baseurl }}/docs/api_ref.html#webdataconnectorapi.columninfo).
-* The `tableInfo` variable defines the schema for a single table and contains a JavaScript object. Here, the value of
+* The `tableSchema` variable defines the schema for a single table and contains a JavaScript object. Here, the value of
   the `columns` property is set to the `cols` array defined earlier.
 * The `schemaCallback` gets called when the schema is defined. The `schemaCallback` takes an array of table objects. In
-  this case, there is only table object (the `tableInfo` object defined above).
+  this case, there is only table object (the `tableSchema` object defined above).
 
 **Note**: The [API Reference]({{ site.baseurl }}/docs/api_ref) describes the properties that you can define for the table
 object and for each object in the table columns in more detail. For now, let's plunge ahead to the exciting
@@ -251,8 +261,7 @@ myConnector.getData = function(table, doneCallback) {
                 "id": feat[i].id,
                 "mag": feat[i].properties.mag,
                 "title": feat[i].properties.title,
-                "lon": feat[i].geometry.coordinates[0],
-                "lat": feat[i].geometry.coordinates[1]
+                "location": feat[i].geometry
             });
         }
 
@@ -266,10 +275,9 @@ Whew! That's a good-sized chunk of code. Let's see what's happening:
 
 * The `getData` function takes two parameters: `table` and `doneCallback`. The `table` parameter is an object defined by
   the WDC to which you can append data. The `doneCallback` signals to Tableau that you are done getting data.
-* The jquery `$.getJSON` function gets earthquake data from the USGS earthquake feed and stores the data in a `resp`, or
-  response, parameter. (You can open the URL in a browser to see what the JSON data looks like.)
-* The for loop iterates over the features in the JSON object and stores the data that we want in the `tableData` array.
-* The `table.appendRows` function appends the `tableData` array to the table as a JavaScript object.
+* The jQuery `$.getJSON` function gets earthquake data from the USGS earthquake feed and uses a success handler to store the returned data in a response parameter (`resp`). (You can open the URL in a browser to see what the JSON data looks like.)
+* The `for` loop iterates over the features in the JSON object and stores the data that we want in the `tableData` array.
+* The `table.appendRows` function appends the `tableData` array to the `table` as a JavaScript object.
 
 
 ### See it in action
@@ -280,11 +288,13 @@ defined, you should see the schema displayed in the simulator.
 
 The moment you've been waiting for is here! Click **Fetch Table Data** to run your `getData` function and display the results in a table.
 
-!["The earthquake data is displayed in a table on the simulator page."]({{ site.baseurl }}/assets/wdc_sim_earthquake_data.png)
+!["The earthquake data is displayed in a table on the simulator page."]({{ site.baseurl }}/assets/wdc_sim_earthquake_geodata.png)
 
-Better yet, [open it in Tableau](http://tableau.github.io/webdataconnector/docs/wdc_use_in_tableau):
+> **Note** The location information for an earthquake is returned as a JSON object, which is why you might see `object Object` displayed in the simulator. Tableau 10.4 added support for geoJSON data, so while the simulator only knows you have some kind of JSON object, Tableau will have no trouble parsing the coordinates from the geometry data.
 
-!["The earthquake data is displayed on a map in Tableau."]({{ site.baseurl }}/assets/wdc_tableau_earthquake_map.png)
+To really see things working, [open your connector in Tableau](http://tableau.github.io/webdataconnector/docs/wdc_use_in_tableau):
+
+!["The earthquake data is displayed on a map in Tableau."]({{ site.baseurl }}/assets/wdc_tableau_earthquake_geo_json.png)
 
 You did it! Nice work. But this is no time to rest on your laurels--[try your connector in Tableau]({{ site.baseurl }}/docs/wdc_use_in_tableau),
 dig into the `Examples` directory to see more connectors, or read through the WDC documentation. You might want to start by

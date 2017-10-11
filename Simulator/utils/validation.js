@@ -30,6 +30,7 @@ export function validateSchema(schema) {
   const tableConstraints = {
     id: {
       presence: true,
+      format: '^[a-zA-Z0-9_]*$',
     },
     columns: {
       presence: true,
@@ -39,6 +40,7 @@ export function validateSchema(schema) {
   const columnConstraints = {
     id: {
       presence: true,
+      format: '^[a-zA-Z0-9_]*$',
     },
     dataType: {
       presence: true,
