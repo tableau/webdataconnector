@@ -820,6 +820,7 @@ var standardConnection = {
                             <div class="lead">
                                 <p>A unique id for this particular table.</p>
                             </div>
+                            <p><b>Note</b>: May not contain certain characters such as a hyphen.</p>
                         </div>
                     </section>
                     <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
