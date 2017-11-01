@@ -11,10 +11,19 @@ layout: news
 <body>
     <div class="container">
         {% include header.html %}
+        <div>		
+		<h3>WDC News</h3>
+		    <ul class=posts >
+			  {% for post in site.posts %}
+	          <li><a href="#{{ post.id }}" title="{{ post.title }}">{{ post.title }}</a> &nbsp;  <span style="font-size:80%;">({{ post.date | date_to_string }})</span></li>
+	         {% endfor %}
+		    </ul>
+			<hr/>
+	   </div>
         <ul class="blogul">
             {% for post in site.posts %}
             <div>
-                <h1>{{ post.title }}</h1>
+                <h1 id="{{post.id}}">{{ post.title }} </a></h1>
                 <hr>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on {{ post.date | date: "%-d %B %Y" }}</p>
                 <hr>

@@ -8,10 +8,19 @@ with JavaScript code that connects to web data (for example, by means of a REST 
 and passes the data to Tableau.
 
 <div class="alert alert-info">
-    <b>Note:</b> This site is for version 2 of the WDC, which is compatible only with Tableau 10.0 and later. For
+    <b>Note:</b> This site is for version 2.x of the WDC, which is compatible only with Tableau 10.0 and later. For
     information about version 1 of the WDC for use with earlier versions of Tableau, see the archived <a href="http://onlinehelp.tableau.com/v9.3/api/wdc/en-us/help.htm" style="text-decoration:underline;">documentation</a>
-    and <a href="https://github.com/tableau/webdataconnector/releases/tag/v1.1.0" style="text-decoration:underline;">simulator</a>.
+    and <a href="https://github.com/tableau/webdataconnector/releases/tag/v1.1.0" style="text-decoration:underline;">simulator</a>.  
 </div>
+
+-----
+
+**Upgrading from WDC version 1.x**
+ 
+If you have connectors that were created using WDC version 1.x, those connectors will continue to work in future versions of Tableau. However, if you want to update the connectors to use the features available in version 2.x of the WDC, you will need to update the connector to use the new API. For information about updating your connectors, see [Upgrading from WDC Version 1.x]({{ site.baseurl }}\docs\wdc_upgrade).
+
+
+-----
 
 This section will guide you through the process of setting up your development environment and running the sample WDCs
 in the simulator.
