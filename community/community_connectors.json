@@ -146,6 +146,15 @@
         "source_code": "https://github.com/jimmy-jia/LoL-Match-Data-WDC"
     },
     {
+    "name": "LoLChampStats",
+    "url": "https://soitknows.github.io/LoLChampStats/index.html",
+    "author": "Andy Tarver",
+    "github_username": "soitknows",
+    "tags": ["v_2.0"],
+    "description": "Connects to Riot Games' Data Dragon API. Returns static League of Legends champion data for all champions, for the patch version(s) specified",
+    "source_code": "https://github.com/soitknows/LoLChampStats"
+    },
+    {
         "name": "Mapbox",
         "url": "http://data.theinformationlab.co.uk/directions.html",
         "author": "Craig Bloodworth",
