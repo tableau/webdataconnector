@@ -116,6 +116,17 @@
         "description": "",
         "source_code": ""
     },
+    
+    {
+    "name": "Google Places API",
+    "url": "https://vikpos.github.io/places-wdc",
+    "author": "Viktor Posudnevsky",
+    "github_username": "",
+    "tags": ["v_2.2"],
+    "description": "Loads Google Maps places data (name, coordinates, address, rating etc) into Tableau",
+    "source_code": "github.com/vikpos/places-wdc"
+},
+    
     {
         "name": "Import.io",
         "url": "http://connectors.poc.interworks.com/importio/importio-magic.html",
