@@ -23,11 +23,6 @@ online [here](https://github.com/tableau/webdataconnector/tree/master).
 
     This connector gets data from multiple tables in a local JSON file and specifies how the tables should be joined in Tableau Desktop.
 
--   **[StockQuoteConnector_promises](https://tableau.github.io/webdataconnector/Examples/html/StockQuoteConnector_promises.html)**
-
-    This connector gets stock quote data from Yahoo Finance and demonstrates how to use JavaScript
-    promises to make several API requests.
-
 -   **[IncrementalRefreshConnector](https://tableau.github.io/webdataconnector/docs/wdc_samples.html)**
 
     This connector showcases how use the incremental refresh API to fetch data incrementally.
