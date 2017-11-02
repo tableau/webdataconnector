@@ -15,7 +15,7 @@ layout: news
 		<h3>WDC News</h3>
 		    <ul class=posts >
 			  {% for post in site.posts %}
-	          <li><a href="#{{ post.id }}" title="{{ post.title }}">{{ post.title }}</a> &nbsp;  <span style="font-size:80%;">({{ post.date | date_to_string }})</span></li>
+	          <li><a href="#{{ post.id }}" >{{ post.title }}</a> &nbsp;  <span style="font-size:80%;">({{ post.date | date_to_string }})</span></li>
 	         {% endfor %}
 		    </ul>
 			<hr/>
