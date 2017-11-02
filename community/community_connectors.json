@@ -700,5 +700,14 @@
        "tags": ["v_1.0"],
        "description": "See and understand your WaniKani data with this WDC connector for Tableau.",
        "source_code": "https://github.com/rarandall/rarandall.github.io/tree/master/wdc"
+   },
+   {
+       "name": "Sequence Generator",
+       "url": "https://sefthuko.github.io/wdc/generator.html",
+       "author": "Hermann Chong",
+       "github_username": "sefthuko",
+       "tags": ["v_1.0"],
+       "description": "Generate a sequence of values so you can show categories that aren't yet represented in your actual data.",
+       "source_code": "https://github.com/sefthuko/sefthuko.github.io/blob/master/wdc"
    }
 ]
