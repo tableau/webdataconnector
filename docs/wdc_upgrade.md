@@ -44,7 +44,7 @@ To support the new features, changes have been made to the API. For example, to 
 
 ### Changes to column and table identifiers
 
-In WDC version 2.x, the column and table identifiers (`columnId` and `tableId`) cannot contain spaces. In version 1..x, the string values containing spaces were allowed to pass through. 
+In WDC version 2.x, the column and table identifiers (`columnId` and `tableId`) can only contain alphanumeric (a-z, A-Z, 0-9) and underscore characters (`_`). The identifiers must match the regular expression: `^[a-zA-Z0-9_]*$`. The identifiers cannot contain spaces, hyphens, or special characters. In WDC version 1.x, the string values containing spaces were allowed to pass through. 
 
 
 ### Test your connector with the WDC simulator
