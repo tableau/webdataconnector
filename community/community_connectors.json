@@ -126,7 +126,15 @@
     "description": "Loads Google Maps places data (name, coordinates, address, rating etc) into Tableau",
     "source_code": "github.com/vikpos/places-wdc"
 },
-    
+    {
+        "name": "HPCC Systems",
+        "url": "https://hpcc-systems.github.io/HPCC-Tableau-WDC/hpccTableauConnector.html",
+        "author": "Rodrigo Pastrana - HPCC Systems",
+        "github_username": "hpcc-systems",
+        "tags": ["v_0.1"],
+        "description": "Extracts HPCC Systems data into Tableau Desktop",
+        "source_code": "https://github.com/hpcc-systems/HPCC-Tableau-WDC"
+    },
     {
         "name": "Import.io",
         "url": "http://connectors.poc.interworks.com/importio/importio-magic.html",
