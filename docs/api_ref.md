@@ -517,7 +517,7 @@ title: WDC API Reference
                         <div class="tsd-signature tsd-kind-icon">id: string</div>
                         <div class="tsd-comment tsd-typography">
                             <div class="lead">
-                                <p>The id of this column. Column ids must be unique within a table.</p>
+                                <p>The id of this column. Column ids must be unique within a table. The id can only contain alphanumeric (a-z, A-Z, 0-9) and underscore characters (<code>_</code>). The id must match the regular expression: <code>"^[a-zA-Z0-9_]\*$"</code>.</p>
                             </div>
                         </div>
                     </section>
@@ -818,7 +818,7 @@ var standardConnection = {
                         <div class="tsd-signature tsd-kind-icon">id: string</div>
                         <div class="tsd-comment tsd-typography">
                             <div class="lead">
-                                <p>A unique id for this particular table.</p>
+                                <p>A unique id for this particular table. The id can only contain alphanumeric (a-z, A-Z, 0-9) and underscore characters (<code>_</code>). The id must match the regular expression: <code>"^[a-zA-Z0-9_]\*$"</code>.</p>
                             </div>
                             <p><b>Note</b>: May not contain certain characters such as a hyphen.</p>
                         </div>

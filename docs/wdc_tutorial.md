@@ -67,7 +67,7 @@ following between the `head` tags:
 
 * The `meta` tag prevents your browser from caching the page.
 * The `bootstrap.min.css` and `bootstrap.min.js` files are used to simplify styling and formatting.
-* The `jquery.min.js` file will be used as a helper library by our connector. (For example, the connector uses jquery to
+* The `jquery.min.js` file will be used as a helper library by our connector. (For example, the connector uses jQuery to
   get JSON data.)
 * The `tableauwdc-2.3.latest.js` file is the main library for the WDC API.
 * The `earthquakeWDC.js` file is the (not yet created) JavaScript code for our connector.
@@ -191,8 +191,8 @@ If all goes well, you should see `Hello WDC!` in your browser's console.
 So the connector is working now--sort of. Before you can download data and pass it to Tableau, you need to define how
 you want to map the data to one or more or tables. This mapping of data is done in the schema.
 
-To decide what data you want to map in the schema, you can take a look at a description of the JSON data source
-[here](http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php). Rather than map all the data available from the
+To decide what data you want to map in the schema, you can take a look at the USGS description of the JSON data source:
+[GeoJSON Summary Format](http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php){:target="_blank"}. Rather than map all the data available from the
 data source, this example has selected a focused subset.
 
 When you're done looking at the summary of the JSON data source, copy the following code into the `earthquakeWDC.js`
@@ -232,8 +232,8 @@ Here's what's going on in the code:
 * The `cols` variable contains an array of JavaScript objects, where each object defines a single column in our table.
   In this example, there are columns for magnitude, title, and location. Note that for each column you can
   specify additional options. For example, the alias defines a friendly name that can appear in Tableau and the
-  columnRole determines whether a field is a measure or a dimension. For more options, see [the API reference]({{
-      site.baseurl }}/docs/api_ref.html#webdataconnectorapi.columninfo).
+  columnRole determines whether a field is a measure or a dimension. The `id` can only contain alphanumeric values (a-z, A-Z, 0-9) and underscore characters (`_`). The identifiers cannot contain spaces, hyphens, or special characters. For more options, see [the API reference]({{
+      site.baseurl }}/docs/api_ref.html#webdataconnectorapi.columninfo){:target="_blank"}.
 * The `tableSchema` variable defines the schema for a single table and contains a JavaScript object. Here, the value of
   the `columns` property is set to the `cols` array defined earlier.
 * The `schemaCallback` gets called when the schema is defined. The `schemaCallback` takes an array of table objects. In
