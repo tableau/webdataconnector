@@ -288,6 +288,15 @@
         "source_code": "https://github.com/xHeliotrope/redcap-wdc"
     },
     {
+        "name": "REST Data Connector",
+        "url": "https://rdc.codezero.xyz",
+        "author": "Niranjan Rajendran",
+        "github_username": "niranjan94",
+        "tags": ["v_1.0"],
+        "description": "A REST API Data Connector for Tableau with Generic REST endpoints, Swagger 2.0 and OpenApi 3.0 support",
+        "source_code": "https://github.com/niranjan94/rest-data-connector"
+    },
+    {
         "name": "Runkeeper",
         "url": "http://data.theinformationlab.co.uk/runkeeper.html",
         "author": "Craig Bloodworth",
