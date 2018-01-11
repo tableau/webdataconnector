@@ -11,7 +11,7 @@ When you use a web data connector, Tableau creates an extract of the data. You c
 
 - If your web data connector requires authentication, you need to embed the credentials when you publish the data source or workbook. This is because the refresh can occur on a schedule or in some other background context, and the server cannot prompt for credentials.
 
-- For security, consider using HTTPS protocol for the connector and all external libraries that the your web data connector uses.     
+- For security, consider using HTTPS protocol for the connector and all external libraries that your web data connector uses.     
 
 For more information, see [Web Data Connectors in Tableau Server](http://onlinehelp.tableau.com/current/server/en-us/datasource_wdc.htm){:target="_blank"} and [Testing and Vetting Web Data Connectors](http://onlinehelp.tableau.com/current/server/en-us/datasource_wdc_vetting.htm){:target="_blank"} in the Tableau Server Help. 
 
