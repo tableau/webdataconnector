@@ -54,6 +54,15 @@
         "source_code": "https://github.com/dtreskunov/dhis2-wdc"
     },
     {
+        "name": "Diggernaut",
+        "url": "https://www.diggernaut.com/wdc/",
+        "author": "Mikhail Sisin",
+        "github_username": "jabbahotep",
+        "tags": ["v_2.0"],
+        "description": "Connector to import your Diggernaut datasets to Tableau using REST API",
+        "source_code": "https://github.com/Diggernaut/diggernaut-wdc"
+    },
+    {
         "name": "DoubleClick Campaign Manager",
         "url": "https://dcm-dfa-wdc.herokuapp.com/",
         "author": "Eric Peterson",
