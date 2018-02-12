@@ -100,8 +100,8 @@
         'Authorization' : "Basic " + tableau.username
       }
     });
-		//$.getJSON("http://localhost:3030/api/properties", function(resp) {
-		$.getJSON("http://centrifuge.com/api/properties", function(resp) {
+		//$.getJSON("http://localhost:3030/api/tableau/properties", function(resp) {
+		$.getJSON("http://centrifuge.com/api/tableau/properties", function(resp) {
 			var properties = resp.properties,
 				tableData = [];
 
