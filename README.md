@@ -2,9 +2,14 @@
 
 This fork of the Tableau WDC is set up to allow analysts to download data from Centrifuge api endpoints to use in Tableau.
 
-To run this on the simulator locally, download, install, and run with `npm start`. To use your local Centrifuge, uncomment the line with the url in `centrifugeWDC.js`. You will need to sign in with the email you use for Centrifuge and your user token. See a member of the dev team if you do not have this token.
+To run this on the simulator locally, download, install, and run with `npm start`. Visit `http://localhost:8888/Simulator/index.html
+`. The connector URL is `../centrifugeWDC.html`.
+
+You will need to sign in with the email you use for Centrifuge and your user token. See a member of the dev team if you do not have this token.
 
 We are using a quick custom form to auth each request with Centrifuge due to an issue with WDC https://github.com/tableau/webdataconnector/issues/160
+
+To use your local Centrifuge, uncomment the line with the url in `centrifugeWDC.js`.
 
 ## Deploy Information
 
