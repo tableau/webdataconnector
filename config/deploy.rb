@@ -11,8 +11,8 @@ set :deploy_to, "/home/deploy/webdataconnector"
 
 # Default branch is :master
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-
-set :pm2_app_command, 'centrifugeWDC.js'
+#
+#
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
 
@@ -37,3 +37,25 @@ set :pty, true
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+#
+
+before 'deploy:started', 'pm2:stop'
+after 'deploy:finished', 'pm2:start'
+
+
+namespace :pm2 do
+  task :start do
+
+    on roles(:app) do
+        execute "cd #{current_path} && pm2 start npm --name #{fetch(:application)} -- start"
+    end
+  end
+
+  task :stop do
+
+    on roles(:app) do
+        execute "cd #{current_path} && pm2 kill"
+    end
+  end
+
+end
