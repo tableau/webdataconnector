@@ -744,5 +744,14 @@
        "tags": ["v_1.0"],
        "description": "Generate a sequence of values so you can show categories that aren't yet represented in your actual data.",
        "source_code": "https://github.com/sefthuko/sefthuko.github.io/blob/master/wdc"
-   }
+   },
+   {
+       "name": "Cognetik Cloud Connector",
+       "url": "http://tableau.cognetik.com",
+       "author": "Cognetik",
+       "github_username": "",
+       "tags": ["v_1.0"],
+       "description": "Cloud connector for Adobe Analytics, Facebook Ads, Facebook Pages, AdWords, Bing Ads, Kochava, Doubleclick and YouTube in Tableau.",
+       "source_code": ""
+    }
 ]
