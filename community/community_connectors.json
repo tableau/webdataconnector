@@ -753,7 +753,7 @@
         "description": "Connector to get data from Zabbix API",
         "source_code": "https://github.com/parflesh/zabbix-wdc"
     },
-]   {
+    {
         "name": "Adobe Analytics Connector",
         "url": "http://tableau.cognetik.com",
         "author": "Cognetik",
@@ -825,3 +825,4 @@
         "description": "Cloud connector for Youtube in Tableau created by Cognetik.",
         "source_code": ""
     }
+]
