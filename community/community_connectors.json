@@ -744,7 +744,7 @@
         "description": "Extract features from image files (charts, graphs, photos). This connector is written in ClojureScript.",
         "source_code": "https://github.com/dtreskunov/webplotdigitizer-wdc"
     },
-    {
+    {         
         "name": "Zabbix",
         "url": "https://parflesh.github.io/zabbix-wdc/index.html",
         "author": "ParFlesh",
@@ -752,5 +752,76 @@
         "tags": ["v_2.0"],
         "description": "Connector to get data from Zabbix API",
         "source_code": "https://github.com/parflesh/zabbix-wdc"
-    }
-]
+    },
+]   {      
+        "name": "Adobe Analytics Cloud Connector",
+        "url": "http://tableau.cognetik.com",
+        "author": "Cognetik",
+        "github_username": "",
+        "tags": ["v_1.0"],
+        "description": "Cloud connector for Adobe Analytics in Tableau.",
+        "source_code": ""
+    },
+]   {       
+        "name": "Facebook Pages Cloud Connector",
+        "url": "http://tableau.cognetik.com",
+        "author": "Cognetik",
+        "github_username": "",
+        "tags": ["v_1.0"],
+        "description": "Cloud connector for Facebook Pages in Tableau.",
+        "source_code": ""
+    },
+]   {     
+        "name": "Facebook Ads Cloud Connector",
+        "url": "http://tableau.cognetik.com",
+        "author": "Cognetik",
+        "github_username": "",
+        "tags": ["v_1.0"],
+        "description": "Cloud connector for Facebook Ads in Tableau.",
+        "source_code": ""
+    },
+]   {      
+        "name": "Google Adwords Cloud Connector",
+        "url": "http://tableau.cognetik.com",
+        "author": "Cognetik",
+        "github_username": "",
+        "tags": ["v_1.0"],
+        "description": "Cloud connector for Google Adwords in Tableau.",
+        "source_code": ""
+    },
+]   {   
+        "name": "Bing Ads Cloud Connector",
+        "url": "http://tableau.cognetik.com",
+        "author": "Cognetik",
+        "github_username": "",
+        "tags": ["v_1.0"],
+        "description": "Cloud connector for Bing Ads in Tableau.",
+        "source_code": ""
+    },
+]   {   
+        "name": "Kochava Cloud Connector",
+        "url": "http://tableau.cognetik.com",
+        "author": "Cognetik",
+        "github_username": "",
+        "tags": ["v_1.0"],
+        "description": "Cloud connector for Kochava in Tableau.",
+        "source_code": ""
+    },
+]   {   
+        "name": "Youtube Cloud Connector",
+        "url": "http://tableau.cognetik.com",
+        "author": "Cognetik",
+        "github_username": "",
+        "tags": ["v_1.0"],
+        "description": "Cloud connector for Youtube in Tableau.",
+        "source_code": ""
+    },
+]   {     
+        "name": "DoubleClick for Advertisers Cloud Connector",
+        "url": "http://tableau.cognetik.com",
+        "author": "Cognetik",
+        "github_username": "",
+        "tags": ["v_1.0"],
+        "description": "Cloud connector for DoubleClick for Advertisers in Tableau.",
+        "source_code": ""
+     }
