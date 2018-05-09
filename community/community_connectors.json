@@ -755,7 +755,7 @@
     },
     {
         "name": "Unify BI",
-        "url": "https://www.us-analytics.com/unifybi"
+        "url": "https://www.us-analytics.com/unifybi",
         "author": "US-Analytics",
         "description":"Connector for Oracle BI (OBIEE, BICs, OAC, BIApps)."
     }
