@@ -673,6 +673,12 @@
         "source_code": "https://github.com/austinderrick/fred_wdc_20"
     },
     {
+        "name": "Unify BI",
+        "url": "https://www.us-analytics.com/unifybi",
+        "author": "US-Analytics",
+        "description":"Connector for Oracle BI (OBIEE, BICs, OAC, BIApps)."
+    },
+    {
         "name": "United States Census Data",
         "url": "https://census-tableau-wdc.herokuapp.com/",
         "author": "Addy Naik",
@@ -752,11 +758,5 @@
         "tags": ["v_2.0"],
         "description": "Connector to get data from Zabbix API",
         "source_code": "https://github.com/parflesh/zabbix-wdc"
-    },
-    {
-        "name": "Unify BI",
-        "url": "https://www.us-analytics.com/unifybi",
-        "author": "US-Analytics",
-        "description":"Connector for Oracle BI (OBIEE, BICs, OAC, BIApps)."
     }
 ]
