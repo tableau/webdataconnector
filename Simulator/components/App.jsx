@@ -175,6 +175,7 @@ class App extends Component {
                 getTableDataCallback={this.sendGetData}
                 fetchInProgress={dataGatheringPhaseInProgress}
                 showAdvanced={this.props.showAdvanced}
+                maxRows={this.props.wdcAttrs.maxRows}
                 filterInfo={this.props.filterInfo}
                 activeJoinFilter={this.props.activeJoinFilter}
                 setActiveJoinFilter={this.setActiveJoinFilter}

@@ -61,6 +61,7 @@ class DataTables extends Component {
         getTableDataCallback={this.props.getTableDataCallback}
         fetchInProgress={this.props.fetchInProgress}
         showAdvanced={this.props.showAdvanced}
+        maxRows={this.props.maxRows}
         filtertableTableNames={filtertableTableNames}
         filterableColumnMap={filterableColumnMap}
         filterInfo={currentFilterInfo}
@@ -84,6 +85,7 @@ DataTables.propTypes = {
   getTableDataCallback: PropTypes.func.isRequired,
   fetchInProgress: PropTypes.bool.isRequired,
   showAdvanced: PropTypes.bool.isRequired,
+  maxRows: PropTypes.number.isRequired,
 
   // Join filtering props
   filterInfo: PropTypes.object.isRequired,

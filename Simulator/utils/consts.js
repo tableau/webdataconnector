@@ -38,6 +38,7 @@ export const defaultWdcAttrs = {
   platformBuildNumber: '',
   authPurpose: 'ephemeral',
   locale: 'en-us',
+  maxRows: 10,
 };
 
 // Used for Join Filtering advanced feature
@@ -55,6 +56,13 @@ export const samples = [
   '../Examples/html/earthquakeMultilingual.html',
   '../Examples/html/IncrementalRefreshConnector.html',
   '../Examples/html/JoinFilteringExample.html',
+];
+
+export const maxRowsOptions = [
+  10,
+  100,
+  1000,
+  Infinity,
 ];
 
 export const defaultMostRecentUrls = Cookie.getJSON('mostRecentUrls') || [...samples];
