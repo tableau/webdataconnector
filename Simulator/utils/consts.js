@@ -58,13 +58,6 @@ export const samples = [
   '../Examples/html/JoinFilteringExample.html',
 ];
 
-export const maxRowsOptions = [
-  10,
-  100,
-  1000,
-  Infinity,
-];
-
 export const defaultMostRecentUrls = Cookie.getJSON('mostRecentUrls') || [...samples];
 
 // if a src query was specified, use it, else use the first MRU
