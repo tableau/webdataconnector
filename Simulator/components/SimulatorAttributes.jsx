@@ -20,7 +20,8 @@ class SimulatorAttributes extends Component {
   }
 
   handleAttrChange(e) {
-    const newAttrs = { ...this.props.wdcAttrs, [e.target.id]: e.target.value };
+    const value = e.target.id === 'maxRows' ? +e.target.value : e.target.value;
+    const newAttrs = { ...this.props.wdcAttrs, [e.target.id]: value };
     this.props.setWdcAttrs(newAttrs);
   }
 
@@ -156,6 +157,21 @@ class SimulatorAttributes extends Component {
                 <option value="ko-kr"> 한국어 </option>
                 <option value="pt-br"> Português </option>
               </FormControl>
+              <ControlLabel> Max rows to show </ControlLabel>
+              <FormControl
+                componentClass="select"
+                disabled={this.props.disabled}
+                label="Max rows to show"
+                id="maxRows"
+                value={this.props.wdcAttrs.maxRows}
+                onChange={this.handleAttrChange}
+              >
+                <option value="0"> 0 </option>
+                <option value="10"> 10 </option>
+                <option value="100"> 100 </option>
+                <option value="1000"> 1000 </option>
+                <option value="Infinity"> All </option>
+              </FormControl>
             </div>
             : null
           }
@@ -176,6 +192,7 @@ SimulatorAttributes.propTypes = {
     usernameAlias: PropTypes.string.isRequired,
     authPurpose: PropTypes.string.isRequired,
     locale: PropTypes.string.isRequired,
+    maxRows: PropTypes.number.isRequired,
   }).isRequired,
   setWdcAttrs: PropTypes.func.isRequired,
 };

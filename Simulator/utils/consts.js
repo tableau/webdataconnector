@@ -38,6 +38,7 @@ export const defaultWdcAttrs = {
   platformBuildNumber: '',
   authPurpose: 'ephemeral',
   locale: 'en-us',
+  maxRows: 10,
 };
 
 // Used for Join Filtering advanced feature

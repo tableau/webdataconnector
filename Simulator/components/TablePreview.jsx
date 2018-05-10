@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Label } from 'react-bootstrap';
 import _ from 'underscore';
 
 import CollapsibleTable from './CollapsibleTable.jsx';
@@ -13,7 +13,6 @@ import JoinFilter from './JoinFilter.jsx';
 class TablePreview extends Component {
   constructor(props) {
     super(props);
-    this.MAX_ROWS = Infinity;
     this.METADATA_HEADER = [
       'ID',
       'TYPE',
@@ -70,12 +69,17 @@ class TablePreview extends Component {
         </CollapsibleTable>
         {
           hasData ?
-            <CollapsibleTable
-              name="Table Data"
-              header={dataTableHeader}
-            >
+            <div>
+              <CollapsibleTable
+                name="Table Data"
+                header={dataTableHeader}
+              >
               {dataElements}
-            </CollapsibleTable>
+              </CollapsibleTable>
+              <h4>
+                <Label bsStyle="primary"> Showing {dataElements.length} of {tableData.length} rows</Label>
+              </h4>
+            </div>
             : null
         }
         {
@@ -200,7 +204,7 @@ class TablePreview extends Component {
     let cellValue;
 
     if (tableData) { // We may not fetched any data yet
-      dataElements = tableData.slice(0, this.MAX_ROWS).map(row => {
+      dataElements = tableData.slice(0, this.props.maxRows).map(row => {
         dataTableColKey = 0;
         cells = schema.map((header) => {
           // We can accept either an array of objects or an array of arrays
@@ -245,6 +249,7 @@ TablePreview.proptypes = {
   getTableDataCallback: PropTypes.func.isRequired,
   fetchInProgress: PropTypes.bool.isRequired,
   showAdvanced: PropTypes.bool.isRequired,
+  maxRows: PropTypes.number.isRequired,
 
   // Join filtering props
   filtertableTableNames: PropTypes.array.isRequired,
