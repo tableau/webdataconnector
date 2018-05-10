@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Label } from 'react-bootstrap';
 import _ from 'underscore';
 
 import CollapsibleTable from './CollapsibleTable.jsx';
@@ -69,12 +69,17 @@ class TablePreview extends Component {
         </CollapsibleTable>
         {
           hasData ?
-            <CollapsibleTable
-              name="Table Data"
-              header={dataTableHeader}
-            >
+            <div>
+              <CollapsibleTable
+                name="Table Data"
+                header={dataTableHeader}
+              >
               {dataElements}
-            </CollapsibleTable>
+              </CollapsibleTable>
+              <h4>
+                <Label bsStyle="primary"> Showing {dataElements.length} of {tableData.length} rows</Label>
+              </h4>
+            </div>
             : null
         }
         {

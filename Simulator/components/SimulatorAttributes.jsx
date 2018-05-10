@@ -19,7 +19,7 @@ class SimulatorAttributes extends Component {
     this.handleAttrChange = this.handleAttrChange.bind(this);
   }
 
-  handleAttrChange (e) {
+  handleAttrChange(e) {
     const value = e.target.id === 'maxRows' ? +e.target.value : e.target.value;
     const newAttrs = { ...this.props.wdcAttrs, [e.target.id]: value };
     this.props.setWdcAttrs(newAttrs);
