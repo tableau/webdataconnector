@@ -758,5 +758,32 @@
         "tags": ["v_2.0"],
         "description": "Connector to get data from Zabbix API",
         "source_code": "https://github.com/parflesh/zabbix-wdc"
+    },
+    {
+        "name": "WDC Educación-CO",
+        "url": "https://oscarga.github.io/DatosAbiertosCO-WDC/WDC-Educacion/index.html",
+        "author": "Oscar Gómez",
+        "github_username": "OscarGA",
+        "tags": ["v_1.0"],
+        "description": "Connector to get data from the site datos.gov.co about education in Antioquia region",
+        "source_code": "https://github.com/OscarGA/DatosAbiertosCO-WDC"
+    },
+    {
+        "name": "WDC Salud-CO",
+        "url": "https://oscarga.github.io/DatosAbiertosCO-WDC/WDC-Salud/index.html",
+        "author": "Oscar Gómez",
+        "github_username": "OscarGA",
+        "tags": ["v_1.0"],
+        "description": "Connector to get data from the site datos.gov.co about health in Colombia",
+        "source_code": "https://github.com/OscarGA/DatosAbiertosCO-WDC"
+    },
+    {
+        "name": "WDC Seguridad-CO",
+        "url": "https://oscarga.github.io/DatosAbiertosCO-WDC/WDC-Seguridad/index.html",
+        "author": "Oscar Gómez",
+        "github_username": "OscarGA",
+        "tags": ["v_1.0"],
+        "description": "Connector to get data from the site datos.gov.co about security in Medellín city",
+        "source_code": "https://github.com/OscarGA/DatosAbiertosCO-WDC"
     }
 ]
