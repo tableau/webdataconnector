@@ -758,5 +758,67 @@
         "tags": ["v_2.0"],
         "description": "Connector to get data from Zabbix API",
         "source_code": "https://github.com/parflesh/zabbix-wdc"
-    }
-]
+    },
+    {
+        "name": "Adobe Analytics Connector",
+        "url": "http://tableau.cognetik.com",
+        "author": "Cognetik",
+        "github_username": "",
+        "tags": ["v_1.0"],
+        "description": "Cloud connector for Adobe Analytics in Tableau.",
+        "source_code": ""
+    },
+    {
+        "name": "Facebook Ads Connector",
+        "url": "http://tableau.cognetik.com",
+        "author": "Cognetik",
+        "github_username": "",
+        "tags": ["v_1.0"],
+        "description": "Cloud connector for Facebook Ads in Tableau.",
+        "source_code": ""
+    },
+    {
+        "name": "Facebook Pages Connector",
+        "url": "http://tableau.cognetik.com",
+        "author": "Cognetik",
+        "github_username": "",
+        "tags": ["v_1.0"],
+        "description": "Cloud connector for Facebook Pages in Tableau.",
+        "source_code": ""
+    },
+    {
+        "name": "Google Adwords Connector",
+        "url": "http://tableau.cognetik.com",
+        "author": "Cognetik",
+        "github_username": "",
+        "tags": ["v_1.0"],
+        "description": "Cloud connector for Google Adwords in Tableau.",
+        "source_code": ""
+    },
+    {
+        "name": "Bing Ads Connector",
+        "url": "http://tableau.cognetik.com",
+        "author": "Cognetik",
+        "github_username": "",
+        "tags": ["v_1.0"],
+        "description": "Cloud connector for Bing Ads in Tableau.",
+        "source_code": ""
+    },
+    {
+        "name": "Youtube Connector",
+        "url": "http://tableau.cognetik.com",
+        "author": "Cognetik",
+        "github_username": "",
+        "tags": ["v_1.0"],
+        "description": "Cloud connector for Youtube in Tableau.",
+        "source_code": ""
+    },
+    {
+        "name": "DoubleClick for Advertisers Connector",
+        "url": "http://tableau.cognetik.com",
+        "author": "Cognetik",
+        "github_username": "",
+        "tags": ["v_1.0"],
+        "description": "Cloud connector for DoubleClick for Advertisers in Tableau.",
+        "source_code": ""
+    },
