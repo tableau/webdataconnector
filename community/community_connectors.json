@@ -785,5 +785,14 @@
         "tags": ["v_2.0"],
         "description": "Connector to get data from Zabbix API",
         "source_code": "https://github.com/parflesh/zabbix-wdc"
+    },
+     {
+        "name": "Connector of Confirmed ExoPlanets",
+        "url": "https://zoogorilla.github.io/index.html",
+        "author": "ZooGorilla",
+        "github_username": "ZooGorilla",
+        "tags": ["v_2.0"],
+        "description": "A Tableau Web Data Connector for Confirmed ExoPlanets from exoplanetarchive.ipac.caltech.edu",
+        "source_code": "https://github.com/ZooGorilla/ZooGorilla.github.io"
     }
 ]
