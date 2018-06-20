@@ -18,6 +18,15 @@
         "source_code": ""
     },
     {
+        "name": "Australian Bureau of Statistics (ABS) SDMX-JSON Connector",
+        "url": "https://aprince.github.io/ABS_SDMX-JSON_API/",
+        "author": "Andy Prince",
+        "github_username": "aprince",
+        "tags": ["v_2.0"],
+        "description": "A basic example WDC for the Australian Bureau of Statistics (ABS) SDMX-JSON RESTful API",
+        "source_code": "github.com/aprince/ABS_SDMX-JSON_API"
+    },
+    {
         "name": "BoardGameGeek User Plays",
         "url": "https://garnet-viper.hyperdev.space/",
         "author": "Jason Copenhaver",
