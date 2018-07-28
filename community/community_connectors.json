@@ -804,4 +804,13 @@
         "description": "Connector to get data from Zabbix API",
         "source_code": "https://github.com/parflesh/zabbix-wdc"
     }
+    {
+    "name": "Data Graph",
+    "url": "https://github.com/varunuiuc/DataGraph/blob/master/DataGraph/WebContent/DataGraph.html",
+    "author": "VarunSharma",
+    "github_username": "varunuiuc",
+    "tags": ["v_1.0"],
+    "description": "Graph data",
+    "source_code": "https://github.com/varunuiuc/DataGraph/blob/master/DataGraph/WebContent"
+    }
 ]
