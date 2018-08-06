@@ -9,15 +9,6 @@
         "source_code": "https://github.com/AdStage/tableau_connector"
     },
     {
-        "name": "Alteryx",
-        "url": "http://data.theinformationlab.co.uk/alteryx.html",
-        "author": "Craig Bloodworth",
-        "github_username": "",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": ""
-    },
-    {
         "name": "Alpha Vantage",
         "url": "https://satichun.github.io/AV-WDC/",
         "author": "Satish C",
@@ -25,6 +16,15 @@
         "tags": ["v_1.0"],
         "description": "A connector for stock data",
         "source_code": "https://github.com/satichun/AV-WDC"
+    },
+    {
+        "name": "Alteryx",
+        "url": "http://data.theinformationlab.co.uk/alteryx.html",
+        "author": "Craig Bloodworth",
+        "github_username": "",
+        "tags": ["v_1.1"],
+        "description": "",
+        "source_code": ""
     },
     {
         "name": "Australian Bureau of Statistics (ABS) SDMX-JSON Connector",
