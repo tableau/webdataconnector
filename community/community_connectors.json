@@ -18,6 +18,15 @@
         "source_code": ""
     },
     {
+        "name": "Alpha Vantage",
+        "url": "https://satichun.github.io/AV-WDC/",
+        "author": "Satish C",
+        "github_username": "satichun",
+        "tags": ["v_1.0"],
+        "description": "A connector for stock data",
+        "source_code": "https://github.com/satichun/AV-WDC"
+    },
+    {
         "name": "Australian Bureau of Statistics (ABS) SDMX-JSON Connector",
         "url": "https://aprince.github.io/ABS_SDMX-JSON_API/",
         "author": "Andy Prince",
