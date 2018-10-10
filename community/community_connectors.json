@@ -144,6 +144,15 @@
         "source_code": ""
     },
     {
+        "name": "FlexIt Analytics",
+        "url": "https://www.flexitanalytics.com",
+        "author": "Andrew Taft",
+        "github_username": "",
+        "tags": ["v_2.0"],
+        "description": "Combine best-in-class viz (Tableau) with easy-to-use reporting (FlexIt) to get everyone in your organization involved in self-service analytics.",
+        "source_code": ""
+    },
+    {
         "name": "Flickr with Auth",
         "url": "https://wdc-flickr-proxy.herokuapp.com/flickr.html",
         "author": "Steve Meredith",
