@@ -27,6 +27,15 @@
         "source_code": ""
     },
     {
+        "name": "Amiibo API",
+        "url": "https://fri5by.github.io/amiiboapitableauwdc/",
+        "author": "Joshua Frisby",
+        "github_username": "fri5by",
+        "tags": ["v_1.0"],
+        "description": "A Tableau Web Data Connector for AmiiboAPI (http://www.amiiboapi.com/).",
+        "source_code": "https://github.com/fri5by/amiiboapitableauwdc"
+    },
+    {
         "name": "Australian Bureau of Statistics (ABS) SDMX-JSON Connector",
         "url": "https://aprince.github.io/ABS_SDMX-JSON_API/",
         "author": "Andy Prince",
