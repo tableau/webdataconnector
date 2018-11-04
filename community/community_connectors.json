@@ -821,5 +821,14 @@
         "tags": ["v_2.0"],
         "description": "Connector to get data from Zabbix API",
         "source_code": "https://github.com/parflesh/zabbix-wdc"
-    }
+    },
+    {
+        "name": "Neo4J - official and supported WDC",
+        "url": "http://ralfbecher.github.io/tableau-neo4j-wdc/v2.3/Neo4jWdc2.html",
+        "author": "Ralf Becher",
+        "github_username": "ralfbecher",
+        "tags": ["v_2.3"],
+        "description": "Neo4J multi table connector to execute up to 5 Cypher queries. Supports latest Neo4j Temporal and Spatial data types.",
+        "source_code": "https://github.com/ralfbecher/tableau-neo4j-wdc"
+}
 ]
