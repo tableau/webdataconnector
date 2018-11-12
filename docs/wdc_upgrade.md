@@ -3,7 +3,7 @@ title: Upgrading from WDC Version 1.x
 layout: docs
 ---
 
-If you have built connectors using WDC version 1.x you can continue to use those connectors in future versions of Tableau (see [WDC Versions]({{ site.baseurl }}\docs\wdc_library_versions)). However, if you link a version 1.x connector to version 2.x of the Tableau WDC library, the connector will not work unless you also update the connector to use code changes introduced in version 2.x of the API.
+If you have built connectors using WDC version 1.x you can continue to use those connectors in future versions of Tableau (see [WDC Versions]({{ site.baseurl }}\docs\wdc_library_versions)). However, you cannot turn a version 1.x connector into a version 2.x connector by just linking to version 2.x of the Tableau WDC library. The connector will not work unless you also update the connector to use code changes introduced in version 2.x of the API.
 
 **In this section**
 * TOC
