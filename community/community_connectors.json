@@ -431,6 +431,15 @@
         "source_code": ""
     },
     {
+        "name": "Quick Base",
+        "url": "https://www.quicktab.xyz",
+        "author": "Michael Karp",
+        "github_username": "mdkarp",
+        "tags": ["v_1.0"],
+        "description": "Load any table from Quick Base into Tableau.",
+        "source_code": ""
+    },
+    {
         "name": "Rally CA Agile",
         "url": "https://k504866430.github.io/rally-tableau",
         "author": "Harsh Agrawal",
