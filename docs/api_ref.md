@@ -405,7 +405,7 @@ title: WDC API Reference
                 <div class="tsd-signature tsd-kind-icon">WebDataConnectorAPI: </div>
                 <div class="tsd-comment tsd-typography">
                     <div class="lead">
-                        <p>This API Reference contains all of the functions and objects for the WDC API version 2. For a version 1 reference, please consult this page: <a href="http://onlinehelp.Tableau.com/current/api/wdc/en-us/help.htm#WDC/wdc_ref.htm%3FTocPath%3D_____9">WDC V1 Reference</a></p>
+                        <p>This API Reference contains all of the functions and objects for the WDC API version 2. For a version 1 reference, please consult this page: <a href="http://onlinehelp.Tableau.com/v9.3/api/wdc/en-us/help.htm#WDC/wdc_ref.htm%3FTocPath%3D_____9" target="_blank">WDC V1 Reference</a></p>
                     </div>
                 </div>
                 <section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
@@ -473,7 +473,7 @@ title: WDC API Reference
                         <div class="tsd-signature tsd-kind-icon">description: string</div>
                         <div class="tsd-comment tsd-typography">
                             <div class="lead">
-                                <p>(Optional) An optional description of this column.</p>
+                                <p>(Optional) A description of the column. This description is added to the metadata for the column and is saved when you save the workbook. You can view the column metadata in the Simulator.</p>
                             </div>
                         </div>
                     </section>
@@ -718,7 +718,7 @@ var standardConnection = {
                         </div>
                     </section>
 
-                </section>
+               </section>
 
                 <section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
                     <a name="webdataconnectorapi.table" class="tsd-anchor"></a>
@@ -735,7 +735,9 @@ var standardConnection = {
                         <div class="tsd-signature tsd-kind-icon">incrementValue: string</div>
                         <div class="tsd-comment tsd-typography">
                             <div class="lead">
-                                <p>If this is an incremental refresh and the table supports incremental refreshes, this property will contain the largest value from the incrementColumn in the current extract. This value will be an empty string otherwise. See <a href="{{ site.baseurl }}/docs/wdc_incremental_refresh">Incremental Refresh</a> for details.</p>
+                                <p>If this is an incremental refresh and the table supports incremental refreshes, this property will contain the largest value from the incrementColumn in the current extract. This value will be an empty string otherwise. See <a href="{{ site.baseurl }}/docs/wdc_incremental_refresh">Incremental Refresh</a> for details.<br/>
+                                <!-- this line is to get the link to work -->
+                                &nbsp;</p>
                             </div>
                         </div>
                     </section>
@@ -759,7 +761,7 @@ var standardConnection = {
                             <li class="tsd-description">
                                 <div class="tsd-comment tsd-typography">
                                     <div class="lead">
-                                        <p>Called to actually append rows of data to the extract. Takes either an array of arrays or an array of objects which contain the actual rows of data for the extract. The format for these match version 1 of the API/</p>
+                                        <p>Called to actually append rows of data to the extract. Takes either an array of arrays or an array of objects which contain the actual rows of data for the extract. The format for these match version 1 of the API.</p>
                                     </div>
                                 </div>
                                 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -940,7 +942,7 @@ var standardConnection = {
                             <li class="tsd-description">
                                 <div class="tsd-comment tsd-typography">
                                     <div class="lead">
-                                        <p>Called at the end of each phase of the web data connector. See <a href="{{ site.baseurl }}/docs/wdc_phasesfor">WDC Lifecycle and Phases</a> for details. @param shutdownCallback - Called to inform Tableau when the connector has finished shutdown.</p>
+                                        <p>Called at the end of each phase of the web data connector. See <a href="{{ site.baseurl }}/docs/wdc_phases">WDC Lifecycle and Phases</a> for details. @param shutdownCallback - Called to inform Tableau when the connector has finished shutdown.</p>
                                     </div>
                                 </div>
                                 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -969,7 +971,10 @@ var standardConnection = {
                         <div class="tsd-signature tsd-kind-icon">authPurpose: <a href="api_ref.html#webdataconnectorapi.authpurposeenum" class="tsd-signature-type">authPurposeEnum</a></div>
                         <div class="tsd-comment tsd-typography">
                             <div class="lead">
-                                <p>Current context of auth. See <a href="{{ site.baseurl }}/docs/wdc_authentication">WDC Authentication</a> for details.</p>
+                                <p>Current context of auth. See <a href="{{ site.baseurl }}/docs/wdc_authentication">WDC Authentication</a> for details.
+                                <!-- this line is to get the link to work -->
+                                <br/>
+                                &nbsp;</p>
                             </div>
                         </div>
                     </section>
@@ -989,8 +994,8 @@ var standardConnection = {
                         <div class="tsd-signature tsd-kind-icon">connectionData: String</div>
                         <div class="tsd-comment tsd-typography">
                             <div class="lead">
-                                <p>A string that you can use to store data between phases. For example, you might store user input that you want to use in the <code>getData</code> phase.</p>
-                                <p>To store and retrieve JavaScript objects with the connectionData property, that is to serialize and deserialize objects, use <code>JSON.stringify</code> and <code>JSON.parse</code>.</p>
+                                <p>A string that you can use to store data between phases. For example, you might store user input that you want to use in the <code>getData</code> phase. Note that this string is saved as plain text, so you should not use <code>connectionData</code> to store sensitive information. For passwords or authentication tokens, use the <a href="#webdataconnectorapi.tableau.password">password</a> property.</p>
+                                <p>To store and retrieve JavaScript objects with the <code>connectionData</code> property, that is to serialize and deserialize objects, use <code>JSON.stringify</code> and <code>JSON.parse</code>.</p>
                             </div>
                         </div>
                     </section>
@@ -1020,7 +1025,7 @@ var standardConnection = {
                         <div class="tsd-signature tsd-kind-icon">password: Object</div>
                         <div class="tsd-comment tsd-typography">
                             <div class="lead">
-                                <p>You can use this property to store a password, OAuth authentication token, or other secret This property can be a JSON object and is not written to disk.</p>
+                                <p>You can use this property to store a password, OAuth authentication token, or other secret. This property can be a JSON object and is not written to disk.</p>
                             </div>
                         </div>
                     </section>
@@ -1103,7 +1108,7 @@ var standardConnection = {
                         <div class="tsd-signature tsd-kind-icon">username: String</div>
                         <div class="tsd-comment tsd-typography">
                             <div class="lead">
-                                <p>Username tied to data source, persisted in a .twb, .twbx, etc.</p>
+                                <p>Username tied to data source, persisted in a <code>.twb</code>, <code>.twbx</code>, etc.</p>
                             </div>
                         </div>
                     </section>
@@ -1153,7 +1158,7 @@ var standardConnection = {
                             <li class="tsd-description">
                                 <div class="tsd-comment tsd-typography">
                                     <div class="lead">
-                                        <p>Throws an error within Tableau with the passed errorMessage</p>
+                                        <p>Throws an error within Tableau with the passed <code>errorMessage</code></p>
                                     </div>
                                 </div>
                                 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -1327,7 +1332,11 @@ if (row_index % 100 === 0) {
                     <div class="tsd-signature tsd-kind-icon">authPurposeEnum: </div>
                     <div class="tsd-comment tsd-typography">
                         <div class="lead">
-                            <p>This enum represents the context in which authentication is being requested. See <a href="{{ site.baseurl }}/docs/wdc_authentication">WDC Authentication</a> for details.</p>
+                            <p>This enum represents the context in which authentication is being requested. 
+                            See <a href="{{ site.baseurl }}/docs/wdc_authentication">WDC Authentication</a> for details.<br/>
+                            <!-- this line is need to get the link to work -->
+                            &nbsp;
+                            </p>
                         </div>
                     </div>
                     <section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
@@ -1347,7 +1356,10 @@ if (row_index % 100 === 0) {
                     <div class="tsd-signature tsd-kind-icon">authTypeEnum: </div>
                     <div class="tsd-comment tsd-typography">
                         <div class="lead">
-                            <p>This enum represents the authentication type of the web data connector. See <a href="{{ site.baseurl }}/docs/wdc_authentication">WDC Authentication</a> for details.</p>
+                            <p>This enum represents the authentication type of the web data connector. See <a href="{{ site.baseurl }}/docs/wdc_authentication">WDC Authentication</a> for details.
+                            <br/><!-- this line is need to get the link to work -->
+                            &nbsp;
+                            </p>
                         </div>
                     </div>
                     <section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
@@ -1586,7 +1598,10 @@ if (row_index % 100 === 0) {
                         <div class="tsd-signature tsd-kind-icon">phaseEnum: </div>
                         <div class="tsd-comment tsd-typography">
                             <div class="lead">
-                                <p>This enum represents the different phases in which a web data connector can be run. See <a href="{{ site.baseurl }}/docs/wdc_phases">WDC Lifecycle and Phases</a> for details.</p>
+                                <p>This enum represents the different phases in which a web data connector can be run. See <a href="{{ site.baseurl}}/docs/wdc_phases">WDC Lifecycle and Phases</a> for details.<br/>
+                                <!-- this line is need to get the link to work -->
+                                &nbsp;
+                                </p>
                             </div>
                         </div>
                         <section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
