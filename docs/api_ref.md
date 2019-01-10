@@ -822,6 +822,7 @@ var standardConnection = {
                             <div class="lead">
                                 <p>A unique id for this particular table. The id can only contain alphanumeric (a-z, A-Z, 0-9) and underscore characters (<code>_</code>). The id must match the regular expression: <code>"^[a-zA-Z0-9_]\*$"</code>.</p>
                             </div>
+                            <p><b>Note</b>: May not contain certain characters such as a hyphen.</p>
                         </div>
                     </section>
                     <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">

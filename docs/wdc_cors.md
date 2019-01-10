@@ -52,7 +52,7 @@ The WDC SDK comes with a test proxy server that you can use out of the box.
 
    The test proxy server and test web server start.
 
-1. In you connector code, prefix your requests with the following URL:
+1. In your connector code, prefix your requests with the following URL:
 
    ```
    http://localhost:8889
