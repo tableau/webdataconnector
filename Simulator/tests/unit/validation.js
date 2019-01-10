@@ -32,12 +32,12 @@ describe("Validation", function() {
 
   describe("validateSchema", function() {
     it("Should Reject Non Array Schema List", function () {
-      const data = { id: "id", columns : [{ id:1, dataType: "int" }] };
+      const data = { id: "id", columns : [{ id: "1", dataType: "int" }] };
       validateSchema(data).should.be.false();
     });
 
     it("Should Reject Schema Without Id", function () {
-      const data = [{ columns : [{ id:1, dataType: "int" }] }];
+      const data = [{ columns : [{ id: "1", dataType: "int" }] }];
       validateSchema(data).should.be.false();
     });
 
@@ -47,7 +47,7 @@ describe("Validation", function() {
     });
 
     it("Should Accept Correct Schema", function () {
-      const data = [{ id: "id", columns : [{ id:1, dataType: "int" }] }];
+      const data = [{ id: "id", columns : [{ id: "1", dataType: "int" }] }];
       validateSchema(data).should.be.true();
     });
   });
