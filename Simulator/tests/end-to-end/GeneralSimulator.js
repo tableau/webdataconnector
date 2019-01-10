@@ -1,3 +1,4 @@
+var webdriver_chrome = require('selenium-webdriver/chrome');
 var webdriver = require('selenium-webdriver');
 var until = webdriver.until;
 var should = require('should');
@@ -20,23 +21,12 @@ describe('General Simulator Tests', function(){
     app.use(express.static(path.join(__dirname, "../../../")));
     server = app.listen(config.port);
 
-    // create driver
-    if (process.env.SAUCE_USERNAME != undefined) {
-      driver = new webdriver.Builder()
-        .usingServer('http://'+ process.env.SAUCE_USERNAME+':'+process.env.SAUCE_ACCESS_KEY+'@ondemand.saucelabs.com:80/wd/hub')
-        .withCapabilities({
-          'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-          build: process.env.TRAVIS_BUILD_NUMBER,
-          username: process.env.SAUCE_USERNAME,
-          accessKey: process.env.SAUCE_ACCESS_KEY,
-          browserName: "chrome"
-        }).build();
-    } else {
-      driver = new webdriver.Builder()
-        .withCapabilities({
-          browserName: "chrome"
-        }).build();
-    }
+    driver = new webdriver.Builder()
+      .withCapabilities({
+        browserName: "chrome"
+      })
+      .setChromeOptions(new webdriver_chrome.Options().headless())
+      .build();
 
     // open simulator page
     driver.get('http://localhost:' + config.port + '/Simulator?src=srcQuery').then(function() {
@@ -52,21 +42,21 @@ describe('General Simulator Tests', function(){
   });
 
   it("The Simulator Should Have It's Components", function(done){
-    driver.isElementPresent({className: 'navbar'})
-      .then(function (present) {
-        present.should.be.true();
+    driver.findElements({className: 'navbar'})
+      .then(function (elements) {
+        elements.should.not.be.empty();
       });
-    driver.isElementPresent({className: 'address-bar'})
-      .then(function (present) {
-        present.should.be.true();
+    driver.findElements({className: 'address-bar'})
+      .then(function (elements) {
+        elements.should.not.be.empty();
       });
-    driver.isElementPresent({className:'run-connector'})
-      .then(function (present) {
-        present.should.be.true();
+    driver.findElements({className:'run-connector'})
+      .then(function (elements) {
+        elements.should.not.be.empty();
       });
-    driver.isElementPresent({className:'interactive-phase'})
-      .then(function (present) {
-        present.should.be.true();
+    driver.findElements({className:'interactive-phase'})
+      .then(function (elements) {
+        elements.should.not.be.empty();
         done();
       });
   })
@@ -192,9 +182,9 @@ describe('General Simulator Tests', function(){
   })
 
   it("Should Have Preview Table", function(done){
-    driver.isElementPresent({className: 'table-preview-Column'})
-      .then(function (present) {
-        present.should.be.true();
+    driver.findElements({className: 'table-preview-Column'})
+      .then(function (elements) {
+        elements.should.not.be.empty();
         done()
       });
   })
