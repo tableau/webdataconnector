@@ -23,16 +23,14 @@ online [here](https://github.com/tableau/webdataconnector/tree/master).
 
     This connector gets data from multiple tables in a local JSON file and specifies how the tables should be joined in Tableau Desktop.
 
--   **[IncrementalRefreshConnector](https://tableau.github.io/webdataconnector/docs/wdc_samples.html)**
+
+-   **[IncrementalRefreshConnector](https://tableau.github.io/webdataconnector/Examples/html/IncrementalRefreshConnector.html)**
 
     This connector showcases how use the incremental refresh API to fetch data incrementally.
 
--   **[MadMoneyScraper](https://tableau.github.io/webdataconnector/Examples/html/MadMoneyScraper.html)**
 
-    This connector demonstrates how to scrape data from a table in a web page and bring that data back through
-    the WDC API.
 
--   **OAuthProxyExample**
+-   **[OAuthProxyExample](https://github.com/tableau/webdataconnector/tree/master/Examples/OAuthProxyExample)**
 
     This example shows you how to use OAuth as an authentication method.
 

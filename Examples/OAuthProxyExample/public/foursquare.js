@@ -11,7 +11,7 @@
       clientId: 'YOUR_CLIENT_ID',
       redirectUri: 'http://localhost:3333/redirect',
       authUrl: 'https://foursquare.com/',
-      version: '20150901'
+      version: '20190102'
   };
 
   // Called when web page first loads and when
@@ -34,7 +34,7 @@
       });
   });
 
-  // An on-click funcion for the connect to foursquare button,
+  // An on-click function for the connect to foursquare button,
   // This will redirect the user to a foursquare login
   function doAuthRedirect() {
       var appId = config.clientId;
@@ -51,13 +51,13 @@
 
   //------------- OAuth Helpers -------------//
   // This helper function returns the URI for the venueLikes endpoint
-  // It appends the passed in accessToek to the call to personalize the call for the user
+  // It appends the passed in accessToken to the call to personalize the call for the user
   function getVenueLikesURI(accessToken) {
       return "https://api.foursquare.com/v2/users/self/venuelikes?oauth_token=" +
               accessToken + "&v=" + config.version;
   }
 
-  // This function togglels the label shown depending
+  // This function toggles the label shown depending
   // on whether or not the user has been authenticated
   function updateUIWithAuthState(hasAuth) {
       if (hasAuth) {
@@ -84,7 +84,7 @@
       }
 
       if (tableau.phase == tableau.phaseEnum.gatherDataPhase) {
-        // If API that WDC is using has an enpoint that checks
+        // If API that WDC is using has an endpoint that checks
         // the validity of an access token, that could be used here.
         // Then the WDC can call tableau.abortForAuth if that access token
         // is invalid.
@@ -120,7 +120,7 @@
       var col1 = { id: "Name", dataType: "string"};
       var col2 = { id: "Latitude", dataType: "float"};
       var col3 = { id: "Longitude", dataType: "float"};
-      var col4 = { id: "CheckinCount", dataType: "int"};
+      var col4 = { id: "Address", dataType: "string"};
       var cols = [col1, col2, col3, col4];
 
       var tableInfo = {
@@ -133,7 +133,7 @@
       schemaCallback(schema);
   };
 
-  // This function acutally make the foursquare API call and
+  // This function actually make the foursquare API call and
   // parses the results and passes them back to Tableau
   myConnector.getData = function(table, doneCallback) {
       var dataToReturn = [];
@@ -154,7 +154,7 @@
                       var venue = {'Name': venues[ii].name,
                                    'Latitude': venues[ii].location.lat,
                                    'Longitude': venues[ii].location.lng,
-                                   'CheckinCount': venues[ii].stats.checkinsCount};
+                                   'Address' : venues[ii].location.address};
                       dataToReturn.push(venue);
                   }
 
