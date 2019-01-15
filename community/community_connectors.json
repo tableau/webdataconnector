@@ -4,7 +4,7 @@
         "url": "http://tech.adstage.io/tableau_connector/AdstageConnector.html",
         "author": "David Haslem",
         "github_username": "therabidbanana",
-        "tags": ["v_1.0"],
+        "tags": ["v_2.2"],
         "description": "A basic adapter to pull last month of campaign data from AdStage API",
         "source_code": "https://github.com/AdStage/tableau_connector"
     },
@@ -31,7 +31,7 @@
         "url": "https://fri5by.github.io/amiiboapitableauwdc/",
         "author": "Joshua Frisby",
         "github_username": "fri5by",
-        "tags": ["v_1.0"],
+        "tags": ["v_2.3"],
         "description": "A Tableau Web Data Connector for AmiiboAPI (http://www.amiiboapi.com/).",
         "source_code": "https://github.com/fri5by/amiiboapitableauwdc"
     },
@@ -58,7 +58,7 @@
         "url": "http://tableau.cognetik.com",
         "author": "Cognetik",
         "github_username": "",
-        "tags": ["v_1.0"],
+        "tags": ["v_2.0"],
         "description": "Cloud connector for Adobe Analytics, Facebook Ads, Facebook Pages, AdWords, Bing Ads, Kochava, Doubleclick and YouTube in Tableau.",
         "source_code": ""
     },
@@ -112,7 +112,7 @@
         "url": "https://www.diggernaut.com/wdc/",
         "author": "Mikhail Sisin",
         "github_username": "jabbahotep",
-        "tags": ["v_2.0"],
+        "tags": ["v_2.3"],
         "description": "Connector to import your Diggernaut datasets to Tableau using REST API",
         "source_code": "https://github.com/Diggernaut/diggernaut-wdc"
     },
@@ -130,7 +130,7 @@
         "url": "http://mradamlacey.github.io/elasticsearch-tableau-connector/elasticsearch-connector.html",
         "author": "Adam Lacey",
         "github_username": "mradamlacey",
-        "tags": ["v_1.0"],
+        "tags": ["v_2.3"],
         "description": "",
         "source_code": "https://github.com/mradamlacey/elasticsearch-tableau-connector"
     },
@@ -139,7 +139,7 @@
         "url": "N/A",
         "author": "kaizenplatform",
         "github_username": "kaizenplatform",
-        "tags": ["v0.1.1"],
+        "tags": ["v_2.1"],
         "description": "Tableau WDC for Insights of Facebook Marketing API",
         "source_code": "https://github.com/kaizenplatform/FacebookInsightsConnector"
     },
@@ -175,7 +175,7 @@
         "url": "https://fulcrumapp.github.io/tableau-webdataconnector/",
         "author": "Bryan McBride",
         "github_username": "bmcbride",
-        "tags": ["v_1.0"],
+        "tags": ["v_2.1"],
         "description": "Load data from Fulcrum apps into Tableau.",
         "source_code": "https://github.com/fulcrumapp/tableau-webdataconnector"
     },
@@ -184,7 +184,7 @@
         "url": "https://github-web-data-connector.herokuapp.com/",
         "author": "Martin Keerman",
         "github_username": "etroid",
-        "tags": ["v_1.1"],
+        "tags": ["v_2.1"],
         "description": "",
         "source_code": "https://github.com/tableau-mkt/github-data-connector"
     },
@@ -220,7 +220,7 @@
         "url": "https://hpcc-systems.github.io/HPCC-Tableau-WDC/hpccTableauConnector.html",
         "author": "Rodrigo Pastrana - HPCC Systems",
         "github_username": "hpcc-systems",
-        "tags": ["v_0.1"],
+        "tags": ["v_2.3"],
         "description": "Extracts HPCC Systems data into Tableau Desktop",
         "source_code": "https://github.com/hpcc-systems/HPCC-Tableau-WDC"
     },
@@ -238,7 +238,7 @@
         "url": "https://tagyoureit.github.io/InfluxDB_WDC/InfluxDB.html",
         "author": "Russ Goldin",
         "github_username": "tagyoureit",
-        "tags": ["v_1.0"],
+        "tags": ["v_2.3"],
         "description": "Connector to pull data from InfluxDB.  Can be used with/without authentication and server-side aggregation.",
         "source_code": "https://github.com/tagyoureit/InfluxDB_WDC"
     },
@@ -292,7 +292,7 @@
         "url": "https://rarandall.github.io/wdc/html/NADAC.html",
         "author": "Ray Randall",
         "github_username": "rarandall",
-        "tags": ["v_1.0"],
+        "tags": ["v_2.2"],
         "description": "Connector to Medicaid.gov - Gets NADAC - National Average Drug Acquisition Cost data",
         "source_code": "https://github.com/rarandall/rarandall.github.io/wdc"
     },
@@ -310,7 +310,7 @@
         "url": "https://drzax.github.io/morphio-wdc/",
         "author": "Simon Elvery",
         "github_username": "drzax",
-        "tags": ["v_1.0"],
+        "tags": ["v_2.1"],
         "description": "Tableau WDC for the scraping service Morph.io",
         "source_code": "https://github.com/drzax/morphio-wdc/"
     },
@@ -435,7 +435,7 @@
         "url": "https://k504866430.github.io/rally-tableau",
         "author": "Harsh Agrawal",
         "github_username": "",
-        "tags": ["v_1.0"],
+        "tags": ["v_2.0"],
         "description": "Load project, stories, tasks, time-entries and much more from CA Agile Rally Tool",
         "source_code": ""
     },
@@ -453,7 +453,7 @@
         "url": "https://github.com/xHeliotrope/redcap-wdc",
         "author": "Ryan Moore",
         "github_username": "xHeliotrope",
-        "tags": ["v_1.0"],
+        "tags": ["v_2.0"],
         "description": "Load REDCap data into Tableau via the REDCap API",
         "source_code": "https://github.com/xHeliotrope/redcap-wdc"
     },
@@ -462,7 +462,7 @@
         "url": "https://rdc.codezero.xyz",
         "author": "Niranjan Rajendran",
         "github_username": "niranjan94",
-        "tags": ["v_1.0"],
+        "tags": ["v_2.3"],
         "description": "A REST API Data Connector for Tableau with Generic REST endpoints, Swagger 2.0 and OpenApi 3.0 support",
         "source_code": "https://github.com/niranjan94/rest-data-connector"
     },
@@ -471,7 +471,7 @@
         "url": "https://hza47.github.io/WDC-reviewboard/",
         "author": "Hao Zhuang",
         "github_username": "hza47",
-        "tags": ["v0.1.1"],
+        "tags": ["v_2.1"],
         "description": "WDC to get all pengind changelist from reviewboard",
         "source_code": "https://github.com/hza47/WDC-reviewboard"
     },
@@ -746,7 +746,7 @@
         "url": "https://github.com/collinsteele/collinsteele.github.io/blob/master/WeatherWDCv2.html",
         "author": "Collin Steele",
         "github_username": "collinsteele",
-        "tags": ["v_1.0"],
+        "tags": ["v_2.2"],
         "description": "Very simple connector to pull 7 day forecast for 5 cities around US.",
         "source_code": "https://github.com/collinsteele/collinsteele.github.io"
     },
@@ -755,7 +755,7 @@
         "url": "https://dduubb.github.io/uspto-wdc/wdc/uspto-wdc.html",
         "author": "dw",
         "github_username": "dduubb",
-        "tags": ["v_0.1"],
+        "tags": ["v_2.1"],
         "description": "Connector to allow connections to the USPTO PatentsWeb API",
         "source_code": "github.com/dduubb/uspto-wdc"
     },
@@ -764,7 +764,7 @@
         "url": "https://rarandall.github.io/wdc/html/wanikani.html",
         "author": "Ray Randall",
         "github_username": "rarandall",
-        "tags": ["v_1.0"],
+        "tags": ["v_2.2"],
         "description": "See and understand your WaniKani data with this WDC connector for Tableau.",
         "source_code": "https://github.com/rarandall/rarandall.github.io/tree/master/wdc"
     },
@@ -791,7 +791,7 @@
         "url": "https://oscarga.github.io/DatosAbiertosCO-WDC/WDC-Educacion/index.html",
         "author": "Oscar Gómez",
         "github_username": "OscarGA",
-        "tags": ["v_1.0"],
+        "tags": ["v_2.3"],
         "description": "Connector to get data from the site datos.gov.co about education in Antioquia region",
         "source_code": "https://github.com/OscarGA/DatosAbiertosCO-WDC"
     },
@@ -800,7 +800,7 @@
         "url": "https://oscarga.github.io/DatosAbiertosCO-WDC/WDC-Salud/index.html",
         "author": "Oscar Gómez",
         "github_username": "OscarGA",
-        "tags": ["v_1.0"],
+        "tags": ["v_2.3"],
         "description": "Connector to get data from the site datos.gov.co about health in Colombia",
         "source_code": "https://github.com/OscarGA/DatosAbiertosCO-WDC"
     },
@@ -809,7 +809,7 @@
         "url": "https://oscarga.github.io/DatosAbiertosCO-WDC/WDC-Seguridad/index.html",
         "author": "Oscar Gómez",
         "github_username": "OscarGA",
-        "tags": ["v_1.0"],
+        "tags": ["v_2.3"],
         "description": "Connector to get data from the site datos.gov.co about security in Medellín city",
         "source_code": "https://github.com/OscarGA/DatosAbiertosCO-WDC"
     },
