@@ -45,6 +45,14 @@
         "source_code": "github.com/aprince/ABS_SDMX-JSON_API"
     },
     {
+        "name": "Bitmovin Analtyics",
+        "url": "https://bitmovin.github.io/analytics-tableau-web-data-collector",
+        "author": "Bitmovin",
+        "github_username": "bitmovin",
+        "description": "A Tableau Web Data Collector for the Bitmovin Analytics API (https://bitmovin.com/video-analytics)",
+        "source_code": "https://github.com/bitmovin/analytics-tableau-web-data-collector"
+    },
+    {
         "name": "BoardGameGeek User Plays",
         "url": "https://garnet-viper.hyperdev.space/",
         "author": "Jason Copenhaver",
