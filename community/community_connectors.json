@@ -45,7 +45,7 @@
         "source_code": "github.com/aprince/ABS_SDMX-JSON_API"
     },
     {
-        "name": "Bitmovin Analtyics",
+        "name": "Bitmovin Analytics",
         "url": "https://bitmovin.github.io/analytics-tableau-web-data-collector",
         "author": "Bitmovin",
         "github_username": "bitmovin",
