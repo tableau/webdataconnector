@@ -838,5 +838,13 @@
         "tags": ["v_2.3"],
         "description": "Neo4J multi table connector to execute up to 5 Cypher queries. Supports latest Neo4j Temporal and Spatial data types.",
         "source_code": "https://github.com/ralfbecher/tableau-neo4j-wdc"
+},{
+    "name":"Kobotoolbox Web Data Connector",
+    "url":"http://167.179.85.104:3000/",
+    "author":"Imran Ahmedani",
+    "github_username":"iahmedani",
+    "tags":["v_0.1.0"],
+    "description":"Kobotoolbox web connector allows user to connect free ona.io accounts, Kobotoolbox and Open(non authorization like jsonplaceholer) REST APIs, code is qurated in a way that it will assess the schema remove symbols form labels and support all dataTypes",
+    "source_code":"https://github.com/iahmedani/kobo-wdc"
 }
 ]
