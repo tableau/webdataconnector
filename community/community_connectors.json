@@ -269,6 +269,15 @@
         "source_code": ""
     },
     {
+        "name": "IXON WDC",
+        "url": "https://cdn.ixon.cloud/tableau/latest/",
+        "author": "IXON",
+        "github_username": "ixoncloud",
+        "tags": ["v_2.3"],
+        "description": "Import your IXON Cloud Logging data into Tableau",
+        "source_code": "https://github.com/ixoncloud/tableau-wdc"
+    },
+    {
         "name": "Kobotoolbox Web Data Connector",
         "url": "http://167.179.85.104:3000/",
         "author": "Imran Ahmedani",
