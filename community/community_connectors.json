@@ -274,7 +274,7 @@
         "author": "IXON",
         "github_username": "ixoncloud",
         "tags": ["v_2.3"],
-        "description": "Import your IXON Cloud Logging data into Tableau",
+        "description": "IXON Cloud is an Industrial IoT portal for machine manufacturers. Easily connect Tableau to your machine data. More info at https://www.ixon.cloud",
         "source_code": "https://github.com/ixoncloud/tableau-wdc"
     },
     {
