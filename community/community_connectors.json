@@ -98,6 +98,15 @@
         "source_code": "github.com/starschema/tableau-web-table-connector"
     },
     {
+    "name": "cpd_wdc",
+    "url": "https://ruochen1112.github.io/cpd_WDC/",
+    "author": "Ruochen Qiu",
+    "github_username": "ruochen1112",
+    "tags": ["v_1.0"],
+    "description": "",
+    "source_code": "https://github.com/ruochen1112/cpd_WDC"
+    },
+    {
         "name": "data.world",
         "url": "https://tableau.data.world",
         "author": "Alan Levicki & Rebecca Clay",
