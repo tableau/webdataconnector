@@ -1666,7 +1666,7 @@ if (row_index % 100 === 0) {
                                 <li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
                             </ul>
                         </div>
-                        <p>Generated using <a href="http://typedoc.io" target="_blank">TypeDoc</a></p>
+                        <p>Generated using <a href="https://typedoc.org" target="_blank">TypeDoc</a></p>
                     </div>
                 </section>
             </section>
