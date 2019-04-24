@@ -857,4 +857,14 @@
         "description": "Connector to get data from Zabbix API",
         "source_code": "https://github.com/parflesh/zabbix-wdc"
     }
+    ,
+    {
+        "name": "GetCountryCities",
+        "url": "https://bshraman.github.io/MyWDC/index.html",
+        "author": "Shraman Basyal",
+        "github_username": "bshraman",
+        "tags": ["v_1.0"],
+        "description": "Connector to get data from Zabbix API",
+        "source_code": "https://bshraman.github.io/MyWDC"
+    }
 ]
