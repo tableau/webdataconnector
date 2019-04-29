@@ -395,6 +395,15 @@
         "source_code": "https://github.com/TheInformationLab/Tableau-WDC-365Sharepoint"
     },
     {
+        "name": "Open Exchange Rates API",
+        "url": "https://open-exchange-rate-wdc.glitch.me/",
+        "author": "Keshia Rose",
+        "github_username": "KeshiaRose",
+        "tags": ["v_2.3"],
+        "description": "Get the latest exchange rates available from the Open Exchange Rates API.",
+        "source_code": "https://glitch.com/edit/#!/open-exchange-rate-wdc"
+    },
+    {
         "name": "OpenStreetMap Features",
         "url": "http://jdomingu.github.io/osm-features-wdc/",
         "author": "Jared Dominguez",
