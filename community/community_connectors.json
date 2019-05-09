@@ -865,5 +865,14 @@
         "tags": ["v_2.0"],
         "description": "Connector to get data from Zabbix API",
         "source_code": "https://github.com/parflesh/zabbix-wdc"
+    },
+    {	
+        "name": "Japanese Government Statistics (e-Stat)",
+        "url": "https://wdc.dataconcerto.jp/estat",
+        "author": "Junko Fujiwara",
+        "github_username": "",
+        "tags": ["v_2.3"],
+        "description": "Connector to retrieve data from Japanese Government Statistics (e-Stat)",
+        "source_code": ""
     }
 ]
