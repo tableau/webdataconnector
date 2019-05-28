@@ -44,8 +44,12 @@ tableau.log("My console message goes here!");
   "http-server": "node node_modules/http-server/bin/http-server -p 8000"
   ```
 
-* To make it easier to load files into the simulator, keep the simulator and web data connector .html files that you are
+* To make it easier to load files into the simulator, keep the simulator and web data connector `.html` files that you are
   testing in the same folder.
+
+<div class="alert alert-info">
+<b>Note: </b>Tableau Desktop embeds the Qt Webkit browser into the product to display your connector pages. This browser might lack some of the features of modern browsers, including specific HTML5 and other features. For more information on browser support, <a href="http://doc.qt.io/qt-5/whatsnew57.html" target="_blank"> see the features in Qt 5.7</a>, which is the version used by Tableau (10.3 to 2018.3). You might also want to see the Qt Webkit documentation on HTML5 support and the <a href="https://wiki.qt.io/Qt_Webkit_HTML5_Score" target="_blank">Qt Webkit HTML5 Score</a>.
+</div>
 
 
 ### Caching in the simulator {#simulator-caching}

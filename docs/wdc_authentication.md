@@ -73,7 +73,7 @@ The auth phase will be displayed by Tableau in two scenarios:
     from an API can expire or be revoked.  In that scenario, before fetching data, the WDC would want to call this method
     in order to re-authenticate the user.  For more information, see the **OAuthProxyExample** connector included in the SDK. 
     
-    **IMPORTANT:** This function must be called from the init method during the gather data phase.  Additionally, this function only works when called from a fresh instance of Tableau.  I.e. if you call this immediately after creating the connection, the call will fail.  This is not ideal behavior, but the intended scenario for this function is when called from opening a workbook from scratch (when the auth token is no longer available).  
+    **IMPORTANT:** The `abortforauth` function must be called from the `init` method during the gather data phase. Additionally, this function only works when called from a fresh instance of Tableau. That is, if you call this immediately after creating the connection, the call will fail.  This is not ideal behavior, but the intended scenario for this function is when called from opening a workbook from scratch (when the auth token is no longer available).  
     
     
 In the auth phase of the WDC, any changes to properties other than tableau.password and tableau.username will
@@ -94,7 +94,7 @@ is handled in the custom init method:
       }
 
       if (tableau.phase == tableau.phaseEnum.gatherDataPhase) {
-        // If API that WDC is using has an enpoint that checks
+        // If API that WDC is using has an endpoint that checks
         // the validity of an access token, that could be used here.
         // Then the WDC can call tableau.abortForAuth if that access token
         // is invalid.
@@ -152,15 +152,13 @@ Given this, the following scenario could occur if the WDC was using a source tha
 
 In order to get around this problem, you can associate all data sources created from Tableau Desktop with
 a given client, and all data sources refreshed on Tableau Server with another client.  To do this, in your WDC
-you can use the [tableau.authPurpose]({{ site.baseurl }}/docs/ref_home.html#webdataconnectorapi.tableau.authpurpose)
+you can use the [tableau.authPurpose]({{ site.baseurl }}/docs/api_ref.html#webdataconnectorapi.tableau.authpurpose)
 to read which context your WDC is currently running in.  If that context is `ephemeral` then the WDC is 
 being run from Tableau Desktop.  If the context is `enduring`, then the WDC is being run on Tableau Server during
 an automated refresh.  You can use this property to set the client ID appropriately when performing OAuth flows.
 
-It is also important that your connector sets the tableau.username property to be whatever identity is 
-associated with an access token (most commonly an email or username).  This will allow Tableau to share access
-tokens between data sources on Server so that even if the OAuth provider restricts you to n valid access tokens, 
-you can support more than n data sources.
+It is also important that your connector sets the `tableau.username` property to be whatever identity is associated with an access token (most commonly an email or username).  This will allow Tableau to share access
+tokens between data sources on Server so that even if the OAuth provider restricts you to n valid access tokens, you can support more than n data sources.
 
 
 Advanced: Authentication on Server {#server-auth}

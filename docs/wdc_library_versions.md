@@ -38,8 +38,8 @@ The following table displays which versions of the WDC are compatible with Table
 |`tableauwdc-2.2.0`    |10.2 or later|
 |`tableauwdc-2.1.0`    |10.1 or later|
 |`tableauwdc-2.0.2`    |10.0 and later |
-|`tableauwdc-2.0.0`    |10.0 through 2019.1 |
-|`tableauwdc-1.1.1`    |9.3 through 2019.1<br />9.2.4 through 2019.1 <br />9.1.6 through 2019.1|
+|`tableauwdc-2.0.0`    |10.0 through 2019.2 |
+|`tableauwdc-1.1.1`    |9.3 through 2019.2<br />9.2.4 through 2019.2 <br />9.1.6 through 2019.1|
 |`tableauwdc-1.1.0`    |9.2.0 through 9.2.3 <br />9.1.0 through 9.1.5|
 
 In Tableau Desktop, if you try to open a connector that uses an incompatible version of the WDC,

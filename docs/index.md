@@ -17,13 +17,12 @@ and passes the data to Tableau.
 
 **Upgrading from WDC version 1.x**
  
-If you have connectors that were created using WDC version 1.x, those connectors will continue to work in future versions of Tableau. However, if you want to update the connectors to use the features available in version 2.x of the WDC, you will need to update the connector to use the new API. For information about updating your connectors, see [Upgrading from WDC Version 1.x]({{ site.baseurl }}\docs\wdc_upgrade).
+If you have connectors that were created using WDC version 1.x, those connectors should continue to work in versions of Tableau up to Tableau 2019.2. However, if you want your connector to work in later versions of Tableau, or if you want to use the features available in version 2.x of the WDC, you will need to update the connector. For information about updating your connectors, see [Upgrading from WDC Version 1.x]({{ site.baseurl }}\docs\wdc_upgrade). For information about version compatibility, see [WDC Versions]({{ site.baseurl }}\docs\wdc_library_versions). 
 
 
 -----
 
-This section will guide you through the process of setting up your development environment and running the sample WDCs
-in the simulator.
+This section will guide you through the process of setting up your development environment and running the sample WDCs in the simulator.
 
 * TOC
 {:toc}
