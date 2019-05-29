@@ -1255,7 +1255,7 @@ Versions]( {{ site.baseurl }}/docs/wdc-library-versions.html).
 </html>
 ```
 
-FoursquareWDC.js page {.html-page}
+FoursquareWDC.js page 
 ------------------
 
 ```js
