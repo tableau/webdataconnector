@@ -69,11 +69,11 @@ The auth phase will be displayed by Tableau in two scenarios:
 - The WDC developer calls [tableau.abortForAuth]({{ site.baseurl }}/docs/api_ref.html#webdataconnectorapi.tableau.abortforauth).
 
     This method is provided so that the developer can explicitly tell Tableau the current user is un-authenticated.
-    For example, this can be helpful when working with OAuth.  In some scenarios, the access token used to get resources
+    For example, this can be helpful when working with OAuth. In some scenarios, the access token used to get resources
     from an API can expire or be revoked.  In that scenario, before fetching data, the WDC would want to call this method
-    in order to re-authenticate the user.  For more information, see the **OAuthProxyExample** connector included in the SDK. 
+    in order to re-authenticate the user. For more information, see the **OAuthProxyExample** connector included in the SDK.
     
-    **IMPORTANT:** The `abortforauth` function must be called from the `init` method during the gather data phase. Additionally, this function only works when called from a fresh instance of Tableau. That is, if you call this immediately after creating the connection, the call will fail.  This is not ideal behavior, but the intended scenario for this function is when called from opening a workbook from scratch (when the auth token is no longer available).  
+    **IMPORTANT:** The `abortForAuth` function must be called from the `init` method during the gather data phase. One intended scenario for this function is when a user, who has not been authenticated, opens an existing workbook and attempts to refresh data. In this case, the auth token is no longer available.  
     
     
 In the auth phase of the WDC, any changes to properties other than tableau.password and tableau.username will
@@ -94,7 +94,7 @@ is handled in the custom init method:
       }
 
       if (tableau.phase == tableau.phaseEnum.gatherDataPhase) {
-        // If API that WDC is using has an endpoint that checks
+        // If the API that WDC is using has an endpoint that checks
         // the validity of an access token, that could be used here.
         // Then the WDC can call tableau.abortForAuth if that access token
         // is invalid.

@@ -53,9 +53,7 @@ In this part of the tutorial, you'll learn these things:
     work with OAuth authentication: client flow and server flow. This
     section provides a brief overview of each and when to use them.
 
-**Note**: A complete code listing for the tutorial is available in [Web
-Data Connector OAuth Tutorial: Complete Code
-Listing](#complete-code-listing).
+**Note**: To see all the code for the tutorial, see [Complete Code Listing]({{ site.baseurl }}/docs/wdc_oauth_tutorial.html#complete-code-listing).
 
 ## The tutorial scenario {#tutorial-scenario}
 
@@ -95,8 +93,7 @@ To run this tutorial, you need the following:
 
 2.  The Web Data Connector SDK installed on your computer.
 
-3.  Familiarity with the concepts and web data connector example in [Web
-    Data Connector Basic Tutorial](wdc_tutorial_basic.html).
+3.  Familiarity with the concepts and web data connector example in the [Basic tutorial]({{ site.baseurl }}/docs/wdc_tutorial.html).
 
 4.  A web server running locally on your computer and listening on
     port 3333. In this tutorial, you will use [Node.js](https://nodjs.org){:target="_blank"} and [Express](https://expressjs.org){:target="_blank"} framework to create a simple web server that will handle the server-side authentication. You can adapt this model to create and test new connectors. We will cover installing and configuring the web server in this tutorial.
@@ -312,9 +309,7 @@ You also add JavaScript code that toggles text in the page ("You are
 signed in" or "You are not signed in"), depending on whether the user is
 signed in.
 
-**Note**: A complete code listing for the tutorial is available in [Web
-Data Connector OAuth Tutorial: Complete Code
-Listing](#complete-code-listing).
+**Note**: To see all the code for the tutorial, see [Complete Code Listing]({{ site.baseurl }}/docs/wdc_oauth_tutorial.html#complete-code-listing).
 
 
 
@@ -401,7 +396,7 @@ the JavaScript coding (jQuery). The WDC library (currently
 **Note**: To connect to a web data connector that uses
 `tableauwdc-2.2.latest.js`, you must be using a recent version of Tableau.
 For more information, see [Web Data Connector Library
-Versions](wdc-library-versions.html).
+Versions]({{ site.baseurl }}/docs/wdc-library-versions.html).
 
 The `foursquareWDC.js` file is a separate `.js` file that you'll create
 shortly. It will contain all the code for making calls to Foursquare.
@@ -527,9 +522,7 @@ In this part of the tutorial, you add JavaScript code that manages the
 OAuth sign-in process to get authorization. When a user clicks the **Connect to Foursquare** button, your code redirects the user to Foursquare, where the user can sign in. After the
 user signs in, Foursquare redirects the user back to the local web server with an authorization code. The web server takes the authorization code and adds the client secret in a request back to Foursquare to get the access token that will be used for making requests for data. Foursquare sends the access token back to the web server. The web server saves the access token in the browser cookie, so that the client code (your web data connector) can retrieve it. You'll add code to retrieve the OAuth access token from the browser cookie.
 
-**Note**: A complete code listing for the tutorial is available in [Web
-Data Connector OAuth Tutorial: Complete Code
-Listing](#complete-code-listing).
+**Note**: To see all the code for the tutorial, see [Complete Code Listing]({{ site.baseurl }}/docs/wdc_oauth_tutorial.html#complete-code-listing).
 
 
 ## Add code for initial sign-in
@@ -757,9 +750,7 @@ data connectors have—code to get the schema (field names and types) for
 the data, and to get the data itself. This code is similar to the
 equivalent code in the basic tutorial.
 
-**Note**: A complete code listing for the tutorial is available in [Web
-Data Connector OAuth Tutorial: Complete Code
-Listing](wdc_tutorial_oauth_client_code_listing.html).
+**Note**: To see all the code for the tutorial, see [Complete Code Listing]({{ site.baseurl }}/docs/wdc_oauth_tutorial.html#complete-code-listing).
 
 ---
 
@@ -985,7 +976,7 @@ After the call to `tableau.makeConnector` and before `myConnector.getSchema`, ad
       }
 
       if (tableau.phase == tableau.phaseEnum.gatherDataPhase) {
-        // If API that WDC is using has an endpoint that checks
+        // If the API that WDC is using has an endpoint that checks
         // the validity of an access token, that could be used here.
         // Then the WDC can call tableau.abortForAuth if that access token
         // is invalid.
@@ -1204,9 +1195,9 @@ To see what the data looks like in Tableau, do this:
 
 [(Back to top)](#top)
 
-This page provides complete code listings (foursquareWDC.html and foursquare.js) for the web data connector Node Proxy OAuth client tutorial.
+This page provides complete code listings (`foursquareWDC.html` and foursquareWDC.js) for the web data connector Node Proxy OAuth client tutorial (app.js and config.js).
 
-##  Foursquare.html page {#html-page}
+##  FoursquareWDC.html page
 
 **Note**: This listing includes a reference to the `tableauwdc-2.2.latest.js`
 To connect to a web data connector that uses that version of the WDC
@@ -1255,8 +1246,8 @@ Versions]( {{ site.baseurl }}/docs/wdc-library-versions.html).
 </html>
 ```
 
-FoursquareWDC.js page 
-------------------
+## FoursquareWDC.js 
+
 
 ```js
  (function() {
@@ -1439,6 +1430,127 @@ FoursquareWDC.js page
   
 
 })();  // end of anonymous function
+```
+
+## Config.js
+
+Configuration file for Node.js Express web server.
+
+```js
+// The necessary configuration for your server
+// Contains credentials for your Foursquare application
+// And the new redirect path for the OAuth flow
+module.exports = {
+ 'HOSTPATH': 'http://localhost',
+ 'PORT': 3333,
+ 'CLIENT_ID': 'YOUR_CLIENT_ID',
+ 'CLIENT_SECRET': 'YOUR_CLIENT_SECRET',
+ 'REDIRECT_PATH': '/redirect'
+};
+
+```
+
+## app.js 
+
+Express web server, using Node.js.
+
+```js
+// -------------------------------------------------- //
+// Module Dependencies
+// -------------------------------------------------- //
+var express = require('express');
+var cookieParser = require('cookie-parser');
+var querystring = require('querystring');
+var http = require('http');
+var request = require('request');
+var path = require('path');
+var config = require('./config.js');              // Get our config info (app id and app secret)
+var sys = require('util');
+
+var app = express();
+
+// -------------------------------------------------- //
+// Express set-up and middleware
+// -------------------------------------------------- //
+app.set('port', (process.env.PORT || config.PORT));
+app.use(cookieParser());                                    // cookieParser middleware to work with cookies
+app.use(express.static(__dirname + '/public'));
+
+// -------------------------------------------------- //
+// Variables
+// -------------------------------------------------- //
+var clientID = process.env.FOURSQUARE_CLIENT_ID || config.CLIENT_ID;
+var clientSecret = process.env.FOURSQUARE_CLIENT_SECRET || config.CLIENT_SECRET;
+console.log(clientID);
+console.log(clientSecret);
+var redirectURI = config.HOSTPATH + ":" + config.PORT + config.REDIRECT_PATH
+
+// -------------------------------------------------- //
+// Routes
+// -------------------------------------------------- //
+
+app.get('/', function(req, res) {
+  console.log("got here");
+  res.redirect('/index.html');
+});
+
+// This route is hit once Foursquare redirects to our
+// server after performing authentication
+app.get('/redirect', function(req, res) {
+  // get our authorization code
+  authCode = req.query.code;
+  console.log("Auth Code is: " + authCode);
+
+  // Set up a request for an long-lived Access Token now that we have a code
+  var requestObject = {
+      'client_id': clientID,
+      'redirect_uri': redirectURI,
+      'client_secret': clientSecret,
+      'code': authCode,
+      'grant_type': 'authorization_code'
+  };
+
+  var token_request_header = {
+      'Content-Type': 'application/x-www-form-urlencoded'
+  };
+
+  // Build the post request for the OAuth endpoint
+  var options = {
+      method: 'POST',
+      url: 'https://foursquare.com/oauth2/access_token',
+      form: requestObject,
+      headers: token_request_header
+  };
+
+  // Make the request
+  request(options, function (error, response, body) {
+    if (!error) {
+      // We should receive  { access_token: ACCESS_TOKEN }
+      // if everything went smoothly, so parse the token from the response
+      body = JSON.parse(body);
+      var accessToken = body.access_token;
+      console.log('accessToken: ' + accessToken);
+
+      // Set the token in cookies so the client can access it
+      res.cookie('accessToken', accessToken, { });
+
+      // Head back to the WDC page
+      res.redirect('/index.html');
+    } else {
+      console.log(error);
+    }
+  });
+});
+
+
+// -------------------------------------------------- //
+// Create and start our server
+// -------------------------------------------------- //
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
+
+
 ```
 
 
