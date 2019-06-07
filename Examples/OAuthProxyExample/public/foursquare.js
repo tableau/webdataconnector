@@ -8,7 +8,7 @@
   // See part II. of this tutorial for an example of how
   // to do a server-side OAuth flow and avoid this problem
   var config = {
-      clientId: '51SEEIRHXUVSLBICPIMEJJVDRP0IGGA0HIJEUROGGTQZJT4A',
+      clientId: 'YOUR_CLIENT_ID',
       redirectUri: 'http://localhost:3333/redirect',
       authUrl: 'https://foursquare.com/',
       version: '20190102'
@@ -29,13 +29,13 @@
       });
 
       $("#getvenuesbutton").click(function() {
-          tableau.connectionName = "Foursqure Venues Data";
+          tableau.connectionName = "Foursquare Venues Data";
           tableau.submit();
       });
   });
 
   // An on-click function for the connect to foursquare button,
-  // This will redirect the user to a foursquare login
+  // This will redirect the user to a Foursquare login
   function doAuthRedirect() {
       var appId = config.clientId;
       if (tableau.authPurpose === tableau.authPurposeEnum.ephemerel) {

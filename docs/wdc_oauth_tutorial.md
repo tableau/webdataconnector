@@ -6,12 +6,10 @@ layout: docs
 
 <a name="top"></a>
 ---
-This tutorial builds on what you learned about web data connectors in the, [Basic tutorial]({{ site.baseurl }}/docs/wdc_tutorial.html). Ensure that you understand the concepts in the basic tutorial before you continue.
+This tutorial builds on what you learned about web data connectors in the [Basic tutorial]({{ site.baseurl }}/docs/wdc_tutorial.html). Ensure that you understand the concepts in the basic tutorial before you continue.
 
----
-
-By the end of this tutorial, you'll have a working WDC that connects to the [Foursquare](https://foursquare.com) and downloads data for sites that you "liked" in Foursquare.
-This topic is part of a multi-step tutorial on how to use OAuth with a
+By the end of this tutorial, you'll have a working WDC that connects to [Foursquare](https://foursquare.com) and downloads data for sites that you "liked" in Foursquare.
+This is a multi-step tutorial on how to use OAuth with a
 Tableau web data connector. Here is a list of all the steps:
 
 
@@ -32,7 +30,7 @@ Tableau web data connector. Here is a list of all the steps:
 10. [Test the Connector in
    Tableau]({{ site.baseurl }}/docs/wdc_oauth_tutorial.html#step-10-test-the-connector-in-tableau)
 
-[Complete Code Listing]({{ site.baseurl }}/docs/wdc_oauth_tutorial.html#complete-code-listing)
+**Note**: To see all the code for the tutorial, see [Complete Code Listing]({{ site.baseurl }}/docs/wdc_oauth_tutorial.html#complete-code-listing).
 
 --- 
 
@@ -49,11 +47,10 @@ In this part of the tutorial, you'll learn these things:
 -   [What is OAuth?](#what-is-oath) If you're new to OAuth, this section
     provides a quick overview.
 
--   [Which OAuth flow should I use: client-based or server-based?](#client-and-server-flow) There are two basic ways to
-    work with OAuth authentication: client flow and server flow. This
+-   [Which OAuth grant should I use?](#client-and-server-flow) There are two basic ways to
+    work with OAuth: One uses the implicit grant and client-side flow, and the other uses the authorization code grant and server-side flow. This
     section provides a brief overview of each and when to use them.
 
-**Note**: To see all the code for the tutorial, see [Complete Code Listing]({{ site.baseurl }}/docs/wdc_oauth_tutorial.html#complete-code-listing).
 
 ## The tutorial scenario {#tutorial-scenario}
 
@@ -109,11 +106,11 @@ a specific *resource owner* (the user who signs in to Foursquare). This
 is a more secure and usable alternative to the application asking the
 user directly for their Foursquare username and password.
 
-In order to use OAuth, an application must be registered with the OAuth
+To use OAuth, an application must be registered with the OAuth
 resource provider. For example, in this tutorial, you register your
 application with Foursquare. (If you were using a different OAuth
 provider, you would register your application with that provider.) The
-provider assigns a client ID and a client secret to the application.
+provider assigns a *client ID* to identify the application and a *client secret* that is known only by the application and the OAuth provider and is used to authorize the application to make requests on behalf of the user.
 When the application contacts the OAuth provider, the application passes
 the client ID to identify itself. The exact process for registering your
 application differs for each provider, and is typically explained in the
@@ -139,7 +136,7 @@ steps in the flow.
     URL that redirects the user back to the connector, Foursquare
     includes an authorization code.
     
-5. The HTTP server we setup with Node.js Express accepts the authorization code and issues a request to Foursquare for an access token. The request includes the client ID and the client secret that only the server has knowledge of.
+5. The HTTP server we setup with Node.js Express accepts the authorization code and issues a request to Foursquare for an access token. The request includes the client ID and the client secret, a unique identifier that only the server and the Foursquare OAuth provider have knowledge of. The client secret is to ensure that some other application can't impersonate your connector.
 
 6.  Foursquare verifies the authorization code and client secret and returns an access token.
 
@@ -150,29 +147,21 @@ steps in the flow.
 8.  Foursquare returns the requested information for the user
     represented by the access token.
 
-## Which OAuth flow should I use: client-based or server-based? {#client-and-server-flow}
+## Which OAuth grant type should I use? {#client-and-server-flow}
 
-Applications can use OAuth using one of two flows: client flow and
-server flow. In client flow, JavaScript that runs in the browser makes
-the OAuth calls and handles the access token. In server flow, the
-authentication flow goes through a server instead of going back and
-forth only between the client (browser) and the resource provider.
+Applications can use OAuth using one of several grant types. A grant type refers to the way an application goes about getting an access token after a user has authorized the application. Two common ones and the ones described here are the authorization code grant and the implicit grant. The grant type you choose determines the type of authorization flow you use.
 
-The primary motivation for using server-based flow is to increase
-security. In client flow, all the information required in order to get
-an access token is on the client—that is, in JavaScript code. This makes
-the information visible to anyone who can read that JavaScript code. In
-server flow, the server keeps the client secret that's assigned to the
-app, and the secret is used to get the access token.
+With the authorization code grant, the application requests an authorization code when the user signs in, which is then exchanged for an access token. The authorization code grant can be referred to as server-side flow, as the authorization flow goes through the application's back end (or server-side) code, which handles exchanging the authorization code and the client secret for the access token.
+
+When you use the implicit grant, the application requests the access token, which is returned when the user gives the application permission. This type of grant could be referred to as client-side flow, as the JavaScript that runs in the browser makes the OAuth calls and handles the access token.
+
+The primary motivation for using authorization code grant and the server-side flow is to increase security. In client-side flow, all the information required in order to get an access token is on the client—that is, in JavaScript code. This makes the information visible to anyone who can read that JavaScript code. In the server-side flow, the server keeps the client secret that's assigned to the app, and the secret is used to get the access token.
 
 Which should you use? A rule of thumb is that if you're calling
-endpoints that require your client secret, you should use server flow.
-The client secret should be kept secure, and the client flow potentially
-exposes the secret. In the server flow, the client secret can be kept
-more secure on the server. We are using the server flow in this tutorial.
+endpoints that require your client secret, you should use the authorization code grant and the server-side flow. The client secret should be kept secure, and the implicit grant and client-side flow potentially exposes the secret. In the server-side flow, the client secret can be kept more secure on the server. We use the authorization code grant and server-side flow in this tutorial.
 
 However, if you're not calling endpoints that require the client secret,
-it's generally easier to implement the client flow.
+it's generally easier to implement the client-side flow.
 
 
 
@@ -225,7 +214,7 @@ is making requests.
 6.  Copy the client ID and client secret and keep them in a
     secure location.
 
-    **Note**: For this tutorial, you need the client ID and the client secret. The client ID is used for the initial request for authorization. The client secret is used by the local web server to complete the authorization and to obtain the access token.
+    **Note**: For this tutorial, you need the client ID and the client secret. The client ID is used for the initial request for authorization. The client secret is used by the local web server to complete the authorization and to obtain the access token. The client secret must be kept secure and away from public view. In this tutorial, we use the client secret on our web server and not in our Foursquare WDC application, where the JavaScript code is potentially accessible.
 
 
 ## "Like" some venues
@@ -233,14 +222,14 @@ is making requests.
 If you're new to Foursquare, you don't have any "Liked" venues. To make
 sure you have some data to work with later, do this.
 
-1.  Go to the [Foursquare.com](http://www.fourquare.com){:target="_blank"} site and
+1.  Go to the [Foursquare.com](https://www.foursquare.com){:target="_blank"} site and
     sign in.
 
-2.  Search for venues and display the listing for a venue that you like.
+2.  Go to the [City Guide](https://foursquare.com/city-guide){:target="_blank"}, and search for venues and display the listing for a venue that you like.
 
-3.  Click the "Like" icon at the bottom of the page.
+3.  Click the "Like" icon for the venue near the top of the listing.
 
-    ![]({{ site.baseurl }}/assets/wdc_tutorial_oauth_foursquare_likes.png)
+    ![]({{ site.baseurl }}/assets/wdc_tutorial_oauth_foursquare_likes2.png)
 
 4.  Repeat steps 2 and 3 a few times until you have a selection of
     "Liked" venues to test later.
@@ -309,34 +298,18 @@ You also add JavaScript code that toggles text in the page ("You are
 signed in" or "You are not signed in"), depending on whether the user is
 signed in.
 
-**Note**: To see all the code for the tutorial, see [Complete Code Listing]({{ site.baseurl }}/docs/wdc_oauth_tutorial.html#complete-code-listing).
-
 
 
 ## Get the button graphic
 
-**Note** If you want, you can skip this part of the tutorial and just copy the `foursquare_connect.png` file from the `Examples\OAuthProxyExample\public` directory. The key takeaway here is that if you create a web data connector for a service that uses OAuth or another authentication method, it is best to use the official buttons and logos from the service. Follow whatever guidance the service recommends regarding the use of trademarks and resources, such as buttons and icons.  
+The page we are creating uses a graphic for the **Connect to Foursquare** button.
 
-The page uses a graphic for the **Connect to Foursquare** button. Download
-the graphic from the Foursquare resources page at the following
-location:
+*  Copy the `foursquare_connect.png` file from the `Examples\OAuthProxyExample\public` folder and place it in the folder we created for our web page: `Examples\FoursquareWDC\public`.
 
-`https://foursquare.com/about/logos`
+![]({{ site.baseurl }}/assets/foursquare_connect.png)
 
+If you create a web data connector for a service that uses OAuth or another authorization method, it is best to use the official buttons and logos from the service. Follow whatever guidance the service recommends regarding the use of trademarks and resources, such as buttons and icons. For this tutorial, we downloaded the graphic from the Foursquare resources page: `https://foursquare.com/about/logos`. Note that the Foursquare UI for downloading assets might change without notice.
 
-
-Foursquare uses Dropbox to store the assets like buttons. The graphic for the Foursquare button can be found in the Press Kit. Click the link to the Press Kit, and then click Logos. Go to the Developer folder and look for the **Connect to Foursquare** button. For example, select the
-`Connect-to-Foursquare-300.png` file and click the **Download** button (at the top of the page).
-
-**Note**: The Foursquare UI for downloading assets might change without
-notice.
-
-Save the graphic as `foursquare_connect.png` in the `Examples\FoursquareWDC\public` folder of
-the Web Data Connector SDK location on your computer. (Use the name
-`foursquare_connect.png` because that's the name that the
-`foursquare.html` page you're creating expects.)
-
-![]({{ site.baseurl }}/assets/wdc_tutorial_oauth_foursquare_connect_button.png)
 
 
 ## Create the HTML markup
@@ -366,15 +339,15 @@ the Web Data Connector SDK location on your computer. (Use the name
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.2/js.cookie.min.js" type="text/javascript"></script>
 
     <!-- This will contain all of your OAuth code -->
-    <script src="./foursquare.js" type="text/javascript"></script>
+    <script src="./foursquareWDC.js" type="text/javascript"></script>
 </head>
 <body>
   <div style="margin: auto; text-align: center; margin-top: 50px; max-width: 300px">
       <!-- These labels will toggle depending on whether the user is authenticated or not -->
       <p class="signedin">You are signed in!</p>
-      <p class="notsignedin">You are not signed in, please click below to sign in to your foursquare account.</p>
+      <p class="notsignedin">You are not signed in, please click below to sign in to your Foursquare account.</p>
 
-      <!-- The connect to foursquare button will have a link added to it in the js-->
+      <!-- The connect to Foursquare button will have a link added to it in the js-->
       <a href="#" id="connectbutton"><img src="./foursquare_connect.png" alt="Login with Foursquare"/></a>
       <br /><br />
 
@@ -396,7 +369,7 @@ the JavaScript coding (jQuery). The WDC library (currently
 **Note**: To connect to a web data connector that uses
 `tableauwdc-2.2.latest.js`, you must be using a recent version of Tableau.
 For more information, see [Web Data Connector Library
-Versions]({{ site.baseurl }}/docs/wdc-library-versions.html).
+Versions]({{ site.baseurl }}/docs/wdc_library_versions.html).
 
 The `foursquareWDC.js` file is a separate `.js` file that you'll create
 shortly. It will contain all the code for making calls to Foursquare.
@@ -459,12 +432,8 @@ The `authUrl` is the Foursquare address where we send the request for authorizat
 
 **Important**: The values in the `foursquareWDC.js` file, including your
 client ID, could be visible to anyone who can access your web data connector.
-Don't use this approach if you need the client secret to call APIs
-(which is an additional client value that you get from the OAuth
-provider). In that case, you should use server-flow OAuth. Server flow
-is covered in this tutorial. In this tutorial, you are calling
-an API that requires the client secret, so the client secret is not
-embedded in the `.js` file. The client secret is in the configuration file for the web server that communicates with the OAuth provider. Users of the web data connector never have access to the client secret.  
+Don't put your client secret here. In this tutorial, we are using the authorization code grant type and server-side flow, so the client secret is not
+embedded in this `.js` file. The client secret is in the configuration file for the web server that communicates with the OAuth provider. Users of the web data connector never have access to the client secret.  
 
 Finally, note that the `config` object contains a version value, which
 is a date. You must include a version value each time you make a call to
@@ -505,11 +474,6 @@ in the page.
 
 The next section in our `document.ready` function links the buttons on the web page to the functions we will add to login to Foursquare (`doAuthRedirect()`) and create the web data connector (`getvenuesbutton()`).
 
-**Next**
-
-In the next part of the tutorial, you'll add JavaScript code that
-manages the OAuth sign-in process, a handler for the **Connect to Foursquare** button that takes the
-user to Foursquare, and code that gets the authorization token when the user is redirected back to our local web server page.
 
 
 ---
@@ -522,12 +486,11 @@ In this part of the tutorial, you add JavaScript code that manages the
 OAuth sign-in process to get authorization. When a user clicks the **Connect to Foursquare** button, your code redirects the user to Foursquare, where the user can sign in. After the
 user signs in, Foursquare redirects the user back to the local web server with an authorization code. The web server takes the authorization code and adds the client secret in a request back to Foursquare to get the access token that will be used for making requests for data. Foursquare sends the access token back to the web server. The web server saves the access token in the browser cookie, so that the client code (your web data connector) can retrieve it. You'll add code to retrieve the OAuth access token from the browser cookie.
 
-**Note**: To see all the code for the tutorial, see [Complete Code Listing]({{ site.baseurl }}/docs/wdc_oauth_tutorial.html#complete-code-listing).
 
 
 ## Add code for initial sign-in
 
-First we'll add the code to enable the user to login to Foursquare. Add this to your `foursquareWDC.js` file right after the `$(document).ready` method and within the anonymous function.
+First we'll add the code to enable the user to log in to Foursquare. Add this to your `foursquareWDC.js` file right after the `$(document).ready` method and within the anonymous function.
 
 ```javascript
   // An on-click function for the connect to foursquare button,
@@ -548,7 +511,7 @@ First we'll add the code to enable the user to login to Foursquare. Add this to 
 
 You will notice that the first part of the code for the `doAuthRedirect()` method checks the `tableau.authPurpose` enum before selecting the client ID to use. The conditional check is because you might have two different client IDs for the web data connector: one for Tableau Desktop and one for Tableau Server. The reason for multiple client IDs is that some OAuth services limit the number of access tokens that can be granted at a time. This is to avoid situations where a Tableau Desktop user who wants to add a web data connector ends up taking an access token away from a web data connector that is used in a workbook on Tableau Server. For more information, see [Authentication]({{ site.baseurl }}/docs/wdc_authentication.html#auth-purpose).
 
-The second part of the `doAuthRedirect()` method builds the URL to send to the Foursquare to obtain the authorization code. This request includes the client ID and the redirect URI that are declared in the configuration section of this file. The redirect URI is our local web server `http://localhost:3333/redirect`. Notice also that the request includes `response_type=code`. This indicates that the request is for an authorization code. The web server has the client secret and will use the client secret and the authorization code to acquire the access token.  
+The second part of the `doAuthRedirect()` method builds the URL to send to Foursquare to obtain the authorization code. This request includes the client ID and the redirect URI that are declared in the configuration section of this file. The redirect URI is our local web server `http://localhost:3333/redirect`. Notice also that the request includes `response_type=code`. This indicates that the request is for an authorization code. The web server has the client secret and will use the client secret and the authorization code to acquire the access token.  
 
 ## Add code to help with the OAuth requests
 
@@ -713,9 +676,11 @@ part of the Web Data Connector SDK.
 
 4.  Sign in and click **Log in and allow**.
     Foursquare redirects you back to the web data connector page in
-    the browser.
-
-    If you look in the Command Prompt or shell window where you started the server, you should see something similar to the following.
+    the browser. 
+    
+    **Note:** If you see the message that you are already signed in, you might need to delete cookies from your browsing history. For example, in Chrome, go to **Settings**, click **Advanced**, and choose **Clear Browsing Data**. 
+    
+    After you have successfully logged in, if you look in the Command Prompt or shell window where you started the server, you should see something similar to the following.
 
     ```cmd
 
@@ -750,7 +715,6 @@ data connectors have—code to get the schema (field names and types) for
 the data, and to get the data itself. This code is similar to the
 equivalent code in the basic tutorial.
 
-**Note**: To see all the code for the tutorial, see [Complete Code Listing]({{ site.baseurl }}/docs/wdc_oauth_tutorial.html#complete-code-listing).
 
 ---
 
@@ -1060,11 +1024,6 @@ line:
 ```
 
 
-**Next**
-
-
-In the next part of the tutorial, you'll test the web data connector
-using the simulator.
 
 
 ---
@@ -1083,7 +1042,7 @@ simulator that's part of the Web Data Connector SDK.
 
 You can now test the web data connector in the simulator. If you haven't done so already, you need to follow the steps in [Getting Started]({{ site.baseurl }}/docs/index.html) to install the components needed to run the simulator.
 
-1.  Open a Command Prompt or shell window and navigate to the `webdataconnector` folder. If you haven't done so already, start the web server that runs the simulator.
+1.  Open a Command Prompt or shell window and navigate to the `webdataconnector` folder. This is the top-level folder if you downloaded or cloned the WDC repository. If you haven't done so already, start the web server that runs the simulator.
 
      `npm start`
 
@@ -1128,7 +1087,7 @@ You can now test the web data connector in the simulator. If you haven't done so
     token value. When you run the simulator, after the UI phase is done,
     the simulator displays the values of `tableau` object properties.
 
-
+    **Note:** If you see the message that you are already signed in, and you want to test the sign in process, you might need to delete cookies from your browsing history. For example, in Chrome, go to **Settings**, click **Advanced**, and choose **Clear Browsing Data**.
 
 ---
 
@@ -1163,7 +1122,7 @@ in Tableau.
 
 6.  In the connector, click **Get Venues I Like**.
 
-    ![]({{ site.baseurl }}/assets/wdc_tutorial_oauth_basic_signin_ui.png)
+    ![]({{ site.baseurl }}/assets/wdc_tutorial_oauth_signed_in_ui.png)
 
 7.  The connector creates an extract that contains information about the
     venues you have liked on Foursquare, and Tableau opens a workbook
@@ -1203,7 +1162,7 @@ This page provides complete code listings (`foursquareWDC.html` and foursquareWD
 To connect to a web data connector that uses that version of the WDC
 library, you must be using a recent version of Tableau. For more
 information, see [Web Data Connector Library
-Versions]( {{ site.baseurl }}/docs/wdc-library-versions.html).
+Versions]( {{ site.baseurl }}/docs/wdc_library_versions.html).
 
 ```html
 <!DOCTYPE html>
@@ -1233,9 +1192,9 @@ Versions]( {{ site.baseurl }}/docs/wdc-library-versions.html).
   <div style="margin: auto; text-align: center; margin-top: 50px; max-width: 300px">
       <!-- These labels will toggle depending on whether the user is authenticated or not -->
       <p class="signedin">You are signed in!</p>
-      <p class="notsignedin">You are not signed in, please click below to sign in to your foursquare account.</p>
+      <p class="notsignedin">You are not signed in, please click below to sign in to your Foursquare account.</p>
 
-      <!-- The connect to foursquare button will have a link added to it in the js-->
+      <!-- The connect to Foursquare button will have a link added to it in the js-->
       <a href="#" id="connectbutton"><img src="./foursquare_connect.png" alt="Login with Foursquare"/></a>
       <br /><br />
 
