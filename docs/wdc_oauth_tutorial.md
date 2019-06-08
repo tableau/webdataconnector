@@ -1048,7 +1048,7 @@ You can now test the web data connector in the simulator. If you haven't done so
 
 2.  Start the simulator by entering the following in your browser:
 
-    `localhost:88888/simulator/`
+    `localhost:8888/simulator/`
 
     (As before, we're assuming that the server is listening on
     port 8888.)
