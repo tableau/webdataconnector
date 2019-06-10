@@ -12,7 +12,7 @@
       redirectUri: 'http://localhost:3333/redirect',
       authUrl: 'https://foursquare.com/',
       version: '20190102'
-  };
+  }; 
 
   // Called when web page first loads and when
   // the OAuth flow returns to the page
@@ -29,17 +29,17 @@
       });
 
       $("#getvenuesbutton").click(function() {
-          tableau.connectionName = "Foursqure Venues Data";
+          tableau.connectionName = "Foursquare Venues Data";
           tableau.submit();
       });
   });
 
   // An on-click function for the connect to foursquare button,
-  // This will redirect the user to a foursquare login
+  // This will redirect the user to a Foursquare login
   function doAuthRedirect() {
       var appId = config.clientId;
       if (tableau.authPurpose === tableau.authPurposeEnum.ephemerel) {
-        appId = config.clientId;
+        appId = config.clientId;  // This should be Desktop
       } else if (tableau.authPurpose === tableau.authPurposeEnum.enduring) {
         appId = config.clientId; // This should be the Tableau Server appID
       }
@@ -84,7 +84,7 @@
       }
 
       if (tableau.phase == tableau.phaseEnum.gatherDataPhase) {
-        // If API that WDC is using has an endpoint that checks
+        // If the API that WDC is using has an endpoint that checks
         // the validity of an access token, that could be used here.
         // Then the WDC can call tableau.abortForAuth if that access token
         // is invalid.

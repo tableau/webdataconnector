@@ -1,13 +1,13 @@
 ---
 title: "Support for WDC Libraries to Change in Tableau 2019.1"
-abstract: "Web Data Connectors that use versions of the WDC client library (prior to v2.0.2) will display a warning in Tableau 2019.1. When Tableau 2019.2 is released, those WDCs will not run unless they have been updated."
+abstract: "Web Data Connectors that use versions of the WDC client library (prior to v2.0.2) will display a warning in Tableau 2019.1. In a future release of Tableau, those WDCs will not run unless they have been updated."
 ---
 
 Web Data Connectors (WDC) that use versions of the WDC client library (prior to v2.0.2) will display a warning in Tableau 2019.1.
 
 `Warning - This version of the Web Data Connector library is deprecated...`
 
-If you are using a Web Data Connector and see this warning message, contact the developer of the connector directly. When Tableau 2019.2 is released, a WDC that uses one of the specified libraries will not run, unless the developer updates the WDC to use a supported version of the library.
+If you are using a Web Data Connector and see this warning message, contact the developer of the connector directly. In the future, a WDC that uses one of the specified libraries will not run, unless the developer updates the WDC to use a supported version of the library.
 
 ### Versions of the WDC library that will not be supported
 

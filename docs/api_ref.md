@@ -1343,12 +1343,12 @@ if (row_index % 100 === 0) {
                     <section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
                         <a name="webdataconnectorapi.authpurposeenum.enduring" class="tsd-anchor"></a>
                         <h3>enduring</h3>
-                        <div class="tsd-signature tsd-kind-icon">enduring: </div>
+                        <div class="tsd-signature tsd-kind-icon">enduring: Indicates that the WDC running in the context of Tableau Server.</div>
                     </section>
                     <section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
                         <a name="webdataconnectorapi.authpurposeenum.ephemeral" class="tsd-anchor"></a>
                         <h3>ephemeral</h3>
-                        <div class="tsd-signature tsd-kind-icon">ephemeral: </div>
+                        <div class="tsd-signature tsd-kind-icon">ephemeral: Indicates that the WDC is running in the context of Tableau Desktop.</div>
                     </section>
                 </section>
                 <section class="tsd-panel tsd-member tsd-kind-enum tsd-parent-kind-module tsd-is-not-exported">
