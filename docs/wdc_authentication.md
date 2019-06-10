@@ -127,11 +127,9 @@ is handled in the custom init method:
 Advanced: Auth Purpose Mechanism {#auth-purpose}
 ------------------------------------
 Understanding the content in the **OAuthProxyExample** included with the SDK is
-recommended before proceeding on with this or the following section.  That tutorial contains helpful terminology
-that is used without explanation here.
+recommended before proceeding on with this or the following section. See the [Node.js Proxy with OAuth Tutorial]({{ site.baseurl }}/docs/wdc_oauth_tutorial.html) for more information. The tutorial contains helpful terminology that is used without explanation here.
 
-Specifically for data sources that use OAuth as an authorization mechanism, there is a special
-enum in the API that can be useful for making a highly scalable connector.  This is an advanced technique
+Specifically for data sources that use OAuth as an authorization mechanism, there is a special enum in the API that can be useful for making a highly scalable connector.  This is an advanced technique
 and can be safely ignored in many scenarios.
 
 The motivation for this property stems from the fact that many OAuth providers only allow a limited

@@ -1,5 +1,5 @@
 ---
-title: Node.js Proxy with OAuth Tutorial
+title: WDC Node.js Proxy with OAuth Tutorial
 layout: docs
 ---
 

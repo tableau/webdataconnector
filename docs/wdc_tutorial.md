@@ -299,7 +299,7 @@ To really see things working, [open your connector in Tableau](http://tableau.gi
 You did it! Nice work. But this is no time to rest on your laurels--[try your connector in Tableau]({{ site.baseurl }}/docs/wdc_use_in_tableau),
 dig into the `Examples` directory to see more connectors, or read through the WDC documentation. You might want to start by
 learning about [connectors with multiple tables]({{ site.baseurl }}/docs/wdc_multi_table_tutorial),
-[incremental refresh]({{ site.baseurl }}/docs/wdc_incremental_refresh), and [authentication]({{ site.baseurl }}/docs/wdc_authentication).
+[incremental refresh]({{ site.baseurl }}/docs/wdc_incremental_refresh), and [authentication]({{ site.baseurl }}/docs/wdc_authentication). See the [WDC Multiple Table Tutorial]({{ site.baseurl }}/docs/wdc_multi_table_tutorial) and [WDC Node.js Proxy with OAuth Tutorial]({{ site.baseurl }}/docs/wdc_oauth_tutorial.html).
 
 Better yet, dive right in and create your own connector!
 
