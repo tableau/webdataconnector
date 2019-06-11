@@ -250,4 +250,7 @@ to display the join information.
 
 Want to check your work? See the source code in the `Examples` directory.
 
-Now you're *definitely* ready to make your own connector!
+Now you're *definitely* ready to make your own connector! 
+
+You might also want to
+learn about [incremental refresh]({{ site.baseurl }}/docs/wdc_incremental_refresh) and [authentication]({{ site.baseurl }}/docs/wdc_authentication). See the [WDC Node.js Proxy with OAuth Tutorial]({{ site.baseurl }}/docs/wdc_oauth_tutorial.html).
