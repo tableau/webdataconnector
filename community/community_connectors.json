@@ -152,6 +152,15 @@
         "source_code": "https://github.com/kaizenplatform/FacebookInsightsConnector"
     },
     {
+        "name": "FactSet Analytics API",
+        "url": "https://analytics-api-tableau.apps.factset.com/ ",
+        "author": "FactSet",
+        "github_username": "factset",
+        "tags": ["v_2.1"],
+        "description": "FactSet's Analytics API WDC leverages the power of APIs to integrate FactSet's industry leading multi-asset class portfolio analytics into Tableau. It provides users the flexibility and control to customize FactSet’s Analytics using Tableau’s data visualizations.",
+        "source_code": "https://developer.factset.com/api/pa-batch-api#documentation"
+    },
+    {
         "name": "Fitbit",
         "url": "http://data.theinformationlab.co.uk/fitbit.html",
         "author": "Craig Bloodworth",
