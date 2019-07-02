@@ -874,5 +874,14 @@
         "tags": ["v_2.0"],
         "description": "Connector to get data from Zabbix API",
         "source_code": "https://github.com/parflesh/zabbix-wdc"
+    },
+    {
+        "name": "OpenData DC Crime Stats",
+        "url": "https://jhc154.github.io/",
+        "author": "Justin Chae",
+        "github_username": "jhc154",
+        "tags": ["v_0.1"],
+        "description": "Connector to get last 30 days of crime stats from OpenData DC",
+        "source_code": "https://github.com/jhc154/jhc154.github.io"
     }
 ]
