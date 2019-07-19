@@ -874,5 +874,14 @@
         "tags": ["v_2.0"],
         "description": "Connector to get data from Zabbix API",
         "source_code": "https://github.com/parflesh/zabbix-wdc"
+    },
+    {
+        "name": "WDC NYC Baby Names",
+        "url": "https://jhc154.github.io/Tableau.WDC.OpenNYC.BabyNames/",
+        "author": "Justin",
+        "github_username": "jhc154",
+        "tags": ["v_1.0"],
+        "description": "Connector to get baby name stats from NYC data",
+        "source_code": "https://github.com/jhc154/Tableau.WDC.OpenNYC.BabyNames"
     }
 ]
