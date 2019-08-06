@@ -35,6 +35,15 @@
         "description": "A Tableau Web Data Connector for AmiiboAPI (http://www.amiiboapi.com/).",
         "source_code": "https://github.com/fri5by/amiiboapitableauwdc"
     },
+     {
+        "name": "Star wars api",
+        "url": "https://juanse9701.github.io/WDC-tableu-to-Star-wars-API/",
+        "author": "Juan peralta",
+        "github_username": "juanse9701",
+        "tags": ["v_1.1"],
+        "description": "A Tableau Web Data Connector for Star Wars Api (https://swapi.co/).",
+        "source_code": "https://github.com/juanse9701/WDC-tableu-to-Star-wars-API"
+    },
     {
         "name": "Australian Bureau of Statistics (ABS) SDMX-JSON Connector",
         "url": "https://aprince.github.io/ABS_SDMX-JSON_API/",
