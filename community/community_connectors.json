@@ -278,6 +278,15 @@
         "source_code": ""
     },
     {
+        "name": "itigo Cloud Connector",
+        "url": "https://itigocloud.github.io/itigo-Tableau-WDC/index.html",
+        "author": "itigo Cloud",
+        "github_username": "itigocloud",
+        "tags": ["v_1.0"],
+        "description": "Connect to itigo Cloud CRM",
+        "source_code": "https://github.com/itigocloud/itigo-Tableau-WDC"
+    },
+    {
         "name": "IXON WDC",
         "url": "https://cdn.ixon.cloud/tableau/latest/",
         "author": "IXON",
