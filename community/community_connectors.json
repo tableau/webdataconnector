@@ -287,6 +287,15 @@
         "source_code": "https://github.com/ixoncloud/tableau-wdc"
     },
     {
+        "name": "Jupytab",
+        "url": "https://github.com/CFMTech/Jupytab",
+        "author": "Brian Tribondeau",
+        "github_username": "btribonde",
+        "tags": ["v_0.9.0"],
+        "description": "Display in Tableau data from Jupyter notebooks using Python",
+        "source_code": "https://github.com/CFMTech/Jupytab"
+    },
+    {
         "name": "Kobotoolbox Web Data Connector",
         "url": "http://167.179.85.104:3000/",
         "author": "Imran Ahmedani",
@@ -393,15 +402,6 @@
         "tags": ["v_2.0"],
         "description": "Multitable connector for Visualizing download stats for npm packages",
         "source_code": "https://github.com/jagreene/npm-wdc/"
-    },
-    {
-        "name": "NoteTab",
-        "url": "https://github.com/CFMTech/NoteTab",
-        "author": "Brian Tribondeau",
-        "github_username": "btribonde",
-        "tags": ["v_0.9.4"],
-        "description": "Display in Tableau data from Jupyter notebooks using Python",
-        "source_code": "https://github.com/CFMTech/NoteTab"
     },
     {
         "name": "Office 365 Sharepoint",
