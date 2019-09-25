@@ -278,6 +278,15 @@
         "source_code": ""
     },
     {
+        "name": "itigo Cloud Connector",
+        "url": "https://itigocloud.github.io/itigo-Tableau-WDC/index.html",
+        "author": "itigo Cloud",
+        "github_username": "itigocloud",
+        "tags": ["v_1.0"],
+        "description": "Connect to itigo Cloud CRM",
+        "source_code": "https://github.com/itigocloud/itigo-Tableau-WDC"
+    },
+    {
         "name": "IXON WDC",
         "url": "https://cdn.ixon.cloud/tableau/latest/",
         "author": "IXON",
@@ -285,6 +294,15 @@
         "tags": ["v_2.3"],
         "description": "IXON Cloud is an Industrial IoT portal for machine manufacturers. Easily connect Tableau to your machine data. More info at https://www.ixon.cloud",
         "source_code": "https://github.com/ixoncloud/tableau-wdc"
+    },
+    {	
+        "name": "Japanese Government Statistics (e-Stat)",
+        "url": "https://wdc.dataconcerto.jp/estat",
+        "author": "Junko Fujiwara",
+        "github_username": "",
+        "tags": ["v_2.3"],
+        "description": "Connector to retrieve data from Japanese Government Statistics (e-Stat)",
+        "source_code": ""
     },
     {
         "name": "Kobotoolbox Web Data Connector",
@@ -384,6 +402,15 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": "https://github.com/tableau-mkt/insights-data-connector"
+    },
+    {
+        "name": "NYC Baby Names",
+        "url": "https://jhc154.github.io/Tableau.WDC.OpenNYC.BabyNames/",
+        "author": "Justin",
+        "github_username": "jhc154",
+        "tags": ["v_1.0"],
+        "description": "Connector to get baby name stats from NYC data",
+        "source_code": "https://github.com/jhc154/Tableau.WDC.OpenNYC.BabyNames"
     },
     {
         "name": "NPM Download Counts",
