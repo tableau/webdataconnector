@@ -910,5 +910,14 @@
         "tags": ["v_2.0"],
         "description": "Connector to get data from Zabbix API",
         "source_code": "https://github.com/parflesh/zabbix-wdc"
+    },
+    {
+         "name": "Tableau Public WDC",
+        "url": "https://tableau-public.wdc.dev/",
+        "author": "Andre de Vries",
+        "github_username": "andre347",
+        "tags": ["v_1.0"],
+        "description": "Connector to get data from your Tableau Public Profile",
+        "source_code": ""
     }
 ]
