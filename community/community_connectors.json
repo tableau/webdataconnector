@@ -18,6 +18,15 @@
         "source_code": "https://github.com/satichun/AV-WDC"
     },
     {
+        "name": "Alpha Vantage Official",
+        "url": "https://www.getalphavantage.co/tableau_wdc",
+        "author": "Patrick Collins",
+        "github_username": "PatrickAlphaVantage",
+        "tags": ["v_1.0"],
+        "description": "A connector for stock, forex, cryptocurrency, technical indicators, and sector performance",
+        "source_code": "https://github.com/PatrickAlphaVantage/tableau_wdc"
+    },
+    {
         "name": "Alteryx",
         "url": "http://data.theinformationlab.co.uk/alteryx.html",
         "author": "Craig Bloodworth",
