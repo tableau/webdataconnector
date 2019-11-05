@@ -4,9 +4,8 @@ layout: docs
 ---
 
 You can use the simulator included with the WDC SDK to develop and debug your connectors more quickly. The simulator
-is a JavaScript application that loads connectors in a similar way to Tableau Desktop. Additionally, Tableau
-Desktop includes a built-in (although not supported) debugger that you can use to debug issues that appear in Tableau Desktop
-but not in the simulator.
+is a JavaScript application that loads connectors in a similar way to Tableau Desktop. Additionally, starting with Tableau Desktop 2019.4, you can use the Chrome DevTools to debug issues that appear in Tableau Desktop, but not in the simulator. 
+In versions of Tableau Desktop prior to 2019.4, you can use a built-in--although, not supported--debugger that you can use to debug WDC issues that appear in those versions of Tableau Desktop.
 
 Use the simulator when you are developing your connector, to set breakpoints in the browser, view network requests, and
 more. Use Tableau Desktop periodically during development to confirm that your connector works the same as in the
@@ -73,6 +72,8 @@ connector. Here are some ways to work around caching issues:
 
 ### General browser debugging tips {#browser-tips}
 
+<!-- Not sure how this was supposed to work in with for WebKit-based debugging, these instructions don't say how you connect to the WDC -->
+
 *   Open the developer tools console for the browser.
 
     For example, in Google Chrome press Ctrl+Shift+I on Windows or Command+Option+I on the Mac to open the tools pane,
@@ -93,7 +94,96 @@ connector. Here are some ways to work around caching issues:
     overview of debugging tools, see [JavaScript Debugging](http://www.w3schools.com/js/js_debugging.asp) on the
     W3CSchools.com site.
 
-## Debugging in Tableau Desktop {#debugging-tableau}
+
+---
+
+## Debugging a WDC in Tableau Desktop 2019.4 (and later) {#debug-chrome}
+
+Starting with Tableau 2019.4, you can use the Chrome DevTools to debug your WDC while it is running in Tableau Desktop. This means you can use a Chrome browser, instead of the unsupported "Beta" debugger that was built into Tableau Desktop.
+
+### Start Tableau with remote debugging enabled (Windows)
+
+1. Open a command prompt.
+
+2. Navigate to the Tableau Desktop directory. 
+Replace `<version>` with the version of Tableau you are using (for example,`Tableau 2019.4`).
+
+    ```
+    cd C:\Program Files\Tableau\Tableau <version>\bin\
+    ```
+
+3. Start Tableau with the remote debugging option.
+
+    ```
+    tableau.exe --remote-debugging-port=9000
+    ```
+
+    This command enables remote debugging of your WDC for this session of Tableau.
+
+    **Note:** The remote debugging port (for example, `9000`) must match the port address you use with the Chrome browser for debugging. This is *not* the HTTP port that you are using to host your WDC.
+
+### Start Tableau with remote debugging enabled (macOS)
+
+1. Open a Terminal window.
+
+1. Start Tableau using the following command.
+<br/> Replace `<version>` with the version of Tableau you are using (for example,`2019.4.app`).
+
+    ```
+    open /Applications/Tableau\ Desktop\ <version>.app --args --remote-debugging-port=9000
+
+    ```
+
+    This command enables remote debugging of your WDC for this session of Tableau.
+
+    **Note:** The remote debugging port (for example, `9000`) must match the port address you use with Chrome for debugging. This is *not* the HTTP port that you are using to host your WDC.
+
+
+### Debugging a WDC in Tableau Desktop using Chrome
+
+After you enable debugging in Tableau, you can start debugging your WDC with a Chrome browser.
+
+1. Connect to a web data connector. In Tableau, open a connection to the Web Data Connector. In the WDC dialog box, enter the URL of the WDC you want to debug, and press **Enter**. After your WDC landing page is loaded, you will want to wait before interacting with the page so you can start the Chrome debugger and set breakpoints.
+
+1. Start Chrome and set the URL to [`http://localhost:9000`](http://localhost:9000)  
+   This will bring up the page selector UI. The port (for example, `9000`) must match the port address you specified as the remote debugging port when you started Tableau.
+
+  
+1. In the Chrome Browser, select the WDC you want to debug from this page (under **Inspectable pages**). 
+
+    Note that the name of the WDC is based on the title of the web page that was loaded for the WDC.
+
+    ![Remote Debugging]({{site.baseurl}}/assets/select_wdc_chrome_dbg.png){:height="50%" width="50%"}
+
+1. When the Chrome debugger is connected, switch to the **Sources** tab and set a breakpoint (or breakpoints) in your WDC source code (for example, on the `getSchema` and `getData` methods).
+
+1. Switch back to Tableau and interact with the WDC. The WDC will run until it hits the breakpoint.  
+
+1. Switch back to the Chrome browser and use the developer tools to step through your source code, examine variables, and watch the Console for messages.
+
+    ![]({{site.baseurl}}/assets/wdc_chrome_source_breakpoint.png){:height="75%" width="75%"}
+
+---
+
+### Debug your WDC initial startup code
+
+If you want to debug the initial startup of your WDC, you can set an Event Listener Breakpoint to break on the first statement whenever a JavaScript file is loaded. Then you can open the WDC home page in Tableau and connect the debugger. When you load your WDC, the debugger will break on the first module.
+
+1. Start Tableau in debugging mode and open the Web Data Connector dialog box.
+
+1. Switch to the the Chrome browser and use the developer tools (`localhost:9000`) and select the WDC Home page.
+
+    ![]({{site.baseurl}}/assets/select_wdc_home_chrome_dbg.png){:height="50%" width="50%"}
+
+1. Click the **Sources** pane in the debugger, and then click **Event Listener Breakpoints**. Under **Script**, select **Script First Statement**.
+
+    ![]({{site.baseurl}}/assets/chrome_breakpoint_script.png){:height="25%" width="25%"}
+
+1. Go back to Tableau and enter the URL for your WDC. When the WDC loads, the debugger will break on the first module of your source code. Use the Chrome Developer Tools to step through the start up code.
+
+---
+
+## Debugging a WDC in Tableau Desktop 2019.3 (and earlier) {#debugging-tableau}
 
 Tableau Desktop includes a built-in debugger that you can use to test your connectors. Use the built-in debugger when
 you encounter differences that you cannot debug in the simulator.
@@ -102,7 +192,7 @@ you encounter differences that you cannot debug in the simulator.
 
 * The built-in debugger only runs on Windows.
 * It is provided as-is and without official support by Tableau.
-* The debugger communicates with Tableau Desktop  synchronously and therefore might appear unresponsive at times.
+* The debugger communicates with Tableau Desktop synchronously and therefore might appear unresponsive at times.
 
 To run the built-in debugger, complete the following steps:
 
