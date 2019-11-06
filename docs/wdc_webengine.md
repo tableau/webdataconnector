@@ -57,7 +57,7 @@ The console messages will also be written to the Tableau log file (regular log f
 
 ### Mixed-mode HTTP(S) errors
 
-**Details**: In Tableau 2019.3 and earlier, which use the QT WebKit internal browser, mixed-mode HTTP and HTTPS calls are legal. That is, a WDC is able to make an AJAX request from an HTTPS host to a HTTP host. In Tableau 2019.4 and later, the Chromium-based QT WebEngine browser reports errors when the WDC attempts mixed-mode calls.
+**Details**: In Tableau 2019.3 and earlier, which use the QT WebKit internal browser, mixed-mode HTTP and HTTPS calls are legal. For example, in earlier versions of Tableau, a WDC is able to make an AJAX request from an HTTPS host to an HTTP host, or can make HTTP requests for images, scripts, or other HTML elements from an HTTPS web page. In Tableau 2019.4 and later, the Chromium-based QT WebEngine browser reports errors when the WDC attempts mixed-mode calls.
 
 **Resolution:** Always use HTTPS endpoints. Do not use mixed-mode.
 

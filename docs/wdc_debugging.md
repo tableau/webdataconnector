@@ -75,12 +75,11 @@ connector. Here are some ways to work around caching issues:
 
 ### General browser debugging tips {#browser-tips}
 
-<!-- Not sure how this was supposed to work in with for WebKit-based debugging, these instructions don't say how you connect to the WDC -->
 
 *   Open the developer tools console for the browser.
 
-    For example, in Google Chrome press Ctrl+Shift+I on Windows or Command+Option+I on the Mac to open the tools pane,
-    and then select the <span class="uicontrol">Console</span> tab. In this console, you can see all the results of
+    For example, in Google Chrome press **Ctrl**+**Shift**+**I** on Windows or **Command**+**Option**+**I** on the Mac to open the tools pane,
+    and then select the **Console** tab. In this console, you can see all the results of
     various console.log statements.  The console also displays output from the [tableau.log]({{ site.baseurl
     }}/docs/api_ref#webdataconnectorapi.tableau.log) and [tableau.abortWithError]({{ site.baseurl
     }}/docs/api_ref#webdataconnectorapi.tableau.abortwitherror) functions.
@@ -108,14 +107,14 @@ Starting with Tableau 2019.4, you can use the [Chrome DevTools](https://develope
 
 1. Open a command prompt.
 
-2. Navigate to the Tableau Desktop directory. 
+1. Navigate to the Tableau Desktop directory. 
 Replace `<version>` with the version of Tableau you are using (for example,`Tableau 2019.4`).
 
     ```
     cd C:\Program Files\Tableau\Tableau <version>\bin\
     ```
 
-3. Start Tableau with the remote debugging option.
+1. Start Tableau with the remote debugging option.
 
     ```
     tableau.exe --remote-debugging-port=9000
