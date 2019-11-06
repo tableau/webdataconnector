@@ -47,7 +47,10 @@ tableau.log("My console message goes here!");
   testing in the same folder.
 
 <div class="alert alert-info">
-<b>Note: </b>Tableau Desktop embeds the Qt Webkit browser into the product to display your connector pages. This browser might lack some of the features of modern browsers, including specific HTML5 and other features. For more information on browser support, <a href="http://doc.qt.io/qt-5/whatsnew57.html" target="_blank"> see the features in Qt 5.7</a>, which is the version used by Tableau (10.3 to 2018.3). You might also want to see the Qt Webkit documentation on HTML5 support and the <a href="https://wiki.qt.io/Qt_Webkit_HTML5_Score" target="_blank">Qt Webkit HTML5 Score</a>.
+<p><b>Note: </b>Tableau 2019.4 (and later) embeds the Qt WebEngine browser into the product to display your connector pages. Qt WebEngine is a Chromium-based browser that provides support for HTML5 and other modern features, including the ability to use the Chrome DevTools for debugging.</p>
+
+<p>Tableau Desktop 2019.3 (and earlier) embeds the Qt Webkit browser. This browser might lack some of the features of modern browsers, including specific HTML5 features. For more information on browser support, <a href="http://doc.qt.io/qt-5/whatsnew57.html" target="_blank"> see the features in Qt 5.7</a>, which is the version used by Tableau (10.3 to 2019.3). You might also want to see the Qt Webkit documentation on HTML5 support and the <a href="https://wiki.qt.io/Qt_Webkit_HTML5_Score" target="_blank">Qt Webkit HTML5 Score
+</a>.</p>
 </div>
 
 
@@ -99,7 +102,7 @@ connector. Here are some ways to work around caching issues:
 
 ## Debugging a WDC in Tableau Desktop 2019.4 (and later) {#debug-chrome}
 
-Starting with Tableau 2019.4, you can use the Chrome DevTools to debug your WDC while it is running in Tableau Desktop. This means you can use a Chrome browser, instead of the unsupported "Beta" debugger that was built into Tableau Desktop.
+Starting with Tableau 2019.4, you can use the [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools){:target="_blank"}{:ref="noopener"} to debug your WDC while it is running in Tableau Desktop. This means you can use a Chrome browser, instead of the unsupported "Beta" debugger that was built into Tableau Desktop.
 
 ### Start Tableau with remote debugging enabled (Windows)
 
@@ -141,7 +144,7 @@ Replace `<version>` with the version of Tableau you are using (for example,`Tabl
 
 ### Debugging a WDC in Tableau Desktop using Chrome
 
-After you enable debugging in Tableau, you can start debugging your WDC with a Chrome browser.
+After you enable debugging in Tableau, you can start debugging your WDC with the Chrome Developer Tools.
 
 1. Connect to a web data connector. In Tableau, open a connection to the Web Data Connector. In the WDC dialog box, enter the URL of the WDC you want to debug, and press **Enter**. After your WDC landing page is loaded, you will want to wait before interacting with the page so you can start the Chrome debugger and set breakpoints.
 
@@ -149,7 +152,7 @@ After you enable debugging in Tableau, you can start debugging your WDC with a C
    This will bring up the page selector UI. The port (for example, `9000`) must match the port address you specified as the remote debugging port when you started Tableau.
 
   
-1. In the Chrome Browser, select the WDC you want to debug from this page (under **Inspectable pages**). 
+1. In the Chrome Browser, select the WDC you want to debug from this page (under **Inspectable pages**).
 
     Note that the name of the WDC is based on the title of the web page that was loaded for the WDC.
 

@@ -69,28 +69,5 @@ The console messages will also be written to the Tableau log file (regular log f
 
 **Resolution:** Don't rely on cookies. Use `tableau.connectionData` to pass data and expect users may need to re-authenticate if you don't preserve session data.
 
----
 
-### Help my WDC doesn't work and I can't do anything to fix it! Can I still use WebKit (the old browser engine) in Tableau 2019.4?
 
-**Details:** Some customers might need to use a WDC that is broken in Tableau 2019.4 and later because of the internal browser change. As a temporary fix, they can use the old Qt WebKit internal browser by using a legacy mode setting.
-
-**Resolution:** Customers can revert to Qt WebKit browser in WDC legacy mode. This support will not last forever. To enable this, customers need to set `LegacyWdcMode` to true (`1`) in the general Settings group for the current Tableau version in their registry/plist. This setting applies to both Tableau Desktop and Tableau Server.
-
-**Windows**: As an administrator on the computer where Tableau is installed, make a backup of the registry file before you make any changes to it.
-
-1. Open the Registry Editor (`regedit.exe`)
-
-1. Add and set the `LegacyWdcMode` registry key to `1`.  The registry value is a `DWORD`.
-
-    Registry key location: `HKEY_LOCAL_MACHINE\SOFTWARE\Tableau\Tableau <version>\Settings\LegacyWdcMode`
-
-**macOS**
-
-* Run the following command from the Terminal command prompt:
-
-    `defaults write com.tableau.tableau-<TABLEAU VERSION>.plist Settings.Extensions.LegacyWdcMode "1"`
-
-    For example in Tableau Desktop 2019.4, use this command:
-
-    `defaults write com.tableau.tableau-2019.4.plist Settings.LegacyWdcMode "1"`
