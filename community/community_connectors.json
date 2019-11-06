@@ -45,6 +45,14 @@
         "source_code": "github.com/aprince/ABS_SDMX-JSON_API"
     },
     {
+        "name": "Bitmovin Analytics",
+        "url": "https://bitmovin.github.io/analytics-tableau-web-data-collector",
+        "author": "Bitmovin",
+        "github_username": "bitmovin",
+        "description": "A Tableau Web Data Collector for the Bitmovin Analytics API (https://bitmovin.com/video-analytics)",
+        "source_code": "https://github.com/bitmovin/analytics-tableau-web-data-collector"
+    },
+    {
         "name": "BoardGameGeek User Plays",
         "url": "https://garnet-viper.hyperdev.space/",
         "author": "Jason Copenhaver",
@@ -142,6 +150,15 @@
         "tags": ["v_2.1"],
         "description": "Tableau WDC for Insights of Facebook Marketing API",
         "source_code": "https://github.com/kaizenplatform/FacebookInsightsConnector"
+    },
+    {
+        "name": "FactSet Analytics API",
+        "url": "https://analytics-api-tableau.apps.factset.com/ ",
+        "author": "FactSet",
+        "github_username": "factset",
+        "tags": ["v_2.1"],
+        "description": "FactSet's Analytics API WDC leverages the power of APIs to integrate FactSet's industry leading multi-asset class portfolio analytics into Tableau. It provides users the flexibility and control to customize FactSet’s Analytics using Tableau’s data visualizations.",
+        "source_code": "https://developer.factset.com/api/pa-batch-api#documentation"
     },
     {
         "name": "Fitbit",
@@ -261,6 +278,51 @@
         "source_code": ""
     },
     {
+        "name": "itigo Cloud Connector",
+        "url": "https://itigocloud.github.io/itigo-Tableau-WDC/index.html",
+        "author": "itigo Cloud",
+        "github_username": "itigocloud",
+        "tags": ["v_1.0"],
+        "description": "Connect to itigo Cloud CRM",
+        "source_code": "https://github.com/itigocloud/itigo-Tableau-WDC"
+    },
+    {
+        "name": "IXON WDC",
+        "url": "https://cdn.ixon.cloud/tableau/latest/",
+        "author": "IXON",
+        "github_username": "ixoncloud",
+        "tags": ["v_2.3"],
+        "description": "IXON Cloud is an Industrial IoT portal for machine manufacturers. Easily connect Tableau to your machine data. More info at https://www.ixon.cloud",
+        "source_code": "https://github.com/ixoncloud/tableau-wdc"
+    },
+    {	
+        "name": "Japanese Government Statistics (e-Stat)",
+        "url": "https://wdc.dataconcerto.jp/estat",
+        "author": "Junko Fujiwara",
+        "github_username": "",
+        "tags": ["v_2.3"],
+        "description": "Connector to retrieve data from Japanese Government Statistics (e-Stat)",
+        "source_code": ""
+    },
+    {
+        "name": "Jupytab",
+        "url": "",
+        "author": "Brian Tribondeau",
+        "github_username": "btribonde",
+        "tags": ["v_0.9.0"],
+        "description": "Display in Tableau data from Jupyter notebooks using Python. Note: You will need to setup this project locally first before using it.",
+        "source_code": "https://github.com/CFMTech/Jupytab"
+    },
+    {
+        "name": "Kobotoolbox Web Data Connector",
+        "url": "http://167.179.85.104:3000/",
+        "author": "Imran Ahmedani",
+        "github_username": "iahmedani",
+        "tags": ["v_0.1.0"],
+        "description": "Kobotoolbox web connector allows user to connect free ona.io accounts, Kobotoolbox and Open(non authorization like jsonplaceholer) REST APIs, code is qurated in a way that it will assess the schema remove symbols form labels and support all dataTypes",
+        "source_code": "https://github.com/iahmedani/kobo-wdc" 
+    },
+    {
         "name": "League of Legends Match Data",
         "url": "https://jimmy-jia.github.io/LoL-Match-Data-WDC/",
         "author": "Jimmy Jia",
@@ -333,6 +395,15 @@
         "source_code": "https://github.com/acbeers/neo4j-wdc"
     },
     {
+        "name": "Neo4J - official and supported WDC",
+        "url": "http://ralfbecher.github.io/tableau-neo4j-wdc/v2.3/Neo4jWdc2.html",
+        "author": "Ralf Becher",
+        "github_username": "ralfbecher",
+        "tags": ["v_2.3"],
+        "description": "Neo4J multi table connector to execute up to 5 Cypher queries. Supports latest Neo4j Temporal and Spatial data types.",
+        "source_code": "https://github.com/ralfbecher/tableau-neo4j-wdc"        
+    },
+    {
         "name": "New Relic Insights",
         "url": "https://insights-web-data-connector.herokuapp.com/",
         "author": "Eric Peterson",
@@ -340,6 +411,15 @@
         "tags": ["v_1.1"],
         "description": "",
         "source_code": "https://github.com/tableau-mkt/insights-data-connector"
+    },
+    {
+        "name": "NYC Baby Names",
+        "url": "https://jhc154.github.io/Tableau.WDC.OpenNYC.BabyNames/",
+        "author": "Justin",
+        "github_username": "jhc154",
+        "tags": ["v_1.0"],
+        "description": "Connector to get baby name stats from NYC data",
+        "source_code": "https://github.com/jhc154/Tableau.WDC.OpenNYC.BabyNames"
     },
     {
         "name": "NPM Download Counts",
@@ -358,6 +438,15 @@
         "tags": ["v_2.0"],
         "description": "Pull your Office 365 SharePoint list data directly into Tableau",
         "source_code": "https://github.com/TheInformationLab/Tableau-WDC-365Sharepoint"
+    },
+    {
+        "name": "Open Exchange Rates API",
+        "url": "https://open-exchange-rate-wdc.glitch.me/",
+        "author": "Keshia Rose",
+        "github_username": "KeshiaRose",
+        "tags": ["v_2.3"],
+        "description": "Get the latest exchange rates available from the Open Exchange Rates API.",
+        "source_code": "https://glitch.com/edit/#!/open-exchange-rate-wdc"
     },
     {
         "name": "OpenStreetMap Features",
@@ -821,14 +910,5 @@
         "tags": ["v_2.0"],
         "description": "Connector to get data from Zabbix API",
         "source_code": "https://github.com/parflesh/zabbix-wdc"
-    },
-    {
-        "name": "Neo4J - official and supported WDC",
-        "url": "http://ralfbecher.github.io/tableau-neo4j-wdc/v2.3/Neo4jWdc2.html",
-        "author": "Ralf Becher",
-        "github_username": "ralfbecher",
-        "tags": ["v_2.3"],
-        "description": "Neo4J multi table connector to execute up to 5 Cypher queries. Supports latest Neo4j Temporal and Spatial data types.",
-        "source_code": "https://github.com/ralfbecher/tableau-neo4j-wdc"
-}
+    }
 ]

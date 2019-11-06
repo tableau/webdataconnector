@@ -47,10 +47,12 @@ tableau.log("My console message goes here!");
   testing in the same folder.
 
 <div class="alert alert-info">
+
 <p><b>Note: </b>Tableau 2019.4 (and later) embeds the Qt WebEngine browser into the product to display your connector pages. Qt WebEngine is a Chromium-based browser that provides support for HTML5 and other modern features, including the ability to use the Chrome DevTools for debugging.</p>
 
 <p>Tableau Desktop 2019.3 (and earlier) embeds the Qt Webkit browser. This browser might lack some of the features of modern browsers, including specific HTML5 features. For more information on browser support, <a href="http://doc.qt.io/qt-5/whatsnew57.html" target="_blank"> see the features in Qt 5.7</a>, which is the version used by Tableau (10.3 to 2019.3). You might also want to see the Qt Webkit documentation on HTML5 support and the <a href="https://wiki.qt.io/Qt_Webkit_HTML5_Score" target="_blank">Qt Webkit HTML5 Score
 </a>.</p>
+
 </div>
 
 
