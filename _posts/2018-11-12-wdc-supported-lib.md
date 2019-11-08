@@ -11,13 +11,13 @@ If you are using a Web Data Connector and see this warning message, contact the 
 
 ### Versions of the WDC library that will not be supported
 
-Starting in Tableau 2019.1, a WDC that uses one of the following versions of the Web Data Connector client library (`tableauwdc-x.x.x.js`) will display the warning message that the library has been deprecated and will not be supported in Tableau 2019.2:
+Starting in Tableau 2019.1, a WDC that uses one of the following versions of the Web Data Connector client library (`tableauwdc-x.x.x.js`) will display the warning message that the library has been deprecated and will not be supported in Tableau 2019.4:
 
 - 1.x (all versions)
 - 2.0.0
 - 2.0.1
 
-In Tableau 2019.2, any Web Data Connectors that uses one of the deprecated libraries will stop working.
+In Tableau 2019.4, any Web Data Connectors that uses one of the deprecated libraries will stop working.
 
 ### Information for developers
 
@@ -25,6 +25,6 @@ In Tableau 2019.2, any Web Data Connectors that uses one of the deprecated libra
 
 ### The reason for this change
 
-Web Data Connectors are JavaScript-based components written by third-party developers to build data connectors for Tableau. Web Data Connectors use an internal browser in Tableau called Qt WebKit. In Tableau 2019.2, Web Data Connectors will use Qt WebEngine (a Chromium-based browser), a significant upgrade over Tableau’s current browser. WDC developers will benefit from this upgrade with the ability to use modern JavaScript, and Chrome developer tools for debugging WDC code.
+Web Data Connectors are JavaScript-based components written by third-party developers to build data connectors for Tableau. Web Data Connectors use an internal browser in Tableau called Qt WebKit. In Tableau 2019.4, Web Data Connectors will use Qt WebEngine (a Chromium-based browser), a significant upgrade over Tableau’s current browser. WDC developers will benefit from this upgrade with the ability to use modern JavaScript, and Chrome developer tools for debugging WDC code.
 
 The earlier versions of the Web Data Connector client library were not designed for use under Qt WebEngine. Therefore, Tableau will no longer support these versions in future releases.
