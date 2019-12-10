@@ -45,6 +45,15 @@
         "source_code": "github.com/aprince/ABS_SDMX-JSON_API"
     },
     {
+        "name": "Ascend.io",
+        "url": "https://trial.ascend.io/ui/tableau",
+        "author": "Shawn Xu",
+        "github_username": "shawnxusy",
+        "tags": ["v_1.0"],
+        "description": "A Tableau Web Data Connector for the Ascend.io Autonomous Dataflow Platform (https://www.ascend.io).",
+        "source_code": ""
+    },
+    {
         "name": "Bitmovin Analytics",
         "url": "https://bitmovin.github.io/analytics-tableau-web-data-collector",
         "author": "Bitmovin",
