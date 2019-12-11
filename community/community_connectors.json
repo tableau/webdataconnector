@@ -921,6 +921,15 @@
         "source_code": "https://github.com/parflesh/zabbix-wdc"
     },
     {
+         "name": "Tableau Public WDC",
+        "url": "https://tableau-public.wdc.dev/",
+        "author": "Andre de Vries",
+        "github_username": "andre347",
+        "tags": ["v_1.0"],
+        "description": "Connector to get data from your Tableau Public Profile",
+        "source_code": ""
+    },
+    {
         "name": "wdc-oecd-sdmx-json",
         "url": "https://joshyen.github.io/wdc-oecd-sdmx-json/AIR_GHG.html",
         "author": "JoshYEn",
