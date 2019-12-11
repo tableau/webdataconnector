@@ -919,5 +919,14 @@
         "tags": ["v_2.0"],
         "description": "Connector to get data from Zabbix API",
         "source_code": "https://github.com/parflesh/zabbix-wdc"
+    },
+    {
+        "name": "wdc-oecd-sdmx-json",
+        "url": "https://joshyen.github.io/wdc-oecd-sdmx-json/AIR_GHG.html",
+        "author": "JoshYEn",
+        "github_username": "JoshYEn",
+        "tags": ["v_1.0"],
+        "description": "Tableau Web Data Connector for fetching OECD dataset Greenhouse gas emissions by source",
+        "source_code": "https://github.com/JoshYEn/wdc-oecd-sdmx-json"
     }
 ]
