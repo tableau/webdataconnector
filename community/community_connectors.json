@@ -45,6 +45,15 @@
         "source_code": "https://github.com/fri5by/amiiboapitableauwdc"
     },
     {
+        "name": "Asana for Tableau",
+        "url": "https://tableau-wdc.integrations.asana.plus",
+        "author": "Asana",
+        "github_username": "",
+        "tags": ["v_1.0"],
+        "description": "Connect to your project and task data in your Asana Business or Enterprise account to track your team’s progress in Tableau",
+        "source_code": ""
+    },
+    {
         "name": "Australian Bureau of Statistics (ABS) SDMX-JSON Connector",
         "url": "https://aprince.github.io/ABS_SDMX-JSON_API/",
         "author": "Andy Prince",
