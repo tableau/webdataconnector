@@ -946,5 +946,14 @@
         "tags": ["v_1.0"],
         "description": "Tableau Web Data Connector for fetching OECD dataset Greenhouse gas emissions by source",
         "source_code": "https://github.com/JoshYEn/wdc-oecd-sdmx-json"
-    }
+    },
+    {
+    "name": "Dolar - Banco Central do Brasil",
+    "url": "https://juracyamerico.github.io/Dolar-Conector-de-dados-da-Web/cotacoes_diarias_e_taxas_de_cambioV2.html",
+    "author": "Juracy Américo",
+    "github_username": "JuracyAmerico",
+    "tags": ["v_1.0"],
+    "description": "Get the latest exchange dolar rates available from the Brazilian central bank API/ Obtenha as ultimas cotações diárias do dolar disponíveis no site do Banco Central",
+    "source_code": "https://github.com/JuracyAmerico/Dolar-Conector-de-dados-da-Web"
+}
 ]
