@@ -67,18 +67,18 @@ var postsTable = {
 
 ### Specify schema properties
 
-Now that you have a sample schema, you can specify which tables you want join and which columns you want to use for the primary to foreign key relatioship.
+Now that you have a sample schema, you can specify which tables you want join and which columns you want to use for the primary to foreign key relationship.
 To filter posts by user, set the following schema properties:
 
 * `joinOnly`. (Optional) Whether you want to make join filtering required for this table.
   If you set this value to true, you cannot connect to the table without first connecting to the other table.
-  For example, if you set this to true for the posts table, the posts table is disabled in Tableau unless you select the users table first.
+  For example, if you set this to true for the `posts` table, the `posts` table is disabled in Tableau unless you select the `users` table first.
 
 * `filterable`. Set to true for the column that you want to use for filtering.
-  Since we want the posts tables to be filtered on its `userId` column, you want to set this to true for the `userId` column of the `posts` table.
+  Because we want the `posts` tables to be filtered on its `userId` column, you want to set this to true for the `userId` column of the `posts` table.
 
-* `foreignKey`. Specify the tableId and columnId of the foreign key to use.
-  Since the posts table `userId` column represents a foreign key to the users table `id` primary key, you would enter `{ "tableId": "users", "columnId": "id" }` on the posts table.  You can have many foreignKey attributes point to the same primary key.
+* `foreignKey`. Specify the `tableId` and `columnId` to create the primary to foreign key relationship.
+  The `posts` table `userId` column represents a foreign key to the `users` table `id` primary key. Set the `foreignKey` property on the `userId` column of the `posts` table and point to the primary key:  `foreignKey: { "tableId": "users", "columnId": "id" }`.  You can have many foreignKey attributes point to the same primary key.
 
 The schema below has these properties already set:
 
@@ -106,7 +106,11 @@ var posts_cols = [{
     id: "userId",
     alias: "userId",
     dataType: tableau.dataTypeEnum.string,
-    filterable: true
+    filterable: true,
+    foreignKey: {
+        "tableId": "users",
+        "columnId": "id"
+    }
 }, {
     id: "title",
     alias: "title",
@@ -117,11 +121,7 @@ var postsTable = {
     joinOnly: true,
     id: "posts",
     alias: "Post Data",
-    columns: posts_cols,
-    foreignKey: {
-	"tableId": "users",
-	"columnId": "id"
-    }
+    columns: posts_cols
 };
 ```
 
@@ -144,7 +144,7 @@ var tableData = [];
 if (table.tableInfo.id === "users") {
     $.getJSON("http://jsonplaceholder.typicode.com/users", function(resp) {
 	for (var i = 0; i < resp.length; i++) {
-				// Only return the first 5 users to demonstrate filtering
+		// Only return the first 5 users to demonstrate filtering
 	    if (resp[i].id <= 5) {
 		tableData.push({
 		    "id": resp[i].id,
@@ -235,7 +235,11 @@ The full code for the example above is displayed below:
             id: "userId",
             alias: "userId",
             dataType: tableau.dataTypeEnum.string,
-            filterable: true
+            filterable: true,
+            foreignKey: {
+                "tableId": "users",
+                "columnId": "id"
+            }
         }, {
             id: "title",
             alias: "title",
@@ -246,11 +250,7 @@ The full code for the example above is displayed below:
             joinOnly: true,
             id: "posts",
             alias: "Post Data",
-            columns: posts_cols,
-            foreignKey: {
-                "tableId": "users",
-                "columnId": "id"
-            }
+            columns: posts_cols
         };
 
         schemaCallback([usersTable, postsTable]);

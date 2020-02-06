@@ -494,11 +494,11 @@ title: WDC API Reference
                         <div class="tsd-signature tsd-kind-icon">foreignKey: Object</div>
                         <div class="tsd-comment tsd-typography">
                             <div class="lead">
-                                <p>(Optional) An object that specifies the table ID and column ID to use in join filtering to create the primary to foreign key relationship. For more information, see <a href="wdc_join_filtering.html">Join Filtering</a>.</p>
+                                <p>(Optional) An object that specifies the table ID and column ID to use in join filtering to create the primary to foreign key relationship. Set this property on the column used in the dependent table (the foreign key) and point to the table ID and column ID of the primary table (the primary key). For more information, see <a href="wdc_join_filtering.html">Join Filtering</a>.</p>
                             </div>
                             <p><b>Note</b>: This feature is only supported in version 2.2 and later of the WDC.</p>
                             <p>For example, you might enter a foreign key object like this:</p>
-                            <pre>foreignKey: { "tableId": "posts", "columnId": "userId" }</pre>
+                            <pre>foreignKey: { "tableId": "users", "columnId": "id" }</pre>
                         </div>
                     </section>
                     <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
