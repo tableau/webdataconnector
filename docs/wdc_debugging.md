@@ -112,7 +112,7 @@ To debug your WDC, you'll need to use a Chromium-based browser (Chromium is the 
 Tableau Desktop version  |  Chromium version  | Chrome version
 |----|----|----|
 Prior to 2019.4 | Not Available |  Not available
-2019.4 and later | 79.0.3945.0  | Chrome version 79 or earlier.
+2019.4 and later | Chromium version 79 or earlier (for example, 79.0.3945.0)  | Chrome version 79 or earlier. 
 
 
 **Chromium downloads for debugging Tableau 2019.1 and later**
