@@ -21,6 +21,15 @@ The console messages will also be written to the Tableau log file (regular log f
 
 ---
 
+### Although the extract is created successfully, no data is inserted into it
+
+**Details:** In Tableau 2019.4 and later, Web Data Connectors use Qt WebEngine as the internal browser. The version of the Qt WebEngine we currently use has a limitation on the amount of data that you can append to the extract at a time. The communication channel used to send the data has a limit of 128MB, which requires that you limit the amount of data you append at a time. Because of metadata that could associated with your data, the actual size limit could be much smaller than 128MB. If your WDC appends more data than can be transmitted, the WDC is created and initialized but no data is added. For information on the Qt limitation, see [QTBUG-47629](https://bugreports.qt.io/browse/QTBUG-47629){:target="_blank"}{:ref="noopener"}
+
+
+**Resolution:**  Depending upon the size of your data, it's a best practice to insert data into the table in amounts smaller than 128MB (accounting for the additional metadata). For more information and for example code showing one way of breaking up the data into smaller chunks, see [Get Data in Chunks]({{site.baseurl}}/docs/wdc_data_chunking.html).
+
+---
+
 ### Starting Tableau using `tableau.exe -DebugWDC` doesn't work
 
 **Resolution:** Starting with Tableau 2019.4, you can use the [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools){:target="_blank"}{:ref="noopener"} to debug WDCs. You no longer use the built-in debugger that was available in earlier versions of Tableau (before Tableau 2019.4). See [Debugging a WDC in Tableau Desktop 2019.4 (and later)]({{site.baseurl}}/docs/wdc_debugging.html#debug-chrome).
