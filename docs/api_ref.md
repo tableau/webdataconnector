@@ -761,7 +761,8 @@ var standardConnection = {
                             <li class="tsd-description">
                                 <div class="tsd-comment tsd-typography">
                                     <div class="lead">
-                                        <p>Called to actually append rows of data to the extract. Takes either an array of arrays or an array of objects which contain the actual rows of data for the extract. The format for these match version 1 of the API.</p>
+                                        <p>Called to actually append rows of data to the extract and is called in the <code>getData</code> function during the Gather Data Phase. Takes either an array of arrays or an array of objects which contain the actual rows of data for the extract. The format for these match version 1 of the API.</p>
+                                        <p></p>
                                     </div>
                                 </div>
                                 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -774,6 +775,20 @@ var standardConnection = {
                             </li>
                         </ul>
                     </section>
+                <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+                        <a name="webdataconnectorapi.appendRows.example" class="tsd-anchor"></a>
+                    <h4>Example</h4>
+                        <p>To avoid overwhelming the data pipeline, which currently has a 128MB limit per function call, you can create a <code>while</code> loop for the <code>appendRows</code> function.  This is important if you are working with very large data sets. The following code uses a <code>size</code> variable along with the <code>row_index</code> to add rows of data in <code>size</code> increments. Each row in the table is assigned an index value, represented by the <code>row_index</code> value. It is a best practice to also call the <code>reportProgress</code> function as you add data so that Tableau can report the progress to end-users during the extract creation process. In this example, 1000 rows are added at a time. If you are working with a large data set, you might want to choose a larger size to improve performance. Each append operation needs to be under the 128MB data limit.</p>
+<pre>
+       var row_index = 0;
+       var size = 1000;
+       while (row_index < tableData.length){
+            table.appendRows(tableData.slice(row_index, size + row_index));
+            row_index += size;
+            tableau.reportProgress("Getting row: " + row_index);
+        }
+</pre>
+                </section>
                 </section>
                 <section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
                     <a name="webdataconnectorapi.tableinfo-1" class="tsd-anchor"></a>
