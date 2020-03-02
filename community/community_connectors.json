@@ -955,5 +955,15 @@
     "tags": ["v_1.0"],
     "description": "Get the latest exchange dolar rates available from the Brazilian central bank API/ Obtenha as ultimas cotações diárias do dolar disponíveis no site do Banco Central",
     "source_code": "https://github.com/JuracyAmerico/Dolar-Conector-de-dados-da-Web"
-}
+},
+  {
+    "name": "NY Times Best sellers",
+    "url": "https://muthukumarsm.github.io/NYTimes_Bestsellers/index.html",
+    "author": "Muthukumar S M (msm@tableau.com)",
+    "github_username": "",
+    "tags": ["v_1.0"],
+    "description": "NY Times best sellers list for each week",
+    "source_code": "https://github.com/muthukumarsm/NYTimes_Bestsellers/"
+}  
+    
 ]
