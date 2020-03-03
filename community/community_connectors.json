@@ -948,6 +948,16 @@
         "source_code": "https://github.com/JoshYEn/wdc-oecd-sdmx-json"
     },
     {
+    "name": "NY Times Best sellers",
+    "url": "https://muthukumarsm.github.io/NYTimes_Bestsellers/",
+    "author": "Muthukumar S M (msm@tableau.com)",
+    "github_username": "",
+    "tags": ["v_1.0"],
+    "description": "NY Times best sellers list for each week",
+    "source_code": "https://github.com/muthukumarsm/NYTimes_Bestsellers/"
+},  
+    
+    {
     "name": "Dolar - Banco Central do Brasil",
     "url": "https://juracyamerico.github.io/Dolar-Conector-de-dados-da-Web/cotacoes_diarias_e_taxas_de_cambioV2.html",
     "author": "Juracy Américo",
