@@ -161,6 +161,15 @@
         "source_code": "https://developer.factset.com/api/pa-batch-api#documentation"
     },
     {
+        "name": "filemaker2tableau",
+        "url": "https://github.com/1-more-thing/fm2tableau/releases/latest",
+        "author": "Romain Dunand",
+        "github_username": "airmoi",
+        "tags": ["v_2.3"],
+        "description": "Connect easly Tableau to your FileMaker databases",
+        "source_code": "https://github.com/1-more-thing/fm2tableau"
+    },
+    {
         "name": "Fitbit",
         "url": "http://data.theinformationlab.co.uk/fitbit.html",
         "author": "Craig Bloodworth",
