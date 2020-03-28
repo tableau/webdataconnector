@@ -964,5 +964,14 @@
     "tags": ["v_1.0"],
     "description": "Get the latest exchange dolar rates available from the Brazilian central bank API/ Obtenha as ultimas cotações diárias do dolar disponíveis no site do Banco Central",
     "source_code": "https://github.com/JuracyAmerico/Dolar-Conector-de-dados-da-Web"
-}
+},
+  {
+        "name": "Quintessential",
+        "url": "https://covid-api.quintessential.gr/data",
+        "author": "Praphul Samavedam",
+        "github_username": "PraphulSamavedam",
+        "tags": ["v_1.0.0"],
+        "description": "Covid-19 Virus Data from Johns Hopkins CSSE ",
+        "source_code": "https://github.com/PraphulSamavedam/webdataconnector/tree/master/covid"
+   }
 ]
