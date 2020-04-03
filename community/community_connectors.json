@@ -955,7 +955,25 @@
         "tags": ["v_1.0"],
         "description": "Tableau Web Data Connector for fetching NY Times best sellers list",
         "source_code": "https://github.com/muthukumarsm/TableauWDC"
-    },    
+    },
+    {
+        "name": "COVID India Main Data set",
+        "url": "https://muthukumarsm.github.io/indiacoviddata/CovidIndia_Main.html",
+        "author": "Muthukumar S M (msm@tableau.com)",
+        "github_username": "muthukumarsm",
+        "tags": ["v_1.0"],
+        "description": "Tableau Web Data Connector for Covid India Data - Main",
+        "source_code": "https://github.com/muthukumarsm/indiacoviddata"
+    },
+    {
+        "name": "COVID India Statewise Data set",
+        "url": "https://muthukumarsm.github.io/indiacoviddata/CovidIndia_Statewise.html",
+        "author": "Muthukumar S M (msm@tableau.com)",
+        "github_username": "muthukumarsm",
+        "tags": ["v_1.0"],
+        "description": "Tableau Web Data Connector for Covid India Data - Main",
+        "source_code": "https://github.com/muthukumarsm/indiacoviddata"
+    },  
     {
     "name": "Dolar - Banco Central do Brasil",
     "url": "https://juracyamerico.github.io/Dolar-Conector-de-dados-da-Web/cotacoes_diarias_e_taxas_de_cambioV2.html",
