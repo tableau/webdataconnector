@@ -964,5 +964,14 @@
     "tags": ["v_1.0"],
     "description": "Get the latest exchange dolar rates available from the Brazilian central bank API/ Obtenha as ultimas cotações diárias do dolar disponíveis no site do Banco Central",
     "source_code": "https://github.com/JuracyAmerico/Dolar-Conector-de-dados-da-Web"
+},
+    {
+    "name": "Covid-19 - Brasil.io",
+    "url": "https://juracyamerico.github.io/Covid-19/Covid-19.html",
+    "author": "Juracy Américo",
+    "github_username": "JuracyAmerico",
+    "tags": ["v_1.0"],
+    "description": "Get the latest Covid-19 data available from the Brazi.io API/ Obtenha os ultimos dados sobre Covid19 disponíveis no site do Brasil.io",
+    "source_code": "https://github.com/JuracyAmerico/Covid-19"
 }
 ]
