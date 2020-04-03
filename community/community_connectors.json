@@ -964,5 +964,15 @@
     "tags": ["v_1.0"],
     "description": "Get the latest exchange dolar rates available from the Brazilian central bank API/ Obtenha as ultimas cotações diárias do dolar disponíveis no site do Banco Central",
     "source_code": "https://github.com/JuracyAmerico/Dolar-Conector-de-dados-da-Web"
+},
+    {
+    "name": "Daily COVID-19 Data for the US",
+    "url": "https://covidtracking.com/api/v1/states/daily.json",
+    "author": "Zeus R",
+    "github_username": "usczeus",
+    "tags": ["v_1.0"],
+    "description": "The COVID Tracking Project collects and publishes the most complete testing data available for US states and territories.",
+    "source_code": "https://covidtracking.com/api/"
 }
+
 ]
