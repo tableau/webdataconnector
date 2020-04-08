@@ -955,7 +955,34 @@
         "tags": ["v_1.0"],
         "description": "Tableau Web Data Connector for fetching NY Times best sellers list",
         "source_code": "https://github.com/muthukumarsm/TableauWDC"
-    },    
+    },
+        {
+        "name": "India COVID 19 Data Connector - Patient data from crowdsourced DB",
+        "url": "https://muthukumarsm.github.io/covid19india/CovidIndia_Main.html",
+        "author": "Muthukumar S M (msm@tableau.com)",
+        "github_username": "muthukumarsm",
+        "tags": ["v_1.0"],
+        "description": "Volunteer (Individual) driven API Web Data Connector for fetching COVID 19 India Dataset for all patients",
+        "source_code": "https://github.com/muthukumarsm/covid19india"
+    }, 
+{
+        "name": "India COVID 19 Data Connector - State-wise summary data",
+        "url": "https://muthukumarsm.github.io/covid19india/CovidIndia_Statewise.html",
+        "author": "Muthukumar S M (msm@tableau.com)",
+        "github_username": "muthukumarsm",
+        "tags": ["v_1.0"],
+        "description": "Volunteer (Individual) driven API Web data connector for fetching Covid 19 India Dataset statewise - Summarization",
+        "source_code": "https://github.com/muthukumarsm/covid19india"
+    }, 
+{
+        "name": "India COVID 19 Data Connector - Daywise Summary data",
+        "url": "https://muthukumarsm.github.io/covid19india/CovidIndia_Daywise.html",
+        "author": "Muthukumar S M (msm@tableau.com)",
+        "github_username": "muthukumarsm",
+        "tags": ["v_1.0"],
+        "description": "Volunteer (Individual) driven API Web Data Connector for fetching Covid 19 India Dataset Daily summary Active/Deceased/Recovered",
+        "source_code": "https://github.com/muthukumarsm/covid19india"
+    }, 
     {
     "name": "Dolar - Banco Central do Brasil",
     "url": "https://juracyamerico.github.io/Dolar-Conector-de-dados-da-Web/cotacoes_diarias_e_taxas_de_cambioV2.html",
