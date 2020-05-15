@@ -45,6 +45,15 @@
         "source_code": "https://github.com/fri5by/amiiboapitableauwdc"
     },
     {
+    "name": "Aprimo MRM and DAM Connector",
+    "url": "https://www.solutionsplusconsulting.com/aprimo-tableau-connector/",
+    "author": "Solutions Plus",
+    "github_username": "",
+    "tags": ["v_1.2"],
+    "description": "A Tableau WDC for the Aprimo platform (http://www.aprimo.com).",
+    "source_code": ""
+    },
+    {
         "name": "Australian Bureau of Statistics (ABS) SDMX-JSON Connector",
         "url": "https://aprince.github.io/ABS_SDMX-JSON_API/",
         "author": "Andy Prince",
