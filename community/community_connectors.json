@@ -179,6 +179,15 @@
         "source_code": "https://developer.factset.com/api/pa-batch-api#documentation"
     },
     {
+        "name": "Fantasy Premier League 19-20",
+        "url": "https://r3dcobbler.github.io/FPL19-20/index.html",
+        "author": "Mick Sheahan",
+        "github_username": "R3dCobbler",
+        "tags": ["v_1.0"],
+        "description": "WDC to pull data from the latest FPL API.",
+        "source_code": "github.com/R3dCobbler/FPL19-20"
+    }
+    {
         "name": "Fitbit",
         "url": "http://data.theinformationlab.co.uk/fitbit.html",
         "author": "Craig Bloodworth",
