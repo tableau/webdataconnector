@@ -1027,5 +1027,14 @@
     "tags": ["v_1.0"],
     "description": "Get the latest Covid-19 data available from the Brazi.io API/ Obtenha os ultimos dados sobre Covid19 disponíveis no site do Brasil.io",
     "source_code": "https://github.com/JuracyAmerico/Covid-19"
+},
+{
+    "name": "Covid-19 Italy",
+    "url": "https://giandata.github.io/wdc-openpuglia-covid/openpuglia.html",
+    "author": "Giancarlo Di Donato",
+    "github_username": "giandata",
+    "tags": ["v_1.0"],
+    "description": "Get timeseries data of Covid-19 in Italy from openpuglia.org API / Ottieni serie storica relativa al Covid-19 in Italia dalle API di openpuglia.org",
+    "source_code": "https://github.com/giandata/wdc-openpuglia-covid"
 }
 ]
