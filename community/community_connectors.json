@@ -186,7 +186,7 @@
         "tags": ["v_1.0"],
         "description": "WDC to pull data from the latest FPL API.",
         "source_code": "github.com/R3dCobbler/FPL19-20"
-    }
+    },
     {
         "name": "Fitbit",
         "url": "http://data.theinformationlab.co.uk/fitbit.html",
