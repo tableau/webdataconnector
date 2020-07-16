@@ -619,6 +619,15 @@
         "source_code": ""
     },
     {
+        "name": "Shorten.REST Tableau Connector",
+        "url": "https://tableau.shorten.rest/",
+        "author": "API LADS INC",
+        "github_username": "apilads",
+        "tags": ["v_1.0"],
+        "description": "Shorten.REST Tableau Connector enables you to easily pipe your click data into Tableau for visualization & analysis.",
+        "source_code": "github.com/apilads/Shorten.REST-Tableau-Connector"
+    },
+    {
         "name": "SAP Business Objects WEBI & QaaWS",
         "url": "https://github.com/starschema/tableau-web-table-connector#business-objects-connector",
         "author": "Tamas Foldi",
