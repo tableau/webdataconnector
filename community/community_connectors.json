@@ -842,6 +842,17 @@
         "description": "",
         "source_code": ""
     },
+    
+    {
+    "name": "COVID-19 Emergency Service Providers in CA",
+    "url": "https://lshpaner.rbind.io/datasets/covid_19_data/emergencyserviceprovidersinca/covid19emergprovca.html",
+    "author": "Leon Shpaner",
+    "github_username": "lshpaner",
+    "tags": ["v_2.0"],
+    "description": "Full Scale Data of all Emergency Service Providers related to COVID-19 in the state of CA",
+    "source_code": "github.com/Me/MyConnector"
+    },
+        
     {
         "name": "U.S. Federal Reserve Economic Data (FRED)",
         "url": "http://wdc.poc.interworks.com/fred_20/",
@@ -849,7 +860,7 @@
         "github_username": "austinderrick",
         "tags": ["v_2.0"],
         "description": "",
-        "source_code": "https://github.com/austinderrick/fred_wdc_20"
+        "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/covid_19_data/EmergencyServiceProvidersinCA"
     },
     {
         "name": "Unify BI",
