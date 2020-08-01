@@ -984,6 +984,15 @@
         "source_code": "https://github.com/JoshYEn/wdc-oecd-sdmx-json"
     },
     {
+    "name": "COVID-19 Los Angeles Testing Sites",
+    "url": "https://lshpaner.rbind.io/datasets/covid_19_data/latestingsites/lacovid19testsites.html",
+    "author": "Leon Shpaner",
+    "github_username": "lshpaner",
+    "tags": ["v_2.0"],
+    "description": "List and addresses to Los Angeles' COVID-19 Testing Sites",
+    "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/covid_19_data/LATestingSites"
+    },
+    {
         "name": "NY Times Best sellers List",
         "url": "https://muthukumarsm.github.io/TableauWDC/Book Details.html",
         "author": "Muthukumar S M (msm@tableau.com)",
