@@ -45,13 +45,13 @@
         "source_code": "https://github.com/fri5by/amiiboapitableauwdc"
     },
     {
-    "name": "Aprimo Platform Connector",
-    "url": "https://connect-uat.spcreports.com/Aprimo-Tableau",
-    "author": "Solutions Plus",
-    "github_username": "",
-    "tags": ["v_1.2"],
-    "description": "A Tableau WDC for the Aprimo Platform (https://www.solutionsplusconsulting.com/aprimo-tableau-connector/).",
-    "source_code": ""
+        "name": "Aprimo Platform Connector",
+        "url": "https://connect-uat.spcreports.com/Aprimo-Tableau",
+        "author": "Solutions Plus",
+        "github_username": "",
+        "tags": ["v_1.2"],
+        "description": "A Tableau WDC for the Aprimo Platform (https://www.solutionsplusconsulting.com/aprimo-tableau-connector/).",
+        "source_code": ""
     },
     {
         "name": "Australian Bureau of Statistics (ABS) SDMX-JSON Connector",
@@ -268,6 +268,15 @@
         "description": "Get Hearthstone card data from HearthstoneJSON.",
         "source_code": "https://github.com/ausgop/HearthstoneJSON-WDC"
     },
+    {
+        "name": "HERE 7-Day Weather Forecast",
+        "url": "https://datadev-weather-wdc.glitch.me/",
+        "author": "Keshia Rose",
+        "github_username": "KeshiaRose",
+        "tags": ["v_1.0"],
+        "description": "Get 7-day weather forecast data for a selected city.",
+        "source_code": "https://glitch.com/edit/#!/datadev-weather-wdc"
+    },    
     {
         "name": "HPCC Systems",
         "url": "https://hpcc-systems.github.io/HPCC-Tableau-WDC/hpccTableauConnector.html",
