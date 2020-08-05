@@ -850,7 +850,7 @@
     "github_username": "lshpaner",
     "tags": ["v_2.0"],
     "description": "Full Scale Data of all Emergency Service Providers related to COVID-19 in the state of CA",
-    "source_code": "github.com/Me/MyConnector"
+    "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/covid_19_data/EmergencyServiceProvidersinCA"
     },
         
     {
