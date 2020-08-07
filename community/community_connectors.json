@@ -867,8 +867,18 @@
     "author": "Leon Shpaner",
     "github_username": "lshpaner",
     "tags": ["v_2.0"],
-    "description": "Full Scale Data of all Emergency Service Providers related to COVID-19 in the state of CA",
+    "description": "full-scale data of all emergency service providers related to COVID-19 in the state of CA",
     "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/covid_19_data/EmergencyServiceProvidersinCA"
+    },
+    
+    {
+    "name": "Geothermal Wells in the State of CA",
+    "url": "https://lshpaner.rbind.io/datasets/CA_Geothermal_Data/CAGeothermalWells.html",
+    "author": "Leon Shpaner",
+    "github_username": "lshpaner",
+    "tags": ["v_1.0"],
+    "description": "full-scale dataset of geothermal wells in the state of CA (sourced from California Geologic Energy Management Division (CalGEM) and arcgis)",
+    "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/CA_Geothermal_Data"
     },
         
     {
