@@ -863,12 +863,22 @@
     
     {
     "name": "COVID-19 Emergency Service Providers in CA",
+    "url": "https://lshpaner.rbind.io/datasets/ca_geothermal_data/cageothermalwells.html",
+    "author": "Leon Shpaner",
+    "github_username": "lshpaner",
+    "tags": ["v_1.0"],
+    "description": "full scale data of all emergency service providers related to COVID-19 in the state of CA",
+    "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/covid_19_data/EmergencyServiceProvidersinCA"
+    },
+    
+    {
+    "name": "Geothermal Wells in the State of CA",
     "url": "https://lshpaner.rbind.io/datasets/covid_19_data/emergencyserviceprovidersinca/covid19emergprovca.html",
     "author": "Leon Shpaner",
     "github_username": "lshpaner",
     "tags": ["v_2.0"],
-    "description": "Full Scale Data of all Emergency Service Providers related to COVID-19 in the state of CA",
-    "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/covid_19_data/EmergencyServiceProvidersinCA"
+    "description": "dataset of all geothermal wells located in the state of California parsed by full scope of parameters including location, functionality, and status",
+    "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/CA_Geothermal_Data"
     },
         
     {
