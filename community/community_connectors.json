@@ -863,7 +863,7 @@
     
     {
     "name": "COVID-19 Emergency Service Providers in CA",
-    "url": "https://lshpaner.rbind.io/datasets/ca_geothermal_data/cageothermalwells.html",
+    "url": "https://lshpaner.rbind.io/datasets/covid_19_data/emergencyserviceprovidersinca/covid19emergprovca.html",
     "author": "Leon Shpaner",
     "github_username": "lshpaner",
     "tags": ["v_1.0"],
@@ -873,7 +873,7 @@
     
     {
     "name": "Geothermal Wells in the State of CA",
-    "url": "https://lshpaner.rbind.io/datasets/covid_19_data/emergencyserviceprovidersinca/covid19emergprovca.html",
+    "url": "https://lshpaner.rbind.io/datasets/ca_geothermal_data/cageothermalwells.html",
     "author": "Leon Shpaner",
     "github_username": "lshpaner",
     "tags": ["v_2.0"],
