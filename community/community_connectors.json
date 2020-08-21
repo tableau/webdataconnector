@@ -169,6 +169,15 @@
         "description": "",
         "source_code": "https://github.com/tableau-mkt/dcm-dfa-wdc"
     },
+    {
+"name": "DCTM Connector",
+    "url": "https://thakarevb.github.io/DCTMWDC/folderinfo.html",
+    "author": "Vishal Thakare",
+    "github_username": "thakarevb",
+    "tags": ["v_2.0"],
+    "description": "Sample Documentum web data connector to fetch data in Tableau",
+    "source_code": "github.com/thakarevb/DCTMWDC.git"
+	},
      {
         "name": "Elasticsearch",
         "url": "http://mradamlacey.github.io/elasticsearch-tableau-connector/elasticsearch-connector.html",
