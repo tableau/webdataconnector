@@ -1084,5 +1084,13 @@
     "tags": ["v_1.0"],
     "description": "Get timeseries data of Covid-19 in Italy from openpuglia.org API / Ottieni serie storica relativa al Covid-19 in Italia dalle API di openpuglia.org",
     "source_code": "https://github.com/giandata/wdc-openpuglia-covid"
+},
+{
+    "name": "Yogi Connector",
+    "url": "https://meetyogi.github.io/yogi-tableau/src/html/yogiwdc.html",
+    "author": "Yogi",
+    "tags": ["v_1.0"],
+    "description": "This Connector allows Yogi Customers to access their project Data"
 }
 ]
+    
