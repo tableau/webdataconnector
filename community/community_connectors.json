@@ -45,6 +45,15 @@
         "source_code": "https://github.com/fri5by/amiiboapitableauwdc"
     },
     {
+        "name": "Aprimo Platform Connector",
+        "url": "https://connect-uat.spcreports.com/Aprimo-Tableau",
+        "author": "Solutions Plus",
+        "github_username": "",
+        "tags": ["v_1.2"],
+        "description": "A Tableau WDC for the Aprimo Platform (https://www.solutionsplusconsulting.com/aprimo-tableau-connector/).",
+        "source_code": ""
+    },
+    {
         "name": "Australian Bureau of Statistics (ABS) SDMX-JSON Connector",
         "url": "https://aprince.github.io/ABS_SDMX-JSON_API/",
         "author": "Andy Prince",
@@ -134,6 +143,15 @@
         "source_code": "https://github.com/dtreskunov/dhis2-wdc"
     },
     {
+    "name": "DCTM Connector",
+    "url": "https://thakarevb.github.io/DCTMWDC/folderinfo.html",
+    "author": "Vishal Thakare",
+    "github_username": "thakarevb",
+    "tags": ["v_2.0"],
+    "description": "Sample Documentum web data connector to fetch data in Tableau",
+    "source_code": "github.com/thakarevb/DCTMWDC.git"
+    },
+    {
         "name": "Diggernaut",
         "url": "https://www.diggernaut.com/wdc/",
         "author": "Mikhail Sisin",
@@ -177,6 +195,15 @@
         "tags": ["v_2.1"],
         "description": "FactSet's Analytics API WDC leverages the power of APIs to integrate FactSet's industry leading multi-asset class portfolio analytics into Tableau. It provides users the flexibility and control to customize FactSet’s Analytics using Tableau’s data visualizations.",
         "source_code": "https://developer.factset.com/api/pa-batch-api#documentation"
+    },
+    {
+        "name": "Fantasy Premier League 19-20",
+        "url": "https://r3dcobbler.github.io/FPL19-20/index.html",
+        "author": "Mick Sheahan",
+        "github_username": "R3dCobbler",
+        "tags": ["v_1.0"],
+        "description": "WDC to pull data from the latest FPL API.",
+        "source_code": "github.com/R3dCobbler/FPL19-20"
     },
     {
         "name": "Fitbit",
@@ -250,6 +277,15 @@
         "description": "Get Hearthstone card data from HearthstoneJSON.",
         "source_code": "https://github.com/ausgop/HearthstoneJSON-WDC"
     },
+    {
+        "name": "HERE 7-Day Weather Forecast",
+        "url": "https://datadev-weather-wdc.glitch.me/",
+        "author": "Keshia Rose",
+        "github_username": "KeshiaRose",
+        "tags": ["v_1.0"],
+        "description": "Get 7-day weather forecast data for a selected city.",
+        "source_code": "https://glitch.com/edit/#!/datadev-weather-wdc"
+    },    
     {
         "name": "HPCC Systems",
         "url": "https://hpcc-systems.github.io/HPCC-Tableau-WDC/hpccTableauConnector.html",
@@ -601,6 +637,15 @@
         "source_code": ""
     },
     {
+        "name": "Shorten.REST Tableau Connector",
+        "url": "https://tableau.shorten.rest/",
+        "author": "API LADS INC",
+        "github_username": "apilads",
+        "tags": ["v_1.0"],
+        "description": "Shorten.REST Tableau Connector enables you to easily pipe your click data into Tableau for visualization & analysis.",
+        "source_code": "github.com/apilads/Shorten.REST-Tableau-Connector"
+    },
+    {
         "name": "SAP Business Objects WEBI & QaaWS",
         "url": "https://github.com/starschema/tableau-web-table-connector#business-objects-connector",
         "author": "Tamas Foldi",
@@ -815,6 +860,17 @@
         "description": "",
         "source_code": ""
     },
+    
+    {
+    "name": "COVID-19 Emergency Service Providers in CA",
+    "url": "https://lshpaner.rbind.io/datasets/covid_19_data/emergencyserviceprovidersinca/covid19emergprovca.html",
+    "author": "Leon Shpaner",
+    "github_username": "lshpaner",
+    "tags": ["v_2.0"],
+    "description": "Full Scale Data of all Emergency Service Providers related to COVID-19 in the state of CA",
+    "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/covid_19_data/EmergencyServiceProvidersinCA"
+    },
+        
     {
         "name": "U.S. Federal Reserve Economic Data (FRED)",
         "url": "http://wdc.poc.interworks.com/fred_20/",
@@ -1009,5 +1065,14 @@
     "tags": ["v_1.0"],
     "description": "Get the latest Covid-19 data available from the Brazi.io API/ Obtenha os ultimos dados sobre Covid19 disponíveis no site do Brasil.io",
     "source_code": "https://github.com/JuracyAmerico/Covid-19"
+},
+{
+    "name": "Covid-19 Italy",
+    "url": "https://giandata.github.io/wdc-openpuglia-covid/openpuglia.html",
+    "author": "Giancarlo Di Donato",
+    "github_username": "giandata",
+    "tags": ["v_1.0"],
+    "description": "Get timeseries data of Covid-19 in Italy from openpuglia.org API / Ottieni serie storica relativa al Covid-19 in Italia dalle API di openpuglia.org",
+    "source_code": "https://github.com/giandata/wdc-openpuglia-covid"
 }
 ]
