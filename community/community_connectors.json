@@ -125,6 +125,15 @@
         "source_code": "github.com/starschema/tableau-web-table-connector"
     },
     {
+        "name": "CSV URL Connector",
+        "url": "https://simple-csv-wdc.glitch.me/",
+        "author": "Keshia Rose",
+        "github_username": "KeshiaRose",
+        "tags": ["v_2.5"],
+        "description": "A simple connector for hosted CSV files.",
+        "source_code": "https://glitch.com/edit/#!/simple-csv-wdc?path=README.md"
+    },
+    {
         "name": "data.world",
         "url": "https://tableau.data.world",
         "author": "Alan Levicki & Rebecca Clay",
