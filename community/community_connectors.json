@@ -700,6 +700,15 @@
         "source_code": "https://github.com/sefthuko/sefthuko.github.io/blob/master/wdc"
     },
     {
+        "name": "Simple Airtable Connector",
+        "url": "https://simple-airtable-wdc.glitch.me/",
+        "author": "Keshia Rose",
+        "github_username": "KeshiaRose",
+        "tags": ["v_2.5"],
+        "description": "A very basic Tableau Web Data Connector for Airtable bases.",
+        "source_code": "https://glitch.com/edit/#!/simple-airtable-wdc?path=README.md"
+    },
+    {
         "name": "Socrata",
         "url": "http://wdc.poc.interworks.com/socrata_20/",
         "author": "Matthew Orr",
