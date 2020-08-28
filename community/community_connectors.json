@@ -54,6 +54,15 @@
         "source_code": ""
     },
     {
+        "name": "Army Corps. of Engineers - U.S. Department of Defense Sites",
+        "url": "https://lshpaner.rbind.io/datasets/US_Army_Corps_of_Engineers/DOD_Sites/ACE_DOD_Sites.html",
+        "author": "Leon Shpaner",
+        "github_username": "lshpaner",
+        "tags": ["v_1.0"],
+        "description": "geospatial dataset containing facilities, installations, and other DOD sites based on arcgis source extraction",
+        "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/US_Army_Corps_of_Engineers/DOD_Sites"
+    },	
+    {
         "name": "Australian Bureau of Statistics (ABS) SDMX-JSON Connector",
         "url": "https://aprince.github.io/ABS_SDMX-JSON_API/",
         "author": "Andy Prince",
