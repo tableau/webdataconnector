@@ -126,12 +126,12 @@
     },
     {
         "name": "CSV URL Connector",
-        "url": "https://simple-csv-wdc.glitch.me/",
+        "url": "https://basic-csv-wdc.herokuapp.com/",
         "author": "Keshia Rose",
         "github_username": "KeshiaRose",
         "tags": ["v_2.5"],
-        "description": "A simple connector for hosted CSV files.",
-        "source_code": "https://glitch.com/edit/#!/simple-csv-wdc?path=README.md"
+        "description": "A simple connector for CSVs hosted on the web.",
+        "source_code": "https://github.com/KeshiaRose/Basic-CSV-WDC"
     },
     {
         "name": "data.world",
