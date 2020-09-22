@@ -592,6 +592,16 @@
         "source_code": "https://github.com/runonthespot/PubChemWDC"
     },
     {
+    "name": "PurpleAir Sensors Current Readings",
+    "url": "https://jetarcher.github.io/PurpleAir/PurpleAirSensorList.html",
+    "author": "Patrick Bowman",
+    "github_username": "jetarcher",
+    "tags": ["v_1.0"],
+    "description": "PurpleAir air quality sensors with current readings for PM2.5 (2.5 micron particulate matter)",
+    "source_code": "https://github.com/jetarcher/PurpleAir"
+    },
+
+    {
         "name": "Quandl",
         "url": "http://data.theinformationlab.co.uk/quandl.html",
         "author": "Craig Bloodworth",
