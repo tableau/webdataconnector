@@ -378,12 +378,12 @@
     },
     {	
         "name": "JSON/XML Connector",
-        "url": "https://json-xml-wdc.keshiarose.repl.co",
+        "url": "https://json-xml-wdc.herokuapp.com",
         "author": "Keshia Rose",
         "github_username": "KeshiaRose",
         "tags": ["v_2.3"],
         "description": "A simple connector for JSON or XML data. Simply paste in your URL or data or just drag and drop a file.",
-        "source_code": "https://repl.it/@KeshiaRose/json-xml-wdc"
+        "source_code": "https://github.com/KeshiaRose/JSON-XML-WDC"
     },
     {
         "name": "Jupytab",
