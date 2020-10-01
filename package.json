@@ -15,7 +15,8 @@
     "unit:coverage": "node_modules/.bin/nyc --check-coverage --lines 70 --functions 70 --branch 70 npm run unit",
     "unit:coveralls": "node_modules/.bin/nyc --reporter=text-lcov --check-coverage --lines 70 --functions 70 --branch 70 npm run unit | coveralls",
     "test": "node node_modules/npm-run-all/bin/npm-run-all end-to-end unit:coverage",
-    "test:travis": "node node_modules/npm-run-all/bin/npm-run-all unit:coveralls end-to-end"
+    "test:travis": "node node_modules/npm-run-all/bin/npm-run-all unit:coveralls end-to-end",
+    "preinstall": "npx npm-force-resolutions"
   },
   "repository": {
     "type": "git",
@@ -79,7 +80,7 @@
       ".jsx"
     ]
   },
-  "resolutions":{
-    "corsproxy/hapi": "^16.0.0"
+  "resolutions": {
+    "hapi": "^16.0.0"
   }
 }
