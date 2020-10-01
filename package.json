@@ -78,5 +78,8 @@
     "extension": [
       ".jsx"
     ]
+  },
+  "resolutions":{
+    "corsproxy/hapi": "^16.0.0"
   }
 }
