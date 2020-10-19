@@ -41,7 +41,7 @@ Interactive phase: Interact with the user {#phase-one}
     - The connector calls the passed in initCallback to tell Tableau it has finished initialization.
 
     - The connector waits for interaction to be completed by the end user.  This could entail waiting for
-      the user authenticate, waiting for the user to enter some sort of data in a form, and more.
+      the user to authenticate, waiting for the user to enter some sort of data in a form, and more.
       This is optional, if a connector has no need for user input, it can call submit() immediately.
 
     - The connector calls the function tableau.submit(), which tells Tableau that the connector
