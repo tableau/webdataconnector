@@ -46,11 +46,11 @@
     },
     {
         "name": "Appbot Data Connector",
-        "url": "https://support.appbot.co/help-docs/tableau/",
+        "url": "https://api.appbot.co/api/v2/tableau_wdc",
         "author": "Appbot",
         "github_username": "",
         "tags": ["v_1.0"],
-        "description": "A Tableau Web Data Connector for Appbot (https://appbot.co/). Examine correlation between marketing activities and app reviews/ratings, create your own multi-series or aggregate Ratings data charts from Appbot data, and much more.",
+        "description": "A Tableau Web Data Connector for Appbot (https://appbot.co/). Examine correlation between marketing activities and app reviews/ratings, create your own multi-series or aggregate Ratings data charts from Appbot data, and much more. Learn more: https://support.appbot.co/help-docs/tableau/",
         "source_code": ""
     },
     {
