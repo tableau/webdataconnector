@@ -22,7 +22,7 @@ If you *really* want to skip all of this and go straight to the source code, loo
 connector in the `Examples` directory (`earthquakeUSGS`). This is to minimize the chances of accidentally overwriting
 the existing sample. However, if you copy the existing sample, you'll have to change file paths.
 
-**Note**: The browser used inside Tableau is QT WebKit, which does not natively support new ES6 features.  If you wish to take advantage of newer features (such as promises) when building WDCs you will need to use a polyfill.
+**Note**: The browser used inside Tableau Desktop 2019.3 and earlier is QT WebKit, which does not natively support new ES6 features.  If you wish to take advantage of newer features (such as promises) when building WDCs for older versions of Tableau you will need to use a polyfill.
 
 ### Create the HTML page
 

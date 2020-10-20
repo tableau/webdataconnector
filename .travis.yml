@@ -1,6 +1,10 @@
 dist: trusty
 addons:
+  apt:
+    packages:
+    - dpkg
   chrome: stable
+
 language: node_js
 node_js:
 - node

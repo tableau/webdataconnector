@@ -63,6 +63,15 @@
         "source_code": ""
     },
     {
+        "name": "Army Corps. of Engineers - U.S. Department of Defense Sites",
+        "url": "https://lshpaner.rbind.io/datasets/US_Army_Corps_of_Engineers/DOD_Sites/ACE_DOD_Sites.html",
+        "author": "Leon Shpaner",
+        "github_username": "lshpaner",
+        "tags": ["v_1.0"],
+        "description": "geospatial dataset containing facilities, installations, and other DOD sites based on arcgis source extraction",
+        "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/US_Army_Corps_of_Engineers/DOD_Sites"
+    },	
+    {
         "name": "Australian Bureau of Statistics (ABS) SDMX-JSON Connector",
         "url": "https://aprince.github.io/ABS_SDMX-JSON_API/",
         "author": "Andy Prince",
@@ -134,6 +143,15 @@
         "source_code": "github.com/starschema/tableau-web-table-connector"
     },
     {
+        "name": "CSV URL Connector",
+        "url": "https://basic-csv-wdc.herokuapp.com/",
+        "author": "Keshia Rose",
+        "github_username": "KeshiaRose",
+        "tags": ["v_2.5"],
+        "description": "A simple connector for CSVs hosted on the web.",
+        "source_code": "https://github.com/KeshiaRose/Basic-CSV-WDC"
+    },
+    {
         "name": "data.world",
         "url": "https://tableau.data.world",
         "author": "Alan Levicki & Rebecca Clay",
@@ -150,6 +168,15 @@
         "tags": ["v_2.2"],
         "description": "DHIS2 is the preferred health management information system in 47 countries and 23 organizations across four continents. This connector is written in ClojureScript.",
         "source_code": "https://github.com/dtreskunov/dhis2-wdc"
+    },
+    {
+    "name": "DCTM Connector",
+    "url": "https://thakarevb.github.io/DCTMWDC/folderinfo.html",
+    "author": "Vishal Thakare",
+    "github_username": "thakarevb",
+    "tags": ["v_2.0"],
+    "description": "Sample Documentum web data connector to fetch data in Tableau",
+    "source_code": "github.com/thakarevb/DCTMWDC.git"
     },
     {
         "name": "Diggernaut",
@@ -169,6 +196,15 @@
         "description": "",
         "source_code": "https://github.com/tableau-mkt/dcm-dfa-wdc"
     },
+    {
+"name": "DCTM Connector",
+    "url": "https://thakarevb.github.io/DCTMWDC/folderinfo.html",
+    "author": "Vishal Thakare",
+    "github_username": "thakarevb",
+    "tags": ["v_2.0"],
+    "description": "Sample Documentum web data connector to fetch data in Tableau",
+    "source_code": "github.com/thakarevb/DCTMWDC.git"
+	},
      {
         "name": "Elasticsearch",
         "url": "http://mradamlacey.github.io/elasticsearch-tableau-connector/elasticsearch-connector.html",
@@ -278,6 +314,15 @@
         "source_code": "https://github.com/ausgop/HearthstoneJSON-WDC"
     },
     {
+        "name": "HERE 7-Day Weather Forecast",
+        "url": "https://datadev-weather-wdc.glitch.me/",
+        "author": "Keshia Rose",
+        "github_username": "KeshiaRose",
+        "tags": ["v_1.0"],
+        "description": "Get 7-day weather forecast data for a selected city.",
+        "source_code": "https://glitch.com/edit/#!/datadev-weather-wdc"
+    },    
+    {
         "name": "HPCC Systems",
         "url": "https://hpcc-systems.github.io/HPCC-Tableau-WDC/hpccTableauConnector.html",
         "author": "Rodrigo Pastrana - HPCC Systems",
@@ -351,12 +396,12 @@
     },
     {	
         "name": "JSON/XML Connector",
-        "url": "https://json-xml-wdc.keshiarose.repl.co",
+        "url": "https://json-xml-wdc.herokuapp.com",
         "author": "Keshia Rose",
         "github_username": "KeshiaRose",
         "tags": ["v_2.3"],
         "description": "A simple connector for JSON or XML data. Simply paste in your URL or data or just drag and drop a file.",
-        "source_code": "https://repl.it/@KeshiaRose/json-xml-wdc"
+        "source_code": "https://github.com/KeshiaRose/JSON-XML-WDC"
     },
     {
         "name": "Jupytab",
@@ -565,6 +610,16 @@
         "source_code": "https://github.com/runonthespot/PubChemWDC"
     },
     {
+    "name": "PurpleAir Sensors Current Readings",
+    "url": "https://jetarcher.github.io/PurpleAir/PurpleAirSensorList.html",
+    "author": "Patrick Bowman",
+    "github_username": "jetarcher",
+    "tags": ["v_1.0"],
+    "description": "PurpleAir air quality sensors with current readings for PM2.5 (2.5 micron particulate matter)",
+    "source_code": "https://github.com/jetarcher/PurpleAir"
+    },
+
+    {
         "name": "Quandl",
         "url": "http://data.theinformationlab.co.uk/quandl.html",
         "author": "Craig Bloodworth",
@@ -628,6 +683,15 @@
         "source_code": ""
     },
     {
+        "name": "Shorten.REST Tableau Connector",
+        "url": "https://tableau.shorten.rest/",
+        "author": "API LADS INC",
+        "github_username": "apilads",
+        "tags": ["v_1.0"],
+        "description": "Shorten.REST Tableau Connector enables you to easily pipe your click data into Tableau for visualization & analysis.",
+        "source_code": "github.com/apilads/Shorten.REST-Tableau-Connector"
+    },
+    {
         "name": "SAP Business Objects WEBI & QaaWS",
         "url": "https://github.com/starschema/tableau-web-table-connector#business-objects-connector",
         "author": "Tamas Foldi",
@@ -671,6 +735,15 @@
         "tags": ["v_1.0"],
         "description": "Generate a sequence of values so you can show categories that aren't yet represented in your actual data.",
         "source_code": "https://github.com/sefthuko/sefthuko.github.io/blob/master/wdc"
+    },
+    {
+        "name": "Simple Airtable Connector",
+        "url": "https://simple-airtable-wdc.glitch.me/",
+        "author": "Keshia Rose",
+        "github_username": "KeshiaRose",
+        "tags": ["v_2.5"],
+        "description": "A very basic Tableau Web Data Connector for Airtable bases.",
+        "source_code": "https://glitch.com/edit/#!/simple-airtable-wdc?path=README.md"
     },
     {
         "name": "Socrata",
@@ -842,6 +915,27 @@
         "description": "",
         "source_code": ""
     },
+    
+    {
+    "name": "COVID-19 Emergency Service Providers in CA",
+    "url": "https://lshpaner.rbind.io/datasets/covid_19_data/emergencyserviceprovidersinca/covid19emergprovca.html",
+    "author": "Leon Shpaner",
+    "github_username": "lshpaner",
+    "tags": ["v_1.0"],
+    "description": "full scale data of all emergency service providers related to COVID-19 in the state of CA",
+    "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/covid_19_data/EmergencyServiceProvidersinCA"
+    },
+    
+    {
+    "name": "Geothermal Wells in the State of CA",
+    "url": "https://lshpaner.rbind.io/datasets/ca_geothermal_data/cageothermalwells.html",
+    "author": "Leon Shpaner",
+    "github_username": "lshpaner",
+    "tags": ["v_2.0"],
+    "description": "dataset of all geothermal wells located in the state of California parsed by full scope of parameters including location, functionality, and status",
+    "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/CA_Geothermal_Data"
+    },
+        
     {
         "name": "U.S. Federal Reserve Economic Data (FRED)",
         "url": "http://wdc.poc.interworks.com/fred_20/",
@@ -1045,5 +1139,13 @@
     "tags": ["v_1.0"],
     "description": "Get timeseries data of Covid-19 in Italy from openpuglia.org API / Ottieni serie storica relativa al Covid-19 in Italia dalle API di openpuglia.org",
     "source_code": "https://github.com/giandata/wdc-openpuglia-covid"
+},
+{
+    "name": "Yogi Connector",
+    "url": "https://meetyogi.github.io/yogi-tableau/src/html/yogiwdc.html",
+    "author": "Yogi",
+    "tags": ["v_1.0"],
+    "description": "This Connector allows Yogi Customers to access their project Data"
 }
 ]
+    
