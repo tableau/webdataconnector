@@ -9,6 +9,15 @@
         "source_code": ""
     },
     {
+        "name": "Real time Air Quality Index various locations of India",
+        "url": "https://tableauwdc.com/WebDataConnectors/WDC_AQI.html",
+        "author": "Vishal R. Shukla",
+        "github_username": "vishalrshukla",
+        "tags": ["v_1.0"],
+        "description": "With this WDC get data on Air Quality Index of various locations of India. This data has been updated every Hour.",
+        "source_code": ""
+    },
+    {
         "name": "AdStage",
         "url": "http://tech.adstage.io/tableau_connector/AdstageConnector.html",
         "author": "David Haslem",
