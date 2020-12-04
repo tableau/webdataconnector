@@ -1146,6 +1146,15 @@
     "author": "Yogi",
     "tags": ["v_1.0"],
     "description": "This Connector allows Yogi Customers to access their project Data"
+},
+{
+    "name": "Open Brewery DB",
+    "url": "https://open-brewery-wdc.glitch.me/",
+    "author": "Keshia Rose",
+    "tags": ["v_1.0"],
+    "description": "A connector to get info on breweries, cideries, brewpubs, and bottleshops by state from Open Brewery DB.",
+    "github_username": "KeshiaRose",
+    "source_code": "https://glitch.com/edit/#!/open-brewery-wdc"
 }
 ]
     
