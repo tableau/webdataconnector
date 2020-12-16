@@ -67,5 +67,4 @@ myConnector.getData = function(table, doneCallback) {
 };
 ```
 
-The WDC API supports three data types for the incremental refresh column: DateTime, Date, and integer. For incremental
-refresh, you typically use a field that represents a date, a timestamp, or a row number.
+The WDC API supports three data types for the incremental refresh column: DateTime, Date, and integer. For incremental refresh, you typically use a field that represents a date, a timestamp, or a row number.

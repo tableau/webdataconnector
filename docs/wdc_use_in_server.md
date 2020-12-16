@@ -10,7 +10,7 @@ When you use a web data connector, Tableau creates an extract of the data. You c
 - If your web data connector requires authentication, you need to embed the credentials when you publish the data source or workbook. This is because the refresh can occur on a schedule or in some other background context, and the server cannot prompt for credentials. You should store credentials in `tableau.username` and `tableau.password` as these fields are encrypted. Do not use `tableau.connectionData` for sensitive information as this field is stored in plain text.
 
 - You need to ensure that your web data connector is added to the safe list, and also ensure that the secondary safe list includes the domains that the connector can send requests to and receive requests from (external JavaScript libraries, local files, REST APIs). Because a WDC contains JavaScript and typically connects to other sites, you need to work with the Tableau Server administrator to test and verify the connector is safe to use. 
-After verifying the WDC, the Tableau Server administrator can use Tableau Services Manager (TSM) command line interface (CLI) or TSM entities to allow the WDC on the Tableau Server.
+After verifying the WDC, the Tableau Server administrator can use the Tableau Services Manager (TSM) command line interface (CLI) to allow the WDC on the Tableau Server.
 
     For example, a Tableau Server administrator might use the following TSM command to add the sample USGS EarthQuake data connector to the safe list. This command also adds a secondary safe list that includes the domains of the libraries and sources that the WDC makes use of. You can't use wildcards in the primary URL (`--url`), but you can use wildcards (`.*`) in the secondary safe list (`--secondary`).
 
