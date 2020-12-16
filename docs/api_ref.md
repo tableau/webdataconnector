@@ -1268,6 +1268,8 @@ var standardConnection = {
                                         appears that displays the progress message.</p>
                                     </div>
                                 </div>
+                                <div class="alert alert-info">Note that this progress message is intended to inform Tableau Desktop users. Tableau Server users will not see the message, and calling this method with a very high frequency could adversely affect performance.
+                                </div>
                                 <p><b>Note</b>: This feature is only supported in version 2.1 and later of the WDC.</p>
                                 <h4 class="tsd-parameters-title">Parameters</h4>
                                 <ul class="tsd-parameters">

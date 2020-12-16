@@ -59,7 +59,7 @@ For example, this is how this property is utilized in the IncrementalRefreshConn
 myConnector.getData = function(table, doneCallback) {
     var lastId = parseInt(table.incrementValue || -1);
 
-    // Gather only the most recent data with an ID greather than 'lastId'
+    // Gather only the most recent data with an ID greater than 'lastId'
     // ......
 
     table.appendRows(dataArray);

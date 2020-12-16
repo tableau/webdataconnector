@@ -76,7 +76,7 @@ The auth phase will be displayed by Tableau in two scenarios:
     **IMPORTANT:** The `abortForAuth` function must be called from the `init` method during the gather data phase. One intended scenario for this function is when a user, who has not been authenticated, opens an existing workbook and attempts to refresh data. In this case, the auth token is no longer available.  
     
     
-In the auth phase of the WDC, any changes to properties other than tableau.password and tableau.username will
+In the auth phase of the WDC, any changes to properties other than `tableau.password` and `tableau.username` will
 be ignored.  Thus, it is a best practice to only show the UI that is necessary to re-authenticate the user,
 and then auto-submit the connector for the user once they have been authenticated.
 For example, in the **OAuthProxyExample** this is how this
