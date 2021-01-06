@@ -51,9 +51,6 @@ The connector requires at least version 'x.x' of the web data connector API.
 ```
 
 <div class="alert alert-info">
-    <b>Note:</b> This site is for version 2 of the WDC, and will only be compatible with Tableau 10.0 and later. For
-    information about version 1 of the WDC, see the archived <a href="http://onlinehelp.tableau.com/v9.3/api/wdc/en-us/help.htm" style="text-decoration:underline;">documentation</a>
-    and <a href="https://github.com/tableau/webdataconnector/releases/tag/v1.1.0" style="text-decoration:underline;">simulator</a>. 
-    
+    <b>Note:</b> This site is for version 2 of the WDC, and is only be compatible with Tableau 10.0 and later. Version 1 of the WDC is no longer supported.
 </div>
 If you are a developer, see [Upgrading from WDC Version 1.x]({{ site.baseurl }}\docs\wdc_upgrade) for information about migrating your WDC to version 2.

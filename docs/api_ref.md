@@ -405,7 +405,7 @@ title: WDC API Reference
                 <div class="tsd-signature tsd-kind-icon">WebDataConnectorAPI: </div>
                 <div class="tsd-comment tsd-typography">
                     <div class="lead">
-                        <p>This API Reference contains all of the functions and objects for the WDC API version 2. For a version 1 reference, please consult this page: <a href="http://onlinehelp.Tableau.com/v9.3/api/wdc/en-us/help.htm#WDC/wdc_ref.htm%3FTocPath%3D_____9" target="_blank">WDC V1 Reference</a></p>
+                        <p>This API Reference contains all of the functions and objects for the WDC API version 2. WDC version 1 is no longer supported.</p>
                     </div>
                 </div>
                 <section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
