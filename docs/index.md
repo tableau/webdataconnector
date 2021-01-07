@@ -8,16 +8,14 @@ with JavaScript code that connects to web data (for example, by means of a REST 
 and passes the data to Tableau.
 
 <div class="alert alert-info">
-    <b>Note:</b> This site is for version 2.x of the WDC, which is compatible only with Tableau 10.0 and later. For
-    information about version 1 of the WDC for use with earlier versions of Tableau, see the archived <a href="http://onlinehelp.tableau.com/v9.3/api/wdc/en-us/help.htm" style="text-decoration:underline;">documentation</a>
-    and <a href="https://github.com/tableau/webdataconnector/releases/tag/v1.1.0" style="text-decoration:underline;">simulator</a>.  
+    <b>Note:</b> This site is for version 2.x of the WDC API, which is compatible only with Tableau 10.0 and later. Version 1 of the WDC API, used with earlier versions of Tableau, is no longer supported.  
 </div>
 
 -----
 
 **Upgrading from WDC version 1.x**
  
-If you have connectors that were created using WDC version 1.x, those connectors might not work in later versions of Tableau. If you want your connector to work in later versions of Tableau, or if you want to use the features available in version 2.x of the WDC, you will need to update the connector. For information about updating your connectors, see [Upgrading from WDC Version 1.x]({{ site.baseurl }}\docs\wdc_upgrade). For information about version compatibility, see [WDC Versions]({{ site.baseurl }}\docs\wdc_library_versions). 
+If you have connectors that were created using WDC version 1.x, those connectors might not work in later versions of Tableau. If you want your connector to work in later versions of Tableau, or if you want to use the features available in version 2.x of the WDC, you will need to update the connector. For information about updating your connectors, see [Upgrading from WDC Version 1.x]({{ site.baseurl }}\docs\wdc_upgrade). For information about version compatibility, see [WDC Versions]({{ site.baseurl }}\docs\wdc_library_versions).
 
 
 -----
