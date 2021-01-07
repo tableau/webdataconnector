@@ -833,11 +833,10 @@ pass the date object that contains the start and end dates between phases.
 
 When you're using OAuth, you have the same issue with the access
 token—you gather it from the user authorization flow in the interactive phase, but you need
-to use it in the data-gathering phase. You can use the
-`tableau.password` property for this purpose. As with
-`tableau.connectionData`, it allows you to pass values between phases of
-the connector. However, it's designed specifically for sensitive
-information like passwords or access tokens.
+to use it in the data-gathering phase.
+
+You can use the `tableau.password` property for this purpose. It's designed specifically for sensitive
+information like passwords or access tokens. The `tableau.password` property, like `tableau.connectionData`, allows you to pass values between phases of the connector. However, you should never use `tableau.connectionData` for sensitive information like passwords or access tokens.
 
 Although the code includes a function to extract the access token, you
 haven't set the value of the `tableau.password` yet. You'll do that

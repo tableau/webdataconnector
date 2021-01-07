@@ -405,7 +405,7 @@ title: WDC API Reference
                 <div class="tsd-signature tsd-kind-icon">WebDataConnectorAPI: </div>
                 <div class="tsd-comment tsd-typography">
                     <div class="lead">
-                        <p>This API Reference contains all of the functions and objects for the WDC API version 2. For a version 1 reference, please consult this page: <a href="http://onlinehelp.Tableau.com/v9.3/api/wdc/en-us/help.htm#WDC/wdc_ref.htm%3FTocPath%3D_____9" target="_blank">WDC V1 Reference</a></p>
+                        <p>This API Reference contains all of the functions and objects for the WDC API version 2. WDC version 1 is no longer supported.</p>
                     </div>
                 </div>
                 <section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
@@ -1267,6 +1267,8 @@ var standardConnection = {
                                         For example, if you switch from the Data Source pane to a sheet, a dialog
                                         appears that displays the progress message.</p>
                                     </div>
+                                </div>
+                                <div class="alert alert-info">Note that this progress message is intended to inform Tableau Desktop users. Tableau Server users will not see the message, and calling this method with a very high frequency could adversely affect performance.
                                 </div>
                                 <p><b>Note</b>: This feature is only supported in version 2.1 and later of the WDC.</p>
                                 <h4 class="tsd-parameters-title">Parameters</h4>

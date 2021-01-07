@@ -58,6 +58,10 @@ The following `appendRows` example shows how you might create a size variable an
 
 The `appendRows` example also makes use of the `reportProgress` function. This function allows you to follow the progress of the Gather Data phase in Tableau. It is a best practice to call this function as you add your data to the extract.
 
+<div class="alert alert-info">Note that the <code>reportProgress</code> function is intended to inform Tableau Desktop users. Tableau Server users will not see the message, and calling the <code>reportProgress</code> function with a very high frequency could adversely affect performance. Note also that calling <code>console.log</code> or <code>tableau.log</code> in a similar manner with very high frequency could also affect performance.
+</div>
+
+
 ```javascript
     tableau.reportProgress("Getting row: " + row_index);
 
