@@ -74,8 +74,7 @@ The WDC SDK comes with a test proxy server that you can use out of the box.
 **Important:** The test proxy server supports HTTP API calls only.
 
 If you want to share your connectors with other users in your organization, you can download
-and configure a production proxy server, or you can use a free, public proxy server like
-[http://cors.io/.](http://cors.io/) or [https://crossorigin.me/](https://crossorigin.me/).
+and configure a production proxy server, or you can use a free, public proxy server like [https://cors-anywhere.herokuapp.com/](https://cors-anywhere.herokuapp.com/).
 
 Request CORS support from API Server {#request-access}
 --------------------
