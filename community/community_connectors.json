@@ -1155,6 +1155,15 @@
     "description": "A connector to get info on breweries, cideries, brewpubs, and bottleshops by state from Open Brewery DB.",
     "github_username": "KeshiaRose",
     "source_code": "https://glitch.com/edit/#!/open-brewery-wdc"
-}
+},
+{
+    "name": "Bitcoin-USD data",
+    "url": "https://paoloferraiuoli.me/tableau-wdc-bitcoin/crypto.html",
+    "author": "Paolo Ferraiuoli",
+    "github_username": "ferrap",
+    "tags": ["v_1.0"],
+    "description": "Connector to retrieve Bitcoin (BTC) historical data in USD",
+    "source_code": "github.com/ferrap/tableau-wdc-bitcoin"
+}	
 ]
     
