@@ -1,4 +1,13 @@
 [
+	{
+        "name": "UK Coronavirus Daily Data API",
+        "url": "https://dataanalyticsscc.github.io/",
+        "author": "Eric Mahendren, James Goodall",
+        "github_username": "Eric-Mahendren, DataAnalyticsSCC, J-Goodall",
+        "tags": ["v_1.0"],
+        "description": "WDC that grabs data from the official UK government coronavirus API",
+        "source_code": "https://github.com/DataAnalyticsSCC/DataAnalyticsSCC.github.io"
+    },
     {
         "name": "Covid19 India Live Data Tracker",
         "url": "https://webdataconnectortableau.blogspot.com/2020/05/blog-post.html",
