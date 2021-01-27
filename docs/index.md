@@ -60,7 +60,7 @@ You're going to need a couple of things before we get started. Make sure you hav
 1. Start the test web server:
 
    ```
-   npm start
+   npm run http-server
    ```
 
 1. Open a browser and navigate to the following URL:
