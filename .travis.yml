@@ -4,6 +4,8 @@ addons:
 language: node_js
 node_js:
 - node
+before_script:
+- npm install --legacy-peer-deps
 script:
 - 'set -eo pipefail;
    if [[ "${TRAVIS_PULL_REQUEST}" = "false" ]]; then
