@@ -1155,6 +1155,13 @@
     "description": "A connector to get info on breweries, cideries, brewpubs, and bottleshops by state from Open Brewery DB.",
     "github_username": "KeshiaRose",
     "source_code": "https://glitch.com/edit/#!/open-brewery-wdc"
-}
+},
+    {
+        "name": "LegalServer",
+        "author": "Paul Suh",
+        "tags": ["v_2.1"],
+        "description": "A connector to get data from LegalServer.org, a SaaS site that is used by legal aid organizations, public defenders, and local governments to manage cases. Please see the source code repository for complete setup instructions. ",
+        "source_code": "https://bitbucket.org/legalserver-tableau-connector/legalserver-tableau-connector.bitbucket.io/src/master/"
+    },
 ]
     
