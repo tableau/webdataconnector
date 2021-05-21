@@ -562,7 +562,7 @@ footer .tsd-legend { display: inline-block; width: 25%; padding: 0; font-size: 1
 .tsd-navigation a { display: block; padding-top: 2px; padding-bottom: 2px; border-left: 2px solid transparent; color: #222; text-decoration: none; -webkit-transition: border-left-color 0.1s; transition: border-left-color 0.1s; }
 .tsd-navigation a:hover { text-decoration: underline; }
 .tsd-navigation ul { margin: 0; padding: 0; list-style: none; }
-.tsd-navigation li { padding: 0; }
+.tsd-navigation li { padding: 0; white-space: nowrap; }
 
 .tsd-navigation.primary { padding-bottom: 40px; }
 .tsd-navigation.primary a { display: block; padding-top: 6px; padding-bottom: 6px; }
