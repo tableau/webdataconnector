@@ -173,7 +173,7 @@ title: WDC API Reference
                         <li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
                             <a href="api_ref.html#webdataconnectorapi.tableau.abortwitherror" class="tsd-kind-icon">abortWithError</a>
                         </li>
-			<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+			<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
                             <a href="api_ref.html#webdataconnectorapi.tableau.enablecookiepersistence" class="tsd-kind-icon">enableCookiePersistence</a>
                         </li>
                         <li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
