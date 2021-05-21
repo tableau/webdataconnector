@@ -173,6 +173,9 @@ title: WDC API Reference
                         <li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
                             <a href="api_ref.html#webdataconnectorapi.tableau.abortwitherror" class="tsd-kind-icon">abortWithError</a>
                         </li>
+			<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+                            <a href="api_ref.html#webdataconnectorapi.tableau.enablecookiepersistence" class="tsd-kind-icon">enableCookiePersistence</a>
+                        </li>
                         <li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
                             <a href="api_ref.html#webdataconnectorapi.tableau.log" class="tsd-kind-icon">log</a>
                         </li>
@@ -1186,6 +1189,23 @@ var standardConnection = {
                                         </div>
                                     </li>
                                 </ul>
+                                <h4 class="tsd-returns-title">Returns void</h4>
+                            </li>
+                        </ul>
+                    </section>
+                    <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
+                        <a name="webdataconnectorapi.tableau.enablecookiepersistence" class="tsd-anchor"></a>
+                        <h3>enableCookiePersistence</h3>
+                        <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
+                            <li class="tsd-signature tsd-kind-icon">enableCookiePersistence(): void</li>
+                        </ul>
+                        <ul class="tsd-descriptions">
+                            <li class="tsd-description">
+                                <div class="tsd-comment tsd-typography">
+                                    <div class="lead">
+                                        <p>Enables cookie persistence in the current Tableau Desktop session. Cookies generated in any WDC will be made available to all WDC connections in a given Tableau Desktop session after this function is called. Once enabled, this behavior will remain in effect until Tableau Desktop is closed. This does not have an effect on WDC extract refreshes in Tableau Server.</p>
+                                    </div>
+                                </div>
                                 <h4 class="tsd-returns-title">Returns void</h4>
                             </li>
                         </ul>
