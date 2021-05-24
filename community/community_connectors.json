@@ -1,5 +1,14 @@
 [
     {
+        "name": "Visier-Tableau (Basic-auth)",
+        "url": "https://leozusa-visier-tableau-basic-auth.glitch.me/",
+        "author": "Leonardo Zuniga",
+        "github_username": "leozusa",
+        "tags": ["v_1.0"],
+        "description": "Visier Data Connector API for Data Exports provides a http interface with Basic Authentication that the WDC doesn't support, so this should work as a bridge between both",
+        "source_code": "https://github.com/leozusa/visier-tableau-basic-auth"
+    },
+    {
         "name": "Covid19 India Live Data Tracker",
         "url": "https://webdataconnectortableau.blogspot.com/2020/05/blog-post.html",
         "author": "Neel Shah",
