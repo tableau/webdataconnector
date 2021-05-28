@@ -1,5 +1,16 @@
 [
     {
+    "name": "COVID19-India_Dataset ",
+    "url": "https://iushv.github.io/",
+    "author": "Ayush Kumar",
+    "github_username": "iushv",
+    "tags": ["v_1.0"],
+    "description": "Complete Tableau WDC Connector for COVID19-India Dataset, Just Paste the Link in Tableau's Web data connector tool and click on FETCH COVID19-INDIA DATASET. Dataset with Districtwide granularity, Updated daily ",
+    "source_code": "github.com/iushv/iushv.github.io"
+    },
+	
+	
+    {
         "name": "Covid19 India Live Data Tracker",
         "url": "https://webdataconnectortableau.blogspot.com/2020/05/blog-post.html",
         "author": "Neel Shah",
