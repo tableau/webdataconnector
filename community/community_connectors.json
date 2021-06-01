@@ -853,6 +853,15 @@
         "source_code": "https://github.com/benjisg/stripe-web-data-connector"
     },
     {
+        "name": "Synergy!データコネクター",
+        "url": "https://synergy-connector.com/synergy_x_tableau/",
+        "author": "AD-SAIL INC.",
+        "github_username": "",
+        "tags": ["v_1.0"],
+        "description": "Synergy!のマスターデータベースと履歴データベースのデータを取得するTableauWebデータコネクタ",
+        "source_code": ""
+    },
+    {
         "name": "Tfl BikesPoint",
         "url": "http://jdunkerleytableau.azurewebsites.net/Bikes",
         "author": "James Dunkerley",
