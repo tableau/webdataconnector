@@ -45,6 +45,15 @@
     "source_code": "https://github.com/fri5by/amiiboapitableauwdc"
   },
   {
+    "name": "Appbot Data Connector",
+    "url": "https://api.appbot.co/api/v2/tableau_wdc",
+    "author": "Appbot",
+    "github_username": "",
+    "tags": ["v_1.0"],
+    "description": "A Tableau Web Data Connector for Appbot (https://appbot.co/). Examine correlation between marketing activities and app reviews/ratings, create your own multi-series or aggregate Ratings data charts from Appbot data, and much more. Learn more: https://support.appbot.co/help-docs/tableau/",
+    "source_code": ""
+  },
+  {
     "name": "Aprimo Platform Connector",
     "url": "https://connect-uat.spcreports.com/Aprimo-Tableau",
     "author": "Solutions Plus",
@@ -61,6 +70,15 @@
     "tags": ["v_1.0"],
     "description": "geospatial dataset containing facilities, installations, and other DOD sites based on arcgis source extraction",
     "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/US_Army_Corps_of_Engineers/DOD_Sites"
+  },
+  {
+    "name": "Asana for Tableau",
+    "url": "https://tableau-wdc.integrations.asana.plus",
+    "author": "Asana",
+    "github_username": "",
+    "tags": ["v_1.0"],
+    "description": "Connect to your project and task data in your Asana Business or Enterprise account to track your team’s progress in Tableau",
+    "source_code": ""
   },
   {
     "name": "Ascend.io",
@@ -285,6 +303,15 @@
     "tags": ["v_1.0"],
     "description": "WDC to pull data from the latest FPL API.",
     "source_code": "github.com/R3dCobbler/FPL19-20"
+  },
+  {
+    "name": "filemaker2tableau",
+    "url": "https://github.com/1-more-thing/fm2tableau/releases/latest",
+    "author": "Romain Dunand",
+    "github_username": "airmoi",
+    "tags": ["v_2.3"],
+    "description": "Connect easly Tableau to your FileMaker databases",
+    "source_code": "https://github.com/1-more-thing/fm2tableau"
   },
   {
     "name": "Fitbit",
@@ -888,20 +915,20 @@
   },
   {
     "name": "Star Wars API",
-    "url": "https://filmasher.github.io/starwars/",
-    "author": "Asher Campbell",
-    "github_username": "FilmAsher",
-    "tags": ["v_2.0"],
-    "description": "https://github.com/FilmAsher/starwars"
-  },
-  {
-    "name": "Star Wars API",
     "url": "http://gtgeek.github.com/SWapiConnector/SWapiConnector.html",
     "author": "gtgeek - Quy Nguyen",
     "github_username": "gtgeek",
     "tags": ["v_2.0"],
     "description": "Star Wars API for People, Planets, Vehicles, Films, etc.",
     "source_code": ""
+  },
+  {
+    "name": "Star Wars API",
+    "url": "https://filmasher.github.io/starwars/",
+    "author": "Asher Campbell",
+    "github_username": "FilmAsher",
+    "tags": ["v_2.0"],
+    "description": "https://github.com/FilmAsher/starwars"
   },
   {
     "name": "Stardog Data Connector",
@@ -1004,15 +1031,6 @@
   },
   {
     "name": "U.S. Energy Information Administration Data",
-    "url": "http://wdc.poc.interworks.com/eia/",
-    "author": "Derrick Austin",
-    "github_username": "austinderrick",
-    "tags": ["v_1.1"],
-    "description": "",
-    "source_code": ""
-  },
-  {
-    "name": "U.S. Energy Information Administration Data",
     "url": "http://wdc.poc.interworks.com/eia_20/",
     "author": "Derrick Austin",
     "github_username": "austinderrick",
@@ -1021,8 +1039,8 @@
     "source_code": "https://github.com/austinderrick/eia_wdc_20"
   },
   {
-    "name": "U.S. Federal Reserve Economic Data (FRED)",
-    "url": "http://wdc.poc.interworks.com/fred/",
+    "name": "U.S. Energy Information Administration Data",
+    "url": "http://wdc.poc.interworks.com/eia/",
     "author": "Derrick Austin",
     "github_username": "austinderrick",
     "tags": ["v_1.1"],
@@ -1037,6 +1055,15 @@
     "tags": ["v_2.0"],
     "description": "",
     "source_code": "https://github.com/austinderrick/fred_wdc_20"
+  },
+  {
+    "name": "U.S. Federal Reserve Economic Data (FRED)",
+    "url": "http://wdc.poc.interworks.com/fred/",
+    "author": "Derrick Austin",
+    "github_username": "austinderrick",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": ""
   },
   {
     "name": "UK Coronavirus Daily Data API",
