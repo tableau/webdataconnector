@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "Connect to web data from Tableau.",
   "scripts": {
-    "corsproxy": "export CORSPROXY_PORT=8889 || set CORSPROXY_PORT=8889 && node node_modules/corsproxy/bin/corsproxy",
+    "corsproxy": "export CORSPROXY_PORT=8889 || set CORSPROXY_PORT=8889 && node corsproxy/corsproxy.js",
     "http-server": "node node_modules/http-server/bin/http-server -p 8888 -c-1",
     "bundle": "npm run lint && webpack --watch --config ./webpack.config.js",
     "lint": "eslint ./Simulator --ext .js --ext .jsx --cache",
@@ -63,7 +63,7 @@
     "webpack": "^1.13.1"
   },
   "dependencies": {
-    "corsproxy": "^1.4.0",
+    "cors-anywhere": "^0.4.4",
     "http-server": "^0.9.0",
     "npm-run-all": "^2.1.1"
   },
