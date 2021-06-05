@@ -1,7 +1,7 @@
 function append(connector) {
     var grid = document.querySelector('#grid');
     var item = document.createElement('div');
-    var elemid = connector.name.replace(' ','_').replace(/\W/g, '').toLowerCase();
+    var elemid = connector.name.replace(/\W/g, '_').replace('__','_').toLowerCase();
     var h = '<div id="'+ elemid +'">';
     h += '<div class="thumbnail">';
     h += '<div class="connector_title">';
