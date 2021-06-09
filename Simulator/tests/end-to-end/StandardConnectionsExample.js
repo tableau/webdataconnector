@@ -90,7 +90,6 @@ describe('Standard Connections Example Connector', function(){
         driver.sleep(100);
         driver.findElements({ className: 'tab-content' })
           .then(function (present) {
-            console.log(`[CHECK] check element length: ${present.length}`);
             present.length.should.be.above(0);
             done();
           });
@@ -100,7 +99,6 @@ describe('Standard Connections Example Connector', function(){
   it("Should Have Preview Table", function(done){
     driver.findElements({ className: 'table-preview-Column' })
       .then(function (present) {
-        console.log(`[CHECK] check element length: ${present.length}`);
         present.length.should.be.above(0);
         done();
       });
