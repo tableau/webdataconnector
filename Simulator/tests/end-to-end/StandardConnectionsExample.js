@@ -8,8 +8,7 @@ var config = require('./config.js');
 
 var app = express();
 
-// This test is currently skipped due to flakiness
-describe.skip('Standard Connections Example Connector', function(){
+describe('Standard Connections Example Connector', function(){
   var driver;
   var server;
   let timeout = 60000;
@@ -90,18 +89,18 @@ describe.skip('Standard Connections Example Connector', function(){
       })
       .then(function() {
         driver.sleep(100);
-        driver.isElementPresent({className: 'tab-content'})
+        driver.findElements({ className: 'tab-content' })
           .then(function (present) {
-            present.should.be.true();
+            present.length.should.be.above(0);
             done();
           });
       });
   });
 
   it("Should Have Preview Table", function(done){
-    driver.isElementPresent({className: 'table-preview-Column'})
+    driver.findElements({ className: 'table-preview-Column' })
       .then(function (present) {
-        present.should.be.true();
+        present.length.should.be.above(0);
         done();
       });
   });
