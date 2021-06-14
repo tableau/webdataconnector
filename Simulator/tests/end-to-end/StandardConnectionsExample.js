@@ -1,6 +1,7 @@
 var webdriver_chrome = require('selenium-webdriver/chrome');
 var webdriver = require('selenium-webdriver');
 var until = webdriver.until;
+var should = require('should');
 var express = require("express");
 var path = require("path");
 var config = require('./config.js');
