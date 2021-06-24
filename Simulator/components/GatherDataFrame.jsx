@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 //----------------------Gather Data Frame---------------------//
 // Component which houses the iframe that gets rendered in the

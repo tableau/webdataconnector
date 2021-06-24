@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types';
 import * as vis from 'vis';
 import * as consts from '../utils/consts';
 import * as clickedOn from '../utils/canvas_helper';

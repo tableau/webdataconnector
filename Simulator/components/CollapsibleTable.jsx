@@ -1,4 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Table, Collapse, Button } from 'react-bootstrap';
 
 //----------------------Collapsible Table---------------------//
