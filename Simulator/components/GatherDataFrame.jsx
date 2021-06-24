@@ -17,7 +17,6 @@ class GatherDataFrame extends Component {
       />
     );
   }
-
 }
 
 GatherDataFrame.propTypes = {

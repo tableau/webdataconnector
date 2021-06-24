@@ -4,11 +4,11 @@ import { render } from 'react-dom';
 import { Provider, connect } from 'react-redux';
 
 import { Grid,
-         Col,
-         PageHeader,
-         Label,
-         Tabs,
-         Tab } from 'react-bootstrap';
+  Col,
+  PageHeader,
+  Label,
+  Tabs,
+  Tab } from 'react-bootstrap';
 
 // Actions
 import * as simulatorActions from '../actions/simulator_actions';
@@ -162,9 +162,9 @@ class App extends Component {
                 <Col className="no-results-label">
                   <Label> No Standard Connections Gathered </Label>
                 </Col>
-                }
+              }
             </Col>
-          : null}
+            : null}
           <Col md={12} className="table-header">
             <PageHeader> Tables </PageHeader>
           </Col>

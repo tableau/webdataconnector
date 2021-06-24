@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup,
-         FormControl,
-         ControlLabel,
-         PageHeader,
-         OverlayTrigger,
-         Popover,
-         Glyphicon } from 'react-bootstrap';
+  FormControl,
+  ControlLabel,
+  PageHeader,
+  OverlayTrigger,
+  Popover,
+  Glyphicon } from 'react-bootstrap';
 
 //----------------------Simulator Attributes---------------------//
 // Component which contains the UI element necessary to set the

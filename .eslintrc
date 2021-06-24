@@ -1,13 +1,11 @@
 {
-  "extends": [
-    "airbnb"
-  ],
+  "extends": ["airbnb"],
   "parser": "babel-eslint",
   "env": {
-    "browser": true,
+    "browser": true
   },
   "globals": {
-    "toastr": false,
+    "toastr": false
   },
   "rules": {
     "max-len": "warn",
@@ -20,6 +18,6 @@
     "react/prop-types": "off",
     "react/prefer-stateless-function": "off",
     "no-use-before-define": "off",
-    "react/sort-comp": "off",
-  },
+    "react/sort-comp": "off"
+  }
 }

@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as vis from 'vis';
 import * as consts from '../utils/consts';
@@ -37,7 +37,7 @@ class JoinViz extends Component {
 
     const container = input !== null ? input : document.getElementById(`viz-${this.nsAlias}`);
     const data = { nodes: [],
-                   edges: [] };
+      edges: [] };
     const tableMap = {};
     tables.forEach((table, i) => {
       data.nodes.push({
