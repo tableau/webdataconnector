@@ -19,5 +19,7 @@ corsProxy.createServer({
   // for instance cookie could be added to ensure no cookie is shared
   removeHeaders: [],
 }).listen(corsProxyPort, corsProxyHost, () => {
-  console.log(`[CORS Proxy] running at: http://${corsProxyHost}:${corsProxyPort}`);
+  /* eslint-disable no-console */
+  // indicate corsproxy's host and port
+  console.info(`[CORS Proxy] running at: http://${corsProxyHost}:${corsProxyPort}`);
 });
