@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 class Validator extends Component {
   constructor(props) {
     super(props);

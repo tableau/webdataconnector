@@ -1,8 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Button,
-         ControlLabel,
-         FormControl,
-         Modal } from 'react-bootstrap';
+  ControlLabel,
+  FormControl,
+  Modal } from 'react-bootstrap';
 import _ from 'underscore';
 
 //----------------------Join Filter----------------------//

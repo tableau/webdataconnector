@@ -1,6 +1,7 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Tabs,
-         Tab } from 'react-bootstrap';
+  Tab } from 'react-bootstrap';
 
 import Validator from './StandardConnectionValidator.jsx';
 import JoinViz from './JoinViz.jsx';
@@ -25,7 +26,8 @@ class StandardConnections extends Component {
 
   render() {
     const joinViz = (<JoinViz alias={this.alias} joins={this.joins} tables={this.tables} />);
-    return (  //outer class defines children div css
+    return (
+      //outer class defines children div css
       <Tabs defaultActiveKeyactiveKey={1} id={`${this.nsAlias}-tabs`} animation={false}>
         <Tab eventKey={1} title="Validation"><Validator errors={this.errors} /></Tab>
         <Tab eventKey={2} title="Joins">{joinViz}</Tab>

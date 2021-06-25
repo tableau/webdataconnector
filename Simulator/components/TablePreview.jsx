@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import _ from 'underscore';
 
@@ -37,15 +38,15 @@ class TablePreview extends Component {
     const canIncrementalUpdate = hasData && (tableInfo.incrementColumnId);
 
     const incColumn = (tableInfo.incrementColumnId) ?
-    tableInfo.incrementColumnId : 'None';
+      tableInfo.incrementColumnId : 'None';
 
     // Prep table of columnInfos for this TablePreview
-    let columnTableHeader = this.METADATA_HEADER;
-    let columnElements = this.getMetadataElements(tableInfo);
+    const columnTableHeader = this.METADATA_HEADER;
+    const columnElements = this.getMetadataElements(tableInfo);
 
     // Prep table of actual data for this TablePreview
-    let dataTableHeader = this.getDataHeader(tableInfo);
-    let dataElements = this.getDataElements(tableData, dataTableHeader);
+    const dataTableHeader = this.getDataHeader(tableInfo);
+    const dataElements = this.getDataElements(tableData, dataTableHeader);
 
     return (
       <div className={`table-preview-${tableInfo.id}`}>
@@ -55,12 +56,12 @@ class TablePreview extends Component {
         {
           tableInfo.incrementColumnId ?
             <p> {tableInfo.description} </p>
-              : null
+            : null
         }
         {
           tableInfo.incrementColumnId ?
             <p> {`Incremental Refresh Column: ${incColumn}`} </p>
-              : null
+            : null
         }
         <CollapsibleTable
           name="Column Metadata"
@@ -154,10 +155,10 @@ class TablePreview extends Component {
     const filterValues = (isFiltered) ? this.props.activeFilterData : undefined;
 
     tablesAndIncValues.push({ tableInfo,
-                              incrementValue,
-                              filterColumnId,
-                              filterValues,
-                            });
+      incrementValue,
+      filterColumnId,
+      filterValues,
+    });
     // getTableCallback takes (tablesAndIncValues, isFreshFetch)
     this.props.getTableDataCallback(tablesAndIncValues, !isIncremental);
   }
