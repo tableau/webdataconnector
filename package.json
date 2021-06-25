@@ -32,7 +32,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-2": "^6.11.0",
     "chromedriver": "^91.0.1",
-    "coveralls": "^2.11.9",
+    "coveralls": "^3.1.0",
     "enzyme": "^2.3.0",
     "escope": "^3.6.0",
     "eslint": "^4.18.2",
@@ -43,11 +43,11 @@
     "express": "^4.14.0",
     "js-cookie": "^2.1.2",
     "jsdom": "^9.3.0",
-    "mocha": "^2.5.3",
-    "nyc": "^6.6.1",
+    "mocha": "^5.0.0",
+    "nyc": "^15.1.0",
     "querystring": "^0.2.0",
     "react": "15.1.0",
-    "react-addons-test-utils": "15.1.0",
+    "react-addons-test-utils": "^15.1.0",
     "react-bootstrap": "^0.29.5",
     "react-dom": "15.1.0",
     "react-redux": "^4.4.5",
@@ -63,13 +63,12 @@
     "validate.js": "^0.10.0",
     "vis": "^4.16.1",
     "webpack": "^1.13.1",
-    "yargs": "github:yargs/yargs"
+    "yargs": "^17.0.1"
   },
   "dependencies": {
     "cors-anywhere": "^0.4.4",
-    "http-proxy": "^1.18.1",
     "http-server": "^0.12.3",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^2.1.1"
   },
   "nyc": {
     "include": [
@@ -84,14 +83,11 @@
     ]
   },
   "resolutions": {
-    "_http-proxy": "^1.18.1",
-    "_css-what": "^5.0.1",
-    "_axios": "^0.21.1",
-    "_node-fetch": "^2.6.1",
-    "_watchpack": "^2.2.0",
-    "_minimist": "^1.2.5",
-    "_cryptiles": "^4.1.2",
-    "_hoek": "^5.0.3",
-    "_tunnel-agent": "^0.6.0"
+    "http-proxy": "^1.18.1",
+    "css-what": "^5.0.1",
+    "axios": "^0.21.1",
+    "node-fetch": "^2.6.1",
+    "watchpack": "^2.2.0",
+    "minimist": "^1.2.5"
   }
 }
