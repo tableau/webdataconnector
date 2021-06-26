@@ -8,7 +8,7 @@
     "bundle": "webpack --watch --config ./webpack.config.js",
     "lint": "eslint ./Simulator --ext .js --ext .jsx --cache",
     "lint:fix": "eslint ./Simulator --ext .js --ext .jsx --fix --cache",
-    "preinstall": "npm install --production --package-lock-only --no-audit --ignore-scripts && npx npm-force-resolutions",
+    "preinstall": "npm install --package-lock-only --no-audit --ignore-scripts && npx npm-force-resolutions",
     "start": "node node_modules/npm-run-all/bin/npm-run-all --parallel corsproxy http-server",
     "start:bundle": "node node_modules/npm-run-all/bin/npm-run-all --parallel corsproxy http-server bundle",
     "end-to-end": "node_modules/.bin/mocha --require babel-core/register --recursive ./Simulator/tests/end-to-end",
@@ -87,7 +87,9 @@
     "css-what": "^5.0.1",
     "axios": "^0.21.1",
     "node-fetch": "^2.6.1",
-    "watchpack": "^2.2.0",
-    "minimist": "^1.2.5"
+    "watchpack": "^1.7.5",
+    "minimist": "^1.2.5",
+    "braces": "^3.0.2",
+    "glob-parent": "^6.0.0"
   }
 }
