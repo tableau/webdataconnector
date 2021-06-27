@@ -5,7 +5,7 @@
   "scripts": {
     "corsproxy": "export CORSPROXY_PORT=8889 || set CORSPROXY_PORT=8889 && node ./Simulator/utils/corsproxy.js",
     "http-server": "node node_modules/http-server/bin/http-server -p 8888 -c-1",
-    "bundle": "webpack --watch --config ./webpack.config.js",
+    "bundle": "npm run lint && webpack --watch --config ./webpack.config.js",
     "lint": "eslint ./Simulator --ext .js --ext .jsx --cache",
     "lint:fix": "eslint ./Simulator --ext .js --ext .jsx --fix --cache",
     "preinstall": "npm install --package-lock-only --no-audit --ignore-scripts && npx npm-force-resolutions",
@@ -68,7 +68,7 @@
   "dependencies": {
     "cors-anywhere": "^0.4.4",
     "http-server": "^0.12.3",
-    "npm-run-all": "^2.1.1"
+    "npm-run-all": "^4.1.5"
   },
   "nyc": {
     "include": [

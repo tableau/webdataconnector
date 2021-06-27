@@ -2,7 +2,7 @@
 Examples/OAuthProxyExample/node_modules
 node_modules/
 
-# local dev env or tool
+# Envs or tools
 _site/
 .nyc_output/
 .eslintcache
