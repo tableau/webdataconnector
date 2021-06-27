@@ -87,7 +87,7 @@
     "css-what": "^5.0.1",
     "axios": "^0.21.1",
     "node-fetch": "^2.6.1",
-    "watchpack": "^1.7.5",
+    "watchpack": "^2.2.0",
     "minimist": "^1.2.5",
     "braces": "^3.0.2",
     "glob-parent": "^6.0.0"
