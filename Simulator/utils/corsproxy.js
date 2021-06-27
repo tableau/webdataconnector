@@ -20,6 +20,6 @@ corsProxy.createServer({
   removeHeaders: [],
 }).listen(corsProxyPort, corsProxyHost, () => {
   /* eslint-disable no-console */
-  // indicate corsproxy's host and port
+  // log corsproxy's host and port
   console.info(`[CORS Proxy] running at: http://${corsProxyHost}:${corsProxyPort}`);
 });
