@@ -1,6 +1,9 @@
 # Dependency directories
 Examples/OAuthProxyExample/node_modules
 node_modules/
+
+# Envs or tools
 _site/
 .nyc_output/
+.eslintcache
 .DS_Store
