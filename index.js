@@ -17,14 +17,15 @@ const setCustomCacheControl = (res, path) => {
 // serve root folder but route to simulator's index based on existing setup documented
 // serve-static supports recursive hosting and relative path for resource accessings
 const serve = serveStatic('./', {
-  index: ['/Simulator/index.html'],
   setHeaders: setCustomCacheControl,
 });
 
 // serve resources
-http.createServer((req, res) => {
+const httpServer = http.createServer((req, res) => {
   serve(req, res, finalhandler(req, res));
-}).listen(serverPortNumber);
+});
+
+httpServer.listen(serverPortNumber);
 
 // eslint-disable-next-line no-console
 console.log(`[HTTP Server] running at: http://localhost:${serverPortNumber}`);
