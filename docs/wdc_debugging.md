@@ -40,7 +40,7 @@ tableau.log("My console message goes here!");
   `package.json` file.  For example, you might enter the following to change the port to 8000:
 
   ```
-  "http-server": "node node_modules/http-server/bin/http-server -p 8000"
+  "http-server": "export SERVER_PORT=8000 || set SERVER_PORT=8000 && node ./index.js"
   ```
 
 * To make it easier to load files into the simulator, keep the simulator and web data connector `.html` files that you are
