@@ -15,7 +15,7 @@ const setCustomCacheControl = (res, path) => {
 };
 
 // serve root folder but route to simulator's index based on existing setup documented
-// serve-static supports recursive hosting and relative path for resource accessings
+// serve-static supports recursive hosting and relative path for accessing resources
 const serve = serveStatic('./', {
   index: ['/Simulator/index.html'],
   setHeaders: setCustomCacheControl,

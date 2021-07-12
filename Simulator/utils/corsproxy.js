@@ -4,7 +4,7 @@ const corsProxy = require('cors-anywhere');
 const corsProxyHost = process.env.CORSPROXY_HOST || 'localhost';
 
 // define proxy port and utilize the same pattern for exiting corsproxy
-const corsProxyPort = process.env.CORSPROXY_PORT || 1337;
+const corsProxyPort = process.env.CORSPROXY_PORT || 8889;
 
 corsProxy.createServer({
   // in default the cors proxy allows any domain as origin
@@ -19,7 +19,7 @@ corsProxy.createServer({
   // for instance cookie could be added to ensure no cookie is shared
   removeHeaders: [],
 }).listen(corsProxyPort, corsProxyHost, () => {
-  /* eslint-disable no-console */
   // log corsproxy's host and port, utilize log() to ensure console display
+  /* eslint-disable no-console */
   console.log(`[CORS Proxy] running at: http://${corsProxyHost}:${corsProxyPort}`);
 });
