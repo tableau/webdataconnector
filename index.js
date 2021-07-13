@@ -25,5 +25,5 @@ const httpServer = http.createServer((req, res) => {
   serve(req, res, finalhandler(req, res));
 });
 httpServer.listen(serverPortNumber);
-console.log(`[HTTP Server] serving at: http://localhost:${serverPortNumber}/Simulator/index.html`);
+console.log(`[HTTP Server] serving at: http://localhost:${serverPortNumber.toString().trim()}/Simulator/index.html`);
 console.log(`[HTTP Server] disable serving resources with cache: ${disableCache}`);
