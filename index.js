@@ -6,7 +6,7 @@ const serveStatic = require('serve-static');
 // utilize the same pattern for exiting port and cache settings
 const serverPortNumber = process.env.SERVER_PORT || 8888;
 const args = process.argv.slice(2);
-const disableCache = Array.isArray(args) && args.includes('-no-cache');
+const disableCache = Array.isArray(args) && args.includes('--no-cache');
 
 // disable cache
 const setCustomCacheControl = (res, path) => {
