@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const corsProxy = require('cors-anywhere');
 
 // define proxy host and utilize the same pattern for exiting corsproxy
@@ -19,7 +20,6 @@ corsProxy.createServer({
   // for instance cookie could be added to ensure no cookie is shared
   removeHeaders: [],
 }).listen(corsProxyPort, corsProxyHost, () => {
-  // log corsproxy's host and port, utilize log() to ensure console display
-  /* eslint-disable no-console */
-  console.log(`[CORS Proxy] running at: http://${corsProxyHost}:${corsProxyPort}`);
+  // log corsproxy's host and port
+  console.log(`[CORS Proxy] serving at: http://${corsProxyHost}:${corsProxyPort}`);
 });
