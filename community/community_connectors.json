@@ -707,6 +707,15 @@
     "source_code": "https://github.com/rthiyagarajan/melb-pedestrian-WDC"
   },
   {
+    "name": "Peloton Cycling Data",
+    "url": "https://www.mypelotondata.com/wdc",
+    "author": "Brian Weissler",
+    "github_username": "weissleb",
+    "tags": ["v_1.0"],
+    "description": "Analyze your personal Peloton cycling data.",
+    "source_code": "https://github.com/weissleb/peloton-tableau-connector"
+  },
+  {
     "name": "Pingdom",
     "url": "http://data.theinformationlab.co.uk/pingdom.html",
     "author": "Craig Bloodworth",
