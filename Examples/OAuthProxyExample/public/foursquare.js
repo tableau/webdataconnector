@@ -8,7 +8,7 @@
   // See part II. of this tutorial for an example of how
   // to do a server-side OAuth flow and avoid this problem
   var config = {
-      clientId: 'YOUR_CLIENT_ID',
+      clientId: 'UK41N0NNTULYOSPCA3VJEHJLENWB5ZXMNHFA2CWRSTH1SDNQ',
       redirectUri: 'http://localhost:3333/redirect',
       authUrl: 'https://foursquare.com/',
       version: '20190102'
