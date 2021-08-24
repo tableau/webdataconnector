@@ -8,6 +8,10 @@ For these connectors, you must handle authentication in your connector code and 
 Separately, the WDC also includes logic that you can use for re-authentication as a convenience.
 This topic describes how to re-authenticate users for connectors that have already run.
 
+<div class="alert alert-info">
+    <b>Note:</b> Kerberos is currently not supported with a custom Web Data Connector.
+</div>
+
 * TOC
 {:toc}
 
