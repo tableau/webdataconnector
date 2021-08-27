@@ -458,6 +458,15 @@
     "source_code": "https://github.com/tagyoureit/InfluxDB_WDC"
   },
   {
+    "name": "IQM Reports",
+    "url": "https://tableau-connector.iqm.com",
+    "author": "IQM Corporation",
+    "github_username": "ccampbell5",
+    "tags": ["v_2.4"],
+    "description": "A connector to import IQM ad-serving data into Tableau.",
+    "source_code": ""
+  },
+  {
     "name": "Italian Startup Companies Connector",
     "url": "http://www.myitalialogin.it/services/startupWDC.html",
     "author": "Luigi Marangon",
