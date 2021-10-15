@@ -815,6 +815,15 @@
     "source_code": ""
   },
   {
+    "name": "SafeGraph Places API",
+    "url": "https://safegraphinc.github.io/safegraph-wdc-dist/",
+    "author": "Chris Tramel",
+    "github_username": "christophertrml",
+    "tags": ["v_2.1"],
+    "description": "Connects Tableau to the SafeGraph Places API",
+    "source_code": "https://github.com/SafeGraphInc/safegraph-wdc-dist"
+  },
+  {
     "name": "SAP Business Objects WEBI & QaaWS",
     "url": "https://github.com/starschema/tableau-web-table-connector#business-objects-connector",
     "author": "Tamas Foldi",
