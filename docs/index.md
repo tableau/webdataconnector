@@ -3,45 +3,33 @@ title: Get Started
 layout: docs
 ---
 
-Create a Web Data Connector (WDC) when you want to connect to a web data source from Tableau. A WDC is an HTML page
-with JavaScript code that connects to web data (for example, by means of a REST API), converts the data to a JSON format,
-and passes the data to Tableau.
+A connector gets your data into Tableau, where you can then view and analyze it. Tableau includes dozens of connectors already and also gives you the tools to build new connectors. The Web Data Connector (WDC) is an HTML page with JavaScript code that connects to web data (for example, by means of a REST API), converts the data to a JSON format, and passes the data to Tableau.
 
 <div class="alert alert-info">
-    <b>Note:</b> This site is for version 2.x of the WDC API, which is compatible only with Tableau 10.0 and later. Version 1 of the WDC API, used with earlier versions of Tableau, is no longer supported.  
+    <b>Note:</b> This site is for version 3.x of the WDC API, which is compatible only with Tableau 10.0 and later. Versions 1.x and 2.x of the WDC API, used with earlier versions of Tableau, are no longer supported. For information about version compatibility, see [WDC Versions]({{ site.baseurl }}\docs\wdc_library_versions).
 </div>
 
------
-
-**Upgrading from WDC version 1.x**
- 
-If you have connectors that were created using WDC version 1.x, those connectors might not work in later versions of Tableau. If you want your connector to work in later versions of Tableau, or if you want to use the features available in version 2.x of the WDC, you will need to update the connector. For information about updating your connectors, see [Upgrading from WDC Version 1.x]({{ site.baseurl }}\docs\wdc_upgrade). For information about version compatibility, see [WDC Versions]({{ site.baseurl }}\docs\wdc_library_versions).
-
-
------
-
-This section will guide you through the process of setting up your development environment and running the sample WDCs in the simulator.
+This section guides you through the process of setting up your development environment and running a sample WDC in the simulator. To best understand what a WDC is, including how to build one, we recommend that you build a sample connector using an included boilerplate. To build a sample connector, perform the following tasks.
 
 * TOC
 {:toc}
 
-### Confirm prerequisites
+### Install the dependencies
 
-You're going to need a couple of things before we get started. Make sure you have the following dependencies installed:
+You need a couple of things before we get started. Make sure you have the following dependencies installed:
 
 * [Git](https://git-scm.com/downloads)
 * [node and npm](https://nodejs.org/en/download/)
 
-### Get the WDC SDK
+### Install the Taco Toolkit
 
-1. Open a terminal in the directory where you want to download the WDC SDK.  Then run the following command to clone
-   the WDC git repository:
-
+1. Open your terminal and enter the following command. 
    ```
-   git clone https://github.com/tableau/webdataconnector.git
+   npm install -g taco-toolkit
    ```
+   This installs the toolkit globally.
 
-1. Change to the directory where you downloaded the repository:
+. Change to the directory where you downloaded the repository:
 
    ```
    cd webdataconnector
