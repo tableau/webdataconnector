@@ -3,59 +3,70 @@ title: Get Started
 layout: docs
 ---
 
-A connector gets your data into Tableau, where you can then view and analyze it. Tableau includes dozens of connectors already and also gives you the tools to build new connectors. The Web Data Connector (WDC) is an HTML page with JavaScript code that connects to web data (for example, by means of a REST API), converts the data to a JSON format, and passes the data to Tableau.
+Create a Web Data Connector (WDC) when you want to connect to a web data source from Tableau. A WDC is an HTML page
+with JavaScript code that connects to web data (for example, by means of a REST API), converts the data to a JSON format,
+and passes the data to Tableau.
 
 <div class="alert alert-info">
-    <b>Note:</b> This site is for version 3.x of the WDC API, which is compatible only with Tableau 10.0 and later. Versions 1.x and 2.x of the WDC API, used with earlier versions of Tableau, are no longer supported. For information about version compatibility, see [WDC Versions]({{ site.baseurl }}\docs\wdc_library_versions).
+    <b>Note:</b> This site is for version 2.x of the WDC API, which is compatible only with Tableau 10.0 and later. Version 1 of the WDC API, used with earlier versions of Tableau, is no longer supported.  
 </div>
 
-This section guides you through the process of setting up your development environment and running a sample WDC in the simulator. To best understand what a WDC is, including how to build one, we recommend that you build a sample connector using an included boilerplate. To build a sample connector, perform the following tasks.
+-----
 
-* TOC
-{:toc}
+**Upgrading from previous WDC versions**
+ 
+If you have connectors that were created using WDC versions 1.x or 2.x, those connectors might not work in later versions of Tableau. If you want your connector to work in later versions of Tableau, or if you want to use the features available in version 3.x of the WDC, you must to create a new connector. For information about version compatibility, see [WDC Versions]({{ site.baseurl }}\docs\wdc_library_versions).
 
-### Install the dependencies
 
-You need a couple of things before we get started. Make sure you have the following dependencies installed:
+-----
+
+# Building a sample WDC connector
+
+This section guides you through the process of setting up your development environment and building a sample WDC in the simulator.
+
+To best understand what a WDC is, including how to build one, we recommend that you build a sample connector using a boilerplate included in the Taco Toolkit. To build a sample connector, perform the following tasks.
+
+
+1. Make sure you have the following dependencies installed:
 
 * [Git](https://git-scm.com/downloads)
 * [node and npm](https://nodejs.org/en/download/)
 
-### Install the Taco Toolkit
+<!--- Have we ever had anyone needing more help with these? Should we document more, or just let them figure it out? --->
 
-1. Open your terminal and enter the following command. 
+2. Open your terminal and type the following command to install the TACO Toolkit:
+
    ```
    npm install -g taco-toolkit
    ```
    This installs the toolkit globally.
 
-. Change to the directory where you downloaded the repository:
+3. Verify the install by typing the following:
 
    ```
-   cd webdataconnector
+   taco
    ```
+   This command returns the CLI version. If you don’t see a version, do???
 
-### Run the simulator
-
-1. Install dependencies with `npm`:
-
-   ```
-   npm install --production
-   ```
-
-   **Note**: You must run the command with administrator or sudo privileges.
-
-1. Start the test web server:
+4. Navigate to the root directory of the connector and enter the following command to create the connector:
 
    ```
-   npm start
+   taco create myConnector —earthquake-data
    ```
 
-1. Open a browser and navigate to the following URL:
+   This creates a boilerplate file  with the earthquake data file included with the toolkit.
+
+5. Navigate to the myConnector directory and build the connector by entering the following command:
+
+   ```
+   taco build
+   ```
+
+6. Type the following command to run the connector:
 
 
    ```
-   http://localhost:8888/Simulator/index.html
+   taco run --emulator
    ```
 
    The WDC simulator appears.
