@@ -30,29 +30,33 @@ To best understand what a WDC is, including how to build one, we recommend that 
 
 
 1. Make sure you have the following dependencies installed:
-    * [Git](https://git-scm.com/downloads)
-    * [node and npm](https://nodejs.org/en/download/)
+    * [node version 16 and npm version 7 and above](https://nodejs.org/en/download/)
 
-<!--- Have we ever had anyone needing more help with these? Should we document more, or just let them figure it out? --->
 
 2. Open your terminal and type the following command to install the TACO Toolkit:
 
    ```
    npm install -g taco-toolkit
    ```
-   This installs the toolkit globally.
+   This installs the toolkit globally. The Taco Toolkit includes:
+    * Taco CLI
+    * WDC boilerplate connector
+    * WDC 3.0 SDK
+    * Various utitlities for building, packaging, and signing your connectors
 
 3. Verify the install by typing the following:
 
    ```
    taco
    ```
-   This command returns the CLI version. If you don’t see a version, do???
+   This command returns the CLI version.
+   
+<!--  Troubleshooting: Python not needed until you package the connector. Java is not required until you sign the connector.   -->
 
 4. Navigate to the root directory of the connector and enter the following command to create the connector:
 
    ```
-   taco create myConnector —earthquake-data
+   taco create myConnector --earthquake-data
    ```
 
    This creates a boilerplate file  with the earthquake data file included with the toolkit.
