@@ -28,9 +28,8 @@ To best understand what a WDC is, including how to build one, we recommend that 
 
 
 1. Make sure you have the following dependencies installed:
-
-* [Git](https://git-scm.com/downloads)
-* [node and npm](https://nodejs.org/en/download/)
+    * [Git](https://git-scm.com/downloads)
+    * [node and npm](https://nodejs.org/en/download/)
 
 <!--- Have we ever had anyone needing more help with these? Should we document more, or just let them figure it out? --->
 
