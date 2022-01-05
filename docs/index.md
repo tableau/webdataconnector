@@ -8,7 +8,7 @@ with JavaScript code that connects to web data (for example, by means of a REST 
 and passes the data to Tableau.
 
 <div class="alert alert-info">
-    <b>Note:</b> This site is for version 2.x of the WDC API, which is compatible only with Tableau 10.0 and later. Version 1 of the WDC API, used with earlier versions of Tableau, is no longer supported.  
+    <b>Note:</b> This site is for version 3.x of the WDC API, which is compatible only with Tableau 2022.2 and later. Versions 1 and 2 of the WDC API, used with earlier versions of Tableau, are no longer supported.  
 </div>
 
 -----
