@@ -13,9 +13,11 @@ and passes the data to Tableau.
 
 -----
 
+<!-- There is no upgrade path. 
+
 **Upgrading from previous WDC versions**
  
-If you have connectors that were created using WDC versions 1.x or 2.x, those connectors might not work in later versions of Tableau. If you want your connector to work in later versions of Tableau, or if you want to use the features available in version 3.x of the WDC, you must to create a new connector. For information about version compatibility, see [WDC Versions]({{ site.baseurl }}\docs\wdc_library_versions).
+If you have connectors that were created using WDC versions 1.x or 2.x, those connectors might not work in later versions of Tableau. If you want your connector to work in later versions of Tableau, or if you want to use the features available in version 3.x of the WDC, you must to create a new connector. For information about version compatibility, see [WDC Versions]({{ site.baseurl }}\docs\wdc_library_versions). -->
 
 
 -----
