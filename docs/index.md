@@ -20,7 +20,7 @@ If you have connectors that were created using WDC versions 1.x or 2.x, those co
 
 -----
 
-# Building a sample WDC connector
+### Building a sample WDC connector
 
 This section guides you through the process of setting up your development environment and building a sample WDC in the simulator.
 
