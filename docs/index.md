@@ -52,6 +52,7 @@ To best understand what a WDC is, including how to build one, we recommend that 
    This command returns the CLI version.
    
 <!--  Troubleshooting: Python not needed until you package the connector. Java is not required until you sign the connector.   -->
+<!-- This is a working sample connector vs. the starter connector we will explain in detail later. -->
 
 4. Navigate to the root directory of the connector and enter the following command to create the connector:
 
@@ -59,45 +60,46 @@ To best understand what a WDC is, including how to build one, we recommend that 
    taco create myConnector --earthquake-data
    ```
 
-   This creates a boilerplate file  with the earthquake data file included with the toolkit.
+   This creates a folder with the earthquake data boilerplate code, which is included with the toolkit.
 
-5. Navigate to the myConnector directory and build the connector by entering the following command:
+5. Change directories to the myConnector directory.
+   ```
+   cd myConnector
+   ```
+   
+6. Build the connector by entering the following command:
 
    ```
    taco build
    ```
+   This clears any previous or existing build caches, then installs the dependencies, then builds the frontend code and the backend code (handlers), then copies the connector.json file (the configuration file).
+   
+<!--   Scot: link terms to gloss or defined elsewhere: handlers, frontend, backend  
+This has created an unpackaged connector. -->
 
-6. Type the following command to run the connector:
-
-
-   ```
-   taco run --emulator
-   ```
-
-   The WDC simulator appears.
-
-   ![]({{ site.baseurl }}/assets/wdc_simulator_new_first_open.png)
-
-**Note**: The `npm start` command also starts a test proxy server on port 8889 that you can route requests through in order to
-circumvent Cross Origin Resource Sharing (CORS) restrictions. For more information, see
-[Working with CORS]({{ site.baseurl }}/docs/wdc_cors).
-
-### Try the sample WDCs
-
-1. In the WDC URL field, confirm that the URL is set to the sample USGS
-   Earthquake Data connector:
+7. Type the following command to run the connector:
 
    ```
-   ../Examples/html/earthquakeUSGS.html
+   taco run --desktop
    ```
+   This starts Tableau Desktop with the appropriate command line parameters pointing it to your newly created connector. 
+  
+   
+8. Launch the connector in Tableau Desktop.
+   You will see a link to your connector in Tableau's list of connectors, earthquake-data by Salesforce. 
+   Click on the link to see your dialog.
+   EPS loads your default system browser to show the connector UI. This is considered the interactive phase/mode(?).
+   
+<!--  Include image of Tableau connectors with link.   -->
+   
+<!--  Scot: get correct term: mode/phase   -->
 
-   Alternatively, look in the Examples directory for more sample connectors.
+9. Click the **Get Earthquake Data** button.
+   Clicking this button closes the browser window. 
+<!--     -->
+<!--  This piece will be important when customizing their own connector: transitions to the extract mode/phase, launching the extractor process that is isolated to this single instance of your connector. The fetcher and parser are executed in this isolated process that runs in a sandbox. -->
 
-1. Click the **Start Interactive Phase** button to display the user interface for the earthquake WDC.
-
-1. Click the **Get Earthquake Data** button.
-
-1. Click the **Fetch Table Data** button to download the data and display it in a table.
 
 
 *Ready to make your own connector? Jump to the [WDC Tutorial]({{ site.baseurl }}/docs/wdc_tutorial).*
+Want to learn more about the Taco Toolkit? See the reference (link here).
