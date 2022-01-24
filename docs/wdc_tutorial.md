@@ -2,6 +2,10 @@
 title: WDC Tutorial
 layout: docs
 ---
+<!-- Two use cases: earthquake (from scratch) and blank.
+React instructions? Or instructions for JS libraries?
+ - app folder
+-->
 
 > This tutorial picks up where the [Get Started]({{ site.baseurl }}/docs) topic left off. If you haven't already, go
 > back and set up your development environment.
