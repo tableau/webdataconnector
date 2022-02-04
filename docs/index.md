@@ -83,6 +83,12 @@ This has created an unpackaged connector. -->
    taco run --desktop
    ```
    This starts Tableau Desktop with the appropriate command line parameters pointing it to your newly created connector. 
+   
+1. Create the Taco file
+   ```
+   taco pack
+   ```
+   This creates the .taco file
   
    
 8. Launch the connector in Tableau Desktop.
