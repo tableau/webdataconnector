@@ -11,17 +11,6 @@ and passes the data to Tableau.
     <b>Note:</b> This site is for version 3.x of the WDC API, which is compatible only with Tableau 2022.2 and later. Versions 1 and 2 of the WDC API, used with earlier versions of Tableau, are no longer supported.  
 </div>
 
------
-
-<!-- There is no upgrade path. 
-
-**Upgrading from previous WDC versions**
- 
-If you have connectors that were created using WDC versions 1.x or 2.x, those connectors might not work in later versions of Tableau. If you want your connector to work in later versions of Tableau, or if you want to use the features available in version 3.x of the WDC, you must to create a new connector. For information about version compatibility, see [WDC Versions]({{ site.baseurl }}\docs\wdc_library_versions). -->
-
-
------
-
 ### Building a sample WDC connector
 
 This section guides you through the process of setting up your development environment and building a sample WDC in the simulator.

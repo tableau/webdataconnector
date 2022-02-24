@@ -7,8 +7,7 @@ React instructions? Or instructions for JS libraries?
  - app folder
 -->
 
-> This tutorial picks up where the [Get Started]({{ site.baseurl }}/docs) topic left off. If you haven't already, go
-> back and set up your development environment.
+> **Note**: This tutorial picks up where the [Get Started]({{ site.baseurl }}/docs) topic left off. If you haven't already, go back and set up your development environment.
 
 By the end of this tutorial, you'll have a working WDC that connects to the [USGS Earthquake
 feed](http://earthquake.usgs.gov/earthquakes/feed/v1.0/index.php) and downloads data for earthquakes that occurred in
@@ -22,13 +21,13 @@ You'll learn how to:
 If you *really* want to skip all of this and go straight to the source code, look for the `earthquakeUSGS` files in the
 `Examples` directory. You'll get a lot more out of this if you build it from scratch though--promise!
 
-**Note**: The connector that we'll create in this tutorial (`earthquakeWDC`) has a different name than the same
+>  **Note**: The connector that you create in this tutorial (`earthquakeWDC`) has a different name than the same
 connector in the `Examples` directory (`earthquakeUSGS`). This is to minimize the chances of accidentally overwriting
 the existing sample. However, if you copy the existing sample, you'll have to change file paths.
 
-**Note**: The browser used inside Tableau Desktop 2019.3 and earlier is QT WebKit, which does not natively support new ES6 features.  If you wish to take advantage of newer features (such as promises) when building WDCs for older versions of Tableau you will need to use a polyfill.
+>  **Note**: The browser used inside Tableau Desktop 2019.3 and earlier is QT WebKit, which does not natively support new ES6 features.  If you wish to take advantage of newer features (such as promises) when building WDCs for older versions of Tableau you will need to use a polyfill.
 
-### Create the HTML page
+## Create the HTML page
 
 When you open a WDC in Tableau, you display an HTML page that links to your JavaScript code and to the WDC library.
 Optionally, this page can also display a user interface for your users to select the data that they want to download.
@@ -79,7 +78,7 @@ following between the `head` tags:
 Between the `body` tags, there is a simple button element that illustrates how users can interact with your connector
 before getting data. In a later step, you'll attach an event listener to the button in the JavaScript code.
 
-### Create the connector object
+## Create the connector object
 
 Now that you've created a user interface, it's time to write the JavaScript code for the connector. Create a new file
 named `earthquakeWDC.js` and save it in the same directory as the `earthquakeWDC.html` file.
@@ -111,7 +110,7 @@ Some things to note about the code:
   schema of the data and downloading the data.
 * The `registerConnector` function validates the connector object before initialization.
 
-### Add an event listener
+## Add an event listener
 
 Remember how we added a button to the HTML page? It's time to create an event listener that responds to clicking on the
 button.
@@ -140,11 +139,11 @@ Here's what is going on in the code snippet:
 custom initialization code. For more information, see [Custom Initialization and Shutdown]({{ site.baseurl
 }}/docs/wdc_custom_init_and_shutdown)
 
-### Test the connector so far
+## Test the connector so far
 
 The connector doesn't *do* very much so far, but it's enough that we can run it in the simulator.
 
-**Note**: Have you followed the steps in the [Getting Started]({{ site.baseurl }}/docs) topic to set up the simulator? This
+>  **Note**: Have you followed the steps in the [Getting Started]({{ site.baseurl }}/docs) topic to set up the simulator? This
 section assumes that you've installed dependencies already.
 
 1. Open a command prompt or terminal in the top-level directory for the `webdataconnector` repository.
@@ -171,7 +170,7 @@ section assumes that you've installed dependencies already.
 At this point, you might be thinking "Well...did it work?" Let's add a log message so that you can practice debugging
 the connector.
 
-#### Add a log message to confirm it is working (sort of)
+### Add a log message to confirm it is working (sort of)
 
 1. In the `earthquakeWDC.js` file, copy the following code and replace the empty `myConnector.getSchema` function:
 
@@ -190,7 +189,7 @@ the connector.
 
 If all goes well, you should see `Hello WDC!` in your browser's console.
 
-### Define a schema
+## Define a schema
 
 So the connector is working now--sort of. Before you can download data and pass it to Tableau, you need to define how
 you want to map the data to one or more or tables. This mapping of data is done in the schema.
@@ -243,11 +242,11 @@ Here's what's going on in the code:
 * The `schemaCallback` gets called when the schema is defined. The `schemaCallback` takes an array of table objects. In
   this case, there is only table object (the `tableSchema` object defined above).
 
-**Note**: The [API Reference]({{ site.baseurl }}/docs/api_ref) describes the properties that you can define for the table
+> **Note**: The [API Reference]({{ site.baseurl }}/docs/api_ref) describes the properties that you can define for the table
 object and for each object in the table columns in more detail. For now, let's plunge ahead to the exciting
 part--getting the data!
 
-### Get the data
+## Get the data
 
 Once the schema is defined, you can begin getting data and passing it to Tableau.
 
@@ -284,7 +283,7 @@ Whew! That's a good-sized chunk of code. Let's see what's happening:
 * The `table.appendRows` function appends the `tableData` array to the `table` as a JavaScript object.
 
 
-### See it in action
+## See it in action
 
 By now, you're a pro at [running the simulator](http://tableau.github.io/webdataconnector/docs/#run-sim), so fire it up,
 load your connector, and click **Get Earthquake Data!** like before. Now that we have a `getSchema` function properly
