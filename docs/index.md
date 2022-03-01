@@ -65,6 +65,12 @@ To best understand what a WDC is, including how to build one, we recommend that 
    
    <!--   Scot: link terms to gloss or defined elsewhere: handlers, frontend, backend  
    This has created an unpackaged connector. -->
+   
+1. Create the Taco file
+   ```
+   taco pack
+   ```
+   This creates the .taco file
 
 1. Type the following command to run the connector:
 
@@ -72,12 +78,6 @@ To best understand what a WDC is, including how to build one, we recommend that 
    taco run --desktop
    ```
    This starts Tableau Desktop with the appropriate command line parameters pointing it to your newly created connector. 
-   
-1. Create the Taco file
-   ```
-   taco pack
-   ```
-   This creates the .taco file
   
    
 1. Launch the connector in Tableau Desktop.
