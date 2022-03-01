@@ -108,7 +108,7 @@ Some notes about the code:
 * Both the `fetcher` and `parser` refer to the handlers. These are JavaScript files in the `handlers` directory. These files are the backend of your connector. Keep the values the same, unless you plan to change the filenames. 
 * Change the `url` value to the URL where you want to your connector to get your data.
 
-# Configure how the data is presented
+# Step 4: Configure how the data is presented
 
 Now you must define how
 you want to map the data to one or more or tables. This mapping of data is done in the schema.
