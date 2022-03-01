@@ -52,7 +52,7 @@ In your new connector directory, find and open the `connector.json` file. Make t
    | window.width | The width of the connector HTML window |
 
 # Step 2: Create the user interface
-When you open a WDC in Tableau, you display an HTML page that links to your JavaScript code and to the WDC library.
+When you open a WDC in Tableau, the connector displays an HTML page that links to your JavaScript code and to your connector's handlers.
 Optionally, this page can also display a user interface for your users to select the data that they want to download.
 
 To create a user interface for your connector, open the `/app/index.html` file. 
