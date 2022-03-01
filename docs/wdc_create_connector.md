@@ -15,34 +15,39 @@ To create your connector, do the following steps.
 In your new connector directory, find and open the `connector.json` file. Make the following changes:
 
 1. Change the general properties.
+
    | Name | Value |
-   |----|----|
+   |------|-------|
    | name | Your connector's name |
    | version | Your connector's version |
    | min | The earliest Tableau version your connector supports |
    | max | The latest Tableau version your connector supports. Enter `*` for the current version. |
 
 1. Change the company properties.
+
    | Name | Value |
-   |----|----|
+   |------|-------|
    | vendor.name | Your company name |
    | vendor.support-link | Your company's URL |
    | vendor.email | Your company's email |
    | max | The latest Tableau version your connector supports. Enter `*` for the current version. |
 
 1. Change the permissions.
+
    | Name | Value |
-   |----|----|
+   |------|-------|
    | permission.api | The URI for the API that the connector is allowed to access, along with the methods (POST, GET, PUT, PATCH, DELETE) that the connector is allowed to use. |
 
 1. Change the auth type.
+
    | Name | Value |
-   |----|----|
+   |------|-------|
    | auth.type | Accepted values are `none`, ??? |
 
 1. Change the HTML window size.
+
    | Name | Value |
-   |----|----|
+   |------|-------|
    | window.height | The height of the connector HTML window |
    | window.width | The width of the connector HTML window |
 
