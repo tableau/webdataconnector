@@ -6,6 +6,8 @@ To create your connector, we recommend that you first create a sample connector 
 
 Use the connector you created in the [Get Started]({{ site.baseurl }}/docs/../../index) topic. Copy that sample connector directory to another directory. You're now ready to create your own connector.
 
+<! -- Start with create connector with your connector name -->
+
 * TOC
 {:toc}
 
@@ -43,6 +45,8 @@ In your new connector directory, find and open the `connector.json` file. Make t
    | Name | Value |
    |------|-------|
    | auth.type | Accepted values are `none`, ??? |
+   
+   <!-- oauth2 = 'oauth2', 'api-key' = 'api-key', basic = 'basic-auth', custom = 'custom', none = 'none', -->
 
 1. Change the HTML window size.
 
@@ -86,8 +90,7 @@ following between the `head` tags:
 
 * The `meta` tag prevents your browser from caching the page.
 * The `index.css` and `toastify.min.js` files are used to simplify styling and formatting.
-* The `index.js` file is a helper library for your connector. (For example, the connector uses jQuery to
-  get JSON data.)
+* The `index.js` file is the code for your connector.
 
 Between the `body` tags, there is a simple button element that illustrates how users can interact with your connector
 before getting data. In the next step, we'll configure what happens when that buttons is clicked.
@@ -112,8 +115,15 @@ function submit() {
 Some notes about the code:
 * Both the `fetcher` and `parser` refer to the handlers. These are JavaScript files in the `handlers` directory. These files are the backend of your connector. Keep the values the same, unless you plan to change the filenames. 
 * Change the `url` value to the URL where you want to your connector to get your data.
+* The names of the fetcher and parser need to match the filenames in the handlers directory.
 
-# Step 4: Configure how the data is presented
+# Step 4: Update the fetcher file
+If your data is complex and needs preprocessing, use the Taco Toolkit library to prepare your data.
+The following is the default code that the fetcher uses to get the data:
+
+<!-- Insert fetcher file content here. -->
+
+# Step 5: Configure how the data is presented
 
 Now you must define how
 you want to map the data to one or more or tables. This mapping of data is done in the schema.
@@ -159,6 +169,16 @@ export default class MyParser extends Parser {
 ```
 
 Some notes:
-* You don't need to write a custom parser for CSV data or for Excel data.
-* You must customize the parser file for data in JSON format.
+* You don't need to write a custom parser for CSV data or for Excel data. The Taco Toolkit contains these parsers. For more information, see ???
 
+# Step 6: Build your connector
+Enter the command:
+```
+taco build
+```
+```
+taco pack
+```
+```
+taco run --desktop
+```
