@@ -8,92 +8,93 @@ with JavaScript code that connects to web data (for example, by means of a REST 
 and passes the data to Tableau.
 
 <div class="alert alert-info">
-    <b>Note:</b> This site is for version 2.x of the WDC API, which is compatible only with Tableau 10.0 and later. Version 1 of the WDC API, used with earlier versions of Tableau, is no longer supported.  
+    <b>Note:</b> This site is for version 3.x of the WDC API, which is compatible only with Tableau 2022.2 and later. Versions 1 and 2 of the WDC API, used with earlier versions of Tableau, are no longer supported.  
 </div>
 
------
+### Building a sample WDC connector
 
-**Upgrading from WDC version 1.x**
- 
-If you have connectors that were created using WDC version 1.x, those connectors might not work in later versions of Tableau. If you want your connector to work in later versions of Tableau, or if you want to use the features available in version 2.x of the WDC, you will need to update the connector. For information about updating your connectors, see [Upgrading from WDC Version 1.x]({{ site.baseurl }}\docs\wdc_upgrade). For information about version compatibility, see [WDC Versions]({{ site.baseurl }}\docs\wdc_library_versions).
+This section guides you through the process of setting up your development environment and building a sample WDC in the simulator.
+
+To best understand what a WDC is, including how to build one, we recommend that you build a sample connector using a boilerplate included in the Taco Toolkit. To build a sample connector, perform the following tasks.
 
 
------
+1. Make sure you have the following dependencies installed:
+    * [node version 16 and npm version 7 and above](https://nodejs.org/en/download/)
 
-This section will guide you through the process of setting up your development environment and running the sample WDCs in the simulator.
 
-* TOC
-{:toc}
-
-### Confirm prerequisites
-
-You're going to need a couple of things before we get started. Make sure you have the following dependencies installed:
-
-* [Git](https://git-scm.com/downloads)
-* [node and npm](https://nodejs.org/en/download/)
-
-### Get the WDC SDK
-
-1. Open a terminal in the directory where you want to download the WDC SDK.  Then run the following command to clone
-   the WDC git repository:
+1. Open your terminal and type the following command to install the TACO Toolkit:
 
    ```
-   git clone https://github.com/tableau/webdataconnector.git
+   npm install -g taco-toolkit
    ```
+   This installs the toolkit globally. The Taco Toolkit includes:
+    * Taco CLI
+    * WDC boilerplate connector
+    * WDC 3.0 SDK
+    * Various utitlities for building, packaging, and signing your connectors
 
-1. Change to the directory where you downloaded the repository:
-
-   ```
-   cd webdataconnector
-   ```
-
-### Run the simulator
-
-1. Install dependencies with `npm`:
+1. Verify the install by typing the following:
 
    ```
-   npm install --production
+   taco
    ```
+   This command returns the CLI version.
+   
+   <!--  Troubleshooting: Python not needed until you package the connector. Java is not required until you sign the connector.   -->
+   <!-- This is a working sample connector vs. the starter connector we will explain in detail later. -->
 
-   **Note**: You must run the command with administrator or sudo privileges.
-
-1. Start the test web server:
-
-   ```
-   npm start
-   ```
-
-1. Open a browser and navigate to the following URL:
-
+1. Navigate to the root directory of the connector and enter the following command to create the connector:
 
    ```
-   http://localhost:8888/Simulator/index.html
+   taco create myConnector --earthquake-data
    ```
 
-   The WDC simulator appears.
+   This creates a folder with the earthquake data boilerplate code, which is included with the toolkit.
 
-   ![]({{ site.baseurl }}/assets/wdc_simulator_new_first_open.png)
-
-**Note**: The `npm start` command also starts a test proxy server on port 8889 that you can route requests through in order to
-circumvent Cross Origin Resource Sharing (CORS) restrictions. For more information, see
-[Working with CORS]({{ site.baseurl }}/docs/wdc_cors).
-
-### Try the sample WDCs
-
-1. In the WDC URL field, confirm that the URL is set to the sample USGS
-   Earthquake Data connector:
+1. Change directories to the myConnector directory.
+   ```
+   cd myConnector
+   ```
+   
+1. Build the connector by entering the following command:
 
    ```
-   ../Examples/html/earthquakeUSGS.html
+   taco build
    ```
+   This clears any previous or existing build caches, then installs the dependencies, then builds the frontend code and the backend code (handlers), then copies the connector.json file (the configuration file).
+   
+   <!--   Scot: link terms to gloss or defined elsewhere: handlers, frontend, backend  
+   This has created an unpackaged connector. -->
+   
+1. Create the Taco file
+   ```
+   taco pack
+   ```
+   This creates the .taco file
 
-   Alternatively, look in the Examples directory for more sample connectors.
+1. Type the following command to run the connector:
 
-1. Click the **Start Interactive Phase** button to display the user interface for the earthquake WDC.
+   ```
+   taco run --desktop
+   ```
+   This starts Tableau Desktop with the appropriate command line parameters pointing it to your newly created connector. 
+  
+   
+1. Launch the connector in Tableau Desktop.
+   You will see a link to your connector in Tableau's list of connectors, earthquake-data by Salesforce. 
+   Click on the link to see your dialog.
+   EPS loads your default system browser to show the connector UI. This is considered the interactive phase/mode(?).
+   
+   <!--  Include image of Tableau connectors with link.   -->
+   
+   <!--  Scot: get correct term: mode/phase   -->
 
 1. Click the **Get Earthquake Data** button.
+   Clicking this button closes the browser window. 
+<!--     -->
+<!--  This piece will be important when customizing their own connector: transitions to the extract mode/phase, launching the extractor process that is isolated to this single instance of your connector. The fetcher and parser are executed in this isolated process that runs in a sandbox. -->
 
-1. Click the **Fetch Table Data** button to download the data and display it in a table.
 
 
 *Ready to make your own connector? Jump to the [WDC Tutorial]({{ site.baseurl }}/docs/wdc_tutorial).*
+Want to learn more about the Taco Toolkit? See the reference (link here).
