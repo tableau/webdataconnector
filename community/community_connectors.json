@@ -510,8 +510,7 @@
       "tags": ["v_2.3"],
       "description": "A general connector to import data from most statistical offices in the World.",
       "source_code": ""
-  }
-  
+  },
   {
     "name": "Jupytab",
     "url": "",
