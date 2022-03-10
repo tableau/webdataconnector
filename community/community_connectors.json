@@ -503,6 +503,15 @@
     "source_code": "https://github.com/KeshiaRose/JSON-XML-WDC"
   },
   {
+      "name": "JSON-stat (and SDMX-JSON) Connector",
+      "url": "https://jsonstat.com/tableau/",
+      "author": "Xavier Badosa",
+      "github_username": "badosa",
+      "tags": ["v_2.3"],
+      "description": "A general connector to import data from most statistical offices in the World.",
+      "source_code": ""
+  },
+  {
     "name": "Jupytab",
     "url": "",
     "author": "Brian Tribondeau",
