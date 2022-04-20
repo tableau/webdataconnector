@@ -99,4 +99,4 @@ To best understand what a web data connector is, we recommend that you build a s
 <!--  This piece will be important when customizing their own connector: transitions to the extract mode/phase, launching the extractor process that is isolated to this single instance of your connector. The fetcher and parser are executed in this isolated process that runs in a sandbox. -->
 
 ## What's next?
-Ready to make your own connector? Jump to the [Create Your web data connector Connector]({{ site.baseurl }}/docs/wdc_create_connector) topic.*
+Ready to make your own connector? Jump to the [Create Your web data connector Connector]({{ site.baseurl }}/docs3/wdc_create_connector) topic.
