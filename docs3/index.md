@@ -4,7 +4,7 @@ layout: docs3
 ---
 {% include prelim_note.md %}
 
-Create a Web Data Connector (WDC) when you want to connect to a web data source from Tableau. A WDC is an HTML page
+Create a web data connector when you want to connect to a web data source from Tableau. A web data connector is an HTML page
 with JavaScript code that connects to web data (for example, by means of a REST API), converts the data to a JSON format,
 and passes the data to Tableau.
 
@@ -12,11 +12,11 @@ and passes the data to Tableau.
     <b>Note:</b> This site is for version 3.x of the WDC API, which is compatible only with Tableau 2022.2 and later. Versions 1 and 2 of the WDC API, used with earlier versions of Tableau, are no longer supported.  
 </div>
 
-## Build a sample WDC connector
+## Build a sample web data connector
 
-This section guides you through the process of setting up your development environment and building a sample WDC in the simulator.
+This section guides you through the process of setting up your development environment and building a sample web data connector in the simulator.
 
-To best understand what a WDC is, including how to build one, we recommend that you build a sample connector using a boilerplate included in the Taco Toolkit. To build a sample connector, perform the following tasks.
+To best understand what a web data connector is, we recommend that you build a sample connector using a boilerplate included in the Taco Toolkit. To build a sample connector, perform the following tasks.
 
 
 1. Make sure you have the following dependencies installed:
@@ -26,15 +26,15 @@ To best understand what a WDC is, including how to build one, we recommend that 
    >**Tip**: If you're using Windows and installing Node.js, we recommend that you click the option to install the Python and Visual Studio Build Tools.
 
 
-2. Open your terminal and type the following command to install the TACO Toolkit:
+2. Install the TACO Toolkit by opening your terminal and typing the following command:
 
    ```
    npm install -g taco-toolkit
    ```
-   This installs the toolkit globally. The Taco Toolkit includes:
+   This command installs the toolkit globally. The Taco Toolkit includes:
     * Taco CLI
-    * WDC boilerplate connector
-    * WDC 3.0 SDK
+    * Web data connector boilerplate connector
+    * Web data connector 3.0 SDK
     * Various utilities for building, packaging, and signing your connectors
 
 3. Verify the install by typing the following:
@@ -55,7 +55,7 @@ To best understand what a WDC is, including how to build one, we recommend that 
    taco create myConnector --earthquake-data
    ```
 
-   This creates a folder with the earthquake data boilerplate code, which is included with the toolkit.
+   This creates a directory with the earthquake data boilerplate code, which is included with the toolkit.
 
 6. Change directories to the myConnector directory.
    ```
@@ -67,7 +67,7 @@ To best understand what a WDC is, including how to build one, we recommend that 
    ```
    taco build
    ```
-   This clears any previous or existing build caches, then installs the dependencies, then builds the frontend code and the backend code (handlers), then copies the connector.json file (the configuration file).
+   This command clears any previous or existing build caches, then installs the dependencies, then builds the frontend code and the backend code (handlers), then copies the connector.json file (the configuration file).
    
    <!--   Scot: link terms to gloss or defined elsewhere: handlers, frontend, backend  
    This has created an unpackaged connector. -->
@@ -83,20 +83,20 @@ To best understand what a WDC is, including how to build one, we recommend that 
    ```
    taco run --desktop
    ```
-   This starts Tableau Desktop with the appropriate command line parameters pointing it to your newly created connector. 
+   This starts Tableau Desktop with the appropriate command-line parameters pointing it to your newly created connector. 
   
    
 10. Launch the connector in Tableau Desktop.
-   You will see a link to your connector in Tableau's list of connectors, earthquake-data by Salesforce. 
-   Click on the link to see your dialog.
-   EPS loads your default system browser to show the connector UI. This is considered the interactive phase/mode(?).
+   You’ll see a link to your connector in Tableau's list of connectors, earthquake-data by Salesforce. 
+   To see your dialog, click the link.
+   EPS loads your default system browser to show the connector UI. This is considered the interactive phase.
    <!--  Include image of Tableau connectors with link.   -->
    <!--  Scot: get correct term: mode/phase   -->
 
 11. Click the **Get Earthquake Data** button.
-   Clicking this button closes the browser window. 
+   Clicking this button closes the browser pane. 
 <!--     -->
 <!--  This piece will be important when customizing their own connector: transitions to the extract mode/phase, launching the extractor process that is isolated to this single instance of your connector. The fetcher and parser are executed in this isolated process that runs in a sandbox. -->
 
 ## What's next?
-Ready to make your own connector? Jump to the [Create Your WDC Connector]({{ site.baseurl }}/docs/wdc_create_connector) topic.*
+Ready to make your own connector? Jump to the [Create Your web data connector Connector]({{ site.baseurl }}/docs/wdc_create_connector) topic.*

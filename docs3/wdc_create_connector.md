@@ -46,19 +46,19 @@ In your new connector directory, find and open the `connector.json` file. Make t
 
    | Name | Value |
    |------|-------|
-   | auth.type | Accepted values are `none`, ??? |
+   | auth.type | Accepted values are `api-key`, `basic-auth`, `custom`, `none`, and `oauth2`. |
    
    <!-- oauth2 = 'oauth2', 'api-key' = 'api-key', basic = 'basic-auth', custom = 'custom', none = 'none', -->
 
-1. Change the HTML window size.
+1. Change the HTML pane size.
 
    | Name | Value |
    |------|-------|
-   | window.height | The height of the connector HTML window |
-   | window.width | The width of the connector HTML window |
+   | window.height | The height of the connector HTML pane |
+   | window.width | The width of the connector HTML pane |
 
 # Step 2: Create the user interface
-When you open a WDC in Tableau, the connector displays an HTML page that links to your JavaScript code and to your connector's handlers.
+When you open a web data connector in Tableau, the connector displays an HTML page that links to your JavaScript code and to your connector's handlers.
 Optionally, this page can also display a user interface for your users to select the data that they want to download.
 
 To create a user interface for your connector, open the `/app/index.html` file. 
@@ -87,7 +87,7 @@ To create a user interface for your connector, open the `/app/index.html` file.
 </html>
 ```
 
-Let's run through what the code is doing. Skipping over the standard markup for an HTML page, you'll notice the
+Let's run through what the code is doing. Skipping over the standard markup for an HTML page, notice the
 following between the `head` tags:
 
 * The `meta` tag prevents your browser from caching the page.
@@ -95,7 +95,7 @@ following between the `head` tags:
 * The `index.js` file is the code for your connector.
 
 Between the `body` tags, there is a simple button element that illustrates how users can interact with your connector
-before getting data. In the next step, we'll configure what happens when that buttons is clicked.
+before getting data. In the next step, we'll configure what happens when that button is clicked.
 
 # Step 3: Edit the connector object
 Now that you've created a user interface, it's time to edit the JavaScript code for the connector's button. First, open the `/app/index.js` file. 
@@ -117,7 +117,7 @@ function submit() {
 Some notes about the code:
 * Both the `fetcher` and `parser` refer to the handlers. These are JavaScript files in the `handlers` directory. These files are the backend of your connector. Keep the values the same, unless you plan to change the filenames. 
 * Change the `url` value to the URL where you want to your connector to get your data.
-* The names of the fetcher and parser need to match the filenames in the handlers directory.
+* The names of the fetcher and parser must match the filenames in the handlers directory.
 
 # Step 4: Update the fetcher file
 If your data is complex and needs preprocessing, use the Taco Toolkit library to prepare your data.
@@ -130,7 +130,7 @@ The following is the default code that the fetcher uses to get the data:
 Now you must define how
 you want to map the data to one or more or tables. This mapping of data is done in the schema.
 
-To decide how to map your data, look at your data  source. When you're done looking at the summary of the JSON data source, make the necessary edits to structure the returned data.
+To decide how to map your data, look at your data source. When you're done looking at the summary of the JSON data source, make the necessary edits to structure the returned data.
 
 ``` js
 import { Parser, log } from 'taco-toolkit/handlers'
