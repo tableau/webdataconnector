@@ -1,16 +1,16 @@
 ---
-title: WDC Authentication
+title: Web Data Connector Authentication
 layout: docs3
 ---
 {% include prelim_note.md %}
 
 Many connectors require authentication to connect to a data source.
 For these connectors, you must handle authentication in your connector code and create a form interface to prompt users for authentication information.
-Separately, the WDC also includes logic that you can use for re-authentication as a convenience.
-This topic describes how to re-authenticate users for connectors that have already run.
+Separately, the web data connector also includes logic that you can use for reauthentication as a convenience.
+This topic describes how to reauthenticate users for connectors that have already run.
 
 <div class="alert alert-info">
-    <b>Note:</b> Kerberos is currently not supported with a custom Web Data Connector.
+    <b>Note:</b> Kerberos is not supported with a custom Web Data Connector.
 </div>
 
 * TOC
@@ -19,12 +19,12 @@ This topic describes how to re-authenticate users for connectors that have alrea
 Types of authentication {#auth-types}
 -------------------------------------
 
-Authentication types are used to help users re-authenticate.
+Authentication types are used to help users reauthenticate.
 The WDC API supports the following authentication types:
 
 - `basic`. User name and password authentication.
 - `custom`. Other authentication methods, including OAuth for example.
-- `none`. No authentication is required. If you do not specify an authentication type, `none` is assumed.
+- `none`. No authentication is required. If you don’t specify an authentication type, `none` is assumed.
 
 A connector should set its auth type in a custom init method.
 For example:
@@ -37,13 +37,13 @@ For example:
   }
 ```
 
-For connectors that require authentication, the auth type must be set.  Otherwise,
-Tableau will not know how to re-authenticate the user when the user is un-authenticated, which is a common scenario.
+You must set the authentication type for any connector that requires authentication. If you don't set the authentication type,
+Tableau will not know how to reauthenticate the user when the user is unauthenticated, which is a common scenario.
 For example, passwords (or tokens) should be stored in the tableau.password property.  The contents of this property
-are not ever written to disk.  So when a user opens a saved workbook that is attached to a WDC data source,
+are not ever written to disk.  So when a user opens a saved workbook that is attached to a web data connector data source,
 there will not a be a password for that source.  
 
-In that case, if the user wishes to refresh the extract, re-authentication needs to happen first.  When
+In that case, if the user wishes to refresh the extract, reauthentication must happen first.  When
 the user tries to refresh the data source, one of three things can happen depending on the value of authType.
 
 - If authType is `none`, then nothing will happen. 
@@ -60,30 +60,30 @@ can now be refreshed.
 ***Note***: authType in part replaced alwaysShowAuthUI from version 1 of the API.
 
 
-The WDC Auth Phase {#auth-phase}
+The web data connector Auth Phase {#auth-phase}
 ------------------------
-The WDC has two primary phases, as described in the [WDC Lifecycle and Phases]({{ site.baseurl }}/docs/wdc_phases.html)
+The web data connector has two primary phases, as described in the [web data connector Lifecycle and Phases]({{ site.baseurl }}/docs/wdc_phases.html)
 section.  But there is a third phase that is only relevant for WDCs that use an auth type of `custom`. 
 The auth phase is more of an alternative to the interactive phase than a separate phase. 
 
 The auth phase will be displayed by Tableau in two scenarios: 
 
-- The WDC uses authType `custom`, the current user is un-authenticated (as described above, 
+- The web data connector uses authType `custom`, the current user is un-authenticated (as described above, 
   when opening an existing workbook), and the user attempts to refresh the extract or edit the connection.
 
-- The WDC developer calls [tableau.abortForAuth]({{ site.baseurl }}/docs/api_ref.html#webdataconnectorapi.tableau.abortforauth).
+- The web data connector developer calls [tableau.abortForAuth]({{ site.baseurl }}/docs/api_ref.html#webdataconnectorapi.tableau.abortforauth).
 
-    This method is provided so that the developer can explicitly tell Tableau the current user is un-authenticated.
+    This method is provided so that the developer can explicitly tell Tableau the current user is unauthenticated.
     For example, this can be helpful when working with OAuth. In some scenarios, the access token used to get resources
-    from an API can expire or be revoked.  In that scenario, before fetching data, the WDC would want to call this method
+    from an API can expire or be revoked.  In that scenario, before fetching data, the web data connector would want to call this method
     in order to re-authenticate the user. For more information, see the **OAuthProxyExample** connector included in the SDK.
     
     **IMPORTANT:** The `abortForAuth` function must be called from the `init` method during the gather data phase. One intended scenario for this function is when a user, who has not been authenticated, opens an existing workbook and attempts to refresh data. In this case, the auth token is no longer available.  
     
     
-In the auth phase of the WDC, any changes to properties other than `tableau.password` and `tableau.username` will
-be ignored.  Thus, it is a best practice to only show the UI that is necessary to re-authenticate the user,
-and then auto-submit the connector for the user once they have been authenticated.
+In the auth phase of the web data connector, any changes to properties other than `tableau.password` and `tableau.username` will
+be ignored.  Thus, it’s a best practice to only show the UI that is necessary to reauthenticate the user,
+and then auto-submit the connector for the user after they’ve been authenticated.
 For example, in the **OAuthProxyExample** this is how this
 is handled in the custom init method:
 
@@ -134,45 +134,45 @@ Advanced: Auth Purpose Mechanism {#auth-purpose}
 Understanding the content in the **OAuthProxyExample** included with the SDK is
 recommended before proceeding on with this or the following section. See the [Node.js Proxy with OAuth Tutorial]({{ site.baseurl }}/docs/wdc_oauth_tutorial.html) for more information. The tutorial contains helpful terminology that is used without explanation here.
 
-Specifically for data sources that use OAuth as an authorization mechanism, there is a special enum in the API that can be useful for making a highly scalable connector.  This is an advanced technique
+Specifically for data sources that use OAuth as an authorization mechanism, there’s a special enum in the API that can be useful for making a highly scalable connector.  This is an advanced technique
 and can be safely ignored in many scenarios.
 
 The motivation for this property stems from the fact that many OAuth providers only allow a limited
-number of access tokens to be valid at a given time.  For example, certain OAuth providers allow 25 
+number of access tokens to be valid at a given time. For example, certain OAuth providers allow 25 
 access tokens to be valid for a given user/client pair.  If a 26th access token were to be issued, the 1st access
 token would become invalid.  For certain OAuth providers, this number may be even smaller.  We have seen OAuth providers that only allow
 1 access token to be valid at a given time for any user/client pair. 
 
-Given this, the following scenario could occur if the WDC was using a source that only allowed one valid access token:
+Given this, the following scenario could occur if the web data connector was using a source that only allowed one valid access token:
 
-- A user creates a data source with your WDC (1 access token is created and associated with that data source).
+- A user creates a data source with your web data connector (1 access token is created and associated with that data source).
 
 - The user publishes the data source to Server and enables automatic refreshes.
 
-- The user creates a second data source (2nd access token is created, rendering the first one invalid).  
+- The user creates a second data source (second access token is created, rendering the first one invalid).  
 
 - The automatic refresh on server would now fail because the associated access token is invalid.
 
 In order to get around this problem, you can associate all data sources created from Tableau Desktop with
-a given client, and all data sources refreshed on Tableau Server with another client.  To do this, in your WDC
+a given client, and all data sources refreshed on Tableau Server with another client.  To do this, in your web data connector
 you can use the [tableau.authPurpose]({{ site.baseurl }}/docs/api_ref.html#webdataconnectorapi.tableau.authpurpose)
-to read which context your WDC is currently running in.  If that context is `ephemeral` then the WDC is 
-being run from Tableau Desktop.  If the context is `enduring`, then the WDC is being run on Tableau Server during
+to read which context your web data connector is currently running in.  If that context is `ephemeral` then the web data connector is 
+being run from Tableau Desktop.  If the context is `enduring`, then the web data connector is being run on Tableau Server during
 an automated refresh.  You can use this property to set the client ID appropriately when performing OAuth flows.
 
-It is also important that your connector sets the `tableau.username` property to be whatever identity is associated with an access token (most commonly an email or username).  This will allow Tableau to share access
+It’s also important that your connector sets the `tableau.username` property to be whatever identity is associated with an access token (most commonly an email or username).  This allows Tableau to share access
 tokens between data sources on Server so that even if the OAuth provider restricts you to n valid access tokens, you can support more than n data sources.
 
 
 Advanced: Authentication on Server {#server-auth}
 ------------------------
-Currently, there is no way to re-authenticate a data source from Tableau Server directly.
+Currently, there’s no way to reauthenticate a data source from Tableau Server directly.
 
 For example, if you build a connector that uses OAuth as an authorization mechanism, each data source
 will have an associated access token.  But these access tokens can expire, 
 and when that happens, the data source would no longer be usable.
 
-Luckily, with OAuth (and often there is a parallel with other types of authorization and authentication mechanisms),
-there is a way to refresh these access tokens programmatically.  For OAuth specifically, we recommend
+Luckily, with OAuth (and often there’s a parallel with other types of authorization and authentication mechanisms),
+there’s a way to refresh these access tokens programmatically.  For OAuth specifically, we recommend
 fully implementing the refresh flow so that when an access token expires, the refresh token
 can be used to get a new, valid access token.
