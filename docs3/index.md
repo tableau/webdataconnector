@@ -21,7 +21,7 @@ To best understand what a web data connector is, we recommend that you build a s
 
 1. Make sure you have the following dependencies installed:
     * [Node version 16 and npm version 7 and above](https://nodejs.org/en/download/)
-    * Python 3.7 or higher
+    * [Python 3.7 or higher](https://www.python.org/downloads/)
     * [JDK 11 or higher](https://www.oracle.com/java/technologies/downloads/)
 
    >**Tip**: If you're using Windows and installing Node.js, we recommend that you click the option to install the Python and Visual Studio Build Tools.
