@@ -1,22 +1,69 @@
 ---
-title: Create a Connector
+title: Create a Multiple Table Connector
 layout: docs3
 ---
 {% include prelim_note.md %}
 
-To create your connector, we recommend that you first create a sample connector and edit those files. It's easier to get all the files and directory structure your connector needs by just using an existing example.
-
-Use the connector you created in the [Get Started]({{ site.baseurl }}/docs/index) topic. Copy that sample connector directory to another directory. You're now ready to create your own connector.
-
-<!-- Start with create connector with your connector name -->
+To create your multiple table connector, we recommend that you first create a sample multiple table connector and edit the generated files. It's easier to get all the files and directory structure your connector needs by just using an existing example.
 
 * TOC
 {:toc}
 
-To create your connector, do the following steps.
-# Step 1: Configure your connector's properties
+To create your multiple table connector, do the following steps.
+## Step 1: Create a boilerplate multiple table connector
 
-In your new connector directory, find and open the `connector.json` file. Make the following changes:
+1. Enter the following command to create the connector:
+
+   ```
+   taco create myMultitableConnector --multi-table
+   ```
+
+   This creates a directory with the earthquake data boilerplate code, which is included with the toolkit.
+
+1. Change directories to the myMultitableConnector directory.
+   ```
+   cd myMultitableConnector
+   ```
+   
+1. Build the connector by entering the following command:
+
+   ```
+   taco build
+   ```
+   This command clears any previous or existing build caches, then installs the dependencies, then builds the frontend code and the backend code (handlers), then copies the connector.json file (the configuration file).
+   
+## Step 2: Configure your connector's properties
+
+In your new multiple table connector directory, find and open the `connector.json` file. 
+```json
+{
+  "name": "earthquake-multi-table",
+  "version": "1",
+  "tableau-version": {
+    "min": "2022.2",
+    "max": "*"
+  },
+  "vendor": {
+    "name": "vendor-name",
+    "support-link": "https://vendor-name.com",
+    "email": "support@Salesforce.com"
+  },
+  "permission": {
+    "api": {
+      "https://*.usgs.gov/": ["GET", "POST", "HEAD"]
+    }
+  },
+  "auth": {
+    "type": "none"
+  },
+  "window": {
+    "height": 800,
+    "width": 600
+  }
+}
+```
+
+Make the following changes:
 
 1. Change the general properties.
 
@@ -35,28 +82,28 @@ In your new connector directory, find and open the `connector.json` file. Make t
    | vendor.support-link | Your company's URL |
    | vendor.email | Your company's email |
 
-2. Change the permissions.
+1. Change the permissions.
 
    | Name | Value |
    |------|-------|
    | permission.api | The URI for the API that the connector is allowed to access, along with the methods (POST, GET, PUT, PATCH, DELETE) that the connector is allowed to use. |
 
-3. Change the auth type.
+1. Change the authentication type.
 
    | Name | Value |
    |------|-------|
    | auth.type | Accepted values are `api-key`, `basic-auth`, `custom`, `none`, and `oauth2`. |
    
-   <!-- oauth2 = 'oauth2', 'api-key' = 'api-key', basic = 'basic-auth', custom = 'custom', none = 'none', -->
+   For more information about authentication, see [Authentication]({{ site.baseurl }}/docs3/wdc_authentication) topic.
 
-4. Change the HTML pane size.
+1. Change the HTML pane size.
 
    | Name | Value |
    |------|-------|
    | window.height | The height of the connector HTML pane |
    | window.width | The width of the connector HTML pane |
 
-# Step 2: Create the user interface
+## Step 3: Create the user interface
 When you open a web data connector in Tableau, the connector displays an HTML page that links to your JavaScript code and to your connector's handlers.
 Optionally, this page can also display a user interface for your users to select the data that they want to download.
 
@@ -96,35 +143,65 @@ following between the `head` tags:
 Between the `body` tags, there is a simple button element that illustrates how users can interact with your connector
 before getting data. In the next step, we'll configure what happens when that button is clicked.
 
-# Step 3: Edit the connector object
+## Step 4: Edit the connector object
 Now that you've created a user interface, it's time to edit the JavaScript code for the connector's button. First, open the `/app/index.js` file. 
 
 ``` js
+import Connector from 'taco-toolkit'
+
+function onInitialized() {
+  const elem = document.getElementById('submitButton')
+  elem.innerText = 'Get Earthquake Data!'
+  elem.removeAttribute('disabled')
+}
+
+const connector = new Connector(onInitialized)
+
 function submit() {
+  const apiUrl = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson'
+
   connector.handlerInputs = [
     {
-      fetcher: 'MyFetcher',
-      parser: 'MyParser',
+      fetcher: 'DataFetcher',
+      parser: 'MagPlaceParser',
       data: {
-        url: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson',
+        url: apiUrl,
+      },
+    },
+    {
+      fetcher: 'DataFetcher',
+      parser: 'TimeUrlParser',
+      data: {
+        url: apiUrl,
       },
     },
   ]
   connector.submit()
 }
+
+window.addEventListener('load', function () {
+  document.getElementById('submitButton').addEventListener('click', submit)
+})
 ```
 Some notes about the code:
-* Both the `fetcher` and `parser` refer to the handlers. These are JavaScript files in the `handlers` directory. These files are the backend of your connector. Keep the values the same, unless you plan to change the filenames. 
-* Change the `url` value to the URL where you want to your connector to get your data.
-* The names of the fetcher and parser must match the filenames in the handlers directory.
+* Change the `apiUrl` value to the URL where you want to your connector to get your data.
+* Both the `fetcher` and `parser` refer to the handlers. These are JavaScript files in the `handlers` directory. These files are the backend of your connector. The names of the fetcher and parser must match the filenames in the handlers directory. Keep the values the same, unless you plan to change the filenames.
 
-# Step 4: Update the fetcher file
+## Step 5: Update the fetcher file
 If your data is complex and needs preprocessing, use the Taco Toolkit library to prepare your data.
 The following is the default code that the fetcher uses to get the data:
 
-<!-- Insert fetcher file content here. -->
+```js
+import { Fetcher, AjaxRequest } from 'taco-toolkit/handlers'
 
-# Step 5: Configure how the data is presented
+export default class DataFetcher extends Fetcher {
+  async fetch(request, context) {
+    return await AjaxRequest.getJSON(request.data.url)
+  }
+}
+```
+
+## Step 6: Configure how the data is presented
 
 Now you must define how
 you want to map the data to one or more or tables. This mapping of data is done in the schema.
@@ -134,10 +211,10 @@ To decide how to map your data, look at your data source. When you're done looki
 ``` js
 import { Parser, log } from 'taco-toolkit/handlers'
 
-export default class MyParser extends Parser {
+export default class MagPlaceParser extends Parser {
   parse(fetcherResult, input, context) {
-    const table = this.createTable('Earthquake Data')
-    table.setId('EarthquakeData')
+    const table = this.createTable('Magnitude and Place Data')
+    table.setId('magPlace')
     table.addColumnHeaders([
       {
         id: 'id',
@@ -154,14 +231,28 @@ export default class MyParser extends Parser {
         dataType: 'string',
       },
       {
-        id: 'location',
-        dataType: 'geometry',
+        id: 'lat',
+        alias: 'latitude',
+        columnRole: 'dimension',
+        dataType: 'float',
+      },
+      {
+        id: 'lon',
+        alias: 'longitude',
+        columnRole: 'dimension',
+        dataType: 'float',
       },
     ])
 
     table.addRows(
       fetcherResult.features.map((row) => {
-        return { id: row.id, mag: row.properties.mag, title: row.properties.title, location: row.geometry }
+        return {
+          id: row.id,
+          mag: row.properties.mag,
+          title: row.properties.title,
+          lon: row.geometry.coordinates[0],
+          lat: row.geometry.coordinates[1],
+        }
       })
     )
     return this.container
@@ -172,7 +263,7 @@ export default class MyParser extends Parser {
 Some notes:
 * You don't need to write a custom parser for CSV data or for Excel data. The Taco Toolkit contains these parsers. For more information, see ???
 
-# Step 6: Build your connector
+## Step 7: Build your connector
 Enter these commands to build, pack, and run your new connector:
 ```
 taco build
