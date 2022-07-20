@@ -209,27 +209,28 @@ window.addEventListener('load', function () {
 })
 ```
 Some notes about the code:
-* ???
+* Change the URL to your API URL (Scot to get more information and provide)
+The API URL, when we send a request, we need to provide a header with the basic authentication credentials
 
 ## Step 5: Update the fetcher file
 If your data is complex and needs preprocessing, use the Taco Toolkit library to prepare your data.
 The following is the default code that the fetcher uses to get the data:
 
 ```js
-import { Fetcher, AjaxRequest, log } from 'taco-toolkit/handlers'
-
+import { Fetcher, AjaxRequest } from ‘taco-toolkit/handlers’
 function getBasicAuthHeader(username, password) {
-  const token = Buffer.from(`${username}:${password}`).toString('base64')
+  const token = Buffer.from(`${username}:${password}`).toString(‘base64’)
   return { Authorization: `Basic ${token}` }
 }
-export default class MyFetcher extends Fetcher {
-  async fetch(request, context) {
+export default class BasicAuthFetcher extends Fetcher {
+  async *fetch(request, context) {
     const { username, password } = context.connector.secrets
     const headers = getBasicAuthHeader(username, password)
-    return await AjaxRequest.getJSON(request.data.url, { headers })
+    yield await AjaxRequest.getJSON(request.data.url, { headers })
   }
 }
 ```
+* The `headers` contain the basic authorization token.
 
 ## Step 6: Configure how the data is presented
 
@@ -269,7 +270,7 @@ export default class MyParser extends Parser {
 ```
 
 Some notes:
-* You don't need to write a custom parser for CSV data or for Excel data. The Taco Toolkit contains these parsers. For more information, see ???
+* 
 
 ## Step 7: Build your connector
 Enter these commands to build, pack, and run your new connector:

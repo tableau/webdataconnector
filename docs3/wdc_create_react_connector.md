@@ -135,7 +135,9 @@ following between the `head` tags:
 
 * The `meta` tag prevents your browser from caching the page.
 * The `bootstrap.min.css` and `app.css` files are used to simplify styling and formatting.
-* The `App.txs` file is the code for your connector.
+* The `App.txs` file is the React code for your connector.
+
+<--- Just a template to work with the React library --->
 
 ## Step 4: Edit the connector object
 Now that you've created a user interface, it's time to edit the JavaScript code for the connector's button. First, open the `/app/App.txs` file. 

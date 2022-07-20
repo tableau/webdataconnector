@@ -186,20 +186,23 @@ window.addEventListener('load', function () {
 Some notes about the code:
 * Change the `apiUrl` value to the URL where you want to your connector to get your data.
 * Both the `fetcher` and `parser` refer to the handlers. These are JavaScript files in the `handlers` directory. These files are the backend of your connector. The names of the fetcher and parser must match the filenames in the handlers directory. Keep the values the same, unless you plan to change the filenames.
+* Each handler input contains a fetcher and a parser. In this example, each input uses the same fetcher but one uses magnitude and place parser and the other uses time URL parser.
+* The `apiUrl` in this example is the same for both tables. You can use a different `apiUrl` for each table if you want.
+* You can use a separate fetcher for each table.
 
 ## Step 5: Update the fetcher file
 If your data is complex and needs preprocessing, use the Taco Toolkit library to prepare your data.
 The following is the default code that the fetcher uses to get the data:
 
 ```js
-import { Fetcher, AjaxRequest } from 'taco-toolkit/handlers'
-
+import { Fetcher, AjaxRequest } from ‘taco-toolkit/handlers’
 export default class DataFetcher extends Fetcher {
-  async fetch(request, context) {
-    return await AjaxRequest.getJSON(request.data.url)
+  async *fetch(request, context) {
+    yield await AjaxRequest.getJSON(request.data.url)
   }
 }
 ```
+
 
 ## Step 6: Configure how the data is presented
 

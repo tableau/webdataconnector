@@ -94,7 +94,7 @@ In your new OAuth connector directory, find and open the `connector.json` file.
 	}
 }
 ```
-
+* Requires auth detail
 Make the following changes:
 
 1. Change the general properties.
