@@ -20,7 +20,7 @@ To create your custom authentication connector, do the following steps.
 
    This creates a directory with the earthquake data boilerplate code, which is included with the toolkit.
 
-1. Change directories to the myBasicAuthConnector directory.
+1. Change directories to the myCustomAuthConnector directory.
    ```
    cd myCustomAuthConnector
    ```
@@ -30,11 +30,11 @@ To create your custom authentication connector, do the following steps.
    ```
    taco build
    ```
-   This command clears any previous or existing build caches, then installs the dependencies, then builds the frontend code and the backend code (handlers), then copies the connector.json file (the configuration file).
+   This command clears any earlier or existing build caches. Then the command installs the dependencies and builds both the front-end code and the back-end code (handlers). Finally, the command copies the `connector.json` file (the configuration file) to your directory.
    
 ## Step 2: Configure your connector's properties
 
-In your new basic authentication connector directory, find and open the `connector.json` file. 
+In your new custom authentication connector directory, find and open the `connector.json` file. 
 ```json
 {
   "name": "custom-auth-sample",
@@ -93,7 +93,7 @@ Make the following changes:
 
    | Name | Value |
    |------|-------|
-   | auth.type | Set to `basic-auth` |
+   | auth.type | Set to `custom-auth` |
    
    For more information about authentication, see [Authentication]({{ site.baseurl }}/docs3/wdc_authentication) topic.
 
@@ -114,7 +114,7 @@ To create a user interface for your connector, open the `/app/index.html` file.
 <html>
 
 <head>
-  <title>Basic Auth Sample</title>
+  <title>Custom Auth Sample</title>
   <meta http-equiv="Cache-Control" content="no-store" />
   <link rel="shortcut icon" href="#" />
   <link href="index.css" rel="stylesheet" />
@@ -191,7 +191,7 @@ function submit() {
 
   connector.secrets = { username, password }
 
-  //TODO: change url to the one that works with the basic auth
+  //TODO: change url to the one that works with the custom auth
   connector.handlerInputs = [
     {
       fetcher: 'MyFetcher',
@@ -211,7 +211,7 @@ window.addEventListener('load', function () {
 ```
 Some notes about the code:
 * Change the URL to your API URL (Scot to get more information and provide)
-The API URL, when we send a request, we need to provide a header with the basic authentication credentials
+The API URL, when we send a request, we must provide a header with the custom authentication credentials
 
 ## Step 5: Update the fetcher file
 If your data is complex and needs preprocessing, use the Taco Toolkit library to prepare your data.
@@ -219,11 +219,11 @@ The following is the default code that the fetcher uses to get the data:
 
 ```js
 import { Fetcher, AjaxRequest } from ‘taco-toolkit/handlers’
-function getBasicAuthHeader(username, password) {
+function getCustomAuthHeader(username, password) {
   const token = Buffer.from(`${username}:${password}`).toString(‘base64’)
   return { Authorization: `Basic ${token}` }
 }
-export default class BasicAuthFetcher extends Fetcher {
+export default class CustomAuthFetcher extends Fetcher {
   async *fetch(request, context) {
     const { username, password } = context.connector.secrets
     const headers = getBasicAuthHeader(username, password)
@@ -231,7 +231,7 @@ export default class BasicAuthFetcher extends Fetcher {
   }
 }
 ```
-* The `headers` contain the basic authorization token.
+* The `headers` contain the custom authorization token.
 
 ## Step 6: Configure how the data is presented
 

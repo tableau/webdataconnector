@@ -4,13 +4,31 @@ layout: docs3
 ---
 {% include prelim_note.md %}
 
-To create your OAuth connector, we recommend that you first create a sample OAuth connector and edit the generated files. It's easier to get all the files and directory structure your connector needs by just using an existing example.
-
 * TOC
 {:toc}
 
+## What is OAuth?
+
+OAuth is an authentication protocol that allows your web data connector to request specific resources from a resource provider  on behalf of a specific resource owner. This is a more secure and usable alternative to a connector that asks the user directly for their Foursquare username and password.
+
+To use OAuth, your connector must be  registered with the OAuth resource provider. The provider assigns a *client ID* to identify the connector and a *client secret* that is known only by the connector and the OAuth provider and is used to authorize the connector to make requests on behalf of the user. 
+
+When your connector contacts the OAuth provider, the connector passes the client ID to identify itself. The exact process for registering your connector differs for each provider, and is typically explained in the provider’s documentation for how to use their API.
+
+## Benefits of OAuth
+
+Using OAuth-based connections provides the following benefits:
+
+ * **Security**: Your database credentials are never known to or stored in Tableau Server, and the access token can be used only by Tableau on behalf of users.
+
+ * **Convenience**: Instead of having to embed your data source ID and password in multiple places, you can use the token provided for a particular data provider for all published workbooks and data sources that access that data provider.
+
+## Creating an OAuth connector
+
+To create your OAuth connector, we recommend that you first create a sample OAuth connector and edit the generated files. It's easier to get all the files and directory structure your connector needs by just using an existing example.
+
 To create your OAuth connector, do the following steps.
-## Step 1: Create a boilerplate OAuth connector
+### Step 1: Create a boilerplate OAuth connector
 
 1. Enter the following command to create the connector:
 
@@ -32,7 +50,7 @@ To create your OAuth connector, do the following steps.
    ```
    This command clears any previous or existing build caches, then installs the dependencies, then builds the frontend code and the backend code (handlers), then copies the connector.json file (the configuration file).
    
-## Step 2: Configure your connector's properties
+### Step 2: Configure your connector's properties
 
 In your new OAuth connector directory, find and open the `connector.json` file. 
 ```json
@@ -136,7 +154,7 @@ Make the following changes:
    | window.height | The height of the connector HTML pane |
    | window.width | The width of the connector HTML pane |
 
-## Step 3: Create the user interface
+### Step 3: Create the user interface
 When you open a web data connector in Tableau, the connector displays an HTML page that links to your JavaScript code and to your connector's handlers.
 Optionally, this page can also display a user interface for your users to select the data that they want to download.
 
@@ -170,7 +188,7 @@ following between the `head` tags:
 * The `bootstrap.min.css` and `app.css` files are used to simplify styling and formatting.
 * The `App.txs` file is the code for your connector.
 
-## Step 4: Edit the connector object
+### Step 4: Edit the connector object
 Now that you've created a user interface, it's time to edit the JavaScript code for the connector's button. First, open the `/app/App.txs` file. 
 
 ``` js
@@ -188,7 +206,7 @@ root.render(
 Some notes about the code:
 * ???
 
-## Step 5: Update the fetcher file
+### Step 5: Update the fetcher file
 If your data is complex and needs preprocessing, use the Taco Toolkit library to prepare your data.
 The following is the default code that the fetcher uses to get the data:
 
@@ -203,7 +221,7 @@ export default class MyFetcher extends Fetcher {
 }
 ```
 
-## Step 6: Configure how the data is presented
+### Step 6: Configure how the data is presented
 
 Now you must define how
 you want to map the data to one or more or tables. This mapping of data is done in the schema.
@@ -224,7 +242,7 @@ export default class MyParser extends Parser {
 Some notes:
 * You don't need to write a custom parser for CSV data or for Excel data. The Taco Toolkit contains these parsers. For more information, see ???
 
-## Step 7: Build your connector
+### Step 7: Build your connector
 Enter these commands to build, pack, and run your new connector:
 ```
 taco build

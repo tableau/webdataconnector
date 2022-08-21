@@ -1,28 +1,33 @@
 ---
-title: Create a Multiple Table Connector
+title: Create a Multi-Table Connector
 layout: docs3
+context: https://schema.org/
+type: How-to
+name: Create a Multi-Table Connector
+datePublished: 2022-10-18
+description: This topic shows how to use the TACO Toolkit to create a multi-table web data connector.
 ---
 {% include prelim_note.md %}
 
-To create your multiple table connector, we recommend that you first create a sample multiple table connector and edit the generated files. It's easier to get all the files and directory structure your connector needs by just using an existing example.
+To create your multi-table connector, we recommend that you first create a sample multi-table connector and edit the generated files. It's easier to get all the files and directory structure your connector needs by just using an existing example.
 
 * TOC
 {:toc}
 
-To create your multiple table connector, do the following steps.
-## Step 1: Create a boilerplate multiple table connector
+To create your multi-table connector, do the following steps.
+## Step 1: Create a boilerplate multi-table connector
 
 1. Enter the following command to create the connector:
 
    ```
-   taco create myMultitableConnector --multi-table
+   taco create --boilerplate multi-table 'my-multitable-connector'
    ```
 
    This creates a directory with the earthquake data boilerplate code, which is included with the toolkit.
 
 1. Change directories to the myMultitableConnector directory.
    ```
-   cd myMultitableConnector
+   cd my-multitable-connector
    ```
    
 1. Build the connector by entering the following command:
@@ -34,7 +39,7 @@ To create your multiple table connector, do the following steps.
    
 ## Step 2: Configure your connector's properties
 
-In your new multiple table connector directory, find and open the `connector.json` file. 
+In your new multi-table connector directory, find and open the `connector.json` file. 
 ```json
 {
   "name": "earthquake-multi-table",

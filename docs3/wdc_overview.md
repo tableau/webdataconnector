@@ -12,7 +12,8 @@ Tableau's Web Data Connector (WDC) lets you connect to data that is accessible o
 WDC 3.0 has the following components.
 
 ### Extensible Protocol Server
-The Extensible Protocol Server (EPS) 
+The Extensible Protocol Server (EPS) is the server that runs your web data connector. An EPS-based connector is a web application that doesn’t require a web server.
 
 ### TACO Toolkit
 The TACO Toolkit is the command-line interfact that you use to create, build, and package your web data connector. Use the TACO Toolkit to generate template files for a variety of connector types and then edit the files for your specific connector. For more  information about creating connectors, see [Create a Connector](wdc_create_connector.md).
+

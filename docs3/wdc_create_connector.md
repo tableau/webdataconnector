@@ -93,7 +93,7 @@ following between the `head` tags:
 * The `index.css` and `toastify.min.js` files are used to simplify styling and formatting.
 * The `index.js` file is the code for your connector.
 
-Between the `body` tags, there is a simple button element that illustrates how users can interact with your connector
+Between the `body` tags, there’s a simple button element that illustrates how users can interact with your connector
 before getting data. In the next step, we'll configure what happens when that button is clicked.
 
 # Step 3: Edit the connector object
@@ -170,7 +170,7 @@ export default class MyParser extends Parser {
 ```
 
 Some notes:
-* You don't need to write a custom parser for CSV data or for Excel data. The Taco Toolkit contains these parsers. For more information, see ???
+* You don't need to write a custom parser for CSV data or for Excel data. The Taco Toolkit includes these parsers. For more information, see ???
 
 # Step 6: Build your connector
 Enter these commands to build, pack, and run your new connector:
