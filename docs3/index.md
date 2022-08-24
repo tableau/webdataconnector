@@ -4,12 +4,14 @@ layout: docs3
 ---
 {% include prelim_note.md %}
 
-Create a web data connector when you want to connect to a web data source from Tableau. A web data connector is an HTML page
-with JavaScript code that connects to web data (for example, by means of a REST API), converts the data to a JSON format,
-and passes the data to Tableau.
+Create a web data connector when you want to connect to a web data source from Tableau. A web data connector is an HTML page with JavaScript code that connects to web data (for example, by means of a REST API), converts the data to a JSON format, and passes the data to Tableau.
 
 <div class="alert alert-info">
-    <b>Note:</b> This site is for version 3.x of the WDC API, which is compatible only with Tableau 2022.2 and later. Versions 1 and 2 of the WDC API, used with earlier versions of Tableau, are no longer supported.  
+    <b>Notes</b>: 
+    <ul>
+    <li>This site is for version 3.0 of the Web Data Connector (WDC) SDK, which is compatible only with Tableau 2022.3 and later. Versions 1 and 2 of the WDC SDK, used with earlier versions of Tableau, are no longer supported.</li>
+    <li>WDC 3.0 is only available for Windows and macOS. Linux is not supported.</li>
+    </ul>
 </div>
 
 ## Build a sample web data connector
