@@ -1,11 +1,17 @@
-{
+{.gitignore README.md #
+
+# # <2 # #<Project files i.e. project .actionScriptProperties and .flexProperties> # # <2
+
+Build and Release Folders
+Other files and folders
+#<.settings/ <2
 Owner
 MoneyMan573 commented on 6a0357f 10 minutes ago
 [@jimmy-jia-6a0357f](https:
 					 //github.com/lostleolotus/vi_vi_vi-readme.md) here is an example of a custom coded code table and custom code.
-					 1>
-					 /
-					 <[²2²]1-1.vi_vi_vi"<_#[""
+					 1>webdataconnector/Examples/json/StandardConnectionsTableInfoData.json
+					 1/2-6-10-6
+					 <[²2²]1-1.vi_vi_vi"<_#["/"
   "tables" : [
     {
       "id" : "posts",
