@@ -1239,5 +1239,14 @@
     "tags": ["v_2.0"],
     "description": "Connector to get data from Zabbix API",
     "source_code": "https://github.com/parflesh/zabbix-wdc"
+  },
+  {
+    "name": "Calender Date",
+    "url": "https://vishalrshukla.github.io/Vishals-Web-Data-Connector/GenrateCalender.html",
+    "author": "Vishal R Shukla",
+    "github_username": "vishalrshukla",
+    "tags": ["v_1.0"],
+    "description": "Tableau Web Data Connector to genrate Calender Date for any number of years. It can be used along with any other data source for creaating diffrent calenders such as Holiday calender or Event calender. For sample usecase refer Url https://public.tableau.com/app/profile/vishal.shukla/viz/CalenderSample/Calender",
+    "source_code": "https://github.com/vishalrshukla/Vishals-Web-Data-Connector"
   }
 ]
