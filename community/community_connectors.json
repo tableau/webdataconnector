@@ -116,6 +116,13 @@
     "source_code": "https://github.com/jcopenha/BoardGameGeekWebDataConnector"
   },
   {
+    "name": "CellEngine",
+    "url": "https://cellengine.com/tableau",
+    "github_username": "primitybio",
+    "author": "CellCarta",
+    "description": "Tableau connector for loading cytometry statistics from CellEngine (https://cellengine.com)."
+  },
+  {
     "name": "Cognetik Cloud Connector",
     "url": "http://tableau.cognetik.com",
     "author": "Cognetik",
