@@ -1239,5 +1239,14 @@
     "tags": ["v_2.0"],
     "description": "Connector to get data from Zabbix API",
     "source_code": "https://github.com/parflesh/zabbix-wdc"
+  },
+  {
+    "name": "Watergauge",
+    "url": "https://www.logistikjunge.de/Tableau/watergaugeWDC.html",
+    "author": "Paul",
+    "github_username": "pschybyschp",
+    "tags": ["v1.0.0"],
+    "description": "Connector to request data about watergauge stations and different water related measures in Germany retrieved from Pegelonline",
+    "source_code": "https://github.com/pschybyschp/Tableau-wdc-watergauge"
   }
 ]
