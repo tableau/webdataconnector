@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import TablePreview from './TablePreview.jsx';
 import _ from 'underscore';
 
@@ -12,8 +13,8 @@ class DataTables extends Component {
     const tables = this.props.tables;
 
     let tablePreviewElements = [];
-    let filtertableTableNames = [];
-    let filterableColumnMap = {};
+    const filtertableTableNames = [];
+    const filterableColumnMap = {};
 
     // This sets up the data about what tables/columns are
     // available for use in a join filter.
@@ -39,7 +40,7 @@ class DataTables extends Component {
 
     const needsDefaultFilters = (_.isEmpty(this.props.filterInfo.selectedTable));
 
-    let currentFilterInfo = needsDefaultFilters ? defaultFilterInfo : this.props.filterInfo;
+    const currentFilterInfo = needsDefaultFilters ? defaultFilterInfo : this.props.filterInfo;
     let activeFilterData = [];
     const selectedTableData = tables[currentFilterInfo.selectedTable].data;
 

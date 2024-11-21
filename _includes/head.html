@@ -1,9 +1,23 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v{{ seo_tag.version }} -->
 
-  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+{% if seo_tag.title? %}
+<title>{{ seo_tag.title }}</title>
+{% endif %}
+
+<meta name="generator" content="Jekyll v{{ jekyll.version }}" />
+
+{% if seo_tag.page_title %}
+<meta property="og:title" content="{{ seo_tag.page_title }}" />
+{% endif %}
+
+{% if seo_tag.author.name %}
+<meta name="author" content="{{ seo_tag.author.name }}" />
+{% endif %}
+
+<meta property="og:locale" content="{{ seo_tag.page_locale }}" />
 
   <link rel="shortcut icon" type="image/png" href="{{ site.baseurl }}/assets/logo.png">
 

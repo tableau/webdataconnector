@@ -12,7 +12,7 @@ export function receiveMessage(payload) {
       if (version === '1.1.0' || version === '1.1.1') {
         const errmsg = 'this simulator only supports wdcs that are ' +
                        'using version 2.0 of the api or later, your ' +
-                       `wdc\'s version is: ${version}`;
+                       `wdc's version is: ${version}`;
         toastr.error(errmsg, 'unsupported wdc version error:');
       }
 

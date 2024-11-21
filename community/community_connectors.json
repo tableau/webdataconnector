@@ -1,1128 +1,148 @@
 [
-    {
-        "name": "Covid19 India Live Data Tracker",
-        "url": "https://webdataconnectortableau.blogspot.com/2020/05/blog-post.html",
-        "author": "Neel Shah",
-        "github_username": "NeelShah00",
-        "tags": ["v_1.0"],
-        "description": "WDC that provides updates from official source",
-        "source_code": ""
-    },
-    {
-        "name": "AdStage",
-        "url": "http://tech.adstage.io/tableau_connector/AdstageConnector.html",
-        "author": "David Haslem",
-        "github_username": "therabidbanana",
-        "tags": ["v_2.2"],
-        "description": "A basic adapter to pull last month of campaign data from AdStage API",
-        "source_code": "https://github.com/AdStage/tableau_connector"
-    },
-    {
-        "name": "Alpha Vantage",
-        "url": "https://satichun.github.io/AV-WDC/",
-        "author": "Satish C",
-        "github_username": "satichun",
-        "tags": ["v_1.0"],
-        "description": "A connector for stock data",
-        "source_code": "https://github.com/satichun/AV-WDC"
-    },
-    {
-        "name": "Alpha Vantage Official",
-        "url": "https://www.getalphavantage.co/tableau_wdc",
-        "author": "Patrick Collins",
-        "github_username": "PatrickAlphaVantage",
-        "tags": ["v_1.0"],
-        "description": "A connector for stock, forex, cryptocurrency, technical indicators, and sector performance",
-        "source_code": "https://github.com/PatrickAlphaVantage/tableau_wdc"
-    },
-    {
-        "name": "Alteryx",
-        "url": "http://data.theinformationlab.co.uk/alteryx.html",
-        "author": "Craig Bloodworth",
-        "github_username": "",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": ""
-    },
-    {
-        "name": "Amiibo API",
-        "url": "https://fri5by.github.io/amiiboapitableauwdc/",
-        "author": "Joshua Frisby",
-        "github_username": "fri5by",
-        "tags": ["v_2.3"],
-        "description": "A Tableau Web Data Connector for AmiiboAPI (http://www.amiiboapi.com/).",
-        "source_code": "https://github.com/fri5by/amiiboapitableauwdc"
-    },
-    {
-        "name": "Aprimo Platform Connector",
-        "url": "https://connect-uat.spcreports.com/Aprimo-Tableau",
-        "author": "Solutions Plus",
-        "github_username": "",
-        "tags": ["v_1.2"],
-        "description": "A Tableau WDC for the Aprimo Platform (https://www.solutionsplusconsulting.com/aprimo-tableau-connector/).",
-        "source_code": ""
-    },
-    {
-        "name": "Army Corps. of Engineers - U.S. Department of Defense Sites",
-        "url": "https://lshpaner.rbind.io/datasets/US_Army_Corps_of_Engineers/DOD_Sites/ACE_DOD_Sites.html",
-        "author": "Leon Shpaner",
-        "github_username": "lshpaner",
-        "tags": ["v_1.0"],
-        "description": "geospatial dataset containing facilities, installations, and other DOD sites based on arcgis source extraction",
-        "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/US_Army_Corps_of_Engineers/DOD_Sites"
-    },	
-    {
-        "name": "Australian Bureau of Statistics (ABS) SDMX-JSON Connector",
-        "url": "https://aprince.github.io/ABS_SDMX-JSON_API/",
-        "author": "Andy Prince",
-        "github_username": "aprince",
-        "tags": ["v_2.0"],
-        "description": "A basic example WDC for the Australian Bureau of Statistics (ABS) SDMX-JSON RESTful API",
-        "source_code": "github.com/aprince/ABS_SDMX-JSON_API"
-    },
-    {
-        "name": "Ascend.io",
-        "url": "https://trial.ascend.io/ui/tableau",
-        "author": "Shawn Xu",
-        "github_username": "shawnxusy",
-        "tags": ["v_1.0"],
-        "description": "A Tableau Web Data Connector for the Ascend.io Autonomous Dataflow Platform (https://www.ascend.io).",
-        "source_code": ""
-    },
-    {
-        "name": "Bitmovin Analytics",
-        "url": "https://bitmovin.github.io/analytics-tableau-web-data-collector",
-        "author": "Bitmovin",
-        "github_username": "bitmovin",
-        "description": "A Tableau Web Data Collector for the Bitmovin Analytics API (https://bitmovin.com/video-analytics)",
-        "source_code": "https://github.com/bitmovin/analytics-tableau-web-data-collector"
-    },
-    {
-        "name": "BoardGameGeek User Plays",
-        "url": "https://garnet-viper.hyperdev.space/",
-        "author": "Jason Copenhaver",
-        "github_username": "jcopenha",
-        "tags": ["v_2.0"],
-        "description": "",
-        "source_code": "https://github.com/jcopenha/BoardGameGeekWebDataConnector"
-    },
-    {
-        "name": "Cognetik Cloud Connector",
-        "url": "http://tableau.cognetik.com",
-        "author": "Cognetik",
-        "github_username": "",
-        "tags": ["v_2.0"],
-        "description": "Cloud connector for Adobe Analytics, Facebook Ads, Facebook Pages, AdWords, Bing Ads, Kochava, Doubleclick and YouTube in Tableau.",
-        "source_code": ""
-    },
-    {
-        "name": "Confirmed ExoPlanets",
-        "url": "https://zoogorilla.github.io/index.html",
-        "author": "ZooGorilla",
-        "github_username": "ZooGorilla",
-        "tags": ["v_2.0"],
-        "description": "A Tableau Web Data Connector for Confirmed ExoPlanets from exoplanetarchive.ipac.caltech.edu",
-        "source_code": "https://github.com/ZooGorilla/ZooGorilla.github.io"
-    },
-    {
-        "name": "Connector of Ice and Fire",
-        "url": "https://stephdietzel.github.io/ConnectorOfIceAndFire/connect.html",
-        "author": "Steph Dietzel",
-        "github_username": "stephdietzel",
-        "tags": ["v_2.0"],
-        "description": "A Tableau Web Data Connector for http://www.anapioficeandfire.com/",
-        "source_code": "https://github.com/stephdietzel/ConnectorOfIceAndFire"
-    },
-    {
-        "name": "CSV",
-        "url": "https://github.com/starschema/tableau-web-table-connector#csv-connector",
-        "author": "Gyula Laszlo",
-        "github_username": "gyulalaszlo",
-        "tags": ["v_1.1"],
-        "description": "Loads generic CSV data from a http(s) URL",
-        "source_code": "github.com/starschema/tableau-web-table-connector"
-    },
-    {
-        "name": "CSV URL Connector",
-        "url": "https://basic-csv-wdc.herokuapp.com/",
-        "author": "Keshia Rose",
-        "github_username": "KeshiaRose",
-        "tags": ["v_2.5"],
-        "description": "A simple connector for CSVs hosted on the web.",
-        "source_code": "https://github.com/KeshiaRose/Basic-CSV-WDC"
-    },
-    {
-        "name": "data.world",
-        "url": "https://tableau.data.world",
-        "author": "Alan Levicki & Rebecca Clay",
-        "github_username": "",
-        "tags": ["v_2.0"],
-        "description": "Connect to datasets from data.world, where data people collaborate.",
-        "source_code": ""
-    },
-    {
-        "name": "DHIS2",
-        "url": "https://dtreskunov.github.io/dhis2-wdc/",
-        "author": "Denis Treskunov",
-        "github_username": "dtreskunov",
-        "tags": ["v_2.2"],
-        "description": "DHIS2 is the preferred health management information system in 47 countries and 23 organizations across four continents. This connector is written in ClojureScript.",
-        "source_code": "https://github.com/dtreskunov/dhis2-wdc"
-    },
-    {
-    "name": "DCTM Connector",
-    "url": "https://thakarevb.github.io/DCTMWDC/folderinfo.html",
-    "author": "Vishal Thakare",
-    "github_username": "thakarevb",
-    "tags": ["v_2.0"],
-    "description": "Sample Documentum web data connector to fetch data in Tableau",
-    "source_code": "github.com/thakarevb/DCTMWDC.git"
-    },
-    {
-        "name": "Diggernaut",
-        "url": "https://www.diggernaut.com/wdc/",
-        "author": "Mikhail Sisin",
-        "github_username": "jabbahotep",
-        "tags": ["v_2.3"],
-        "description": "Connector to import your Diggernaut datasets to Tableau using REST API",
-        "source_code": "https://github.com/Diggernaut/diggernaut-wdc"
-    },
-    {
-        "name": "DoubleClick Campaign Manager",
-        "url": "https://dcm-dfa-wdc.herokuapp.com/",
-        "author": "Eric Peterson",
-        "github_username": "iamEAP",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": "https://github.com/tableau-mkt/dcm-dfa-wdc"
-    },
-    {
-"name": "DCTM Connector",
-    "url": "https://thakarevb.github.io/DCTMWDC/folderinfo.html",
-    "author": "Vishal Thakare",
-    "github_username": "thakarevb",
-    "tags": ["v_2.0"],
-    "description": "Sample Documentum web data connector to fetch data in Tableau",
-    "source_code": "github.com/thakarevb/DCTMWDC.git"
-	},
-     {
-        "name": "Elasticsearch",
-        "url": "http://mradamlacey.github.io/elasticsearch-tableau-connector/elasticsearch-connector.html",
-        "author": "Adam Lacey",
-        "github_username": "mradamlacey",
-        "tags": ["v_2.3"],
-        "description": "",
-        "source_code": "https://github.com/mradamlacey/elasticsearch-tableau-connector"
-    },
-    {
-        "name": "Facebook Insights Connector",
-        "url": "N/A",
-        "author": "kaizenplatform",
-        "github_username": "kaizenplatform",
-        "tags": ["v_2.1"],
-        "description": "Tableau WDC for Insights of Facebook Marketing API",
-        "source_code": "https://github.com/kaizenplatform/FacebookInsightsConnector"
-    },
-    {
-        "name": "FactSet Analytics API",
-        "url": "https://analytics-api-tableau.apps.factset.com/ ",
-        "author": "FactSet",
-        "github_username": "factset",
-        "tags": ["v_2.1"],
-        "description": "FactSet's Analytics API WDC leverages the power of APIs to integrate FactSet's industry leading multi-asset class portfolio analytics into Tableau. It provides users the flexibility and control to customize FactSet’s Analytics using Tableau’s data visualizations.",
-        "source_code": "https://developer.factset.com/api/pa-batch-api#documentation"
-    },
-    {
-        "name": "Fantasy Premier League 19-20",
-        "url": "https://r3dcobbler.github.io/FPL19-20/index.html",
-        "author": "Mick Sheahan",
-        "github_username": "R3dCobbler",
-        "tags": ["v_1.0"],
-        "description": "WDC to pull data from the latest FPL API.",
-        "source_code": "github.com/R3dCobbler/FPL19-20"
-    },
-    {
-        "name": "Fitbit",
-        "url": "http://data.theinformationlab.co.uk/fitbit.html",
-        "author": "Craig Bloodworth",
-        "github_username": "",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": ""
-    },
-    {
-        "name": "Flickr with Auth",
-        "url": "https://wdc-flickr-proxy.herokuapp.com/flickr.html",
-        "author": "Steve Meredith",
-        "github_username": "smeredith",
-        "tags": ["v_2.0"],
-        "description": "Gets metadata for your personal photos on Flickr.",
-        "source_code": "https://github.com/smeredith/wdc-flickr-proxy"
-    },
-    {
-        "name": "forecast.io",
-        "url": "https://benlower.github.io/tableau-wdc-forecastio/forecastioConnector.html",
-        "author": "Ben Lower",
-        "github_username": "benlower",
-        "tags": ["v_2.0"],
-        "description": "Get weather data from Forecast.io.",
-        "source_code": "https://github.com/benlower/tableau-wdc-forecastio"
-    },
-    {
-        "name": "Fulcrum",
-        "url": "https://fulcrumapp.github.io/tableau-webdataconnector/",
-        "author": "Bryan McBride",
-        "github_username": "bmcbride",
-        "tags": ["v_2.1"],
-        "description": "Load data from Fulcrum apps into Tableau.",
-        "source_code": "https://github.com/fulcrumapp/tableau-webdataconnector"
-    },
-    {
-        "name": "GitHub",
-        "url": "https://github-web-data-connector.herokuapp.com/",
-        "author": "Martin Keerman",
-        "github_username": "etroid",
-        "tags": ["v_2.1"],
-        "description": "",
-        "source_code": "https://github.com/tableau-mkt/github-data-connector"
-    },
-    {
-        "name": "Google Fit",
-        "url": "http://data.theinformationlab.co.uk/googlefit.html",
-        "author": "Craig Bloodworth",
-        "github_username": "",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": ""
-    },    
-    {
-        "name": "Google Places API",
-        "url": "https://vikpos.github.io/places-wdc",
-        "author": "Viktor Posudnevsky",
-        "github_username": "",
-        "tags": ["v_2.2"],
-        "description": "Loads Google Maps places data (name, coordinates, address, rating etc) into Tableau",
-        "source_code": "github.com/vikpos/places-wdc"
-    },
-    {
-        "name": "Hearthstone JSON",
-        "url": "https://ausgop.github.io/HearthstoneJSON-WDC/index.html",
-        "author": "Wil Harper",
-        "github_username": "ausgop",
-        "tags": ["v_2.0"],
-        "description": "Get Hearthstone card data from HearthstoneJSON.",
-        "source_code": "https://github.com/ausgop/HearthstoneJSON-WDC"
-    },
-    {
-        "name": "HERE 7-Day Weather Forecast",
-        "url": "https://datadev-weather-wdc.glitch.me/",
-        "author": "Keshia Rose",
-        "github_username": "KeshiaRose",
-        "tags": ["v_1.0"],
-        "description": "Get 7-day weather forecast data for a selected city.",
-        "source_code": "https://glitch.com/edit/#!/datadev-weather-wdc"
-    },    
-    {
-        "name": "HPCC Systems",
-        "url": "https://hpcc-systems.github.io/HPCC-Tableau-WDC/hpccTableauConnector.html",
-        "author": "Rodrigo Pastrana - HPCC Systems",
-        "github_username": "hpcc-systems",
-        "tags": ["v_2.3"],
-        "description": "Extracts HPCC Systems data into Tableau Desktop",
-        "source_code": "https://github.com/hpcc-systems/HPCC-Tableau-WDC"
-    },
-    {
-        "name": "Import.io",
-        "url": "http://connectors.poc.interworks.com/importio/importio-magic.html",
-        "author": "Robert Rouse",
-        "github_username": "",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": ""
-    },
-    {
-        "name": "InfluxDB (time series database) connector",
-        "url": "https://tagyoureit.github.io/InfluxDB_WDC/InfluxDB.html",
-        "author": "Russ Goldin",
-        "github_username": "tagyoureit",
-        "tags": ["v_2.3"],
-        "description": "Connector to pull data from InfluxDB.  Can be used with/without authentication and server-side aggregation.",
-        "source_code": "https://github.com/tagyoureit/InfluxDB_WDC"
-    },
-    {
-        "name": "Instagram Connector",
-        "url": "https://illonage.github.io/",
-        "author": "Geraldine Zanolli",
-        "github_username": "illonage",
-        "tags": ["v_2.0"],
-        "description": "A Tableau Web Data Connector for Instagram",
-        "source_code": ""
-    },
-    {
-        "name": "Italian Startup Companies Connector",
-        "url": "http://www.myitalialogin.it/services/startupWDC.html",
-        "author": "Luigi Marangon",
-        "github_username": "luis0076",
-        "tags": ["v_1.0"],
-        "description": "Tableau WDC about italian startup companies - source http://startup.registroimprese.it/report/startup.zip",
-        "source_code": ""
-    },
-    {
-        "name": "itigo Cloud Connector",
-        "url": "https://itigocloud.github.io/itigo-Tableau-WDC/index.html",
-        "author": "itigo Cloud",
-        "github_username": "itigocloud",
-        "tags": ["v_1.0"],
-        "description": "Connect to itigo Cloud CRM",
-        "source_code": "https://github.com/itigocloud/itigo-Tableau-WDC"
-    },
-    {
-        "name": "IXON WDC",
-        "url": "https://cdn.ixon.cloud/tableau/latest/",
-        "author": "IXON",
-        "github_username": "ixoncloud",
-        "tags": ["v_2.3"],
-        "description": "IXON Cloud is an Industrial IoT portal for machine manufacturers. Easily connect Tableau to your machine data. More info at https://www.ixon.cloud",
-        "source_code": "https://github.com/ixoncloud/tableau-wdc"
-    },
-    {	
-        "name": "Japanese Government Statistics (e-Stat)",
-        "url": "https://wdc.dataconcerto.jp/estat",
-        "author": "Junko Fujiwara",
-        "github_username": "",
-        "tags": ["v_2.3"],
-        "description": "Connector to retrieve data from Japanese Government Statistics (e-Stat)",
-        "source_code": ""
-    },
-    {	
-        "name": "JSON/XML Connector",
-        "url": "https://json-xml-wdc.herokuapp.com",
-        "author": "Keshia Rose",
-        "github_username": "KeshiaRose",
-        "tags": ["v_2.3"],
-        "description": "A simple connector for JSON or XML data. Simply paste in your URL or data or just drag and drop a file.",
-        "source_code": "https://github.com/KeshiaRose/JSON-XML-WDC"
-    },
-    {
-        "name": "Jupytab",
-        "url": "",
-        "author": "Brian Tribondeau",
-        "github_username": "btribonde",
-        "tags": ["v_0.9.0"],
-        "description": "Display in Tableau data from Jupyter notebooks using Python. Note: You will need to setup this project locally first before using it.",
-        "source_code": "https://github.com/CFMTech/Jupytab"
-    },
-    {
-        "name": "Kobotoolbox Web Data Connector",
-        "url": "https://kwdc.herokuapp.com/",
-        "author": "Imran Ahmedani",
-        "github_username": "iahmedani",
-        "tags": ["v_0.1.6"],
-        "description": "Kobotoolbox web connector allows user to connect free ona.io accounts, Kobotoolbox and Open(non authorization like jsonplaceholer) REST APIs, code is qurated in a way that it will assess the schema remove symbols form labels and support all dataTypes",
-        "source_code": "https://github.com/iahmedani/kobo-wdc" 
-    },
-    {
-        "name": "League of Legends Match Data",
-        "url": "https://jimmy-jia.github.io/LoL-Match-Data-WDC/",
-        "author": "Jimmy Jia",
-        "github_username": "jimmy-jia",
-        "tags": ["v_2.0"],
-        "description": "LoL Match Data Connector that retrieves recent matches for up to 5 players",
-        "source_code": "https://github.com/jimmy-jia/LoL-Match-Data-WDC"
-    },
-    {
-        "name": "LoLChampStats",
-        "url": "https://soitknows.github.io/LoLChampStats/index.html",
-        "author": "Andy Tarver",
-        "github_username": "soitknows",
-        "tags": ["v_2.0"],
-        "description": "Connects to Riot Games' Data Dragon API. Returns static League of Legends champion data for all champions, for the patch version(s) specified",
-        "source_code": "https://github.com/soitknows/LoLChampStats"
-    },
-    {
-        "name": "Mapbox",
-        "url": "http://data.theinformationlab.co.uk/directions.html",
-        "author": "Craig Bloodworth",
-        "github_username": "",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": ""
-    },
-    {
-        "name": "Medicaid.gov - NADAC",
-        "url": "https://rarandall.github.io/wdc/html/NADAC.html",
-        "author": "Ray Randall",
-        "github_username": "rarandall",
-        "tags": ["v_2.2"],
-        "description": "Connector to Medicaid.gov - Gets NADAC - National Average Drug Acquisition Cost data",
-        "source_code": "https://github.com/rarandall/rarandall.github.io/wdc"
-    },
-    {
-        "name": "MongoDB / Raw JSON",
-        "url": "https://github.com/starschema/tableau-web-table-connector#mongodb--raw-json-client",
-        "author": "Gyula Laszlo",
-        "github_username": "gyulalaszlo",
-        "tags": ["v_1.1"],
-        "description": "Loads hierarchical JSON as flat table",
-        "source_code": "github.com/starschema/tableau-web-table-connector"
-    },
-    {
-        "name": "Morph.io Connector",
-        "url": "https://drzax.github.io/morphio-wdc/",
-        "author": "Simon Elvery",
-        "github_username": "drzax",
-        "tags": ["v_2.1"],
-        "description": "Tableau WDC for the scraping service Morph.io",
-        "source_code": "https://github.com/drzax/morphio-wdc/"
-    },
-    {
-        "name": "Moves App",
-        "url": "http://data.theinformationlab.co.uk/moves.html",
-        "author": "Craig Bloodworth",
-        "github_username": "",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": ""
-    },
-    {
-        "name": "Neo4J",
-        "url": "https://acbeers.github.io/neo4j-wdc/index.html",
-        "author": "Andrew Beers",
-        "github_username": "acbeers",
-        "tags": ["v_2.0"],
-        "description": "Connector for Neo4J - pull node data, or execute Cypher queries",
-        "source_code": "https://github.com/acbeers/neo4j-wdc"
-    },
-    {
-        "name": "Neo4J - official and supported WDC",
-        "url": "http://ralfbecher.github.io/tableau-neo4j-wdc/v2.3/Neo4jWdc2.html",
-        "author": "Ralf Becher",
-        "github_username": "ralfbecher",
-        "tags": ["v_2.3"],
-        "description": "Neo4J multi table connector to execute up to 5 Cypher queries. Supports latest Neo4j Temporal and Spatial data types.",
-        "source_code": "https://github.com/ralfbecher/tableau-neo4j-wdc"        
-    },
-    {
-        "name": "New Relic Insights",
-        "url": "https://insights-web-data-connector.herokuapp.com/",
-        "author": "Eric Peterson",
-        "github_username": "iamEAP",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": "https://github.com/tableau-mkt/insights-data-connector"
-    },
-    {
-        "name": "NYC Baby Names",
-        "url": "https://jhc154.github.io/Tableau.WDC.OpenNYC.BabyNames/",
-        "author": "Justin",
-        "github_username": "jhc154",
-        "tags": ["v_1.0"],
-        "description": "Connector to get baby name stats from NYC data",
-        "source_code": "https://github.com/jhc154/Tableau.WDC.OpenNYC.BabyNames"
-    },
-    {
-        "name": "NPM Download Counts",
-        "url": "http://jagreene.github.io/npm-wdc",
-        "author": "Austin Greene",
-        "github_username": "jagreene",
-        "tags": ["v_2.0"],
-        "description": "Multitable connector for Visualizing download stats for npm packages",
-        "source_code": "https://github.com/jagreene/npm-wdc/"
-    },
-    {
-        "name": "Office 365 Sharepoint",
-        "url": "http://data.theinformationlab.co.uk/sharepoint.html",
-        "author": "Craig Bloodworth",
-        "github_username": "craigbloodworth",
-        "tags": ["v_2.0"],
-        "description": "Pull your Office 365 SharePoint list data directly into Tableau",
-        "source_code": "https://github.com/TheInformationLab/Tableau-WDC-365Sharepoint"
-    },
-    {
-        "name": "Open Exchange Rates API",
-        "url": "https://open-exchange-rate-wdc.glitch.me/",
-        "author": "Keshia Rose",
-        "github_username": "KeshiaRose",
-        "tags": ["v_2.3"],
-        "description": "Get the latest exchange rates available from the Open Exchange Rates API.",
-        "source_code": "https://glitch.com/edit/#!/open-exchange-rate-wdc"
-    },
-    {
-        "name": "OpenStreetMap Features",
-        "url": "http://jdomingu.github.io/osm-features-wdc/",
-        "author": "Jared Dominguez",
-        "github_username": "jdomingu",
-        "tags": ["v_2.0"],
-        "description": "Get data for OSM features in an area that you select.",
-        "source_code": "https://github.com/jdomingu/osm-features-wdc"
-    },
-    {
-        "name": "parkrun",
-        "url": "https://parkrun-webdataconnector.now.sh",
-        "author": "Mark Woodbridge",
-        "tags": ["v_2.0"],
-        "description": "",
-        "source_code": ""
-    },
-    {
-        "name": "ParseHub",
-        "url": "http://data.theinformationlab.co.uk/parsehub.html",
-        "author": "Craig Bloodworth",
-        "github_username": "",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": ""
-    },
-    {
-        "name": "Pedestrian Counts across Melbourne City",
-        "url": "https://rthiyagarajan.github.io/melb-pedestrian-WDC/index.html",
-        "author": "Ramanan Thiyagarajan",
-        "github_username": "rthiyagarajan",
-        "tags": ["v_2.0"],
-        "description": "Get Melbourne City Pedestrian Counts using the SODA API.",
-        "source_code": "https://github.com/rthiyagarajan/melb-pedestrian-WDC"
-    },
-    {
-        "name": "Pingdom",
-        "url": "http://data.theinformationlab.co.uk/pingdom.html",
-        "author": "Craig Bloodworth",
-        "github_username": "",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": ""
-    },
-    {
-        "name": "Podcast Metadata",
-        "url": "https://podcast-wdc.herokuapp.com/",
-        "author": "Eric Peterson",
-        "github_username": "iamEAP",
-        "tags": ["v_2.0"],
-        "description": "Parses podcast channel and episode metadata from feed URLs.",
-        "source_code": "https://github.com/iamEAP/podcast-wdc"
-    },
-    {
-        "name": "PubChem 3d compound connector",
-        "url": "http://www.runonthespot.com/PubChem.html",
-        "author": "Mike Renwick",
-        "github_username": "runonthespot",
-        "tags": ["v_2.0"],
-        "description": "Visualize chemical compounds in 3d!",
-        "source_code": "https://github.com/runonthespot/PubChemWDC"
-    },
-    {
-    "name": "PurpleAir Sensors Current Readings",
-    "url": "https://jetarcher.github.io/PurpleAir/PurpleAirSensorList.html",
-    "author": "Patrick Bowman",
-    "github_username": "jetarcher",
+  {
+    "name": "AdStage",
+    "url": "http://tech.adstage.io/tableau_connector/AdstageConnector.html",
+    "author": "David Haslem",
+    "github_username": "therabidbanana",
+    "tags": ["v_2.2"],
+    "description": "A basic adapter to pull last month of campaign data from AdStage API",
+    "source_code": "https://github.com/AdStage/tableau_connector"
+  },
+  {
+    "name": "Alpha Vantage",
+    "url": "https://satichun.github.io/AV-WDC/",
+    "author": "Satish C",
+    "github_username": "satichun",
     "tags": ["v_1.0"],
-    "description": "PurpleAir air quality sensors with current readings for PM2.5 (2.5 micron particulate matter)",
-    "source_code": "https://github.com/jetarcher/PurpleAir"
-    },
-
-    {
-        "name": "Quandl",
-        "url": "http://data.theinformationlab.co.uk/quandl.html",
-        "author": "Craig Bloodworth",
-        "github_username": "",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": ""
-    },
-    {
-        "name": "Rally CA Agile",
-        "url": "https://k504866430.github.io/rally-tableau",
-        "author": "Harsh Agrawal",
-        "github_username": "",
-        "tags": ["v_2.0"],
-        "description": "Load project, stories, tasks, time-entries and much more from CA Agile Rally Tool",
-        "source_code": ""
-    },
-    {
-        "name": "Random Data Generator",
-        "url": "http://wdc.poc.interworks.com/datagen/",
-        "author": "Dave Hart",
-        "github_username": "",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": ""
-    },
-    {
-        "name": "REDCap",
-        "url": "https://github.com/xHeliotrope/redcap-wdc",
-        "author": "Ryan Moore",
-        "github_username": "xHeliotrope",
-        "tags": ["v_2.0"],
-        "description": "Load REDCap data into Tableau via the REDCap API",
-        "source_code": "https://github.com/xHeliotrope/redcap-wdc"
-    },
-    {
-        "name": "REST Data Connector",
-        "url": "https://rdc.codezero.xyz",
-        "author": "Niranjan Rajendran",
-        "github_username": "niranjan94",
-        "tags": ["v_2.3"],
-        "description": "A REST API Data Connector for Tableau with Generic REST endpoints, Swagger 2.0 and OpenApi 3.0 support",
-        "source_code": "https://github.com/niranjan94/rest-data-connector"
-    },
-    {
-        "name": "Reviewboard changelist Connector",
-        "url": "https://hza47.github.io/WDC-reviewboard/",
-        "author": "Hao Zhuang",
-        "github_username": "hza47",
-        "tags": ["v_2.1"],
-        "description": "WDC to get all pengind changelist from reviewboard",
-        "source_code": "https://github.com/hza47/WDC-reviewboard"
-    },
-    {
-        "name": "Runkeeper",
-        "url": "http://data.theinformationlab.co.uk/runkeeper.html",
-        "author": "Craig Bloodworth",
-        "github_username": "",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": ""
-    },
-    {
-        "name": "Shorten.REST Tableau Connector",
-        "url": "https://tableau.shorten.rest/",
-        "author": "API LADS INC",
-        "github_username": "apilads",
-        "tags": ["v_1.0"],
-        "description": "Shorten.REST Tableau Connector enables you to easily pipe your click data into Tableau for visualization & analysis.",
-        "source_code": "github.com/apilads/Shorten.REST-Tableau-Connector"
-    },
-    {
-        "name": "SAP Business Objects WEBI & QaaWS",
-        "url": "https://github.com/starschema/tableau-web-table-connector#business-objects-connector",
-        "author": "Tamas Foldi",
-        "github_username": "tfoldi",
-        "tags": ["v_1.1"],
-        "description": "Connects Tableau to SAP BO WebI & QaaWS published reports.",
-        "source_code": "github.com/starschema/tableau-web-table-connector"
-    },
-    {
-        "name": "SDMX-JSON WDC",
-        "url": "https://saviohenriques.github.io/sdmxjsonwdc",
-        "author": "Savio Henriques",
-        "github_username": "saviohenriques",
-        "tags": ["v_2.0"],
-        "description": "Connects to OECD Air Emissions data http://stats.oecd.org/viewhtml.aspx?datasetcode=AIR_EMISSIONS",
-        "source_code": "https://github.com/saviohenriques/sdmxjsonwdc"
-    },
-    {
-        "name": "Seattle/King County Restaurant Inspections",
-        "url": "http://benlower.github.io/tableau-wdc-kcfoodinspection/foodInspectionWDC.html",
-        "author": "Ben Lower",
-        "github_username": "benlower",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": ""
-    },
-    {
-        "name": "Sentiment API",
-        "url": "http://gtgeek.github.com/SentimentConnector/Sentiment.html",
-        "author": "gtgeek - Quy Nguyen",
-        "github_username": "gtgeek",
-        "tags": ["v_2.0"],
-        "description": "Analyze Tweet/Text Sentiment provided by YOU. http://www.allmytweet.net can help gather tweets.",
-        "source_code": ""
-    },
-    {
-        "name": "Sequence Generator",
-        "url": "https://sefthuko.github.io/wdc/generator.html",
-        "author": "Hermann Chong",
-        "github_username": "sefthuko",
-        "tags": ["v_1.0"],
-        "description": "Generate a sequence of values so you can show categories that aren't yet represented in your actual data.",
-        "source_code": "https://github.com/sefthuko/sefthuko.github.io/blob/master/wdc"
-    },
-    {
-        "name": "Simple Airtable Connector",
-        "url": "https://simple-airtable-wdc.glitch.me/",
-        "author": "Keshia Rose",
-        "github_username": "KeshiaRose",
-        "tags": ["v_2.5"],
-        "description": "A very basic Tableau Web Data Connector for Airtable bases.",
-        "source_code": "https://glitch.com/edit/#!/simple-airtable-wdc?path=README.md"
-    },
-    {
-        "name": "Socrata",
-        "url": "http://wdc.poc.interworks.com/socrata_20/",
-        "author": "Matthew Orr",
-        "github_username": "interworks-morr",
-        "tags": ["v_2.0"],
-        "description": "",
-        "source_code": "https://github.com/interworks-morr/wdc-socrata"
-    },
-    {
-        "name": "Splitwise",
-        "url": "https://tableau-wdc-splitwise.herokuapp.com",
-        "author": "Amelie Dagenais",
-        "github_username": "ameliedagenais",
-        "tags": ["v_2.0"],
-        "description": "Splitwise is a cool app for tracking shared expenses. Get your data out to analyze it in Tableau",
-        "source_code": "https://github.com/ameliedagenais/SplitwiseWebDataConnector"
-    },
-    {
-        "name": "Spotify Connector",
-        "url": "http://maddyloo.github.io/Connectors/index.html",
-        "author": "Madeleine Corneli",
-        "github_username": "maddyloo",
-        "tags": ["v_2.0"],
-        "description": "Tableau WDC that pulls playlist and song info from Spotify",
-        "source_code": "https://github.com/maddyloo/Spotify_WDC"
-    },
-    {
-        "name": "Spotify: My Library",
-        "url": "http://spotify-wdc.azurewebsites.net/",
-        "author": "Samm Desmond, Brendan Lee",
-        "github_username": "sdesmond46, lbrendanl",
-        "tags": ["v_2.1"],
-        "description": "Uses new 2.1 WDC features and brings back information about your Spotify music library. ",
-        "source_code": "https://github.com/lbrendanl/SpotifyWDC"
-    },
-    {
-        "name": "Square",
-        "url": "http://webdataconnector.azurewebsites.net/Connectors/Square/",
-        "author": "Samm Desmond",
-        "github_username": "sdesmond46",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": "https://github.com/sdesmond46/WDC"
-    },
-    {
-        "name" : "Star Wars API",
-        "url" : "https://filmasher.github.io/starwars/",
-        "author" : "Asher Campbell",
-        "github_username" : "FilmAsher",
-        "tags" : ["v_2.0"],
-        "description" : "https://github.com/FilmAsher/starwars"
-    },
-    {
-        "name": "Star Wars API",
-        "url": "http://gtgeek.github.com/SWapiConnector/SWapiConnector.html",
-        "author": "gtgeek - Quy Nguyen",
-        "github_username": "gtgeek",
-        "tags": ["v_2.0"],
-        "description": "Star Wars API for People, Planets, Vehicles, Films, etc.",
-        "source_code": ""
-    },
-    {
-        "name": "Stardog Data Connector",
-        "url": "http://tableau.stardog.com",
-        "author": "Adam Bretz",
-        "github_username": "stardog-union",
-        "tags": ["v_2.2"],
-        "description": "Stardog is the Enterprise Knowledge Graph. http://stardog.com",
-        "source_code": ""
-    },
-    {
-        "name": "Stock Price History",
-        "url": "http://wdc.poc.interworks.com/google_finance_20/",
-        "author": "Matthew Orr",
-        "github_username": "interworks-morr",
-        "tags": ["v_2.0"],
-        "description": "",
-        "source_code": "https://github.com/interworks-morr/wdc-stock-price-history"
-    },
-    {
-        "name": "Strava",
-        "url": "http://data.theinformationlab.co.uk/strava.html",
-        "author": "Craig Bloodworth",
-        "github_username": "",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": ""
-    },
-    {
-        "name": "Stripe",
-        "url": "https://benjisg.github.io/stripe-web-data-connector/stripe.html",
-        "author": "Benji Schwartz-Gilbert",
-        "github_username": "benjisg",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": "https://github.com/benjisg/stripe-web-data-connector"
-    },
-    {
-        "name": "Tfl BikesPoint",
-        "url": "http://jdunkerleytableau.azurewebsites.net/Bikes",
-        "author": "James Dunkerley",
-        "github_username": "jdunkerley",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": "https://github.com/jdunkerley/TableauWebData"
-    },
-    {
-        "name": "The Movie DB",
-        "url": "https://lbrendanl.github.io/tvWDC/tv.html",
-        "author": "Brendan Lee",
-        "github_username": "lbrendanl",
-        "tags": ["v_2.0"],
-        "description": "Brings back data about popular tv shows.",
-        "source_code": "https://github.com/lbrendanl/tvWDC"
-    },
-    {
-        "name": "Toggl",
-        "url": "https://keshiarose.github.io/Toggl-Web-Data-Connector/togglwdc.html",
-        "author": "Keshia Rose",
-        "github_username": "KeshiaRose",
-        "tags": ["v_2.0"],
-        "description": "A Tableau Web Data Connector that pulls in your task tracking data from the Detailed Report view on toggl.com",
-        "source_code": "https://keshiarose.github.io/Toggl-Web-Data-Connector/"
-    },
-    {
-        "name": "Travis CI",
-        "url": "https://travis-web-data-connector.herokuapp.com/",
-        "author": "Eric Peterson",
-        "github_username": "iamEAP",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": "https://github.com/tableau-mkt/travis-data-connector"
-    },
-    {
-        "name": "Twitter",
-        "url": "http://webdataconnector.azurewebsites.net/Connectors/Twitter/",
-        "author": "Samm Desmond",
-        "github_username": "sdesmond46",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": "https://github.com/sdesmond46/WDC"
-    },
-    {
-        "name": "U.S. Energy Information Administration Data",
-        "url": "http://wdc.poc.interworks.com/eia/",
-        "author": "Derrick Austin",
-        "github_username": "austinderrick",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": ""
-    },
-    {
-        "name": "U.S. Energy Information Administration Data",
-        "url": "http://wdc.poc.interworks.com/eia_20/",
-        "author": "Derrick Austin",
-        "github_username": "austinderrick",
-        "tags": ["v_2.0"],
-        "description": "",
-        "source_code": "https://github.com/austinderrick/eia_wdc_20"
-    },
-    {
-        "name": "U.S. Federal Reserve Economic Data (FRED)",
-        "url": "http://wdc.poc.interworks.com/fred/",
-        "author": "Derrick Austin",
-        "github_username": "austinderrick",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": ""
-    },
-    
-    {
-    "name": "COVID-19 Emergency Service Providers in CA",
-    "url": "https://lshpaner.rbind.io/datasets/covid_19_data/emergencyserviceprovidersinca/covid19emergprovca.html",
+    "description": "A connector for stock data",
+    "source_code": "https://github.com/satichun/AV-WDC"
+  },
+  {
+    "name": "Alpha Vantage Official",
+    "url": "https://www.getalphavantage.co/tableau_wdc",
+    "author": "Patrick Collins",
+    "github_username": "PatrickAlphaVantage",
+    "tags": ["v_1.0"],
+    "description": "A connector for stock, forex, cryptocurrency, technical indicators, and sector performance",
+    "source_code": "https://github.com/PatrickAlphaVantage/tableau_wdc"
+  },
+  {
+    "name": "Alteryx",
+    "url": "http://data.theinformationlab.co.uk/alteryx.html",
+    "author": "Craig Bloodworth",
+    "github_username": "",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": ""
+  },
+  {
+    "name": "Amiibo API",
+    "url": "https://fri5by.github.io/amiiboapitableauwdc/",
+    "author": "Joshua Frisby",
+    "github_username": "fri5by",
+    "tags": ["v_2.3"],
+    "description": "A Tableau Web Data Connector for AmiiboAPI (http://www.amiiboapi.com/).",
+    "source_code": "https://github.com/fri5by/amiiboapitableauwdc"
+  },
+  {
+    "name": "Appbot Data Connector",
+    "url": "https://api.appbot.co/api/v2/tableau_wdc",
+    "author": "Appbot",
+    "github_username": "",
+    "tags": ["v_1.0"],
+    "description": "A Tableau Web Data Connector for Appbot (https://appbot.co/). Examine correlation between marketing activities and app reviews/ratings, create your own multi-series or aggregate Ratings data charts from Appbot data, and much more. Learn more: https://support.appbot.co/help-docs/tableau/",
+    "source_code": ""
+  },
+  {
+    "name": "Aprimo Platform Connector",
+    "url": "https://connect-uat.spcreports.com/Aprimo-Tableau",
+    "author": "Solutions Plus",
+    "github_username": "",
+    "tags": ["v_1.2"],
+    "description": "A Tableau WDC for the Aprimo Platform (https://www.solutionsplusconsulting.com/aprimo-tableau-connector/).",
+    "source_code": ""
+  },
+  {
+    "name": "Army Corps. of Engineers - U.S. Department of Defense Sites",
+    "url": "https://lshpaner.rbind.io/datasets/US_Army_Corps_of_Engineers/DOD_Sites/ACE_DOD_Sites.html",
     "author": "Leon Shpaner",
     "github_username": "lshpaner",
     "tags": ["v_1.0"],
-    "description": "full scale data of all emergency service providers related to COVID-19 in the state of CA",
-    "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/covid_19_data/EmergencyServiceProvidersinCA"
-    },
-    
-    {
-    "name": "Geothermal Wells in the State of CA",
-    "url": "https://lshpaner.rbind.io/datasets/ca_geothermal_data/cageothermalwells.html",
-    "author": "Leon Shpaner",
-    "github_username": "lshpaner",
-    "tags": ["v_2.0"],
-    "description": "dataset of all geothermal wells located in the state of California parsed by full scope of parameters including location, functionality, and status",
-    "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/CA_Geothermal_Data"
-    },
-        
-    {
-        "name": "U.S. Federal Reserve Economic Data (FRED)",
-        "url": "http://wdc.poc.interworks.com/fred_20/",
-        "author": "Derrick Austin",
-        "github_username": "austinderrick",
-        "tags": ["v_2.0"],
-        "description": "",
-        "source_code": "https://github.com/austinderrick/fred_wdc_20"
-    },
-    {
-        "name": "Unify BI",
-        "url": "https://www.us-analytics.com/unifybi",
-        "author": "US-Analytics",
-        "description":"Connector for Oracle BI (OBIEE, BICs, OAC, BIApps)."
-    },
-    {
-        "name": "United States Census Data",
-        "url": "https://census-tableau-wdc.herokuapp.com/",
-        "author": "Addy Naik",
-        "github_username": "port80labs",
-        "tags": ["v_1.1"],
-        "description": "",
-        "source_code": "https://github.com/port80labs/census-wdc"
-    },
-    {
-        "name": "US Census American Community Survey Profile",
-        "url": "http://bigbytes.mobyus.com/tableau/censuswdc11.aspx",
-        "author": "Mark Evans",
-        "github_username": "MobyusMark",
-        "tags": ["v_1.1"],
-        "description": "Loads selected data from the US Census ACS (American Community Survey)",
-        "source_code": ""
-    },
-    {
-        "name": "US Census Tract Shapefiles",
-        "url": "http://bigbytes.mobyus.com/tableau/censustractshapeswdc11.aspx",
-        "author": "Mark Evans",
-        "github_username": "MobyusMark",
-        "tags": ["v_1.1"],
-        "description": "Loads shapefile data for selected census tracts to support mapping.",
-        "source_code": ""
-    },
-    {
-        "name": "US Weather Forecast Data for 5 Cities",
-        "url": "https://github.com/collinsteele/collinsteele.github.io/blob/master/WeatherWDCv2.html",
-        "author": "Collin Steele",
-        "github_username": "collinsteele",
-        "tags": ["v_2.2"],
-        "description": "Very simple connector to pull 7 day forecast for 5 cities around US.",
-        "source_code": "https://github.com/collinsteele/collinsteele.github.io"
-    },
-    {
-        "name": "USPTO PatentsWeb Connector",
-        "url": "https://dduubb.github.io/uspto-wdc/wdc/uspto-wdc.html",
-        "author": "dw",
-        "github_username": "dduubb",
-        "tags": ["v_2.1"],
-        "description": "Connector to allow connections to the USPTO PatentsWeb API",
-        "source_code": "github.com/dduubb/uspto-wdc"
-    },
-    {
-        "name": "WaniKani Connector",
-        "url": "https://rarandall.github.io/wdc/html/wanikani.html",
-        "author": "Ray Randall",
-        "github_username": "rarandall",
-        "tags": ["v_2.2"],
-        "description": "See and understand your WaniKani data with this WDC connector for Tableau.",
-        "source_code": "https://github.com/rarandall/rarandall.github.io/tree/master/wdc"
-    },
-    {
-        "name": "Washington Trails Association",
-        "url": "https://dtreskunov.github.io/wta-wdc/",
-        "author": "Denis Treskunov",
-        "github_username": "dtreskunov",
-        "tags": ["v_2.2"],
-        "description": "WTA is a non-profit community protecting hiking trails in Washington state. This connector is written in ClojureScript.",
-        "source_code": "https://github.com/dtreskunov/wta-wdc"
-    },
-    {
-        "name": "WebPlotDigitizer",
-        "url": "https://dtreskunov.github.io/webplotdigitizer-wdc/",
-        "author": "Denis Treskunov",
-        "github_username": "dtreskunov",
-        "tags": ["v_2.2"],
-        "description": "Extract features from image files (charts, graphs, photos). This connector is written in ClojureScript.",
-        "source_code": "https://github.com/dtreskunov/webplotdigitizer-wdc"
-    },
-    {
-        "name": "WDC Educación-CO",
-        "url": "https://oscarga.github.io/DatosAbiertosCO-WDC/WDC-Educacion/index.html",
-        "author": "Oscar Gómez",
-        "github_username": "OscarGA",
-        "tags": ["v_2.3"],
-        "description": "Connector to get data from the site datos.gov.co about education in Antioquia region",
-        "source_code": "https://github.com/OscarGA/DatosAbiertosCO-WDC"
-    },
-    {
-        "name": "WDC Salud-CO",
-        "url": "https://oscarga.github.io/DatosAbiertosCO-WDC/WDC-Salud/index.html",
-        "author": "Oscar Gómez",
-        "github_username": "OscarGA",
-        "tags": ["v_2.3"],
-        "description": "Connector to get data from the site datos.gov.co about health in Colombia",
-        "source_code": "https://github.com/OscarGA/DatosAbiertosCO-WDC"
-    },
-    {
-        "name": "WDC Seguridad-CO",
-        "url": "https://oscarga.github.io/DatosAbiertosCO-WDC/WDC-Seguridad/index.html",
-        "author": "Oscar Gómez",
-        "github_username": "OscarGA",
-        "tags": ["v_2.3"],
-        "description": "Connector to get data from the site datos.gov.co about security in Medellín city",
-        "source_code": "https://github.com/OscarGA/DatosAbiertosCO-WDC"
-    },
-    {
-        "name": "Zabbix",
-        "url": "https://parflesh.github.io/zabbix-wdc/index.html",
-        "author": "ParFlesh",
-        "github_username": "ParFlesh",
-        "tags": ["v_2.0"],
-        "description": "Connector to get data from Zabbix API",
-        "source_code": "https://github.com/parflesh/zabbix-wdc"
-    },
-    {
-         "name": "Tableau Public WDC",
-        "url": "https://tableau-public.wdc.dev/",
-        "author": "Andre de Vries",
-        "github_username": "andre347",
-        "tags": ["v_1.0"],
-        "description": "Connector to get data from your Tableau Public Profile",
-        "source_code": ""
-    },
-    {
-        "name": "wdc-oecd-sdmx-json",
-        "url": "https://joshyen.github.io/wdc-oecd-sdmx-json/AIR_GHG.html",
-        "author": "JoshYEn",
-        "github_username": "JoshYEn",
-        "tags": ["v_1.0"],
-        "description": "Tableau Web Data Connector for fetching OECD dataset Greenhouse gas emissions by source",
-        "source_code": "https://github.com/JoshYEn/wdc-oecd-sdmx-json"
-    },
-    {
-        "name": "NY Times Best sellers List",
-        "url": "https://muthukumarsm.github.io/TableauWDC/Book Details.html",
-        "author": "Muthukumar S M (msm@tableau.com)",
-        "github_username": "muthukumarsm",
-        "tags": ["v_1.0"],
-        "description": "Tableau Web Data Connector for fetching NY Times best sellers list",
-        "source_code": "https://github.com/muthukumarsm/TableauWDC"
-    },
-        {
-        "name": "India COVID 19 Data Connector - Patient data from crowdsourced DB",
-        "url": "https://muthukumarsm.github.io/covid19india/CovidIndia_Main.html",
-        "author": "Muthukumar S M (msm@tableau.com)",
-        "github_username": "muthukumarsm",
-        "tags": ["v_1.0"],
-        "description": "Volunteer (Individual) driven API Web Data Connector for fetching COVID 19 India Dataset for all patients",
-        "source_code": "https://github.com/muthukumarsm/covid19india"
-    }, 
-{
-        "name": "India COVID 19 Data Connector - State-wise summary data",
-        "url": "https://muthukumarsm.github.io/covid19india/CovidIndia_Statewise.html",
-        "author": "Muthukumar S M (msm@tableau.com)",
-        "github_username": "muthukumarsm",
-        "tags": ["v_1.0"],
-        "description": "Volunteer (Individual) driven API Web data connector for fetching Covid 19 India Dataset statewise - Summarization",
-        "source_code": "https://github.com/muthukumarsm/covid19india"
-    }, 
-{
-        "name": "India COVID 19 Data Connector - Daywise Summary data",
-        "url": "https://muthukumarsm.github.io/covid19india/CovidIndia_Daywise.html",
-        "author": "Muthukumar S M (msm@tableau.com)",
-        "github_username": "muthukumarsm",
-        "tags": ["v_1.0"],
-        "description": "Volunteer (Individual) driven API Web Data Connector for fetching Covid 19 India Dataset Daily summary Active/Deceased/Recovered",
-        "source_code": "https://github.com/muthukumarsm/covid19india"
-    }, 
-    {
-    "name": "Dolar - Banco Central do Brasil",
-    "url": "https://juracyamerico.github.io/Dolar-Conector-de-dados-da-Web/cotacoes_diarias_e_taxas_de_cambioV2.html",
-    "author": "Juracy Américo",
-    "github_username": "JuracyAmerico",
+    "description": "geospatial dataset containing facilities, installations, and other DOD sites based on arcgis source extraction",
+    "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/US_Army_Corps_of_Engineers/DOD_Sites"
+  },
+  {
+    "name": "Asana for Tableau",
+    "url": "https://tableau-wdc.integrations.asana.plus",
+    "author": "Asana",
+    "github_username": "",
     "tags": ["v_1.0"],
-    "description": "Get the latest exchange dolar rates available from the Brazilian central bank API/ Obtenha as ultimas cotações diárias do dolar disponíveis no site do Banco Central",
-    "source_code": "https://github.com/JuracyAmerico/Dolar-Conector-de-dados-da-Web"
-},
-    {
+    "description": "Connect to your project and task data in your Asana Business or Enterprise account to track your team’s progress in Tableau",
+    "source_code": ""
+  },
+  {
+    "name": "Ascend.io",
+    "url": "https://trial.ascend.io/ui/tableau",
+    "author": "Shawn Xu",
+    "github_username": "shawnxusy",
+    "tags": ["v_1.0"],
+    "description": "A Tableau Web Data Connector for the Ascend.io Autonomous Dataflow Platform (https://www.ascend.io).",
+    "source_code": ""
+  },
+  {
+    "name": "Australian Bureau of Statistics (ABS) SDMX-JSON Connector",
+    "url": "https://aprince.github.io/ABS_SDMX-JSON_API/",
+    "author": "Andy Prince",
+    "github_username": "aprince",
+    "tags": ["v_2.0"],
+    "description": "A basic example WDC for the Australian Bureau of Statistics (ABS) SDMX-JSON RESTful API",
+    "source_code": "github.com/aprince/ABS_SDMX-JSON_API"
+  },
+  {
+    "name": "Bitmovin Analytics",
+    "url": "https://bitmovin.github.io/analytics-tableau-web-data-collector",
+    "author": "Bitmovin",
+    "github_username": "bitmovin",
+    "description": "A Tableau Web Data Collector for the Bitmovin Analytics API (https://bitmovin.com/video-analytics)",
+    "source_code": "https://github.com/bitmovin/analytics-tableau-web-data-collector"
+  },
+  {
+    "name": "BoardGameGeek User Plays",
+    "url": "https://garnet-viper.hyperdev.space/",
+    "author": "Jason Copenhaver",
+    "github_username": "jcopenha",
+    "tags": ["v_2.0"],
+    "description": "",
+    "source_code": "https://github.com/jcopenha/BoardGameGeekWebDataConnector"
+  },
+  {
+    "name": "Cognetik Cloud Connector",
+    "url": "http://tableau.cognetik.com",
+    "author": "Cognetik",
+    "github_username": "",
+    "tags": ["v_2.0"],
+    "description": "Cloud connector for Adobe Analytics, Facebook Ads, Facebook Pages, AdWords, Bing Ads, Kochava, Doubleclick and YouTube in Tableau.",
+    "source_code": ""
+  },
+  {
+    "name": "Confirmed ExoPlanets",
+    "url": "https://zoogorilla.github.io/index.html",
+    "author": "ZooGorilla",
+    "github_username": "ZooGorilla",
+    "tags": ["v_2.0"],
+    "description": "A Tableau Web Data Connector for Confirmed ExoPlanets from exoplanetarchive.ipac.caltech.edu",
+    "source_code": "https://github.com/ZooGorilla/ZooGorilla.github.io"
+  },
+  {
+    "name": "Connector of Ice and Fire",
+    "url": "https://stephdietzel.github.io/ConnectorOfIceAndFire/connect.html",
+    "author": "Steph Dietzel",
+    "github_username": "stephdietzel",
+    "tags": ["v_2.0"],
+    "description": "A Tableau Web Data Connector for http://www.anapioficeandfire.com/",
+    "source_code": "https://github.com/stephdietzel/ConnectorOfIceAndFire"
+  },
+  {
     "name": "Covid-19 - Brasil.io",
     "url": "https://juracyamerico.github.io/Covid-19/Covid-19.html",
     "author": "Juracy Américo",
@@ -1130,8 +150,17 @@
     "tags": ["v_1.0"],
     "description": "Get the latest Covid-19 data available from the Brazi.io API/ Obtenha os ultimos dados sobre Covid19 disponíveis no site do Brasil.io",
     "source_code": "https://github.com/JuracyAmerico/Covid-19"
-},
-{
+  },
+  {
+    "name": "COVID-19 Emergency Service Providers in CA",
+    "url": "https://lshpaner.rbind.io/datasets/covid_19_data/emergencyserviceprovidersinca/covid19emergprovca.html",
+    "author": "Leon Shpaner",
+    "github_username": "lshpaner",
+    "tags": ["v_1.0"],
+    "description": "full scale data of all emergency service providers related to COVID-19 in the state of CA",
+    "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/covid_19_data/EmergencyServiceProvidersinCA"
+  },
+  {
     "name": "Covid-19 Italy",
     "url": "https://giandata.github.io/wdc-openpuglia-covid/openpuglia.html",
     "author": "Giancarlo Di Donato",
@@ -1139,15 +168,510 @@
     "tags": ["v_1.0"],
     "description": "Get timeseries data of Covid-19 in Italy from openpuglia.org API / Ottieni serie storica relativa al Covid-19 in Italia dalle API di openpuglia.org",
     "source_code": "https://github.com/giandata/wdc-openpuglia-covid"
-},
-{
-    "name": "Yogi Connector",
-    "url": "https://meetyogi.github.io/yogi-tableau/src/html/yogiwdc.html",
-    "author": "Yogi",
+  },
+  {
+    "name": "Covid19 India Live Data Tracker",
+    "url": "https://webdataconnectortableau.blogspot.com/2020/05/blog-post.html",
+    "author": "Neel Shah",
+    "github_username": "NeelShah00",
     "tags": ["v_1.0"],
-    "description": "This Connector allows Yogi Customers to access their project Data"
-},
-{
+    "description": "WDC that provides updates from official source",
+    "source_code": ""
+  },
+  {
+    "name": "COVID19-India_Dataset ",
+    "url": "https://iushv.github.io/",
+    "author": "Ayush Kumar",
+    "github_username": "iushv",
+    "tags": ["v_1.0"],
+    "description": "Complete Tableau WDC Connector for COVID19-India Dataset, Just Paste the Link in Tableau's Web data connector tool and click on FETCH COVID19-INDIA DATASET. Dataset with Districtwide granularity, Updated daily ",
+    "source_code": "github.com/iushv/iushv.github.io"
+  },
+  {
+    "name": "CSV",
+    "url": "https://github.com/starschema/tableau-web-table-connector#csv-connector",
+    "author": "Gyula Laszlo",
+    "github_username": "gyulalaszlo",
+    "tags": ["v_1.1"],
+    "description": "Loads generic CSV data from a http(s) URL",
+    "source_code": "github.com/starschema/tableau-web-table-connector"
+  },
+  {
+    "name": "CSV URL Connector",
+    "url": "https://basic-csv-wdc.herokuapp.com/",
+    "author": "Keshia Rose",
+    "github_username": "KeshiaRose",
+    "tags": ["v_2.5"],
+    "description": "A simple connector for CSVs hosted on the web.",
+    "source_code": "https://github.com/KeshiaRose/Basic-CSV-WDC"
+  },
+  {
+    "name": "data.world",
+    "url": "https://tableau.data.world",
+    "author": "Alan Levicki & Rebecca Clay",
+    "github_username": "",
+    "tags": ["v_2.0"],
+    "description": "Connect to datasets from data.world, where data people collaborate.",
+    "source_code": ""
+  },
+  {
+    "name": "DCTM Connector",
+    "url": "https://thakarevb.github.io/DCTMWDC/folderinfo.html",
+    "author": "Vishal Thakare",
+    "github_username": "thakarevb",
+    "tags": ["v_2.0"],
+    "description": "Sample Documentum web data connector to fetch data in Tableau",
+    "source_code": "github.com/thakarevb/DCTMWDC.git"
+  },
+  {
+    "name": "DCTM Connector",
+    "url": "https://thakarevb.github.io/DCTMWDC/folderinfo.html",
+    "author": "Vishal Thakare",
+    "github_username": "thakarevb",
+    "tags": ["v_2.0"],
+    "description": "Sample Documentum web data connector to fetch data in Tableau",
+    "source_code": "github.com/thakarevb/DCTMWDC.git"
+  },
+  {
+    "name": "DHIS2",
+    "url": "https://dtreskunov.github.io/dhis2-wdc/",
+    "author": "Denis Treskunov",
+    "github_username": "dtreskunov",
+    "tags": ["v_2.2"],
+    "description": "DHIS2 is the preferred health management information system in 47 countries and 23 organizations across four continents. This connector is written in ClojureScript.",
+    "source_code": "https://github.com/dtreskunov/dhis2-wdc"
+  },
+  {
+    "name": "Diggernaut",
+    "url": "https://www.diggernaut.com/wdc/",
+    "author": "Mikhail Sisin",
+    "github_username": "jabbahotep",
+    "tags": ["v_2.3"],
+    "description": "Connector to import your Diggernaut datasets to Tableau using REST API",
+    "source_code": "https://github.com/Diggernaut/diggernaut-wdc"
+  },
+  {
+    "name": "Dolar - Banco Central do Brasil",
+    "url": "https://juracyamerico.github.io/Dolar-Conector-de-dados-da-Web/cotacoes_diarias_e_taxas_de_cambioV2.html",
+    "author": "Juracy Américo",
+    "github_username": "JuracyAmerico",
+    "tags": ["v_1.0"],
+    "description": "Get the latest exchange dolar rates available from the Brazilian central bank API/ Obtenha as ultimas cotações diárias do dolar disponíveis no site do Banco Central",
+    "source_code": "https://github.com/JuracyAmerico/Dolar-Conector-de-dados-da-Web"
+  },
+  {
+    "name": "DoubleClick Campaign Manager",
+    "url": "https://dcm-dfa-wdc.herokuapp.com/",
+    "author": "Eric Peterson",
+    "github_username": "iamEAP",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": "https://github.com/tableau-mkt/dcm-dfa-wdc"
+  },
+  {
+    "name": "Elasticsearch",
+    "url": "http://mradamlacey.github.io/elasticsearch-tableau-connector/elasticsearch-connector.html",
+    "author": "Adam Lacey",
+    "github_username": "mradamlacey",
+    "tags": ["v_2.3"],
+    "description": "",
+    "source_code": "https://github.com/mradamlacey/elasticsearch-tableau-connector"
+  },
+  {
+    "name": "Facebook Insights Connector",
+    "url": "N/A",
+    "author": "kaizenplatform",
+    "github_username": "kaizenplatform",
+    "tags": ["v_2.1"],
+    "description": "Tableau WDC for Insights of Facebook Marketing API",
+    "source_code": "https://github.com/kaizenplatform/FacebookInsightsConnector"
+  },
+  {
+    "name": "FactSet Analytics API",
+    "url": "https://analytics-api-tableau.apps.factset.com/ ",
+    "author": "FactSet",
+    "github_username": "factset",
+    "tags": ["v_2.1"],
+    "description": "FactSet's Analytics API WDC leverages the power of APIs to integrate FactSet's industry leading multi-asset class portfolio analytics into Tableau. It provides users the flexibility and control to customize FactSet’s Analytics using Tableau’s data visualizations.",
+    "source_code": "https://developer.factset.com/api/pa-batch-api#documentation"
+  },
+  {
+    "name": "Fantasy Premier League 19-20",
+    "url": "https://r3dcobbler.github.io/FPL19-20/index.html",
+    "author": "Mick Sheahan",
+    "github_username": "R3dCobbler",
+    "tags": ["v_1.0"],
+    "description": "WDC to pull data from the latest FPL API.",
+    "source_code": "github.com/R3dCobbler/FPL19-20"
+  },
+  {
+    "name": "filemaker2tableau",
+    "url": "https://github.com/1-more-thing/fm2tableau/releases/latest",
+    "author": "Romain Dunand",
+    "github_username": "airmoi",
+    "tags": ["v_2.3"],
+    "description": "Connect easly Tableau to your FileMaker databases",
+    "source_code": "https://github.com/1-more-thing/fm2tableau"
+  },
+  {
+    "name": "Fitbit",
+    "url": "http://data.theinformationlab.co.uk/fitbit.html",
+    "author": "Craig Bloodworth",
+    "github_username": "",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": ""
+  },
+  {
+    "name": "Flickr with Auth",
+    "url": "https://wdc-flickr-proxy.herokuapp.com/flickr.html",
+    "author": "Steve Meredith",
+    "github_username": "smeredith",
+    "tags": ["v_2.0"],
+    "description": "Gets metadata for your personal photos on Flickr.",
+    "source_code": "https://github.com/smeredith/wdc-flickr-proxy"
+  },
+  {
+    "name": "forecast.io",
+    "url": "https://benlower.github.io/tableau-wdc-forecastio/forecastioConnector.html",
+    "author": "Ben Lower",
+    "github_username": "benlower",
+    "tags": ["v_2.0"],
+    "description": "Get weather data from Forecast.io.",
+    "source_code": "https://github.com/benlower/tableau-wdc-forecastio"
+  },
+  {
+    "name": "Fulcrum",
+    "url": "https://fulcrumapp.github.io/tableau-webdataconnector/",
+    "author": "Bryan McBride",
+    "github_username": "bmcbride",
+    "tags": ["v_2.1"],
+    "description": "Load data from Fulcrum apps into Tableau.",
+    "source_code": "https://github.com/fulcrumapp/tableau-webdataconnector"
+  },
+  {
+    "name": "Geothermal Wells in the State of CA",
+    "url": "https://lshpaner.rbind.io/datasets/ca_geothermal_data/cageothermalwells.html",
+    "author": "Leon Shpaner",
+    "github_username": "lshpaner",
+    "tags": ["v_2.0"],
+    "description": "dataset of all geothermal wells located in the state of California parsed by full scope of parameters including location, functionality, and status",
+    "source_code": "https://github.com/lshpaner/lshpaner/tree/master/content/datasets/CA_Geothermal_Data"
+  },
+  {
+    "name": "GitHub",
+    "url": "https://github-web-data-connector.herokuapp.com/",
+    "author": "Martin Keerman",
+    "github_username": "etroid",
+    "tags": ["v_2.1"],
+    "description": "",
+    "source_code": "https://github.com/tableau-mkt/github-data-connector"
+  },
+  {
+    "name": "Google Fit",
+    "url": "http://data.theinformationlab.co.uk/googlefit.html",
+    "author": "Craig Bloodworth",
+    "github_username": "",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": ""
+  },
+  {
+    "name": "Google Places API",
+    "url": "https://vikpos.github.io/places-wdc",
+    "author": "Viktor Posudnevsky",
+    "github_username": "",
+    "tags": ["v_2.2"],
+    "description": "Loads Google Maps places data (name, coordinates, address, rating etc) into Tableau",
+    "source_code": "github.com/vikpos/places-wdc"
+  },
+  {
+    "name": "Hearthstone JSON",
+    "url": "https://ausgop.github.io/HearthstoneJSON-WDC/index.html",
+    "author": "Wil Harper",
+    "github_username": "ausgop",
+    "tags": ["v_2.0"],
+    "description": "Get Hearthstone card data from HearthstoneJSON.",
+    "source_code": "https://github.com/ausgop/HearthstoneJSON-WDC"
+  },
+  {
+    "name": "HERE 7-Day Weather Forecast",
+    "url": "https://datadev-weather-wdc.glitch.me/",
+    "author": "Keshia Rose",
+    "github_username": "KeshiaRose",
+    "tags": ["v_1.0"],
+    "description": "Get 7-day weather forecast data for a selected city.",
+    "source_code": "https://glitch.com/edit/#!/datadev-weather-wdc"
+  },
+  {
+    "name": "HPCC Systems",
+    "url": "https://hpcc-systems.github.io/HPCC-Tableau-WDC/hpccTableauConnector.html",
+    "author": "Rodrigo Pastrana - HPCC Systems",
+    "github_username": "hpcc-systems",
+    "tags": ["v_2.3"],
+    "description": "Extracts HPCC Systems data into Tableau Desktop",
+    "source_code": "https://github.com/hpcc-systems/HPCC-Tableau-WDC"
+  },
+  {
+    "name": "Import.io",
+    "url": "http://connectors.poc.interworks.com/importio/importio-magic.html",
+    "author": "Robert Rouse",
+    "github_username": "",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": ""
+  },
+  {
+    "name": "India COVID 19 Data Connector - Daywise Summary data",
+    "url": "https://muthukumarsm.github.io/covid19india/CovidIndia_Daywise.html",
+    "author": "Muthukumar S M (msm@tableau.com)",
+    "github_username": "muthukumarsm",
+    "tags": ["v_1.0"],
+    "description": "Volunteer (Individual) driven API Web Data Connector for fetching Covid 19 India Dataset Daily summary Active/Deceased/Recovered",
+    "source_code": "https://github.com/muthukumarsm/covid19india"
+  },
+  {
+    "name": "India COVID 19 Data Connector - Patient data from crowdsourced DB",
+    "url": "https://muthukumarsm.github.io/covid19india/CovidIndia_Main.html",
+    "author": "Muthukumar S M (msm@tableau.com)",
+    "github_username": "muthukumarsm",
+    "tags": ["v_1.0"],
+    "description": "Volunteer (Individual) driven API Web Data Connector for fetching COVID 19 India Dataset for all patients",
+    "source_code": "https://github.com/muthukumarsm/covid19india"
+  },
+  {
+    "name": "India COVID 19 Data Connector - State-wise summary data",
+    "url": "https://muthukumarsm.github.io/covid19india/CovidIndia_Statewise.html",
+    "author": "Muthukumar S M (msm@tableau.com)",
+    "github_username": "muthukumarsm",
+    "tags": ["v_1.0"],
+    "description": "Volunteer (Individual) driven API Web data connector for fetching Covid 19 India Dataset statewise - Summarization",
+    "source_code": "https://github.com/muthukumarsm/covid19india"
+  },
+  {
+    "name": "InfluxDB (time series database) connector",
+    "url": "https://tagyoureit.github.io/InfluxDB_WDC/InfluxDB.html",
+    "author": "Russ Goldin",
+    "github_username": "tagyoureit",
+    "tags": ["v_2.3"],
+    "description": "Connector to pull data from InfluxDB.  Can be used with/without authentication and server-side aggregation.",
+    "source_code": "https://github.com/tagyoureit/InfluxDB_WDC"
+  },
+  {
+    "name": "IQM Reports",
+    "url": "https://tableau-connector.iqm.com",
+    "author": "IQM Corporation",
+    "github_username": "ccampbell5",
+    "tags": ["v_2.4"],
+    "description": "A connector to import IQM ad-serving data into Tableau.",
+    "source_code": ""
+  },
+  {
+    "name": "Italian Startup Companies Connector",
+    "url": "http://www.myitalialogin.it/services/startupWDC.html",
+    "author": "Luigi Marangon",
+    "github_username": "luis0076",
+    "tags": ["v_1.0"],
+    "description": "Tableau WDC about italian startup companies - source http://startup.registroimprese.it/report/startup.zip",
+    "source_code": ""
+  },
+  {
+    "name": "itigo Cloud Connector",
+    "url": "https://itigocloud.github.io/itigo-Tableau-WDC/index.html",
+    "author": "itigo Cloud",
+    "github_username": "itigocloud",
+    "tags": ["v_1.0"],
+    "description": "Connect to itigo Cloud CRM",
+    "source_code": "https://github.com/itigocloud/itigo-Tableau-WDC"
+  },
+  {
+    "name": "IXON WDC",
+    "url": "https://cdn.ixon.cloud/tableau/latest/",
+    "author": "IXON",
+    "github_username": "ixoncloud",
+    "tags": ["v_2.3"],
+    "description": "IXON Cloud is an Industrial IoT portal for machine manufacturers. Easily connect Tableau to your machine data. More info at https://www.ixon.cloud",
+    "source_code": "https://github.com/ixoncloud/tableau-wdc"
+  },
+  {
+    "name": "Japanese Government Statistics (e-Stat)",
+    "url": "https://wdc.dataconcerto.jp/estat",
+    "author": "Junko Fujiwara",
+    "github_username": "",
+    "tags": ["v_2.3"],
+    "description": "Connector to retrieve data from Japanese Government Statistics (e-Stat)",
+    "source_code": ""
+  },
+  {
+    "name": "JSON/XML Connector",
+    "url": "https://json-xml-wdc.herokuapp.com",
+    "author": "Keshia Rose",
+    "github_username": "KeshiaRose",
+    "tags": ["v_2.3"],
+    "description": "A simple connector for JSON or XML data. Simply paste in your URL or data or just drag and drop a file.",
+    "source_code": "https://github.com/KeshiaRose/JSON-XML-WDC"
+  },
+  {
+      "name": "JSON-stat (and SDMX-JSON) Connector",
+      "url": "https://jsonstat.com/tableau/",
+      "author": "Xavier Badosa",
+      "github_username": "badosa",
+      "tags": ["v_2.3"],
+      "description": "A general connector to import data from most statistical offices in the World.",
+      "source_code": ""
+  },
+  {
+    "name": "Jupytab",
+    "url": "",
+    "author": "Brian Tribondeau",
+    "github_username": "btribonde",
+    "tags": ["v_0.9.0"],
+    "description": "Display in Tableau data from Jupyter notebooks using Python. Note: You will need to setup this project locally first before using it.",
+    "source_code": "https://github.com/CFMTech/Jupytab"
+  },
+  {
+    "name": "Kobotoolbox Web Data Connector",
+    "url": "https://kwdc.herokuapp.com/",
+    "author": "Imran Ahmedani",
+    "github_username": "iahmedani",
+    "tags": ["v_0.1.6"],
+    "description": "Kobotoolbox web connector allows user to connect free ona.io accounts, Kobotoolbox and Open(non authorization like jsonplaceholer) REST APIs, code is qurated in a way that it will assess the schema remove symbols form labels and support all dataTypes",
+    "source_code": "https://github.com/iahmedani/kobo-wdc"
+  },
+  {
+    "name": "League of Legends Match Data",
+    "url": "https://jimmy-jia.github.io/LoL-Match-Data-WDC/",
+    "author": "Jimmy Jia",
+    "github_username": "jimmy-jia",
+    "tags": ["v_2.0"],
+    "description": "LoL Match Data Connector that retrieves recent matches for up to 5 players",
+    "source_code": "https://github.com/jimmy-jia/LoL-Match-Data-WDC"
+  },
+  {
+    "name": "LegalServer",
+    "author": "Paul Suh",
+    "tags": ["v_2.1"],
+    "description": "A connector to get data from LegalServer.org, a SaaS site that is used by legal aid organizations, public defenders, and local governments to manage cases. Please see the source code repository for complete setup instructions. ",
+    "source_code": "https://bitbucket.org/legalserver-tableau-connector/legalserver-tableau-connector.bitbucket.io/src/master/"
+  },
+  {
+    "name": "LoLChampStats",
+    "url": "https://soitknows.github.io/LoLChampStats/index.html",
+    "author": "Andy Tarver",
+    "github_username": "soitknows",
+    "tags": ["v_2.0"],
+    "description": "Connects to Riot Games' Data Dragon API. Returns static League of Legends champion data for all champions, for the patch version(s) specified",
+    "source_code": "https://github.com/soitknows/LoLChampStats"
+  },
+  {
+    "name": "Mapbox",
+    "url": "http://data.theinformationlab.co.uk/directions.html",
+    "author": "Craig Bloodworth",
+    "github_username": "",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": ""
+  },
+  {
+    "name": "Medicaid.gov - NADAC",
+    "url": "https://rarandall.github.io/wdc/html/NADAC.html",
+    "author": "Ray Randall",
+    "github_username": "rarandall",
+    "tags": ["v_2.2"],
+    "description": "Connector to Medicaid.gov - Gets NADAC - National Average Drug Acquisition Cost data",
+    "source_code": "https://github.com/rarandall/rarandall.github.io/wdc"
+  },
+  {
+    "name": "MongoDB / Raw JSON",
+    "url": "https://github.com/starschema/tableau-web-table-connector#mongodb--raw-json-client",
+    "author": "Gyula Laszlo",
+    "github_username": "gyulalaszlo",
+    "tags": ["v_1.1"],
+    "description": "Loads hierarchical JSON as flat table",
+    "source_code": "github.com/starschema/tableau-web-table-connector"
+  },
+  {
+    "name": "Morph.io Connector",
+    "url": "https://drzax.github.io/morphio-wdc/",
+    "author": "Simon Elvery",
+    "github_username": "drzax",
+    "tags": ["v_2.1"],
+    "description": "Tableau WDC for the scraping service Morph.io",
+    "source_code": "https://github.com/drzax/morphio-wdc/"
+  },
+  {
+    "name": "Moves App",
+    "url": "http://data.theinformationlab.co.uk/moves.html",
+    "author": "Craig Bloodworth",
+    "github_username": "",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": ""
+  },
+  {
+    "name": "Neo4J",
+    "url": "https://acbeers.github.io/neo4j-wdc/index.html",
+    "author": "Andrew Beers",
+    "github_username": "acbeers",
+    "tags": ["v_2.0"],
+    "description": "Connector for Neo4J - pull node data, or execute Cypher queries",
+    "source_code": "https://github.com/acbeers/neo4j-wdc"
+  },
+  {
+    "name": "Neo4J - official and supported WDC",
+    "url": "http://ralfbecher.github.io/tableau-neo4j-wdc/v2.3/Neo4jWdc2.html",
+    "author": "Ralf Becher",
+    "github_username": "ralfbecher",
+    "tags": ["v_2.3"],
+    "description": "Neo4J multi table connector to execute up to 5 Cypher queries. Supports latest Neo4j Temporal and Spatial data types.",
+    "source_code": "https://github.com/ralfbecher/tableau-neo4j-wdc"
+  },
+  {
+    "name": "New Relic Insights",
+    "url": "https://insights-web-data-connector.herokuapp.com/",
+    "author": "Eric Peterson",
+    "github_username": "iamEAP",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": "https://github.com/tableau-mkt/insights-data-connector"
+  },
+  {
+    "name": "NPM Download Counts",
+    "url": "http://jagreene.github.io/npm-wdc",
+    "author": "Austin Greene",
+    "github_username": "jagreene",
+    "tags": ["v_2.0"],
+    "description": "Multitable connector for Visualizing download stats for npm packages",
+    "source_code": "https://github.com/jagreene/npm-wdc/"
+  },
+  {
+    "name": "NY Times Best sellers List",
+    "url": "https://muthukumarsm.github.io/TableauWDC/Book Details.html",
+    "author": "Muthukumar S M (msm@tableau.com)",
+    "github_username": "muthukumarsm",
+    "tags": ["v_1.0"],
+    "description": "Tableau Web Data Connector for fetching NY Times best sellers list",
+    "source_code": "https://github.com/muthukumarsm/TableauWDC"
+  },
+  {
+    "name": "NYC Baby Names",
+    "url": "https://jhc154.github.io/Tableau.WDC.OpenNYC.BabyNames/",
+    "author": "Justin",
+    "github_username": "jhc154",
+    "tags": ["v_1.0"],
+    "description": "Connector to get baby name stats from NYC data",
+    "source_code": "https://github.com/jhc154/Tableau.WDC.OpenNYC.BabyNames"
+  },
+  {
+    "name": "Office 365 Sharepoint",
+    "url": "http://data.theinformationlab.co.uk/sharepoint.html",
+    "author": "Craig Bloodworth",
+    "github_username": "craigbloodworth",
+    "tags": ["v_2.0"],
+    "description": "Pull your Office 365 SharePoint list data directly into Tableau",
+    "source_code": "https://github.com/TheInformationLab/Tableau-WDC-365Sharepoint"
+  },
+  {
     "name": "Open Brewery DB",
     "url": "https://open-brewery-wdc.glitch.me/",
     "author": "Keshia Rose",
@@ -1155,6 +679,565 @@
     "description": "A connector to get info on breweries, cideries, brewpubs, and bottleshops by state from Open Brewery DB.",
     "github_username": "KeshiaRose",
     "source_code": "https://glitch.com/edit/#!/open-brewery-wdc"
-}
+  },
+  {
+    "name": "Open Exchange Rates API",
+    "url": "https://open-exchange-rate-wdc.glitch.me/",
+    "author": "Keshia Rose",
+    "github_username": "KeshiaRose",
+    "tags": ["v_2.3"],
+    "description": "Get the latest exchange rates available from the Open Exchange Rates API.",
+    "source_code": "https://glitch.com/edit/#!/open-exchange-rate-wdc"
+  },
+  {
+    "name": "OpenStreetMap Features",
+    "url": "http://jdomingu.github.io/osm-features-wdc/",
+    "author": "Jared Dominguez",
+    "github_username": "jdomingu",
+    "tags": ["v_2.0"],
+    "description": "Get data for OSM features in an area that you select.",
+    "source_code": "https://github.com/jdomingu/osm-features-wdc"
+  },
+  {
+    "name": "parkrun",
+    "url": "https://parkrun-webdataconnector.now.sh",
+    "author": "Mark Woodbridge",
+    "tags": ["v_2.0"],
+    "description": "",
+    "source_code": ""
+  },
+  {
+    "name": "ParseHub",
+    "url": "http://data.theinformationlab.co.uk/parsehub.html",
+    "author": "Craig Bloodworth",
+    "github_username": "",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": ""
+  },
+  {
+    "name": "Pedestrian Counts across Melbourne City",
+    "url": "https://rthiyagarajan.github.io/melb-pedestrian-WDC/index.html",
+    "author": "Ramanan Thiyagarajan",
+    "github_username": "rthiyagarajan",
+    "tags": ["v_2.0"],
+    "description": "Get Melbourne City Pedestrian Counts using the SODA API.",
+    "source_code": "https://github.com/rthiyagarajan/melb-pedestrian-WDC"
+  },
+  {
+    "name": "Peloton Cycling Data",
+    "url": "https://www.mypelotondata.com/wdc",
+    "author": "Brian Weissler",
+    "github_username": "weissleb",
+    "tags": ["v_1.0"],
+    "description": "Analyze your personal Peloton cycling data.",
+    "source_code": "https://github.com/weissleb/peloton-tableau-connector"
+  },
+  {
+    "name": "Pingdom",
+    "url": "http://data.theinformationlab.co.uk/pingdom.html",
+    "author": "Craig Bloodworth",
+    "github_username": "",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": ""
+  },
+  {
+    "name": "Podcast Metadata",
+    "url": "https://podcast-wdc.herokuapp.com/",
+    "author": "Eric Peterson",
+    "github_username": "iamEAP",
+    "tags": ["v_2.0"],
+    "description": "Parses podcast channel and episode metadata from feed URLs.",
+    "source_code": "https://github.com/iamEAP/podcast-wdc"
+  },
+  {
+    "name": "PubChem 3d compound connector",
+    "url": "http://www.runonthespot.com/PubChem.html",
+    "author": "Mike Renwick",
+    "github_username": "runonthespot",
+    "tags": ["v_2.0"],
+    "description": "Visualize chemical compounds in 3d!",
+    "source_code": "https://github.com/runonthespot/PubChemWDC"
+  },
+  {
+    "name": "PurpleAir Sensors Current Readings",
+    "url": "https://jetarcher.github.io/PurpleAir/PurpleAirSensorList.html",
+    "author": "Patrick Bowman",
+    "github_username": "jetarcher",
+    "tags": ["v_1.0"],
+    "description": "PurpleAir air quality sensors with current readings for PM2.5 (2.5 micron particulate matter)",
+    "source_code": "https://github.com/jetarcher/PurpleAir"
+  },
+  {
+    "name": "Quandl",
+    "url": "http://data.theinformationlab.co.uk/quandl.html",
+    "author": "Craig Bloodworth",
+    "github_username": "",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": ""
+  },
+  {
+    "name": "Rally CA Agile",
+    "url": "https://k504866430.github.io/rally-tableau",
+    "author": "Harsh Agrawal",
+    "github_username": "",
+    "tags": ["v_2.0"],
+    "description": "Load project, stories, tasks, time-entries and much more from CA Agile Rally Tool",
+    "source_code": ""
+  },
+  {
+    "name": "Random Data Generator",
+    "url": "http://wdc.poc.interworks.com/datagen/",
+    "author": "Dave Hart",
+    "github_username": "",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": ""
+  },
+  {
+    "name": "REDCap",
+    "url": "https://github.com/xHeliotrope/redcap-wdc",
+    "author": "Ryan Moore",
+    "github_username": "xHeliotrope",
+    "tags": ["v_2.0"],
+    "description": "Load REDCap data into Tableau via the REDCap API",
+    "source_code": "https://github.com/xHeliotrope/redcap-wdc"
+  },
+  {
+    "name": "REST Data Connector",
+    "url": "https://rdc.codezero.xyz",
+    "author": "Niranjan Rajendran",
+    "github_username": "niranjan94",
+    "tags": ["v_2.3"],
+    "description": "A REST API Data Connector for Tableau with Generic REST endpoints, Swagger 2.0 and OpenApi 3.0 support",
+    "source_code": "https://github.com/niranjan94/rest-data-connector"
+  },
+  {
+    "name": "Reviewboard changelist Connector",
+    "url": "https://hza47.github.io/WDC-reviewboard/",
+    "author": "Hao Zhuang",
+    "github_username": "hza47",
+    "tags": ["v_2.1"],
+    "description": "WDC to get all pengind changelist from reviewboard",
+    "source_code": "https://github.com/hza47/WDC-reviewboard"
+  },
+  {
+    "name": "Runkeeper",
+    "url": "http://data.theinformationlab.co.uk/runkeeper.html",
+    "author": "Craig Bloodworth",
+    "github_username": "",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": ""
+  },
+  {
+    "name": "SAP Business Objects WEBI & QaaWS",
+    "url": "https://github.com/starschema/tableau-web-table-connector#business-objects-connector",
+    "author": "Tamas Foldi",
+    "github_username": "tfoldi",
+    "tags": ["v_1.1"],
+    "description": "Connects Tableau to SAP BO WebI & QaaWS published reports.",
+    "source_code": "github.com/starschema/tableau-web-table-connector"
+  },
+  {
+    "name": "SDMX-JSON WDC",
+    "url": "https://saviohenriques.github.io/sdmxjsonwdc",
+    "author": "Savio Henriques",
+    "github_username": "saviohenriques",
+    "tags": ["v_2.0"],
+    "description": "Connects to OECD Air Emissions data http://stats.oecd.org/viewhtml.aspx?datasetcode=AIR_EMISSIONS",
+    "source_code": "https://github.com/saviohenriques/sdmxjsonwdc"
+  },
+  {
+    "name": "Seattle/King County Restaurant Inspections",
+    "url": "http://benlower.github.io/tableau-wdc-kcfoodinspection/foodInspectionWDC.html",
+    "author": "Ben Lower",
+    "github_username": "benlower",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": ""
+  },
+  {
+    "name": "Sentiment API",
+    "url": "http://gtgeek.github.com/SentimentConnector/Sentiment.html",
+    "author": "gtgeek - Quy Nguyen",
+    "github_username": "gtgeek",
+    "tags": ["v_2.0"],
+    "description": "Analyze Tweet/Text Sentiment provided by YOU. http://www.allmytweet.net can help gather tweets.",
+    "source_code": ""
+  },
+  {
+    "name": "Sequence Generator",
+    "url": "https://sefthuko.github.io/wdc/generator.html",
+    "author": "Hermann Chong",
+    "github_username": "sefthuko",
+    "tags": ["v_1.0"],
+    "description": "Generate a sequence of values so you can show categories that aren't yet represented in your actual data.",
+    "source_code": "https://github.com/sefthuko/sefthuko.github.io/blob/master/wdc"
+  },
+  {
+    "name": "Shorten.REST Tableau Connector",
+    "url": "https://tableau.shorten.rest/",
+    "author": "API LADS INC",
+    "github_username": "apilads",
+    "tags": ["v_1.0"],
+    "description": "Shorten.REST Tableau Connector enables you to easily pipe your click data into Tableau for visualization & analysis.",
+    "source_code": "github.com/apilads/Shorten.REST-Tableau-Connector"
+  },
+  {
+    "name": "Simple Airtable Connector",
+    "url": "https://simple-airtable-wdc.glitch.me/",
+    "author": "Keshia Rose",
+    "github_username": "KeshiaRose",
+    "tags": ["v_2.5"],
+    "description": "A very basic Tableau Web Data Connector for Airtable bases.",
+    "source_code": "https://glitch.com/edit/#!/simple-airtable-wdc?path=README.md"
+  },
+  {
+    "name": "Socrata",
+    "url": "http://wdc.poc.interworks.com/socrata_20/",
+    "author": "Matthew Orr",
+    "github_username": "interworks-morr",
+    "tags": ["v_2.0"],
+    "description": "",
+    "source_code": "https://github.com/interworks-morr/wdc-socrata"
+  },
+  {
+    "name": "Splitwise",
+    "url": "https://tableau-wdc-splitwise.herokuapp.com",
+    "author": "Amelie Dagenais",
+    "github_username": "ameliedagenais",
+    "tags": ["v_2.0"],
+    "description": "Splitwise is a cool app for tracking shared expenses. Get your data out to analyze it in Tableau",
+    "source_code": "https://github.com/ameliedagenais/SplitwiseWebDataConnector"
+  },
+  {
+    "name": "Spotify Connector",
+    "url": "http://maddyloo.github.io/Connectors/index.html",
+    "author": "Madeleine Corneli",
+    "github_username": "maddyloo",
+    "tags": ["v_2.0"],
+    "description": "Tableau WDC that pulls playlist and song info from Spotify",
+    "source_code": "https://github.com/maddyloo/Spotify_WDC"
+  },
+  {
+    "name": "Spotify: My Library",
+    "url": "http://spotify-wdc.azurewebsites.net/",
+    "author": "Samm Desmond, Brendan Lee",
+    "github_username": "sdesmond46, lbrendanl",
+    "tags": ["v_2.1"],
+    "description": "Uses new 2.1 WDC features and brings back information about your Spotify music library. ",
+    "source_code": "https://github.com/lbrendanl/SpotifyWDC"
+  },
+  {
+    "name": "Square",
+    "url": "http://webdataconnector.azurewebsites.net/Connectors/Square/",
+    "author": "Samm Desmond",
+    "github_username": "sdesmond46",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": "https://github.com/sdesmond46/WDC"
+  },
+  {
+    "name": "Star Wars API",
+    "url": "http://gtgeek.github.com/SWapiConnector/SWapiConnector.html",
+    "author": "gtgeek - Quy Nguyen",
+    "github_username": "gtgeek",
+    "tags": ["v_2.0"],
+    "description": "Star Wars API for People, Planets, Vehicles, Films, etc.",
+    "source_code": ""
+  },
+  {
+    "name": "Star Wars API",
+    "url": "https://filmasher.github.io/starwars/",
+    "author": "Asher Campbell",
+    "github_username": "FilmAsher",
+    "tags": ["v_2.0"],
+    "description": "https://github.com/FilmAsher/starwars"
+  },
+  {
+    "name": "Stardog Data Connector",
+    "url": "http://tableau.stardog.com",
+    "author": "Adam Bretz",
+    "github_username": "stardog-union",
+    "tags": ["v_2.2"],
+    "description": "Stardog is the Enterprise Knowledge Graph. http://stardog.com",
+    "source_code": ""
+  },
+  {
+    "name": "Stock Price History",
+    "url": "http://wdc.poc.interworks.com/google_finance_20/",
+    "author": "Matthew Orr",
+    "github_username": "interworks-morr",
+    "tags": ["v_2.0"],
+    "description": "",
+    "source_code": "https://github.com/interworks-morr/wdc-stock-price-history"
+  },
+  {
+    "name": "Strava",
+    "url": "http://data.theinformationlab.co.uk/strava.html",
+    "author": "Craig Bloodworth",
+    "github_username": "",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": ""
+  },
+  {
+    "name": "Stripe",
+    "url": "https://benjisg.github.io/stripe-web-data-connector/stripe.html",
+    "author": "Benji Schwartz-Gilbert",
+    "github_username": "benjisg",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": "https://github.com/benjisg/stripe-web-data-connector"
+  },
+  {
+    "name": "Synergy!データコネクター",
+    "url": "https://synergy-connector.com/synergy_x_tableau/",
+    "author": "AD-SAIL INC.",
+    "github_username": "",
+    "tags": ["v_1.0"],
+    "description": "Synergy!のマスターデータベースと履歴データベースのデータを取得するTableauWebデータコネクタ",
+    "source_code": ""
+  },
+  {
+    "name": "Tableau Public WDC",
+    "url": "https://tableau-public.wdc.dev/",
+    "author": "Andre de Vries",
+    "github_username": "andre347",
+    "tags": ["v_1.0"],
+    "description": "Connector to get data from your Tableau Public Profile",
+    "source_code": ""
+  },
+  {
+    "name": "Tfl BikesPoint",
+    "url": "http://jdunkerleytableau.azurewebsites.net/Bikes",
+    "author": "James Dunkerley",
+    "github_username": "jdunkerley",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": "https://github.com/jdunkerley/TableauWebData"
+  },
+  {
+    "name": "The Movie DB",
+    "url": "https://lbrendanl.github.io/tvWDC/tv.html",
+    "author": "Brendan Lee",
+    "github_username": "lbrendanl",
+    "tags": ["v_2.0"],
+    "description": "Brings back data about popular tv shows.",
+    "source_code": "https://github.com/lbrendanl/tvWDC"
+  },
+  {
+    "name": "Toggl",
+    "url": "https://keshiarose.github.io/Toggl-Web-Data-Connector/togglwdc.html",
+    "author": "Keshia Rose",
+    "github_username": "KeshiaRose",
+    "tags": ["v_2.0"],
+    "description": "A Tableau Web Data Connector that pulls in your task tracking data from the Detailed Report view on toggl.com",
+    "source_code": "https://keshiarose.github.io/Toggl-Web-Data-Connector/"
+  },
+  {
+    "name": "Travis CI",
+    "url": "https://travis-web-data-connector.herokuapp.com/",
+    "author": "Eric Peterson",
+    "github_username": "iamEAP",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": "https://github.com/tableau-mkt/travis-data-connector"
+  },
+  {
+    "name": "Twitter",
+    "url": "http://webdataconnector.azurewebsites.net/Connectors/Twitter/",
+    "author": "Samm Desmond",
+    "github_username": "sdesmond46",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": "https://github.com/sdesmond46/WDC"
+  },
+  {
+    "name": "U.S. Energy Information Administration Data",
+    "url": "http://wdc.poc.interworks.com/eia_20/",
+    "author": "Derrick Austin",
+    "github_username": "austinderrick",
+    "tags": ["v_2.0"],
+    "description": "",
+    "source_code": "https://github.com/austinderrick/eia_wdc_20"
+  },
+  {
+    "name": "U.S. Energy Information Administration Data",
+    "url": "http://wdc.poc.interworks.com/eia/",
+    "author": "Derrick Austin",
+    "github_username": "austinderrick",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": ""
+  },
+  {
+    "name": "U.S. Federal Reserve Economic Data (FRED)",
+    "url": "http://wdc.poc.interworks.com/fred_20/",
+    "author": "Derrick Austin",
+    "github_username": "austinderrick",
+    "tags": ["v_2.0"],
+    "description": "",
+    "source_code": "https://github.com/austinderrick/fred_wdc_20"
+  },
+  {
+    "name": "U.S. Federal Reserve Economic Data (FRED)",
+    "url": "http://wdc.poc.interworks.com/fred/",
+    "author": "Derrick Austin",
+    "github_username": "austinderrick",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": ""
+  },
+  {
+    "name": "UK Coronavirus Daily Data API",
+    "url": "https://dataanalyticsscc.github.io/",
+    "author": "Eric Mahendren, James Goodall",
+    "github_username": "Eric-Mahendren, DataAnalyticsSCC, J-Goodall",
+    "tags": ["v_1.0"],
+    "description": "WDC that grabs data from the official UK government coronavirus API",
+    "source_code": "https://github.com/DataAnalyticsSCC/DataAnalyticsSCC.github.io"
+  },
+  {
+    "name": "Unify BI",
+    "url": "https://www.us-analytics.com/unifybi",
+    "author": "US-Analytics",
+    "description": "Connector for Oracle BI (OBIEE, BICs, OAC, BIApps)."
+  },
+  {
+    "name": "United States Census Data",
+    "url": "https://census-tableau-wdc.herokuapp.com/",
+    "author": "Addy Naik",
+    "github_username": "port80labs",
+    "tags": ["v_1.1"],
+    "description": "",
+    "source_code": "https://github.com/port80labs/census-wdc"
+  },
+  {
+    "name": "US Census American Community Survey Profile",
+    "url": "http://bigbytes.mobyus.com/tableau/censuswdc11.aspx",
+    "author": "Mark Evans",
+    "github_username": "MobyusMark",
+    "tags": ["v_1.1"],
+    "description": "Loads selected data from the US Census ACS (American Community Survey)",
+    "source_code": ""
+  },
+  {
+    "name": "US Census Tract Shapefiles",
+    "url": "http://bigbytes.mobyus.com/tableau/censustractshapeswdc11.aspx",
+    "author": "Mark Evans",
+    "github_username": "MobyusMark",
+    "tags": ["v_1.1"],
+    "description": "Loads shapefile data for selected census tracts to support mapping.",
+    "source_code": ""
+  },
+  {
+    "name": "US Weather Forecast Data for 5 Cities",
+    "url": "https://github.com/collinsteele/collinsteele.github.io/blob/master/WeatherWDCv2.html",
+    "author": "Collin Steele",
+    "github_username": "collinsteele",
+    "tags": ["v_2.2"],
+    "description": "Very simple connector to pull 7 day forecast for 5 cities around US.",
+    "source_code": "https://github.com/collinsteele/collinsteele.github.io"
+  },
+  {
+    "name": "USPTO PatentsWeb Connector",
+    "url": "https://dduubb.github.io/uspto-wdc/wdc/uspto-wdc.html",
+    "author": "dw",
+    "github_username": "dduubb",
+    "tags": ["v_2.1"],
+    "description": "Connector to allow connections to the USPTO PatentsWeb API",
+    "source_code": "github.com/dduubb/uspto-wdc"
+  },
+  {
+    "name": "Visier-Tableau (Basic-auth)",
+    "url": "https://visier-tableau-basic-auth.herokuapp.com/",
+    "author": "Leonardo Zuniga",
+    "github_username": "leozusa",
+    "tags": ["v_2.1"],
+    "description": "Visier Data Connector API for Data Exports provides a http interface with Basic Authentication that the WDC doesn't support, so this should work as a bridge between both",
+    "source_code": "https://github.com/leozusa/visier-tableau-basic-auth"
+  },
+  {
+    "name": "WaniKani Connector",
+    "url": "https://rarandall.github.io/wdc/html/wanikani.html",
+    "author": "Ray Randall",
+    "github_username": "rarandall",
+    "tags": ["v_2.2"],
+    "description": "See and understand your WaniKani data with this WDC connector for Tableau.",
+    "source_code": "https://github.com/rarandall/rarandall.github.io/tree/master/wdc"
+  },
+  {
+    "name": "Washington Trails Association",
+    "url": "https://dtreskunov.github.io/wta-wdc/",
+    "author": "Denis Treskunov",
+    "github_username": "dtreskunov",
+    "tags": ["v_2.2"],
+    "description": "WTA is a non-profit community protecting hiking trails in Washington state. This connector is written in ClojureScript.",
+    "source_code": "https://github.com/dtreskunov/wta-wdc"
+  },
+  {
+    "name": "WDC Educación-CO",
+    "url": "https://oscarga.github.io/DatosAbiertosCO-WDC/WDC-Educacion/index.html",
+    "author": "Oscar Gómez",
+    "github_username": "OscarGA",
+    "tags": ["v_2.3"],
+    "description": "Connector to get data from the site datos.gov.co about education in Antioquia region",
+    "source_code": "https://github.com/OscarGA/DatosAbiertosCO-WDC"
+  },
+  {
+    "name": "WDC Salud-CO",
+    "url": "https://oscarga.github.io/DatosAbiertosCO-WDC/WDC-Salud/index.html",
+    "author": "Oscar Gómez",
+    "github_username": "OscarGA",
+    "tags": ["v_2.3"],
+    "description": "Connector to get data from the site datos.gov.co about health in Colombia",
+    "source_code": "https://github.com/OscarGA/DatosAbiertosCO-WDC"
+  },
+  {
+    "name": "WDC Seguridad-CO",
+    "url": "https://oscarga.github.io/DatosAbiertosCO-WDC/WDC-Seguridad/index.html",
+    "author": "Oscar Gómez",
+    "github_username": "OscarGA",
+    "tags": ["v_2.3"],
+    "description": "Connector to get data from the site datos.gov.co about security in Medellín city",
+    "source_code": "https://github.com/OscarGA/DatosAbiertosCO-WDC"
+  },
+  {
+    "name": "wdc-oecd-sdmx-json",
+    "url": "https://joshyen.github.io/wdc-oecd-sdmx-json/AIR_GHG.html",
+    "author": "JoshYEn",
+    "github_username": "JoshYEn",
+    "tags": ["v_1.0"],
+    "description": "Tableau Web Data Connector for fetching OECD dataset Greenhouse gas emissions by source",
+    "source_code": "https://github.com/JoshYEn/wdc-oecd-sdmx-json"
+  },
+  {
+    "name": "WebPlotDigitizer",
+    "url": "https://dtreskunov.github.io/webplotdigitizer-wdc/",
+    "author": "Denis Treskunov",
+    "github_username": "dtreskunov",
+    "tags": ["v_2.2"],
+    "description": "Extract features from image files (charts, graphs, photos). This connector is written in ClojureScript.",
+    "source_code": "https://github.com/dtreskunov/webplotdigitizer-wdc"
+  },
+  {
+    "name": "Yogi Connector",
+    "url": "https://meetyogi.github.io/yogi-tableau/src/html/yogiwdc.html",
+    "author": "Yogi",
+    "tags": ["v_1.0"],
+    "description": "This Connector allows Yogi Customers to access their project Data"
+  },
+  {
+    "name": "Zabbix",
+    "url": "https://parflesh.github.io/zabbix-wdc/index.html",
+    "author": "ParFlesh",
+    "github_username": "ParFlesh",
+    "tags": ["v_2.0"],
+    "description": "Connector to get data from Zabbix API",
+    "source_code": "https://github.com/parflesh/zabbix-wdc"
+  }
 ]
-    

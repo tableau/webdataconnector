@@ -1,8 +1,8 @@
 function append(connector) {
     var grid = document.querySelector('#grid');
     var item = document.createElement('div');
-
-    var h = '<div>';
+    var elemid = connector.name.replace(/\W/g,' ').trim().replace(/ +/g,'_').toLowerCase();
+    var h = '<div id="'+ elemid +'">';
     h += '<div class="thumbnail">';
     h += '<div class="connector_title">';
     h += '<h2><a href="' + connector.url + '" alt="Connector Link">' + connector.name + '</a>';
@@ -49,4 +49,10 @@ $.getJSON("./community_connectors.json", function(data) {
     $(sorted).each(function(i, connector) {
         append(connector);
     });
+    if (window.location.href.search("#") > 1 ) {
+        elemid = "#" + window.location.href.split("#")[1].toLowerCase();
+        $(elemid).animate({opacity: 0.5}, 1000 );
+        $("html, body").animate({scrollTop: $(elemid).offset().top - 66 }, 1000);
+        $(elemid).animate({opacity: 1}, 1000 );
+    }
 });

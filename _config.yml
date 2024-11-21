@@ -1,7 +1,7 @@
 # Site settings
 title: Tableau Web Data Connector
 email: jdominguez@tableau.com
-description: Connect to your web data from Tableau.
+description: Connect to your web data to Tableau.
 baseurl: "/webdataconnector"
 # permalink: pretty
 defaults:
@@ -17,6 +17,10 @@ highlighter: rouge
 
 kramdown:
     toc_levels: 1..3
+
+# Include SEO file for Google rich results
+gems:
+  - jekyll-seo-tag
 
 # Exclude
 exclude: ['node_modules', 'vendor']
