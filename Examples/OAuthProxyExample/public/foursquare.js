@@ -38,7 +38,7 @@
   // This will redirect the user to a Foursquare login
   function doAuthRedirect() {
       var appId = config.clientId;
-      if (tableau.authPurpose === tableau.authPurposeEnum.ephemerel) {
+      if (tableau.authPurpose === tableau.authPurposeEnum.ephemeral) {
         appId = config.clientId;  // This should be Desktop
       } else if (tableau.authPurpose === tableau.authPurposeEnum.enduring) {
         appId = config.clientId; // This should be the Tableau Server appID
