@@ -1225,6 +1225,14 @@
     "source_code": "https://github.com/dtreskunov/webplotdigitizer-wdc"
   },
   {
+    "name": "Windsor.ai Web Connector",
+    "url": "https://tableau.windsor.ai",
+    "author": "Victor Lupaescu",
+    "github_username": "victorlupaescu",
+    "tags": ["v_1.0"],
+    "description": "Extract data from Facebook Ads, Facebook Page, Facebook Leads, Google Ads, Google Search Console, Google Analytics, Bing Ads, Instagram Insights, LinkedIn Ads, LinkedIn Organic, TikTok, Reddit, HubSpot, Snapchat, MailChimp, Twitter Ads, Shopify, Amazon Seller Central, Apple Search Ads, Pinterest, Adobe"
+  },
+  {
     "name": "Yogi Connector",
     "url": "https://meetyogi.github.io/yogi-tableau/src/html/yogiwdc.html",
     "author": "Yogi",
