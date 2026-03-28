@@ -485,6 +485,15 @@
     "source_code": "https://github.com/itigocloud/itigo-Tableau-WDC"
   },
   {
+    "name": "IPEDS CIP Code 11 Awards Connector",
+    "url": "https://ui-research.github.io/wdc-ipeds-computing-awards/",
+    "author": "The Urban Institute",
+    "github_username": "mich0987",
+    "tags": ["v_1.0"],
+    "description": "Pull IPEDS CIP 11 awards data from The Urban Institute's Education Data Portal. Documentation can be found in Wiki of source code repository.",
+    "source_code": "https://github.com/UI-Research/wdc-ipeds-computing-awards"
+  },
+  {
     "name": "IXON WDC",
     "url": "https://cdn.ixon.cloud/tableau/latest/",
     "author": "IXON",
