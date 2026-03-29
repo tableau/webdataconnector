@@ -9,6 +9,16 @@
     "source_code": "https://github.com/AdStage/tableau_connector"
   },
   {
+    "name": "saumya for Tableau",
+    "url": "https://xyz.com/connector.html",
+    "author": "Saumya",
+    "github_username": "SaumyaMohandas",
+    "tags": ["v_2.0"],
+    "description": "connector for video game sales",
+    "source_code": "https://github.com/SaumyaMohandas/webdataconnector.git"
+  },
+  
+  {
     "name": "Alpha Vantage",
     "url": "https://satichun.github.io/AV-WDC/",
     "author": "Satish C",
