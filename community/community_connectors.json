@@ -1240,4 +1240,13 @@
     "description": "Connector to get data from Zabbix API",
     "source_code": "https://github.com/parflesh/zabbix-wdc"
   }
+  {
+    "name": "Global Monthly Mean Surface Temperature Change",
+    "url": "https://vishalrshukla.github.io/WDC_AQI/WDC_Emission.html",
+    "author": "Vishal Shukla",
+    "github_username": "vishalrshukla",
+    "tags": ["v_2.0"],
+    "description": "This API provides on a monthly basis, the global mean surface temperature anomaly from 1880.04 to the present (in celsius).",
+    "source_code": "https://github.com/vishalrshukla/WDC_AQI/blob/main/WDC_Emission.html"
+  }
 ]
